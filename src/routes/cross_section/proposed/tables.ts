@@ -98,6 +98,9 @@ export function getWidth(
   streetFunction: string,
   sectionType: "Desirable" | "Absolute",
 ): string {
+  if (lane == "") {
+    return "";
+  }
   let row = widths.find((row) => row[0] == lane)!;
   let chunk = sectionType == "Desirable" ? row.slice(1, 6) : row.slice(6, 11);
   if (streetFunction == "High Street (active frontages)") {
