@@ -1,13 +1,14 @@
 <script lang="ts">
+  import { SecondaryButton } from "govuk-svelte";
+
   let counter = 0;
 </script>
 
-<p>Counter is {counter}</p>
-<button
-  type="button"
+<p class="govuk-prose">Counter is {counter}</p>
+<SecondaryButton
   on:click={() => {
     counter++;
   }}
 >
   Increment
-</button>
+</SecondaryButton>

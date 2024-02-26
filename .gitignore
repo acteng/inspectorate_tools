@@ -1,3 +1,7 @@
 *.swp
 node_modules/
 .svelte-kit/
+
+src/style/main.css
+src/style/main.css.map
+public/assets

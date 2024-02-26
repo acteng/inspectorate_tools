@@ -19,6 +19,7 @@ jobs:
       - name: Build web app
         run: |
           npm ci
+          npm run setup-govuk
           npm run build
 
       - name: Publish
