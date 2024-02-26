@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CrossSection from "./CrossSection.svelte";
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
   import TrafficData from "./TrafficData.svelte";
   import { base } from "$app/paths";
@@ -28,7 +29,18 @@
 
   <TrafficData bind:valid={trafficDataOk} />
 
-  {#if trafficDataOk}{:else}
+  {#if trafficDataOk}
+    <CollapsibleCard label="Desirable Minimum Cross-Section">
+      <CrossSection
+        bind:lanesLeftToRight={$state.desirableMinimumCrossSection}
+      />
+    </CollapsibleCard>
+    <CollapsibleCard label="Absolute Minimum Cross-Section">
+      <CrossSection
+        bind:lanesLeftToRight={$state.absoluteMinimumCrossSection}
+      />
+    </CollapsibleCard>
+  {:else}
     <p>Fill out all data above to continue</p>
   {/if}
 

@@ -2,6 +2,8 @@ import { writable } from "svelte/store";
 
 export interface State {
   trafficData: TrafficData;
+  desirableMinimumCrossSection: string[];
+  absoluteMinimumCrossSection: string[];
 }
 
 export let state = writable(loadState());
@@ -40,5 +42,23 @@ export function emptyState(): State {
       observedSpeed: undefined,
       streetFunction: "",
     },
+    desirableMinimumCrossSection: [],
+    absoluteMinimumCrossSection: [],
   };
 }
+
+// TODO Is "lane" the correct term?
+export let laneTypes = [
+  "Footway",
+  "Narrow Traffic / Bus Lane",
+  "Wide Traffic / Bus Lane",
+  "Traffic Lane (no buses): speed limit 20/30",
+  "On-highway advisory/mandatory cycle lane",
+  "1-way protected cycle track",
+  "2-way protected cycle track",
+  "Shared use cycle track",
+  "Parking Bay",
+  "Disabled Parking Bay",
+  "Loading Bay",
+  "Buffer / Verge",
+];
