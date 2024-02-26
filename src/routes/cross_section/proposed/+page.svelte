@@ -1,5 +1,8 @@
 <script lang="ts">
+  import TrafficData from "./TrafficData.svelte";
   import { base } from "$app/paths";
+
+  let trafficDataOk = false;
 </script>
 
 <div class="govuk-prose">
@@ -16,4 +19,10 @@
       <li class="govuk-breadcrumbs__list-item">Proposed Cross-Sections</li>
     </ol>
   </div>
+
+  <TrafficData bind:valid={trafficDataOk} />
+
+  {#if trafficDataOk}{:else}
+    <p>Fill out all data above to continue</p>
+  {/if}
 </div>
