@@ -3,6 +3,7 @@
   import { SecondaryButton } from "govuk-svelte";
 
   export let lanesLeftToRight: string[];
+  export let sectionType: "Desirable" | "Absolute";
 
   function addNewLane() {
     lanesLeftToRight = [...lanesLeftToRight, ""];
@@ -39,6 +40,7 @@
       on:moveRight={() => moveRight(i)}
       isFirst={i == 0}
       isLast={i == lanesLeftToRight.length - 1}
+      {sectionType}
     />
   {/each}
 </div>

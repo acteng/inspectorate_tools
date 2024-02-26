@@ -1,11 +1,13 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
-  import { laneTypes } from "../data";
+  import { state, laneTypes } from "../data";
+  import { getWidth } from "./tables";
 
   export let value: string;
   export let isFirst: boolean;
   export let isLast: boolean;
+  export let sectionType: "Desirable" | "Absolute";
 
   let dispatch = createEventDispatcher<{
     delete: void;
@@ -20,6 +22,15 @@
 
 <div>
   <Select label="Lane type" emptyOption choices={pairs(laneTypes)} bind:value />
+
+  <p>
+    {sectionType} minimum width (m): {getWidth(
+      value,
+      $state.trafficData.streetFunction,
+      sectionType,
+    )}
+  </p>
+
   <div style="display: flex; justify-content: space-between">
     <SecondaryButton disabled={isFirst} on:click={() => dispatch("moveLeft")}>
       &larr;

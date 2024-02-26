@@ -33,11 +33,13 @@
     <CollapsibleCard label="Desirable Minimum Cross-Section">
       <CrossSection
         bind:lanesLeftToRight={$state.desirableMinimumCrossSection}
+        sectionType="Desirable"
       />
     </CollapsibleCard>
     <CollapsibleCard label="Absolute Minimum Cross-Section">
       <CrossSection
         bind:lanesLeftToRight={$state.absoluteMinimumCrossSection}
+        sectionType="Absolute"
       />
     </CollapsibleCard>
   {:else}
