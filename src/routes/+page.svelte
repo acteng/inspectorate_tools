@@ -17,7 +17,7 @@
 
   <span>Scheme review</span>
   <ul>
-    <li>Area check</li>
+    <li><a href="{base}/area_check">Area check</a></li>
     <li>Route check</li>
   </ul>
 </div>

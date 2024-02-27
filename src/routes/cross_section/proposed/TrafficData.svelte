@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { pairs } from "$lib";
   import { CollapsibleCard, Select, NumberInput } from "govuk-svelte";
   import { state } from "../data";
 
@@ -12,10 +13,6 @@
     $state.trafficData.speedLimit != "" &&
     $state.trafficData.observedSpeed != undefined &&
     $state.trafficData.streetFunction != "";
-
-  function pairs(list: string[]): [string, string][] {
-    return list.map((x) => [x, x]);
-  }
 </script>
 
 <CollapsibleCard label="Traffic data and additional information">

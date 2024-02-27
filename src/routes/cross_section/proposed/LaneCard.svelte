@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { pairs } from "$lib";
   import { createEventDispatcher } from "svelte";
   import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
   import { state, laneTypes } from "../data";
@@ -14,10 +15,6 @@
     moveLeft: void;
     moveRight: void;
   }>();
-
-  function pairs(list: string[]): [string, string][] {
-    return list.map((x) => [x, x]);
-  }
 </script>
 
 <div>
