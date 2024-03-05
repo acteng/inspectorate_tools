@@ -1,10 +1,9 @@
 // TODO Formatting isn't great. And unclear what the last two entries in each chunk mean.
-let widths = [
-  ["Footway", "2.60", "2.60", "2.60", "", "", "2.00", "2.00", "2.00", ""],
-  ["Narrow Traffic / Bus Lane", "3.25", "", "", "", "", "3.25", "", "", ""],
-  ["Wide Traffic / Bus Lane", "4.50", "", "", "", "", "3.90", "", "", ""],
-  [
-    "Traffic Lane (no buses): speed limit 20/30",
+let widths = {
+  Footway: ["2.60", "2.60", "2.60", "", "", "2.00", "2.00", "2.00", ""],
+  "Narrow Traffic / Bus Lane": ["3.25", "", "", "", "", "3.25", "", "", ""],
+  "Wide Traffic / Bus Lane": ["4.50", "", "", "", "", "3.90", "", "", ""],
+  "Traffic Lane (no buses): speed limit 20/30": [
     "3.00",
     "",
     "",
@@ -15,8 +14,7 @@ let widths = [
     "",
     "",
   ],
-  [
-    "On-highway advisory/mandatory cycle Lane",
+  "On-highway advisory/mandatory cycle lane": [
     "2.00",
     "",
     "",
@@ -27,8 +25,7 @@ let widths = [
     "",
     "",
   ],
-  [
-    "1-way protected cycle track",
+  "1-way protected cycle track": [
     "2.30",
     "2.50",
     "2.80",
@@ -39,8 +36,7 @@ let widths = [
     "2.30",
     "",
   ],
-  [
-    "2-way protected cycle track",
+  "2-way protected cycle track": [
     "3.30",
     "3.30",
     "4.30",
@@ -51,8 +47,7 @@ let widths = [
     "3.30",
     "",
   ],
-  [
-    "Shared use cycle track",
+  "Shared use cycle track": [
     "3.00",
     "4.50",
     "",
@@ -63,11 +58,10 @@ let widths = [
     "",
     "",
   ],
-  ["Parking Bay", "2.00", "", "", "", "", "1.80", "", "", ""],
-  ["Disabled Parking Bay", "2.70", "", "", "", "", "2.70", "", "", ""],
-  ["Loading Bay", "2.70", "", "", "", "", "1.80", "", "", ""],
-  [
-    "Buffer / Verge",
+  "Parking Bay": ["2.00", "", "", "", "", "1.80", "", "", ""],
+  "Disabled Parking Bay": ["2.70", "", "", "", "", "2.70", "", "", ""],
+  "Loading Bay": ["2.70", "", "", "", "", "1.80", "", "", ""],
+  "Buffer / Verge": [
     "0.50",
     "1.00",
     "2.00",
@@ -79,8 +73,7 @@ let widths = [
     "2.00",
     "3.00",
   ],
-  [
-    "Footway buffer / verge",
+  "Footway buffer / verge": [
     "0.50",
     "1.50",
     "",
@@ -91,17 +84,14 @@ let widths = [
     "",
     "",
   ],
-];
+};
 
 export function getWidth(
   lane: string,
   streetFunction: string,
   sectionType: "Desirable" | "Absolute",
 ): string {
-  if (lane == "") {
-    return "";
-  }
-  let row = widths.find((row) => row[0] == lane)!;
+  let row = widths[lane];
   let chunk = sectionType == "Desirable" ? row.slice(1, 6) : row.slice(6, 11);
   if (streetFunction == "High Street (active frontages)") {
     return chunk[0];
@@ -112,3 +102,34 @@ export function getWidth(
   }
   throw new Error(`Unknown streetFunction ${streetFunction}`);
 }
+
+// TODO Embed or link the references
+export let references = {
+  Footway: [
+    "Manual for Streets 2: Section 5 pp.43",
+    "DMRB CD143 Designing for walking, cycling & horse-riding Annex pp. 7",
+  ],
+  "Narrow Traffic / Bus Lane": [],
+  "Wide Traffic / Bus Lane": [],
+  "Traffic Lane (no buses): speed limit 20/30": [
+    "LTN 1/20 Table 7-2 pp. 76",
+    "LTN 1/20 Figure 4.1 pp. 33",
+  ],
+  "On-highway advisory/mandatory cycle lane": [
+    "LTN 1/20 Table 5-2 pp.43",
+    "LTN 1/20 Figure 4.1 pp. 33",
+  ],
+  "1-way protected cycle track": [
+    "LTN 1/20 Table 5-2 pp.43",
+    "LTN 1/20 Figure 4.1 pp. 33",
+  ],
+  "2-way protected cycle track": [
+    "LTN 1/20 Table 5-2 pp.43",
+    "LTN 1/20 Figure 4.1 pp. 33",
+  ],
+  "Shared use cycle track": ["LTN 1/20 Table 6-3 pp.68"],
+  "Parking Bay": ["LTN 1/20 table 7-3 pp77"],
+  "Disabled Parking Bay": [],
+  "Loading Bay": ["LTN 1/20 table 7-3 pp77"],
+  "Buffer / Verge": ["LTN 1/20 table 6-1 pp54"],
+};

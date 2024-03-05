@@ -3,7 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
   import { state, laneTypes } from "../data";
-  import { getWidth } from "./tables";
+  import { getWidth, references } from "./tables";
 
   export let value: string;
   export let isFirst: boolean;
@@ -20,13 +20,21 @@
 <div>
   <Select label="Lane type" emptyOption choices={pairs(laneTypes)} bind:value />
 
-  <p>
-    {sectionType} minimum width (m): {getWidth(
-      value,
-      $state.proposed.trafficData.streetFunction,
-      sectionType,
-    )}
-  </p>
+  {#if value}
+    <p>
+      {sectionType} minimum width (m): {getWidth(
+        value,
+        $state.proposed.trafficData.streetFunction,
+        sectionType,
+      )}
+    </p>
+    <u>References:</u>
+    <ul>
+      {#each references[value] as reference}
+        <li>{reference}</li>
+      {/each}
+    </ul>
+  {/if}
 
   <div style="display: flex; justify-content: space-between">
     <SecondaryButton disabled={isFirst} on:click={() => dispatch("moveLeft")}>
