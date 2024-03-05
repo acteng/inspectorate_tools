@@ -11,7 +11,7 @@
     designStages,
   } from "$lib/lists";
 
-  // TODO Start/endpoints, map
+  // TODO https://design-system.service.gov.uk/components/date-input/
 </script>
 
 <div class="govuk-prose">
@@ -21,8 +21,8 @@
         <a class="govuk-breadcrumbs__link" href="{base}/">Tools</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/cross_section">
-          Route cross-section
+        <a class="govuk-breadcrumbs__link" href="{base}/area_check">
+          Area check tool
         </a>
       </li>
       <li class="govuk-breadcrumbs__list-item">Summary of Scheme</li>
@@ -30,11 +30,19 @@
   </div>
 
   <TextInput
+    label="Date of design review"
+    bind:value={$state.summary.dateDesignReview}
+  />
+  <TextInput
     label="Scheme reference"
     bind:value={$state.summary.schemeReference}
   />
   <TextInput label="Scheme name" bind:value={$state.summary.schemeName} />
   <TextArea label="Scheme summary" bind:value={$state.summary.schemeSummary} />
+  <TextArea
+    label="Scheme information reviewed"
+    bind:value={$state.summary.schemeInfoReviewed}
+  />
 
   <Select
     label="Authority"
@@ -72,12 +80,12 @@
   />
 
   <TextInput
-    label="Route length assessed here (km)"
-    bind:value={$state.summary.assessedRouteLengthKm}
+    label="Inspector email address"
+    bind:value={$state.summary.inspectorEmail}
   />
   <TextInput
-    label="Total route length (km)"
-    bind:value={$state.summary.totalRouteLengthKm}
+    label="Scheme area size (km²)"
+    bind:value={$state.summary.schemeAreaSizeKm2}
   />
 
   <TextArea label="Notes" bind:value={$state.summary.notes} />

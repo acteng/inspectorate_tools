@@ -1,6 +1,12 @@
 <script lang="ts">
   import { ExternalLink } from "$lib";
   import { base } from "$app/paths";
+  import { state, emptyState } from "./data";
+  import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
+
+  function reset() {
+    $state = emptyState();
+  }
 </script>
 
 <div class="govuk-prose">
@@ -23,7 +29,7 @@
   </p>
 
   <ol>
-    <li>Summary of Scheme</li>
+    <li><a href="{base}/area_check/summary">Summary of Scheme</a></li>
     <li>
       <a href="{base}/area_check/traffic_mitigation">
         Traffic Mitigation Check
@@ -32,4 +38,13 @@
     <li>Area Scorecard</li>
     <li>Results & Commentary</li>
   </ol>
+
+  <CollapsibleCard label="Debug">
+    <WarningButton on:click={reset}>Reset</WarningButton>
+    <TextArea
+      label="JSON"
+      value={JSON.stringify($state, null, "  ")}
+      rows={10}
+    />
+  </CollapsibleCard>
 </div>
