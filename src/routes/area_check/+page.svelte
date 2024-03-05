@@ -35,7 +35,7 @@
         Traffic Mitigation Check
       </a>
     </li>
-    <li>Area Scorecard</li>
+    <li><a href="{base}/area_check/scorecard">Area Scorecard</a></li>
     <li>Results & Commentary</li>
   </ol>
 
