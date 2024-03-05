@@ -1,8 +1,9 @@
 <script lang="ts">
   import LaneCard from "./LaneCard.svelte";
   import { SecondaryButton } from "govuk-svelte";
+  import { type LaneType } from "../data";
 
-  export let lanesLeftToRight: string[];
+  export let lanesLeftToRight: Array<LaneType | "">;
   export let sectionType: "Desirable" | "Absolute";
 
   function addNewLane() {

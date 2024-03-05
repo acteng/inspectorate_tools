@@ -2,10 +2,10 @@
   import { pairs } from "$lib";
   import { createEventDispatcher } from "svelte";
   import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
-  import { state, laneTypes } from "../data";
+  import { state, laneTypes, type LaneType } from "../data";
   import { getWidth, references } from "./tables";
 
-  export let value: string;
+  export let value: LaneType | "";
   export let isFirst: boolean;
   export let isLast: boolean;
   export let sectionType: "Desirable" | "Absolute";
@@ -15,10 +15,13 @@
     moveLeft: void;
     moveRight: void;
   }>();
+
+  // @ts-ignore TODO Need to make pairs handle readonly types
+  let choices = pairs(laneTypes);
 </script>
 
 <div>
-  <Select label="Lane type" emptyOption choices={pairs(laneTypes)} bind:value />
+  <Select label="Lane type" emptyOption {choices} bind:value />
 
   {#if value}
     <p>

@@ -27,8 +27,8 @@ export interface State {
       observedSpeed: number | undefined;
       streetFunction: string;
     };
-    desirableMinimumCrossSection: string[];
-    absoluteMinimumCrossSection: string[];
+    desirableMinimumCrossSection: Array<LaneType | "">;
+    absoluteMinimumCrossSection: Array<LaneType | "">;
   };
 }
 
@@ -92,4 +92,5 @@ export let laneTypes = [
   "Disabled Parking Bay",
   "Loading Bay",
   "Buffer / Verge",
-];
+] as const;
+export type LaneType = (typeof laneTypes)[number];

@@ -1,5 +1,9 @@
+import { type LaneType } from "../data";
+
 // TODO Formatting isn't great. And unclear what the last two entries in each chunk mean.
-let widths = {
+// TODO From the blue one. But what's "Footway buffer / verge"? The green table
+// looks more clear (and is based on speed as well)
+let widths: Record<LaneType, string[]> = {
   Footway: ["2.60", "2.60", "2.60", "", "", "2.00", "2.00", "2.00", ""],
   "Narrow Traffic / Bus Lane": ["3.25", "", "", "", "", "3.25", "", "", ""],
   "Wide Traffic / Bus Lane": ["4.50", "", "", "", "", "3.90", "", "", ""],
@@ -73,21 +77,10 @@ let widths = {
     "2.00",
     "3.00",
   ],
-  "Footway buffer / verge": [
-    "0.50",
-    "1.50",
-    "",
-    "",
-    "",
-    "0.50",
-    "1.50",
-    "",
-    "",
-  ],
 };
 
 export function getWidth(
-  lane: string,
+  lane: LaneType,
   streetFunction: string,
   sectionType: "Desirable" | "Absolute",
 ): string {
@@ -95,7 +88,7 @@ export function getWidth(
   let chunk = sectionType == "Desirable" ? row.slice(1, 6) : row.slice(6, 11);
   if (streetFunction == "High Street (active frontages)") {
     return chunk[0];
-  } else if (streetFunction == "Residential Street") {
+  } else if (streetFunction == "Residential street") {
     return chunk[1];
   } else if (streetFunction == "Local distributor road") {
     return chunk[2];
@@ -104,7 +97,7 @@ export function getWidth(
 }
 
 // TODO Embed or link the references
-export let references = {
+export let references: Record<LaneType, string[]> = {
   Footway: [
     "Manual for Streets 2: Section 5 pp.43",
     "DMRB CD143 Designing for walking, cycling & horse-riding Annex pp. 7",
