@@ -1,15 +1,11 @@
 <script lang="ts">
   import CrossSection from "./CrossSection.svelte";
-  import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
+  import { CollapsibleCard } from "govuk-svelte";
   import TrafficData from "./TrafficData.svelte";
   import { base } from "$app/paths";
-  import { state, emptyState } from "../data";
+  import { state } from "../data";
 
   let trafficDataOk = false;
-
-  function reset() {
-    $state = emptyState();
-  }
 </script>
 
 <div class="govuk-prose">
@@ -32,26 +28,17 @@
   {#if trafficDataOk}
     <CollapsibleCard label="Desirable Minimum Cross-Section">
       <CrossSection
-        bind:lanesLeftToRight={$state.desirableMinimumCrossSection}
+        bind:lanesLeftToRight={$state.proposed.desirableMinimumCrossSection}
         sectionType="Desirable"
       />
     </CollapsibleCard>
     <CollapsibleCard label="Absolute Minimum Cross-Section">
       <CrossSection
-        bind:lanesLeftToRight={$state.absoluteMinimumCrossSection}
+        bind:lanesLeftToRight={$state.proposed.absoluteMinimumCrossSection}
         sectionType="Absolute"
       />
     </CollapsibleCard>
   {:else}
     <p>Fill out all data above to continue</p>
   {/if}
-
-  <CollapsibleCard label="Debug">
-    <WarningButton on:click={reset}>Reset</WarningButton>
-    <TextArea
-      label="JSON"
-      value={JSON.stringify($state, null, "  ")}
-      rows={10}
-    />
-  </CollapsibleCard>
 </div>

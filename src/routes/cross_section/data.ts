@@ -1,9 +1,21 @@
 import { writable } from "svelte/store";
 
 export interface State {
-  trafficData: TrafficData;
-  desirableMinimumCrossSection: string[];
-  absoluteMinimumCrossSection: string[];
+  summary: SchemeSummary;
+  proposed: {
+    // TODO Enums, if it's useful
+    trafficData: {
+      flowOneWay: string;
+      flowTwoWay: string;
+      flowSharedUse: string;
+      trafficFlow: string;
+      speedLimit: string;
+      observedSpeed: number | undefined;
+      streetFunction: string;
+    };
+    desirableMinimumCrossSection: string[];
+    absoluteMinimumCrossSection: string[];
+  };
 }
 
 export let state = writable(loadState());
@@ -11,39 +23,59 @@ state.subscribe((value) =>
   window.localStorage.setItem("cross-section", JSON.stringify(value)),
 );
 
-// TODO Enums, if it's useful
-export interface TrafficData {
-  flowOneWay: string;
-  flowTwoWay: string;
-  flowSharedUse: string;
-  trafficFlow: string;
-  speedLimit: string;
-  observedSpeed: number | undefined;
-  streetFunction: string;
-}
-
 function loadState(): State {
   let x = JSON.parse(window.localStorage.getItem("cross-section") || "{}");
   // Could more thoroughly check for validity, but the format won't change much after initial development calms down
-  if (x.trafficData) {
+  if (x.proposed?.trafficData) {
     return x;
   }
   return emptyState();
 }
 
+export interface SchemeSummary {
+  schemeReference: string;
+  schemeName: string;
+  schemeSummary: string;
+  authority: string;
+  taOrCA: string;
+  region: string;
+  fundingProgramme: string;
+  designStage: string;
+  fundingConditions: string;
+  assessedRouteLengthKm: number;
+  totalRouteLengthKm: number;
+  notes: string;
+}
+
 export function emptyState(): State {
   return {
-    trafficData: {
-      flowOneWay: "",
-      flowTwoWay: "",
-      flowSharedUse: "",
-      trafficFlow: "",
-      speedLimit: "",
-      observedSpeed: undefined,
-      streetFunction: "",
+    summary: {
+      schemeReference: "",
+      schemeName: "",
+      schemeSummary: "",
+      authority: "",
+      taOrCA: "",
+      region: "",
+      fundingProgramme: "",
+      designStage: "",
+      fundingConditions: "",
+      assessedRouteLengthKm: 0.0,
+      totalRouteLengthKm: 0.0,
+      notes: "",
     },
-    desirableMinimumCrossSection: [],
-    absoluteMinimumCrossSection: [],
+    proposed: {
+      trafficData: {
+        flowOneWay: "",
+        flowTwoWay: "",
+        flowSharedUse: "",
+        trafficFlow: "",
+        speedLimit: "",
+        observedSpeed: undefined,
+        streetFunction: "",
+      },
+      desirableMinimumCrossSection: [],
+      absoluteMinimumCrossSection: [],
+    },
   };
 }
 

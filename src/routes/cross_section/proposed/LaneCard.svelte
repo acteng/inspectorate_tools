@@ -23,7 +23,7 @@
   <p>
     {sectionType} minimum width (m): {getWidth(
       value,
-      $state.trafficData.streetFunction,
+      $state.proposed.trafficData.streetFunction,
       sectionType,
     )}
   </p>
