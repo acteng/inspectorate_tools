@@ -1,7 +1,21 @@
 import { writable } from "svelte/store";
 
 export interface State {
-  summary: SchemeSummary;
+  summary: {
+    schemeReference: string;
+    schemeName: string;
+    schemeSummary: string;
+    authority: string;
+    transportOrCombinedAuthority: string;
+    region: string;
+    fundingProgramme: string;
+    designStage: string;
+    fundingConditions: string;
+    // TODO numbers
+    assessedRouteLengthKm: string;
+    totalRouteLengthKm: string;
+    notes: string;
+  };
   proposed: {
     // TODO Enums, if it's useful
     trafficData: {
@@ -32,21 +46,6 @@ function loadState(): State {
   return emptyState();
 }
 
-export interface SchemeSummary {
-  schemeReference: string;
-  schemeName: string;
-  schemeSummary: string;
-  authority: string;
-  taOrCA: string;
-  region: string;
-  fundingProgramme: string;
-  designStage: string;
-  fundingConditions: string;
-  assessedRouteLengthKm: number;
-  totalRouteLengthKm: number;
-  notes: string;
-}
-
 export function emptyState(): State {
   return {
     summary: {
@@ -54,13 +53,13 @@ export function emptyState(): State {
       schemeName: "",
       schemeSummary: "",
       authority: "",
-      taOrCA: "",
+      transportOrCombinedAuthority: "",
       region: "",
       fundingProgramme: "",
       designStage: "",
       fundingConditions: "",
-      assessedRouteLengthKm: 0.0,
-      totalRouteLengthKm: 0.0,
+      assessedRouteLengthKm: "",
+      totalRouteLengthKm: "",
       notes: "",
     },
     proposed: {
