@@ -384,16 +384,18 @@
     ]}
   >
     <p>List of internal treatments</p>
-    <li>Play streets</li>
-    <li>School streets</li>
-    <li>Cycle parking/hangars</li>
-    <li>Resting places e.g. seating</li>
-    <li>Raised tables/entries or continuous footways</li>
-    <li>New social spaces</li>
-    <li>Parklets or pocket parks</li>
-    <li>Wayfinding</li>
-    <li>Art</li>
-    <li>Other (please specify in the scoring justification box)</li>
+    <ul>
+      <li>Play streets</li>
+      <li>School streets</li>
+      <li>Cycle parking/hangars</li>
+      <li>Resting places e.g. seating</li>
+      <li>Raised tables/entries or continuous footways</li>
+      <li>New social spaces</li>
+      <li>Parklets or pocket parks</li>
+      <li>Wayfinding</li>
+      <li>Art</li>
+      <li>Other (please specify in the scoring justification box)</li>
+    </ul>
   </Question>
 
   <Question
