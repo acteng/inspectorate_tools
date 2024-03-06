@@ -7,11 +7,9 @@
 
   let colors = ["#00b050", "#99cc00", "#ffc000", "#ff5050", "#ff0000"];
 
-  let choices: [string, string, string][] = cases.map(([value, label], index) => [
-    value.toString(),
-    label,
-    colors[index],
-  ]);
+  let choices: [string, string, string][] = cases.map(
+    ([value, label], index) => [value.toString(), label, colors[index]],
+  );
 </script>
 
 <div class="govuk-width-container">

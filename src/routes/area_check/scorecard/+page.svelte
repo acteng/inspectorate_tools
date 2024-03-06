@@ -216,4 +216,209 @@
       Please refer to the User Manual for further information.
     </p>
   </Question>
+
+  <Question
+    label="Mesh Density - Walking and Wheeling"
+    cases={[
+      [4, "The area has an average mesh density of 100m"],
+      [3, "The area has an average mesh density of 101-250m"],
+      [2, "The area has an average mesh density of 251-400m"],
+      [1, "The area has an average mesh density of 401-500m"],
+      [0, "The area has an average mesh density which exceeds 500m."],
+    ]}
+  >
+    <p>
+      (How tight or loose the pedestrian network is. This is measured by the
+      average distance between streets that have suitable pedestrian facilities
+      as defined in the permability metric above).
+    </p>
+  </Question>
+
+  <Question
+    label="Mesh Density - Cycling"
+    cases={[
+      [4, "The area has an average mesh density of 250m"],
+      [3, "The area has an average mesh density of 251-400m"],
+      [2, "The area has an average mesh density of 401-800"],
+      [1, "The area has an average mesh density of 801-1400m"],
+      [0, "The area has an average mesh density which exceeds 1400m."],
+    ]}
+  >
+    <p>
+      (How tight or loose the pedestrian network is. This is measured by the
+      average distance between streets that have suitable pedestrian facilities
+      as defined in the permability metric above).
+    </p>
+  </Question>
+
+  <Question
+    label="Motorised Through-Traffic"
+    cases={[
+      [
+        8,
+        "The area does not allow any motorised through traffic. However, local access for motor traffic is still maintained for residents and businesses.",
+      ],
+      [
+        6,
+        "Most motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses. There are good reasons why motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.",
+      ],
+      [
+        4,
+        "Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses. There are good reasons why motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.",
+      ],
+      [
+        2,
+        "Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses. There are no measures in place to mitigate any potential issues relating to remaining motorised through traffic routes.",
+      ],
+      [
+        0,
+        "No restrictions to motorised through traffic routes. Measures will have more of an effect on vehicle speeds than vehicle volumes.",
+      ],
+    ]}
+  >
+    <p>Potential exemptions may include:</p>
+    <ul>
+      <li>Buses</li>
+      <li>Taxis</li>
+      <li>Private hire vehicles</li>
+      <li>Emergency services</li>
+      <li>Community transport providers</li>
+      <li>Blue badge holders</li>
+    </ul>
+    <p>Please refer to the User Manual for further information.</p>
+  </Question>
+
+  <Question
+    label="Perimeter Treatment Design"
+    cases={[
+      [
+        16,
+        "The effects of displaced traffic around the perimeter of the filtered area are fully mitigated. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present wherever needed along the perimeter.",
+      ],
+      [
+        12,
+        "The effects of displaced traffic around the perimeter of the filtered area are mostly mitigated. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in most places where they are needed along the perimeter.",
+      ],
+      [
+        8,
+        "The effects of displaced traffic around the perimeter of the filtered area are partly mitigated. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter.",
+      ],
+      [
+        4,
+        "The effects of displaced traffic around the perimeter of the filtered area are partly mitigated and there are sensitive receptors (e.g. schools, nurseries, hospitals) along the perimeter. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter.",
+      ],
+      [
+        0,
+        "There are no measures to mitigate the effects of displaced traffic around the perimeter of the filtered area. There are no (or few) plans for junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure along the perimeter.",
+      ],
+    ]}
+  >
+    <p>Potential issues associated with displaced traffic</p>
+    <ul>
+      <li>Speeding</li>
+      <li>Road safety</li>
+      <li>Congestion & air quality</li>
+      <li>Delays to public transport</li>
+    </ul>
+  </Question>
+
+  <Question
+    label="Green Infrastructure Design"
+    cases={[
+      [
+        12,
+        "There are at least five measures from the list of green infrastructure measures (per square km).",
+      ],
+      [
+        9,
+        "There are at least four measures from the list of green infrastructure measures (per square km).",
+      ],
+      [
+        6,
+        "There are at least three measures from the list of green infrastructure measures (per square km).",
+      ],
+      [
+        3,
+        "There are fewer than three measures from the list of green infrastructure measures (per square km)",
+      ],
+      [
+        0,
+        "There are no for green infrastructure measures or there will be an overall net loss in green infratructure.",
+      ],
+    ]}
+  >
+    <p>List of green infrastructure measures</p>
+    <ul>
+      <li>Sustainable drainage systems (SuDS)</li>
+      <li>Planters</li>
+      <li>Parklets or pocket parks</li>
+      <li>Trees</li>
+      <li>Soft landscaping e.g. planting of wildflowers/hedges/shrubs</li>
+      <li>Community gardens</li>
+      <li>Green roofs e.g. on bus stops</li>
+      <li>Green walls or screens</li>
+      <li>Bug hotels</li>
+    </ul>
+  </Question>
+
+  <Question
+    label="Other Internal Treatment Design"
+    cases={[
+      [
+        16,
+        "There are at least five measures from the list of internal treatments (per square km). Residents involved in the design of one or more of these measures.",
+      ],
+      [
+        12,
+        "There are at least three measures from the list of internal treatments (per square km). Residents involved in the design of one or more of these measures.",
+      ],
+      [
+        8,
+        "There are at least three measures from the list of internal treatments (per square km). Residents not involved in the design of the measures.",
+      ],
+      [
+        4,
+        "There are fewer than three measures from the list of internal treatments (per square km).",
+      ],
+      [0, "There are no internal treatments."],
+    ]}
+  >
+    <p>List of internal treatments</p>
+    <li>Play streets</li>
+    <li>School streets</li>
+    <li>Cycle parking/hangars</li>
+    <li>Resting places e.g. seating</li>
+    <li>Raised tables/entries or continuous footways</li>
+    <li>New social spaces</li>
+    <li>Parklets or pocket parks</li>
+    <li>Wayfinding</li>
+    <li>Art</li>
+    <li>Other (please specify in the scoring justification box)</li>
+  </Question>
+
+  <Question
+    label="Engagement Practice"
+    cases={[
+      [
+        16,
+        "Resident-led design. Residents have had or are expected to have strong control and decision-making authority in the area. Local accessibility groups have been comprehensively engaged with throughout the process.",
+      ],
+      [
+        12,
+        "Collaborative design. Residents have had or are expected to have significant control and decision-making authority in the area. Local accessibility groups have been engaged with throughout the process.",
+      ],
+      [
+        8,
+        "Collaborative design. Residents have had or are expected to have some control and decision-making authority in the area. Local accessibility groups have been engaged with on multiple occassions.",
+      ],
+      [
+        4,
+        "Residents have been or are expected to be engaged with but this has or will result in little influence in the area. Local accessibility groups have been engaged with once.",
+      ],
+      [
+        0,
+        "There has been or is expected to be no or minimal engagement with residents and local accessibility groups.",
+      ],
+    ]}
+  />
 </div>
