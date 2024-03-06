@@ -1,7 +1,9 @@
 <script lang="ts">
   import FancyRadio from "./FancyRadio.svelte";
   import { TextArea } from "govuk-svelte";
+  import { state } from "../data";
 
+  export let idx: number;
   export let label: string;
   export let cases: [number, string][];
 
@@ -18,12 +20,20 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <FancyRadio legend="Existing" {choices} />
-      <TextArea label="Notes" />
+      <FancyRadio
+        legend="Existing"
+        {choices}
+        bind:value={$state.existingScores[idx]}
+      />
+      <TextArea label="Notes" bind:value={$state.existingScoreNotes[idx]} />
     </div>
     <div class="govuk-grid-column-one-half">
-      <FancyRadio legend="Proposed" {choices} />
-      <TextArea label="Notes" />
+      <FancyRadio
+        legend="Proposed"
+        {choices}
+        bind:value={$state.proposedScores[idx]}
+      />
+      <TextArea label="Notes" bind:value={$state.proposedScoreNotes[idx]} />
     </div>
   </div>
 </div>

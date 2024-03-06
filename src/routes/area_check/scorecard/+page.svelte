@@ -22,6 +22,7 @@
   </div>
 
   <Question
+    idx={0}
     label="Porosity - Walking and Wheeling"
     cases={[
       [
@@ -50,6 +51,7 @@
   </Question>
 
   <Question
+    idx={1}
     label="Porosity - Cycling"
     cases={[
       [
@@ -78,6 +80,7 @@
   </Question>
 
   <Question
+    idx={2}
     label="Crossings - Walking and Wheeling"
     cases={[
       [
@@ -104,6 +107,7 @@
   />
 
   <Question
+    idx={3}
     label="Crossings - Cycling"
     cases={[
       [
@@ -139,6 +143,7 @@
   </Question>
 
   <Question
+    idx={4}
     label="Permeability - Walking and Wheeling"
     cases={[
       [
@@ -185,6 +190,7 @@
   </Question>
 
   <Question
+    idx={5}
     label="Permeability - Cycling"
     cases={[
       [
@@ -218,6 +224,7 @@
   </Question>
 
   <Question
+    idx={6}
     label="Mesh Density - Walking and Wheeling"
     cases={[
       [4, "The area has an average mesh density of 100m"],
@@ -235,6 +242,7 @@
   </Question>
 
   <Question
+    idx={7}
     label="Mesh Density - Cycling"
     cases={[
       [4, "The area has an average mesh density of 250m"],
@@ -252,6 +260,7 @@
   </Question>
 
   <Question
+    idx={8}
     label="Motorised Through-Traffic"
     cases={[
       [
@@ -289,6 +298,7 @@
   </Question>
 
   <Question
+    idx={9}
     label="Perimeter Treatment Design"
     cases={[
       [
@@ -323,6 +333,7 @@
   </Question>
 
   <Question
+    idx={10}
     label="Green Infrastructure Design"
     cases={[
       [
@@ -362,6 +373,7 @@
   </Question>
 
   <Question
+    idx={11}
     label="Other Internal Treatment Design"
     cases={[
       [
@@ -399,6 +411,7 @@
   </Question>
 
   <Question
+    idx={12}
     label="Engagement Practice"
     cases={[
       [
