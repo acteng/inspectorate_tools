@@ -2,8 +2,16 @@
   import { ExternalLink } from "$lib";
   import Question from "./Question.svelte";
   import { base } from "$app/paths";
+  import { state } from "../data";
 
   // TODO Include bold in the choices
+
+  $: totalExisting = sum($state.existingScores.map((x) => parseInt(x)));
+  $: totalProposed = sum($state.proposedScores.map((x) => parseInt(x)));
+
+  function sum(list: number[]): number {
+    return list.reduce((total, x) => total + x, 0);
+  }
 </script>
 
 <div class="govuk-prose">
@@ -20,6 +28,9 @@
       <li class="govuk-breadcrumbs__list-item">Area Scorecard</li>
     </ol>
   </div>
+
+  <p>Total existing score: {totalExisting}</p>
+  <p>Total proposed score: {totalProposed}</p>
 
   <Question
     idx={0}
