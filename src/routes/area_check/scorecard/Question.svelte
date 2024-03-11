@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Breadcrumbs } from "$lib";
+  import PrevNext from "./PrevNext.svelte";
   import FancyRadio from "./FancyRadio.svelte";
   import { TextArea } from "govuk-svelte";
   import { state } from "../data";
@@ -26,6 +27,7 @@
   />
 
   <div class="govuk-width-container">
+    <PrevNext {idx} />
     <h2>{label}</h2>
     <slot />
 
@@ -47,5 +49,7 @@
         <TextArea label="Notes" bind:value={$state.proposedScoreNotes[idx]} />
       </div>
     </div>
+
+    <PrevNext {idx} />
   </div>
 </div>
