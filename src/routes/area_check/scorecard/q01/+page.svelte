@@ -3,7 +3,7 @@
 </script>
 
 <Question
-  idx={0}
+  idx={1}
   label="Porosity - Walking and Wheeling"
   cases={[
     [

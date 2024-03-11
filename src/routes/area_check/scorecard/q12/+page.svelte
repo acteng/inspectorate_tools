@@ -3,7 +3,7 @@
 </script>
 
 <Question
-  idx={11}
+  idx={12}
   label="Other Internal Treatment Design"
   cases={[
     [

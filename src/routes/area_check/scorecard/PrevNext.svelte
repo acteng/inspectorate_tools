@@ -4,12 +4,12 @@
   export let idx: number;
 
   function formatIndex(idx: number): string {
-    return (idx + 1).toString().padStart(2, "0");
+    return idx.toString().padStart(2, "0");
   }
 </script>
 
 <nav class="govuk-pagination" aria-label="Pagination">
-  {#if idx != 0}
+  {#if idx != 1}
     <div class="govuk-pagination__prev">
       <a
         class="govuk-link govuk-pagination__link"
@@ -38,10 +38,10 @@
   {/if}
   <ul class="govuk-pagination__list">
     <li class="govuk-pagination__item">
-      Question {idx + 1} / 13
+      Question {idx} / 13
     </li>
   </ul>
-  {#if idx != 12}
+  {#if idx != 13}
     <div class="govuk-pagination__next">
       <a
         class="govuk-link govuk-pagination__link"

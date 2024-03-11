@@ -36,17 +36,23 @@
         <FancyRadio
           legend="Existing"
           {choices}
-          bind:value={$state.existingScores[idx]}
+          bind:value={$state.existingScores[idx - 1]}
         />
-        <TextArea label="Notes" bind:value={$state.existingScoreNotes[idx]} />
+        <TextArea
+          label="Notes"
+          bind:value={$state.existingScoreNotes[idx - 1]}
+        />
       </div>
       <div class="govuk-grid-column-one-half">
         <FancyRadio
           legend="Proposed"
           {choices}
-          bind:value={$state.proposedScores[idx]}
+          bind:value={$state.proposedScores[idx - 1]}
         />
-        <TextArea label="Notes" bind:value={$state.proposedScoreNotes[idx]} />
+        <TextArea
+          label="Notes"
+          bind:value={$state.proposedScoreNotes[idx - 1]}
+        />
       </div>
     </div>
 
