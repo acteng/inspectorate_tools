@@ -4,7 +4,7 @@
   import MinorRoutes from "./MinorRoutes.svelte";
   import { base } from "$app/paths";
   import { Select } from "govuk-svelte";
-  import { pairs, WarningText } from "$lib";
+  import { Breadcrumbs, pairs, WarningText } from "$lib";
 
   let q1 = "";
   let q2 = "";
@@ -12,20 +12,13 @@
 </script>
 
 <div class="govuk-prose">
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/">Tools</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/area_check">
-          Area check tool
-        </a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">Traffic Mitigation Check</li>
-    </ol>
-  </div>
-  <hr />
+  <Breadcrumbs
+    links={[
+      ["Tools", "/"],
+      ["Area check tool", "/area_check"],
+    ]}
+    current="Traffic Mitigation Check"
+  />
 
   <YesNo label="Is the scheme expected to reduce traffic?" bind:value={q1} />
 

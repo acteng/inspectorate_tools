@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ExternalLink } from "$lib";
+  import { Breadcrumbs, ExternalLink } from "$lib";
   import Question from "./Question.svelte";
   import { base } from "$app/paths";
   import { state } from "../data";
@@ -15,19 +15,13 @@
 </script>
 
 <div class="govuk-prose">
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/">Tools</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/area_check">
-          Area check tool
-        </a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">Area Scorecard</li>
-    </ol>
-  </div>
+  <Breadcrumbs
+    links={[
+      ["Tools", "/"],
+      ["Area check tool", "/area_check"],
+    ]}
+    current="Area Scorecard"
+  />
 
   <p>Total existing score: {totalExisting}</p>
   <p>Total proposed score: {totalProposed}</p>

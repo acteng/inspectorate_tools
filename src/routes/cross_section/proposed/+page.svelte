@@ -4,24 +4,19 @@
   import TrafficData from "./TrafficData.svelte";
   import { base } from "$app/paths";
   import { state } from "../data";
+  import { Breadcrumbs } from "$lib";
 
   let trafficDataOk = false;
 </script>
 
 <div class="govuk-prose">
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/">Tools</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/cross_section">
-          Route cross-section
-        </a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">Proposed Cross-Sections</li>
-    </ol>
-  </div>
+  <Breadcrumbs
+    links={[
+      ["Tools", "/"],
+      ["Route cross-section", "/cross_section"],
+    ]}
+    current="Proposed Cross-Sections"
+  />
 
   <TrafficData bind:valid={trafficDataOk} />
 

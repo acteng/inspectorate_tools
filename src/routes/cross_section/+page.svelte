@@ -1,6 +1,6 @@
 <script lang="ts">
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
-  import { ExternalLink } from "$lib";
+  import { Breadcrumbs, ExternalLink } from "$lib";
   import { base } from "$app/paths";
   import { state, emptyState } from "./data";
 
@@ -10,15 +10,7 @@
 </script>
 
 <div class="govuk-prose">
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/">Tools</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">Route cross-section tool</li>
-    </ol>
-  </div>
-  <hr />
+  <Breadcrumbs links={[["Tools", "/"]]} current="Route cross-section tool" />
 
   <p>
     This is an experimental version of a <ExternalLink

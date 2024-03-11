@@ -1,3 +1,4 @@
+export { default as Breadcrumbs } from "./Breadcrumbs.svelte";
 export { default as ExternalLink } from "./ExternalLink.svelte";
 export { default as WarningText } from "./WarningText.svelte";
 

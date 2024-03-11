@@ -1,14 +1,10 @@
 <script lang="ts">
+  import { Breadcrumbs } from "$lib";
   import { base } from "$app/paths";
 </script>
 
 <div class="govuk-prose">
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">Tools</li>
-    </ol>
-  </div>
-  <hr />
+  <Breadcrumbs links={[]} current="Tools" />
 
   <span>Design assistance</span>
   <ul>

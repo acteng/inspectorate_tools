@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs } from "$lib";
+  import { Breadcrumbs, pairs } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { base } from "$app/paths";
   import { state } from "../data";
@@ -15,19 +15,13 @@
 </script>
 
 <div class="govuk-prose">
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/">Tools</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="{base}/area_check">
-          Area check tool
-        </a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">Summary of Scheme</li>
-    </ol>
-  </div>
+  <Breadcrumbs
+    links={[
+      ["Tools", "/"],
+      ["Area check tool", "/area_check"],
+    ]}
+    current="Summary of Scheme"
+  />
 
   <TextInput
     label="Date of design review"
