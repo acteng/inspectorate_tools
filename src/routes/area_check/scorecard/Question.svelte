@@ -33,7 +33,7 @@
 
   <div class="three-columns">
     <div>
-      <Progress />
+      <Progress currentIdx={idx} />
     </div>
 
     <div>

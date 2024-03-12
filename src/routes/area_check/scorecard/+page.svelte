@@ -15,5 +15,5 @@
     current="Area Scorecard"
   />
 
-  <Progress />
+  <Progress currentIdx={-1} />
 </div>

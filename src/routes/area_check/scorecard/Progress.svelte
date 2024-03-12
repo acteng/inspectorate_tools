@@ -2,6 +2,8 @@
   import { state, type State } from "../data";
   import { base } from "$app/paths";
 
+  export let currentIdx: number;
+
   let questions = [
     "Porosity - Walking and Wheeling",
     "Porosity - Cycling",
@@ -45,7 +47,11 @@
   {#each questions as label, idx}
     <li>
       <div style="display: flex; justify-content: space-between">
-        <a href="{base}/area_check/scorecard/q{formatIndex(idx)}">{label}</a>
+        {#if currentIdx - 1 != idx}
+          <a href="{base}/area_check/scorecard/q{formatIndex(idx)}">{label}</a>
+        {:else}
+          {label}
+        {/if}
         {#if completed[idx]}
           <strong class="govuk-tag govuk-tag--green">Done</strong>
         {:else}
