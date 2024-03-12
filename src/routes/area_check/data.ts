@@ -58,11 +58,8 @@ export function emptyState(): State {
       schemeAreaSizeKm2: "",
       notes: "",
     },
-    // The default settings for the radio buttons go from worst to best case
-    existingScores: Array(13).fill("0"),
-    proposedScores: [4, 4, 4, 4, 4, 4, 4, 4, 8, 16, 12, 16, 16].map((x) =>
-      x.toString(),
-    ),
+    existingScores: Array(13).fill(""),
+    proposedScores: Array(13).fill(""),
     existingScoreNotes: Array(13).fill(""),
     proposedScoreNotes: Array(13).fill(""),
   };

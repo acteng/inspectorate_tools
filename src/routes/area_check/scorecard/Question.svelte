@@ -2,6 +2,7 @@
   import { Breadcrumbs } from "$lib";
   import PrevNext from "./PrevNext.svelte";
   import FancyRadio from "./FancyRadio.svelte";
+  import Progress from "./Progress.svelte";
   import { TextArea } from "govuk-svelte";
   import { state } from "../data";
 
@@ -26,36 +27,43 @@
     current={label}
   />
 
-  <div class="govuk-width-container">
-    <PrevNext {idx} />
-    <h2>{label}</h2>
-    <slot />
+  <PrevNext {idx} />
+  <h2>{label}</h2>
+  <slot />
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half">
-        <FancyRadio
-          legend="Existing"
-          {choices}
-          bind:value={$state.existingScores[idx - 1]}
-        />
-        <TextArea
-          label="Notes"
-          bind:value={$state.existingScoreNotes[idx - 1]}
-        />
-      </div>
-      <div class="govuk-grid-column-one-half">
-        <FancyRadio
-          legend="Proposed"
-          {choices}
-          bind:value={$state.proposedScores[idx - 1]}
-        />
-        <TextArea
-          label="Notes"
-          bind:value={$state.proposedScoreNotes[idx - 1]}
-        />
-      </div>
+  <div class="three-columns">
+    <div>
+      <Progress />
     </div>
 
-    <PrevNext {idx} />
+    <div>
+      <FancyRadio
+        legend="Existing"
+        {choices}
+        bind:value={$state.existingScores[idx - 1]}
+      />
+      <TextArea label="Notes" bind:value={$state.existingScoreNotes[idx - 1]} />
+    </div>
+    <div>
+      <FancyRadio
+        legend="Proposed"
+        {choices}
+        bind:value={$state.proposedScores[idx - 1]}
+      />
+      <TextArea label="Notes" bind:value={$state.proposedScoreNotes[idx - 1]} />
+    </div>
   </div>
+
+  <PrevNext {idx} />
 </div>
+
+<style>
+  .three-columns {
+    display: flex;
+    column-gap: 2rem;
+  }
+
+  .three-columns > * {
+    width: calc((100% - 4rem) / 3);
+  }
+</style>
