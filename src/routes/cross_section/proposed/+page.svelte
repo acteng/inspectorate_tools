@@ -2,7 +2,6 @@
   import CrossSection from "./CrossSection.svelte";
   import { CollapsibleCard } from "govuk-svelte";
   import TrafficData from "./TrafficData.svelte";
-  import { base } from "$app/paths";
   import { state } from "../data";
   import { Breadcrumbs } from "$lib";
 

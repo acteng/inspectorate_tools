@@ -2,7 +2,6 @@
   import YesNo from "./YesNo.svelte";
   import MajorRoutes from "./MajorRoutes.svelte";
   import MinorRoutes from "./MinorRoutes.svelte";
-  import { base } from "$app/paths";
   import { Select } from "govuk-svelte";
   import { Breadcrumbs, pairs, WarningText } from "$lib";
 

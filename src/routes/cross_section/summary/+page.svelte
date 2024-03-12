@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Breadcrumbs, pairs } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
-  import { base } from "$app/paths";
   import { state } from "../data";
   import {
     authorities,

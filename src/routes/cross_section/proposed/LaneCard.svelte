@@ -16,7 +16,7 @@
     moveRight: void;
   }>();
 
-  // @ts-ignore TODO Need to make pairs handle readonly types
+  // @ts-expect-error TODO Need to make pairs handle readonly types
   let choices = pairs(laneTypes);
 </script>
 

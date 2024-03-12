@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { Breadcrumbs, ExternalLink } from "$lib";
+  import { Breadcrumbs } from "$lib";
   import Progress from "./Progress.svelte";
-  import { state } from "../data";
 
   // TODO Include bold in the choices
 </script>

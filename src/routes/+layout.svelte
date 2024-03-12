@@ -1,6 +1,6 @@
 <script lang="ts">
   import "../style/main.css";
-  // @ts-ignore no declarations
+  // @ts-expect-error no declarations
   import { initAll } from "govuk-frontend";
   import { WarningText } from "$lib";
 
