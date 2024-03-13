@@ -33,8 +33,10 @@
   },
   "type": "module",
   "dependencies": {
+    "@maptiler/geocoding-control": "^1.2.2",
     "govuk-frontend": "^5.2.0",
     "govuk-svelte": "github:acteng/govuk-svelte",
+    "svelte-maplibre": "^0.8.2",
     "uuid": "^9.0.1"
   }
 }

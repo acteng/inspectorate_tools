@@ -2,6 +2,7 @@
   import { Breadcrumbs, pairs } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
+  import DrawArea from "./DrawArea.svelte";
   import {
     authorities,
     transportOrCombinedAuthorities,
@@ -82,4 +83,6 @@
   />
 
   <TextArea label="Notes" bind:value={$state.summary.notes} />
+
+  <DrawArea />
 </div>
