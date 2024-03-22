@@ -84,5 +84,10 @@
 
   <TextArea label="Notes" bind:value={$state.summary.notes} />
 
+  <h2>Network context</h2>
+  <p>
+    Please add a drawing of the area being assessed below, including the
+    location of measures proposed by the scheme.
+  </p>
   <DrawArea />
 </div>

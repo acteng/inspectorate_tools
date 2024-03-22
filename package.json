@@ -16,6 +16,7 @@
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/eslint": "^8.56.5",
+    "@types/geojson": "^7946.0.14",
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
@@ -34,8 +35,10 @@
   "type": "module",
   "dependencies": {
     "@maptiler/geocoding-control": "^1.2.2",
+    "@turf/area": "^6.5.0",
     "govuk-frontend": "^5.2.0",
     "govuk-svelte": "github:acteng/govuk-svelte",
+    "maplibre-draw-polygon": "github:dabreegster/maplibre-draw-polygon",
     "svelte-maplibre": "^0.8.2",
     "uuid": "^9.0.1"
   }

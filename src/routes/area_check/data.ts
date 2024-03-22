@@ -1,4 +1,5 @@
 import { writable } from "svelte/store";
+import type { Feature, Polygon } from "geojson";
 
 export interface State {
   summary: {
@@ -17,6 +18,7 @@ export interface State {
     // TODO number
     schemeAreaSizeKm2: string;
     notes: string;
+    polygon: Feature<Polygon> | null;
   };
   // Exactly 13 entries, matching up with the scorecard questions. The values are the stringified scores.
   existingScores: string[];
@@ -57,6 +59,7 @@ export function emptyState(): State {
       inspectorEmail: "",
       schemeAreaSizeKm2: "",
       notes: "",
+      polygon: null,
     },
     existingScores: Array(13).fill(""),
     proposedScores: Array(13).fill(""),
