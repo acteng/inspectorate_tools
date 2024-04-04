@@ -22,6 +22,23 @@
 
   <ol>
     <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
+    <li><a href="{base}/route_check/policy_check">Policy Check</a></li>
+    <li>Policy Conflict Log</li>
+
+    <li>Safety Check</li>
+    <li>Critical Issues Log</li>
+
+    <li>Street Check</li>
+    <li>Street Placemaking Check</li>
+
+    <li>Path Check</li>
+    <li>Path Placemaking Check</li>
+
+    <li>JAT Check</li>
+
+    <li>Results Summary</li>
+    <li>Results Further Analysis</li>
+    <li>Results Export</li>
   </ol>
 
   <CollapsibleCard label="Debug">

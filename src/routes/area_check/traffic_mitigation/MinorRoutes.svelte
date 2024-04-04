@@ -1,6 +1,5 @@
 <script lang="ts">
-  import YesNo from "./YesNo.svelte";
-  import { WarningText } from "$lib";
+  import { YesNo, WarningText } from "$lib";
 
   let q1 = "";
   let q2 = "";

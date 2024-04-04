@@ -1,4 +1,5 @@
 import { writable } from "svelte/store";
+import { repeatCloned } from "$lib";
 
 export interface State {
   summary: {
@@ -19,6 +20,12 @@ export interface State {
     totalRouteLengthKm: string;
     notes: string;
   };
+
+  policy_check: {
+    existing: "Yes" | "No" | "";
+    proposed: "Yes" | "No" | "";
+    commentary: string;
+  }[];
 }
 
 export let state = writable(loadState());
@@ -54,5 +61,10 @@ export function emptyState(): State {
       totalRouteLengthKm: "",
       notes: "",
     },
+    policy_check: repeatCloned(6, {
+      existing: "",
+      proposed: "",
+      commentary: "",
+    }),
   };
 }
