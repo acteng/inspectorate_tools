@@ -3,14 +3,17 @@
 </script>
 
 <Question
-  idx={0}
-  label=""
+  idx={11}
+  label="Effective Width next to Tram Lines"
   cases={[
-    ["C", ""],
-    ["0", ""],
-    ["1", ""],
-    ["2", ""],
+    [
+      "C",
+      "<2.4m from tramline edge to kerb on a straight run.  Insufficient clearance on a curve.",
+    ],
+    ["0", "2.4m from tramline edge to kerb."],
+    ["1", ">2.4m from tramline edge to kerb."],
+    ["2", "Physical protection is provided for cyclists."],
   ]}
 >
-  <p></p>
+  <p>Effective width next to tram line on a straight run or a curve</p>
 </Question>

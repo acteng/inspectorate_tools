@@ -13,7 +13,7 @@
     ],
     [
       "1",
-      "<2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments.",
+      "<2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments. ",
     ],
     [
       "2",

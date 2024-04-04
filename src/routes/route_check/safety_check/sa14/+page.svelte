@@ -3,14 +3,18 @@
 </script>
 
 <Question
-  idx={0}
-  label=""
+  idx={13}
+  label="Cycling Surface and Maintenance Defects"
   cases={[
-    ["C", ""],
-    ["0", ""],
-    ["1", ""],
-    ["2", ""],
+    ["C", "Major defects."],
+    ["0", "Many minor defects."],
+    ["1", "Few minor defects."],
+    ["2", "No defects."],
   ]}
 >
-  <p></p>
+  <p>
+    Cycling surface and maintenance defects: • sharp gradients (≥12.5%) • non
+    cycle friendly ironworks • raised/sunken covers or gullies • potholes •
+    loose/cracked surfaces • poor drainage or slip risks • overgrown vegetation
+  </p>
 </Question>
