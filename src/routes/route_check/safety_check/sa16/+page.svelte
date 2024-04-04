@@ -3,7 +3,7 @@
 </script>
 
 <Question
-  idx={15}
+  idx={16}
   label="Guard Railing"
   cases={[
     [

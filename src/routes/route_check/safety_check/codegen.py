@@ -5,7 +5,7 @@ import csv
 # of truth becomes the Svelte files, which need to be manually edited to
 # improve formatting.
 with open("safety_check.tsv") as tsv:
-    idx = 0
+    idx = 1
     for row in csv.DictReader(tsv, delimiter="	"):
         with open(row["ID"].lower() + "/+page.svelte", "w") as f:
             f.write("""<script lang="ts">\n""")

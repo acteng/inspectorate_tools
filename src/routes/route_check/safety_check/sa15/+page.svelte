@@ -3,7 +3,7 @@
 </script>
 
 <Question
-  idx={14}
+  idx={15}
   label="Walking/Wheeling Surface and Maintenance Defects"
   cases={[
     ["C", "Major defects."],

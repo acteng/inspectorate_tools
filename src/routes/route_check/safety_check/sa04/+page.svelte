@@ -3,7 +3,7 @@
 </script>
 
 <Question
-  idx={3}
+  idx={4}
   label="Trip Hazards"
   cases={[
     [
