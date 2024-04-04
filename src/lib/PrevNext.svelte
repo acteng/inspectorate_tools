@@ -2,6 +2,8 @@
   import { base } from "$app/paths";
 
   export let idx: number;
+  export let total: number;
+  export let urlPath: string;
 
   function formatIndex(idx: number): string {
     return idx.toString().padStart(2, "0");
@@ -13,7 +15,7 @@
     <div class="govuk-pagination__prev">
       <a
         class="govuk-link govuk-pagination__link"
-        href="{base}/area_check/scorecard/q{formatIndex(idx - 1)}"
+        href="{base}/{urlPath}{formatIndex(idx - 1)}"
         rel="prev"
       >
         <svg
@@ -38,14 +40,14 @@
   {/if}
   <ul class="govuk-pagination__list">
     <li class="govuk-pagination__item">
-      Question {idx} / 13
+      Question {idx} / {total}
     </li>
   </ul>
-  {#if idx != 13}
+  {#if idx != total}
     <div class="govuk-pagination__next">
       <a
         class="govuk-link govuk-pagination__link"
-        href="{base}/area_check/scorecard/q{formatIndex(idx + 1)}"
+        href="{base}/{urlPath}{formatIndex(idx + 1)}"
         rel="next"
       >
         <span class="govuk-pagination__link-title">

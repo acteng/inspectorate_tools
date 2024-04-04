@@ -25,7 +25,7 @@
     <li><a href="{base}/route_check/policy_check">Policy Check</a></li>
     <li>Policy Conflict Log</li>
 
-    <li>Safety Check</li>
+    <li><a href="{base}/route_check/safety_check">Safety Check</a></li>
     <li>Critical Issues Log</li>
 
     <li>Street Check</li>

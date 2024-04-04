@@ -21,11 +21,21 @@ export interface State {
     notes: string;
   };
 
-  policy_check: {
+  policyCheck: {
     existing: "Yes" | "No" | "";
     proposed: "Yes" | "No" | "";
     commentary: string;
   }[];
+
+  safetyCheck: {
+    // Exactly 13 entries, matching up with the scorecard questions. The values are the stringified scores.
+    // TODO Enum?
+    existingScores: string[];
+    proposedScores: string[];
+    // Optional notes for each entry
+    existingScoreNotes: string[];
+    proposedScoreNotes: string[];
+  };
 }
 
 export let state = writable(loadState());
@@ -61,10 +71,16 @@ export function emptyState(): State {
       totalRouteLengthKm: "",
       notes: "",
     },
-    policy_check: repeatCloned(6, {
+    policyCheck: repeatCloned(6, {
       existing: "",
       proposed: "",
       commentary: "",
     }),
+    safetyCheck: {
+      existingScores: Array(16).fill(""),
+      proposedScores: Array(16).fill(""),
+      existingScoreNotes: Array(16).fill(""),
+      proposedScoreNotes: Array(16).fill(""),
+    },
   };
 }

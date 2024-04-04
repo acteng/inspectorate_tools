@@ -6,9 +6,9 @@
 
   export let idx: number;
   export let label: string;
-  export let cases: [number, string][];
+  export let cases: ["C" | "0" | "1" | "2", string][];
 
-  let colors = ["#00b050", "#99cc00", "#ffc000", "#ff5050", "#ff0000"];
+  let colors = ["#232323", "#b73d25", "#ffd833", "#006853"];
 
   let choices: [string, string, string][] = cases.map(
     ([value, label], index) => [value.toString(), label, colors[index]],
@@ -19,13 +19,13 @@
   <Breadcrumbs
     links={[
       ["Tools", "/"],
-      ["Area check tool", "/area_check"],
-      ["Area Scorecard", "/area_check/scorecard"],
+      ["Route check tool", "/route_check"],
+      ["Safety Check", "/route_check/safety_check"],
     ]}
     current={label}
   />
 
-  <PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />
+  <PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />
   <h2>{label}</h2>
   <slot />
 
@@ -38,21 +38,27 @@
       <FancyRadio
         legend="Existing"
         {choices}
-        bind:value={$state.existingScores[idx - 1]}
+        bind:value={$state.safetyCheck.existingScores[idx - 1]}
       />
-      <TextArea label="Notes" bind:value={$state.existingScoreNotes[idx - 1]} />
+      <TextArea
+        label="Notes"
+        bind:value={$state.safetyCheck.existingScoreNotes[idx - 1]}
+      />
     </div>
     <div>
       <FancyRadio
         legend="Proposed"
         {choices}
-        bind:value={$state.proposedScores[idx - 1]}
+        bind:value={$state.safetyCheck.proposedScores[idx - 1]}
       />
-      <TextArea label="Notes" bind:value={$state.proposedScoreNotes[idx - 1]} />
+      <TextArea
+        label="Notes"
+        bind:value={$state.safetyCheck.proposedScoreNotes[idx - 1]}
+      />
     </div>
   </div>
 
-  <PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />
+  <PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />
 </div>
 
 <style>
