@@ -8,6 +8,7 @@
   export let label: string;
   export let cases: [number, string][];
 
+  // Note these are different than the ones used in route check
   let colors = ["#00b050", "#99cc00", "#ffc000", "#ff5050", "#ff0000"];
 
   let choices: [string, string, string][] = cases.map(

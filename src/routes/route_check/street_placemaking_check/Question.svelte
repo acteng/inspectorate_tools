@@ -3,12 +3,13 @@
   import Progress from "./Progress.svelte";
   import { TextArea } from "govuk-svelte";
   import { state } from "../data";
+  import { red, amber, green } from "$lib/colors";
 
   export let idx: number;
   export let label: string;
   export let cases: ["0" | "1" | "2", string][];
 
-  let colors = ["#b73d25", "#ffd833", "#006853"];
+  let colors = [red, amber, green];
 
   let choices: [string, string, string][] = cases.map(
     ([value, label], index) => [value.toString(), label, colors[index]],

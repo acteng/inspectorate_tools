@@ -27,47 +27,27 @@ export interface State {
     commentary: string;
   }[];
 
-  safetyCheck: {
-    // Exactly 16 entries, matching up with the scorecard questions. The values are the stringified scores.
-    // TODO Enum?
-    existingScores: string[];
-    proposedScores: string[];
-    // Optional notes for each entry
-    existingScoreNotes: string[];
-    proposedScoreNotes: string[];
-  };
+  safetyCheck: Scorecard;
 
-  streetCheck: {
-    // 26 entries
-    existingScores: string[];
-    proposedScores: string[];
-    existingScoreNotes: string[];
-    proposedScoreNotes: string[];
-  };
+  streetCheck: Scorecard;
 
-  streetPlacemakingCheck: {
-    // 26 entries
-    existingScores: string[];
-    proposedScores: string[];
-    existingScoreNotes: string[];
-    proposedScoreNotes: string[];
-  };
+  streetPlacemakingCheck: Scorecard;
 
-  pathCheck: {
-    // 30 entries
-    existingScores: string[];
-    proposedScores: string[];
-    existingScoreNotes: string[];
-    proposedScoreNotes: string[];
-  };
+  pathCheck: Scorecard;
 
-  pathPlacemakingCheck: {
-    // 19 entries
-    existingScores: string[];
-    proposedScores: string[];
-    existingScoreNotes: string[];
-    proposedScoreNotes: string[];
-  };
+  pathPlacemakingCheck: Scorecard;
+}
+
+// A collection of metrics. For each one, the user gives a score to describe
+// the existing and proposed state.
+interface Scorecard {
+  // The values are the stringified scores
+  // TODO Enum?
+  existingScores: string[];
+  proposedScores: string[];
+  // Optional notes for each entry
+  existingScoreNotes: string[];
+  proposedScoreNotes: string[];
 }
 
 export let state = writable(loadState());
@@ -78,7 +58,7 @@ state.subscribe((value) =>
 function loadState(): State {
   let x = JSON.parse(window.localStorage.getItem("route-check") || "{}");
   // Could more thoroughly check for validity, but the format won't change much after initial development calms down
-  if (x.summary) {
+  if (x.streetPlacemakingCheck) {
     return x;
   }
   return emptyState();
@@ -108,35 +88,19 @@ export function emptyState(): State {
       proposed: "",
       commentary: "",
     }),
-    safetyCheck: {
-      existingScores: Array(16).fill(""),
-      proposedScores: Array(16).fill(""),
-      existingScoreNotes: Array(16).fill(""),
-      proposedScoreNotes: Array(16).fill(""),
-    },
-    streetCheck: {
-      existingScores: Array(26).fill(""),
-      proposedScores: Array(26).fill(""),
-      existingScoreNotes: Array(26).fill(""),
-      proposedScoreNotes: Array(26).fill(""),
-    },
-    streetPlacemakingCheck: {
-      existingScores: Array(26).fill(""),
-      proposedScores: Array(26).fill(""),
-      existingScoreNotes: Array(26).fill(""),
-      proposedScoreNotes: Array(26).fill(""),
-    },
-    pathCheck: {
-      existingScores: Array(30).fill(""),
-      proposedScores: Array(30).fill(""),
-      existingScoreNotes: Array(30).fill(""),
-      proposedScoreNotes: Array(30).fill(""),
-    },
-    pathPlacemakingCheck: {
-      existingScores: Array(19).fill(""),
-      proposedScores: Array(19).fill(""),
-      existingScoreNotes: Array(19).fill(""),
-      proposedScoreNotes: Array(19).fill(""),
-    },
+    safetyCheck: emptyScorecard(16),
+    streetCheck: emptyScorecard(26),
+    streetPlacemakingCheck: emptyScorecard(26),
+    pathCheck: emptyScorecard(30),
+    pathPlacemakingCheck: emptyScorecard(19),
+  };
+}
+
+function emptyScorecard(n: number): Scorecard {
+  return {
+    existingScores: Array(n).fill(""),
+    proposedScores: Array(n).fill(""),
+    existingScoreNotes: Array(n).fill(""),
+    proposedScoreNotes: Array(n).fill(""),
   };
 }
