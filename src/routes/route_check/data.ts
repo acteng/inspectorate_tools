@@ -52,6 +52,14 @@ export interface State {
     existingScoreNotes: string[];
     proposedScoreNotes: string[];
   };
+
+  pathCheck: {
+    // 30 entries
+    existingScores: string[];
+    proposedScores: string[];
+    existingScoreNotes: string[];
+    proposedScoreNotes: string[];
+  };
 }
 
 export let state = writable(loadState());
@@ -109,6 +117,12 @@ export function emptyState(): State {
       proposedScores: Array(26).fill(""),
       existingScoreNotes: Array(26).fill(""),
       proposedScoreNotes: Array(26).fill(""),
+    },
+    pathCheck: {
+      existingScores: Array(30).fill(""),
+      proposedScores: Array(30).fill(""),
+      existingScoreNotes: Array(30).fill(""),
+      proposedScoreNotes: Array(30).fill(""),
     },
   };
 }
