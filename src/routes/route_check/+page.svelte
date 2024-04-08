@@ -36,7 +36,11 @@
     </li>
 
     <li><a href="{base}/route_check/path_check">Path Check</a></li>
-    <li>Path Placemaking Check</li>
+    <li>
+      <a href="{base}/route_check/path_placemaking_check">
+        Path Placemaking Check
+      </a>
+    </li>
 
     <li>JAT Check</li>
 
