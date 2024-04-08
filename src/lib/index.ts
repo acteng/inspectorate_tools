@@ -17,3 +17,7 @@ export function repeatCloned<T>(length: number, x: T): T[] {
   }
   return result;
 }
+
+export function sum(list: number[]): number {
+  return list.reduce((total, x) => total + x, 0);
+}

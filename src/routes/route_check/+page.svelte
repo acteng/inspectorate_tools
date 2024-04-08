@@ -28,7 +28,7 @@
     <li><a href="{base}/route_check/safety_check">Safety Check</a></li>
     <li>Critical Issues Log</li>
 
-    <li>Street Check</li>
+    <li><a href="{base}/route_check/street_check">Street Check</a></li>
     <li>Street Placemaking Check</li>
 
     <li>Path Check</li>

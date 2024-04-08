@@ -4,9 +4,10 @@
   export let idx: number;
   export let total: number;
   export let urlPath: string;
+  export let startIdx = 1;
 
   function formatIndex(idx: number): string {
-    return idx.toString().padStart(2, "0");
+    return (idx + startIdx - 1).toString().padStart(2, "0");
   }
 </script>
 

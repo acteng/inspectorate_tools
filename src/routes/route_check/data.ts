@@ -28,11 +28,19 @@ export interface State {
   }[];
 
   safetyCheck: {
-    // Exactly 13 entries, matching up with the scorecard questions. The values are the stringified scores.
+    // Exactly 16 entries, matching up with the scorecard questions. The values are the stringified scores.
     // TODO Enum?
     existingScores: string[];
     proposedScores: string[];
     // Optional notes for each entry
+    existingScoreNotes: string[];
+    proposedScoreNotes: string[];
+  };
+
+  streetCheck: {
+    // 26 entries
+    existingScores: string[];
+    proposedScores: string[];
     existingScoreNotes: string[];
     proposedScoreNotes: string[];
   };
@@ -81,6 +89,12 @@ export function emptyState(): State {
       proposedScores: Array(16).fill(""),
       existingScoreNotes: Array(16).fill(""),
       proposedScoreNotes: Array(16).fill(""),
+    },
+    streetCheck: {
+      existingScores: Array(26).fill(""),
+      proposedScores: Array(26).fill(""),
+      existingScoreNotes: Array(26).fill(""),
+      proposedScoreNotes: Array(26).fill(""),
     },
   };
 }
