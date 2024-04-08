@@ -1,46 +1,46 @@
 <script lang="ts">
-  import LaneCard from "./LaneCard.svelte";
+  import StreetFeatureCard from "./StreetFeatureCard.svelte";
   import { SecondaryButton } from "govuk-svelte";
-  import { type LaneType } from "../data";
+  import { type StreetFeatureType } from "../data";
 
-  export let lanesLeftToRight: Array<LaneType | "">;
+  export let streetFeaturesLeftToRight: Array<StreetFeatureType | "">;
   export let sectionType: "Desirable" | "Absolute";
 
-  function addNewLane() {
-    lanesLeftToRight = [...lanesLeftToRight, ""];
+  function addNewStreetFeature() {
+    streetFeaturesLeftToRight = [...streetFeaturesLeftToRight, ""];
   }
 
-  function deleteLane(i: number) {
-    lanesLeftToRight.splice(i, 1);
-    lanesLeftToRight = lanesLeftToRight;
+  function deleteStreetFeature(i: number) {
+    streetFeaturesLeftToRight.splice(i, 1);
+    streetFeaturesLeftToRight = streetFeaturesLeftToRight;
   }
 
   function moveLeft(i: number) {
-    [lanesLeftToRight[i - 1], lanesLeftToRight[i]] = [
-      lanesLeftToRight[i],
-      lanesLeftToRight[i - 1],
+    [streetFeaturesLeftToRight[i - 1], streetFeaturesLeftToRight[i]] = [
+      streetFeaturesLeftToRight[i],
+      streetFeaturesLeftToRight[i - 1],
     ];
   }
 
   function moveRight(i: number) {
-    [lanesLeftToRight[i + 1], lanesLeftToRight[i]] = [
-      lanesLeftToRight[i],
-      lanesLeftToRight[i + 1],
+    [streetFeaturesLeftToRight[i + 1], streetFeaturesLeftToRight[i]] = [
+      streetFeaturesLeftToRight[i],
+      streetFeaturesLeftToRight[i + 1],
     ];
   }
 </script>
 
-<SecondaryButton on:click={addNewLane}>Add</SecondaryButton>
+<SecondaryButton on:click={addNewStreetFeature}>Add</SecondaryButton>
 
 <div style="display: flex; flex-direction: row">
-  {#each lanesLeftToRight as lane, i (i)}
-    <LaneCard
-      bind:value={lane}
-      on:delete={() => deleteLane(i)}
+  {#each streetFeaturesLeftToRight as streetFeature, i (i)}
+    <StreetFeatureCard
+      bind:value={streetFeature}
+      on:delete={() => deleteStreetFeature(i)}
       on:moveLeft={() => moveLeft(i)}
       on:moveRight={() => moveRight(i)}
       isFirst={i == 0}
-      isLast={i == lanesLeftToRight.length - 1}
+      isLast={i == streetFeaturesLeftToRight.length - 1}
       {sectionType}
     />
   {/each}

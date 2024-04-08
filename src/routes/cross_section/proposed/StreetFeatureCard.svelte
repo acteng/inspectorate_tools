@@ -2,10 +2,10 @@
   import { pairs } from "$lib";
   import { createEventDispatcher } from "svelte";
   import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
-  import { state, laneTypes, type LaneType } from "../data";
+  import { state, streetFeatureTypes, type StreetFeatureType } from "../data";
   import { getWidth, references } from "./tables";
 
-  export let value: LaneType | "";
+  export let value: StreetFeatureType | "";
   export let isFirst: boolean;
   export let isLast: boolean;
   export let sectionType: "Desirable" | "Absolute";
@@ -17,11 +17,11 @@
   }>();
 
   // @ts-expect-error TODO Need to make pairs handle readonly types
-  let choices = pairs(laneTypes);
+  let choices = pairs(streetFeatureTypes);
 </script>
 
 <div>
-  <Select label="Lane type" emptyOption {choices} bind:value />
+  <Select label="Street feature type" emptyOption {choices} bind:value />
 
   {#if value}
     <p>

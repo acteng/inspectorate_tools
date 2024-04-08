@@ -27,8 +27,8 @@ export interface State {
       observedSpeed: number | undefined;
       streetFunction: string;
     };
-    desirableMinimumCrossSection: Array<LaneType | "">;
-    absoluteMinimumCrossSection: Array<LaneType | "">;
+    desirableMinimumCrossSection: Array<StreetFeatureType | "">;
+    absoluteMinimumCrossSection: Array<StreetFeatureType | "">;
   };
 }
 
@@ -78,8 +78,7 @@ export function emptyState(): State {
   };
 }
 
-// TODO Is "lane" the correct term?
-export let laneTypes = [
+export let streetFeatureTypes = [
   "Footway",
   "Narrow Traffic / Bus Lane",
   "Wide Traffic / Bus Lane",
@@ -93,4 +92,4 @@ export let laneTypes = [
   "Loading Bay",
   "Buffer / Verge",
 ] as const;
-export type LaneType = (typeof laneTypes)[number];
+export type StreetFeatureType = (typeof streetFeatureTypes)[number];
