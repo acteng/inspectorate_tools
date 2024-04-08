@@ -19,4 +19,5 @@
   ]}
 >
   <p>Crossing angle (between cyclist desire line and tram or train rails).</p>
+  <p>Mode: Cycling</p>
 </Question>

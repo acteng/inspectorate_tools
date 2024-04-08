@@ -41,7 +41,7 @@
         bind:value={$state.safetyCheck.existingScores[idx - 1]}
       />
       <TextArea
-        label="Notes"
+        label="Comments / assumptions"
         bind:value={$state.safetyCheck.existingScoreNotes[idx - 1]}
       />
     </div>
@@ -52,7 +52,7 @@
         bind:value={$state.safetyCheck.proposedScores[idx - 1]}
       />
       <TextArea
-        label="Notes"
+        label="Comments / assumptions"
         bind:value={$state.safetyCheck.proposedScoreNotes[idx - 1]}
       />
     </div>

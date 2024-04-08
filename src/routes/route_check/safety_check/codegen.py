@@ -1,12 +1,24 @@
 import csv
 
-# Manually copy from Excel, naming the columns "Metric Mode ID Description
-# Critical Red Amber Green" (with tabs). This is a one-off script; the source
-# of truth becomes the Svelte files, which need to be manually edited to
-# improve formatting.
+# Manually copy from Excel. This is a one-off script; the source of truth
+# becomes the Svelte files, which need to be manually edited to improve
+# formatting.
 with open("safety_check.tsv") as tsv:
     idx = 1
-    for row in csv.DictReader(tsv, delimiter="	"):
+    for row in csv.DictReader(
+        tsv,
+        delimiter="	",
+        fieldnames=[
+            "Metric",
+            "Mode",
+            "ID",
+            "Description",
+            "Critical",
+            "Red",
+            "Amber",
+            "Green",
+        ],
+    ):
         with open(row["ID"].lower() + "/+page.svelte", "w") as f:
             f.write("""<script lang="ts">\n""")
             f.write("""import Question from "../Question.svelte";\n""")
@@ -26,5 +38,6 @@ with open("safety_check.tsv") as tsv:
             f.write(""">\n""")
 
             f.write("""  <p>{}</p>\n""".format(row["Description"]))
+            f.write("""  <p>Mode: {}</p>\n""".format(row["Mode"]))
             f.write("""</Question>\n""")
             idx += 1

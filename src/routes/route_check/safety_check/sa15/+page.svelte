@@ -19,4 +19,5 @@
     information • loose/cracked surfaces • poor drainage or slip risks •
     overgrown vegetation
   </p>
+  <p>Mode: Walking / Wheeling</p>
 </Question>

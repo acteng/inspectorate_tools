@@ -25,4 +25,5 @@
   ]}
 >
   <p>Ability of pedestrians to cross the street safely on desire lines</p>
+  <p>Mode: Walking / Wheeling</p>
 </Question>

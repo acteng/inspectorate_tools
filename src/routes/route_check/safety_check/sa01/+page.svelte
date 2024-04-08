@@ -25,4 +25,5 @@
     Pedestrian and cyclist conflict with motor traffic at side roads/priority
     junctions
   </p>
+  <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

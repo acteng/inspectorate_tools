@@ -19,4 +19,5 @@
     85th percentile speed of motor traffic (where cyclists are not protected or
     pedestrians are crossing uncontrolled)
   </p>
+  <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

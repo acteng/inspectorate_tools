@@ -19,4 +19,5 @@
   ]}
 >
   <p>Presence of guard railing</p>
+  <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>
