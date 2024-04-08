@@ -38,13 +38,15 @@ export interface State {
   pathPlacemakingCheck: Scorecard;
 }
 
+// Note "C"ritical is only used in some cases
+type Score = "" | "C" | "0" | "1" | "2";
+
 // A collection of metrics. For each one, the user gives a score to describe
 // the existing and proposed state.
 interface Scorecard {
   // The values are the stringified scores
-  // TODO Enum?
-  existingScores: string[];
-  proposedScores: string[];
+  existingScores: Score[];
+  proposedScores: Score[];
   // Optional notes for each entry
   existingScoreNotes: string[];
   proposedScoreNotes: string[];
