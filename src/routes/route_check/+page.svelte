@@ -29,7 +29,11 @@
     <li>Critical Issues Log</li>
 
     <li><a href="{base}/route_check/street_check">Street Check</a></li>
-    <li>Street Placemaking Check</li>
+    <li>
+      <a href="{base}/route_check/street_placemaking_check">
+        Street Placemaking Check
+      </a>
+    </li>
 
     <li>Path Check</li>
     <li>Path Placemaking Check</li>

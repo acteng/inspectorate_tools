@@ -41,7 +41,7 @@
   ];
 
   function formatIndex(idx: number): string {
-    return (idx + startIdx).toString();
+    return (idx + startIdx).toString().padStart(2, "0");
   }
 
   $: completed = getCompleted($state);
