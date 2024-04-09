@@ -2,7 +2,7 @@
   import "../style/main.css";
   // @ts-expect-error no declarations
   import { initAll } from "govuk-frontend";
-  import { WarningText } from "$lib";
+  import { WarningText } from "govuk-svelte";
 
   initAll();
 </script>

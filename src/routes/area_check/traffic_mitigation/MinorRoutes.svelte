@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { YesNo, WarningText } from "$lib";
+  import { YesNo } from "$lib";
+  import { WarningText } from "govuk-svelte";
 
   let q1 = "";
   let q2 = "";

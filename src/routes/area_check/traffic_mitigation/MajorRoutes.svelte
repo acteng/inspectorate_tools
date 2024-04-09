@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Select } from "govuk-svelte";
-  import { pairs, WarningText, YesNo } from "$lib";
+  import { Select, WarningText } from "govuk-svelte";
+  import { pairs, YesNo } from "$lib";
 
   let q1 = "";
   let q2 = "";

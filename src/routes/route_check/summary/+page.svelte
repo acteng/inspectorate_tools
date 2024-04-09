@@ -91,6 +91,7 @@
 
   <Select
     label="Route Check Type (Street or Path)"
+    hint="What type of route is being reviewed: Street Check (e.g. on- or by-carriageway) or Path Check (e.g. a traffic-free path featuring minimal interactions with motor traffic)"
     emptyOption
     choices={[
       ["street", "Street Check"],
@@ -98,9 +99,4 @@
     ]}
     bind:value={$state.summary.checkType}
   />
-  <p>
-    (TODO, turn into hint) What type of route is being reviewed: Street Check
-    (e.g. on- or by-carriageway) or Path Check (e.g. a traffic-free path
-    featuring minimal interactions with motor traffic)
-  </p>
 </div>

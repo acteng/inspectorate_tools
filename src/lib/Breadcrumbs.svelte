@@ -1,7 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
 
-  // TODO Move to govuk-svelte
+  // TODO Move to govuk-svelte, after deciding how to handle base
 
   // A list of [label, URL] in order. URLs should start with a leading slash.
   // The base path will be prepended; no need to include it.

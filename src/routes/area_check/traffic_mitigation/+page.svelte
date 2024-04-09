@@ -1,8 +1,8 @@
 <script lang="ts">
   import MajorRoutes from "./MajorRoutes.svelte";
   import MinorRoutes from "./MinorRoutes.svelte";
-  import { Select } from "govuk-svelte";
-  import { YesNo, Breadcrumbs, pairs, WarningText } from "$lib";
+  import { Select, WarningText } from "govuk-svelte";
+  import { YesNo, Breadcrumbs, pairs } from "$lib";
 
   let q1 = "";
   let q2 = "";
