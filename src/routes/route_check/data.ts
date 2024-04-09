@@ -19,6 +19,8 @@ export interface State {
     assessedRouteLengthKm: string;
     totalRouteLengthKm: string;
     notes: string;
+    // Even if the user switches between these, data from the other page is never erased
+    checkType: "street" | "path" | "";
   };
 
   policyCheck: {
@@ -84,6 +86,7 @@ export function emptyState(): State {
       assessedRouteLengthKm: "",
       totalRouteLengthKm: "",
       notes: "",
+      checkType: "",
     },
     policyCheck: repeatCloned(6, {
       existing: "",

@@ -28,19 +28,47 @@
     <li><a href="{base}/route_check/safety_check">Safety Check</a></li>
     <li>Critical Issues Log</li>
 
-    <li><a href="{base}/route_check/street_check">Street Check</a></li>
-    <li>
-      <a href="{base}/route_check/street_placemaking_check">
-        Street Placemaking Check
-      </a>
-    </li>
+    {#if $state.summary.checkType == "street"}
+      <li><a href="{base}/route_check/street_check">Street Check</a></li>
+      <li>
+        <a href="{base}/route_check/street_placemaking_check">
+          Street Placemaking Check
+        </a>
+      </li>
+    {:else}
+      <li>
+        <i>
+          Street Check (disabled, because of the Route Check Type set in Summary
+        </i>
+      </li>
+      <li>
+        <i>
+          Street Placemaking Check (disabled, because of the Route Check Type
+          set in Summary
+        </i>
+      </li>
+    {/if}
 
-    <li><a href="{base}/route_check/path_check">Path Check</a></li>
-    <li>
-      <a href="{base}/route_check/path_placemaking_check">
-        Path Placemaking Check
-      </a>
-    </li>
+    {#if $state.summary.checkType == "path"}
+      <li><a href="{base}/route_check/path_check">Path Check</a></li>
+      <li>
+        <a href="{base}/route_check/path_placemaking_check">
+          Path Placemaking Check
+        </a>
+      </li>
+    {:else}
+      <li>
+        <i>
+          Path Check (disabled, because of the Route Check Type set in Summary
+        </i>
+      </li>
+      <li>
+        <i>
+          Path Placemaking Check (disabled, because of the Route Check Type set
+          in Summary
+        </i>
+      </li>
+    {/if}
 
     <li>JAT Check</li>
 
