@@ -7,16 +7,16 @@
   label="Cyclist Delay on Links"
   cases={[
     [
-      "0",
-      "Cyclists have no opportunities to pass slower moving vehicles (including other cyclists).",
+      "2",
+      "Cyclists can always progress without being delayed by other vehicles.",
     ],
     [
       "1",
       "Cyclists have some opportunities to pass slower moving vehicles (including other cyclists).",
     ],
     [
-      "2",
-      "Cyclists can always progress without being delayed by other vehicles.",
+      "0",
+      "Cyclists have no opportunities to pass slower moving vehicles (including other cyclists).",
     ],
   ]}
 >

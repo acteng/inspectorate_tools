@@ -6,9 +6,9 @@
   idx={22}
   label="Places to Shelter"
   cases={[
-    ["0", ">150m."],
-    ["1", "50-150m."],
     ["2", "<50m."],
+    ["1", "50-150m."],
+    ["0", ">150m."],
   ]}
 >
   <p>Distance between shelter points.</p>

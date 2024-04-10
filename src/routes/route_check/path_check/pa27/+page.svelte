@@ -7,16 +7,16 @@
   label="Walking and Wheeling Surface"
   cases={[
     [
-      "0",
-      "The surface is low-grip (i.e. PTV of 25 or lower).  If paved, the joints are wider than 5mm.",
+      "2",
+      "The surface is high-grip (i.e. PTV of 35 or higher).  If paved, the joints are mortared.",
     ],
     [
       "1",
       "The surface is medium-grip (i.e. PTV of between 25 and 35).  If paved, the joints are 5mm or less.",
     ],
     [
-      "2",
-      "The surface is high-grip (i.e. PTV of 35 or higher).  If paved, the joints are mortared.",
+      "0",
+      "The surface is low-grip (i.e. PTV of 25 or lower).  If paved, the joints are wider than 5mm.",
     ],
   ]}
 >

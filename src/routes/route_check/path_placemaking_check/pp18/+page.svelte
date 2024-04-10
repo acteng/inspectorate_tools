@@ -7,16 +7,16 @@
   label="Light Pollution"
   cases={[
     [
-      "0",
-      "Beams from path lighting are excessively bright, excessively blue-violet and/or not shielded.   Or, parts of the path are positioned so that vehicle headlights dazzle pedestrians and cyclists.",
+      "2",
+      "Beams from path lighting are shielded, are no stronger than necessary and are warm-coloured.  Path environment and/or layout mitigates the effect of vehicle headlights dazzling pedestrians and cyclists.",
     ],
     [
       "1",
       "Beams from path lighting are no stronger than necessary but are not sufficiently shielded.",
     ],
     [
-      "2",
-      "Beams from path lighting are shielded, are no stronger than necessary and are warm-coloured.  Path environment and/or layout mitigates the effect of vehicle headlights dazzling pedestrians and cyclists.",
+      "0",
+      "Beams from path lighting are excessively bright, excessively blue-violet and/or not shielded.   Or, parts of the path are positioned so that vehicle headlights dazzle pedestrians and cyclists.",
     ],
   ]}
 >

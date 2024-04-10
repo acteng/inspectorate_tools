@@ -7,13 +7,13 @@
   label="Connectivity with Other Horse Riding Routes"
   cases={[
     [
-      "0",
-      "The route does not link to other routes appropriate for horse riding.",
+      "2",
+      "The route links to two or more other routes appropriate for horse riding.",
     ],
     ["1", "The route links to one other route appropriate for horse riding."],
     [
-      "2",
-      "The route links to two or more other routes appropriate for horse riding.",
+      "0",
+      "The route does not link to other routes appropriate for horse riding.",
     ],
   ]}
 >

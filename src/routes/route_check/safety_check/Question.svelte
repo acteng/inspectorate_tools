@@ -9,7 +9,7 @@
   export let label: string;
   export let cases: ["C" | "0" | "1" | "2", string][];
 
-  let colors = [critical, red, amber, green];
+  let colors = [green, amber, red, critical];
 
   let choices: [string, string, string][] = cases.map(
     ([value, label], index) => [value.toString(), label, colors[index]],

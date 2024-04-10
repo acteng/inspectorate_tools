@@ -7,16 +7,16 @@
   label="Tactile Information and Signal Equipment"
   cases={[
     [
-      "0",
-      "Guidance on tactile paving has not been considered.  Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).",
+      "2",
+      "Guidance on tactile paving has been considered and the area is fully legible.",
     ],
     [
       "1",
       "Guidance on tactile paving has been considered, but the area is not fully legible.",
     ],
     [
-      "2",
-      "Guidance on tactile paving has been considered and the area is fully legible.",
+      "0",
+      "Guidance on tactile paving has not been considered.  Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).",
     ],
   ]}
 >

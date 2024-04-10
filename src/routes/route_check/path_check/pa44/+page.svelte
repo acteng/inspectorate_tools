@@ -7,16 +7,16 @@
   label="Proximity to Destinations"
   cases={[
     [
-      "0",
-      "The route is not within 400m of any public transport interchanges or other destinations.",
+      "2",
+      "The route is within 400m of at least one public transport interchange and at least one other destination.",
     ],
     [
       "1",
       "The route is within 400m of a public transport interchange or other destination.",
     ],
     [
-      "2",
-      "The route is within 400m of at least one public transport interchange and at least one other destination.",
+      "0",
+      "The route is not within 400m of any public transport interchanges or other destinations.",
     ],
   ]}
 >

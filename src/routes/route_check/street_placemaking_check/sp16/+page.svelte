@@ -7,16 +7,16 @@
   label="Street Features that Support Walking, Wheeling and Cycling"
   cases={[
     [
-      "0",
-      "No specific street features to encourage and enhance active travel journeys.",
+      "2",
+      "Many street features to encourage and enhance active travel journeys.",
     ],
     [
       "1",
       "One street feature to encourage and enhance active travel journeys.",
     ],
     [
-      "2",
-      "Many street features to encourage and enhance active travel journeys.",
+      "0",
+      "No specific street features to encourage and enhance active travel journeys.",
     ],
   ]}
 >

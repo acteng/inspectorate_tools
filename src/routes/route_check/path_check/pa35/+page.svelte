@@ -6,12 +6,12 @@
   idx={19}
   label="Crossing Locations"
   cases={[
-    ["0", "No crossings are located on desire lines."],
-    ["1", "Some crossings are located on desire lines."],
     [
       "2",
       "All crossings are located on desire lines, and all desire lines are provided for.",
     ],
+    ["1", "Some crossings are located on desire lines."],
+    ["0", "No crossings are located on desire lines."],
   ]}
 >
   <p>Alignment of crossings with desire lines.</p>

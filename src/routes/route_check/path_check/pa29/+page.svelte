@@ -7,16 +7,16 @@
   label="Horse Riding Surface"
   cases={[
     [
-      "0",
-      'Sealed surface, e.g. asphalt or other material rated "reasonable" in Table 5.29 of DMRB CD 143.',
+      "2",
+      'Grass (or other material rated "excellent" in Table 5.29 of DMRB CD 143) is provided.',
     ],
     [
       "1",
       'A bound and porous surface or other material rated "good" in Table 5.29 of DMRB CD 143.',
     ],
     [
-      "2",
-      'Grass (or other material rated "excellent" in Table 5.29 of DMRB CD 143) is provided.',
+      "0",
+      'Sealed surface, e.g. asphalt or other material rated "reasonable" in Table 5.29 of DMRB CD 143.',
     ],
   ]}
 >
