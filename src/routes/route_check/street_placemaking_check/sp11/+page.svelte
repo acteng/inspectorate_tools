@@ -7,16 +7,16 @@
   label="Enforcement of Loading and Parking"
   cases={[
     [
-      "0",
-      "No designated provision: risk of abuse, pedestrian or cycling movement impacted.",
+      "2",
+      "Good loading and servicing provision, low impact and integrated. Parking enforcement recognised.   Or, no loading or parking provision necessary.",
     ],
     [
       "1",
       "Reasonable loading, servicing and parking provision in street area where needed. ",
     ],
     [
-      "2",
-      "Good loading and servicing provision, low impact and integrated. Parking enforcement recognised.   Or, no loading or parking provision necessary.",
+      "0",
+      "No designated provision: risk of abuse, pedestrian or cycling movement impacted.",
     ],
   ]}
 >

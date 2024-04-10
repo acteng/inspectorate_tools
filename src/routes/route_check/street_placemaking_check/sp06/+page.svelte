@@ -7,16 +7,16 @@
   label="Visibility of Others"
   cases={[
     [
-      "0",
-      "No lighting. Street furniture that creates potential ambush points.",
+      "2",
+      "Lighting that does not create high contrast areas with shadows. Street furniture does not create hiding or loitering places.",
     ],
     [
       "1",
       "Inadequate lighting, or bright lighting that creates high contrast areas with shadows. ",
     ],
     [
-      "2",
-      "Lighting that does not create high contrast areas with shadows. Street furniture does not create hiding or loitering places.",
+      "0",
+      "No lighting. Street furniture that creates potential ambush points.",
     ],
   ]}
 >

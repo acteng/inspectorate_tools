@@ -7,13 +7,13 @@
   label="Maintenance and Upkeep"
   cases={[
     [
-      "0",
-      "Poorly maintained path environment: overgrown vegetation or significant littering. No winter maintenance.  The path has been designed in a way that is hard to maintain.",
+      "2",
+      "Well maintained environment: vegetation is well-managed and there are no issues with littering. Route is well-maintained throughout winter.  The path has been designed in a way that is easy to maintain.",
     ],
     ["1", "Elements of the path environment are well maintained."],
     [
-      "2",
-      "Well maintained environment: vegetation is well-managed and there are no issues with littering. Route is well-maintained throughout winter.  The path has been designed in a way that is easy to maintain.",
+      "0",
+      "Poorly maintained path environment: overgrown vegetation or significant littering. No winter maintenance.  The path has been designed in a way that is hard to maintain.",
     ],
   ]}
 >

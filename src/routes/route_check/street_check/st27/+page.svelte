@@ -7,16 +7,16 @@
   label="Deviation of Cycle Route"
   cases={[
     [
-      "0",
-      "Deviation factor against straight line or shortest alternative greater than 1.4.",
+      "2",
+      "Deviation factor against straight line or shortest alternative less than 1.2.",
     ],
     [
       "1",
       "Deviation factor against straight line or shortest alternative 1.2-1.4.",
     ],
     [
-      "2",
-      "Deviation factor against straight line or shortest alternative less than 1.2.",
+      "0",
+      "Deviation factor against straight line or shortest alternative greater than 1.4.",
     ],
   ]}
 >

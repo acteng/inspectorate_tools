@@ -7,16 +7,16 @@
   label="Forward Visibility and Escape Routes"
   cases={[
     [
-      "0",
-      "Poor sight lines or potential ambush points due to buildings, walls, vegetation, corners or topography etc.  Enclosed spaces; no or few escape routes.",
+      "2",
+      "Streetscape is open with good visibility and clear sight lines.  Frequent escape routes.",
     ],
     [
       "1",
       "Streetscape is mostly open with few visibility issues.  Some escape routes.",
     ],
     [
-      "2",
-      "Streetscape is open with good visibility and clear sight lines.  Frequent escape routes.",
+      "0",
+      "Poor sight lines or potential ambush points due to buildings, walls, vegetation, corners or topography etc.  Enclosed spaces; no or few escape routes.",
     ],
   ]}
 >

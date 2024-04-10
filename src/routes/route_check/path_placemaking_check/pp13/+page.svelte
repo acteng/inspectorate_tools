@@ -6,9 +6,9 @@
   idx={13}
   label="Ancillary Features to Support Fauna"
   cases={[
-    ["0", "No features."],
-    ["1", "One feature."],
     ["2", "Multiple features."],
+    ["1", "One feature."],
+    ["0", "No features."],
   ]}
 >
   <p>

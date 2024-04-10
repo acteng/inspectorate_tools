@@ -7,16 +7,16 @@
   label="Ease of Navigation"
   cases={[
     [
-      "0",
-      "There are multiple points along the route where the way forward is unclear due to the path environment, design features, or poor/missing signage.",
+      "2",
+      "The way forward along the route is clear due to the path environment and design features. If signage is needed at decision points, it is present.",
     ],
     [
       "1",
       "There is one point along the route where the way forward is unclear due to the path environment, design features, or poor/missing signage.",
     ],
     [
-      "2",
-      "The way forward along the route is clear due to the path environment and design features. If signage is needed at decision points, it is present.",
+      "0",
+      "There are multiple points along the route where the way forward is unclear due to the path environment, design features, or poor/missing signage.",
     ],
   ]}
 >

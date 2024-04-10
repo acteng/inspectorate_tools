@@ -1,9 +1,10 @@
 import os
+import sys
 
 # Manually copy from Excel. This is a one-off script; the source of truth
 # becomes the Svelte files, which need to be manually edited to improve
 # formatting.
-with open("input.tsv") as tsv:
+with open(sys.argv[1]) as tsv:
     idx = 1
     for line in tsv:
         parts = line.strip().split("\t")
@@ -26,9 +27,9 @@ with open("input.tsv") as tsv:
             f.write("""  label="{}"\n""".format(metric))
 
             f.write("""  cases={[\n""")
-            f.write("""    ["0", "{}"],\n""".format(red))
-            f.write("""    ["1", "{}"],\n""".format(amber))
             f.write("""    ["2", "{}"],\n""".format(green))
+            f.write("""    ["1", "{}"],\n""".format(amber))
+            f.write("""    ["0", "{}"],\n""".format(red))
             f.write("""  ]}\n""")
             f.write(""">\n""")
 

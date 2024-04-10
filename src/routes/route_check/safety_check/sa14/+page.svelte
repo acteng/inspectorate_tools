@@ -6,10 +6,10 @@
   idx={14}
   label="Cycling Surface and Maintenance Defects"
   cases={[
-    ["C", "Major defects."],
-    ["0", "Many minor defects."],
-    ["1", "Few minor defects."],
     ["2", "No defects."],
+    ["1", "Few minor defects."],
+    ["0", "Many minor defects."],
+    ["C", "Major defects."],
   ]}
 >
   <p>

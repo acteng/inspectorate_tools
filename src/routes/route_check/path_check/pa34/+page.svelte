@@ -6,15 +6,15 @@
   idx={18}
   label="Deviation of Path Against Nearest Alternative Route"
   cases={[
-    [
-      "0",
-      "Deviation factor against nearest alternative route greater than 1.4.",
-    ],
+    ["2", "Deviation factor against nearest alternative route less than 1.2."],
     [
       "1",
       "Deviation factor against nearest alternative route between 1.2-1.4.",
     ],
-    ["2", "Deviation factor against nearest alternative route less than 1.2."],
+    [
+      "0",
+      "Deviation factor against nearest alternative route greater than 1.4.",
+    ],
   ]}
 >
   <p>

@@ -7,16 +7,16 @@
   label="Trees"
   cases={[
     [
-      "0",
-      "There are no trees, or only one tree.    If assessing a design proposal, there are no trees, or the number of trees has been reduced. ",
+      "2",
+      "There are multiple trees, with canopies spaced less than 15m apart on average.    If assessing a design proposal, all existing trees are to be retained, with the overall number of trees maintained or increased.",
     ],
     [
       "1",
       "There are multiple trees, with canopies spaced more than 15m apart on average.    If assessing a design proposal, most existing trees are to be retained, with the overall number of trees maintained or increased. ",
     ],
     [
-      "2",
-      "There are multiple trees, with canopies spaced less than 15m apart on average.    If assessing a design proposal, all existing trees are to be retained, with the overall number of trees maintained or increased.",
+      "0",
+      "There are no trees, or only one tree.    If assessing a design proposal, there are no trees, or the number of trees has been reduced. ",
     ],
   ]}
 >
