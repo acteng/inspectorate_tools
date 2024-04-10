@@ -1,36 +1,17 @@
 <script lang="ts">
-  import { currentFile, state, emptyState } from "./data";
+  import {
+    currentFile,
+    state,
+    emptyState,
+    newFilename,
+    getFileList,
+    loadFile,
+  } from "./data";
   import { SecondaryButton, TextArea, CollapsibleCard } from "govuk-svelte";
 
   export let prefix: string;
 
   let fileList = getFileList();
-
-  function getFileList(): string[] {
-    let list = [];
-    for (let i = 0; i < window.localStorage.length; i++) {
-      let key = window.localStorage.key(i)!;
-      if (key.startsWith(prefix)) {
-        list.push(key);
-      }
-    }
-    list.sort();
-    return list;
-  }
-
-  function loadFile(file: string) {
-    try {
-      let x = JSON.parse(window.localStorage.getItem(file) || "{}");
-      // Could more thoroughly check for validity, but the format won't change much after initial development calms down
-      if (!x.streetPlacemakingCheck) {
-        throw new Error("File format appears outdated");
-      }
-      $currentFile = file;
-      $state = x;
-    } catch (error) {
-      window.alert(`Couldn't load ${file.slice(prefix.length)}: ${error}`);
-    }
-  }
 
   function deleteFile(file: string) {
     if ($currentFile == file) {
@@ -68,18 +49,21 @@
   }
 
   function newFile() {
-    for (let n = 1; n <= fileList.length; n++) {
-      let file = `${prefix}untitled${n}`;
-      if (!fileList.includes(file)) {
-        $currentFile = file;
-        $state = emptyState();
-        // Do this immediately, so we can refresh the fileList
-        window.localStorage.setItem($currentFile, JSON.stringify($state));
-        fileList = getFileList();
-        return;
-      }
+    $currentFile = newFilename();
+    $state = emptyState();
+    // Do this immediately, so we can refresh the fileList
+    window.localStorage.setItem($currentFile, JSON.stringify($state));
+    fileList = getFileList();
+  }
+
+  function setFile(file: string) {
+    try {
+      let x = loadFile(file);
+      $currentFile = file;
+      $state = x;
+    } catch (error) {
+      window.alert(`Couldn't load ${file}: ${error}`);
     }
-    throw new Error("Couldn't make a new filename; this shouldn't be possible");
   }
 </script>
 
@@ -94,7 +78,7 @@
       <li>
         <span style="display: flex; justify-content: space-between;">
           <SecondaryButton
-            on:click={() => loadFile(file)}
+            on:click={() => setFile(file)}
             disabled={$currentFile == file}
           >
             {file.slice(prefix.length)}
