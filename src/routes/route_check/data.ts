@@ -108,6 +108,7 @@ export interface State {
     proposed: "Yes" | "No" | "";
     commentary: string;
   }[];
+  policyConflictLog: PolicyConflict[];
 
   safetyCheck: Scorecard;
 
@@ -132,6 +133,18 @@ interface Scorecard {
   // Optional notes for each entry
   existingScoreNotes: string[];
   proposedScoreNotes: string[];
+}
+
+interface PolicyConflict {
+  id: string;
+  // TODO
+  conflict: "1" | "2" | "3" | "4" | "5" | "6" | "";
+  stage: "Existing" | "Design" | "";
+  // TODO GJ point type?
+  point: string;
+  locationName: string;
+  resolved: "Yes" | "No" | "";
+  notes: "";
 }
 
 export function emptyState(): State {
@@ -159,6 +172,7 @@ export function emptyState(): State {
       proposed: "",
       commentary: "",
     }),
+    policyConflictLog: [],
     safetyCheck: emptyScorecard(16),
     streetCheck: emptyScorecard(26),
     streetPlacemakingCheck: emptyScorecard(26),
