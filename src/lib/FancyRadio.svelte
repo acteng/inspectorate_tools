@@ -48,6 +48,7 @@
 <style>
   span.option-value {
     padding: 8px;
+    height: 24px;
     border-radius: 20px;
   }
   span.option-text {
@@ -55,6 +56,5 @@
   }
   label {
     display: flex;
-    align-items: center;
   }
 </style>
