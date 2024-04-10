@@ -2,13 +2,84 @@ import { get, writable } from "svelte/store";
 import { repeatCloned } from "$lib";
 
 let prefix = "route-check/";
-export let state = writable(emptyState());
-// TODO Restore last open file
-export let currentFile = writable(`${prefix}untitled`);
 
-state.subscribe((value) =>
-  window.localStorage.setItem(get(currentFile), JSON.stringify(value)),
-);
+export let state = writable(emptyState());
+export let currentFile = writable("");
+
+initialLoad();
+
+function initialLoad() {
+  console.log(`Initial load; trying to open last opened file`);
+  let lastFile = window.localStorage.getItem(`${prefix}last-opened-file`);
+  if (lastFile) {
+    try {
+      let x = loadFile(lastFile);
+      currentFile.set(lastFile);
+      state.set(x);
+      return;
+    } catch (error) {
+      window.alert(`The last opened file ${lastFile} has a problem: ${error}`);
+    }
+  }
+
+  console.log(`Starting with a new file`);
+  let file = newFilename();
+  currentFile.set(file);
+}
+
+state.subscribe((value) => {
+  let file = get(currentFile);
+  if (file) {
+    window.localStorage.setItem(file, JSON.stringify(value));
+  }
+});
+
+currentFile.subscribe((value) => {
+  if (value) {
+    window.localStorage.setItem(`${prefix}last-opened-file`, value);
+  }
+});
+
+// Loads a key from local storage. Throws an exception if the stored state is missing or invalid.
+export function loadFile(file: string): State {
+  console.log(`Loading ${file}`);
+  let json = window.localStorage.getItem(file);
+  if (!json) {
+    throw new Error(`Key not in local storage: ${file}`);
+  }
+  let x = JSON.parse(json);
+  // Could more thoroughly check for validity, but the format won't change
+  // much after initial development calms down
+  if (!x.streetPlacemakingCheck) {
+    throw new Error("File format appears outdated");
+  }
+  return x;
+}
+
+// Returns an unused filename.
+export function newFilename(): string {
+  let fileList = getFileList();
+  for (let n = 1; n <= fileList.length + 1; n++) {
+    let file = `${prefix}untitled${n}`;
+    if (!fileList.includes(file)) {
+      return file;
+    }
+  }
+  throw new Error("Couldn't make a new filename; this shouldn't be possible");
+}
+
+// Returns a sorted list of all filenames in local storage.
+export function getFileList(): string[] {
+  let list = [];
+  for (let i = 0; i < window.localStorage.length; i++) {
+    let key = window.localStorage.key(i)!;
+    if (key.startsWith(prefix) && key != `${prefix}last-opened-file`) {
+      list.push(key);
+    }
+  }
+  list.sort();
+  return list;
+}
 
 export interface State {
   summary: {

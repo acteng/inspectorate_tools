@@ -6,9 +6,9 @@
   idx={14}
   label="Visual Interest"
   cases={[
-    ["0", "Uniform, monotonous, boring."],
-    ["1", "Some variety in the streetscape."],
     ["2", "Lots of variety in the streetscape, unique features."],
+    ["1", "Some variety in the streetscape."],
+    ["0", "Uniform, monotonous, boring."],
   ]}
 >
   <p>Visual distinctiveness of the streetscape.</p>

@@ -6,12 +6,12 @@
   idx={10}
   label="Features to Support Walking, Wheeling and Cycling"
   cases={[
+    ["2", "Many features to encourage and enhance active travel journeys."],
+    ["1", "One feature to encourage and enhance active travel journeys."],
     [
       "0",
       "No specific features to encourage and enhance active travel journeys.",
     ],
-    ["1", "One feature to encourage and enhance active travel journeys."],
-    ["2", "Many features to encourage and enhance active travel journeys."],
   ]}
 >
   <p>

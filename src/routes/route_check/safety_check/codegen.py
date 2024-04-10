@@ -1,9 +1,10 @@
 import csv
+import sys
 
 # Manually copy from Excel. This is a one-off script; the source of truth
 # becomes the Svelte files, which need to be manually edited to improve
 # formatting.
-with open("safety_check.tsv") as tsv:
+with open(sys.argv[1]) as tsv:
     idx = 1
     for row in csv.DictReader(
         tsv,
@@ -30,10 +31,10 @@ with open("safety_check.tsv") as tsv:
             f.write("""  label="{}"\n""".format(row["Metric"]))
 
             f.write("""  cases={[\n""")
-            f.write("""    ["C", "{}"],\n""".format(row["Critical"]))
-            f.write("""    ["0", "{}"],\n""".format(row["Red"]))
-            f.write("""    ["1", "{}"],\n""".format(row["Amber"]))
             f.write("""    ["2", "{}"],\n""".format(row["Green"]))
+            f.write("""    ["1", "{}"],\n""".format(row["Amber"]))
+            f.write("""    ["0", "{}"],\n""".format(row["Red"]))
+            f.write("""    ["C", "{}"],\n""".format(row["Critical"]))
             f.write("""  ]}\n""")
             f.write(""">\n""")
 
