@@ -3,7 +3,7 @@
   import Progress from "./Progress.svelte";
   import { TextArea } from "govuk-svelte";
   import { state } from "../data";
-  import { criticalRedAmberGreen } from "$lib/colors";
+  import { greenAmberRedCritical } from "$lib/colors";
 
   export let idx: number;
   export let label: string;
@@ -13,8 +13,8 @@
     ([value, label], index) => [
       value.toString(),
       label,
-      criticalRedAmberGreen[index].background,
-      criticalRedAmberGreen[index].font,
+      greenAmberRedCritical[index].background,
+      greenAmberRedCritical[index].font,
     ],
   );
 </script>

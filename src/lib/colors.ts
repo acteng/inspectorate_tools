@@ -26,14 +26,14 @@ let backgroundAndFontCombinations = {
   },
 };
 
-export let criticalRedAmberGreen = [
+export let greenAmberRedCritical = [
+  backgroundAndFontCombinations.green,
+  backgroundAndFontCombinations.amber,
+  backgroundAndFontCombinations.red,
   backgroundAndFontCombinations.critical,
-  backgroundAndFontCombinations.red,
-  backgroundAndFontCombinations.amber,
-  backgroundAndFontCombinations.green,
 ];
-export let redAmberGreen = [
-  backgroundAndFontCombinations.red,
-  backgroundAndFontCombinations.amber,
+export let greenAmberRed = [
   backgroundAndFontCombinations.green,
+  backgroundAndFontCombinations.amber,
+  backgroundAndFontCombinations.red,
 ];
