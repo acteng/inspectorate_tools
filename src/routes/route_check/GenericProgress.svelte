@@ -79,7 +79,7 @@
       </div>
     {:else}
       <li>
-        <div  style="display: flex; justify-content: space-between">
+        <div style="display: flex; justify-content: space-between">
           {#if currentIdx - startIdx != item.idx}
             <a href="{base}{urlBase}{formatIndex(item.idx)}">
               {item.label}
@@ -99,15 +99,13 @@
 </ol>
 
 <style>
-.govuk-font {
-  font-family: "GDS Transport", arial, sans-serif;
-}
-.govuk-tag {
-  margin: 1px;
-}
-li::marker {
-  font-family: "GDS Transport", arial, sans-serif;
-}
-
-
-  </style>
+  .govuk-font {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+  .govuk-tag {
+    margin: 1px;
+  }
+  li::marker {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+</style>
