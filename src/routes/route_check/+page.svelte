@@ -1,12 +1,9 @@
 <script lang="ts">
   import { Breadcrumbs, ExternalLink } from "$lib";
   import { base } from "$app/paths";
-  import { state, emptyState } from "./data";
+  import { state } from "./data";
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
-
-  function reset() {
-    $state = emptyState();
-  }
+  import FileManager from "./FileManager.svelte";
 </script>
 
 <div class="govuk-prose">
@@ -19,6 +16,8 @@
       scheme review tool
     </ExternalLink>.
   </p>
+
+  <FileManager prefix="route-check/" />
 
   <ol>
     <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
@@ -76,13 +75,4 @@
     <li>Results Further Analysis</li>
     <li>Results Export</li>
   </ol>
-
-  <CollapsibleCard label="Debug">
-    <WarningButton on:click={reset}>Reset</WarningButton>
-    <TextArea
-      label="JSON"
-      value={JSON.stringify($state, null, "  ")}
-      rows={10}
-    />
-  </CollapsibleCard>
 </div>

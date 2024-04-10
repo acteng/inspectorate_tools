@@ -1,5 +1,14 @@
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 import { repeatCloned } from "$lib";
+
+let prefix = "route-check/";
+export let state = writable(emptyState());
+// TODO Restore last open file
+export let currentFile = writable(`${prefix}untitled`);
+
+state.subscribe((value) =>
+  window.localStorage.setItem(get(currentFile), JSON.stringify(value)),
+);
 
 export interface State {
   summary: {
@@ -52,20 +61,6 @@ interface Scorecard {
   // Optional notes for each entry
   existingScoreNotes: string[];
   proposedScoreNotes: string[];
-}
-
-export let state = writable(loadState());
-state.subscribe((value) =>
-  window.localStorage.setItem("route-check", JSON.stringify(value)),
-);
-
-function loadState(): State {
-  let x = JSON.parse(window.localStorage.getItem("route-check") || "{}");
-  // Could more thoroughly check for validity, but the format won't change much after initial development calms down
-  if (x.streetPlacemakingCheck) {
-    return x;
-  }
-  return emptyState();
 }
 
 export function emptyState(): State {
