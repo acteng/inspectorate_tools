@@ -2,7 +2,7 @@
 
 This is a fairly standard Sveltekit project. It's completely client-side, using the static adaptor. User state is auto-synced to browser local storage.
 
-`npm i`, then `npm run dev` to develop locally.
+`npm i`, then `npm run setup-govuk`, then `npm run dev` to develop locally.
 
 ## Design decisions: data-driven vs code
 
