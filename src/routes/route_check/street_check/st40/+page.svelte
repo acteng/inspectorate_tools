@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Cyclists have dedicated, legible and understandable transitions on and off the route at all key points. Protected cycle facilities are easy to join and leave.",
+      "<p>Cyclists have dedicated, legible and understandable transitions on and off the route at all key points. Protected cycle facilities are easy to join and leave.</p>",
     ],
     [
       "1",
-      "Cyclists can transition on and off the route with minimal disruption to their journey.",
+      "<p>Cyclists can transition on and off the route with minimal disruption to their journey.</p>",
     ],
     [
       "0",
-      "Cyclists cannot transition on or off the route without dismounting.",
+      "<p>Cyclists cannot transition on or off the route without dismounting.</p>",
     ],
   ]}
 >

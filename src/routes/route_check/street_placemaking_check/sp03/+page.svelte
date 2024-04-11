@@ -8,10 +8,10 @@
   cases={[
     [
       "2",
-      "Different activities encouraged on the street at different times of day.",
+      "<p>Different activities encouraged on the street at different times of day.</p>",
     ],
-    ["1", "Multiple activity street."],
-    ["0", "Single activity street."],
+    ["1", "<p>Multiple activity street.</p>"],
+    ["0", "<p>Single activity street.</p>"],
   ]}
 >
   <p>

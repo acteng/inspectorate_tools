@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Beams from path lighting are shielded, are no stronger than necessary and are warm-coloured.  Path environment and/or layout mitigates the effect of vehicle headlights dazzling pedestrians and cyclists.",
+      "<p>Beams from path lighting are shielded, are no stronger than necessary and are warm-coloured.</p><p>Path environment and/or layout mitigates the effect of vehicle headlights dazzling pedestrians and cyclists.</p>",
     ],
     [
       "1",
-      "Beams from path lighting are no stronger than necessary but are not sufficiently shielded.",
+      "<p>Beams from path lighting are no stronger than necessary but are not sufficiently shielded.</p>",
     ],
     [
       "0",
-      "Beams from path lighting are excessively bright, excessively blue-violet and/or not shielded.   Or, parts of the path are positioned so that vehicle headlights dazzle pedestrians and cyclists.",
+      "<p>Beams from path lighting are excessively bright, excessively blue-violet and/or not shielded.</p><p>Or, parts of the path are positioned so that vehicle headlights dazzle pedestrians and cyclists.</p>",
     ],
   ]}
 >

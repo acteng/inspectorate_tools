@@ -8,10 +8,10 @@
   cases={[
     [
       "2",
-      "Full integration of low carbon, sustainable and/or recycled materials.",
+      "<p>Full integration of low carbon, sustainable and/or recycled materials.</p>",
     ],
-    ["1", "Some low carbon, sustainable or recycled materials used."],
-    ["0", "No low carbon, sustainable or recycled materials used."],
+    ["1", "<p>Some low carbon, sustainable or recycled materials used.</p>"],
+    ["0", "<p>No low carbon, sustainable or recycled materials used.</p>"],
   ]}
 >
   <p>

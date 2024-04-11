@@ -2,7 +2,7 @@ import csv
 from common import *
 
 
-with open("inputs/safety-check.csv") as inputFile:
+with open("inputs/street-check.csv") as inputFile:
     idx = 1
     for row in csv.DictReader(
         inputFile,
@@ -11,7 +11,7 @@ with open("inputs/safety-check.csv") as inputFile:
             "Mode",
             "ID",
             "Description",
-            "Critical",
+            "blank",
             "Red",
             "Amber",
             "Green",
@@ -21,7 +21,7 @@ with open("inputs/safety-check.csv") as inputFile:
             continue
 
         with open(
-            "../src/routes/route_check/safety_check/"
+            "../src/routes/route_check/street_check/"
             + row["ID"].lower()
             + "/+page.svelte",
             "w",
@@ -39,7 +39,6 @@ with open("inputs/safety-check.csv") as inputFile:
             f.write("""    ["2", "{}"],\n""".format(html(row["Green"])))
             f.write("""    ["1", "{}"],\n""".format(html(row["Amber"])))
             f.write("""    ["0", "{}"],\n""".format(html(row["Red"])))
-            f.write("""    ["C", "{}"],\n""".format(html(row["Critical"])))
             f.write("""  ]}\n""")
             f.write(""">\n""")
 

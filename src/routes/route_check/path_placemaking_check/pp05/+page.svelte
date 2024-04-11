@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Path is open with good visibility and clear sight lines.   Frequent escape routes.",
+      "<p>Path is open with good visibility and clear sight lines.</p><p>Frequent escape routes.</p>",
     ],
     [
       "1",
-      "Path is mostly open with few visibility issues.   Some escape routes.",
+      "<p>Path is mostly open with few visibility issues.</p><p>Some escape routes.</p>",
     ],
     [
       "0",
-      "Poor sight lines or potential ambush points due to buildings, walls, vegetation, corners or topography etc.   Enclosed spaces; no or few escape routes.",
+      "<p>Poor sight lines or potential ambush points due to buildings, walls, vegetation, corners or topography etc.</p><p>Enclosed spaces; no or few escape routes.</p>",
     ],
   ]}
 >

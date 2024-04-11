@@ -8,21 +8,23 @@
   cases={[
     [
       "2",
-      "Information on local features, flora or fauna is provided.  Public art has been encouraged or featured.",
+      "<p>Information on local features, flora or fauna is provided.</p><p>Public art has been encouraged or featured.</p>",
     ],
     [
       "1",
-      "Some information on local features, flora or fauna is provided.  Or, public art has been encouraged or featured. ",
+      "<p>Some information on local features, flora or fauna is provided.</p><p>Or, public art has been encouraged or featured.</p>",
     ],
     [
       "0",
-      "No information on local features, flora or fauna is provided.  No public art has been encouraged or featured. ",
+      "<p>No information on local features, flora or fauna is provided.</p><p>No public art has been encouraged or featured.</p>",
     ],
   ]}
 >
-  <p>
-    Presence of features which people can engage with, such as: • Information on
-    local features, flora and fauna • Public art • Heritage features •
-    Viewpoints
-  </p>
+  <p>Presence of features which people can engage with, such as:</p>
+  <ul>
+    <li>Information on local features, flora and fauna</li>
+    <li>Public art</li>
+    <li>Heritage features</li>
+    <li>Viewpoints</li>
+  </ul>
 </Question>

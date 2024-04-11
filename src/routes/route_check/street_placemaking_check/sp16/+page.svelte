@@ -8,22 +8,28 @@
   cases={[
     [
       "2",
-      "Many street features to encourage and enhance active travel journeys.",
+      "<p>Many street features to encourage and enhance active travel journeys.</p>",
     ],
     [
       "1",
-      "One street feature to encourage and enhance active travel journeys.",
+      "<p>One street feature to encourage and enhance active travel journeys.</p>",
     ],
     [
       "0",
-      "No specific street features to encourage and enhance active travel journeys.",
+      "<p>No specific street features to encourage and enhance active travel journeys.</p>",
     ],
   ]}
 >
   <p>
-    Street features to encourage and enhance active travel journeys, such as: •
-    Benches or other seating • Water fountains • Public tool stands • Cycle
-    pumps • Cycle counters • Interpretation boards • Tactile maps or interactive
-    pedestrian features
+    Street features to encourage and enhance active travel journeys, such as:
   </p>
+  <ul>
+    <li>Benches or other seating</li>
+    <li>Water fountains</li>
+    <li>Public tool stands</li>
+    <li>Cycle pumps</li>
+    <li>Cycle counters</li>
+    <li>Interpretation boards</li>
+    <li>Tactile maps or interactive pedestrian features</li>
+  </ul>
 </Question>

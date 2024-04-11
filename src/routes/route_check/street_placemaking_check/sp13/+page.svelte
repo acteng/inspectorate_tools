@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Surface materials and street furniture complement the wider street environment and enhance the street's appearance and character.",
+      "<p>Surface materials and street furniture complement the wider street environment and enhance the street's appearance and character.</p>",
     ],
     [
       "1",
-      "Consistent surface materials and street furniture which also match the wider street environment.",
+      "<p>Consistent surface materials and street furniture which also match the wider street environment.</p>",
     ],
     [
       "0",
-      "Clashes between surface materials, street and the wider street environment, negatively affecting the street's appearance and character.",
+      "<p>Clashes between surface materials, street and the wider street environment, negatively affecting the street's appearance and character.</p>",
     ],
   ]}
 >

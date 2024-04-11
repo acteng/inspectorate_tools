@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "There are multiple trees, with canopies spaced less than 15m apart on average.    If assessing a design proposal, all existing trees are to be retained, with the overall number of trees maintained or increased.",
+      "<p>There are multiple trees, with canopies spaced less than 15m apart on average.</p><p></p><p>If assessing a design proposal, all existing trees are to be retained, with the overall number of trees maintained or increased.</p>",
     ],
     [
       "1",
-      "There are multiple trees, with canopies spaced more than 15m apart on average.    If assessing a design proposal, most existing trees are to be retained, with the overall number of trees maintained or increased. ",
+      "<p>There are multiple trees, with canopies spaced more than 15m apart on average.</p><p></p><p>If assessing a design proposal, most existing trees are to be retained, with the overall number of trees maintained or increased.</p>",
     ],
     [
       "0",
-      "There are no trees, or only one tree.    If assessing a design proposal, there are no trees, or the number of trees has been reduced. ",
+      "<p>There are no trees, or only one tree.</p><p></p><p>If assessing a design proposal, there are no trees, or the number of trees has been reduced.</p>",
     ],
   ]}
 >

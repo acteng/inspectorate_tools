@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Guidance on tactile paving has been considered and the area is fully legible.",
+      "<p>Guidance on tactile paving has been considered and the area is fully legible.</p>",
     ],
     [
       "1",
-      "Guidance on tactile paving has been considered, but the area is not fully legible.",
+      "<p>Guidance on tactile paving has been considered, but the area is not fully legible.</p>",
     ],
     [
       "0",
-      "Guidance on tactile paving has not been considered.  Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).",
+      "<p>Guidance on tactile paving has not been considered.</p><p>Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).</p>",
     ],
   ]}
 >
