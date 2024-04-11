@@ -1,0 +1,104 @@
+"ACCESSIBILITY",,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Barriers","All Active Modes","PA17","Presence and accessibility of barriers.",,"Key public access points (e.g. interfaces with public highway) to the path are restricted by barriers that would inhibit legitimate users.
+
+Or, there are barriers along the path that inhibit legitimate users.","Key public access points (e.g. interfaces with public highway) do not have barriers, but other public access points have barriers that would inhibit legitimate users.","No public access points to the path have barriers that would inhibit legitimate users.",,,,,,
+"Steps","All Active Modes","PA18","Presence of steps.",,"Steps are unavoidable at key public access points (e.g. interfaces with public highway).
+
+Or, there are unavoidable steps along the path.","A step-free route is possible at key public access points (e.g. interfaces with public highway) and along the path, but steps are present at other public access points.","A step-free route is possible at all public access points and along the path.",,,,,,
+"Gradient","Walking / Wheeling / Cycling","PA19","Steepest gradient due to underlying terrain.
+
+(For gradients at ramps, dropped kerbs and cambers, see metrics SA14 and SA15).",,">5%.","3-5%.","<3%.",,,,,,
+"Tactile Information and Signal Equipment","All Active Modes","PA20","Adherence of tactile paving to recommended layouts and colours in 'Guidance on the Use of Tactile Paving Surfaces' and accessibility of signal equipment.",,"Guidance on tactile paving has not been considered.
+
+Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).","Guidance on tactile paving has been considered, but the area is not fully legible.","Guidance on tactile paving has been considered and the area is fully legible.",,,,,,"n/a option possible"
+"Ability to Turn Around","All Active Modes","PA21","Presence and frequency of turning points (open and flat areas of at 4m x 4m).",,"There are no turning points.
+
+Or, turning points are over 1km apart or not provided between all public access points.","Turning points are approximately 1km apart. ","The path is at least 4m wide.
+
+Or, turning points are less than 1km apart and provided between all public access points.",,,,,,
+,,,,,,,,,,,,,
+"COMFORT",,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Width of Shared Use Spaces","All Active Modes","PA22","Effective width of shared use spaces.",,"Where pedestrians and cyclists are in a shared facility without horses, the width requirements set out in Table 6-3 of LTN 1/20 are not met.
+
+Where horses are in a shared facility with pedestrians and/or cyclists, the width is less than 4m.","Where pedestrians and cyclists are in a shared facility without horses, the width requirements set out in Table 6-3 of LTN 1/20 are met.
+
+Where horses are in a shared facility with pedestrians and/or cyclists, the width is 4m.","Where pedestrians and cyclists are in a shared facility without horses, the width requirements set out in Table 6-3 of LTN 1/20 are exceeded.
+
+Where horses are in a shared facility with pedestrians and/or cyclists, the width is greater than 4m.",,,,,,"n/a option possible"
+"Width of Walking and Wheeling Spaces","Walking / Wheeling","PA23","Effective width of dedicated walking/wheeling spaces.",,"<1.5m.","1.5-2m.",">2m.",,,,,,"n/a option possible"
+"Width of Cycling Spaces","Cycling","PA24","Effective width of dedicated cycling spaces.",,"<2.5m.","2.5-3m
+",">3m.",,,,,,"n/a option possible"
+"Width of Horse Riding Spaces","Horse Riding","PA25","Effective width of dedicated equestrian spaces.",,"<3m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).","3-3.5m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).",">3.5m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).",,,,,,"n/a option possible"
+"Shared Use Surface","All Active Modes","PA26","Surface of shared use facilities.",,"Unbound or unsealed surface.","Bound, sealed surface such as tarmac (including tar, spray and chip).","Bound and porous surface (e.g. Flexipave).",,,,,,"n/a option possible"
+"Walking and Wheeling Surface","Walking / Wheeling","PA27","Type of walking/wheeling surface material.",,"The surface is low-grip (i.e. PTV of 25 or lower).
+
+If paved, the joints are wider than 5mm.","The surface is medium-grip (i.e. PTV of between 25 and 35).
+
+If paved, the joints are 5mm or less.","The surface is high-grip (i.e. PTV of 35 or higher).
+
+If paved, the joints are mortared.",,,,,,"n/a option possible"
+"Cycling Surface","Cycling","PA28","Type of cycling surface material.",,"Unsurfaced/unbound or unstable blocks/sets.","Hand-laid asphalt or smooth blocks.","Machine-laid asphalt or smooth and firm blocks.",,,,,,"n/a option possible"
+"Horse Riding Surface","Horse Riding","PA29","Type of dedicated equestrian surface material (e.g. trotting strips).",,"Sealed surface, e.g. asphalt or other material rated ""reasonable"" in Table 5.29 of DMRB CD 143.","A bound and porous surface or other material rated ""good"" in Table 5.29 of DMRB CD 143.","Grass (or other material rated ""excellent"" in Table 5.29 of DMRB CD 143) is provided. ",,,,,,"n/a option possible"
+"Suitability of Crossings","All Active Modes","PA30","Suitability of crossings provided given path users and the volumes and speeds of traffic on roads being crossed.",,"Not all crossings are suitable for all path users.
+
+Or, crossings selected do not follow LTN 1/20 guidance given the volumes and speeds of traffic on roads being crossed.","All crossings are suitable for all path users given the volumes and speeds of traffic on roads being crossed. ","All crossings are suitable for all path users and go beyond LTN 1/20 guidance to help future proof the route and provide a higher level of service.",,,,,,"n/a option possible"
+"Accessibility of Access Points","All Active Modes","PA31","Potential for access points to be blocked by parking or loading.",,"Path access points are not protected, meaning there is a risk that they could be blocked by parking or loading, impeding access for some or all path users.","Path access points are suitably protected to maintain access for all path users.
+
+Or, there is adequate marked loading and parking provision near access points.","Path access points are suitably protected to maintain access for all path users, and there is adequate marked loading and parking provision near access points.",,,,,,"n/a option possible"
+"Drainage","All Active Modes","PA32","Effect of drainage and water on user experience. ",,"The path is occasionally inaccessible or unpassable due to the presence of water.","The path is occasionally narrowed due to the presence of water.","The path is passable even during extreme weather events, with a minimum clear width of 3m maintained at all times. ",,,,,,
+,,,,,,,,,,,,,
+"DIRECTNESS",,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Deviation of Path Against Straight Line","All Active Modes","PA33","Extent to which the path deviates against the straight line.",,"Deviation factor against straight line greater than 1.4.","Deviation factor against straight line 1.2-1.4.","Deviation factor against straight line less than 1.2.",,,,,,
+"Deviation of Path Against Nearest Alternative Route","All Active Modes","PA34","Extent to which the path deviates against the nearest alternative route open to motor traffic.",,"Deviation factor against nearest alternative route greater than 1.4.","Deviation factor against nearest alternative route between 1.2-1.4.","Deviation factor against nearest alternative route less than 1.2.",,,,,,
+"Crossing Locations","All Active Modes","PA35","Alignment of crossings with desire lines.",,"No crossings are located on desire lines.","Some crossings are located on desire lines.","All crossings are located on desire lines, and all desire lines are provided for.",,,,,,"n/a option possible"
+"Delay at Crossings","All Active Modes","PA36","Delay to path users at signal crossings.",,"Maximum waiting time over 60 seconds.","Maximum waiting time 40-60 seconds.","Maximum waiting time up to 40 seconds.",,,,,,"n/a option possible"
+,,,,,,,,,,,,,
+"ATTRACTIVENESS",,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Places to Rest","Walking / Wheeling","PA37","Distance between resting points.",,">150m.","50-150m.","<50m.",,,,,,
+"Places to Shelter","Walking / Wheeling","PA38","Distance between shelter points.",,">150m.","50-150m.","<50m.",,,,,,
+"Lighting","All Active Modes","PA39","Extent of lighting.",,"Long stretches of darkness or no lighting.","Short stretches of darkness or inappropriate lighting.","Appropriate lighting throughout the path.
+
+Any public transport waiting areas at access points to the path are lit.",,,,,,
+"Cycle Parking","Cycling","PA40","Ease of access to cycle parking at key points along path.",,"Insufficient or inappropriate cycle parking.","Some accessible and overlooked cycle parking provided but not enough to meet present demand.","Accessible and overlooked cycle parking provided, sufficient to meet present and future demand, including provision for a range of cycle vehicles and users.",,,,,,
+"Impact of Users on Each Other","All Active Modes","PA41","Potential for interaction between modes.",,"In rural areas or motor traffic free environments, shared use cycle tracks fail the width requirements set out in Table 6-3 of LTN 1/20.
+
+Or, horses share facilities with pedestrians and cyclists in a facility under 3m wide.","Shared use facilities pass the width requirements set out in Table 6-3 of LTN 1/20 and are designed in a way that minimises potential conflict between cyclists and pedestrians.
+
+Or, horses share facilities with pedestrians and cyclists in a facility over 3m wide.","There are no shared use facilities.
+
+If horse-riding is permitted, a separate trotting strip is provided.",,,,,,
+,,,,,,,,,,,,,
+"COHESION",,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Ease of Navigation","All Active Modes","PA42","Ease of navigation when travelling along the route.",,"There are multiple points along the route where the way forward is unclear due to the path environment, design features, or poor/missing signage.","There is one point along the route where the way forward is unclear due to the path environment, design features, or poor/missing signage.","The way forward along the route is clear due to the path environment and design features. If signage is needed at decision points, it is present. ",,,,,,
+"Wayfinding","All Active Modes","PA43","Effectiveness of signage on wayfinding.",,"Signage on the route is confusing or missing in places. Links between the path and surrounding routes at access points are not legible.","Signage on the route is regular and consistent, creating legible links between the path and surrounding routes at access points.
+
+However, information on nearby destinations is not provided or is limited.","Signage on the route is regular and consistent, creating legible links between the path and surrounding routes at access points.
+
+Information on nearby destinations is provided.",,,,,,
+"Proximity to Destinations","Walking / Wheeling / Cycling","PA44","Route links to public transport interchanges and other destinations.
+
+Other destinations could include:
+• Local high streets
+• Schools and colleges
+• Hospitals and healthcare
+• Access to green and blue spaces
+• Viewing points
+• Tourist destinations, etc.",,"The route is not within 400m of any public transport interchanges or other destinations.","The route is within 400m of a public transport interchange or other destination.","The route is within 400m of at least one public transport interchange and at least one other destination.",,,,,,
+"Quality of Connections","Walking / Wheeling / Cycling","PA45","Quality of connections to public transport interchanges or other destinations.",,"Walking, wheeling and cycling connections are inaccessible or offer a low level of service.","Walking, wheeling and cycling connections are accessible and offer a medium level of service.","Walking, wheeling and cycling connections are accessible and offer a high level of service.",,,,,,"n/a option possible"
+"Connectivity with Other Horse Riding Routes","Horse Riding","PA46","Connectivity with other routes appropriate for horse riding.",,"The route does not link to other routes appropriate for horse riding.","The route links to one other route appropriate for horse riding.","The route links to two or more other routes appropriate for horse riding.",,,,,,"n/a option possible"
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,0,,0,,
+"Access Points-Loading and Parking",,"PA47","Impact of on-street loading and  parking provision at access points to the path",,"No designated provision and no protection-risk of abuse or blockage, impeding the movement of all legitimate path users.","EITHER adequate marked loading and parking provision in the street area where needed OR suitable protection of path access points to maintain suitable access for all legitimate path users. ","BOTH adequate marked loading and parking provision in the street area where needed AND suitable protection of path access points to maintain suitable access for all legitimate path users. 
+
+Or, no loading or parking provision necessary.",,0,,0,,
+"Width",,"PA48","Is the greenway wide enough for faster path users to overtake slower users comfortably and without causing consternation.",,"The path has long and/or frequent stretches where widths are below 3m (shared use or cycleway) or 2m (dedicated footway or trotting strip) on a single level. If horses are sharing with other modes, minimum widths are below 4m.","The path has short and/or occasional stretches where widths are below 3m (shared use or cycleway) or 2m (dedicated footway or trotting strip) on a single level. If horses are sharing with other modes, minimum widths are between 4.0m and 4.5m.","The path has no stretches where widths are below 3m (shared use or cycleway) or 2m (dedicated footway or trotting strip) on a single level. If horses are sharing with other modes, minimum widths are greater than 4.5m.",,2,,2,,
+"Drainage",,"PA49","Effect of drainage and water on user experience, biodiversity, and climate resilience. ",,"There are regular periods where the whole width of the path is under water. ","Much of the path is accessible although it may be narrowed due to standing water during particularly heavy rainfall. ","The path is passable even during extreme weather events, with a minimum width of 3m surface remaining clear of any standing water. ",,0,,0,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+"Wheelchair Access",,35,"Wheelchair access",,"Pedestrian facilities (including any crossings, connections and public transport interchange facilities) are not wheelchair accessible.","All pedestrian facilities (including any crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, but some interaction with cyclists is possible.","All pedestrian facilities (including crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, and there is no potential for interaction with cyclists .",,1,,2,,
