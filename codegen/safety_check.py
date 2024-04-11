@@ -1,5 +1,4 @@
 import csv
-import sys
 
 
 def html(x):
@@ -29,13 +28,10 @@ def html(x):
     return y
 
 
-# Manually copy from Excel. This is a one-off script; the source of truth
-# becomes the Svelte files, which need to be manually edited to improve
-# formatting.
-with open(sys.argv[1]) as tsv:
+with open("inputs/safety-check.csv") as inputFile:
     idx = 1
     for row in csv.DictReader(
-        tsv,
+        inputFile,
         fieldnames=[
             "Metric",
             "Mode",
@@ -50,7 +46,7 @@ with open(sys.argv[1]) as tsv:
         if not row["Mode"]:
             continue
 
-        with open(row["ID"].lower() + "/+page.svelte", "w") as f:
+        with open("../src/routes/route_check/safety_check/" + row["ID"].lower() + "/+page.svelte", "w") as f:
             f.write("""<script lang="ts">\n""")
             f.write("""import Question from "../Question.svelte";\n""")
             f.write("""</script>\n""")
