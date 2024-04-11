@@ -1,99 +1,49 @@
 import { type StreetFeatureType } from "../data";
 
-// TODO Formatting isn't great. And unclear what the last two entries in each chunk mean.
-// TODO From the blue one. But what's "Footway buffer / verge"? The green table
-// looks more clear (and is based on speed as well)
-let widths: Record<StreetFeatureType, string[]> = {
-  Footway: ["2.60", "2.60", "2.60", "", "", "2.00", "2.00", "2.00", ""],
-  "Narrow Traffic / Bus Lane": ["3.25", "", "", "", "", "3.25", "", "", ""],
-  "Wide Traffic / Bus Lane": ["4.50", "", "", "", "", "3.90", "", "", ""],
-  "Traffic Lane (no buses): speed limit 20/30": [
-    "3.00",
-    "",
-    "",
-    "",
-    "",
-    "2.75",
-    "",
-    "",
-    "",
-  ],
-  "On-highway advisory/mandatory cycle lane": [
-    "2.00",
-    "",
-    "",
-    "",
-    "",
-    "1.50",
-    "",
-    "",
-    "",
-  ],
-  "1-way protected cycle track": [
-    "2.30",
-    "2.50",
-    "2.80",
-    "",
-    "",
-    "1.80",
-    "2.30",
-    "2.30",
-    "",
-  ],
-  "2-way protected cycle track": [
-    "3.30",
-    "3.30",
-    "4.30",
-    "",
-    "",
-    "2.30",
-    "2.80",
-    "3.30",
-    "",
-  ],
-  "Shared use cycle track": [
-    "3.00",
-    "4.50",
-    "",
-    "",
-    "",
-    "3.00",
-    "4.50",
-    "",
-    "",
-  ],
-  "Parking Bay": ["2.00", "", "", "", "", "1.80", "", "", ""],
-  "Disabled Parking Bay": ["2.70", "", "", "", "", "2.70", "", "", ""],
-  "Loading Bay": ["2.70", "", "", "", "", "1.80", "", "", ""],
-  "Buffer / Verge": [
-    "0.50",
-    "1.00",
-    "2.00",
-    "2.50",
-    "3.50",
-    "-  ",
-    "0.50",
-    "1.50",
-    "2.00",
-    "3.00",
-  ],
-};
-
-export function getWidth(
+export function getDesirableWidth(
   streetFeature: StreetFeatureType,
-  streetFunction: string,
-  sectionType: "Desirable" | "Absolute",
-): string {
-  let row = widths[streetFeature];
-  let chunk = sectionType == "Desirable" ? row.slice(1, 6) : row.slice(6, 11);
-  if (streetFunction == "High Street (active frontages)") {
-    return chunk[0];
-  } else if (streetFunction == "Residential street") {
-    return chunk[1];
-  } else if (streetFunction == "Local distributor road") {
-    return chunk[2];
+  // TODO split out the type
+  context: any,
+): number {
+  switch (streetFeature) {
+    case "Footway":
+      // There's logic based on streetFunction, but the value is always the same
+      return 2.6;
+    case "Narrow Traffic / Bus Lane":
+      return 3.25;
+    case "Wide Traffic / Bus Lane":
+      return 4.5;
+    case "Traffic Lane (no buses): speed limit 20/30":
+      return 3.0;
+    case "On-highway advisory/mandatory cycle lane":
+      return 2.0;
+    case "1-way protected cycle track":
+      return {
+        "<200": 2.3,
+        "200-800": 2.5,
+        ">800": 2.8,
+      }[context.flowOneWay];
+    case "2-way protected cycle track":
+      return {
+        "<300": 3.3,
+        "300-1,000": 3.3,
+        ">1,000": 4.3,
+      }[context.flowTwoWay];
+    case "Shared use cycle track":
+      return {
+        "<300": 3.0,
+        ">300": 4.5,
+      }[context.flowSharedUse];
+    case "Parking Bay":
+      return 2.0;
+    case "Disabled Parking Bay":
+      return 2.7;
+    case "Loading Bay":
+      return 2.7;
+    case "Buffer / Verge":
+    // I15 = $DV1.$B57
+    // TODO depends on types of things nearby
   }
-  throw new Error(`Unknown streetFunction ${streetFunction}`);
 }
 
 // TODO Embed or link the references
@@ -126,3 +76,31 @@ export let references: Record<StreetFeatureType, string[]> = {
   "Loading Bay": ["LTN 1/20 table 7-3 pp77"],
   "Buffer / Verge": ["LTN 1/20 table 6-1 pp54"],
 };
+
+// TODO Move to a .ts and add tests:
+// normal cases:
+// 50, 54 -> 50
+// 50, 56 -> 60
+// highest entry becomes 80:
+// 70, 78 -> 80
+// lowest entry counts as 20:
+// <30, 15 -> 20
+// <30, 25 -> 30
+export function calculateEffectiveSpeedLimit(
+  speedLimit: string,
+  observed: number | undefined,
+): number | null {
+  if (!speedLimit || !observed) {
+    return null;
+  }
+
+  // TODO Maybe change the value stored to be more clear
+  let speed = speedLimit == "<30" ? 20 : parseInt(speedLimit);
+
+  if (observed > speed * 1.1) {
+    // Next highest
+    // what happens for <30 and 70?
+    return speed + 10;
+  }
+  return speed;
+}

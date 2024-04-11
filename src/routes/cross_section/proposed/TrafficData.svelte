@@ -2,6 +2,7 @@
   import { pairs } from "$lib";
   import { CollapsibleCard, Select, NumberInput } from "govuk-svelte";
   import { state } from "../data";
+  import { calculateEffectiveSpeedLimit } from "./tables";
 
   export let valid: boolean;
 
@@ -18,37 +19,6 @@
     $state.proposed.trafficData.speedLimit,
     $state.proposed.trafficData.observedSpeed,
   );
-
-  // TODO Move to a .ts and add tests:
-
-  // normal cases
-  // 50, 54 -> 50
-  // 50, 56 -> 60
-
-  // highest entry becomes 80
-  // 70, 78 -> 80
-
-  // lowest entry counts as 20
-  // <30, 15 -> 20
-  // <30, 25 -> 30
-  function calculateEffectiveSpeedLimit(
-    speedLimit: string,
-    observed: number | undefined,
-  ): number | null {
-    if (!speedLimit || !observed) {
-      return null;
-    }
-
-    // TODO Maybe change the value stored to be more clear
-    let speed = speedLimit == "<30" ? 20 : parseInt(speedLimit);
-
-    if (observed > speed * 1.1) {
-      // Next highest
-      // what happens for <30 and 70?
-      return speed + 10;
-    }
-    return speed;
-  }
 </script>
 
 <CollapsibleCard label="Traffic data and additional information">
