@@ -30,7 +30,7 @@
           />
           <label class="govuk-label govuk-radios__label" for={id + thisValue}>
             <span style:background={thisColor}>{thisValue}</span>
-            {thisLabel}
+            {@html thisLabel}
           </label>
         </div>
       {/each}

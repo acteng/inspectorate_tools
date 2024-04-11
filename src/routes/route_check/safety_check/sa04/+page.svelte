@@ -6,12 +6,12 @@
   idx={4}
   label="Trip Hazards"
   cases={[
-    ["2", "No trip hazards, level clear surface."],
-    ["1", "Few trip hazards."],
-    ["0", "Many trip hazards."],
+    ["2", "<p>No trip hazards, level clear surface.</p>"],
+    ["1", "<p>Few trip hazards.</p>"],
+    ["0", "<p>Many trip hazards.</p>"],
     [
       "C",
-      "There are level differences of greater than 13mm with no tactile information and colour contrast to help identify them.",
+      "<p>There are level differences of greater than 13mm with no tactile information and colour contrast to help identify them.</p>",
     ],
   ]}
 >

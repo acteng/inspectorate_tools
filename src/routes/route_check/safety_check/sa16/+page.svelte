@@ -6,15 +6,18 @@
   idx={16}
   label="Guard Railing"
   cases={[
-    ["2", "No guard railing anywhere on the route."],
+    ["2", "<p>No guard railing anywhere on the route.</p>"],
     [
       "1",
-      "Minimal guard railing, used to address a clear safety issue such as a level difference.",
+      "<p>Minimal guard railing, used to address a clear safety issue such as a level difference.</p>",
     ],
-    ["0", "Guard railing used to control behaviour in complex environments."],
+    [
+      "0",
+      "<p>Guard railing used to control behaviour in complex environments.</p>",
+    ],
     [
       "C",
-      "Guard railing used as standard without consideration of inherent safety risks.",
+      "<p>Guard railing used as standard without consideration of inherent safety risks.</p>",
     ],
   ]}
 >

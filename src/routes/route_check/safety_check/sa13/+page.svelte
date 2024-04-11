@@ -8,14 +8,14 @@
   cases={[
     [
       "2",
-      "Crossing angle between 80 and 90 degrees with track filler creating a smooth crossing for cyclists.",
+      "<p>Crossing angle between 80 and 90 degrees with track filler creating a smooth crossing for cyclists.</p>",
     ],
     [
       "1",
-      "Crossing angle between 80 and 90 degrees (or between 60 and 80 degrees with track filler creating a smooth crossing for cyclists).",
+      "<p>Crossing angle between 80 and 90 degrees (or between 60 and 80 degrees with track filler creating a smooth crossing for cyclists).</p>",
     ],
-    ["0", "Crossing angle between 60 and 80 degrees."],
-    ["C", "Crossing angle less than 60 degrees."],
+    ["0", "<p>Crossing angle between 60 and 80 degrees.</p>"],
+    ["C", "<p>Crossing angle less than 60 degrees.</p>"],
   ]}
 >
   <p>Crossing angle (between cyclist desire line and tram or train rails).</p>

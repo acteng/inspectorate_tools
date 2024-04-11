@@ -8,11 +8,11 @@
   cases={[
     [
       "2",
-      "85th percentile speed is under 20mph.  Or, cyclists are protected from motor traffic or off-road entirely and controlled crossings are provided for pedestrians wherever needed.",
+      "<p>85th percentile speed is under 20mph.</p><p>Or, cyclists are protected from motor traffic or off-road entirely and controlled crossings are provided for pedestrians wherever needed.</p>",
     ],
-    ["1", "85th percentile speed is between 20mph and 25mph."],
-    ["0", "85th percentile speed is over 25mph."],
-    ["C", "85th percentile speed is over 30mph."],
+    ["1", "<p>85th percentile speed is between 20mph and 25mph.</p>"],
+    ["0", "<p>85th percentile speed is over 25mph.</p>"],
+    ["C", "<p>85th percentile speed is over 30mph.</p>"],
   ]}
 >
   <p>
