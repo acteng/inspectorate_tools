@@ -6,9 +6,9 @@
   idx={8}
   label="Width of Cycling Spaces"
   cases={[
-    ["2", ">3m."],
-    ["1", "2.5-3m "],
-    ["0", "<2.5m."],
+    ["2", "<p>>3m.</p>"],
+    ["1", "<p>2.5-3m</p>"],
+    ["0", "<p><2.5m.</p>"],
   ]}
 >
   <p>Effective width of dedicated cycling spaces.</p>

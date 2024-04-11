@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "At bus stops, cyclists are protected from buses and traffic and interactions between pedestrians and cyclists are likely to be low-level.",
+      "<p>At bus stops, cyclists are protected from buses and traffic and interactions between pedestrians and cyclists are likely to be low-level.</p>",
     ],
     [
       "1",
-      "At bus stops, cyclists are protected from buses and traffic, but there are likely to be medium-level interactions between pedestrians and cyclists.",
+      "<p>At bus stops, cyclists are protected from buses and traffic, but there are likely to be medium-level interactions between pedestrians and cyclists.</p>",
     ],
     [
       "0",
-      "At bus stops, cyclists regularly have to wait behind buses or overtake them in general traffic lanes.  Or, there are likely to be high-level interactions between pedestrians and cyclists.",
+      "<p>At bus stops, cyclists regularly have to wait behind buses or overtake them in general traffic lanes.</p><p>Or, there are likely to be high-level interactions between pedestrians and cyclists.</p>",
     ],
   ]}
 >

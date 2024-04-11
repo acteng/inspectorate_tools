@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "No public access points to the path have barriers that would inhibit legitimate users.",
+      "<p>No public access points to the path have barriers that would inhibit legitimate users.</p>",
     ],
     [
       "1",
-      "Key public access points (e.g. interfaces with public highway) do not have barriers, but other public access points have barriers that would inhibit legitimate users.",
+      "<p>Key public access points (e.g. interfaces with public highway) do not have barriers, but other public access points have barriers that would inhibit legitimate users.</p>",
     ],
     [
       "0",
-      "Key public access points (e.g. interfaces with public highway) to the path are restricted by barriers that would inhibit legitimate users.  Or, there are barriers along the path that inhibit legitimate users.",
+      "<p>Key public access points (e.g. interfaces with public highway) to the path are restricted by barriers that would inhibit legitimate users.</p><p>Or, there are barriers along the path that inhibit legitimate users.</p>",
     ],
   ]}
 >

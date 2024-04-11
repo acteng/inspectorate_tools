@@ -6,17 +6,27 @@
   idx={10}
   label="Features to Support Walking, Wheeling and Cycling"
   cases={[
-    ["2", "Many features to encourage and enhance active travel journeys."],
-    ["1", "One feature to encourage and enhance active travel journeys."],
+    [
+      "2",
+      "<p>Many features to encourage and enhance active travel journeys.</p>",
+    ],
+    [
+      "1",
+      "<p>One feature to encourage and enhance active travel journeys.</p>",
+    ],
     [
       "0",
-      "No specific features to encourage and enhance active travel journeys.",
+      "<p>No specific features to encourage and enhance active travel journeys.</p>",
     ],
   ]}
 >
-  <p>
-    Features to encourage and enhance active travel journeys, such as: • Benches
-    or other seating • Water fountain • Public tool stand • Cycle pump • Cycle
-    counter • Tactile maps
-  </p>
+  <p>Features to encourage and enhance active travel journeys, such as:</p>
+  <ul>
+    <li>Benches or other seating</li>
+    <li>Water fountain</li>
+    <li>Public tool stand</li>
+    <li>Cycle pump</li>
+    <li>Cycle counter</li>
+    <li>Tactile maps</li>
+  </ul>
 </Question>

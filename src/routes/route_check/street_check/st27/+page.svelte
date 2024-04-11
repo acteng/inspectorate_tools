@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Deviation factor against straight line or shortest alternative less than 1.2.",
+      "<p>Deviation factor against straight line or shortest alternative less than 1.2.</p>",
     ],
     [
       "1",
-      "Deviation factor against straight line or shortest alternative 1.2-1.4.",
+      "<p>Deviation factor against straight line or shortest alternative 1.2-1.4.</p>",
     ],
     [
       "0",
-      "Deviation factor against straight line or shortest alternative greater than 1.4.",
+      "<p>Deviation factor against straight line or shortest alternative greater than 1.4.</p>",
     ],
   ]}
 >

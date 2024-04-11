@@ -6,9 +6,9 @@
   idx={21}
   label="Places to Rest"
   cases={[
-    ["2", "<50m."],
-    ["1", "50-150m."],
-    ["0", ">150m."],
+    ["2", "<p><50m.</p>"],
+    ["1", "<p>50-150m.</p>"],
+    ["0", "<p>>150m.</p>"],
   ]}
 >
   <p>Distance between resting points.</p>

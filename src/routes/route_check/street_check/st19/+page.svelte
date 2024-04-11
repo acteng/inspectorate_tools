@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "All barriers are accessible by the cycle design vehicle referenced in LTN 1/20, with sufficient space to turn.  Or, there are no barriers.",
+      "<p>All barriers are accessible by the cycle design vehicle referenced in LTN 1/20, with sufficient space to turn.</p><p>Or, there are no barriers.</p>",
     ],
     [
       "1",
-      "All barriers are accessible by wheelchair users, mobility scooters, and by users on solo upright cycles (as defined in LTN 1/20), with sufficient space to turn.",
+      "<p>All barriers are accessible by wheelchair users, mobility scooters, and by users on solo upright cycles (as defined in LTN 1/20), with sufficient space to turn.</p>",
     ],
     [
       "0",
-      "Barriers are not accessible by wheelchair users and/or users on solo upright cycles (as defined in LTN 1/20) and/or mobility scooters.",
+      "<p>Barriers are not accessible by wheelchair users and/or users on solo upright cycles (as defined in LTN 1/20) and/or mobility scooters.</p>",
     ],
   ]}
 >

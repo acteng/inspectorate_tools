@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Recommended desirable minimum widths from LTN 1/20 are maintained or exceeded for cycle facilities and buffers throughout whole route.",
+      "<p>Recommended desirable minimum widths from LTN 1/20 are maintained or exceeded for cycle facilities and buffers throughout whole route.</p>",
     ],
     [
       "1",
-      "Recommended desirable minimum widths from LTN 1/20 are maintained for cycle facilities and buffers throughout the whole route, except at pinch points where absolute minimum widths recommended in LTN 1/20 are maintained.",
+      "<p>Recommended desirable minimum widths from LTN 1/20 are maintained for cycle facilities and buffers throughout the whole route, except at pinch points where absolute minimum widths recommended in LTN 1/20 are maintained.</p>",
     ],
     [
       "0",
-      "At pinch points, cycle facility widths and/or buffers are below the absolute minimums recommended in LTN 1/20.",
+      "<p>At pinch points, cycle facility widths and/or buffers are below the absolute minimums recommended in LTN 1/20.</p>",
     ],
   ]}
 >

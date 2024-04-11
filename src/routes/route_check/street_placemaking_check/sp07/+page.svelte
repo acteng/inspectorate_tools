@@ -8,12 +8,12 @@
   cases={[
     [
       "2",
-      "Well maintained streetscape: vegetation is well-managed and there are no issues with littering. Route is well-maintained throughout winter.  The streetscape has been designed in a way that is easy to maintain.",
+      "<p>Well maintained streetscape: vegetation is well-managed and there are no issues with littering. Route is well-maintained throughout winter.</p><p>The streetscape has been designed in a way that is easy to maintain.</p>",
     ],
-    ["1", "Elements of the streetscape are well maintained."],
+    ["1", "<p>Elements of the streetscape are well maintained.</p>"],
     [
       "0",
-      "Poorly maintained streetscape: overgrown vegetation or significant littering. No winter maintenance.  The streetscape has been designed in a way that is hard to maintain.",
+      "<p>Poorly maintained streetscape: overgrown vegetation or significant littering. No winter maintenance.</p><p>The streetscape has been designed in a way that is hard to maintain.</p>",
     ],
   ]}
 >

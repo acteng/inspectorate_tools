@@ -8,10 +8,10 @@
   cases={[
     [
       "2",
-      "A variety of suitable planting that provides habitats for fauna, and wider experiential benefits.",
+      "<p>A variety of suitable planting that provides habitats for fauna, and wider experiential benefits.</p>",
     ],
-    ["1", "Some planted elements providing visual interest. "],
-    ["0", "Little or no planting, providing limited visual interest. "],
+    ["1", "<p>Some planted elements providing visual interest.</p>"],
+    ["0", "<p>Little or no planting, providing limited visual interest.</p>"],
   ]}
 >
   <p>

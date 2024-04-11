@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Inclusion of roadside tredges or selective planting.  Or, a buffer of at least 2m between sources of pollution and pedestrians and cyclists.",
+      "<p>Inclusion of roadside tredges or selective planting.</p><p>Or, a buffer of at least 2m between sources of pollution and pedestrians and cyclists.</p>",
     ],
     [
       "1",
-      "0.5-2m buffer between sources of pollution and pedestrians and cyclists.   Or, there is a cycle facility at least 2m wide between the footway and carriageway.",
+      "<p>0.5-2m buffer between sources of pollution and pedestrians and cyclists.</p><p>Or, there is a cycle facility at least 2m wide between the footway and carriageway.</p>",
     ],
     [
       "0",
-      "No roadside tredges or selective planting.   Or, a buffer of less than 0.5m between sources of pollution and pedestrians and cyclists. ",
+      "<p>No roadside tredges or selective planting.</p><p>Or, a buffer of less than 0.5m between sources of pollution and pedestrians and cyclists.</p>",
     ],
   ]}
 >

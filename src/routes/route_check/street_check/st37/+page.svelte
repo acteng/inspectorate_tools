@@ -8,13 +8,13 @@
   cases={[
     [
       "2",
-      "Accessible and overlooked cycle parking provided, sufficient to meet present and future demand, including provision for a range of cycle vehicles and users.",
+      "<p>Accessible and overlooked cycle parking provided, sufficient to meet present and future demand, including provision for a range of cycle vehicles and users.</p>",
     ],
     [
       "1",
-      "Some accessible and overlooked cycle parking provided but not enough to meet present demand.",
+      "<p>Some accessible and overlooked cycle parking provided but not enough to meet present demand.</p>",
     ],
-    ["0", "Insufficient or inappropriate cycle parking."],
+    ["0", "<p>Insufficient or inappropriate cycle parking.</p>"],
   ]}
 >
   <p>Ease of access to cycle parking on- and off-street.</p>

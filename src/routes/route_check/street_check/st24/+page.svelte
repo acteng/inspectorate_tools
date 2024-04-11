@@ -8,10 +8,10 @@
   cases={[
     [
       "2",
-      "Machine-laid asphalt or smooth and firm blocks undisturbed by turning vehicles.",
+      "<p>Machine-laid asphalt or smooth and firm blocks undisturbed by turning vehicles.</p>",
     ],
-    ["1", "Hand-laid asphalt or smooth blocks."],
-    ["0", "Unsurfaced/unbound or unstable blocks/sets."],
+    ["1", "<p>Hand-laid asphalt or smooth blocks.</p>"],
+    ["0", "<p>Unsurfaced/unbound or unstable blocks/sets.</p>"],
   ]}
 >
   <p>Type of cycling surface material.</p>

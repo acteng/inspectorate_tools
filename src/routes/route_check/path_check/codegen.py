@@ -1,1 +1,0 @@
-../street_check/codegen.py

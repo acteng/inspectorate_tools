@@ -8,10 +8,10 @@
   cases={[
     [
       "2",
-      "Appropriate lighting throughout the path.  Any public transport waiting areas at access points to the path are lit.",
+      "<p>Appropriate lighting throughout the path.</p><p>Any public transport waiting areas at access points to the path are lit.</p>",
     ],
-    ["1", "Short stretches of darkness or inappropriate lighting."],
-    ["0", "Long stretches of darkness or no lighting."],
+    ["1", "<p>Short stretches of darkness or inappropriate lighting.</p>"],
+    ["0", "<p>Long stretches of darkness or no lighting.</p>"],
   ]}
 >
   <p>Extent of lighting.</p>

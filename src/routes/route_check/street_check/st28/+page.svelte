@@ -8,10 +8,10 @@
   cases={[
     [
       "2",
-      "All crossings are located on desire lines, and all desire lines are provided for.",
+      "<p>All crossings are located on desire lines, and all desire lines are provided for.</p>",
     ],
-    ["1", "Some crossings are located on desire lines."],
-    ["0", "No crossings are located on desire lines."],
+    ["1", "<p>Some crossings are located on desire lines.</p>"],
+    ["0", "<p>No crossings are located on desire lines.</p>"],
   ]}
 >
   <p>Alignment of crossings with desire lines.</p>

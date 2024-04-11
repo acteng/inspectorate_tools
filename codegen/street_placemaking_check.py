@@ -2,26 +2,25 @@ import csv
 from common import *
 
 
-with open("inputs/safety-check.csv") as inputFile:
+with open("inputs/street-placemaking-check.csv") as inputFile:
     idx = 1
     for row in csv.DictReader(
         inputFile,
         fieldnames=[
             "Metric",
-            "Mode",
             "ID",
             "Description",
-            "Critical",
+            "blank",
             "Red",
             "Amber",
             "Green",
         ],
     ):
-        if not row["Mode"]:
+        if not row["ID"]:
             continue
 
         with open(
-            "../src/routes/route_check/safety_check/"
+            "../src/routes/route_check/street_placemaking_check/"
             + row["ID"].lower()
             + "/+page.svelte",
             "w",
@@ -39,11 +38,9 @@ with open("inputs/safety-check.csv") as inputFile:
             f.write("""    ["2", "{}"],\n""".format(html(row["Green"])))
             f.write("""    ["1", "{}"],\n""".format(html(row["Amber"])))
             f.write("""    ["0", "{}"],\n""".format(html(row["Red"])))
-            f.write("""    ["C", "{}"],\n""".format(html(row["Critical"])))
             f.write("""  ]}\n""")
             f.write(""">\n""")
 
             f.write("""  {}\n""".format(html(row["Description"])))
-            f.write("""  <p>Mode: {}</p>\n""".format(row["Mode"]))
             f.write("""</Question>\n""")
             idx += 1

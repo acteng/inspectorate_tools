@@ -8,12 +8,15 @@
   cases={[
     [
       "2",
-      "The route links to two or more other routes appropriate for horse riding.",
+      "<p>The route links to two or more other routes appropriate for horse riding.</p>",
     ],
-    ["1", "The route links to one other route appropriate for horse riding."],
+    [
+      "1",
+      "<p>The route links to one other route appropriate for horse riding.</p>",
+    ],
     [
       "0",
-      "The route does not link to other routes appropriate for horse riding.",
+      "<p>The route does not link to other routes appropriate for horse riding.</p>",
     ],
   ]}
 >

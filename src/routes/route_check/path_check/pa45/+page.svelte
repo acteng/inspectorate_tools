@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Walking, wheeling and cycling connections are accessible and offer a high level of service.",
+      "<p>Walking, wheeling and cycling connections are accessible and offer a high level of service.</p>",
     ],
     [
       "1",
-      "Walking, wheeling and cycling connections are accessible and offer a medium level of service.",
+      "<p>Walking, wheeling and cycling connections are accessible and offer a medium level of service.</p>",
     ],
     [
       "0",
-      "Walking, wheeling and cycling connections are inaccessible or offer a low level of service.",
+      "<p>Walking, wheeling and cycling connections are inaccessible or offer a low level of service.</p>",
     ],
   ]}
 >

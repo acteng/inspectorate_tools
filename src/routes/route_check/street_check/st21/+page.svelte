@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "All pedestrian facilities (including crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, and there is no potential for interaction with cyclists.",
+      "<p>All pedestrian facilities (including crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, and there is no potential for interaction with cyclists.</p>",
     ],
     [
       "1",
-      "All pedestrian facilities (including any crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, but some interaction with cyclists is possible.",
+      "<p>All pedestrian facilities (including any crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, but some interaction with cyclists is possible.</p>",
     ],
     [
       "0",
-      "Pedestrian facilities (including any crossings, connections and public transport interchange facilities) are not wheelchair accessible.",
+      "<p>Pedestrian facilities (including any crossings, connections and public transport interchange facilities) are not wheelchair accessible.</p>",
     ],
   ]}
 >
