@@ -27,7 +27,9 @@
     </li>
 
     <li><a href="{base}/route_check/safety_check">Safety Check</a></li>
-    <li>Critical Issues Log</li>
+    <li>
+      <a href="{base}/route_check/critical_issues_log">Critical Issues Log</a>
+    </li>
 
     {#if $state.summary.checkType == "street"}
       <li><a href="{base}/route_check/street_check">Street Check</a></li>
