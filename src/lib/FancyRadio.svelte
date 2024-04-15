@@ -10,6 +10,8 @@
   export let proposedValue: string;
   export let existingNotes: string;
   export let proposedNotes: string;
+
+  export let id = uuidv4();
 </script>
 
 <div class="govuk-radios fancy-radio-grid" data-module="govuk-radios">
@@ -33,7 +35,7 @@
     >
       <input
         class="govuk-radios__input"
-        id={`${thisValue}-existing`}
+        id={`${id}${thisValue}-existing`}
         type="radio"
         value={thisValue}
         bind:group={existingValue}
@@ -41,7 +43,7 @@
 
       <label
         class="govuk-label govuk-radios__label"
-        for={`${thisValue}-existing`}
+        for={`${id}${thisValue}-existing`}
       >
         <span
           class="option-value"
@@ -59,7 +61,7 @@
     >
       <input
         class="govuk-radios__input"
-        id={`${thisValue}-proposed`}
+        id={`${id}${thisValue}-proposed`}
         type="radio"
         value={thisValue}
         bind:group={proposedValue}
@@ -67,7 +69,7 @@
 
       <label
         class="govuk-label govuk-radios__label"
-        for={`${thisValue}-proposed`}
+        for={`${id}${thisValue}-proposed`}
       >
         <span
           class="option-value"
