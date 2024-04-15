@@ -8,12 +8,12 @@
     Select,
   } from "govuk-svelte";
   import { state, streetFeatureTypes, type StreetFeatureType } from "../data";
-  import { getWidths, references, needBuffers } from "./logic";
+  import { getWidths, needBuffers } from "./logic";
+  import { references, guidance } from "./guidance";
 
   export let value: StreetFeatureType | "";
   export let isFirst: boolean;
   export let isLast: boolean;
-  // TODO When we implement the same for absolute, do some switching somewhere
   export let sectionType: "Desirable" | "Absolute";
   export let leftFeature: StreetFeatureType | "";
   export let rightFeature: StreetFeatureType | "";
@@ -51,12 +51,23 @@
       <WarningText>Consider buffers to left and right</WarningText>
     {/if}
 
-    <u>References:</u>
-    <ul>
-      {#each references[value] as reference}
-        <li>{reference}</li>
-      {/each}
-    </ul>
+    {#if references[value]}
+      <u>References</u>
+      :
+      <ul>
+        {#each references[value] as reference}
+          <li>{reference}</li>
+        {/each}
+      </ul>
+    {/if}
+
+    {#if guidance(value, $state.proposed.trafficData)}
+      <u>Guidance</u>
+      :
+      <p style="max-width: 400px">
+        {guidance(value, $state.proposed.trafficData)}
+      </p>
+    {/if}
   {/if}
 
   <div style="display: flex; justify-content: space-between">

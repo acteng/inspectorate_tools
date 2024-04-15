@@ -1,4 +1,4 @@
-import { type StreetFeatureType, type TrafficData } from "../data";
+import type { StreetFeatureType, TrafficData } from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature
 export function getWidths(
@@ -125,7 +125,8 @@ export function getWidths(
   }
 }
 
-// Hidden row 16
+// Group features into categories, from the hidden Excel row 16.
+// TODO Use enums and express logic more directly
 let classes: Record<StreetFeatureType, 0 | 1 | 2 | 10> = {
   Footway: 0,
   "1-way protected cycle track": 0,
@@ -137,7 +138,7 @@ let classes: Record<StreetFeatureType, 0 | 1 | 2 | 10> = {
   "Narrow Traffic / Bus Lane": 2,
   "Wide Traffic / Bus Lane": 2,
   "Traffic Lane (no buses): speed limit 20/30": 2,
-  // TODO not 1?
+  // Not 1, meaning a footway next to one of these would still recommend a buffer
   "On-highway advisory/mandatory cycle lane": 2,
 
   "Parking Bay": 10,
@@ -173,37 +174,6 @@ export function needBuffers(
   return "";
 }
 
-// TODO Embed or link the references
-export let references: Record<StreetFeatureType, string[]> = {
-  Footway: [
-    "Manual for Streets 2: Section 5 pp.43",
-    "DMRB CD143 Designing for walking, cycling & horse-riding Annex pp. 7",
-  ],
-  "Narrow Traffic / Bus Lane": [],
-  "Wide Traffic / Bus Lane": [],
-  "Traffic Lane (no buses): speed limit 20/30": [
-    "LTN 1/20 Table 7-2 pp. 76",
-    "LTN 1/20 Figure 4.1 pp. 33",
-  ],
-  "On-highway advisory/mandatory cycle lane": [
-    "LTN 1/20 Table 5-2 pp.43",
-    "LTN 1/20 Figure 4.1 pp. 33",
-  ],
-  "1-way protected cycle track": [
-    "LTN 1/20 Table 5-2 pp.43",
-    "LTN 1/20 Figure 4.1 pp. 33",
-  ],
-  "2-way protected cycle track": [
-    "LTN 1/20 Table 5-2 pp.43",
-    "LTN 1/20 Figure 4.1 pp. 33",
-  ],
-  "Shared use cycle track": ["LTN 1/20 Table 6-3 pp.68"],
-  "Parking Bay": ["LTN 1/20 table 7-3 pp77"],
-  "Disabled Parking Bay": [],
-  "Loading Bay": ["LTN 1/20 table 7-3 pp77"],
-  "Buffer / Verge": ["LTN 1/20 table 6-1 pp54"],
-};
-
 // TODO Add tests:
 // normal cases:
 // 50, 54 -> 50
@@ -213,8 +183,10 @@ export let references: Record<StreetFeatureType, string[]> = {
 // lowest entry counts as 20:
 // <30, 15 -> 20
 // <30, 25 -> 30
-// TODO Where is this logic used, though?
+//
+// Only used for guidance
 export function calculateEffectiveSpeedLimit(
+  // TODO More precise type
   speedLimit: string,
   observed: number | undefined,
 ): number | null {

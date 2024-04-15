@@ -22,13 +22,15 @@
   {#if trafficDataOk}
     <CollapsibleCard label="Desirable Minimum Cross-Section">
       <CrossSection
-        streetFeaturesLeftToRight={$state.proposed.desirableMinimumCrossSection}
+        bind:streetFeaturesLeftToRight={$state.proposed
+          .desirableMinimumCrossSection}
         sectionType="Desirable"
       />
     </CollapsibleCard>
     <CollapsibleCard label="Absolute Minimum Cross-Section">
       <CrossSection
-        streetFeaturesLeftToRight={$state.proposed.absoluteMinimumCrossSection}
+        bind:streetFeaturesLeftToRight={$state.proposed
+          .absoluteMinimumCrossSection}
         sectionType="Absolute"
       />
     </CollapsibleCard>
