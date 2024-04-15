@@ -18,7 +18,7 @@
   ];
   let fontColors = ["white", "black", "black", "black", "white"];
 
-  let choices: [string, string, string][] = cases.map(
+  let choices: [string, string, string, string][] = cases.map(
     ([value, label], index) => [
       value.toString(),
       label,
@@ -43,7 +43,7 @@
   <slot />
 
   <div class="columns">
-    <div class=progress-column>
+    <div class="progress-column">
       <Progress currentIdx={idx} />
     </div>
 
@@ -68,4 +68,4 @@
   .progress-column {
     width: 60rem;
   }
-three-</style>
+</style>

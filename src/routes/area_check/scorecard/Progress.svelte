@@ -60,9 +60,6 @@
 </ol>
 
 <style>
-  .govuk-font {
-    font-family: "GDS Transport", arial, sans-serif;
-  }
   .govuk-tag {
     margin: 1px;
   }

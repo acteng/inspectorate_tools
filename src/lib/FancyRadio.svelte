@@ -21,10 +21,16 @@
 </script>
 
 <div class="govuk-radios fancy-radio-grid" data-module="govuk-radios">
-  <div class="govuk-font" style="grid-column:1/2; grid-row:1/2; font-weight: bold">
+  <div
+    class="govuk-font"
+    style="grid-column:1/2; grid-row:1/2; font-weight: bold"
+  >
     Score for existing infrastructure:
   </div>
-  <div class="govuk-font" style="grid-column:2/3; grid-row:1/2; font-weight: bold">
+  <div
+    class="govuk-font"
+    style="grid-column:2/3; grid-row:1/2; font-weight: bold"
+  >
     Score for proposed infrastructure:
   </div>
 
@@ -123,10 +129,6 @@
     height: 24px;
     border-radius: 20px;
     margin-right: 5px;
-  }
- 
-  .govuk-form-group {
-    width: 60vw;
   }
 
   .govuk-radios__item {

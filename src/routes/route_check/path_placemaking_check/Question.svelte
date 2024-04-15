@@ -9,7 +9,7 @@
   export let label: string;
   export let cases: ["0" | "1" | "2", string][];
 
-  let choices: [string, string, string][] = cases.map(
+  let choices: [string, string, string, string][] = cases.map(
     ([value, label], index) => [
       value.toString(),
       label,
@@ -38,14 +38,13 @@
       <Progress currentIdx={idx} />
     </div>
 
-
-      <FancyRadio
-        {choices}
-        bind:existingValue={$state.pathCheck.existingScores[idx - 1]}
-        bind:proposedValue={$state.pathCheck.proposedScores[idx - 1]}
-        bind:existingNotes={$state.pathCheck.existingScoreNotes[idx - 1]}
-        bind:proposedNotes={$state.pathCheck.proposedScoreNotes[idx - 1]}
-      />
+    <FancyRadio
+      {choices}
+      bind:existingValue={$state.pathCheck.existingScores[idx - 1]}
+      bind:proposedValue={$state.pathCheck.proposedScores[idx - 1]}
+      bind:existingNotes={$state.pathCheck.existingScoreNotes[idx - 1]}
+      bind:proposedNotes={$state.pathCheck.proposedScoreNotes[idx - 1]}
+    />
   </div>
 
   <PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />

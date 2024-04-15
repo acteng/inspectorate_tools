@@ -9,7 +9,7 @@
   export let label: string;
   export let cases: ["0" | "1" | "2", string][];
 
-  let choices: [string, string, string][] = cases.map(
+  let choices: [string, string, string, string][] = cases.map(
     ([value, label], index) => [
       value.toString(),
       label,
