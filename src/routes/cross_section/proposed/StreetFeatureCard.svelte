@@ -3,7 +3,7 @@
   import { createEventDispatcher } from "svelte";
   import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
   import { state, streetFeatureTypes, type StreetFeatureType } from "../data";
-  import { getDesirableWidth, references } from "./tables";
+  import { getWidths, references } from "./logic";
 
   export let value: StreetFeatureType | "";
   export let isFirst: boolean;
@@ -28,12 +28,12 @@
 
   {#if value}
     <p>
-      {sectionType} minimum width (m): {getDesirableWidth(
+      {sectionType} minimum width (m): {getWidths(
         value,
         $state.proposed.trafficData,
         leftFeature,
         rightFeature,
-      )}
+      )[sectionType == "Desirable" ? 0 : 1]}
     </p>
     <u>References:</u>
     <ul>

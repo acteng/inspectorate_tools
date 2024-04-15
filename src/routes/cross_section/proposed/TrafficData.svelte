@@ -2,7 +2,7 @@
   import { pairs } from "$lib";
   import { CollapsibleCard, Select, NumberInput } from "govuk-svelte";
   import { state } from "../data";
-  import { calculateEffectiveSpeedLimit } from "./tables";
+  import { calculateEffectiveSpeedLimit } from "./logic";
 
   export let valid: boolean;
 
