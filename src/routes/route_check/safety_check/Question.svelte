@@ -40,10 +40,10 @@
 
     <FancyRadio
       {choices}
-      bind:existingValue={$state.pathCheck.existingScores[idx - 1]}
-      bind:proposedValue={$state.pathCheck.proposedScores[idx - 1]}
-      bind:existingNotes={$state.pathCheck.existingScoreNotes[idx - 1]}
-      bind:proposedNotes={$state.pathCheck.proposedScoreNotes[idx - 1]}
+      bind:existingValue={$state.safetyCheck.existingScores[idx - 1]}
+      bind:proposedValue={$state.safetyCheck.proposedScores[idx - 1]}
+      bind:existingNotes={$state.safetyCheck.existingScoreNotes[idx - 1]}
+      bind:proposedNotes={$state.safetyCheck.proposedScoreNotes[idx - 1]}
     />
   </div>
 

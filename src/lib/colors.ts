@@ -1,28 +1,19 @@
-let critical = "#232323";
-let red = "#b73d25";
-let amber = "#ffd833";
-let green = "#006853";
-let fontForCritical = "white";
-let fontForRed = "white";
-let fontForAmber = "black";
-let fontForGreen = "white";
-
 let backgroundAndFontCombinations = {
   critical: {
-    background: critical,
-    font: fontForCritical,
+    background: "#232323",
+    font: "white",
   },
   red: {
-    background: red,
-    font: fontForRed,
+    background: "#b73d25",
+    font: "white",
   },
   amber: {
-    background: amber,
-    font: fontForAmber,
+    background: "#ffd833",
+    font: "black",
   },
   green: {
-    background: green,
-    font: fontForGreen,
+    background: "#006853",
+    font: "white",
   },
 };
 

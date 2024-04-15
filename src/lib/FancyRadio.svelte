@@ -2,23 +2,14 @@
   import { v4 as uuidv4 } from "uuid";
   import { onMount } from "svelte";
 
-  // A list of [value, label, color] representing the choices
+  // A list of [value, label, background color, font color] representing the choices
   export let choices: [string, string, string, string][];
-  // This is necessary to use the value in the css
-  let numberOfChoices = 0;
 
   // The current value
   export let existingValue: string;
   export let proposedValue: string;
   export let existingNotes: string;
   export let proposedNotes: string;
-
-  let beforeId = uuidv4();
-  let afterId = uuidv4();
-
-  onMount(() => {
-    numberOfChoices = choices.length;
-  });
 </script>
 
 <div class="govuk-radios fancy-radio-grid" data-module="govuk-radios">
@@ -42,13 +33,16 @@
     >
       <input
         class="govuk-radios__input"
-        id={beforeId + thisValue}
+        id={`${thisValue}-existing`}
         type="radio"
         value={thisValue}
         bind:group={existingValue}
       />
 
-      <label class="govuk-label govuk-radios__label" for={beforeId + thisValue}>
+      <label
+        class="govuk-label govuk-radios__label"
+        for={`${thisValue}-existing`}
+      >
         <span
           class="option-value"
           style:background={thisBackgroundColor}
@@ -65,13 +59,16 @@
     >
       <input
         class="govuk-radios__input"
-        id={afterId + thisValue}
+        id={`${thisValue}-proposed`}
         type="radio"
         value={thisValue}
         bind:group={proposedValue}
       />
 
-      <label class="govuk-label govuk-radios__label" for={afterId + thisValue}>
+      <label
+        class="govuk-label govuk-radios__label"
+        for={`${thisValue}-proposed`}
+      >
         <span
           class="option-value"
           style:background={thisBackgroundColor}
@@ -93,16 +90,14 @@
   <label
     for="existing-comments-box"
     class="govuk-font"
-    style="grid-row:{numberOfChoices + 2}/{numberOfChoices +
-      3}; grid-column:1/2"
+    style="grid-row:{choices.length + 2}/{choices.length + 3}; grid-column:1/2"
   >
     Notes to justify given score for existing infrastructure:
   </label>
   <label
     for="proposed-comments-box"
     class="govuk-font"
-    style="grid-row:{numberOfChoices + 2}/{numberOfChoices +
-      3}; grid-column:2/3"
+    style="grid-row:{choices.length + 2}/{choices.length + 3}; grid-column:2/3"
   >
     Notes to justify given score for proposed infrastructure:
   </label>
@@ -111,15 +106,13 @@
   <textarea
     id="existing-comments-box"
     class="govuk-textarea comments-box"
-    style="grid-row:{numberOfChoices + 3}/{numberOfChoices +
-      4}; grid-column:1/2"
+    style="grid-row:{choices.length + 3}/{choices.length + 4}; grid-column:1/2"
     bind:value={existingNotes}
   />
   <textarea
     id="proposed-comments-box"
     class="govuk-textarea comments-box"
-    style="grid-row:{numberOfChoices + 3}/{numberOfChoices +
-      4}; grid-column:2/3"
+    style="grid-row:{choices.length + 3}/{choices.length + 4}; grid-column:2/3"
     bind:value={proposedNotes}
   />
 </div>
@@ -141,7 +134,6 @@
   .fancy-radio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr) 2fr;
-    grid-template-rows: repeat(var(--numberOfChoices) + 2, 1fr) 3fr;
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
     max-height: 80vh;

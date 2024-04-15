@@ -44,10 +44,14 @@
 
     <FancyRadio
       {choices}
-      bind:existingValue={$state.pathCheck.existingScores[idx - 1]}
-      bind:proposedValue={$state.pathCheck.proposedScores[idx - 1]}
-      bind:existingNotes={$state.pathCheck.existingScoreNotes[idx - 1]}
-      bind:proposedNotes={$state.pathCheck.proposedScoreNotes[idx - 1]}
+      bind:existingValue={$state.streetPlacemakingCheck.existingScores[idx - 1]}
+      bind:proposedValue={$state.streetPlacemakingCheck.proposedScores[idx - 1]}
+      bind:existingNotes={$state.streetPlacemakingCheck.existingScoreNotes[
+        idx - 1
+      ]}
+      bind:proposedNotes={$state.streetPlacemakingCheck.proposedScoreNotes[
+        idx - 1
+      ]}
     />
   </div>
 
