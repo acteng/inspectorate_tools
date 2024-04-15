@@ -62,7 +62,7 @@ export function getWidths(
     case "Loading Bay":
       return [2.7, 1.8];
 
-    case "Buffer / Verge":
+    case "Buffer / Verge": {
       if (!context.speedLimit) {
         throw new Error("missing input");
       }
@@ -122,6 +122,7 @@ export function getWidths(
         "60": [2.5, 2.0],
         "70": [3.5, 3.0],
       }[context.speedLimit] as [number, number];
+    }
   }
 }
 

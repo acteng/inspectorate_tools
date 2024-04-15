@@ -2,7 +2,6 @@
   import { Breadcrumbs, ExternalLink } from "$lib";
   import { base } from "$app/paths";
   import { state } from "./data";
-  import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
   import FileManager from "./FileManager.svelte";
 </script>
 
