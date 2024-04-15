@@ -1,4 +1,30 @@
-export let critical = "#232323";
-export let red = "#b73d25";
-export let amber = "#ffd833";
-export let green = "#006853";
+let backgroundAndFontCombinations = {
+  critical: {
+    background: "#232323",
+    font: "white",
+  },
+  red: {
+    background: "#b73d25",
+    font: "white",
+  },
+  amber: {
+    background: "#ffd833",
+    font: "black",
+  },
+  green: {
+    background: "#006853",
+    font: "white",
+  },
+};
+
+export let greenAmberRedCritical = [
+  backgroundAndFontCombinations.green,
+  backgroundAndFontCombinations.amber,
+  backgroundAndFontCombinations.red,
+  backgroundAndFontCombinations.critical,
+];
+export let greenAmberRed = [
+  backgroundAndFontCombinations.green,
+  backgroundAndFontCombinations.amber,
+  backgroundAndFontCombinations.red,
+];

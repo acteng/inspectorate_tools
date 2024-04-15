@@ -3,16 +3,19 @@
   import Progress from "./Progress.svelte";
   import { TextArea } from "govuk-svelte";
   import { state } from "../data";
-  import { critical, red, amber, green } from "$lib/colors";
+  import { greenAmberRedCritical } from "$lib/colors";
 
   export let idx: number;
   export let label: string;
   export let cases: ["C" | "0" | "1" | "2", string][];
 
-  let colors = [green, amber, red, critical];
-
-  let choices: [string, string, string][] = cases.map(
-    ([value, label], index) => [value.toString(), label, colors[index]],
+  let choices: [string, string, string, string][] = cases.map(
+    ([value, label], index) => [
+      value.toString(),
+      label,
+      greenAmberRedCritical[index].background,
+      greenAmberRedCritical[index].font,
+    ],
   );
 </script>
 
@@ -30,45 +33,30 @@
   <h2>{label}</h2>
   <slot />
 
-  <div class="three-columns">
-    <div>
+  <div class="columns">
+    <div class="progress-column">
       <Progress currentIdx={idx} />
     </div>
 
-    <div>
-      <FancyRadio
-        legend="Existing"
-        {choices}
-        bind:value={$state.safetyCheck.existingScores[idx - 1]}
-      />
-      <TextArea
-        label="Comments / assumptions"
-        bind:value={$state.safetyCheck.existingScoreNotes[idx - 1]}
-      />
-    </div>
-    <div>
-      <FancyRadio
-        legend="Proposed"
-        {choices}
-        bind:value={$state.safetyCheck.proposedScores[idx - 1]}
-      />
-      <TextArea
-        label="Comments / assumptions"
-        bind:value={$state.safetyCheck.proposedScoreNotes[idx - 1]}
-      />
-    </div>
+    <FancyRadio
+      {choices}
+      bind:existingValue={$state.safetyCheck.existingScores[idx - 1]}
+      bind:proposedValue={$state.safetyCheck.proposedScores[idx - 1]}
+      bind:existingNotes={$state.safetyCheck.existingScoreNotes[idx - 1]}
+      bind:proposedNotes={$state.safetyCheck.proposedScoreNotes[idx - 1]}
+    />
   </div>
 
   <PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />
 </div>
 
 <style>
-  .three-columns {
+  .columns {
     display: flex;
     column-gap: 2rem;
   }
 
-  .three-columns > * {
-    width: calc((100% - 4rem) / 3);
+  .progress-column {
+    width: 60rem;
   }
 </style>

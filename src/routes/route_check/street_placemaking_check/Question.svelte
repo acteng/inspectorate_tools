@@ -3,16 +3,19 @@
   import Progress from "./Progress.svelte";
   import { TextArea } from "govuk-svelte";
   import { state } from "../data";
-  import { red, amber, green } from "$lib/colors";
+  import { greenAmberRed } from "$lib/colors";
 
   export let idx: number;
   export let label: string;
   export let cases: ["0" | "1" | "2", string][];
 
-  let colors = [green, amber, red];
-
-  let choices: [string, string, string][] = cases.map(
-    ([value, label], index) => [value.toString(), label, colors[index]],
+  let choices: [string, string, string, string][] = cases.map(
+    ([value, label], index) => [
+      value.toString(),
+      label,
+      greenAmberRed[index].background,
+      greenAmberRed[index].font,
+    ],
   );
 </script>
 
@@ -34,33 +37,22 @@
   <h2>{label}</h2>
   <slot />
 
-  <div class="three-columns">
-    <div>
+  <div class="columns">
+    <div class="progress-column">
       <Progress currentIdx={idx} />
     </div>
 
-    <div>
-      <FancyRadio
-        legend="Existing"
-        {choices}
-        bind:value={$state.streetPlacemakingCheck.existingScores[idx - 1]}
-      />
-      <TextArea
-        label="Comments / assumptions"
-        bind:value={$state.streetPlacemakingCheck.existingScoreNotes[idx - 1]}
-      />
-    </div>
-    <div>
-      <FancyRadio
-        legend="Proposed"
-        {choices}
-        bind:value={$state.streetPlacemakingCheck.proposedScores[idx - 1]}
-      />
-      <TextArea
-        label="Comments / assumptions"
-        bind:value={$state.streetPlacemakingCheck.proposedScoreNotes[idx - 1]}
-      />
-    </div>
+    <FancyRadio
+      {choices}
+      bind:existingValue={$state.streetPlacemakingCheck.existingScores[idx - 1]}
+      bind:proposedValue={$state.streetPlacemakingCheck.proposedScores[idx - 1]}
+      bind:existingNotes={$state.streetPlacemakingCheck.existingScoreNotes[
+        idx - 1
+      ]}
+      bind:proposedNotes={$state.streetPlacemakingCheck.proposedScoreNotes[
+        idx - 1
+      ]}
+    />
   </div>
 
   <PrevNext
@@ -71,12 +63,12 @@
 </div>
 
 <style>
-  .three-columns {
+  .columns {
     display: flex;
     column-gap: 2rem;
   }
 
-  .three-columns > * {
-    width: calc((100% - 4rem) / 3);
+  .progress-column {
+    width: 60rem;
   }
 </style>

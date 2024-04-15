@@ -71,7 +71,7 @@
 <ol>
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
-      <div style="padding: 20px">
+      <div class="govuk-font" style="padding: 20px">
         <u>{item.label}</u>
         {#if item.notes}
           <p>{item.notes}</p>
@@ -79,7 +79,7 @@
       </div>
     {:else}
       <li>
-        <div style="display: flex; justify-content: space-between">
+        <div class="progress-list-item govuk-font">
           {#if currentIdx - startIdx != item.idx}
             <a href="{base}{urlBase}{formatIndex(item.idx)}">
               {item.label}
@@ -97,3 +97,17 @@
     {/if}
   {/each}
 </ol>
+
+<style>
+  .govuk-font {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+  .govuk-tag {
+    margin: 1px;
+  }
+  .progress-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
