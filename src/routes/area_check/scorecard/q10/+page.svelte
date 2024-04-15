@@ -29,7 +29,7 @@
   ]}
 >
   <p>Potential issues associated with displaced traffic</p>
-  <ul>
+  <ul class="govuk-list">
     <li>Speeding</li>
     <li>Road safety</li>
     <li>Congestion & air quality</li>

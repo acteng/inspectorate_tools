@@ -73,7 +73,7 @@
   <SecondaryButton on:click={() => newFile()}>New file</SecondaryButton>
 
   <p>Load a saved file:</p>
-  <ul>
+  <ul class="govuk-list">
     {#each fileList as file (file)}
       <li>
         <span style="display: flex; justify-content: space-between;">

@@ -21,7 +21,7 @@
   ]}
 >
   <p>Features to encourage and enhance active travel journeys, such as:</p>
-  <ul>
+  <ul class="govuk-list">
     <li>Benches or other seating</li>
     <li>Water fountain</li>
     <li>Public tool stand</li>

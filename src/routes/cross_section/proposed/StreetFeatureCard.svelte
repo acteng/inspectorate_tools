@@ -32,7 +32,7 @@
       )}
     </p>
     <u>References:</u>
-    <ul>
+    <ul class="govuk-list">
       {#each references[value] as reference}
         <li>{reference}</li>
       {/each}

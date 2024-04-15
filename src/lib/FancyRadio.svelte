@@ -21,12 +21,12 @@
 </script>
 
 <div class="govuk-radios fancy-radio-grid" data-module="govuk-radios">
-  <h3 style="grid-column:1/2; grid-row:1/2">
+  <div class="govuk-font" style="grid-column:1/2; grid-row:1/2; font-weight: bold">
     Score for existing infrastructure:
-  </h3>
-  <h3 style="grid-column:2/3; grid-row:1/2">
+  </div>
+  <div class="govuk-font" style="grid-column:2/3; grid-row:1/2; font-weight: bold">
     Score for proposed infrastructure:
-  </h3>
+  </div>
 
   {#each choices as [thisValue, thisLabel, thisBackgroundColor, thisFontColour], i}
     <div
@@ -51,9 +51,7 @@
         </span>
       </label>
     </div>
-  {/each}
 
-  {#each choices as [thisValue, thisLabel, thisBackgroundColor, thisFontColour], i}
     <div
       class="govuk-radios__item"
       style="grid-row:{i + 2}/{i + 3}; grid-column:2/3"
@@ -76,9 +74,7 @@
         </span>
       </label>
     </div>
-  {/each}
 
-  {#each choices as [thisValue, thisLabel, thisBackgroundColor, thisFontColour], i}
     <div
       class="option-text govuk-font"
       style="grid-row:{i + 2}/{i + 3}; grid-column:3/4"
@@ -105,14 +101,14 @@
   </label>
 
   <div />
-  <input
+  <textarea
     id="existing-comments-box"
     class="govuk-textarea comments-box"
     style="grid-row:{numberOfChoices + 3}/{numberOfChoices +
       4}; grid-column:1/2"
     bind:value={existingNotes}
   />
-  <input
+  <textarea
     id="proposed-comments-box"
     class="govuk-textarea comments-box"
     style="grid-row:{numberOfChoices + 3}/{numberOfChoices +
@@ -122,33 +118,17 @@
 </div>
 
 <style>
-  .row {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    width: 60vw;
-  }
   span.option-value {
     padding: 8px;
     height: 24px;
     border-radius: 20px;
     margin-right: 5px;
   }
-  span.option-text {
-    text-align: center;
-  }
-  label {
-    display: flex;
-  }
+ 
   .govuk-form-group {
     width: 60vw;
   }
-  .radio-controls {
-    display: flex;
-    justify-content: space-between;
-    min-width: 212px;
-    width: 30vw;
-  }
+
   .govuk-radios__item {
     min-width: 106px;
     margin-bottom: 10px;
@@ -161,6 +141,7 @@
     grid-template-rows: repeat(var(--numberOfChoices) + 2, 1fr) 3fr;
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
+    max-height: 80vh;
   }
 
   .govuk-font {

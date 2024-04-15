@@ -33,7 +33,7 @@
     Suitable routes for walking and wheeling are only those which satisfy all
     conditions in the following list:
   </p>
-  <ul>
+  <ul class="govuk-list">
     <li>Smooth and sealed footway surfaces.</li>
     <li>
       Dropped kerbs with suitable gradients and appropriate tactile paving

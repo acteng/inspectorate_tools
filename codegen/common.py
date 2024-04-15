@@ -13,7 +13,7 @@ def html(x):
 
         if line.startswith("• "):
             if not is_list:
-                y += "<ul>"
+                y += "<ul class="govuk-list">"
                 is_list = True
             y += "<li>"
             y += line.removeprefix("• ")

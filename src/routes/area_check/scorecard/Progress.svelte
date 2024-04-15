@@ -40,10 +40,10 @@
 <p>Total existing score: {totalExisting}</p>
 <p>Total proposed score: {totalProposed}</p>
 
-<ol>
+<ol class="govuk-list">
   {#each questions as label, idx}
     <li>
-      <div class="progress-list-item govuk-font">
+      <div class="progress-list-item">
         {#if currentIdx - 1 != idx}
           <a href="{base}/area_check/scorecard/q{formatIndex(idx)}">{label}</a>
         {:else}
@@ -70,5 +70,6 @@
   .progress-list-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 </style>

@@ -26,7 +26,7 @@
   ]}
 >
   <p>List of internal treatments</p>
-  <ul>
+  <ul class="govuk-list">
     <li>Play streets</li>
     <li>School streets</li>
     <li>Cycle parking/hangars</li>

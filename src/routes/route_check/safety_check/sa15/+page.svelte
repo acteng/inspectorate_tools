@@ -13,7 +13,7 @@
   ]}
 >
   <p>Walking/wheeling surface and maintenance defects:</p>
-  <ul>
+  <ul class="govuk-list">
     <li>steep camber (horizontal gradient >2.5% )</li>
     <li>steep longitudinal gradients (≥8% if under 1m, ≥5% if 1m or over)</li>
     <li>missing dropped kerbs</li>

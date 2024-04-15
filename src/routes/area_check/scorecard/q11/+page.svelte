@@ -29,7 +29,7 @@
   ]}
 >
   <p>List of green infrastructure measures</p>
-  <ul>
+  <ul class="govuk-list">
     <li>Sustainable drainage systems (SuDS)</li>
     <li>Planters</li>
     <li>Parklets or pocket parks</li>

@@ -68,7 +68,7 @@
   }
 </script>
 
-<ol class="govuk-prose">
+<ol class="govuk-list">
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
       <div class="govuk-font" style="padding: 20px">
@@ -105,11 +105,9 @@
   .govuk-tag {
     margin: 1px;
   }
-  li::marker {
-    font-family: "GDS Transport", arial, sans-serif;
-  }
   .progress-list-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 </style>

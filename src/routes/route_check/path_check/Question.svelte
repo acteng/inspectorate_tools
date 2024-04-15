@@ -38,33 +38,18 @@
   <h2>{label}</h2>
   <slot />
 
-  <div class="three-columns">
-    <div>
+  <div class="columns">
+    <div class="progress-column">
       <Progress currentIdx={idx} />
     </div>
 
-    <div>
       <FancyRadio
-        legend="Existing"
         {choices}
-        bind:value={$state.pathCheck.existingScores[idx - 1]}
+        bind:existingValue={$state.pathCheck.existingScores[idx - 1]}
+        bind:proposedValue={$state.pathCheck.proposedScores[idx - 1]}
+        bind:existingNotes={$state.pathCheck.existingScoreNotes[idx - 1]}
+        bind:proposedNotes={$state.pathCheck.proposedScoreNotes[idx - 1]}
       />
-      <TextArea
-        label="Comments / assumptions"
-        bind:value={$state.pathCheck.existingScoreNotes[idx - 1]}
-      />
-    </div>
-    <div>
-      <FancyRadio
-        legend="Proposed"
-        {choices}
-        bind:value={$state.pathCheck.proposedScores[idx - 1]}
-      />
-      <TextArea
-        label="Comments / assumptions"
-        bind:value={$state.pathCheck.proposedScoreNotes[idx - 1]}
-      />
-    </div>
   </div>
 
   <PrevNext
@@ -76,12 +61,12 @@
 </div>
 
 <style>
-  .three-columns {
+  .columns {
     display: flex;
     column-gap: 2rem;
   }
 
-  .three-columns > * {
-    width: calc((100% - 4rem) / 3);
+  .progress-column {
+    width: 60rem;
   }
 </style>

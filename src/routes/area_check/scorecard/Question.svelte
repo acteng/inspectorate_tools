@@ -42,8 +42,8 @@
   <h2>{label}</h2>
   <slot />
 
-  <div class="three-columns">
-    <div>
+  <div class="columns">
+    <div class=progress-column>
       <Progress currentIdx={idx} />
     </div>
 
@@ -60,12 +60,12 @@
 </div>
 
 <style>
-  .three-columns {
+  .columns {
     display: flex;
     column-gap: 2rem;
   }
 
-  .three-columns > * {
-    width: calc((100% - 4rem) / 3);
+  .progress-column {
+    width: 60rem;
   }
-</style>
+three-</style>

@@ -13,7 +13,7 @@
   ]}
 >
   <p>Cycling surface and maintenance defects:</p>
-  <ul>
+  <ul class="govuk-list">
     <li>sharp gradients (≥12.5%)</li>
     <li>non cycle friendly ironworks</li>
     <li>raised/sunken covers or gullies</li>

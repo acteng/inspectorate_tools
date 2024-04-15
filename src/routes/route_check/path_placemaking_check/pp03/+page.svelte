@@ -21,7 +21,7 @@
   ]}
 >
   <p>Presence of features which people can engage with, such as:</p>
-  <ul>
+  <ul class="govuk-list">
     <li>Information on local features, flora and fauna</li>
     <li>Public art</li>
     <li>Heritage features</li>
