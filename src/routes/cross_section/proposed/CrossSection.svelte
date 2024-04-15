@@ -41,6 +41,10 @@
       on:moveRight={() => moveRight(i)}
       isFirst={i == 0}
       isLast={i == streetFeaturesLeftToRight.length - 1}
+      leftFeature={i == 0 ? "" : streetFeaturesLeftToRight[i - 1]}
+      rightFeature={i == streetFeaturesLeftToRight.length - 1
+        ? ""
+        : streetFeaturesLeftToRight[i + 1]}
       {sectionType}
     />
   {/each}

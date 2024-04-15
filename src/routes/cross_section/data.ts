@@ -17,19 +17,24 @@ export interface State {
     notes: string;
   };
   proposed: {
-    // TODO Enums, if it's useful
-    trafficData: {
-      flowOneWay: string;
-      flowTwoWay: string;
-      flowSharedUse: string;
-      trafficFlow: string;
-      speedLimit: string;
-      observedSpeed: number | undefined;
-      streetFunction: string;
-    };
+    trafficData: TrafficData;
     desirableMinimumCrossSection: Array<StreetFeatureType | "">;
     absoluteMinimumCrossSection: Array<StreetFeatureType | "">;
   };
+}
+
+export interface TrafficData {
+  flowOneWay: "<200" | "200-800" | ">800" | "";
+  flowTwoWay: "<300" | "300-1,000" | ">1,000" | "";
+  flowSharedUse: "<300" | ">300" | "";
+  trafficFlow: "<2,500" | "2,500-5,000" | "5,000-10,000" | ">10,000" | "";
+  speedLimit: "<30" | "30" | "40" | "50" | "60" | "70" | "";
+  observedSpeed: number | undefined;
+  streetFunction:
+    | "High Street (active frontages)"
+    | "Residential street"
+    | "Local distributor road"
+    | "";
 }
 
 export let state = writable(loadState());

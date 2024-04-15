@@ -3,12 +3,15 @@
   import { createEventDispatcher } from "svelte";
   import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
   import { state, streetFeatureTypes, type StreetFeatureType } from "../data";
-  import { getWidth, references } from "./tables";
+  import { getDesirableWidth, references } from "./tables";
 
   export let value: StreetFeatureType | "";
   export let isFirst: boolean;
   export let isLast: boolean;
+  // TODO When we implement the same for absolute, do some switching somewhere
   export let sectionType: "Desirable" | "Absolute";
+  export let leftFeature: StreetFeatureType | "";
+  export let rightFeature: StreetFeatureType | "";
 
   let dispatch = createEventDispatcher<{
     delete: void;
@@ -25,10 +28,11 @@
 
   {#if value}
     <p>
-      {sectionType} minimum width (m): {getWidth(
+      {sectionType} minimum width (m): {getDesirableWidth(
         value,
-        $state.proposed.trafficData.streetFunction,
-        sectionType,
+        $state.proposed.trafficData,
+        leftFeature,
+        rightFeature,
       )}
     </p>
     <u>References:</u>
