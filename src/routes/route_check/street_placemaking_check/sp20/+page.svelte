@@ -6,13 +6,18 @@
   idx={20}
   label="Ancillary Features to Support Fauna"
   cases={[
-    ["2", "Multiple features."],
-    ["1", "One feature."],
-    ["0", "No features."],
+    ["2", "<p>Multiple features.</p>"],
+    ["1", "<p>One feature.</p>"],
+    ["0", "<p>No features.</p>"],
   ]}
 >
   <p>
     Effect of ancillary features on user experience, biodiversity and climate
-    resilience. Such as: • Bug hotels • Water features • Wildlife corridors
+    resilience. Such as:
   </p>
+  <ul>
+    <li>Bug hotels</li>
+    <li>Water features</li>
+    <li>Wildlife corridors</li>
+  </ul>
 </Question>

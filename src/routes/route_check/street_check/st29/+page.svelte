@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Delay is shorter than for motor vehicles or cyclists are not required to stop at junctions (e.g. bypass at signals).",
+      "<p>Delay is shorter than for motor vehicles or cyclists are not required to stop at junctions (e.g. bypass at signals).</p>",
     ],
     [
       "1",
-      "Delay for cyclists at junctions is similar to delay for motor vehicles.",
+      "<p>Delay for cyclists at junctions is similar to delay for motor vehicles.</p>",
     ],
     [
       "0",
-      "Delay for cyclists at junctions is greater than for motor vehicles.",
+      "<p>Delay for cyclists at junctions is greater than for motor vehicles.</p>",
     ],
   ]}
 >

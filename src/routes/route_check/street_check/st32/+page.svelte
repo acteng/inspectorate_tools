@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Crossings rest on the green for pedestrians.  Or, the time between pressing the button and the invitation to cross has been minimised as much as is safe to do so.",
+      "<p>Crossings rest on the green for pedestrians.</p><p>Or, the time between pressing the button and the invitation to cross has been minimised as much as is safe to do so.</p>",
     ],
     [
       "1",
-      "After pressing the button, pedestrians must wait up to 10 seconds for an invitation to cross.",
+      "<p>After pressing the button, pedestrians must wait up to 10 seconds for an invitation to cross.</p>",
     ],
     [
       "0",
-      "After pressing the button, pedestrians must wait over 10 seconds for an invitation to cross.",
+      "<p>After pressing the button, pedestrians must wait over 10 seconds for an invitation to cross.</p>",
     ],
   ]}
 >

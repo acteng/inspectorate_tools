@@ -6,9 +6,9 @@
   idx={20}
   label="Delay at Crossings"
   cases={[
-    ["2", "Maximum waiting time up to 40 seconds."],
-    ["1", "Maximum waiting time 40-60 seconds."],
-    ["0", "Maximum waiting time over 60 seconds."],
+    ["2", "<p>Maximum waiting time up to 40 seconds.</p>"],
+    ["1", "<p>Maximum waiting time 40-60 seconds.</p>"],
+    ["0", "<p>Maximum waiting time over 60 seconds.</p>"],
   ]}
 >
   <p>Delay to path users at signal crossings.</p>

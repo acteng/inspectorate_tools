@@ -6,12 +6,12 @@
   idx={12}
   label="Effective Width next to Tram Lines"
   cases={[
-    ["2", "Physical protection is provided for cyclists."],
-    ["1", ">2.4m from tramline edge to kerb."],
-    ["0", "2.4m from tramline edge to kerb."],
+    ["2", "<p>Physical protection is provided for cyclists.</p>"],
+    ["1", "<p>>2.4m from tramline edge to kerb.</p>"],
+    ["0", "<p>2.4m from tramline edge to kerb.</p>"],
     [
       "C",
-      "<2.4m from tramline edge to kerb on a straight run.  Insufficient clearance on a curve.",
+      "<p><2.4m from tramline edge to kerb on a straight run.</p><p>Insufficient clearance on a curve.</p>",
     ],
   ]}
 >

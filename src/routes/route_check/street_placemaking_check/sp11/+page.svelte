@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Good loading and servicing provision, low impact and integrated. Parking enforcement recognised.   Or, no loading or parking provision necessary.",
+      "<p>Good loading and servicing provision, low impact and integrated. Parking enforcement recognised.</p><p>Or, no loading or parking provision necessary.</p>",
     ],
     [
       "1",
-      "Reasonable loading, servicing and parking provision in street area where needed. ",
+      "<p>Reasonable loading, servicing and parking provision in street area where needed.</p>",
     ],
     [
       "0",
-      "No designated provision: risk of abuse, pedestrian or cycling movement impacted.",
+      "<p>No designated provision: risk of abuse, pedestrian or cycling movement impacted.</p>",
     ],
   ]}
 >

@@ -8,10 +8,13 @@
   cases={[
     [
       "2",
-      "Route lit thoroughly, including any public transport waiting areas.",
+      "<p>Route lit thoroughly, including any public transport waiting areas.</p>",
     ],
-    ["1", "Short stretches of darkness.  Or, bat-friendly lighting."],
-    ["0", "Long stretches of darkness.  Or, no lighting."],
+    [
+      "1",
+      "<p>Short stretches of darkness.</p><p>Or, bat-friendly lighting.</p>",
+    ],
+    ["0", "<p>Long stretches of darkness.</p><p>Or, no lighting.</p>"],
   ]}
 >
   <p>Extent of lighting.</p>

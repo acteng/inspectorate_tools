@@ -1,0 +1,72 @@
+"ACCESSIBILITY",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"Gradient","Walking / Wheeling / Cycling","ST17","Steepest gradient due to underlying terrain.
+
+(For gradients at ramps, dropped kerbs and cambers, see metrics SA14 and SA15).",,">5%.","3-5%.","<3%.",,,,,,,,,,
+"Tactile Information and Signal Equipment","Walking / Wheeling / Cycling","ST18","Adherence of tactile paving to recommended layouts and colours in 'Guidance on the Use of Tactile Paving Surfaces' and accessibility of signal equipment.",,"Guidance on tactile paving has not been considered.
+
+Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).","Guidance on tactile paving has been considered, but the area is not fully legible.","Guidance on tactile paving has been considered and the area is fully legible.",,,,,,,,,,
+"Barriers","Walking / Wheeling / Cycling","ST19","Presence and accessibility of barriers.",,"Barriers are not accessible by wheelchair users and/or users on solo upright cycles (as defined in LTN 1/20) and/or mobility scooters.","All barriers are accessible by wheelchair users, mobility scooters, and by users on solo upright cycles (as defined in LTN 1/20), with sufficient space to turn.","All barriers are accessible by the cycle design vehicle referenced in LTN 1/20, with sufficient space to turn.
+
+Or, there are no barriers.",,,,,,,,,,
+"Bus Stops","Walking / Wheeling / Cycling","ST20","Interactions at bus stops.",,"At bus stops, cyclists regularly have to wait behind buses or overtake them in general traffic lanes.
+
+Or, there are likely to be high-level interactions between pedestrians and cyclists.","At bus stops, cyclists are protected from buses and traffic, but there are likely to be medium-level interactions between pedestrians and cyclists.","At bus stops, cyclists are protected from buses and traffic and interactions between pedestrians and cyclists are likely to be low-level.",,,,,,,,,,
+"Wheelchair Access","Wheeling","ST21","Accessibility of pedestrian facilities by wheelchair.",,"Pedestrian facilities (including any crossings, connections and public transport interchange facilities) are not wheelchair accessible.","All pedestrian facilities (including any crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, but some interaction with cyclists is possible.","All pedestrian facilities (including crossings, connections and public transport interchange facilities) are step-free and accessible for wheelchair users, and there is no potential for interaction with cyclists.",,,,,,,,,,
+"Access to Taxis and Blue Badge Parking","Walking / Wheeling / Cycling","ST22","Distance to accessible pick-up, drop-off or hailing points, or blue badge parking facilities.",,"Where people meet, wait, or spend time in numbers, it is over 150m to the nearest accessible pick-up, drop-off or hailing points, or blue badge parking facilities.","Where people meet, wait, or spend time in numbers, it is less than 150m to the nearest accessible pick-up, drop-off or hailing points, or blue badge parking facilities.","Where people meet, wait, or spend time in numbers, it is less than 50m to nearest accessible pick-up, drop-off or hailing points, or blue badge parking facilities.",,,,,,,,,,
+"Access to Toilets","Walking / Wheeling / Cycling","ST23","Provision of sanitary facilities.
+
+E.g. toilets and/or baby change facilities.",,"Where people meet, wait or spend time in numbers, it is over 150m to the nearest accessible sanitary facilities.","Where people meet, wait or spend time in numbers, it is less than 150m to the nearest accessible sanitary facilities.","Where people meet, wait or spend time in numbers, it is less than 50m to the nearest accessible sanitary facilities.",,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"COMFORT",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"Cycling Surface Material","Cycling","ST24","Type of cycling surface material.",,"Unsurfaced/unbound or unstable blocks/sets.","Hand-laid asphalt or smooth blocks.","Machine-laid asphalt or smooth and firm blocks undisturbed by turning vehicles.",,,,,,,,,,
+"Walking/Wheeling Surface Material","Walking / Wheeling","ST25","Type of walking/wheeling surface material.",,"The surface is low-grip (i.e. PTV of 25 or lower).
+
+If paved, the joints are wider than 5mm.","The surface is medium-grip (i.e. PTV of between 25 and 35).
+
+If paved, the joints are 5mm or less.
+
+","The surface is high-grip (i.e. PTV of 35 or higher).
+
+If paved, the joints are mortared.",,,,,,,,,,
+"Effective Width for Cyclists","Cycling","ST26","Effective width for cyclists (when not mixed with motor traffic).",,"At pinch points, cycle facility widths and/or buffers are below the absolute minimums recommended in LTN 1/20.","Recommended desirable minimum widths from LTN 1/20 are maintained for cycle facilities and buffers throughout the whole route, except at pinch points where absolute minimum widths recommended in LTN 1/20 are maintained.","Recommended desirable minimum widths from LTN 1/20 are maintained or exceeded for cycle facilities and buffers throughout whole route.",,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"DIRECTNESS",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"Deviation of Cycle Route","Cycling","ST27","Deviation of cycle route against straight line or shortest alternative.",,"Deviation factor against straight line or shortest alternative greater than 1.4.","Deviation factor against straight line or shortest alternative 1.2-1.4.","Deviation factor against straight line or shortest alternative less than 1.2.",,,,,,,,,,
+"Pedestrian Crossing Locations","Walking / Wheeling","ST28","Alignment of crossings with desire lines.",,"No crossings are located on desire lines.","Some crossings are located on desire lines.","All crossings are located on desire lines, and all desire lines are provided for.",,,,,,,,,,
+"Cyclist Delay at Junctions","Cycling","ST29","Delay to cyclists at junctions.",,"Delay for cyclists at junctions is greater than for motor vehicles.","Delay for cyclists at junctions is similar to delay for motor vehicles.","Delay is shorter than for motor vehicles or cyclists are not required to stop at junctions (e.g. bypass at signals).",,,,,,,,,,
+"Cyclist Delay on Links","Cycling","ST30","Delay to cyclists on links.",,"Cyclists have no opportunities to pass slower moving vehicles (including other cyclists).","Cyclists have some opportunities to pass slower moving vehicles (including other cyclists).","Cyclists can always progress without being delayed by other vehicles.",,,,,,,,,,
+"Pedestrian Delay at Junctions","Walking / Wheeling","ST31","Delay to pedestrians at signal controlled junctions.",,"Maximum waiting time over 60 seconds.","Maximum waiting time 40-60 seconds.","Maximum waiting time up to 40 seconds.",,,,,,,,,,
+"Pedestrian Delay at Standalone Signal Crossings","Walking / Wheeling","ST32","Delay to pedestrians at standalone signal crossings.",,"After pressing the button, pedestrians must wait over 10 seconds for an invitation to cross.","After pressing the button, pedestrians must wait up to 10 seconds for an invitation to cross.","Crossings rest on the green for pedestrians.
+
+Or, the time between pressing the button and the invitation to cross has been minimised as much as is safe to do so.",,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"ATTRACTIVENESS",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"Wayfinding","Walking / Wheeling / Cycling","ST33","Effectiveness of signage and road markings on wayfinding.",,"Route signing is poor with signs missing at key decision points. Pedestrians and cyclists follow signs and road markings intended for motor traffic.
+
+Or, signs and road markings are faded or unclear.","Some cycle and pedestrian specific direction signing. There are gaps in signage and road markings which could be improved.","Route is well signed for pedestrians and cyclists with signs and road markings located at all decision points and junctions.
+
+Signs and road markings are clear, easily visible and legible.",,,,,,,,,,
+"Places to Rest","Walking / Wheeling","ST34","Distance between resting points.",,">150m.","50-150m.","<50m.",,,,,,,,,,
+"Places to Shelter","Walking / Wheeling","ST35","Distance between shelter points.",,">150m.","50-150m.","<50m.",,,,,,,,,,
+"Lighting","Walking / Wheeling / Cycling","ST36","Extent of lighting.",,"Long stretches of darkness.
+
+Or, no lighting.","Short stretches of darkness.
+
+Or, bat-friendly lighting.","Route lit thoroughly, including any public transport waiting areas.",,,,,,,,,,
+"Cycle Parking","Cycling","ST37","Ease of access to cycle parking on- and off-street.",,"Insufficient or inappropriate cycle parking.","Some accessible and overlooked cycle parking provided but not enough to meet present demand.","Accessible and overlooked cycle parking provided, sufficient to meet present and future demand, including provision for a range of cycle vehicles and users.",,,,,,,,,,
+"Impact of Cycling on Walking","Walking / Wheeling / Cycling","ST38","Presence of shared use cycle tracks and toucan crossings.",,"On urban streets, cyclists are expected to use shared use cycle tracks and/or toucan crossings, bringing them into potential conflict with pedestrians.
+
+In rural areas or motor traffic free environments, shared use cycle tracks fail the width requirements set out in Table 6-3 of LTN 1/20.","In rural areas or motor traffic free environments, shared use cycle tracks pass the width requirements set out in Table 6-3 of LTN 1/20 and are designed in a way that minimises potential conflict between cyclists and pedestrians.","There are no shared use cycle tracks.",,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"COHESION",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+"Impact of Motor Traffic on Pedestrians and Cyclists","Walking / Wheeling / Cycling","ST39","Measures taken to manage motor traffic in a way that benefits active modes.",,"There are no measures to manage motor traffic that benefit active modes.","There are some measures to manage motor traffic that benefit active modes.","There are measures to manage motor traffic which prioritise active modes.
+
+Or, the route is completely separate from motor traffic.",,,,,,,,,,
+"Transitions for Cyclists","Cycling","ST40","Ability to transition on and off the route safely and easily.",,"Cyclists cannot transition on or off the route without dismounting.","Cyclists can transition on and off the route with minimal disruption to their journey.","Cyclists have dedicated, legible and understandable transitions on and off the route at all key points. Protected cycle facilities are easy to join and leave.",,,,,,,,,,
+"Route Continuity ","Walking / Wheeling / Cycling","ST41","Continuity of walking, wheeling and cycling routes.",,"Provisions for walking, wheeling and cycling along the route are discontinuous.","Provisions for walking, wheeling and cycling along the route are continuous but may be indirect or have sections which are unintuitive to navigate.","Provisions for walking, wheeling and cycling along the route are direct, continuous, intuitive and legible. ",,,,,,,,,,
+"Consistency of Route","Walking / Wheeling / Cycling","ST42","Consistency of provision for pedestrians and cyclists.",,"Multiple changes of provision on the route.","Some changes of provision on the route.","Provision is consistent throughout the route.",,,,,,,,,,

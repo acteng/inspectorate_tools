@@ -8,10 +8,10 @@
   cases={[
     [
       "2",
-      "Access to formal/natural play spaces for children and street features that can engage children.",
+      "<p>Access to formal/natural play spaces for children and street features that can engage children.</p>",
     ],
-    ["1", "Some access to formal/natural play spaces for children."],
-    ["0", "None."],
+    ["1", "<p>Some access to formal/natural play spaces for children.</p>"],
+    ["0", "<p>None.</p>"],
   ]}
 >
   <p>Presence of features which children can engage with.</p>

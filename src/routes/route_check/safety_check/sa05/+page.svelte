@@ -8,19 +8,19 @@
   cases={[
     [
       "2",
-      "Kerbside activity is well-managed with no or minimal conflict with cyclists. ",
+      "<p>Kerbside activity is well-managed with no or minimal conflict with cyclists.</p>",
     ],
     [
       "1",
-      "Less frequent kerbside activity, and conflict with cyclists is well-managed.",
+      "<p>Less frequent kerbside activity, and conflict with cyclists is well-managed.</p>",
     ],
     [
       "0",
-      "Frequent kerbside activity for cyclists to contend with. Conflict with cyclists is not well-managed.",
+      "<p>Frequent kerbside activity for cyclists to contend with. Conflict with cyclists is not well-managed.</p>",
     ],
     [
       "C",
-      "Cycle facility next to parking/loading facility, without a buffer of at least 0.5m.  Or, an unprotected cycle lane is next to a frequently-used bus layby.",
+      "<p>Cycle facility next to parking/loading facility, without a buffer of at least 0.5m.</p><p>Or, an unprotected cycle lane is next to a frequently-used bus layby.</p>",
     ],
   ]}
 >

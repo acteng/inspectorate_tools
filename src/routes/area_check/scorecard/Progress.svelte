@@ -43,7 +43,7 @@
 <ol>
   {#each questions as label, idx}
     <li>
-      <div style="display: flex; justify-content: space-between">
+      <div class="progress-list-item govuk-font">
         {#if currentIdx - 1 != idx}
           <a href="{base}/area_check/scorecard/q{formatIndex(idx)}">{label}</a>
         {:else}
@@ -58,3 +58,17 @@
     </li>
   {/each}
 </ol>
+
+<style>
+  .govuk-font {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+  .govuk-tag {
+    margin: 1px;
+  }
+
+  .progress-list-item {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>

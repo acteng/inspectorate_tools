@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Cyclists can always progress without being delayed by other vehicles.",
+      "<p>Cyclists can always progress without being delayed by other vehicles.</p>",
     ],
     [
       "1",
-      "Cyclists have some opportunities to pass slower moving vehicles (including other cyclists).",
+      "<p>Cyclists have some opportunities to pass slower moving vehicles (including other cyclists).</p>",
     ],
     [
       "0",
-      "Cyclists have no opportunities to pass slower moving vehicles (including other cyclists).",
+      "<p>Cyclists have no opportunities to pass slower moving vehicles (including other cyclists).</p>",
     ],
   ]}
 >

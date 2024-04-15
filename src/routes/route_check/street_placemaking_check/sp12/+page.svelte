@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "No redundant street furniture, advertising or temporary signage. Footways are clear from obstruction and signage clutter is minimal.",
+      "<p>No redundant street furniture, advertising or temporary signage. Footways are clear from obstruction and signage clutter is minimal.</p>",
     ],
     [
       "1",
-      "Some redundant street furniture, advertising and temporary advertising. Some signage clutter.",
+      "<p>Some redundant street furniture, advertising and temporary advertising. Some signage clutter.</p>",
     ],
     [
       "0",
-      "Lots of redundant street furniture, advertising, and temporary signage causing obstructions. Signage clutter contributing to visual overload.",
+      "<p>Lots of redundant street furniture, advertising, and temporary signage causing obstructions. Signage clutter contributing to visual overload.</p>",
     ],
   ]}
 >

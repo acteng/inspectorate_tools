@@ -50,7 +50,7 @@ export function loadFile(file: string): State {
   let x = JSON.parse(json);
   // Could more thoroughly check for validity, but the format won't change
   // much after initial development calms down
-  if (!x.streetPlacemakingCheck) {
+  if (!x.criticalIssues) {
     throw new Error("File format appears outdated");
   }
   return x;
@@ -108,8 +108,10 @@ export interface State {
     proposed: "Yes" | "No" | "";
     commentary: string;
   }[];
+  policyConflictLog: PolicyConflict[];
 
   safetyCheck: Scorecard;
+  criticalIssues: CriticalIssue[];
 
   streetCheck: Scorecard;
 
@@ -132,6 +134,55 @@ interface Scorecard {
   // Optional notes for each entry
   existingScoreNotes: string[];
   proposedScoreNotes: string[];
+}
+
+interface PolicyConflict {
+  id: string;
+  // TODO
+  conflict: "1" | "2" | "3" | "4" | "5" | "6" | "";
+  stage: "Existing" | "Design" | "";
+  // TODO GJ point type?
+  point: string;
+  locationName: string;
+  resolved: "Yes" | "No" | "";
+  notes: "";
+}
+
+interface CriticalIssue {
+  id: string;
+  // TODO
+  criticalIssue:
+    | "1"
+    | "2"
+    | "3"
+    | "4"
+    | "5A"
+    | "5B"
+    | "6A"
+    | "6B"
+    | "7A"
+    | "7B"
+    | "8"
+    | "9A"
+    | "9B"
+    | "10"
+    | "11A"
+    | "11B"
+    | "11C"
+    | "11D"
+    | "12A"
+    | "12B"
+    | "13"
+    | "14"
+    | "15"
+    | "16"
+    | "";
+  stage: "Existing" | "Design" | "";
+  // TODO GJ point type?
+  point: string;
+  locationName: string;
+  resolved: "Yes" | "No" | "";
+  notes: "";
 }
 
 export function emptyState(): State {
@@ -159,7 +210,9 @@ export function emptyState(): State {
       proposed: "",
       commentary: "",
     }),
+    policyConflictLog: [],
     safetyCheck: emptyScorecard(16),
+    criticalIssues: [],
     streetCheck: emptyScorecard(26),
     streetPlacemakingCheck: emptyScorecard(26),
     pathCheck: emptyScorecard(30),

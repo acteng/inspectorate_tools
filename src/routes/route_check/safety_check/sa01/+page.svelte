@@ -8,17 +8,20 @@
   cases={[
     [
       "2",
-      "Side roads/priority junctions have entry treatments that offer greater protection for  pedestrian and cycle movements (e.g. exit only, continuous footways, zebra/parallel crossings as appropriate to context).",
+      "<p>Side roads/priority junctions have entry treatments that offer greater protection for  pedestrian and cycle movements (e.g. exit only, continuous footways, zebra/parallel crossings as appropriate to context).</p>",
     ],
     [
       "1",
-      "<2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments. ",
+      "<p><2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments.</p>",
     ],
     [
       "0",
-      "<2,500vpd cut across main walking, wheeling or cycling streams, but side roads and priority junctions are untreated.",
+      "<p><2,500vpd cut across main walking, wheeling or cycling streams, but side roads and priority junctions are untreated.</p>",
     ],
-    ["C", ">2,500vpd cut across main walking, wheeling or cycling streams."],
+    [
+      "C",
+      "<p>>2,500vpd cut across main walking, wheeling or cycling streams.</p>",
+    ],
   ]}
 >
   <p>

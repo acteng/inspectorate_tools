@@ -8,13 +8,13 @@
   cases={[
     [
       "2",
-      "Well-integrated sustainable drainage that is capable of dealing with extreme weather events and creates habitats for flora and fauna.",
+      "<p>Well-integrated sustainable drainage that is capable of dealing with extreme weather events and creates habitats for flora and fauna.</p>",
     ],
     [
       "1",
-      "Well-integrated sustainable drainage that is capable of dealing with extreme weather events.",
+      "<p>Well-integrated sustainable drainage that is capable of dealing with extreme weather events.</p>",
     ],
-    ["0", "Basic drainage infrastructure.  "],
+    ["0", "<p>Basic drainage infrastructure.</p>"],
   ]}
 >
   <p>

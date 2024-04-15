@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "The character of the street reflects its cultural significance to society.",
+      "<p>The character of the street reflects its cultural significance to society.</p>",
     ],
     [
       "1",
-      "The street is culturally significant on a local level, but the character of the street does not reflect this.",
+      "<p>The street is culturally significant on a local level, but the character of the street does not reflect this.</p>",
     ],
     [
       "0",
-      "The street is culturally significant on a regional or national level, but the character of the street does not reflect this.",
+      "<p>The street is culturally significant on a regional or national level, but the character of the street does not reflect this.</p>",
     ],
   ]}
 >

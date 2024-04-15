@@ -8,17 +8,20 @@
   cases={[
     [
       "2",
-      "All pedestrian and cyclist movements are separated from all motor traffic movements at roundabouts and/or signal controlled junctions.",
+      "<p>All pedestrian and cyclist movements are separated from all motor traffic movements at roundabouts and/or signal controlled junctions.</p>",
     ],
     [
       "1",
-      "The principal pedestrian and cyclist movements are separated from motor traffic movements at roundabouts and/or signal controlled junctions.",
+      "<p>The principal pedestrian and cyclist movements are separated from motor traffic movements at roundabouts and/or signal controlled junctions.</p>",
     ],
     [
       "0",
-      "The principal pedestrian and/or cyclist movements are in conflict with motor traffic movements at roundabouts and/or signal controlled junctions.",
+      "<p>The principal pedestrian and/or cyclist movements are in conflict with motor traffic movements at roundabouts and/or signal controlled junctions.</p>",
     ],
-    ["C", ">2,500vpd cut across main walking, wheeling or cycling streams."],
+    [
+      "C",
+      "<p>>2,500vpd cut across main walking, wheeling or cycling streams.</p>",
+    ],
   ]}
 >
   <p>

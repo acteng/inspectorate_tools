@@ -6,9 +6,9 @@
   idx={26}
   label="Consistency of Route"
   cases={[
-    ["2", "Provision is consistent throughout the route."],
-    ["1", "Some changes of provision on the route."],
-    ["0", "Multiple changes of provision on the route."],
+    ["2", "<p>Provision is consistent throughout the route.</p>"],
+    ["1", "<p>Some changes of provision on the route.</p>"],
+    ["0", "<p>Multiple changes of provision on the route.</p>"],
   ]}
 >
   <p>Consistency of provision for pedestrians and cyclists.</p>

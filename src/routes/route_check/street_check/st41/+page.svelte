@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Provisions for walking, wheeling and cycling along the route are direct, continuous, intuitive and legible.",
+      "<p>Provisions for walking, wheeling and cycling along the route are direct, continuous, intuitive and legible.</p>",
     ],
     [
       "1",
-      "Provisions for walking, wheeling and cycling along the route are continuous but may be indirect or have sections which are unintuitive to navigate.",
+      "<p>Provisions for walking, wheeling and cycling along the route are continuous but may be indirect or have sections which are unintuitive to navigate.</p>",
     ],
     [
       "0",
-      "Provisions for walking, wheeling and cycling along the route are discontinuous.",
+      "<p>Provisions for walking, wheeling and cycling along the route are discontinuous.</p>",
     ],
   ]}
 >

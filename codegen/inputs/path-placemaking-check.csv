@@ -1,0 +1,90 @@
+"SOCIAL ACTIVITY",,,,,,,,,,,
+,,,,,,,,,,,
+"Engagement for Children","PP01","Presence of features which children can engage with.",,"None.","Some access to formal/natural play spaces for children.","Access to formal/natural play spaces for children and features that can engage children.",,,,,
+"Social Space","PP02","Proximity to places where people might stop and have a conversation.",,">800m.","400-800m.","<400m.",,,,,
+"Points of Interest","PP03","Presence of features which people can engage with, such as:
+• Information on local features, flora and fauna
+• Public art
+• Heritage features
+• Viewpoints",,"No information on local features, flora or fauna is provided.
+
+No public art has been encouraged or featured. ","Some information on local features, flora or fauna is provided.
+
+Or, public art has been encouraged or featured. ","Information on local features, flora or fauna is provided.
+
+Public art has been encouraged or featured. ",,,,,
+,,,,,,,,,,,
+"PERSONAL SECURITY ",,,,,,,,,,,
+,,,,,,,,,,,
+"Note: All three personal security metrics below are double weighted when the Path Placemaking score is calculated. This is explained further in the Route Check user manual.",,,,,,,,,,,
+,,,,,,,,,,,
+"Surveillance and Activity","PP04","Natural surveillance from the surrounding environment throughout the day and night.",,"Few buildings overlook the path.
+
+There is little activity from people using or moving through the space.","Surrounding buildings do not completely overlook the path throughout day and night.
+
+There are some people using or moving through the space.","Mixed use buildings overlook the path throughout day and night. 
+
+There are many people using or moving through the space.",,,,,
+"Forward Visibility and Escape Routes","PP05","Effect of topography, vegetation and built environment on perceived and actual risk of crime.",,"Poor sight lines or potential ambush points due to buildings, walls, vegetation, corners or topography etc. 
+
+Enclosed spaces; no or few escape routes.","Path is mostly open with few visibility issues. 
+
+Some escape routes.","Path is open with good visibility and clear sight lines. 
+
+Frequent escape routes.",,,,,
+"Visibility of Others","PP06","Effect of lighting and path environment on perceived and actual risk of crime.",,"No lighting. Path environment that creates potential ambush points.","Inadequate lighting, or bright lighting that creates high contrast areas with shadows. ","Lighting that does not create high contrast areas with shadows. Path environment does not create hiding or loitering places.",,,,,
+,,,,,,,,,,,
+"CHARACTER AND LEGIBILITY",,,,,,,,,,,
+,,,,,,,,,,,
+"Maintenance and Upkeep","PP07","Condition of the path environment.",,"Poorly maintained path environment: overgrown vegetation or significant littering. No winter maintenance.
+
+The path has been designed in a way that is hard to maintain.","Elements of the path environment are well maintained.","Well maintained environment: vegetation is well-managed and there are no issues with littering. Route is well-maintained throughout winter.
+
+The path has been designed in a way that is easy to maintain.",,,,,
+"Consistency of Materials and Path Furniture","PP08","Consistency and suitability of materials and path furniture for the wider path environment.",,"Clashes between surface materials, path and the wider street environment, negatively affecting the path's appearance and character.","Consistent surface materials and path furniture which also match the wider  environment.","Surface materials and path furniture complement the wider environment and enhance the path's appearance and character.",,,,,
+"Visual Interest","PP09","Visual distinctiveness of the path environmenty.",,"Uniform, monotonous, boring (e.g. consistently in a cutting or between high fences).","Some variety in the path's environment.","Lots of variety in the path environment (e.g. visually interesting or unique features).",,,,,
+"Features to Support Walking, Wheeling and Cycling","PP10","Features to encourage and enhance active travel journeys, such as:
+• Benches or other seating
+• Water fountain
+• Public tool stand
+• Cycle pump
+• Cycle counter
+• Tactile maps",,"No specific features to encourage and enhance active travel journeys.","One feature to encourage and enhance active travel journeys.","Many features to encourage and enhance active travel journeys.",,,,,
+,,,,,,,,,,,
+"ENVIRONMENT",," ",,,,,,,,,
+,,,,,,,,,,,
+"Trees","PP11","Effect of trees on user experience, biodiversity, and climate resilience.",,"There are no trees, or only one tree. 
+ 
+If assessing a design proposal, there are no trees, or the number of trees has been reduced. ","There are multiple trees, with canopies spaced more than 15m apart on average. 
+ 
+If assessing a design proposal, most existing trees are to be retained, with the overall number of trees maintained or increased. ","There are multiple trees, with canopies spaced less than 15m apart on average. 
+ 
+If assessing a design proposal, all existing trees are to be retained, with the overall number of trees maintained or increased. ",,,,,
+"Planting","PP12","Effect of planting on user experience, biodiversity, and climate resilience.",,"Little or no planting, providing limited visual interest. ","Some planted elements providing visual interest. ","A variety of suitable planting that provides habitats for fauna, and wider experiential benefits. ",,,,,
+"Ancillary Features to Support Fauna","PP13","Effect of ancillary features on user experience, biodiversity and climate resilience. 
+
+E.g. bug hotels, water features, wildlife corridors",,"No features.","One feature.","Multiple features.",,,,,
+"Sustainable Materials","PP14","Incorporation of low carbon, sustainable or recycled materials into the design.",,"No low carbon, sustainable or recycled materials used.","Some low carbon, sustainable or recycled materials used.","Full integration of low carbon, sustainable and/or recycled materials.",,,,,
+"Air Pollution - Exposure","PP15","Exposure to NOX concentration.",,"The NO2 concentration is greater than 40µg/m3.
+
+If assessing a design proposal, the NO2 concentration is greater than 40µg/m3 and there are no proposals to reduce local traffic volume.","The NO2 concentration is 32-40µg/m3. 
+
+Or, the existing NO2 concentration is greater than 40µg/m3 but local traffic volume reduction measures are proposed.
+","The NO2 concentration is less than 32µg/m3. 
+
+Or, the NO2 concentration is 32-40µg/m3 but local traffic volume reduction measures are proposed.",,,,,
+"Air Pollution - Proximity","PP16","Proximity to PM10 & NOX  concentration.",,"No roadside tredges or selective planting. 
+
+Or, a buffer of less than 0.5m between sources of pollution and pedestrians and cyclists. ","0.5-2m buffer between sources of pollution and pedestrians and cyclists. 
+
+Or, there is a cycle facility at least 2m wide between the footway and carriageway.","Inclusion of roadside tredges or selective planting.
+
+And/or, a buffer of at least 2m between sources of pollution and pedestrians and cyclists.",,,,,
+"Noise Pollution","PP17","Effect of noise pollution from traffic on user experience.",,"Excessively noisy (>78dB).","Slightly noisy (65-78dB).","Comfortable noise levels (<65dB).",,,,,
+"Light Pollution","PP18","Effect of excessive lighting on the environment and user experience.",,"Beams from path lighting are excessively bright, excessively blue-violet and/or not shielded. 
+
+Or, parts of the path are positioned so that vehicle headlights dazzle pedestrians and cyclists.","Beams from path lighting are no stronger than necessary but are not sufficiently shielded.","Beams from path lighting are shielded, are no stronger than necessary and are warm-coloured.
+
+Path environment and/or layout mitigates the effect of vehicle headlights dazzling pedestrians and cyclists.",,,,,
+"Sunlight","PP19","How much sunlight the street receives.",,"No sunlight penetration.","<2 hours direct sunlight on shortest day of year.",">2 hours direct sunlight on shortest day of year.",,,,,
+,,,,,,,,,,,

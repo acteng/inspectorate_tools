@@ -68,7 +68,7 @@
   }
 </script>
 
-<ol>
+<ol class="govuk-prose">
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
       <div class="govuk-font" style="padding: 20px">
@@ -79,7 +79,7 @@
       </div>
     {:else}
       <li>
-        <div style="display: flex; justify-content: space-between">
+        <div class="progress-list-item govuk-font">
           {#if currentIdx - startIdx != item.idx}
             <a href="{base}{urlBase}{formatIndex(item.idx)}">
               {item.label}
@@ -107,5 +107,9 @@
   }
   li::marker {
     font-family: "GDS Transport", arial, sans-serif;
+  }
+  .progress-list-item {
+    display: flex;
+    justify-content: space-between;
   }
 </style>

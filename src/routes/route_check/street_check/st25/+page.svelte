@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "The surface is high-grip (i.e. PTV of 35 or higher).  If paved, the joints are mortared.",
+      "<p>The surface is high-grip (i.e. PTV of 35 or higher).</p><p>If paved, the joints are mortared.</p>",
     ],
     [
       "1",
-      "The surface is medium-grip (i.e. PTV of between 25 and 35).  If paved, the joints are 5mm or less.  ",
+      "<p>The surface is medium-grip (i.e. PTV of between 25 and 35).</p><p>If paved, the joints are 5mm or less.</p>",
     ],
     [
       "0",
-      "The surface is low-grip (i.e. PTV of 25 or lower).  If paved, the joints are wider than 5mm.",
+      "<p>The surface is low-grip (i.e. PTV of 25 or lower).</p><p>If paved, the joints are wider than 5mm.</p>",
     ],
   ]}
 >

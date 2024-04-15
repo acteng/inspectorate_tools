@@ -8,15 +8,15 @@
   cases={[
     [
       "2",
-      "Lighting that does not create high contrast areas with shadows. Street furniture does not create hiding or loitering places.",
+      "<p>Lighting that does not create high contrast areas with shadows. Street furniture does not create hiding or loitering places.</p>",
     ],
     [
       "1",
-      "Inadequate lighting, or bright lighting that creates high contrast areas with shadows. ",
+      "<p>Inadequate lighting, or bright lighting that creates high contrast areas with shadows.</p>",
     ],
     [
       "0",
-      "No lighting. Street furniture that creates potential ambush points.",
+      "<p>No lighting. Street furniture that creates potential ambush points.</p>",
     ],
   ]}
 >

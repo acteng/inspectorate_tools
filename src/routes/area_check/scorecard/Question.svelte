@@ -47,22 +47,13 @@
       <Progress currentIdx={idx} />
     </div>
 
-    <div>
-      <FancyRadio
-        legend="Existing"
-        {choices}
-        bind:value={$state.existingScores[idx - 1]}
-      />
-      <TextArea label="Notes" bind:value={$state.existingScoreNotes[idx - 1]} />
-    </div>
-    <div>
-      <FancyRadio
-        legend="Proposed"
-        {choices}
-        bind:value={$state.proposedScores[idx - 1]}
-      />
-      <TextArea label="Notes" bind:value={$state.proposedScoreNotes[idx - 1]} />
-    </div>
+    <FancyRadio
+      {choices}
+      bind:existingValue={$state.existingScores[idx - 1]}
+      bind:proposedValue={$state.proposedScores[idx - 1]}
+      bind:existingNotes={$state.existingScoreNotes[idx - 1]}
+      bind:proposedNotes={$state.proposedScoreNotes[idx - 1]}
+    />
   </div>
 
   <PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />

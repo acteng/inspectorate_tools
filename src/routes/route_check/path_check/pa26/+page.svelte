@@ -6,12 +6,12 @@
   idx={10}
   label="Shared Use Surface"
   cases={[
-    ["2", "Bound and porous surface (e.g. Flexipave)."],
+    ["2", "<p>Bound and porous surface (e.g. Flexipave).</p>"],
     [
       "1",
-      "Bound, sealed surface such as tarmac (including tar, spray and chip).",
+      "<p>Bound, sealed surface such as tarmac (including tar, spray and chip).</p>",
     ],
-    ["0", "Unbound or unsealed surface."],
+    ["0", "<p>Unbound or unsealed surface.</p>"],
   ]}
 >
   <p>Surface of shared use facilities.</p>

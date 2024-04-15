@@ -22,10 +22,14 @@
   <ol>
     <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
     <li><a href="{base}/route_check/policy_check">Policy Check</a></li>
-    <li>Policy Conflict Log</li>
+    <li>
+      <a href="{base}/route_check/policy_conflict_log">Policy Conflict Log</a>
+    </li>
 
     <li><a href="{base}/route_check/safety_check">Safety Check</a></li>
-    <li>Critical Issues Log</li>
+    <li>
+      <a href="{base}/route_check/critical_issues_log">Critical Issues Log</a>
+    </li>
 
     {#if $state.summary.checkType == "street"}
       <li><a href="{base}/route_check/street_check">Street Check</a></li>

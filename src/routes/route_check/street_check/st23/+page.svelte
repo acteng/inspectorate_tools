@@ -8,21 +8,19 @@
   cases={[
     [
       "2",
-      "Where people meet, wait or spend time in numbers, it is less than 50m to the nearest accessible sanitary facilities.",
+      "<p>Where people meet, wait or spend time in numbers, it is less than 50m to the nearest accessible sanitary facilities.</p>",
     ],
     [
       "1",
-      "Where people meet, wait or spend time in numbers, it is less than 150m to the nearest accessible sanitary facilities.",
+      "<p>Where people meet, wait or spend time in numbers, it is less than 150m to the nearest accessible sanitary facilities.</p>",
     ],
     [
       "0",
-      "Where people meet, wait or spend time in numbers, it is over 150m to the nearest accessible sanitary facilities.",
+      "<p>Where people meet, wait or spend time in numbers, it is over 150m to the nearest accessible sanitary facilities.</p>",
     ],
   ]}
 >
-  <p>
-    Provision of sanitary facilities. E.g. toilets and/or baby change
-    facilities.
-  </p>
+  <p>Provision of sanitary facilities.</p>
+  <p>E.g. toilets and/or baby change facilities.</p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>
