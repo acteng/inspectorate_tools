@@ -1,9 +1,9 @@
 <script lang="ts">
   import { pairs } from "$lib";
   import { createEventDispatcher } from "svelte";
-  import { SecondaryButton, WarningButton, Select } from "govuk-svelte";
+  import { WarningText, SecondaryButton, WarningButton, Select } from "govuk-svelte";
   import { state, streetFeatureTypes, type StreetFeatureType } from "../data";
-  import { getWidths, references } from "./logic";
+  import { getWidths, references, needBuffers } from "./logic";
 
   export let value: StreetFeatureType | "";
   export let isFirst: boolean;
@@ -12,6 +12,8 @@
   export let sectionType: "Desirable" | "Absolute";
   export let leftFeature: StreetFeatureType | "";
   export let rightFeature: StreetFeatureType | "";
+
+  $: buffers = needBuffers(value, leftFeature, rightFeature);
 
   let dispatch = createEventDispatcher<{
     delete: void;
@@ -35,6 +37,15 @@
         rightFeature,
       )[sectionType == "Desirable" ? 0 : 1]}
     </p>
+
+    {#if buffers == "left"}
+            <WarningText>Consider buffer to left</WarningText>
+    {:else if buffers == "right"}
+            <WarningText>Consider buffer to right</WarningText>
+    {:else if buffers == "both"}
+            <WarningText>Consider buffers to left and right</WarningText>
+    {/if}
+
     <u>References:</u>
     <ul>
       {#each references[value] as reference}

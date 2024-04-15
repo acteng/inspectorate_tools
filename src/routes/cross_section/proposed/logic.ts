@@ -145,6 +145,32 @@ let classes: Record<StreetFeatureType, 0 | 1 | 2 | 10> = {
   "Loading Bay": 10,
 };
 
+// Are buffers recommended on either side?
+export function needBuffers(
+  streetFeature: StreetFeatureType,
+  leftFeature: StreetFeatureType | "",
+  rightFeature: StreetFeatureType | "",
+): "left" | "right" | "both" | "" {
+        // Only need buffers around active travel features
+  if (classes[streetFeature] != 0) {
+          return "";
+  }
+
+        let left = leftFeature && (classes[leftFeature] == 2 || classes[leftFeature] == 10);
+        let right = rightFeature && (classes[rightFeature] == 2 || classes[rightFeature] == 10);
+
+        if (left && right) {
+                return "both";
+        }
+        if (left) {
+                return "left";
+        }
+        if (right) {
+                return "right";
+        }
+        return "";
+}
+
 // TODO Embed or link the references
 export let references: Record<StreetFeatureType, string[]> = {
   Footway: [
