@@ -68,7 +68,7 @@
   }
 </script>
 
-<ol class="govuk-list">
+<ol>
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
       <div class="govuk-font" style="padding: 20px">

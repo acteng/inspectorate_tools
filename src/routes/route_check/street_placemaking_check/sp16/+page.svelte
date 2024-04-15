@@ -23,7 +23,7 @@
   <p>
     Street features to encourage and enhance active travel journeys, such as:
   </p>
-  <ul class="govuk-list">
+  <ul>
     <li>Benches or other seating</li>
     <li>Water fountains</li>
     <li>Public tool stands</li>

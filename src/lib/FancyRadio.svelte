@@ -4,6 +4,7 @@
 
   // A list of [value, label, color] representing the choices
   export let choices: [string, string, string, string][];
+    // This is necessary to use the value in the css
   let numberOfChoices = 0;
 
   // The current value
@@ -15,7 +16,7 @@
   let beforeId = uuidv4();
   let afterId = uuidv4();
 
-  onMount(async () => {
+  onMount(() => {
     numberOfChoices = choices.length;
   });
 </script>

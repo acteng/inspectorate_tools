@@ -40,7 +40,7 @@
 <p>Total existing score: {totalExisting}</p>
 <p>Total proposed score: {totalProposed}</p>
 
-<ol class="govuk-list">
+<ol>
   {#each questions as label, idx}
     <li>
       <div class="progress-list-item">

@@ -15,7 +15,7 @@
     Effect of ancillary features on user experience, biodiversity and climate
     resilience. Such as:
   </p>
-  <ul class="govuk-list">
+  <ul>
     <li>Bug hotels</li>
     <li>Water features</li>
     <li>Wildlife corridors</li>

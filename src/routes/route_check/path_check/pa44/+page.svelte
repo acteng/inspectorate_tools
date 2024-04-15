@@ -22,7 +22,7 @@
 >
   <p>Route links to public transport interchanges and other destinations.</p>
   <p>Other destinations could include:</p>
-  <ul class="govuk-list">
+  <ul>
     <li>Local high streets</li>
     <li>Schools and colleges</li>
     <li>Hospitals and healthcare</li>

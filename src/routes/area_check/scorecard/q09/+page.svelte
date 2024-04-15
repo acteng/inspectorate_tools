@@ -29,7 +29,7 @@
   ]}
 >
   <p>Potential exemptions may include:</p>
-  <ul class="govuk-list">
+  <ul>
     <li>Buses</li>
     <li>Taxis</li>
     <li>Private hire vehicles</li>
