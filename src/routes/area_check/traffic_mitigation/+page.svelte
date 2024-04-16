@@ -1,7 +1,9 @@
 <script lang="ts">
   import MajorRoutes from "./MajorRoutes.svelte";
   import MinorRoutes from "./MinorRoutes.svelte";
-  import { Select, WarningText } from "govuk-svelte";
+  import Confirmation from "./Confirmation.svelte";
+  import { TextArea, Select, WarningText } from "govuk-svelte";
+  import { state } from "../data";
   import { YesNo, Breadcrumbs, pairs } from "$lib";
 
   let q1 = "";
@@ -36,9 +38,7 @@
   />
 
   {#if q2 == "Yes"}
-    <div class="govuk-panel govuk-panel--confirmation">
-      <div class="govuk-panel__body">Proceed with the scheme</div>
-    </div>
+    <Confirmation />
   {:else if q2 == "No"}
     <Select
       label="Where will displaced traffic go?"
@@ -57,3 +57,10 @@
     {/if}
   {/if}
 {/if}
+
+<hr />
+
+<TextArea
+  label="Results & Commentary"
+  bind:value={$state.trafficMitigationCheck.notes}
+/>

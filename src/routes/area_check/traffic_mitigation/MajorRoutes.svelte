@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Confirmation from "./Confirmation.svelte";
   import { Select, WarningText } from "govuk-svelte";
   import { pairs, YesNo } from "$lib";
 
@@ -25,12 +26,9 @@
   />
 
   {#if q2 == "No"}
-    <div class="govuk-panel govuk-panel--confirmation">
-      <h1 class="govuk-panel__title">Proceed with the scheme</h1>
-      <div class="govuk-panel__body">
-        The scheme reduces traffic overall, and causes no wider issues
-      </div>
-    </div>
+    <Confirmation>
+      The scheme reduces traffic overall, and causes no wider issues
+    </Confirmation>
   {:else if q2 == "Yes"}
     <YesNo
       label="Do the major road(s) exceed or approach the pollution limit values?"

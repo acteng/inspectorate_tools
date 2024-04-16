@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Confirmation from "./Confirmation.svelte";
   import { YesNo } from "$lib";
   import { WarningText } from "govuk-svelte";
 
@@ -27,11 +28,8 @@
       Redesign scheme with alternative diversionary routes or a wider focus
     </WarningText>
   {:else if q2 == "No"}
-    <div class="govuk-panel govuk-panel--confirmation">
-      <h1 class="govuk-panel__title">Proceed with the scheme</h1>
-      <div class="govuk-panel__body">
-        The scheme reduces traffic overall, and causes no wider issues
-      </div>
-    </div>
+    <Confirmation>
+      The scheme reduces traffic overall, and causes no wider issues
+    </Confirmation>
   {/if}
 {/if}

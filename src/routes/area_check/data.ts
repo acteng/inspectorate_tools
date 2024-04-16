@@ -20,6 +20,9 @@ export interface State {
     notes: string;
     polygon: Feature<Polygon> | null;
   };
+  trafficMitigationCheck: {
+    notes: string;
+  };
   // Exactly 13 entries, matching up with the scorecard questions. The values are the stringified scores.
   existingScores: string[];
   proposedScores: string[];
@@ -60,6 +63,9 @@ export function emptyState(): State {
       schemeAreaSizeKm2: "",
       notes: "",
       polygon: null,
+    },
+    trafficMitigationCheck: {
+      notes: "",
     },
     existingScores: Array(13).fill(""),
     proposedScores: Array(13).fill(""),
