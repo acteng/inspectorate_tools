@@ -175,16 +175,6 @@ export function needBuffers(
   return "";
 }
 
-// TODO Add tests:
-// normal cases:
-// 50, 54 -> 50
-// 50, 56 -> 60
-// highest entry becomes 80:
-// 70, 78 -> 80
-// lowest entry counts as 20:
-// <30, 15 -> 20
-// <30, 25 -> 30
-//
 // Only used for guidance
 export function calculateEffectiveSpeedLimit(
   // TODO More precise type
