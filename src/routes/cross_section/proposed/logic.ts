@@ -1,4 +1,4 @@
-import type { StreetFeatureType, TrafficData } from "../data";
+import type { State, StreetFeatureType, TrafficData } from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature
 export function getWidths(
@@ -204,4 +204,34 @@ export function calculateEffectiveSpeedLimit(
     return speed + 10;
   }
   return speed;
+}
+
+export function calculateTotalWidth(
+  state: State,
+  sectionType: "Desirable" | "Absolute",
+): number {
+  let sum = 0.0;
+
+  let features =
+    sectionType == "Desirable"
+      ? state.proposed.desirableMinimumCrossSection
+      : state.proposed.absoluteMinimumCrossSection;
+
+  for (let i = 0; i < features.length; i++) {
+    let thisFeature = features[i];
+    if (!thisFeature) {
+      continue;
+    }
+    let leftFeature = i == 0 ? "" : features[i - 1];
+    let rightFeature = i == features.length - 1 ? "" : features[i + 1];
+    let width = getWidths(
+      thisFeature,
+      state.proposed.trafficData,
+      leftFeature,
+      rightFeature,
+    )[sectionType == "Desirable" ? 0 : 1];
+    sum += width;
+  }
+
+  return sum;
 }

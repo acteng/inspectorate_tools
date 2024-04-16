@@ -4,6 +4,11 @@
   import { Breadcrumbs } from "$lib";
   import HomogeneousCard from "./HomogeneousCard.svelte";
   import PinchPointCard from "./PinchPointCard.svelte";
+  import { calculateTotalWidth } from "../proposed/logic";
+
+  // Calculate here and pass down to every card
+  $: desirableTotal = calculateTotalWidth($state, "Desirable");
+  $: absoluteTotal = calculateTotalWidth($state, "Absolute");
 
   function addHomogeneousSection() {
     $state.checks.homogeneousSections = [
@@ -60,7 +65,12 @@
 
 <div style="display: flex; flex-direction: row">
   {#each $state.checks.homogeneousSections as check, i (i)}
-    <HomogeneousCard {i} on:delete={() => deleteHomogeneousSection(i)} />
+    <HomogeneousCard
+      {i}
+      on:delete={() => deleteHomogeneousSection(i)}
+      {desirableTotal}
+      {absoluteTotal}
+    />
   {/each}
 </div>
 
@@ -81,6 +91,11 @@
 
 <div style="display: flex; flex-direction: row">
   {#each $state.checks.pinchPoints as check, i (i)}
-    <PinchPointCard {i} on:delete={() => deletePinchPoint(i)} />
+    <PinchPointCard
+      {i}
+      on:delete={() => deletePinchPoint(i)}
+      {desirableTotal}
+      {absoluteTotal}
+    />
   {/each}
 </div>

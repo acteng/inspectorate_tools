@@ -2,7 +2,7 @@
   import StreetFeatureCard from "./StreetFeatureCard.svelte";
   import { SecondaryButton } from "govuk-svelte";
   import { state, type StreetFeatureType, type State } from "../data";
-  import { getWidths } from "./logic";
+  import { calculateTotalWidth } from "./logic";
 
   export let streetFeaturesLeftToRight: Array<StreetFeatureType | "">;
   export let sectionType: "Desirable" | "Absolute";
@@ -31,35 +31,6 @@
   }
 
   $: totalWidth = calculateTotalWidth($state, sectionType);
-
-  function calculateTotalWidth(
-    state: State,
-    sectionType: "Desirable" | "Absolute",
-  ): number {
-    let sum = 0.0;
-
-    // TODO OK to use not use state here?
-    for (let i = 0; i < streetFeaturesLeftToRight.length; i++) {
-      let thisFeature = streetFeaturesLeftToRight[i];
-      if (!thisFeature) {
-        continue;
-      }
-      let leftFeature = i == 0 ? "" : streetFeaturesLeftToRight[i - 1];
-      let rightFeature =
-        i == streetFeaturesLeftToRight.length - 1
-          ? ""
-          : streetFeaturesLeftToRight[i + 1];
-      let width = getWidths(
-        thisFeature,
-        state.proposed.trafficData,
-        leftFeature,
-        rightFeature,
-      )[sectionType == "Desirable" ? 0 : 1];
-      sum += width;
-    }
-
-    return sum;
-  }
 </script>
 
 <SecondaryButton on:click={addNewStreetFeature}>Add</SecondaryButton>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import SectionsPossible from "./SectionsPossible.svelte";
   import { createEventDispatcher } from "svelte";
   import {
     WarningText,
@@ -10,6 +11,8 @@
   import { state } from "../data";
 
   export let i: number;
+  export let desirableTotal: number;
+  export let absoluteTotal: number;
 
   let dispatch = createEventDispatcher<{
     delete: void;
@@ -29,7 +32,11 @@
     bind:value={$state.checks.pinchPoints[i].availableWidth}
   />
 
-  <p>Cross-Sections Possible: TODO</p>
+  <SectionsPossible
+    available={$state.checks.pinchPoints[i].availableWidth}
+    {desirableTotal}
+    {absoluteTotal}
+  />
 
   <TextArea
     label="What will need to change to fit this in? Please leave a justification if space has been taken away from pedestrians or cyclists, or if shared use cycle tracks are proposed."
