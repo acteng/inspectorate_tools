@@ -5,10 +5,6 @@
   import { TextArea, Select, WarningText } from "govuk-svelte";
   import { state } from "../data";
   import { YesNo, Breadcrumbs, pairs } from "$lib";
-
-  let q1 = "";
-  let q2 = "";
-  let q3 = "";
 </script>
 
 <Breadcrumbs
@@ -19,11 +15,14 @@
   current="Traffic Mitigation Check"
 />
 
-<YesNo label="Is the scheme expected to reduce traffic?" bind:value={q1} />
+<YesNo
+  label="Is the scheme expected to reduce traffic?"
+  bind:value={$state.trafficMitigationCheck.q1}
+/>
 
-{#if q1 == "No"}
+{#if $state.trafficMitigationCheck.q1 == "No"}
   <WarningText>Stop. Redesign scheme to reduce traffic.</WarningText>
-{:else if q1 == "Yes"}
+{:else if $state.trafficMitigationCheck.q1 == "Yes"}
   <Select
     label="Is it expected to reduce traffic both within the scheme and elsewhere?"
     emptyOption
@@ -34,12 +33,12 @@
       ],
       ["No", "No, some traffic is expected to be displaced to other roads"],
     ]}
-    bind:value={q2}
+    bind:value={$state.trafficMitigationCheck.q2}
   />
 
-  {#if q2 == "Yes"}
+  {#if $state.trafficMitigationCheck.q2 == "Yes"}
     <Confirmation />
-  {:else if q2 == "No"}
+  {:else if $state.trafficMitigationCheck.q2 == "No"}
     <Select
       label="Where will displaced traffic go?"
       emptyOption
@@ -47,12 +46,12 @@
         "Major routes (e.g. scheme eliminates a rat run)",
         "Minor streets (e.g. residential)",
       ])}
-      bind:value={q3}
+      bind:value={$state.trafficMitigationCheck.q3}
     />
 
-    {#if q3 == "Major routes (e.g. scheme eliminates a rat run)"}
+    {#if $state.trafficMitigationCheck.q3 == "Major routes (e.g. scheme eliminates a rat run)"}
       <MajorRoutes />
-    {:else if q3 == "Minor streets (e.g. residential)"}
+    {:else if $state.trafficMitigationCheck.q3 == "Minor streets (e.g. residential)"}
       <MinorRoutes />
     {/if}
   {/if}

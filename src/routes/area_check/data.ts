@@ -21,6 +21,15 @@ export interface State {
     polygon: Feature<Polygon> | null;
   };
   trafficMitigationCheck: {
+    q1: string;
+    q2: string;
+    q3: string;
+    majorQ1: string;
+    majorQ2: string;
+    majorQ3: string;
+    majorQ4: string;
+    minorQ1: string;
+    minorQ2: string;
     notes: string;
   };
   // Exactly 13 entries, matching up with the scorecard questions. The values are the stringified scores.
@@ -65,6 +74,15 @@ export function emptyState(): State {
       polygon: null,
     },
     trafficMitigationCheck: {
+      q1: "",
+      q2: "",
+      q3: "",
+      majorQ1: "",
+      majorQ2: "",
+      majorQ3: "",
+      majorQ4: "",
+      minorQ1: "",
+      minorQ2: "",
       notes: "",
     },
     existingScores: Array(13).fill(""),
