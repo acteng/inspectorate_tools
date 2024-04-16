@@ -1,7 +1,7 @@
 <script lang="ts">
   import StreetFeatureCard from "./StreetFeatureCard.svelte";
   import { SecondaryButton } from "govuk-svelte";
-  import { state, type StreetFeatureType, type State } from "../data";
+  import { state, type StreetFeatureType } from "../data";
   import { calculateTotalWidth } from "./logic";
 
   export let streetFeaturesLeftToRight: Array<StreetFeatureType | "">;

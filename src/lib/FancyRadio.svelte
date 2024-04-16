@@ -1,6 +1,5 @@
 <script lang="ts">
   import { v4 as uuidv4 } from "uuid";
-  import { onMount } from "svelte";
 
   // A list of [value, label, background color, font color] representing the choices
   export let choices: [string, string, string, string][];
@@ -11,7 +10,7 @@
   export let existingNotes: string;
   export let proposedNotes: string;
 
-  export let id = uuidv4();
+  let id = uuidv4();
 </script>
 
 <div class="govuk-radios fancy-radio-grid" data-module="govuk-radios">
@@ -85,6 +84,7 @@
       class="option-text govuk-font"
       style="grid-row:{i + 2}/{i + 3}; grid-column:3/4"
     >
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       {@html thisLabel}
     </div>
   {/each}

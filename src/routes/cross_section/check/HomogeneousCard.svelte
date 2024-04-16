@@ -1,11 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import {
-    WarningText,
-    WarningButton,
-    TextArea,
-    NumberInput,
-  } from "govuk-svelte";
+  import { WarningButton, TextArea, NumberInput } from "govuk-svelte";
   import SectionsPossible from "./SectionsPossible.svelte";
   import { state } from "../data";
 

@@ -2,7 +2,6 @@
   import SectionsPossible from "./SectionsPossible.svelte";
   import { createEventDispatcher } from "svelte";
   import {
-    WarningText,
     TextInput,
     WarningButton,
     TextArea,

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Breadcrumbs, FancyRadio, PrevNext } from "$lib";
   import Progress from "./Progress.svelte";
-  import { TextArea } from "govuk-svelte";
   import { state } from "../data";
   import { greenAmberRedCritical } from "$lib/colors";
 
