@@ -1,36 +1,46 @@
 import type { StreetFeatureType, TrafficData } from "../data";
 import { calculateEffectiveSpeedLimit } from "./logic";
 
-// TODO Embed or link the references
-export let references: Record<StreetFeatureType, string[]> = {
+export let references: Record<StreetFeatureType, [string, string][]> = {
   Footway: [
-    "Manual for Streets 2: Section 5 pp.43",
-    "DMRB CD143 Designing for walking, cycling & horse-riding Annex pp. 7",
+    [
+      "Manual for Streets 2: Section 5 pp. 43",
+      "https://tsrgd.co.uk/pdf/mfs/mfs2.pdf#page=48",
+    ],
+    // TODO No link?
+    [
+      "DMRB CD143 Designing for walking, cycling & horse-riding Annex pp. 7",
+      "",
+    ],
   ],
   "Narrow Traffic / Bus Lane": [],
   "Wide Traffic / Bus Lane": [],
   "Traffic Lane (no buses): speed limit 20/30": [
-    "LTN 1/20 Table 7-2 pp. 76",
-    "LTN 1/20 Figure 4.1 pp. 33",
+    ["LTN 1/20 Table 7-2 pp. 76", ltn120(76)],
+    ["LTN 1/20 Figure 4.1 pp. 33", ltn120(33)],
   ],
   "On-highway advisory/mandatory cycle lane": [
-    "LTN 1/20 Table 5-2 pp.43",
-    "LTN 1/20 Figure 4.1 pp. 33",
+    ["LTN 1/20 Table 5-2 pp. 43", ltn120(43)],
+    ["LTN 1/20 Figure 4.1 pp. 33", ltn120(33)],
   ],
   "1-way protected cycle track": [
-    "LTN 1/20 Table 5-2 pp.43",
-    "LTN 1/20 Figure 4.1 pp. 33",
+    ["LTN 1/20 Table 5-2 pp. 43", ltn120(43)],
+    ["LTN 1/20 Figure 4.1 pp. 33", ltn120(33)],
   ],
   "2-way protected cycle track": [
-    "LTN 1/20 Table 5-2 pp.43",
-    "LTN 1/20 Figure 4.1 pp. 33",
+    ["LTN 1/20 Table 5-2 pp. 43", ltn120(43)],
+    ["LTN 1/20 Figure 4.1 pp. 33", ltn120(33)],
   ],
-  "Shared use cycle track": ["LTN 1/20 Table 6-3 pp.68"],
-  "Parking Bay": ["LTN 1/20 table 7-3 pp77"],
+  "Shared use cycle track": [["LTN 1/20 Table 6-3 pp. 68", ltn120(68)]],
+  "Parking Bay": [["LTN 1/20 table 7-3 pp. 77", ltn120(77)]],
   "Disabled Parking Bay": [],
-  "Loading Bay": ["LTN 1/20 table 7-3 pp77"],
-  "Buffer / Verge": ["LTN 1/20 table 6-1 pp54"],
+  "Loading Bay": [["LTN 1/20 table 7-3 pp. 77", ltn120(77)]],
+  "Buffer / Verge": [["LTN 1/20 table 6-1 pp. 54", ltn120(54)]],
 };
+
+function ltn120(page: number): string {
+  return `https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/951074/cycle-infrastructure-design-ltn-1-20.pdf#page=${page}`;
+}
 
 // TODO The text is hard to skim. Would it be useful to highlight some keywords, like the type of segregation in the 2-way case?
 export function guidance(

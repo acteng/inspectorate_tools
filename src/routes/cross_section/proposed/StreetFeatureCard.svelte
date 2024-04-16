@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs } from "$lib";
+  import { pairs, ExternalLink } from "$lib";
   import { createEventDispatcher } from "svelte";
   import {
     WarningText,
@@ -51,12 +51,16 @@
       <WarningText>Consider buffers to left and right</WarningText>
     {/if}
 
-    {#if references[value]}
+    {#if references[value].length > 0}
       <u>References</u>
       :
       <ul>
-        {#each references[value] as reference}
-          <li>{reference}</li>
+        {#each references[value] as [reference, href]}
+          {#if href}
+            <li><ExternalLink {href}>{reference}</ExternalLink></li>
+          {:else}
+            <li>{reference}</li>
+          {/if}
         {/each}
       </ul>
     {/if}
