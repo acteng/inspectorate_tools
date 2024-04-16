@@ -19,46 +19,44 @@
   );
 </script>
 
-<div class="govuk-prose">
-  <Breadcrumbs
-    links={[
-      ["Tools", "/"],
-      ["Route check tool", "/route_check"],
-      ["Street Check", "/route_check/street_check"],
-    ]}
-    current={label}
-  />
+<Breadcrumbs
+  links={[
+    ["Tools", "/"],
+    ["Route check tool", "/route_check"],
+    ["Street Check", "/route_check/street_check"],
+  ]}
+  current={label}
+/>
 
-  <PrevNext
-    {idx}
-    total={26}
-    startIdx={17}
-    urlPath="route_check/street_check/st"
-  />
-  <h2>{label}</h2>
-  <slot />
+<PrevNext
+  {idx}
+  total={26}
+  startIdx={17}
+  urlPath="route_check/street_check/st"
+/>
+<h2>{label}</h2>
+<slot />
 
-  <div class="columns">
-    <div class="progress-column">
-      <Progress currentIdx={idx} />
-    </div>
-
-    <FancyRadio
-      {choices}
-      bind:existingValue={$state.streetCheck.existingScores[idx - 1]}
-      bind:proposedValue={$state.streetCheck.proposedScores[idx - 1]}
-      bind:existingNotes={$state.streetCheck.existingScoreNotes[idx - 1]}
-      bind:proposedNotes={$state.streetCheck.proposedScoreNotes[idx - 1]}
-    />
+<div class="columns">
+  <div class="progress-column">
+    <Progress currentIdx={idx} />
   </div>
 
-  <PrevNext
-    {idx}
-    total={26}
-    startIdx={17}
-    urlPath="route_check/street_check/st"
+  <FancyRadio
+    {choices}
+    bind:existingValue={$state.streetCheck.existingScores[idx - 1]}
+    bind:proposedValue={$state.streetCheck.proposedScores[idx - 1]}
+    bind:existingNotes={$state.streetCheck.existingScoreNotes[idx - 1]}
+    bind:proposedNotes={$state.streetCheck.proposedScoreNotes[idx - 1]}
   />
 </div>
+
+<PrevNext
+  {idx}
+  total={26}
+  startIdx={17}
+  urlPath="route_check/street_check/st"
+/>
 
 <style>
   .columns {

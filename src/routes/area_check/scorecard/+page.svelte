@@ -5,14 +5,12 @@
   // TODO Include bold in the choices
 </script>
 
-<div class="govuk-prose">
-  <Breadcrumbs
-    links={[
-      ["Tools", "/"],
-      ["Area check tool", "/area_check"],
-    ]}
-    current="Area Scorecard"
-  />
+<Breadcrumbs
+  links={[
+    ["Tools", "/"],
+    ["Area check tool", "/area_check"],
+  ]}
+  current="Area Scorecard"
+/>
 
-  <Progress currentIdx={-1} />
-</div>
+<Progress currentIdx={-1} />

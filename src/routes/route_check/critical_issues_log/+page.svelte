@@ -125,42 +125,40 @@
   }
 </script>
 
-<div class="govuk-prose">
-  <Breadcrumbs
-    links={[
-      ["Tools", "/"],
-      ["Route check tool", "/route_check"],
-    ]}
-    current="Critical Issue Log"
-  />
+<Breadcrumbs
+  links={[
+    ["Tools", "/"],
+    ["Route check tool", "/route_check"],
+  ]}
+  current="Critical Issue Log"
+/>
 
-  <SecondaryButton on:click={add}>Add</SecondaryButton>
+<SecondaryButton on:click={add}>Add</SecondaryButton>
 
-  {#each $state.criticalIssues as issue, idx}
-    <CollapsibleCard label={issue.id} open>
-      <WarningButton on:click={() => deleteIssue(idx)}>Delete</WarningButton>
+{#each $state.criticalIssues as issue, idx}
+  <CollapsibleCard label={issue.id} open>
+    <WarningButton on:click={() => deleteIssue(idx)}>Delete</WarningButton>
 
-      <Select
-        label="Critical Issue"
-        emptyOption
-        {choices}
-        bind:value={issue.criticalIssue}
-      />
+    <Select
+      label="Critical Issue"
+      emptyOption
+      {choices}
+      bind:value={issue.criticalIssue}
+    />
 
-      <Select
-        label="Stage"
-        emptyOption
-        choices={pairs(["Existing", "Design"])}
-        bind:value={issue.stage}
-      />
+    <Select
+      label="Stage"
+      emptyOption
+      choices={pairs(["Existing", "Design"])}
+      bind:value={issue.stage}
+    />
 
-      <TextInput label="Location" bind:value={issue.point} />
+    <TextInput label="Location" bind:value={issue.point} />
 
-      <TextInput label="Location Name" bind:value={issue.locationName} />
+    <TextInput label="Location Name" bind:value={issue.locationName} />
 
-      <YesNo label="Resolved by Design" bind:value={issue.resolved} />
+    <YesNo label="Resolved by Design" bind:value={issue.resolved} />
 
-      <TextArea label="Commentary & Feedback" bind:value={issue.notes} />
-    </CollapsibleCard>
-  {/each}
-</div>
+    <TextArea label="Commentary & Feedback" bind:value={issue.notes} />
+  </CollapsibleCard>
+{/each}

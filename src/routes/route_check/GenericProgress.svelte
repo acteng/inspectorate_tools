@@ -71,7 +71,7 @@
 <ol>
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
-      <div class="govuk-font" style="padding: 20px">
+      <div style="padding: 20px">
         <u>{item.label}</u>
         {#if item.notes}
           <p>{item.notes}</p>
@@ -99,9 +99,6 @@
 </ol>
 
 <style>
-  .govuk-font {
-    font-family: "GDS Transport", arial, sans-serif;
-  }
   .govuk-tag {
     margin: 1px;
   }

@@ -11,4 +11,6 @@
   This is an experimental tool. Use only for internal testing.
 </WarningText>
 
-<slot />
+<div class="govuk-prose">
+  <slot />
+</div>
