@@ -19,40 +19,34 @@
   );
 </script>
 
-<div class="govuk-prose">
-  <Breadcrumbs
-    links={[
-      ["Tools", "/"],
-      ["Route check tool", "/route_check"],
-      ["Path Placemaking Check", "/route_check/path_placemaking_check"],
-    ]}
-    current={label}
-  />
+<Breadcrumbs
+  links={[
+    ["Tools", "/"],
+    ["Route check tool", "/route_check"],
+    ["Path Placemaking Check", "/route_check/path_placemaking_check"],
+  ]}
+  current={label}
+/>
 
-  <PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />
-  <h2>{label}</h2>
-  <slot />
+<PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />
+<h2>{label}</h2>
+<slot />
 
-  <div class="columns">
-    <div class="progress-column">
-      <Progress currentIdx={idx} />
-    </div>
-
-    <FancyRadio
-      {choices}
-      bind:existingValue={$state.pathPlacemakingCheck.existingScores[idx - 1]}
-      bind:proposedValue={$state.pathPlacemakingCheck.proposedScores[idx - 1]}
-      bind:existingNotes={$state.pathPlacemakingCheck.existingScoreNotes[
-        idx - 1
-      ]}
-      bind:proposedNotes={$state.pathPlacemakingCheck.proposedScoreNotes[
-        idx - 1
-      ]}
-    />
+<div class="columns">
+  <div class="progress-column">
+    <Progress currentIdx={idx} />
   </div>
 
-  <PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />
+  <FancyRadio
+    {choices}
+    bind:existingValue={$state.pathPlacemakingCheck.existingScores[idx - 1]}
+    bind:proposedValue={$state.pathPlacemakingCheck.proposedScores[idx - 1]}
+    bind:existingNotes={$state.pathPlacemakingCheck.existingScoreNotes[idx - 1]}
+    bind:proposedNotes={$state.pathPlacemakingCheck.proposedScoreNotes[idx - 1]}
+  />
 </div>
+
+<PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />
 
 <style>
   .columns {
