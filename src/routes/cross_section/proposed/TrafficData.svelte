@@ -1,7 +1,7 @@
 <script lang="ts">
   import { pairs } from "$lib";
   import { CollapsibleCard, Select, NumberInput } from "govuk-svelte";
-  import { state } from "../data";
+  import { state, speedLimits } from "../data";
   import { calculateEffectiveSpeedLimit } from "./logic";
 
   export let valid: boolean;
@@ -19,6 +19,9 @@
     $state.proposed.trafficData.speedLimit,
     $state.proposed.trafficData.observedSpeed,
   );
+
+  // @ts-expect-error TODO Need to make pairs handle readonly types
+  let speedLimitChoices = pairs(speedLimits);
 </script>
 
 <CollapsibleCard label="Traffic data and additional information">
@@ -53,7 +56,7 @@
   <Select
     label="Speed limit (MPH)"
     emptyOption
-    choices={pairs(["<30", "30", "40", "50", "60", "70"])}
+    choices={speedLimitChoices}
     bind:value={$state.proposed.trafficData.speedLimit}
   />
 

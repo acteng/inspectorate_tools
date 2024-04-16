@@ -32,7 +32,7 @@ export interface TrafficData {
   flowTwoWay: "<300" | "300-1,000" | ">1,000" | "";
   flowSharedUse: "<300" | ">300" | "";
   trafficFlow: "<2,500" | "2,500-5,000" | "5,000-10,000" | ">10,000" | "";
-  speedLimit: "<30" | "30" | "40" | "50" | "60" | "70" | "";
+  speedLimit: SpeedLimit;
   observedSpeed: number | undefined;
   streetFunction:
     | "High Street (active frontages)"
@@ -104,6 +104,9 @@ export function emptyState(): State {
     },
   };
 }
+
+export let speedLimits = ["<30", "30", "40", "50", "60", "70", ""] as const;
+export type SpeedLimit = (typeof speedLimits)[number];
 
 export let streetFeatureTypes = [
   "Footway",

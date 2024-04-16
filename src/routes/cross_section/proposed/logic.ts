@@ -1,4 +1,9 @@
-import type { State, StreetFeatureType, TrafficData } from "../data";
+import type {
+  State,
+  StreetFeatureType,
+  SpeedLimit,
+  TrafficData,
+} from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature
 export function getWidths(
@@ -177,8 +182,7 @@ export function needBuffers(
 
 // Only used for guidance
 export function calculateEffectiveSpeedLimit(
-  // TODO More precise type
-  speedLimit: string,
+  speedLimit: SpeedLimit,
   observed: number | undefined,
 ): number | null {
   if (!speedLimit || !observed) {
