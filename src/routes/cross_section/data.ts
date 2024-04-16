@@ -21,6 +21,10 @@ export interface State {
     desirableMinimumCrossSection: Array<StreetFeatureType | "">;
     absoluteMinimumCrossSection: Array<StreetFeatureType | "">;
   };
+  checks: {
+    homogeneousSections: Array<CheckHomogeneousSection>;
+    pinchPoints: Array<CheckPinchPoint>;
+  };
 }
 
 export interface TrafficData {
@@ -37,6 +41,20 @@ export interface TrafficData {
     | "";
 }
 
+export interface CheckHomogeneousSection {
+  availableWidth: number;
+  notes1: string;
+  notes2: string;
+}
+
+export interface CheckPinchPoint {
+  // TODO A point
+  location: string;
+  availableWidth: number;
+  notes1: string;
+  notes2: string;
+}
+
 export let state = writable(loadState());
 state.subscribe((value) =>
   window.localStorage.setItem("cross-section", JSON.stringify(value)),
@@ -45,7 +63,7 @@ state.subscribe((value) =>
 function loadState(): State {
   let x = JSON.parse(window.localStorage.getItem("cross-section") || "{}");
   // Could more thoroughly check for validity, but the format won't change much after initial development calms down
-  if (x.proposed?.trafficData) {
+  if (x.checks?.homogeneousSections) {
     return x;
   }
   return emptyState();
@@ -79,6 +97,10 @@ export function emptyState(): State {
       },
       desirableMinimumCrossSection: [],
       absoluteMinimumCrossSection: [],
+    },
+    checks: {
+      homogeneousSections: [],
+      pinchPoints: [],
     },
   };
 }

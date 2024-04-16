@@ -22,7 +22,7 @@
 <ol>
   <li><a href="{base}/cross_section/summary">Summary of Scheme</a></li>
   <li><a href="{base}/cross_section/proposed">Proposed Cross-Sections</a></li>
-  <li>Cross-Sections Check</li>
+  <li><a href="{base}/cross_section/check">Cross-Sections Check</a></li>
   <li>ATE Summary</li>
 </ol>
 
