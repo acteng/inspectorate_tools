@@ -30,15 +30,12 @@
     {absoluteTotal}
   />
 
-  <TextArea
-    label="What will need to change to fit this in? Please leave a justification if space has been taken away from pedestrians or cyclists, or if shared use cycle tracks are proposed."
-    bind:value={$state.checks.homogeneousSections[i].notes1}
-  />
-
-  <TextArea
-    label="Where only the absolute minimum cross-section is possible, what (if anything) could change to fit in the desirable minimum cross-section? Where there is insufficient space even for the absolute minimum cross-section, what (if anything) could change to allow this to be implemented? Otherwise, what else could be implemented as an alternative?"
-    bind:value={$state.checks.homogeneousSections[i].notes2}
-  />
+  {#if $state.checks.homogeneousSections[i].availableWidth < desirableTotal}
+    <TextArea
+      label="Where only the absolute minimum cross-section is possible, what (if anything) could change to fit in the desirable minimum cross-section? Where there is insufficient space even for the absolute minimum cross-section, what (if anything) could change to allow this to be implemented? Otherwise, what else could be implemented as an alternative?"
+      bind:value={$state.checks.homogeneousSections[i].notes}
+    />
+  {/if}
 
   <WarningButton on:click={() => dispatch("delete")}>Delete</WarningButton>
 </div>

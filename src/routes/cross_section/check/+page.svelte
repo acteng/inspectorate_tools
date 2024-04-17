@@ -15,8 +15,7 @@
       ...$state.checks.homogeneousSections,
       {
         availableWidth: 0.0,
-        notes1: "",
-        notes2: "",
+        notes: "",
       },
     ];
   }
@@ -32,8 +31,7 @@
       {
         location: "",
         availableWidth: 0.0,
-        notes1: "",
-        notes2: "",
+        notes: "",
       },
     ];
   }

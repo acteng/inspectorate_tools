@@ -53,16 +53,14 @@ export interface TrafficData {
 
 export interface CheckHomogeneousSection {
   availableWidth: number;
-  notes1: string;
-  notes2: string;
+  notes: string;
 }
 
 export interface CheckPinchPoint {
   // TODO A point
   location: string;
   availableWidth: number;
-  notes1: string;
-  notes2: string;
+  notes: string;
 }
 
 export let state = writable(loadState());
