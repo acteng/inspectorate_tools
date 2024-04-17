@@ -1,5 +1,6 @@
 <script lang="ts">
   import CrossSection from "./CrossSection.svelte";
+  import CustomFeatures from "./CustomFeatures.svelte";
   import { CollapsibleCard } from "govuk-svelte";
   import TrafficData from "./TrafficData.svelte";
   import { state } from "../data";
@@ -18,6 +19,10 @@
 
 <TrafficData bind:valid={trafficDataOk} />
 
+<CollapsibleCard label="Custom Street Features">
+  <CustomFeatures />
+</CollapsibleCard>
+
 {#if trafficDataOk}
   <CollapsibleCard label="Desirable Minimum Cross-Section">
     <CrossSection
@@ -34,5 +39,5 @@
     />
   </CollapsibleCard>
 {:else}
-  <p>Fill out all data above to continue</p>
+  <p>Fill out all traffic data above to continue</p>
 {/if}

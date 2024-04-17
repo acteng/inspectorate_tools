@@ -18,6 +18,7 @@ export interface State {
   };
   proposed: {
     trafficData: TrafficData;
+    customFeatures: CustomFeatures;
     desirableMinimumCrossSection: Array<StreetFeatureType | "">;
     absoluteMinimumCrossSection: Array<StreetFeatureType | "">;
   };
@@ -26,6 +27,15 @@ export interface State {
     pinchPoints: Array<CheckPinchPoint>;
   };
 }
+
+// Keyed by UUID
+export type CustomFeatures = {
+  [uuid: string]: {
+    // Must be unique and also not the same as streetFeatureTypes
+    name: string;
+    width: number;
+  };
+};
 
 export interface TrafficData {
   flowOneWay: "<200" | "200-800" | ">800" | "";
@@ -95,6 +105,7 @@ export function emptyState(): State {
         observedSpeed: undefined,
         streetFunction: "",
       },
+      customFeatures: {},
       desirableMinimumCrossSection: [],
       absoluteMinimumCrossSection: [],
     },
@@ -122,4 +133,7 @@ export let streetFeatureTypes = [
   "Loading Bay",
   "Buffer / Verge",
 ] as const;
-export type StreetFeatureType = (typeof streetFeatureTypes)[number];
+type BuiltinStreetFeatureType = (typeof streetFeatureTypes)[number];
+// The fallback string cases must be of the form `custom_${uuid}`
+// TODO Improve Select component and use an object for the custom case, not a string
+export type StreetFeatureType = BuiltinStreetFeatureType | string;

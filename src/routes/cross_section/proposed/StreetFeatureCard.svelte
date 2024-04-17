@@ -7,7 +7,12 @@
     WarningButton,
     Select,
   } from "govuk-svelte";
-  import { state, streetFeatureTypes, type StreetFeatureType } from "../data";
+  import {
+    state,
+    streetFeatureTypes,
+    type StreetFeatureType,
+    type CustomFeatures,
+  } from "../data";
   import { getWidths, needBuffers } from "./logic";
   import { references, guidance } from "./guidance";
 
@@ -26,8 +31,16 @@
     moveRight: void;
   }>();
 
-  // @ts-expect-error TODO Need to make pairs handle readonly types
-  let choices = pairs(streetFeatureTypes);
+  $: choices = makeChoices($state.proposed.customFeatures);
+
+  function makeChoices(customFeatures: CustomFeatures): [string, string][] {
+    // @ts-expect-error TODO Need to make pairs handle readonly types
+    let list = pairs(streetFeatureTypes);
+    for (let [id, feature] of Object.entries(customFeatures)) {
+      list.push([`custom_${id}`, `Custom: ${feature.name}`]);
+    }
+    return list;
+  }
 </script>
 
 <div>
@@ -38,6 +51,7 @@
       {sectionType} minimum width (m): {getWidths(
         value,
         $state.proposed.trafficData,
+        $state.proposed.customFeatures,
         leftFeature,
         rightFeature,
       )[sectionType == "Desirable" ? 0 : 1]}
@@ -51,11 +65,11 @@
       <WarningText>Consider buffers to left and right</WarningText>
     {/if}
 
-    {#if references[value].length > 0}
+    {#if references(value).length > 0}
       <u>References</u>
       :
       <ul>
-        {#each references[value] as [reference, href]}
+        {#each references(value) as [reference, href]}
           {#if href}
             <li><ExternalLink {href}>{reference}</ExternalLink></li>
           {:else}

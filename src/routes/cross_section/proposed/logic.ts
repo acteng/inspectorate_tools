@@ -3,12 +3,14 @@ import type {
   StreetFeatureType,
   SpeedLimit,
   TrafficData,
+  CustomFeatures,
 } from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature
 export function getWidths(
   streetFeature: StreetFeatureType,
   context: TrafficData,
+  customFeatures: CustomFeatures,
   leftFeature: StreetFeatureType | "",
   rightFeature: StreetFeatureType | "",
 ): [number, number] {
@@ -128,11 +130,20 @@ export function getWidths(
         "70": [3.5, 3.0],
       }[context.speedLimit] as [number, number];
     }
+
+    default:
+      if (streetFeature.startsWith("custom_")) {
+        let id = streetFeature.slice("custom_".length);
+        let width = customFeatures[id].width;
+        return [width, width];
+      }
+      throw new Error(`Invalid streetFeature ${streetFeature}`);
   }
 }
 
 // Group features into categories, from the hidden Excel row 16.
 // TODO Use enums and express logic more directly
+// TODO Custom features are implicitly counting as 0
 let classes: Record<StreetFeatureType, 0 | 1 | 2 | 10> = {
   Footway: 0,
   "1-way protected cycle track": 0,
@@ -221,6 +232,7 @@ export function calculateTotalWidth(
     let width = getWidths(
       thisFeature,
       state.proposed.trafficData,
+      state.proposed.customFeatures,
       leftFeature,
       rightFeature,
     )[sectionType == "Desirable" ? 0 : 1];

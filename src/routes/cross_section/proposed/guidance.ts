@@ -1,7 +1,16 @@
 import type { StreetFeatureType, TrafficData } from "../data";
 import { calculateEffectiveSpeedLimit } from "./logic";
 
-export let references: Record<StreetFeatureType, [string, string][]> = {
+export function references(
+  streetFeature: StreetFeatureType,
+): [string, string][] {
+  if (streetFeature.startsWith("custom_")) {
+    return [];
+  }
+  return builtinReferences[streetFeature];
+}
+
+let builtinReferences: Record<StreetFeatureType, [string, string][]> = {
   Footway: [
     [
       "Manual for Streets 2: Section 5 pp. 43",
@@ -133,5 +142,9 @@ export function guidance(
 
     case "Buffer / Verge":
       return "Your buffer / verge shouldn't impact on the functional width of your footway or cycle-track";
+
+    // For custom features
+    default:
+      return "";
   }
 }
