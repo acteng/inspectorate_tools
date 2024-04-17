@@ -30,7 +30,7 @@
     ];
   }
 
-  function addBuffer(i: number) {
+  function insertBuffer(i: number) {
     streetFeaturesLeftToRight.splice(i, 0, "Buffer / Verge");
     streetFeaturesLeftToRight = streetFeaturesLeftToRight;
   }
@@ -47,7 +47,8 @@
       on:delete={() => deleteStreetFeature(i)}
       on:moveLeft={() => moveLeft(i)}
       on:moveRight={() => moveRight(i)}
-      on:addBuffer={(e) => addBuffer(i + e.detail)}
+      on:addLeftBuffer={(e) => insertBuffer(i)}
+      on:addRightBuffer={(e) => insertBuffer(i + 1)}
       isFirst={i == 0}
       isLast={i == streetFeaturesLeftToRight.length - 1}
       leftFeature={i == 0 ? "" : streetFeaturesLeftToRight[i - 1]}

@@ -29,7 +29,8 @@
     delete: void;
     moveLeft: void;
     moveRight: void;
-    addBuffer: -1 | 1;
+    addLeftBuffer: void;
+    addRightBuffer: void;
   }>();
 
   // TODO Select only understands string values, but we want to set
@@ -88,7 +89,7 @@
     {#if buffers == "left"}
       <WarningText>
         Consider buffer to left <SecondaryButton
-          on:click={() => dispatch("addBuffer", -1)}
+          on:click={() => dispatch("addLeftBuffer")}
         >
           Add
         </SecondaryButton>
@@ -96,7 +97,7 @@
     {:else if buffers == "right"}
       <WarningText>
         Consider buffer to right <SecondaryButton
-          on:click={() => dispatch("addBuffer", 1)}
+          on:click={() => dispatch("addRightBuffer")}
         >
           Add
         </SecondaryButton>
@@ -105,8 +106,9 @@
       <WarningText>
         Consider buffer to left and right <SecondaryButton
           on:click={() => {
-            dispatch("addBuffer", -1);
-            dispatch("addBuffer", 1);
+            // Order matters, since indices will change
+            dispatch("addRightBuffer");
+            dispatch("addLeftBuffer");
           }}
         >
           Add
