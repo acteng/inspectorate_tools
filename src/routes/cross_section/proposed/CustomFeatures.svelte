@@ -36,14 +36,17 @@
 
 <SecondaryButton on:click={add}>Add</SecondaryButton>
 
-{#each Object.entries($state.proposed.customFeatures) as [id, feature] (id)}
+{#each Object.keys($state.proposed.customFeatures) as id (id)}
   <div style="display: flex; justify-content: space-between">
-    <TextInput label="Name" bind:value={feature.name} />
+    <TextInput
+      label="Name"
+      bind:value={$state.proposed.customFeatures[id].name}
+    />
     <NumberInput
       label="Minimum width (m)"
       width={3}
       min={0}
-      bind:value={feature.width}
+      bind:value={$state.proposed.customFeatures[id].width}
     />
     <WarningButton on:click={() => deleteFeature(id)}>Delete</WarningButton>
   </div>
