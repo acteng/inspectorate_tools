@@ -52,6 +52,9 @@
   current="Cross-Section Check"
 />
 
+<p>Desirable Minimum requires: {desirableTotal} m</p>
+<p>Absolute Minimum requires: {absoluteTotal} m</p>
+
 <h2>
   Checking possible cross-sections of <u>homogeneous sections</u>
   of route along the proposed corridor

@@ -50,6 +50,6 @@
   div {
     border: 1px solid black;
     padding: 4px;
-    max-width: 25vw;
+    min-width: 400px;
   }
 </style>
