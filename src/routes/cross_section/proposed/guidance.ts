@@ -1,16 +1,20 @@
-import type { StreetFeatureType, TrafficData } from "../data";
+import type {
+  BuiltinStreetFeatureType,
+  StreetFeatureType,
+  TrafficData,
+} from "../data";
 import { calculateEffectiveSpeedLimit } from "./logic";
 
 export function references(
   streetFeature: StreetFeatureType,
 ): [string, string][] {
-  if (streetFeature.startsWith("custom_")) {
+  if (typeof streetFeature == "object") {
     return [];
   }
   return builtinReferences[streetFeature];
 }
 
-let builtinReferences: Record<StreetFeatureType, [string, string][]> = {
+let builtinReferences: Record<BuiltinStreetFeatureType, [string, string][]> = {
   Footway: [
     [
       "Manual for Streets 2: Section 5 pp. 43",

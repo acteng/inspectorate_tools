@@ -31,6 +31,22 @@
     moveRight: void;
   }>();
 
+  // TODO Select only understands string values, but we want to set
+  // StreetFeatureType. This approach works, but it could be wrapped more
+  // nicely in a generic Select component
+  let stringValue: string =
+    typeof value == "object" ? `custom_${value.custom}` : value;
+
+  $: updateValue(stringValue);
+
+  function updateValue(s: string) {
+    if (s.startsWith("custom_")) {
+      value = { custom: s.slice("custom_".length) };
+    } else {
+      value = s as StreetFeatureType | "";
+    }
+  }
+
   $: choices = makeChoices($state.proposed.customFeatures);
 
   function makeChoices(customFeatures: CustomFeatures): [string, string][] {
@@ -44,7 +60,12 @@
 </script>
 
 <div>
-  <Select label="Street feature type" emptyOption {choices} bind:value />
+  <Select
+    label="Street feature type"
+    emptyOption
+    {choices}
+    bind:value={stringValue}
+  />
 
   {#if value}
     <p>

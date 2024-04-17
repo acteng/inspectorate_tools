@@ -133,7 +133,6 @@ export let streetFeatureTypes = [
   "Loading Bay",
   "Buffer / Verge",
 ] as const;
-type BuiltinStreetFeatureType = (typeof streetFeatureTypes)[number];
-// The fallback string cases must be of the form `custom_${uuid}`
-// TODO Improve Select component and use an object for the custom case, not a string
-export type StreetFeatureType = BuiltinStreetFeatureType | string;
+export type BuiltinStreetFeatureType = (typeof streetFeatureTypes)[number];
+// Custom features are identified by UUID
+export type StreetFeatureType = BuiltinStreetFeatureType | { custom: string };

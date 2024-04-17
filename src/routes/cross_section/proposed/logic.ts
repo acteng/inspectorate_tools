@@ -4,6 +4,7 @@ import type {
   SpeedLimit,
   TrafficData,
   CustomFeatures,
+  BuiltinStreetFeatureType,
 } from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature
@@ -81,10 +82,10 @@ export function getWidths(
 
       let sum = 0.0;
       if (leftFeature) {
-        sum += classes[leftFeature];
+        sum += bufferClass(leftFeature);
       }
       if (rightFeature) {
-        sum += classes[rightFeature];
+        sum += bufferClass(rightFeature);
       }
 
       // Active travel or buffer on both sides
@@ -109,14 +110,14 @@ export function getWidths(
       if (
         leftFeature == "Footway" &&
         rightFeature &&
-        classes[rightFeature] == 2
+        bufferClass(rightFeature) == 2
       ) {
         return lowSpeed ? narrow : wide;
       }
       if (
         rightFeature == "Footway" &&
         leftFeature &&
-        classes[leftFeature] == 2
+        bufferClass(leftFeature) == 2
       ) {
         return lowSpeed ? narrow : wide;
       }
@@ -131,37 +132,40 @@ export function getWidths(
       }[context.speedLimit] as [number, number];
     }
 
-    default:
-      if (streetFeature.startsWith("custom_")) {
-        let id = streetFeature.slice("custom_".length);
-        let width = customFeatures[id].width;
-        return [width, width];
-      }
-      throw new Error(`Invalid streetFeature ${streetFeature}`);
+    default: {
+      let width = customFeatures[streetFeature.custom].width;
+      return [width, width];
+    }
   }
 }
 
 // Group features into categories, from the hidden Excel row 16.
 // TODO Use enums and express logic more directly
-// TODO Custom features are implicitly counting as 0
-let classes: Record<StreetFeatureType, 0 | 1 | 2 | 10> = {
-  Footway: 0,
-  "1-way protected cycle track": 0,
-  "2-way protected cycle track": 0,
-  "Shared use cycle track": 0,
+function bufferClass(streetFeature: StreetFeatureType): 0 | 1 | 2 | 10 {
+  if (typeof streetFeature == "object") {
+    return 0;
+  }
 
-  "Buffer / Verge": 1,
+  let cases: Record<BuiltinStreetFeatureType, 0 | 1 | 2 | 10> = {
+    Footway: 0,
+    "1-way protected cycle track": 0,
+    "2-way protected cycle track": 0,
+    "Shared use cycle track": 0,
 
-  "Narrow Traffic / Bus Lane": 2,
-  "Wide Traffic / Bus Lane": 2,
-  "Traffic Lane (no buses): speed limit 20/30": 2,
-  // Not 1, meaning a footway next to one of these would still recommend a buffer
-  "On-highway advisory/mandatory cycle lane": 2,
+    "Buffer / Verge": 1,
 
-  "Parking Bay": 10,
-  "Disabled Parking Bay": 10,
-  "Loading Bay": 10,
-};
+    "Narrow Traffic / Bus Lane": 2,
+    "Wide Traffic / Bus Lane": 2,
+    "Traffic Lane (no buses): speed limit 20/30": 2,
+    // Not 1, meaning a footway next to one of these would still recommend a buffer
+    "On-highway advisory/mandatory cycle lane": 2,
+
+    "Parking Bay": 10,
+    "Disabled Parking Bay": 10,
+    "Loading Bay": 10,
+  };
+  return cases[streetFeature];
+}
 
 // Are buffers recommended on either side?
 export function needBuffers(
@@ -170,14 +174,16 @@ export function needBuffers(
   rightFeature: StreetFeatureType | "",
 ): "left" | "right" | "both" | "" {
   // Only need buffers around active travel features
-  if (classes[streetFeature] != 0) {
+  if (bufferClass(streetFeature) != 0) {
     return "";
   }
 
   let left =
-    leftFeature && (classes[leftFeature] == 2 || classes[leftFeature] == 10);
+    leftFeature &&
+    (bufferClass(leftFeature) == 2 || bufferClass(leftFeature) == 10);
   let right =
-    rightFeature && (classes[rightFeature] == 2 || classes[rightFeature] == 10);
+    rightFeature &&
+    (bufferClass(rightFeature) == 2 || bufferClass(rightFeature) == 10);
 
   if (left && right) {
     return "both";
