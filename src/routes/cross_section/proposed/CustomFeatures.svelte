@@ -11,13 +11,22 @@
 
   function deleteFeature(id: string) {
     let name = $state.proposed.customFeatures[id].name;
-    if ($state.proposed.desirableMinimumCrossSection.includes({ custom: id })) {
+    let find = JSON.stringify({ custom: id });
+    if (
+      $state.proposed.desirableMinimumCrossSection.some(
+        (x) => JSON.stringify(x) == find,
+      )
+    ) {
       window.alert(
         `The ${name} custom feature is used in the Desirable Minimum Cross-Section. Remove it below before deleting.`,
       );
       return;
     }
-    if ($state.proposed.absoluteMinimumCrossSection.includes({ custom: id })) {
+    if (
+      $state.proposed.absoluteMinimumCrossSection.some(
+        (x) => JSON.stringify(x) == find,
+      )
+    ) {
       window.alert(
         `The ${name} custom feature is used in the Absolute Minimum Cross-Section. Remove it below before deleting.`,
       );
