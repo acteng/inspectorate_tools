@@ -39,6 +39,8 @@
     typeof value == "object" ? `custom_${value.custom}` : value;
 
   $: updateValue(stringValue);
+  // If the value is changed by the parent, update stringValue
+  $: updateStringValue(value);
 
   function updateValue(s: string) {
     if (s.startsWith("custom_")) {
@@ -46,6 +48,10 @@
     } else {
       value = s as StreetFeatureType | "";
     }
+  }
+
+  function updateStringValue(v: StreetFeatureType | "") {
+    stringValue = typeof v == "object" ? `custom_${v.custom}` : v;
   }
 
   $: choices = makeChoices($state.proposed.customFeatures);
