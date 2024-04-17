@@ -1,11 +1,7 @@
 <script lang="ts">
   import { v4 as uuidv4 } from "uuid";
-  import {
-    TextInput,
-    NumberInput,
-    SecondaryButton,
-    WarningButton,
-  } from "govuk-svelte";
+  import { DecimalInput } from "$lib";
+  import { TextInput, SecondaryButton, WarningButton } from "govuk-svelte";
   import { state } from "../data";
 
   function add() {
@@ -42,9 +38,9 @@
       label="Name"
       bind:value={$state.proposed.customFeatures[id].name}
     />
-    <NumberInput
+    <DecimalInput
       label="Minimum width (m)"
-      width={3}
+      width={4}
       min={0}
       bind:value={$state.proposed.customFeatures[id].width}
     />

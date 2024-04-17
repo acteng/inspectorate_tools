@@ -1,12 +1,8 @@
 <script lang="ts">
+  import { DecimalInput } from "$lib";
   import SectionsPossible from "./SectionsPossible.svelte";
   import { createEventDispatcher } from "svelte";
-  import {
-    TextInput,
-    WarningButton,
-    TextArea,
-    NumberInput,
-  } from "govuk-svelte";
+  import { TextInput, WarningButton, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let i: number;
@@ -24,9 +20,9 @@
     bind:value={$state.checks.pinchPoints[i].location}
   />
 
-  <NumberInput
+  <DecimalInput
     label="Available width (m)"
-    width={3}
+    width={4}
     min={0}
     bind:value={$state.checks.pinchPoints[i].availableWidth}
   />

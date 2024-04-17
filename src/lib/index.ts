@@ -1,4 +1,5 @@
 export { default as Breadcrumbs } from "./Breadcrumbs.svelte";
+export { default as DecimalInput } from "./DecimalInput.svelte";
 export { default as FancyRadio } from "./FancyRadio.svelte";
 export { default as Geocoder } from "./Geocoder.svelte";
 export { default as ExternalLink } from "./ExternalLink.svelte";

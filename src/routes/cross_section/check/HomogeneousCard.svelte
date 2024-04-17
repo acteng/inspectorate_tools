@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { DecimalInput } from "$lib";
   import { createEventDispatcher } from "svelte";
-  import { WarningButton, TextArea, NumberInput } from "govuk-svelte";
+  import { WarningButton, TextArea } from "govuk-svelte";
   import SectionsPossible from "./SectionsPossible.svelte";
   import { state } from "../data";
 
@@ -16,9 +17,9 @@
 <div>
   <u>Cross-section #{i + 1}</u>
 
-  <NumberInput
+  <DecimalInput
     label="Available width (m)"
-    width={3}
+    width={4}
     min={0}
     bind:value={$state.checks.homogeneousSections[i].availableWidth}
   />
