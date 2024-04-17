@@ -40,7 +40,7 @@
 
 <SecondaryButton on:click={addNewStreetFeature}>Add</SecondaryButton>
 
-<div style="display: flex; flex-direction: row">
+<div style="display: flex; flex-direction: row; overflow-x: scroll">
   {#each streetFeaturesLeftToRight as streetFeature, i (i)}
     <StreetFeatureCard
       bind:value={streetFeature}

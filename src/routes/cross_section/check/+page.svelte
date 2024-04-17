@@ -64,7 +64,7 @@
 
 <SecondaryButton on:click={addHomogeneousSection}>Add</SecondaryButton>
 
-<div style="display: flex; flex-direction: row">
+<div style="display: flex; flex-direction: row; overflow-x: scroll">
   {#each $state.checks.homogeneousSections as _, i (i)}
     <HomogeneousCard
       {i}
@@ -90,7 +90,7 @@
 
 <SecondaryButton on:click={addPinchPoint}>Add</SecondaryButton>
 
-<div style="display: flex; flex-direction: row">
+<div style="display: flex; flex-direction: row: overflow-x: scroll">
   {#each $state.checks.pinchPoints as _, i (i)}
     <PinchPointCard
       {i}
