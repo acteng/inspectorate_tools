@@ -30,6 +30,11 @@
     ];
   }
 
+  function addBuffer(i: number) {
+    streetFeaturesLeftToRight.splice(i, 0, "Buffer / Verge");
+    streetFeaturesLeftToRight = streetFeaturesLeftToRight;
+  }
+
   $: totalWidth = calculateTotalWidth($state, sectionType);
 </script>
 
@@ -42,6 +47,7 @@
       on:delete={() => deleteStreetFeature(i)}
       on:moveLeft={() => moveLeft(i)}
       on:moveRight={() => moveRight(i)}
+      on:addBuffer={(e) => addBuffer(i + e.detail)}
       isFirst={i == 0}
       isLast={i == streetFeaturesLeftToRight.length - 1}
       leftFeature={i == 0 ? "" : streetFeaturesLeftToRight[i - 1]}

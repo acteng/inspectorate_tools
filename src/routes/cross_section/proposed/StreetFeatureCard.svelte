@@ -29,6 +29,7 @@
     delete: void;
     moveLeft: void;
     moveRight: void;
+    addBuffer: -1 | 1;
   }>();
 
   // TODO Select only understands string values, but we want to set
@@ -79,11 +80,32 @@
     </p>
 
     {#if buffers == "left"}
-      <WarningText>Consider buffer to left</WarningText>
+      <WarningText>
+        Consider buffer to left <SecondaryButton
+          on:click={() => dispatch("addBuffer", -1)}
+        >
+          Add
+        </SecondaryButton>
+      </WarningText>
     {:else if buffers == "right"}
-      <WarningText>Consider buffer to right</WarningText>
+      <WarningText>
+        Consider buffer to right <SecondaryButton
+          on:click={() => dispatch("addBuffer", 1)}
+        >
+          Add
+        </SecondaryButton>
+      </WarningText>
     {:else if buffers == "both"}
-      <WarningText>Consider buffers to left and right</WarningText>
+      <WarningText>
+        Consider buffer to left and right <SecondaryButton
+          on:click={() => {
+            dispatch("addBuffer", -1);
+            dispatch("addBuffer", 1);
+          }}
+        >
+          Add
+        </SecondaryButton>
+      </WarningText>
     {/if}
 
     {#if references(value).length > 0}
