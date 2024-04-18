@@ -4,7 +4,8 @@
   import { initAll } from "govuk-frontend";
   import { WarningText } from "govuk-svelte";
   import { page } from "$app/stores";
-  import { getTitle } from "$lib/nav";
+  import { getTitle, getBreadcrumbLinks } from "$lib/nav";
+  import { Breadcrumbs } from "$lib";
 
   initAll();
 
@@ -15,12 +16,13 @@
   This is an experimental tool. Use only for internal testing.
 </WarningText>
 
-<p>
-  Path = <b>{pagePath}</b>
-  , title =
-  <b>{getTitle(pagePath)}</b>
-</p>
-
 <div class="govuk-prose">
+  <Breadcrumbs
+    links={getBreadcrumbLinks(pagePath)}
+    current={getTitle(pagePath)}
+  />
+
+  <hr />
+
   <slot />
 </div>

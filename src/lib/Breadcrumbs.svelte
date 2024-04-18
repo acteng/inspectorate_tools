@@ -20,4 +20,3 @@
     <li class="govuk-breadcrumbs__list-item">{current}</li>
   </ol>
 </div>
-<hr />

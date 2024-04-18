@@ -4,18 +4,9 @@
   import { CollapsibleCard } from "govuk-svelte";
   import TrafficData from "./TrafficData.svelte";
   import { state } from "../data";
-  import { Breadcrumbs } from "$lib";
 
   let trafficDataOk = false;
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route cross-section", "/cross_section"],
-  ]}
-  current="Proposed Cross-Sections"
-/>
 
 <TrafficData bind:valid={trafficDataOk} />
 

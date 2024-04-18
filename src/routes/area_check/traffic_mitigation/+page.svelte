@@ -4,16 +4,8 @@
   import Confirmation from "./Confirmation.svelte";
   import { TextArea, Select, WarningText } from "govuk-svelte";
   import { state } from "../data";
-  import { YesNo, Breadcrumbs, pairs } from "$lib";
+  import { YesNo, pairs } from "$lib";
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Area check tool", "/area_check"],
-  ]}
-  current="Traffic Mitigation Check"
-/>
 
 <YesNo
   label="Is the scheme expected to reduce traffic?"

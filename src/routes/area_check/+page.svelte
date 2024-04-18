@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths";
-  import { Breadcrumbs, ExternalLink } from "$lib";
+  import { ExternalLink } from "$lib";
   import { state, emptyState } from "./data";
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
   import { findPage } from "$lib/nav";
@@ -9,8 +9,6 @@
     $state = emptyState();
   }
 </script>
-
-<Breadcrumbs links={[["Tools", "/"]]} current="Area check tool" />
 
 <p>
   This is an experimental version of a <ExternalLink
