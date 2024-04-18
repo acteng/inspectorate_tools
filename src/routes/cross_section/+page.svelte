@@ -3,7 +3,7 @@
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
   import { ExternalLink } from "$lib";
   import { state, emptyState } from "./data";
-  import { findPage } from "$lib/nav";
+  import { getChildren } from "$lib/nav";
 
   function reset() {
     $state = emptyState();
@@ -19,12 +19,8 @@
 </p>
 
 <ol>
-  {#each findPage("/cross_section")[2] as row}
-    {#if row[0]}
-      <li><a href="{base}/cross_section/{row[0]}">{row[1]}</a></li>
-    {:else}
-      <li>{row[1]}</li>
-    {/if}
+  {#each getChildren("/cross_section") as [path, title]}
+    <li><a href="{base}{path}">{title}</a></li>
   {/each}
 </ol>
 
