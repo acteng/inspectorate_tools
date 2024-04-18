@@ -20,6 +20,10 @@
   $: nextPage = getNextPage(pagePath);
 </script>
 
+<svelte:head>
+  <title>{getTitle(pagePath)}</title>
+</svelte:head>
+
 <WarningText>
   This is an experimental tool. Use only for internal testing.
 </WarningText>
@@ -29,18 +33,36 @@
     links={getBreadcrumbLinks(pagePath)}
     current={getTitle(pagePath)}
   />
-  {#if prevPage}
-    <p>
-      Previous: <a href="{base}{prevPage[0]}">{prevPage[1]}</a>
-    </p>
-  {/if}
-  {#if nextPage}
-    <p>
-      Next: <a href="{base}{nextPage[0]}">{nextPage[1]}</a>
-    </p>
-  {/if}
+
+  <div style="display: flex; justify-content: space-between">
+    {#if prevPage}
+      <p>
+        Previous: <a href="{base}{prevPage[0]}">{prevPage[1]}</a>
+      </p>
+    {/if}
+    {#if nextPage}
+      <p>
+        Next: <a href="{base}{nextPage[0]}">{nextPage[1]}</a>
+      </p>
+    {/if}
+  </div>
 
   <hr />
 
   <slot />
+
+  <hr />
+
+  <div style="display: flex; justify-content: space-between">
+    {#if prevPage}
+      <p>
+        Previous: <a href="{base}{prevPage[0]}">{prevPage[1]}</a>
+      </p>
+    {/if}
+    {#if nextPage}
+      <p>
+        Next: <a href="{base}{nextPage[0]}">{nextPage[1]}</a>
+      </p>
+    {/if}
+  </div>
 </div>
