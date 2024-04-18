@@ -34,7 +34,7 @@ describe("getBreadcrumbLinks", () => {
   });
 });
 
-describe("getNextPage", () => {
+describe("getPrevPage", () => {
   it("normal cases", () => {
     expect(getPrevPage("/cross_section/summary")).toStrictEqual([
       "/cross_section",
@@ -76,9 +76,8 @@ describe("getNextPage", () => {
 
   it("don't leave tool", () => {
     expect(getNextPage("/")).toBe(null);
-    expect(getNextPage("/area_check")).toBe(null);
-    expect(getNextPage("/cross_section")).toBe(null);
-    expect(getNextPage("/route_check")).toBe(null);
+    expect(getNextPage("/area_check/results")).toBe(null);
+    expect(getNextPage("/cross_section/results_summary")).toBe(null);
     expect(getNextPage("/route_check/results_export")).toBe(null);
   });
 });
