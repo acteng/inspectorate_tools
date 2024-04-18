@@ -1,5 +1,5 @@
 // Produced manually with great care
-let flattenedPages: [string, string][] = [
+let pages: [string, string][] = [
   ["/", "Tools"],
 
   ["/cross_section", "Route cross-section tool"],
@@ -216,13 +216,13 @@ let flattenedPages: [string, string][] = [
   ["/route_check/results_analysis", "Results Further Analysis"],
   ["/route_check/results_export", "Results Export"],
 ];
-let pathToTitle = new Map(flattenedPages);
+let pathToTitle = new Map(pages);
 
 // Returns direct children of a path
 export function getChildren(rawPath: string): [string, string][] {
   let path = canonicalizePath(rawPath);
   let numParts = path.split("/").length;
-  return flattenedPages.filter(
+  return pages.filter(
     ([x, _]) => x.startsWith(path) && x.split("/").length == numParts + 1,
   );
 }
@@ -249,7 +249,7 @@ export function getBreadcrumbLinks(rawPath: string): [string, string][] {
 
 export function getPrevPage(rawPath: string): [string, string] | null {
   let path = canonicalizePath(rawPath);
-  let idx = flattenedPages.findIndex((pair) => pair[0] == path);
+  let idx = pages.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
     return null;
@@ -259,7 +259,7 @@ export function getPrevPage(rawPath: string): [string, string] | null {
     return null;
   }
 
-  let result = flattenedPages[idx - 1];
+  let result = pages[idx - 1];
 
   // Don't jump to a different tool entirely
   if (
@@ -275,17 +275,17 @@ export function getPrevPage(rawPath: string): [string, string] | null {
 
 export function getNextPage(rawPath: string): [string, string] | null {
   let path = canonicalizePath(rawPath);
-  let idx = flattenedPages.findIndex((pair) => pair[0] == path);
+  let idx = pages.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
     return null;
   }
 
-  if (idx == flattenedPages.length - 1) {
+  if (idx == pages.length - 1) {
     return null;
   }
 
-  let result = flattenedPages[idx + 1];
+  let result = pages[idx + 1];
 
   // Don't jump to a different tool entirely
   if (
