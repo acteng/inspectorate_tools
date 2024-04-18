@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Breadcrumbs, pairs } from "$lib";
+  import { pairs } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import {
@@ -12,14 +12,6 @@
 
   // TODO https://design-system.service.gov.uk/components/date-input/
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route check tool", "/route_check"],
-  ]}
-  current="Summary of Scheme"
-/>
 
 <TextInput
   label="Date of design review"

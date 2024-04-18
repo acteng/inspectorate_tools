@@ -1,7 +1,7 @@
 <script lang="ts">
   import { state } from "../data";
   import { TextArea } from "govuk-svelte";
-  import { YesNo, Breadcrumbs } from "$lib";
+  import { YesNo } from "$lib";
 
   let questions = [
     "Are cyclists separated from pedestrians?",
@@ -12,14 +12,6 @@
     "Does the route join together, or join other facilities together, as part of a holistic, connected network?",
   ];
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route check tool", "/route_check"],
-  ]}
-  current="Policy Check"
-/>
 
 {#each questions as question, idx}
   <h2>P00{idx + 1}: {question}</h2>

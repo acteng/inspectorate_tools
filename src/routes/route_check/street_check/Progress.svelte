@@ -51,7 +51,7 @@
       pages: [
         "Impact of Motor Traffic on Pedestrians and Cyclists",
         "Transitions for Cyclists",
-        "Route Continuity ",
+        "Route Continuity",
         "Consistency of Route",
       ],
     },
