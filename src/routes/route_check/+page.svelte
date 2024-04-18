@@ -1,11 +1,9 @@
 <script lang="ts">
-  import { Breadcrumbs, ExternalLink } from "$lib";
+  import { ExternalLink } from "$lib";
   import { base } from "$app/paths";
   import { state } from "./data";
   import FileManager from "./FileManager.svelte";
 </script>
-
-<Breadcrumbs links={[["Tools", "/"]]} current="Route check tool" />
 
 <p>
   This is an experimental version of a <ExternalLink

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Breadcrumbs, YesNo, pairs } from "$lib";
+  import { YesNo, pairs } from "$lib";
   import {
     WarningButton,
     CollapsibleCard,
@@ -33,14 +33,6 @@
     }
   }
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route check tool", "/route_check"],
-  ]}
-  current="Policy Conflict Log"
-/>
 
 <SecondaryButton on:click={add}>Add</SecondaryButton>
 

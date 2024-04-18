@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Breadcrumbs, FancyRadio, PrevNext } from "$lib";
+  import { FancyRadio, PrevNext } from "$lib";
   import Progress from "./Progress.svelte";
   import { state } from "../data";
   import { greenAmberRedCritical } from "$lib/colors";
@@ -17,15 +17,6 @@
     ],
   );
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route check tool", "/route_check"],
-    ["Safety Check", "/route_check/safety_check"],
-  ]}
-  current={label}
-/>
 
 <PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />
 <h2>{label}</h2>
