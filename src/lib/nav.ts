@@ -1,5 +1,5 @@
 // Produced manually with great care
-let flattenedPages = [
+let flattenedPages: [string, string][] = [
   ["/", "Tools"],
 
   ["/cross_section", "Route cross-section tool"],
@@ -218,8 +218,6 @@ let flattenedPages = [
 ];
 let pathToTitle = new Map(flattenedPages);
 
-// TODO Unit tests. and check with extra slashes everywhere
-
 // Returns direct children of a path
 export function getChildren(path: string): [string, string][] {
   let numParts = path.split("/").length;
@@ -229,17 +227,16 @@ export function getChildren(path: string): [string, string][] {
 }
 
 export function getTitle(path: string): string {
-  return pathToTitle.get(path);
+  return pathToTitle.get(path)!;
 }
 
-// [label, path]
 export function getBreadcrumbLinks(path: string): [string, string][] {
-  let results = [];
+  let results: [string, string][] = [];
   let parts = [];
   for (let part of path.split("/")) {
     parts.push(part);
     let pathSoFar = parts.join("/") || "/";
-    results.push([getTitle(pathSoFar), pathSoFar]);
+    results.push([pathSoFar, getTitle(pathSoFar)]);
   }
   results.pop();
   return results;
