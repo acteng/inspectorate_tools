@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
   import { Breadcrumbs, ExternalLink } from "$lib";
-  import { base } from "$app/paths";
   import { state, emptyState } from "./data";
+  import { findPage } from "$lib/nav";
 
   function reset() {
     $state = emptyState();
@@ -20,10 +21,13 @@
 </p>
 
 <ol>
-  <li><a href="{base}/cross_section/summary">Summary of Scheme</a></li>
-  <li><a href="{base}/cross_section/proposed">Proposed Cross-Sections</a></li>
-  <li><a href="{base}/cross_section/check">Cross-Sections Check</a></li>
-  <li>ATE Summary</li>
+  {#each findPage("/cross_section")[2] as row}
+    {#if row[0]}
+      <li><a href="{base}/cross_section/{row[0]}">{row[1]}</a></li>
+    {:else}
+      <li>{row[1]}</li>
+    {/if}
+  {/each}
 </ol>
 
 <CollapsibleCard label="Debug">
