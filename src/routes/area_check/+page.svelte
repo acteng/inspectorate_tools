@@ -3,7 +3,7 @@
   import { ExternalLink } from "$lib";
   import { state, emptyState } from "./data";
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
-  import { findPage } from "$lib/nav";
+  import { getChildren } from "$lib/nav";
 
   function reset() {
     $state = emptyState();
@@ -19,12 +19,8 @@
 </p>
 
 <ol>
-  {#each findPage("/area_check")[2] as row}
-    {#if row[0]}
-      <li><a href="{base}/area_check/{row[0]}">{row[1]}</a></li>
-    {:else}
-      <li>{row[1]}</li>
-    {/if}
+  {#each getChildren("/area_check") as [path, title]}
+    <li><a href="{base}{path}">{title}</a></li>
   {/each}
 </ol>
 
