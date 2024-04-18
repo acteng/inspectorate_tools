@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { Breadcrumbs } from "$lib";
   import { base } from "$app/paths";
 </script>
-
-<Breadcrumbs links={[]} current="Tools" />
 
 <span>Design assistance</span>
 <ul>

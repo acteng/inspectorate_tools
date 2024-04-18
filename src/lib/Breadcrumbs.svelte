@@ -3,7 +3,7 @@
 
   // TODO Move to govuk-svelte, after deciding how to handle base
 
-  // A list of [label, URL] in order. URLs should start with a leading slash.
+  // A list of [URL, label] in order. URLs should start with a leading slash.
   // The base path will be prepended; no need to include it.
   export let links: [string, string][];
   // The current page's label, with no URL
@@ -12,7 +12,7 @@
 
 <div class="govuk-breadcrumbs">
   <ol class="govuk-breadcrumbs__list">
-    {#each links as [label, link]}
+    {#each links as [link, label]}
       <li class="govuk-breadcrumbs__list-item">
         <a class="govuk-breadcrumbs__link" href="{base}{link}">{label}</a>
       </li>
