@@ -68,7 +68,9 @@
 
   <li>JAT Check</li>
 
-  <li>Results Summary</li>
+  <li>
+    <a href="{base}/route_check/results_summary">Results Summary</a>
+  </li>
   <li>Results Further Analysis</li>
   <li>Results Export</li>
 </ol>

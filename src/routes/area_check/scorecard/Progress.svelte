@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { sum } from "$lib";
+  import { getCompletedForScorecard, sum } from "$lib";
   import { state, type State } from "../data";
   import { base } from "$app/paths";
 
@@ -25,13 +25,7 @@
     return (idx + 1).toString().padStart(2, "0");
   }
 
-  $: completed = getCompleted($state);
-  function getCompleted(_: State): boolean[] {
-    return Array.from(Array(questions.length).keys()).map(
-      (idx) =>
-        $state.existingScores[idx] != "" && $state.proposedScores[idx] != "",
-    );
-  }
+  $: completed = getCompletedForScorecard($state, questions.length);
 
   $: totalExisting = sum($state.existingScores.map((x) => parseInt(x || "0")));
   $: totalProposed = sum($state.proposedScores.map((x) => parseInt(x || "0")));
