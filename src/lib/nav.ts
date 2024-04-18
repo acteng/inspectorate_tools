@@ -48,7 +48,6 @@ export function findPage(path: string): string {
   let parts = path.split("/");
 
   let lookup = [null, null, [pages]];
-  let first = true;
 
   for (let part of parts) {
     lookup = lookup[2].find((row) => row[0] == part);
@@ -59,4 +58,21 @@ export function findPage(path: string): string {
 
 export function getTitle(path: string): string {
   return findPage(path)[1];
+}
+
+export function getBreadcrumbLinks(path: string): [string, string] {
+  let parts = path.split("/");
+
+  let lookup = [null, null, [pages]];
+  let result = [];
+
+  let pathSoFar = "";
+  for (let part of parts) {
+    lookup = lookup[2].find((row) => row[0] == part);
+    pathSoFar += `${part}/`;
+    result.push([lookup[1], pathSoFar]);
+  }
+  result.pop();
+
+  return result;
 }

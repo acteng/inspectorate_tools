@@ -1,7 +1,6 @@
 <script lang="ts">
   import { SecondaryButton } from "govuk-svelte";
   import { state } from "../data";
-  import { Breadcrumbs } from "$lib";
   import HomogeneousCard from "./HomogeneousCard.svelte";
   import PinchPointCard from "./PinchPointCard.svelte";
   import { calculateTotalWidth } from "../proposed/logic";
@@ -41,14 +40,6 @@
     $state.checks.pinchPoints = $state.checks.pinchPoints;
   }
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route cross-section", "/cross_section"],
-  ]}
-  current="Cross-Section Check"
-/>
 
 <p>Desirable Minimum requires: {desirableTotal} m</p>
 <p>Absolute Minimum requires: {absoluteTotal} m</p>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Breadcrumbs, pairs } from "$lib";
+  import { pairs } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import {
@@ -12,14 +12,6 @@
 
   // TODO Start/endpoints, map
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route cross-section", "/cross_section"],
-  ]}
-  current="Summary of Scheme"
-/>
 
 <TextInput
   label="Scheme reference"
