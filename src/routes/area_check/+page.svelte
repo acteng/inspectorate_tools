@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { Breadcrumbs, ExternalLink } from "$lib";
   import { base } from "$app/paths";
+  import { Breadcrumbs, ExternalLink } from "$lib";
   import { state, emptyState } from "./data";
   import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
+  import { findPage } from "$lib/nav";
 
   function reset() {
     $state = emptyState();
@@ -20,12 +21,13 @@
 </p>
 
 <ol>
-  <li><a href="{base}/area_check/summary">Summary of Scheme</a></li>
-  <li>
-    <a href="{base}/area_check/traffic_mitigation">Traffic Mitigation Check</a>
-  </li>
-  <li><a href="{base}/area_check/scorecard">Area Scorecard</a></li>
-  <li>Results & Commentary</li>
+  {#each findPage("/area_check")[2] as row}
+    {#if row[0]}
+      <li><a href="{base}/area_check/{row[0]}">{row[1]}</a></li>
+    {:else}
+      <li>{row[1]}</li>
+    {/if}
+  {/each}
 </ol>
 
 <CollapsibleCard label="Debug">
