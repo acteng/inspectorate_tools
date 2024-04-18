@@ -1,4 +1,4 @@
-let backgroundAndFontCombinations = {
+export let backgroundAndFontCombinations = {
   critical: {
     background: "#232323",
     font: "white",
