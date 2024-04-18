@@ -6,7 +6,7 @@ let flattenedPages: [string, string][] = [
   ["/cross_section/summary", "Summary of Scheme"],
   ["/cross_section/proposed", "Proposed Cross-Sections"],
   ["/cross_section/check", "Cross-Sections Check"],
-  ["/cross_section/summary", "ATE Summary"],
+  ["/cross_section/results_summary", "ATE Summary"],
 
   ["/area_check", "Area check tool"],
   ["/area_check/summary", "Summary of Scheme"],
@@ -219,7 +219,8 @@ let flattenedPages: [string, string][] = [
 let pathToTitle = new Map(flattenedPages);
 
 // Returns direct children of a path
-export function getChildren(path: string): [string, string][] {
+export function getChildren(rawPath: string): [string, string][] {
+  let path = canonicalizePath(rawPath);
   let numParts = path.split("/").length;
   return flattenedPages.filter(
     ([x, _]) => x.startsWith(path) && x.split("/").length == numParts + 1,
@@ -227,10 +228,14 @@ export function getChildren(path: string): [string, string][] {
 }
 
 export function getTitle(path: string): string {
-  return pathToTitle.get(path)!;
+  return pathToTitle.get(canonicalizePath(path))!;
 }
 
-export function getBreadcrumbLinks(path: string): [string, string][] {
+export function getBreadcrumbLinks(rawPath: string): [string, string][] {
+  let path = canonicalizePath(rawPath);
+  if (path == "/") {
+    return [];
+  }
   let results: [string, string][] = [];
   let parts = [];
   for (let part of path.split("/")) {
@@ -242,7 +247,8 @@ export function getBreadcrumbLinks(path: string): [string, string][] {
   return results;
 }
 
-export function getPrevPage(path: string): [string, string] | null {
+export function getPrevPage(rawPath: string): [string, string] | null {
+  let path = canonicalizePath(rawPath);
   let idx = flattenedPages.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
@@ -257,8 +263,8 @@ export function getPrevPage(path: string): [string, string] | null {
 
   // Don't jump to a different tool entirely
   if (
-    path != "/" &&
-    result[0] != "/" &&
+    path == "/" ||
+    result[0] == "/" ||
     path.split("/")[1] != result[0].split("/")[1]
   ) {
     return null;
@@ -266,7 +272,9 @@ export function getPrevPage(path: string): [string, string] | null {
 
   return result;
 }
-export function getNextPage(path: string): [string, string] | null {
+
+export function getNextPage(rawPath: string): [string, string] | null {
+  let path = canonicalizePath(rawPath);
   let idx = flattenedPages.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
@@ -281,12 +289,27 @@ export function getNextPage(path: string): [string, string] | null {
 
   // Don't jump to a different tool entirely
   if (
-    path != "/" &&
-    result[0] != "/" &&
+    path == "/" ||
+    result[0] == "/" ||
     path.split("/")[1] != result[0].split("/")[1]
   ) {
     return null;
   }
 
   return result;
+}
+
+function canonicalizePath(path: string): string {
+  // Deduplicate consecutive slashes
+  path = path.replace(/\/{2,}/g, "/");
+
+  // Remove trailing slashes
+  path = path.replace(/\/+$/, "");
+
+  // Guarantee a leading slash
+  if (path.charAt(0) != "/") {
+    path = "/" + path;
+  }
+
+  return path;
 }
