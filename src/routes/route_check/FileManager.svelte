@@ -21,30 +21,21 @@
     }
 
     // TODO Use a full Modal
-    if (
-      window.confirm(
-        `Really delete file ${file.slice(prefix.length)}? You can't undo this.`,
-      )
-    ) {
-      window.localStorage.removeItem(file);
+    if (window.confirm(`Really delete file ${file}? You can't undo this.`)) {
+      window.localStorage.removeItem(`${prefix}${file}`);
       fileList = getFileList();
     }
   }
 
   function renameFile(file: string) {
-    if ($currentFile == file) {
-      window.alert("TODO: Can't rename current file yet");
-      return;
-    }
-
-    let newName = window.prompt(
-      `Rename file ${file.slice(prefix.length)} to what?`,
-      file.slice(prefix.length),
-    );
+    let newName = window.prompt(`Rename file ${file} to what?`, file);
     if (newName) {
-      let contents = window.localStorage.getItem(file)!;
+      let contents = window.localStorage.getItem(`${prefix}${file}`)!;
       window.localStorage.setItem(`${prefix}${newName}`, contents);
-      window.localStorage.removeItem(file);
+      window.localStorage.removeItem(`${prefix}${file}`);
+      if ($currentFile == file) {
+        $currentFile = newName;
+      }
       fileList = getFileList();
     }
   }
@@ -53,7 +44,10 @@
     $currentFile = newFilename();
     $state = emptyState();
     // Do this immediately, so we can refresh the fileList
-    window.localStorage.setItem($currentFile, JSON.stringify($state));
+    window.localStorage.setItem(
+      `${prefix}${$currentFile}`,
+      JSON.stringify($state),
+    );
     fileList = getFileList();
   }
 
@@ -89,10 +83,10 @@
       ? filename.slice(0, -".json".length)
       : filename;
     // TODO Validate upfront?
-    window.localStorage.setItem(key, contents);
+    window.localStorage.setItem(`${prefix}${key}`, contents);
     // Do this immediately, so we can refresh the fileList
     fileList = getFileList();
-    loadFile(key);
+    setFile(key);
   }
 </script>
 
@@ -112,7 +106,7 @@
             on:click={() => setFile(file)}
             disabled={$currentFile == file}
           >
-            {file.slice(prefix.length)}
+            {file}
           </SecondaryButton>
           <SecondaryButton on:click={() => renameFile(file)}>
             Rename

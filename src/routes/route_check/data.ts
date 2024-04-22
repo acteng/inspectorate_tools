@@ -4,6 +4,7 @@ import { repeatCloned } from "$lib";
 let prefix = "route-check/";
 
 export let state = writable(emptyState());
+// A key into local storage, excluding prefix
 export let currentFile = writable("");
 
 initialLoad();
@@ -30,7 +31,7 @@ function initialLoad() {
 state.subscribe((value) => {
   let file = get(currentFile);
   if (file) {
-    window.localStorage.setItem(file, JSON.stringify(value));
+    window.localStorage.setItem(`${prefix}${file}`, JSON.stringify(value));
   }
 });
 
@@ -43,7 +44,7 @@ currentFile.subscribe((value) => {
 // Loads a key from local storage. Throws an exception if the stored state is missing or invalid.
 export function loadFile(file: string): State {
   console.log(`Loading ${file}`);
-  let json = window.localStorage.getItem(file);
+  let json = window.localStorage.getItem(`${prefix}${file}`);
   if (!json) {
     throw new Error(`Key not in local storage: ${file}`);
   }
@@ -60,7 +61,7 @@ export function loadFile(file: string): State {
 export function newFilename(): string {
   let fileList = getFileList();
   for (let n = 1; n <= fileList.length + 1; n++) {
-    let file = `${prefix}untitled${n}`;
+    let file = `untitled${n}`;
     if (!fileList.includes(file)) {
       return file;
     }
@@ -74,7 +75,7 @@ export function getFileList(): string[] {
   for (let i = 0; i < window.localStorage.length; i++) {
     let key = window.localStorage.key(i)!;
     if (key.startsWith(prefix) && key != `${prefix}last-opened-file`) {
-      list.push(key);
+      list.push(key.slice(prefix.length));
     }
   }
   list.sort();
