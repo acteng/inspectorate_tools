@@ -15,14 +15,13 @@
   let id = uuidv4();
 
   function parse() {
-    value = stringValue == undefined ? undefined : parseFloat(stringValue);
+    value = stringValue == undefined ? undefined : Number(stringValue);
   }
 
   function validate(stringValue: string | undefined): string {
     if (stringValue == "" || stringValue == undefined) {
       return "";
     }
-    // parseFloat allows trailing letters
     let n = Number(stringValue);
     if (isNaN(n)) {
       return "Please enter a valid number";

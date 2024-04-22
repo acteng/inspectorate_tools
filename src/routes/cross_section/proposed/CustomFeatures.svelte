@@ -1,12 +1,21 @@
 <script lang="ts">
+  import EditCustomFeature from "./EditCustomFeature.svelte";
   import { v4 as uuidv4 } from "uuid";
-  import { DecimalInput } from "$lib";
-  import { TextInput, SecondaryButton, WarningButton } from "govuk-svelte";
+  import { SecondaryButton, WarningButton } from "govuk-svelte";
   import { state } from "../data";
 
+  let editing: {
+    id: string;
+    initialName: string;
+    initialWidth: number;
+  } | null = null;
+
   function add() {
-    $state.proposed.customFeatures[uuidv4()] = { name: "", width: 0 };
-    $state.proposed.customFeatures = $state.proposed.customFeatures;
+    editing = {
+      id: uuidv4(),
+      initialName: "",
+      initialWidth: 0,
+    };
   }
 
   function deleteFeature(id: string) {
@@ -36,23 +45,44 @@
     $state.proposed.customFeatures = $state.proposed.customFeatures;
   }
 
-  // TODO Validations on input fields
+  function edit(id: string) {
+    editing = {
+      id,
+      initialName: $state.proposed.customFeatures[id].name,
+      initialWidth: $state.proposed.customFeatures[id].width,
+    };
+  }
+
+  function doneEditing(e: CustomEvent<{ name: string; width: number }>) {
+    $state.proposed.customFeatures[editing!.id] = {
+      name: e.detail.name,
+      width: e.detail.width,
+    };
+    $state.proposed.customFeatures = $state.proposed.customFeatures;
+    editing = null;
+  }
 </script>
 
 <SecondaryButton on:click={add}>Add</SecondaryButton>
 
-{#each Object.keys($state.proposed.customFeatures) as id (id)}
-  <div style="display: flex; justify-content: space-between">
-    <TextInput
-      label="Name"
-      bind:value={$state.proposed.customFeatures[id].name}
-    />
-    <DecimalInput
-      label="Minimum width (m)"
-      width={4}
-      min={0}
-      bind:value={$state.proposed.customFeatures[id].width}
-    />
-    <WarningButton on:click={() => deleteFeature(id)}>Delete</WarningButton>
-  </div>
-{/each}
+<ol>
+  {#each Object.keys($state.proposed.customFeatures) as id (id)}
+    <li>
+      <span>
+        <u>{$state.proposed.customFeatures[id].name}</u>
+        : {$state.proposed.customFeatures[id].width} m minimum width
+      </span>
+      <SecondaryButton on:click={() => edit(id)}>Edit</SecondaryButton>
+      <WarningButton on:click={() => deleteFeature(id)}>Delete</WarningButton>
+    </li>
+  {/each}
+</ol>
+
+{#if editing}
+  <EditCustomFeature
+    initialName={editing.initialName}
+    initialWidth={editing.initialWidth}
+    on:cancel={() => (editing = null)}
+    on:confirm={doneEditing}
+  />
+{/if}
