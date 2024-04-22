@@ -41,8 +41,8 @@
   }
 </script>
 
-<p>Desirable Minimum requires: {desirableTotal} m</p>
-<p>Absolute Minimum requires: {absoluteTotal} m</p>
+<p>Desirable Minimum requires: {desirableTotal.toFixed(2)} m</p>
+<p>Absolute Minimum requires: {absoluteTotal.toFixed(2)} m</p>
 
 <h2>
   Checking possible cross-sections of <u>homogeneous sections</u>
