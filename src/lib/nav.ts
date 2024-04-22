@@ -306,6 +306,11 @@ function canonicalizePath(path: string): string {
   // Remove trailing slashes
   path = path.replace(/\/+$/, "");
 
+  // When deployed to GH Pages, remove the leading base path.
+  if (path.startsWith("/inspectorate_tools")) {
+    path = path.slice("/inspectorate_tools".length);
+  }
+
   // Guarantee a leading slash
   if (path.charAt(0) != "/") {
     path = "/" + path;

@@ -17,6 +17,14 @@ describe("getTitle", () => {
     );
     expect(getTitle("cross_section/proposed")).toBe("Proposed Cross-Sections");
   });
+
+  it("GH deployment", () => {
+    expect(getTitle("/inspectorate_tools")).toBe("Tools");
+    expect(getTitle("/inspectorate_tools/")).toBe("Tools");
+    expect(getTitle("/inspectorate_tools/cross_section/proposed/")).toBe(
+      "Proposed Cross-Sections",
+    );
+  });
 });
 
 describe("getBreadcrumbLinks", () => {
