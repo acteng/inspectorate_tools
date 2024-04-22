@@ -26,6 +26,7 @@ export interface State {
     homogeneousSections: Array<CheckHomogeneousSection>;
     pinchPoints: Array<CheckPinchPoint>;
   };
+  resultsCommentary: string;
 }
 
 // Keyed by UUID
@@ -111,6 +112,7 @@ export function emptyState(): State {
       homogeneousSections: [],
       pinchPoints: [],
     },
+    resultsCommentary: "",
   };
 }
 
