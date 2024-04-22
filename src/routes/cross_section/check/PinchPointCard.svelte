@@ -48,5 +48,6 @@
     border: 1px solid black;
     padding: 4px;
     min-width: 400px;
+    max-width: 400px;
   }
 </style>
