@@ -8,6 +8,7 @@
     loadFile,
   } from "./data";
   import { SecondaryButton, TextArea, CollapsibleCard } from "govuk-svelte";
+  import FileInput from "./FileInput.svelte";
 
   export let prefix: string;
 
@@ -65,12 +66,42 @@
       window.alert(`Couldn't load ${file}: ${error}`);
     }
   }
+
+  function exportFile() {
+    downloadGeneratedFile($currentFile + ".json", JSON.stringify($state));
+  }
+
+  function downloadGeneratedFile(filename: string, textInput: string) {
+    let element = document.createElement("a");
+    element.setAttribute(
+      "href",
+      "data:text/plain;charset=utf-8, " + encodeURIComponent(textInput),
+    );
+    element.setAttribute("download", filename);
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+  function importFile(filename: string, contents: string) {
+    // TODO Handle duplicate names
+    let key = filename.endsWith(".json")
+      ? filename.slice(0, -".json".length)
+      : filename;
+    // TODO Validate upfront?
+    window.localStorage.setItem(key, contents);
+    // Do this immediately, so we can refresh the fileList
+    fileList = getFileList();
+    loadFile(key);
+  }
 </script>
 
 <CollapsibleCard label="Files">
-  <p>TODO: Export file, make a copy, load from file...</p>
-
   <SecondaryButton on:click={() => newFile()}>New file</SecondaryButton>
+  <SecondaryButton on:click={() => exportFile()}>
+    Export this file
+  </SecondaryButton>
+  <FileInput label="Load from file" onLoad={importFile} />
 
   <p>Load a saved file:</p>
   <ul>
