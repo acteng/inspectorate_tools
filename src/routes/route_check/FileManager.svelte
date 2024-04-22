@@ -67,7 +67,7 @@
   }
 </script>
 
-<CollapsibleCard label="Files" open>
+<CollapsibleCard label="Files">
   <p>TODO: Export file, make a copy, load from file...</p>
 
   <SecondaryButton on:click={() => newFile()}>New file</SecondaryButton>
