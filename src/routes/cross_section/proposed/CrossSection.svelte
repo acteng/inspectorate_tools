@@ -3,12 +3,24 @@
   import { SecondaryButton } from "govuk-svelte";
   import { state, type StreetFeatureType } from "../data";
   import { calculateTotalWidth } from "./logic";
+  import { afterUpdate } from "svelte";
 
   export let streetFeaturesLeftToRight: Array<StreetFeatureType | "">;
   export let sectionType: "Desirable" | "Absolute";
 
+  let div: HTMLDivElement;
+  let justAdded = false;
+
+  afterUpdate(() => {
+    if (justAdded) {
+      justAdded = false;
+      div.scrollLeft = div.scrollWidth;
+    }
+  });
+
   function addNewStreetFeature() {
     streetFeaturesLeftToRight = [...streetFeaturesLeftToRight, ""];
+    justAdded = true;
   }
 
   function deleteStreetFeature(i: number) {
@@ -40,7 +52,10 @@
 
 <SecondaryButton on:click={addNewStreetFeature}>Add</SecondaryButton>
 
-<div style="display: flex; flex-direction: row; overflow-x: scroll">
+<div
+  style="display: flex; flex-direction: row; overflow-x: scroll"
+  bind:this={div}
+>
   {#each streetFeaturesLeftToRight as streetFeature, i (i)}
     <StreetFeatureCard
       bind:value={streetFeature}
