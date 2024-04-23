@@ -9,13 +9,13 @@
     loadFile,
   } from "./data";
   import {
+    FileInput,
     WarningButton,
     ButtonGroup,
     SecondaryButton,
     TextArea,
     CollapsibleCard,
   } from "govuk-svelte";
-  import FileInput from "./FileInput.svelte";
   import { Modal } from "$lib";
 
   // This is used both to organize local storage keys and to determine the
@@ -76,6 +76,7 @@
       JSON.stringify($state),
     );
     fileList = getFileList();
+    // TODO Losing the Modal is a bit sudden
     window.location.replace(`${base}/${prefix}`);
   }
 
