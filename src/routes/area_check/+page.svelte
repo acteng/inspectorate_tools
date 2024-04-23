@@ -1,13 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import { ExternalLink } from "$lib";
-  import { state, emptyState } from "./data";
-  import { WarningButton, TextArea, CollapsibleCard } from "govuk-svelte";
   import { getChildren } from "$lib/nav";
-
-  function reset() {
-    $state = emptyState();
-  }
 </script>
 
 <p>
@@ -23,8 +17,3 @@
     <li><a href="{base}{path}">{title}</a></li>
   {/each}
 </ol>
-
-<CollapsibleCard label="Debug">
-  <WarningButton on:click={reset}>Reset</WarningButton>
-  <TextArea label="JSON" value={JSON.stringify($state, null, "  ")} rows={10} />
-</CollapsibleCard>

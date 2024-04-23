@@ -3,7 +3,6 @@ import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
 
 export let state = writable(emptyState());
-// A key into local storage, excluding prefix
 export let currentFile = writable("");
 
 export let files = new LocalStorageFiles(
@@ -126,7 +125,7 @@ function validate(state: State) {
   }
 }
 
-export function emptyState(): State {
+function emptyState(): State {
   return {
     summary: {
       dateDesignReview: "",
