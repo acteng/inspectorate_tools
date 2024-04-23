@@ -1,54 +1,18 @@
-import { get, writable } from "svelte/store";
+import { writable } from "svelte/store";
 import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
-
-export let files = new LocalStorageFiles("route_check/", emptyState, validate);
 
 export let state = writable(emptyState());
 // A key into local storage, excluding prefix
 export let currentFile = writable("");
 
-initialLoad();
-
-function initialLoad() {
-  console.log(`Initial load; trying to open last opened file`);
-  let lastFile = window.localStorage.getItem(files.key("last-opened-file"));
-  if (lastFile) {
-    try {
-      let x = files.loadFile(lastFile);
-      currentFile.set(lastFile);
-      state.set(x);
-      return;
-    } catch (error) {
-      window.alert(`The last opened file ${lastFile} has a problem: ${error}`);
-    }
-  }
-
-  console.log(`Starting with a new file`);
-  let file = files.newFilename();
-  currentFile.set(file);
-}
-
-state.subscribe((value) => {
-  let file = get(currentFile);
-  if (file) {
-    window.localStorage.setItem(files.key(file), JSON.stringify(value));
-  }
-});
-
-currentFile.subscribe((value) => {
-  if (value) {
-    window.localStorage.setItem(files.key("last-opened-file"), value);
-  }
-});
-
-function validate(state: State) {
-  // Could more thoroughly check for validity, but the format won't change
-  // much after initial development calms down
-  if (!state.criticalIssues) {
-    throw new Error("File format appears outdated");
-  }
-}
+export let files = new LocalStorageFiles(
+  "route_check/",
+  emptyState,
+  validate,
+  state,
+  currentFile,
+);
 
 export interface State {
   summary: {
@@ -152,6 +116,14 @@ interface CriticalIssue {
   locationName: string;
   resolved: "Yes" | "No" | "";
   notes: "";
+}
+
+function validate(state: State) {
+  // Could more thoroughly check for validity, but the format won't change
+  // much after initial development calms down
+  if (!state.criticalIssues) {
+    throw new Error("File format appears outdated");
+  }
 }
 
 export function emptyState(): State {

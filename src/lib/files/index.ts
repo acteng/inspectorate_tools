@@ -1,6 +1,6 @@
 export { default as FileManager } from "./FileManager.svelte";
+import { get, type Writable } from "svelte/store";
 
-// It's the caller's responsibility to subscribe to the two stores and store in local storage.
 export class LocalStorageFiles<StateType> {
   // This is used both to organize local storage keys and to determine the
   // starter page to redirect to. Should be of the form "foo/"
@@ -9,15 +9,37 @@ export class LocalStorageFiles<StateType> {
   emptyState: () => StateType;
   // Should throw an exception if the file state has some problem.
   validate: (state: StateType) => void;
+  state: Writable<StateType>;
+  currentFile: Writable<string>;
 
+  // The caller should treat this like a singleton and only create once per app lifetime. This constructor has the side-effect of initially loading the last opened file (or starting a new blank file), and setting up store subscriptions to automatically save to local storage.
   constructor(
     prefix: string,
     emptyState: () => StateType,
     validate: (state: StateType) => void,
+    state: Writable<StateType>,
+    currentFile: Writable<string>,
   ) {
     this.prefix = prefix;
     this.emptyState = emptyState;
     this.validate = validate;
+    this.state = state;
+    this.currentFile = currentFile;
+
+    this.initialLoad();
+
+    this.state.subscribe((value) => {
+      let file = get(this.currentFile);
+      if (file) {
+        window.localStorage.setItem(this.key(file), JSON.stringify(value));
+      }
+    });
+
+    this.currentFile.subscribe((value) => {
+      if (value) {
+        window.localStorage.setItem(this.key("last-opened-file"), value);
+      }
+    });
   }
 
   // Returns the full local storage key for a file.
@@ -62,8 +84,8 @@ export class LocalStorageFiles<StateType> {
     return list;
   }
 
-  /*// Initially set the currentFile and state store, based on the last opened file or starting a new one.
-  initialLoad() {
+  // Initially set the currentFile and state store, based on the last opened file or starting a new one.
+  private initialLoad() {
     console.log(`Initial load; trying to open last opened file`);
     let lastFile = window.localStorage.getItem(this.key("last-opened-file"));
     if (lastFile) {
@@ -83,5 +105,5 @@ export class LocalStorageFiles<StateType> {
     let file = this.newFilename();
     this.currentFile.set(file);
     this.state.set(this.emptyState());
-  }*/
+  }
 }
