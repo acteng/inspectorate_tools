@@ -1,8 +1,9 @@
 <script lang="ts">
-  import FileManager from "./FileManager.svelte";
+  import { FileManager } from "$lib/files";
+  import { files, currentFile, state } from "./data";
 </script>
 
-<FileManager prefix="route_check/" />
+<FileManager {files} {currentFile} {state} />
 
 <hr />
 

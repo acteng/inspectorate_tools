@@ -1,13 +1,6 @@
 <script lang="ts">
+  import { LocalStorageFiles } from "./index";
   import { base } from "$app/paths";
-  import {
-    currentFile,
-    state,
-    emptyState,
-    newFilename,
-    getFileList,
-    loadFile,
-  } from "./data";
   import {
     FileInput,
     WarningButton,
@@ -17,12 +10,15 @@
     CollapsibleCard,
   } from "govuk-svelte";
   import { Modal } from "$lib";
+  import { type Writable } from "svelte/store";
 
-  // This is used both to organize local storage keys and to determine the
-  // starter page to redirect to. Should be of the form "foo/"
-  export let prefix: string;
+  type StateType = $$Generic;
 
-  let fileList = getFileList();
+  export let files: LocalStorageFiles<StateType>;
+  export let currentFile: Writable<string>;
+  export let state: Writable<StateType>;
+
+  let fileList = files.getFileList();
   let open = false;
 
   function renameFile() {
@@ -32,12 +28,12 @@
       $currentFile,
     );
     if (newName) {
-      let oldKey = `${prefix}${$currentFile}`;
+      let oldKey = files.key($currentFile);
       let contents = window.localStorage.getItem(oldKey)!;
-      window.localStorage.setItem(`${prefix}${newName}`, contents);
+      window.localStorage.setItem(files.key(newName), contents);
       window.localStorage.removeItem(oldKey);
       $currentFile = newName;
-      fileList = getFileList();
+      fileList = files.getFileList();
     }
   }
 
@@ -49,7 +45,7 @@
     let element = document.createElement("a");
     element.setAttribute(
       "href",
-      "data:text/plain;charset=utf-8, " + encodeURIComponent(textInput),
+      "data:text/plain;charset=utf-8," + encodeURIComponent(textInput),
     );
     element.setAttribute("download", filename);
     document.body.appendChild(element);
@@ -62,22 +58,22 @@
     if (
       window.confirm(`Really delete file ${$currentFile}? You can't undo this.`)
     ) {
-      window.localStorage.removeItem(`${prefix}${$currentFile}`);
+      window.localStorage.removeItem(files.key($currentFile));
       newFile();
     }
   }
 
   function newFile() {
-    $currentFile = newFilename();
-    $state = emptyState();
+    $currentFile = files.newFilename();
+    $state = files.emptyState();
     // Do this immediately, so we can refresh the fileList
     window.localStorage.setItem(
-      `${prefix}${$currentFile}`,
+      files.key($currentFile),
       JSON.stringify($state),
     );
-    fileList = getFileList();
+    fileList = files.getFileList();
     // TODO Losing the Modal is a bit sudden
-    window.location.replace(`${base}/${prefix}`);
+    window.location.replace(`${base}/${files.prefix}`);
   }
 
   function importFile(rawFilename: string, contents: string) {
@@ -87,17 +83,17 @@
       : rawFilename;
     // TODO Validate contents upfront?
     // Do this immediately, so we can refresh the fileList
-    window.localStorage.setItem(`${prefix}${file}`, contents);
-    fileList = getFileList();
+    window.localStorage.setItem(files.key(file), contents);
+    fileList = files.getFileList();
     openFile(file);
   }
 
   function openFile(file: string) {
     try {
-      let x = loadFile(file);
+      let x = files.loadFile(file);
       $currentFile = file;
       $state = x;
-      window.location.replace(`${base}/${prefix}`);
+      window.location.replace(`${base}/${files.prefix}`);
     } catch (error) {
       window.alert(`Couldn't load ${file}: ${error}`);
     }
