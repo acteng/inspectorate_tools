@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" generics="StateType">
   import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./index";
   import { base } from "$app/paths";
@@ -13,10 +13,10 @@
   import { Modal } from "$lib";
   import { type Writable } from "svelte/store";
 
-  type StateType = $$Generic;
-
+  // eslint-disable-next-line no-undef
   export let files: LocalStorageFiles<StateType>;
   export let currentFile: Writable<string>;
+  // eslint-disable-next-line no-undef
   export let state: Writable<StateType>;
 
   let fileList = files.getFileList();
@@ -86,7 +86,7 @@
     window.localStorage.setItem(files.key(file), contents);
     fileList = files.getFileList();
     openFile(file);
-  };
+  }
 
   async function openFile(file: string) {
     try {
