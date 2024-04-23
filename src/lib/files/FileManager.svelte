@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./index";
   import { base } from "$app/paths";
   import {
@@ -53,17 +54,17 @@
     document.body.removeChild(element);
   }
 
-  function deleteFile() {
+  async function deleteFile() {
     // TODO Use a full Modal
     if (
       window.confirm(`Really delete file ${$currentFile}? You can't undo this.`)
     ) {
       window.localStorage.removeItem(files.key($currentFile));
-      newFile();
+      await newFile();
     }
   }
 
-  function newFile() {
+  async function newFile() {
     $currentFile = files.newFilename();
     $state = files.emptyState();
     // Do this immediately, so we can refresh the fileList
@@ -72,11 +73,10 @@
       JSON.stringify($state),
     );
     fileList = files.getFileList();
-    // TODO Losing the Modal is a bit sudden
-    window.location.replace(`${base}/${files.prefix}`);
+    await goto(`${base}/${files.prefix}`);
   }
 
-  function importFile(rawFilename: string, contents: string) {
+  async function importFile(rawFilename: string, contents: string) {
     // TODO Handle duplicate names
     let file = rawFilename.endsWith(".json")
       ? rawFilename.slice(0, -".json".length)
@@ -86,14 +86,14 @@
     window.localStorage.setItem(files.key(file), contents);
     fileList = files.getFileList();
     openFile(file);
-  }
+  };
 
-  function openFile(file: string) {
+  async function openFile(file: string) {
     try {
       let x = files.loadFile(file);
       $currentFile = file;
       $state = x;
-      window.location.replace(`${base}/${files.prefix}`);
+      await goto(`${base}/${files.prefix}`);
     } catch (error) {
       window.alert(`Couldn't load ${file}: ${error}`);
     }
@@ -134,7 +134,7 @@
 
   <hr />
 
-  <SecondaryButton on:click={() => newFile()}>New file</SecondaryButton>
+  <SecondaryButton on:click={newFile}>New file</SecondaryButton>
   <FileInput label="Import from file" onLoad={importFile} />
 
   <p>Load a saved file:</p>
