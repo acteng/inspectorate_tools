@@ -1,4 +1,16 @@
 import { writable } from "svelte/store";
+import { LocalStorageFiles } from "$lib/files";
+
+export let state = writable(emptyState());
+export let currentFile = writable("");
+
+export let files = new LocalStorageFiles(
+  "cross_section/",
+  emptyState,
+  validate,
+  state,
+  currentFile,
+);
 
 export interface State {
   summary: {
@@ -64,21 +76,15 @@ export interface CheckPinchPoint {
   notes: string;
 }
 
-export let state = writable(loadState());
-state.subscribe((value) =>
-  window.localStorage.setItem("cross-section", JSON.stringify(value)),
-);
-
-function loadState(): State {
-  let x = JSON.parse(window.localStorage.getItem("cross-section") || "{}");
-  // Could more thoroughly check for validity, but the format won't change much after initial development calms down
-  if (x.checks?.homogeneousSections) {
-    return x;
+function validate(state: State) {
+  // Could more thoroughly check for validity, but the format won't change
+  // much after initial development calms down
+  if (!state.checks?.homogeneousSections) {
+    throw new Error("File format appears outdated");
   }
-  return emptyState();
 }
 
-export function emptyState(): State {
+function emptyState(): State {
   return {
     summary: {
       schemeReference: "",

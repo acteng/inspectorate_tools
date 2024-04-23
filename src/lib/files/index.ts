@@ -10,6 +10,7 @@ export class LocalStorageFiles<StateType> {
   // Should throw an exception if the file state has some problem.
   validate: (state: StateType) => void;
   state: Writable<StateType>;
+  // A key into local storage, excluding prefix
   currentFile: Writable<string>;
 
   // The caller should treat this like a singleton and only create once per app lifetime. This constructor has the side-effect of initially loading the last opened file (or starting a new blank file), and setting up store subscriptions to automatically save to local storage.
