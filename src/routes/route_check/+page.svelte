@@ -2,7 +2,6 @@
   import { ExternalLink } from "$lib";
   import { base } from "$app/paths";
   import { state } from "./data";
-  import FileManager from "./FileManager.svelte";
 </script>
 
 <p>
@@ -12,8 +11,6 @@
     scheme review tool
   </ExternalLink>.
 </p>
-
-<FileManager prefix="route-check/" />
 
 <ol>
   <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>

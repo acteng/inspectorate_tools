@@ -1,7 +1,7 @@
 import { get, writable } from "svelte/store";
 import { repeatCloned } from "$lib";
 
-let prefix = "route-check/";
+let prefix = "route_check/";
 
 export let state = writable(emptyState());
 // A key into local storage, excluding prefix

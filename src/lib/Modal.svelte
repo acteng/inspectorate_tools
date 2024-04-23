@@ -34,7 +34,7 @@
 <style>
   .background {
     position: fixed;
-    /* TODO The geocoder is still on top */
+    /* TODO Not showing up */
     z-index: 10;
     left: 0;
     top: 0;
