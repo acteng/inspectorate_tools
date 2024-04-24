@@ -1,6 +1,8 @@
 <script lang="ts">
+  import type { Position } from "geojson";
+  import { onMount } from "svelte";
   import { YesNo, pairs } from "$lib";
-  import { Select, TextInput, TextArea } from "govuk-svelte";
+  import { SecondaryButton, Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let idx: number;
@@ -95,6 +97,27 @@
       "16 - Guard Railing: used as standard without consideration of inherent safety risks",
     ],
   ];
+
+  let locationHint = "Loading";
+  onMount(async () => {
+    await describeLocation($state.criticalIssues[idx].point);
+  });
+  async function describeLocation(pt: Position) {
+    let url = `https://nominatim.openstreetmap.org/reverse?lon=${pt[0]}&lat=${pt[1]}&format=json`;
+    try {
+      let resp = await fetch(url);
+      let json = await resp.json();
+      // The road usually seems filled out, but fallback to a (verbose) name.
+      locationHint = json.address.road ?? json.display_name;
+    } catch (err) {
+      console.log(`Location lookup failed: ${err}`);
+      return "";
+    }
+  }
+
+  function copyDescription() {
+    $state.criticalIssues[idx].locationName = locationHint;
+  }
 </script>
 
 <Select
@@ -115,6 +138,11 @@
   label="Location Name"
   bind:value={$state.criticalIssues[idx].locationName}
 />
+{#if locationHint && locationHint != "Loading" && locationHint != $state.criticalIssues[idx].locationName}
+  <SecondaryButton on:click={copyDescription}>
+    Use lookup: {locationHint}
+  </SecondaryButton>
+{/if}
 
 <YesNo
   label="Resolved by Design"

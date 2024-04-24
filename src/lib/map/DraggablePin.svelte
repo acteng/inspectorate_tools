@@ -5,6 +5,7 @@
 
   let dispatch = createEventDispatcher<{
     click: void;
+    dragEnd: void;
   }>();
 
   // TODO Consider the svelte-maplibre Marker, but add cursor styles
@@ -27,10 +28,11 @@
     });
     marker.on("dragend", () => {
       map.getCanvas().style.cursor = "inherit";
+      dispatch("dragEnd");
     });
     marker.getElement().addEventListener("click", (e) => {
-      dispatch("click");
       e.stopPropagation();
+      dispatch("click");
     });
   });
 

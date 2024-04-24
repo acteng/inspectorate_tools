@@ -13,7 +13,7 @@
 
   let editing: number | null = null;
 
-  function onMarkerClick(idx: number) {
+  function select(idx: number) {
     editing = idx;
   }
 
@@ -79,7 +79,8 @@
         <DraggablePin
           {map}
           bind:position={issue.point}
-          on:click={() => onMarkerClick(idx)}
+          on:click={() => select(idx)}
+          on:dragEnd={() => select(idx)}
         />
       {/each}
 
