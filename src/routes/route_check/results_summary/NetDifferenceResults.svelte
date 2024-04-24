@@ -3,6 +3,7 @@
   export let isComplete: boolean;
   export let netDifference: number;
   export let summaryNoun: string;
+
   let summary =
     netDifference > 0
       ? `The proposed design will likely improve ${summaryNoun}`
