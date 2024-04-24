@@ -42,6 +42,10 @@
   });
 
   function deleteCritical() {
+    // TODO Modal
+    if (!window.confirm("Delete this entry?")) {
+      return;
+    }
     $state.criticalIssues.splice(editing!, 1);
     $state.criticalIssues = $state.criticalIssues;
     editing = null;
@@ -70,7 +74,7 @@
       <Form idx={editing} />
     {/if}
   </div>
-  <div style="position: relative; width: 70%; height: 300px;">
+  <div style="position: relative; width: 70%; height: 600px;">
     {#if editing != null}
       <div class="block-map" />
     {/if}
