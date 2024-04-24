@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { MapLibreMap } from "$lib/map";
+  import MapEntry from "./MapEntry.svelte";
   import { YesNo, pairs } from "$lib";
   import {
     WarningButton,
@@ -156,6 +156,4 @@
   </CollapsibleCard>
 {/each}
 
-<div style="position: relative; width: 100%; height: 300px;">
-  <MapLibreMap />
-</div>
+<MapEntry />
