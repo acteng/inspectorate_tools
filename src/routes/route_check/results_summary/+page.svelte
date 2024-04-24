@@ -1,12 +1,8 @@
 <script lang="ts">
   import { pairs } from "$lib";
-  import { backgroundAndFontCombinations } from "$lib/colors";
   import { state, type Scorecard } from "../data";
   import NetDifferenceResults from "./NetDifferenceResults.svelte";
   import LevelOfServiceResults from "./LevelOfServiceResults.svelte";
-
-  const headerFontColour = backgroundAndFontCombinations.green.font;
-  let headerBackgroundColour = backgroundAndFontCombinations.green.background;
 
   const policyCheckComplete =
     $state.policyCheck.filter((policyCheckObject) => {
@@ -68,36 +64,11 @@
 </script>
 
 <div class="results-grid">
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}"
-  >
-    Overview
-  </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}"
-  >
-    Complete
-  </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}"
-  >
-    Remaining Isuses for Review
-  </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}"
-  >
-    Next Steps
-  </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}"
-  >
-    Policy Conflicts
-  </div>
+  <div class="header">Overview</div>
+  <div class="header">Complete</div>
+  <div class="header">Remaining Isuses for Review</div>
+  <div class="header">Next Steps</div>
+  <div class="header">Policy Conflicts</div>
   <div class="grid-box">{policyCheckComplete}</div>
   <div class="grid-box">{policyIssuesForReview}</div>
   <div class="grid-box">
@@ -105,13 +76,7 @@
       ? "View Comments in Policy Check and Policy Conflict Log tabs"
       : "No further Action"}
   </div>
-  <div
-    <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}"
-  >
-    Critical Issues
-  </div>
+  <div class="header">Critical Issues</div>
   <div class="grid-box">{safetyCheckComplete}</div>
   <div class="grid-box">{safetyIssuesForReview}</div>
   <div class="grid-box">
@@ -119,16 +84,8 @@
       ? "Complete Safety Check and Critical Issues Log"
       : "No further Action"}
   </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}"
-  />
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}; grid-column: 2/5;"
-  >
-    Net Difference
-  </div>
+  <div class="header" />
+  <div class="header" style="grid-column: 2/5;">Net Difference</div>
   <NetDifferenceResults
     title="Safety Check"
     isComplete={safetyCheckComplete}
@@ -167,34 +124,17 @@
 </div>
 
 <div class="level-of-service-results">
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}; grid-column: 1/5; grid-row:1/2"
-  >
+  <div class="header" style="grid-column: 1/5; grid-row:1/2">
     Street Check Level of Service
   </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}; grid-column: 1/2; grid-row:2/3"
-  >
-    Categories
-  </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}; grid-column: 2/3; grid-row:2/3"
-  >
+  <div class="header" style="grid-column: 1/2; grid-row:2/3">Categories</div>
+  <div class="header" style="grid-column: 2/3; grid-row:2/3">
     Existing Layout
   </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}; grid-column: 3/4; grid-row:2/3"
-  >
+  <div class="header" style="grid-column: 3/4; grid-row:2/3">
     Proposed Layout
   </div>
-  <div
-    class="header"
-    style="--background-color: {headerBackgroundColour}; --font-color:{headerFontColour}; grid-column: 4/5; grid-row:2/3"
-  >
+  <div class="header" style="grid-column: 4/5; grid-row:2/3">
     Net Difference
   </div>
 
@@ -228,9 +168,11 @@
     grid-template-rows: repeat(3, 2fr) 1fr repeat(6, 2fr);
   }
   .header {
-    background-color: var(--background-color);
-    color: var(--font-color);
-    border: 1px solid var(--font-color);
+    /* TODO Plumb from backgroundAndFontCombinations.green.background */
+    background-color: #006853;
+    /* TODO Plumb from backgroundAndFontCombinations.green.font */
+    color: white;
+    border: 1px solid white;
     text-align: center;
   }
   .grid-box {
