@@ -1,4 +1,5 @@
 import { writable } from "svelte/store";
+import type { Position } from "geojson";
 import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
 
@@ -112,8 +113,7 @@ interface CriticalIssue {
     | "16"
     | "";
   stage: "Existing" | "Design" | "";
-  // TODO GJ point type?
-  point: string;
+  point: Position;
   locationName: string;
   resolved: "Yes" | "No" | "";
   notes: "";

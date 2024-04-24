@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Marker, type LngLat, type Map } from "maplibre-gl";
+  import { Marker, LngLat, type Map } from "maplibre-gl";
+  import type { Position } from "geojson";
   import { createEventDispatcher, onDestroy, onMount } from "svelte";
 
   let dispatch = createEventDispatcher<{
@@ -10,17 +11,19 @@
   export let map: Map;
 
   // TODO Not reactive
-  export let position: LngLat;
+  export let position: Position;
 
   let marker: Marker | null = null;
 
   onMount(() => {
-    marker = new Marker({ draggable: true }).setLngLat(position).addTo(map);
+    marker = new Marker({ draggable: true })
+      .setLngLat(new LngLat(position[0], position[1]))
+      .addTo(map);
     marker.on("dragstart", () => {
       map.getCanvas().style.cursor = "grabbing";
     });
     marker.on("drag", () => {
-      position = marker!.getLngLat();
+      position = marker!.getLngLat().toArray();
     });
     marker.on("dragend", () => {
       map.getCanvas().style.cursor = "inherit";
