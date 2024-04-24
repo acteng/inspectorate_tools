@@ -52,6 +52,8 @@ export interface State {
   pathCheck: Scorecard;
 
   pathPlacemakingCheck: Scorecard;
+
+  resultsReviewStatement: string;
 }
 
 // Note "C"ritical is only used in some cases
@@ -59,7 +61,7 @@ type Score = "" | "C" | "0" | "1" | "2";
 
 // A collection of metrics. For each one, the user gives a score to describe
 // the existing and proposed state.
-interface Scorecard {
+export interface Scorecard {
   // The values are the stringified scores
   existingScores: Score[];
   proposedScores: Score[];
@@ -157,6 +159,7 @@ function emptyState(): State {
     streetPlacemakingCheck: emptyScorecard(26),
     pathCheck: emptyScorecard(30),
     pathPlacemakingCheck: emptyScorecard(19),
+    resultsReviewStatement: "",
   };
 }
 

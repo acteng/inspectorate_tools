@@ -1,19 +1,14 @@
 <script lang="ts">
-  import {
-    Breadcrumbs,
-    pairs,
-    isScorecardCompleted,
-    getScorecardDifference,
-  } from "$lib";
+  import { pairs } from "$lib";
   import { backgroundAndFontCombinations } from "$lib/colors";
-  import { state } from "../data";
+  import { state, type Scorecard } from "../data";
   import NetDifferenceResults from "./NetDifferenceResults.svelte";
   import LevelOfServiceResults from "./LevelOfServiceResults.svelte";
 
   const headerFontColour = backgroundAndFontCombinations.green.font;
   let headerBackgroundColour = backgroundAndFontCombinations.green.background;
 
-  const policyCheckComplete: boolean =
+  const policyCheckComplete =
     $state.policyCheck.filter((policyCheckObject) => {
       return (
         policyCheckObject.existing === "" || policyCheckObject.proposed === ""
@@ -21,30 +16,19 @@
     }).length === 0;
   const policyIssuesForReview = $state.policyConflictLog.length;
 
-  const safetyCheckComplete: boolean = isScorecardCompleted(
-    $state.safetyCheck,
-    $state.safetyCheck.existingScores.length,
-  );
+  const safetyCheckComplete = isScorecardCompleted($state.safetyCheck);
   const safetyIssuesForReview = $state.criticalIssues.length;
 
-  const streetCheckComplete: boolean = isScorecardCompleted(
-    $state.streetCheck,
-    $state.streetCheck.existingScores.length,
-  );
+  const streetCheckComplete = isScorecardCompleted($state.streetCheck);
 
-  const streetPlacemakingCheckComplete: boolean = isScorecardCompleted(
+  const streetPlacemakingCheckComplete = isScorecardCompleted(
     $state.streetPlacemakingCheck,
-    $state.streetPlacemakingCheck.existingScores.length,
   );
 
-  const pathCheckComplete: boolean = isScorecardCompleted(
-    $state.pathCheck,
-    $state.pathCheck.existingScores.length,
-  );
+  const pathCheckComplete = isScorecardCompleted($state.pathCheck);
 
-  const pathPlacemakingCheckComplete: boolean = isScorecardCompleted(
+  const pathPlacemakingCheckComplete = isScorecardCompleted(
     $state.pathPlacemakingCheck,
-    $state.pathPlacemakingCheck.existingScores.length,
   );
 
   const safteyCheckNetDifference = getScorecardDifference($state.safetyCheck);
@@ -56,17 +40,32 @@
   const pathPlacemakingCheckNetDifference = getScorecardDifference(
     $state.pathPlacemakingCheck,
   );
+
+  function isScorecardCompleted(scorecard: Scorecard): boolean {
+    return (
+      !scorecard.existingScores.includes("") &&
+      !scorecard.proposedScores.includes("")
+    );
+  }
+
+  function getScorecardDifference(scorecardState: ScorecardState): number {
+    let existingSum: number = 0;
+    let proposedSum: number = 0;
+    Array.from(Array(scorecardState.existingScores.length).keys()).forEach(
+      (idx) => {
+        let existing = parseInt(scorecardState.existingScores[idx]);
+        let proposed = parseInt(scorecardState.proposedScores[idx]);
+        if (!Number.isNaN(existing)) {
+          existingSum += existing;
+        }
+        if (!Number.isNaN(proposed)) {
+          proposedSum += proposed;
+        }
+      },
+    );
+    return proposedSum - existingSum;
+  }
 </script>
-
-<Breadcrumbs
-  links={[
-    ["Tools", "/"],
-    ["Route check tool", "/route_check"],
-  ]}
-  current="Results Summary"
-/>
-
-<h2>Route Check Results Summary</h2>
 
 <div class="results-grid">
   <div
@@ -218,7 +217,7 @@
 <textarea
   id="review-statement"
   class="govuk-textarea comments-box"
-  bind:value={$state.feedback}
+  bind:value={$state.resultsReviewStatement}
 />
 
 <style>
