@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { pairs } from "$lib";
+  import { TextArea } from "govuk-svelte";
+  import { sum } from "$lib";
   import { state, type Scorecard } from "../data";
   import NetDifferenceResults from "./NetDifferenceResults.svelte";
   import LevelOfServiceResults from "./LevelOfServiceResults.svelte";
@@ -27,16 +28,6 @@
     $state.pathPlacemakingCheck,
   );
 
-  const safteyCheckNetDifference = getScorecardDifference($state.safetyCheck);
-  const streetCheckNetDifference = getScorecardDifference($state.streetCheck);
-  const streetPlacemakingCheckNetDifference = getScorecardDifference(
-    $state.streetPlacemakingCheck,
-  );
-  const pathCheckNetDifference = getScorecardDifference($state.pathCheck);
-  const pathPlacemakingCheckNetDifference = getScorecardDifference(
-    $state.pathPlacemakingCheck,
-  );
-
   function isScorecardCompleted(scorecard: Scorecard): boolean {
     return (
       !scorecard.existingScores.includes("") &&
@@ -44,30 +35,20 @@
     );
   }
 
-  function getScorecardDifference(scorecardState: ScorecardState): number {
-    let existingSum: number = 0;
-    let proposedSum: number = 0;
-    Array.from(Array(scorecardState.existingScores.length).keys()).forEach(
-      (idx) => {
-        let existing = parseInt(scorecardState.existingScores[idx]);
-        let proposed = parseInt(scorecardState.proposedScores[idx]);
-        if (!Number.isNaN(existing)) {
-          existingSum += existing;
-        }
-        if (!Number.isNaN(proposed)) {
-          proposedSum += proposed;
-        }
-      },
-    );
-    return proposedSum - existingSum;
+  function getScorecardDifference(scorecard: Scorecard): number {
+    let existing = sum(scorecard.existingScores.map((x) => parseInt(x || "0")));
+    let proposed = sum(scorecard.proposedScores.map((x) => parseInt(x || "0")));
+    return proposed - existing;
   }
 </script>
 
 <div class="results-grid">
+  <!-- TODO No rows in the markup? -->
   <div class="header">Overview</div>
   <div class="header">Complete</div>
   <div class="header">Remaining Isuses for Review</div>
   <div class="header">Next Steps</div>
+
   <div class="header">Policy Conflicts</div>
   <div class="grid-box">{policyCheckComplete}</div>
   <div class="grid-box">{policyIssuesForReview}</div>
@@ -76,6 +57,7 @@
       ? "View Comments in Policy Check and Policy Conflict Log tabs"
       : "No further Action"}
   </div>
+
   <div class="header">Critical Issues</div>
   <div class="grid-box">{safetyCheckComplete}</div>
   <div class="grid-box">{safetyIssuesForReview}</div>
@@ -84,42 +66,44 @@
       ? "Complete Safety Check and Critical Issues Log"
       : "No further Action"}
   </div>
+
   <div class="header" />
   <div class="header" style="grid-column: 2/5;">Net Difference</div>
   <NetDifferenceResults
     title="Safety Check"
     isComplete={safetyCheckComplete}
-    netDifference={safteyCheckNetDifference.netDifference}
-    summaryNoun={"safety"}
+    netDifference={getScorecardDifference($state.safetyCheck)}
+    summaryNoun="safety"
   />
   <NetDifferenceResults
     title="Street Check"
     isComplete={streetCheckComplete}
-    netDifference={streetCheckNetDifference.netDifference}
-    summaryNoun={"the route quality"}
+    netDifference={getScorecardDifference($state.streetCheck)}
+    summaryNoun="the route quality"
   />
   <NetDifferenceResults
     title="Street Placemaking"
     isComplete={streetPlacemakingCheckComplete}
-    netDifference={streetPlacemakingCheckNetDifference.netDifference}
-    summaryNoun={"the quality of place"}
+    netDifference={getScorecardDifference($state.streetPlacemakingCheck)}
+    summaryNoun="the quality of place"
   />
   <NetDifferenceResults
     title="Path Check"
     isComplete={pathCheckComplete}
-    netDifference={pathCheckNetDifference.netDifference}
-    summaryNoun={"the route quality"}
+    netDifference={getScorecardDifference($state.pathCheck)}
+    summaryNoun="the route quality"
   />
   <NetDifferenceResults
     title="Path Placemaking"
     isComplete={pathPlacemakingCheckComplete}
-    netDifference={pathPlacemakingCheckNetDifference.netDifference}
-    summaryNoun={"the quality of place"}
+    netDifference={getScorecardDifference($state.pathPlacemakingCheck)}
+    summaryNoun="the quality of place"
   />
   <NetDifferenceResults
     title="Junction Assessment Tool"
     isComplete={false}
     netDifference={-105}
+    summaryNoun="TODO"
   />
 </div>
 
@@ -138,27 +122,18 @@
     Net Difference
   </div>
 
-  <LevelOfServiceResults title={"Safety"} existing={2} proposed={68} />
-  <LevelOfServiceResults title={"Accessibility"} existing={2} proposed={68} />
-  <LevelOfServiceResults title={"Comfort"} existing={2} proposed={68} />
-  <LevelOfServiceResults title={"Directness"} existing={2} proposed={68} />
-  <LevelOfServiceResults title={"Attractiveness"} existing={2} proposed={68} />
-  <LevelOfServiceResults title={"Cohesion"} existing={2} proposed={68} />
+  <LevelOfServiceResults title="Safety" existing={2} proposed={68} />
+  <LevelOfServiceResults title="Accessibility" existing={2} proposed={68} />
+  <LevelOfServiceResults title="Comfort" existing={2} proposed={68} />
+  <LevelOfServiceResults title="Directness" existing={2} proposed={68} />
+  <LevelOfServiceResults title="Attractiveness" existing={2} proposed={68} />
+  <LevelOfServiceResults title="Cohesion" existing={2} proposed={68} />
   <div class="header" style="grid-column: 1/5" />
-  <LevelOfServiceResults
-    title={"Overall ATE Score"}
-    existing={2}
-    proposed={68}
-  />
+  <LevelOfServiceResults title="Overall ATE Score" existing={2} proposed={68} />
 </div>
-<label for="review-statement">
-  Use the space to provide overall feedback for the proposed scheme:
-</label>
-<textarea
-  id="review-statement"
-  class="govuk-textarea comments-box"
-  bind:value={$state.resultsReviewStatement}
-/>
+
+<!-- TODO Hint: "Use the space to provide overall feedback for the proposed scheme" -->
+<TextArea label="Review statement" bind:value={$state.resultsReviewStatement} />
 
 <style>
   .results-grid {

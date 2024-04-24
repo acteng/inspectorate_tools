@@ -2,6 +2,7 @@
   export let title: string;
   export let existing: number;
   export let proposed: number;
+
   let netDifference = proposed - existing;
 </script>
 
