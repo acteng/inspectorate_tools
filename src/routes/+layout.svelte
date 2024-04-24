@@ -10,7 +10,7 @@
     getPrevPage,
     getNextPage,
   } from "$lib/nav";
-  import { Breadcrumbs } from "$lib";
+  import { NextButton, PreviousButton, Breadcrumbs } from "$lib";
   import { base } from "$app/paths";
 
   initAll();
@@ -29,21 +29,18 @@
 </WarningText>
 
 <div class="govuk-prose">
-  <Breadcrumbs
-    links={getBreadcrumbLinks(pagePath)}
-    current={getTitle(pagePath)}
-  />
-
   <div style="display: flex; justify-content: space-between">
     {#if prevPage}
-      <p>
-        Previous: <a href="{base}{prevPage[0]}">{prevPage[1]}</a>
-      </p>
+      <PreviousButton href="{base}{prevPage[0]}" label={prevPage[1]} />
     {/if}
+
+    <Breadcrumbs
+      links={getBreadcrumbLinks(pagePath)}
+      current={getTitle(pagePath)}
+    />
+
     {#if nextPage}
-      <p>
-        Next: <a href="{base}{nextPage[0]}">{nextPage[1]}</a>
-      </p>
+      <NextButton href="{base}{nextPage[0]}" label={nextPage[1]} />
     {/if}
   </div>
 
@@ -55,14 +52,11 @@
 
   <div style="display: flex; justify-content: space-between">
     {#if prevPage}
-      <p>
-        Previous: <a href="{base}{prevPage[0]}">{prevPage[1]}</a>
-      </p>
+      <PreviousButton href="{base}{prevPage[0]}" label={prevPage[1]} />
     {/if}
+
     {#if nextPage}
-      <p>
-        Next: <a href="{base}{nextPage[0]}">{nextPage[1]}</a>
-      </p>
+      <NextButton href="{base}{nextPage[0]}" label={nextPage[1]} />
     {/if}
   </div>
 </div>

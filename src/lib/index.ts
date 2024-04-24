@@ -4,6 +4,8 @@ export { default as FancyRadio } from "./FancyRadio.svelte";
 export { default as Geocoder } from "./Geocoder.svelte";
 export { default as ExternalLink } from "./ExternalLink.svelte";
 export { default as Modal } from "./Modal.svelte";
+export { default as NextButton } from "./NextButton.svelte";
+export { default as PreviousButton } from "./PreviousButton.svelte";
 export { default as PrevNext } from "./PrevNext.svelte";
 export { default as YesNo } from "./YesNo.svelte";
 
