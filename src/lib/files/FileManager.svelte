@@ -100,11 +100,11 @@
   }
 </script>
 
-<div style="display: flex;">
-  <p>
-    Editing file <u>{$currentFile}</u>
-  </p>
+<div style="display: flex; align-items: baseline;">
   <SecondaryButton on:click={() => (open = true)}>Manage files</SecondaryButton>
+  <span>
+    Editing file <u>{$currentFile}</u>
+  </span>
 </div>
 
 <Modal title="Manage files" bind:open>

@@ -44,7 +44,7 @@
     {/if}
   </div>
 
-  <hr />
+  <!-- Don't use an <hr> below the header; each page will have another layout for file management and handle this -->
 
   <slot />
 
