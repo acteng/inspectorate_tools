@@ -1,7 +1,7 @@
 <script lang="ts">
   import { state, type State } from "./data";
   import { base } from "$app/paths";
-  import { getCompletedForScorecard, sum } from "$lib";
+  import { sum } from "$lib";
 
   export let sections: Section[];
 
@@ -56,8 +56,16 @@
     return (idx + startIdx).toString().padStart(2, "0");
   }
 
-  //@ts-ignore This is a scorecard state
-  $: completed = getCompletedForScorecard($state[scorecardKey], numQuestions);
+  $: completed = getCompleted($state);
+  function getCompleted(_: State): boolean[] {
+    return Array.from(Array(numQuestions).keys()).map(
+      (idx) =>
+        // @ts-expect-error TODO Need to further constrain scorecardKey
+        $state[scorecardKey].existingScores[idx] != "" &&
+        // @ts-expect-error TODO Need to further constrain scorecardKey
+        $state[scorecardKey].proposedScores[idx] != "",
+    );
+  }
 </script>
 
 <ol>
