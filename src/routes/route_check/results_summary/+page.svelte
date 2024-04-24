@@ -8,6 +8,7 @@
   import { backgroundAndFontCombinations } from "$lib/colors";
   import { state } from "../data";
   import NetDifferenceResults from "./NetDifferenceResults.svelte";
+  import LevelOfServiceResults from "./LevelOfServiceResults.svelte";
 
   const headerFontColour = backgroundAndFontCombinations.green.font;
   let headerBackgroundColour = backgroundAndFontCombinations.green.background;
@@ -132,31 +133,31 @@
   <NetDifferenceResults
     title="Safety Check"
     isComplete={safetyCheckComplete}
-    netDifference={safteyCheckNetDifference}
+    netDifference={safteyCheckNetDifference.netDifference}
     summaryNoun={"safety"}
   />
   <NetDifferenceResults
     title="Street Check"
     isComplete={streetCheckComplete}
-    netDifference={streetCheckNetDifference}
+    netDifference={streetCheckNetDifference.netDifference}
     summaryNoun={"the route quality"}
   />
   <NetDifferenceResults
     title="Street Placemaking"
     isComplete={streetPlacemakingCheckComplete}
-    netDifference={streetPlacemakingCheckNetDifference}
+    netDifference={streetPlacemakingCheckNetDifference.netDifference}
     summaryNoun={"the quality of place"}
   />
   <NetDifferenceResults
     title="Path Check"
     isComplete={pathCheckComplete}
-    netDifference={pathCheckNetDifference}
+    netDifference={pathCheckNetDifference.netDifference}
     summaryNoun={"the route quality"}
   />
   <NetDifferenceResults
     title="Path Placemaking"
     isComplete={pathPlacemakingCheckComplete}
-    netDifference={pathPlacemakingCheckNetDifference}
+    netDifference={pathPlacemakingCheckNetDifference.netDifference}
     summaryNoun={"the quality of place"}
   />
   <NetDifferenceResults
@@ -236,5 +237,14 @@
   .grid-box {
     text-align: center;
     border: 1px solid black;
+  }
+
+  .level-of-service-results {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    grid-template-rows: repeat(2, 2f3) repeat(8, 1fr);
+  }
+  div {
+    display: inline;
   }
 </style>
