@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { MapLibreMap } from "$lib/map";
   import { state } from "../data";
   import area from "@turf/area";
   import { onDestroy } from "svelte";
@@ -9,9 +10,7 @@
     PolygonToolLayer,
   } from "maplibre-draw-polygon";
   import { MapLibre, GeoJSON, FillLayer, type Map } from "svelte-maplibre";
-  import { Geocoder } from "$lib";
 
-  // TODO Is it worth trying to preserve the map while navigating to other pages?
   let map: Map | null = null;
 
   $: gj = $state.summary.polygon ?? {
@@ -80,17 +79,7 @@
 {/if}
 
 <div style="position: relative; width: 100%; height: 300px;">
-  <MapLibre
-    style={`https://api.maptiler.com/maps/uk-openzoomstack-light/style.json?key=${import.meta.env.VITE_MAPTILER_API_KEY}`}
-    standardControls
-    on:error={(e) => {
-      // @ts-expect-error Not exported
-      console.log(e.detail.error);
-    }}
-    let:map
-    bind:map
-  >
-    <Geocoder {map} />
+  <MapLibreMap bind:map>
     <PolygonToolLayer />
     <GeoJSON data={gj}>
       <FillLayer
@@ -103,5 +92,5 @@
         }}
       />
     </GeoJSON>
-  </MapLibre>
+  </MapLibreMap>
 </div>

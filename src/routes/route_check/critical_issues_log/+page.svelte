@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { MapLibreMap } from "$lib/map";
   import { YesNo, pairs } from "$lib";
   import {
     WarningButton,
@@ -154,3 +155,7 @@
     <TextArea label="Commentary & Feedback" bind:value={issue.notes} />
   </CollapsibleCard>
 {/each}
+
+<div style="position: relative; width: 100%; height: 300px;">
+  <MapLibreMap />
+</div>
