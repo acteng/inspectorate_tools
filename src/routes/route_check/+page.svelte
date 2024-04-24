@@ -66,7 +66,7 @@
     </li>
   {/if}
 
-  <li>JAT Check</li>
+  <li><a href="{base}/route_check/jat_check">JAT Check</a></li>
 
   <li>
     <a href="{base}/route_check/results_summary">Results Summary</a>
