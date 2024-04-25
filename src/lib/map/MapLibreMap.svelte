@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { MapLibre, GeoJSON, FillLayer, type Map } from "svelte-maplibre";
+  import { MapLibre, type Map } from "svelte-maplibre";
   import Geocoder from "./Geocoder.svelte";
 
   // TODO Is it worth trying to preserve the map while navigating to other pages?

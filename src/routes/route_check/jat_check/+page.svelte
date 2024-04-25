@@ -1,26 +1,21 @@
 <script lang="ts">
   import { pairs } from "$lib";
   import { backgroundAndFontCombinations } from "$lib/colors";
-  import type { FeatureCollection, Position } from "geojson";
+  import type { FeatureCollection } from "geojson";
   import {
-    Radio,
     TextInput,
     Select,
     SecondaryButton,
     WarningButton,
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
-  import { DraggablePin } from "$lib/map";
   import { bbox, MapLibreMap } from "$lib/map";
-  import { GeoJSON, LineLayer } from "svelte-maplibre";
-  import type { MapMouseEvent, LngLat, Map } from "maplibre-gl";
+  import { Marker, GeoJSON, LineLayer } from "svelte-maplibre";
+  import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state, type Movement } from "../data";
+  import Arrow from "./Arrow.svelte";
 
   let map: Map;
-
-  let currentKind: "cycling-straight" | "cycling-turn" | "pedestrian" =
-    "cycling-straight";
-  let currentColor: "green" | "amber" | "red" | "critical" = "green";
 
   let kinds = pairs(["cycling-straight", "cycling-turn", "pedestrian"]);
   let colors = pairs(["green", "amber", "red", "critical"]);
@@ -32,8 +27,8 @@
         point1: e.lngLat.toArray(),
         // TODO offset a bit
         point2: e.lngLat.toArray(),
-        kind: currentKind,
-        color: currentColor,
+        kind: "cycling-straight",
+        color: "green",
         name: "",
         notes: "",
       },
@@ -89,16 +84,17 @@
   }
 </script>
 
-<Radio legend="Kind" choices={kinds} inlineSmall bind:value={currentKind} />
-<Radio legend="Color" choices={colors} inlineSmall bind:value={currentColor} />
-
 <SecondaryButton on:click={zoom}>Zoom to fit</SecondaryButton>
 
 <div style="position: relative; width: 100%; height: 600px;">
   <MapLibreMap bind:map>
     {#each $state.jat.movements as movement}
-      <DraggablePin {map} bind:position={movement.point1} />
-      <DraggablePin {map} bind:position={movement.point2} />
+      <Marker draggable bind:lngLat={movement.point1}>
+        <span class="dot" style={`background-color: ${movement.color}`} />
+      </Marker>
+      <Marker draggable bind:lngLat={movement.point2}>
+        <Arrow color={movement.color} />
+      </Marker>
     {/each}
     <GeoJSON data={toGj($state.jat.movements)}>
       <LineLayer
@@ -121,3 +117,17 @@
     </li>
   {/each}
 </ol>
+
+<style>
+  .dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .dot:hover {
+    border: 1px solid black;
+    cursor: pointer;
+  }
+</style>

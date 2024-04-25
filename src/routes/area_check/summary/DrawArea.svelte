@@ -9,7 +9,7 @@
     PolygonTool,
     PolygonToolLayer,
   } from "maplibre-draw-polygon";
-  import { MapLibre, GeoJSON, FillLayer, type Map } from "svelte-maplibre";
+  import { GeoJSON, FillLayer, type Map } from "svelte-maplibre";
 
   let map: Map | null = null;
 

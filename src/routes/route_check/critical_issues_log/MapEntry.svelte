@@ -6,7 +6,7 @@
   import { DraggablePin } from "$lib/map";
   import { MapLibreMap } from "$lib/map";
   import { GeoJSON, CircleLayer } from "svelte-maplibre";
-  import type { MapMouseEvent, LngLat, Map } from "maplibre-gl";
+  import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state } from "../data";
 
   let map: Map;

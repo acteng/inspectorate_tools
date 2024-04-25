@@ -1,5 +1,4 @@
 import { writable } from "svelte/store";
-import type { Position } from "geojson";
 import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
 
@@ -13,6 +12,9 @@ export let files = new LocalStorageFiles(
   state,
   currentFile,
 );
+
+// geojson library allows for 3D coordinates
+type Position = [number, number];
 
 export interface State {
   summary: {
@@ -131,7 +133,6 @@ export interface Movement {
   name: string;
   notes: string;
 }
-let movements: Movement[] = [];
 
 function validate(state: State) {
   // Could more thoroughly check for validity, but the format won't change
