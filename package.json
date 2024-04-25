@@ -38,6 +38,7 @@
   "dependencies": {
     "@maptiler/geocoding-control": "^1.2.2",
     "@turf/area": "^7.0.0-alpha.114",
+    "@turf/bbox": "^7.0.0-alpha.114",
     "govuk-frontend": "^5.2.0",
     "govuk-svelte": "github:acteng/govuk-svelte",
     "maplibre-draw-polygon": "github:dabreegster/maplibre-draw-polygon",

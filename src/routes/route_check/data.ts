@@ -54,6 +54,10 @@ export interface State {
 
   pathPlacemakingCheck: Scorecard;
 
+  jat: {
+    movements: Movement[];
+  };
+
   resultsReviewStatement: string;
 }
 
@@ -119,10 +123,20 @@ interface CriticalIssue {
   notes: "";
 }
 
+export interface Movement {
+  point1: Position;
+  point2: Position;
+  kind: "cycling-straight" | "cycling-turn" | "pedestrian";
+  color: "green" | "amber" | "red" | "critical";
+  name: string;
+  notes: string;
+}
+let movements: Movement[] = [];
+
 function validate(state: State) {
   // Could more thoroughly check for validity, but the format won't change
   // much after initial development calms down
-  if (!state.criticalIssues) {
+  if (!state.jat) {
     throw new Error("File format appears outdated");
   }
 }
@@ -159,6 +173,9 @@ function emptyState(): State {
     streetPlacemakingCheck: emptyScorecard(26),
     pathCheck: emptyScorecard(30),
     pathPlacemakingCheck: emptyScorecard(19),
+    jat: {
+      movements: [],
+    },
     resultsReviewStatement: "",
   };
 }
