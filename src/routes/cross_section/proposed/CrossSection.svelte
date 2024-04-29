@@ -50,7 +50,7 @@
   $: totalWidth = calculateTotalWidth($state, sectionType);
 </script>
 
-<SecondaryButton on:click={addNewStreetFeature}>Add</SecondaryButton>
+<SecondaryButton on:click={addNewStreetFeature}>Add feature</SecondaryButton>
 
 <div
   style="display: flex; flex-direction: row; overflow-x: scroll"

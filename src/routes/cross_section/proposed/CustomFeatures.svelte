@@ -63,7 +63,7 @@
   }
 </script>
 
-<SecondaryButton on:click={add}>Add</SecondaryButton>
+<SecondaryButton on:click={add}>Add feature</SecondaryButton>
 
 <ol>
   {#each Object.keys($state.proposed.customFeatures) as id (id)}

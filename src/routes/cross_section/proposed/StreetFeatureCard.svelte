@@ -83,7 +83,7 @@
         $state.proposed.customFeatures,
         leftFeature,
         rightFeature,
-      )[sectionType == "Desirable" ? 0 : 1]}
+      )[sectionType == "Desirable" ? 0 : 1].toFixed(2)}
     </p>
 
     {#if buffers == "left"}
@@ -91,7 +91,7 @@
         Consider buffer to left <SecondaryButton
           on:click={() => dispatch("addLeftBuffer")}
         >
-          Add
+          Add buffer
         </SecondaryButton>
       </WarningText>
     {:else if buffers == "right"}
@@ -99,7 +99,7 @@
         Consider buffer to right <SecondaryButton
           on:click={() => dispatch("addRightBuffer")}
         >
-          Add
+          Add buffer
         </SecondaryButton>
       </WarningText>
     {:else if buffers == "both"}
@@ -111,7 +111,7 @@
             dispatch("addLeftBuffer");
           }}
         >
-          Add
+          Add buffers
         </SecondaryButton>
       </WarningText>
     {/if}
