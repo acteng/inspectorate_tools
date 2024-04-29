@@ -19,7 +19,7 @@
 </script>
 
 <PrevNext {idx} total={26} urlPath="route_check/street_placemaking_check/sp" />
-<h2>{label}</h2>
+<h2>SP{idx.toString().padStart(2, "0")}: {label}</h2>
 <slot />
 
 <div class="columns">

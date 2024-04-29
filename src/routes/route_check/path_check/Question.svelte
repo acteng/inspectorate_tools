@@ -19,7 +19,7 @@
 </script>
 
 <PrevNext {idx} total={30} startIdx={17} urlPath="route_check/path_check/pa" />
-<h2>{label}</h2>
+<h2>PA{16 + idx}: {label}</h2>
 <slot />
 
 <div class="columns">

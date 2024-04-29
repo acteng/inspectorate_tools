@@ -24,7 +24,7 @@
   startIdx={17}
   urlPath="route_check/street_check/st"
 />
-<h2>{label}</h2>
+<h2>ST{16 + idx}: {label}</h2>
 <slot />
 
 <div class="columns">
