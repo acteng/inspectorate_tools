@@ -6,8 +6,8 @@
   import { state } from "../data";
 
   export let i: number;
-  export let desirableTotal: number;
-  export let absoluteTotal: number;
+  export let preferredTotals: [number, number];
+  export let compromisedTotals: [number, number];
 
   let dispatch = createEventDispatcher<{
     delete: void;
@@ -29,11 +29,11 @@
 
   <SectionsPossible
     available={$state.checks.pinchPoints[i].availableWidth}
-    {desirableTotal}
-    {absoluteTotal}
+    {preferredTotals}
+    {compromisedTotals}
   />
 
-  {#if $state.checks.pinchPoints[i].availableWidth < desirableTotal}
+  {#if $state.checks.pinchPoints[i].availableWidth < preferredTotals[0]}
     <TextArea
       label="Where only the absolute minimum cross-section is possible, what (if anything) could change to fit in the desirable minimum cross-section? Where there is insufficient space even for the absolute minimum cross-section, what (if anything) could change to allow this to be implemented? Otherwise, what else could be implemented as an alternative?"
       bind:value={$state.checks.pinchPoints[i].notes}

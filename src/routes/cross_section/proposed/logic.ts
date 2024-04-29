@@ -217,16 +217,19 @@ export function calculateEffectiveSpeedLimit(
   return speed;
 }
 
-export function calculateTotalWidth(
+// Get the total [desirable, absolute] minimum width for a cross section
+export function calculateTotalWidths(
   state: State,
-  sectionType: "Desirable" | "Absolute",
-): number {
-  let sum = 0.0;
-
+  sectionType: "Preferred" | "Compromised",
+): [number, number] {
+  // TODO Note the wording here; haven't renamed the variable yet
   let features =
-    sectionType == "Desirable"
+    sectionType == "Preferred"
       ? state.proposed.desirableMinimumCrossSection
       : state.proposed.absoluteMinimumCrossSection;
+
+  let desirableSum = 0.0;
+  let minimumSum = 0.0;
 
   for (let i = 0; i < features.length; i++) {
     let thisFeature = features[i];
@@ -235,15 +238,16 @@ export function calculateTotalWidth(
     }
     let leftFeature = i == 0 ? "" : features[i - 1];
     let rightFeature = i == features.length - 1 ? "" : features[i + 1];
-    let width = getWidths(
+    let widths = getWidths(
       thisFeature,
       state.proposed.trafficData,
       state.proposed.customFeatures,
       leftFeature,
       rightFeature,
-    )[sectionType == "Desirable" ? 0 : 1];
-    sum += width;
+    );
+    desirableSum += widths[0];
+    minimumSum += widths[1];
   }
 
-  return sum;
+  return [desirableSum, minimumSum];
 }

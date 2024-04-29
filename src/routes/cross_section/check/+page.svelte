@@ -3,11 +3,11 @@
   import { state } from "../data";
   import HomogeneousCard from "./HomogeneousCard.svelte";
   import PinchPointCard from "./PinchPointCard.svelte";
-  import { calculateTotalWidth } from "../proposed/logic";
+  import { calculateTotalWidths } from "../proposed/logic";
 
   // Calculate here and pass down to every card
-  $: desirableTotal = calculateTotalWidth($state, "Desirable");
-  $: absoluteTotal = calculateTotalWidth($state, "Absolute");
+  $: preferredTotals = calculateTotalWidths($state, "Preferred");
+  $: compromisedTotals = calculateTotalWidths($state, "Compromised");
 
   function addHomogeneousSection() {
     $state.checks.homogeneousSections = [
@@ -41,8 +41,31 @@
   }
 </script>
 
-<p>Desirable Minimum requires: {desirableTotal.toFixed(2)} m</p>
-<p>Absolute Minimum requires: {absoluteTotal.toFixed(2)} m</p>
+<p>
+  <u>Preferred</u>
+  cross-section requites a desirable minimum width (m): {preferredTotals[0].toFixed(
+    2,
+  )}
+</p>
+<p>
+  <u>Preferred</u>
+  cross-section requites an absolute minimum width (m): {preferredTotals[1].toFixed(
+    2,
+  )}
+</p>
+
+<p>
+  <u>Compromised</u>
+  cross-section requites a desirable minimum width (m): {compromisedTotals[0].toFixed(
+    2,
+  )}
+</p>
+<p>
+  <u>Compromised</u>
+  cross-section requites an absolute minimum width (m): {compromisedTotals[1].toFixed(
+    2,
+  )}
+</p>
 
 <h2>
   Checking possible cross-sections of <u>homogeneous sections</u>
@@ -60,8 +83,8 @@
     <HomogeneousCard
       {i}
       on:delete={() => deleteHomogeneousSection(i)}
-      {desirableTotal}
-      {absoluteTotal}
+      {preferredTotals}
+      {compromisedTotals}
     />
   {/each}
 </div>
@@ -86,8 +109,8 @@
     <PinchPointCard
       {i}
       on:delete={() => deletePinchPoint(i)}
-      {desirableTotal}
-      {absoluteTotal}
+      {preferredTotals}
+      {compromisedTotals}
     />
   {/each}
 </div>

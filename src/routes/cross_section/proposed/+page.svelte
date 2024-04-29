@@ -21,22 +21,22 @@
 </CollapsibleCard>
 
 {#if trafficDataOk}
-  <CollapsibleCard label="Desirable Minimum Cross-Section" open>
+  <CollapsibleCard label="Preferred Cross-Section" open>
     <CrossSection
       bind:streetFeaturesLeftToRight={$state.proposed
         .desirableMinimumCrossSection}
-      sectionType="Desirable"
+      sectionType="Preferred"
     />
   </CollapsibleCard>
 
-  <CollapsibleCard label="Absolute Minimum Cross-Section" open>
+  <CollapsibleCard label="Compromised Cross-Section" open>
     {#if $state.proposed.absoluteMinimumCrossSection.length == 0}
-      <SecondaryButton on:click={copy}>Copy Desirable Minimum</SecondaryButton>
+      <SecondaryButton on:click={copy}>Copy Preferred</SecondaryButton>
     {/if}
     <CrossSection
       bind:streetFeaturesLeftToRight={$state.proposed
         .absoluteMinimumCrossSection}
-      sectionType="Absolute"
+      sectionType="Compromised"
     />
   </CollapsibleCard>
 {:else}

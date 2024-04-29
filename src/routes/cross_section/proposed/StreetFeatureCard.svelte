@@ -19,11 +19,20 @@
   export let value: StreetFeatureType | "";
   export let isFirst: boolean;
   export let isLast: boolean;
-  export let sectionType: "Desirable" | "Absolute";
   export let leftFeature: StreetFeatureType | "";
   export let rightFeature: StreetFeatureType | "";
 
   $: buffers = value && needBuffers(value, leftFeature, rightFeature);
+
+  $: widths = value
+    ? getWidths(
+        value,
+        $state.proposed.trafficData,
+        $state.proposed.customFeatures,
+        leftFeature,
+        rightFeature,
+      )
+    : [0, 0];
 
   let dispatch = createEventDispatcher<{
     delete: void;
@@ -76,15 +85,8 @@
   />
 
   {#if value}
-    <p>
-      {sectionType} minimum width (m): {getWidths(
-        value,
-        $state.proposed.trafficData,
-        $state.proposed.customFeatures,
-        leftFeature,
-        rightFeature,
-      )[sectionType == "Desirable" ? 0 : 1].toFixed(2)}
-    </p>
+    <p>Desirable minimum width (m): {widths[0].toFixed(2)}</p>
+    <p>Absolute minimum width (m): {widths[1].toFixed(2)}</p>
 
     {#if buffers == "left"}
       <WarningText>

@@ -31,6 +31,7 @@ export interface State {
   proposed: {
     trafficData: TrafficData;
     customFeatures: CustomFeatures;
+    // TODO Rename after we've settled on wording
     desirableMinimumCrossSection: Array<StreetFeatureType | "">;
     absoluteMinimumCrossSection: Array<StreetFeatureType | "">;
   };

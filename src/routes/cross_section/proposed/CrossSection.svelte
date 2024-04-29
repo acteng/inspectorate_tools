@@ -2,11 +2,11 @@
   import StreetFeatureCard from "./StreetFeatureCard.svelte";
   import { SecondaryButton } from "govuk-svelte";
   import { state, type StreetFeatureType } from "../data";
-  import { calculateTotalWidth } from "./logic";
+  import { calculateTotalWidths } from "./logic";
   import { afterUpdate } from "svelte";
 
   export let streetFeaturesLeftToRight: Array<StreetFeatureType | "">;
-  export let sectionType: "Desirable" | "Absolute";
+  export let sectionType: "Preferred" | "Compromised";
 
   let div: HTMLDivElement;
   let justAdded = false;
@@ -47,10 +47,17 @@
     streetFeaturesLeftToRight = streetFeaturesLeftToRight;
   }
 
-  $: totalWidth = calculateTotalWidth($state, sectionType);
+  $: totalWidths = calculateTotalWidths($state, sectionType);
 </script>
 
 <SecondaryButton on:click={addNewStreetFeature}>Add feature</SecondaryButton>
+
+<p>
+  Desirable minimum total width required (m): <b>{totalWidths[0].toFixed(2)}</b>
+</p>
+<p>
+  Absolute minimum total width required (m): <b>{totalWidths[1].toFixed(2)}</b>
+</p>
 
 <div
   style="display: flex; flex-direction: row; overflow-x: scroll"
@@ -70,11 +77,6 @@
       rightFeature={i == streetFeaturesLeftToRight.length - 1
         ? ""
         : streetFeaturesLeftToRight[i + 1]}
-      {sectionType}
     />
   {/each}
 </div>
-
-<p>
-  Total width required (m): <b>{totalWidth.toFixed(2)}</b>
-</p>
