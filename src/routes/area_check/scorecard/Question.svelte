@@ -28,32 +28,25 @@
 </script>
 
 <PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />
-<h2>{label}</h2>
-<slot />
 
-<div class="columns">
-  <div class="progress-column">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
     <Progress currentIdx={idx} />
   </div>
 
-  <FancyRadio
-    {choices}
-    bind:existingValue={$state.existingScores[idx - 1]}
-    bind:proposedValue={$state.proposedScores[idx - 1]}
-    bind:existingNotes={$state.existingScoreNotes[idx - 1]}
-    bind:proposedNotes={$state.proposedScoreNotes[idx - 1]}
-  />
+  <div class="govuk-grid-column-two-thirds">
+    <h2>{label}</h2>
+
+    <slot />
+
+    <FancyRadio
+      {choices}
+      bind:existingValue={$state.existingScores[idx - 1]}
+      bind:proposedValue={$state.proposedScores[idx - 1]}
+      bind:existingNotes={$state.existingScoreNotes[idx - 1]}
+      bind:proposedNotes={$state.proposedScoreNotes[idx - 1]}
+    />
+  </div>
 </div>
 
 <PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />
-
-<style>
-  .columns {
-    display: flex;
-    column-gap: 2rem;
-  }
-
-  .progress-column {
-    width: 60rem;
-  }
-</style>

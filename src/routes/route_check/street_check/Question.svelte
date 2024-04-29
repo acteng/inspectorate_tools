@@ -24,21 +24,25 @@
   startIdx={17}
   urlPath="route_check/street_check/st"
 />
-<h2>ST{16 + idx}: {label}</h2>
-<slot />
 
-<div class="columns">
-  <div class="progress-column">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
     <Progress currentIdx={idx} />
   </div>
 
-  <FancyRadio
-    {choices}
-    bind:existingValue={$state.streetCheck.existingScores[idx - 1]}
-    bind:proposedValue={$state.streetCheck.proposedScores[idx - 1]}
-    bind:existingNotes={$state.streetCheck.existingScoreNotes[idx - 1]}
-    bind:proposedNotes={$state.streetCheck.proposedScoreNotes[idx - 1]}
-  />
+  <div class="govuk-grid-column-two-thirds">
+    <h2>ST{16 + idx}: {label}</h2>
+
+    <slot />
+
+    <FancyRadio
+      {choices}
+      bind:existingValue={$state.streetCheck.existingScores[idx - 1]}
+      bind:proposedValue={$state.streetCheck.proposedScores[idx - 1]}
+      bind:existingNotes={$state.streetCheck.existingScoreNotes[idx - 1]}
+      bind:proposedNotes={$state.streetCheck.proposedScoreNotes[idx - 1]}
+    />
+  </div>
 </div>
 
 <PrevNext
@@ -47,14 +51,3 @@
   startIdx={17}
   urlPath="route_check/street_check/st"
 />
-
-<style>
-  .columns {
-    display: flex;
-    column-gap: 2rem;
-  }
-
-  .progress-column {
-    width: 60rem;
-  }
-</style>

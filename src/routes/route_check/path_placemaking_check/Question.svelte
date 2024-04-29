@@ -19,32 +19,29 @@
 </script>
 
 <PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />
-<h2>PP{idx.toString().padStart(2, "0")}: {label}</h2>
-<slot />
 
-<div class="columns">
-  <div class="progress-column">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
     <Progress currentIdx={idx} />
   </div>
 
-  <FancyRadio
-    {choices}
-    bind:existingValue={$state.pathPlacemakingCheck.existingScores[idx - 1]}
-    bind:proposedValue={$state.pathPlacemakingCheck.proposedScores[idx - 1]}
-    bind:existingNotes={$state.pathPlacemakingCheck.existingScoreNotes[idx - 1]}
-    bind:proposedNotes={$state.pathPlacemakingCheck.proposedScoreNotes[idx - 1]}
-  />
+  <div class="govuk-grid-column-two-thirds">
+    <h2>PP{idx.toString().padStart(2, "0")}: {label}</h2>
+
+    <slot />
+
+    <FancyRadio
+      {choices}
+      bind:existingValue={$state.pathPlacemakingCheck.existingScores[idx - 1]}
+      bind:proposedValue={$state.pathPlacemakingCheck.proposedScores[idx - 1]}
+      bind:existingNotes={$state.pathPlacemakingCheck.existingScoreNotes[
+        idx - 1
+      ]}
+      bind:proposedNotes={$state.pathPlacemakingCheck.proposedScoreNotes[
+        idx - 1
+      ]}
+    />
+  </div>
 </div>
 
 <PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />
-
-<style>
-  .columns {
-    display: flex;
-    column-gap: 2rem;
-  }
-
-  .progress-column {
-    width: 60rem;
-  }
-</style>

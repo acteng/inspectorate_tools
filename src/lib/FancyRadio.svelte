@@ -16,20 +16,26 @@
 </script>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
-    Score for existing infrastructure
+  <div class="govuk-grid-column-one-quarter">
+    <!-- svelte-ignore a11y-label-has-associated-control TODO Splitting the radio -->
+    <label class="govuk-label govuk-label--s">
+      Score for existing infrastructure
+    </label>
   </div>
-  <div class="govuk-grid-column-one-third">
-    Score for proposed infrastructure
+  <div class="govuk-grid-column-one-quarter">
+    <!-- svelte-ignore a11y-label-has-associated-control TODO Splitting the radio -->
+    <label class="govuk-label govuk-label--s">
+      Score for proposed infrastructure
+    </label>
   </div>
-  <div class="govuk-grid-column-one-third">
+  <div class="govuk-grid-column-one-half">
     <!-- No third column -->
   </div>
 </div>
 
 {#each choices as [thisValue, thisLabel, thisBackgroundColor, thisFontColour], i}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-quarter">
       <div class="govuk-radios__item">
         <input
           class="govuk-radios__input"
@@ -43,6 +49,7 @@
           for={id + thisValue + "-existing"}
         >
           <span
+            class="govuk-tag"
             style:background={thisBackgroundColor}
             style:color={thisFontColour}
           >
@@ -52,7 +59,7 @@
       </div>
     </div>
 
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-quarter">
       <div class="govuk-radios__item">
         <input
           class="govuk-radios__input"
@@ -66,6 +73,7 @@
           for={id + thisValue + "-proposed"}
         >
           <span
+            class="govuk-tag"
             style:background={thisBackgroundColor}
             style:color={thisFontColour}
           >
@@ -75,26 +83,26 @@
       </div>
     </div>
 
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-half">
       {@html thisLabel}
     </div>
   </div>
 {/each}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
+  <div class="govuk-grid-column-one-quarter">
     <TextArea
       label="Notes to justify given score for existing infrastructure"
-      bind:value={proposedNotes}
+      bind:value={existingNotes}
     />
   </div>
-  <div class="govuk-grid-column-one-third">
+  <div class="govuk-grid-column-one-quarter">
     <TextArea
       label="Notes to justify given score for proposed infrastructure"
       bind:value={proposedNotes}
     />
   </div>
-  <div class="govuk-grid-column-one-third">
+  <div class="govuk-grid-column-one-half">
     <!-- No third column -->
   </div>
 </div>
