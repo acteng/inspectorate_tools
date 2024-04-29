@@ -5,6 +5,7 @@
   import { onMount, onDestroy } from "svelte";
   import { DraggablePin } from "$lib/map";
   import { BlueskyKey, MapLibreMap } from "$lib/map";
+  import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state } from "../data";
@@ -63,8 +64,6 @@
   }
 </script>
 
-<BlueskyKey />
-
 <div style="display: flex">
   <div style="width: 30%;">
     {#if editing == null}
@@ -97,9 +96,14 @@
           />
         </GeoJSON>
       {/if}
+
+      <GeoreferenceLayer {map} />
     </MapLibreMap>
   </div>
 </div>
+
+<BlueskyKey />
+<GeoreferenceControls />
 
 <style>
   .block-map {

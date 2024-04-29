@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SecondaryButton } from "govuk-svelte";
+  import { CollapsibleCard, SecondaryButton } from "govuk-svelte";
 
   let key = "bluesky-api-key";
 
@@ -19,7 +19,7 @@
   }
 </script>
 
-<div>
+<CollapsibleCard label="Bluesky imagery">
   {#if checkKey()}
     <p>The map should be showing Bluesky imagery.</p>
   {:else}
@@ -34,10 +34,4 @@
     </i>
   </p>
   <SecondaryButton on:click={setKey}>Set Bluesky API key</SecondaryButton>
-</div>
-
-<style>
-  div {
-    border: 1px solid black;
-  }
-</style>
+</CollapsibleCard>

@@ -9,7 +9,8 @@
     WarningButton,
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
-  import { bbox, MapLibreMap } from "$lib/map";
+  import { bbox, MapLibreMap, BlueskyKey } from "$lib/map";
+  import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { Marker, GeoJSON, LineLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state, type Movement } from "../data";
@@ -96,6 +97,7 @@
         <Arrow color={movement.color} />
       </Marker>
     {/each}
+
     <GeoJSON data={toGj($state.jat.movements)}>
       <LineLayer
         paint={{
@@ -104,6 +106,8 @@
         }}
       />
     </GeoJSON>
+
+    <GeoreferenceLayer {map} />
   </MapLibreMap>
 </div>
 
@@ -121,6 +125,9 @@
     </li>
   {/each}
 </ol>
+
+<BlueskyKey />
+<GeoreferenceControls />
 
 <style>
   .dot {
