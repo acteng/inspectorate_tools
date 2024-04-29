@@ -1,6 +1,6 @@
 <script lang="ts">
   import { pairs } from "$lib";
-  import { backgroundAndFontCombinations } from "$lib/colors";
+  import { colors } from "$lib/colors";
   import type { FeatureCollection } from "geojson";
   import {
     TextInput,
@@ -18,7 +18,7 @@
   let map: Map;
 
   let kinds = pairs(["cycling-straight", "cycling-turn", "pedestrian"]);
-  let colors = pairs(["green", "amber", "red", "critical"]);
+  let colorChoices = pairs(["green", "amber", "red", "critical"]);
 
   function onMapClick(e: MapMouseEvent) {
     $state.jat.movements = [
@@ -58,7 +58,7 @@
           type: "Feature",
           properties: {
             kind: movement.kind,
-            color: backgroundAndFontCombinations[movement.color].background,
+            color: colors[movement.color].background,
           },
           geometry: {
             type: "LineString",
@@ -112,7 +112,11 @@
     <li style="display: flex; justify-content: space-evenly">
       <TextInput label="Name" bind:value={movement.name} />
       <Select label="Kind" choices={kinds} bind:value={movement.kind} />
-      <Select label="Color" choices={colors} bind:value={movement.color} />
+      <Select
+        label="Color"
+        choices={colorChoices}
+        bind:value={movement.color}
+      />
       <WarningButton on:click={() => deleteMovement(idx)}>Delete</WarningButton>
     </li>
   {/each}

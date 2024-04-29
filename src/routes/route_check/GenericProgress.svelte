@@ -2,6 +2,7 @@
   import { state, type State } from "./data";
   import { base } from "$app/paths";
   import { sum } from "$lib";
+  import { colors } from "$lib/colors";
 
   export let sections: Section[];
 
@@ -72,7 +73,13 @@
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
       <div style="padding: 20px">
-        <u>{item.label}</u>
+        <strong
+          class="govuk-tag"
+          style:color={colors.green.font}
+          style:background={colors.green.background}
+        >
+          {item.label}
+        </strong>
         {#if item.notes}
           <p>{item.notes}</p>
         {/if}

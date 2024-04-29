@@ -94,12 +94,14 @@
     <TextArea
       label="Notes to justify given score for existing infrastructure"
       bind:value={existingNotes}
+      rows={8}
     />
   </div>
   <div class="govuk-grid-column-one-quarter">
     <TextArea
       label="Notes to justify given score for proposed infrastructure"
       bind:value={proposedNotes}
+      rows={8}
     />
   </div>
   <div class="govuk-grid-column-one-half">

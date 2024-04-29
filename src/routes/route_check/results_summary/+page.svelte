@@ -143,9 +143,9 @@
     grid-template-rows: repeat(3, 2fr) 1fr repeat(6, 2fr);
   }
   .header {
-    /* TODO Plumb from backgroundAndFontCombinations.green.background */
+    /* TODO Plumb from colors.green.background */
     background-color: #006853;
-    /* TODO Plumb from backgroundAndFontCombinations.green.font */
+    /* TODO Plumb from colors.green.font */
     color: white;
     border: 1px solid white;
     text-align: center;

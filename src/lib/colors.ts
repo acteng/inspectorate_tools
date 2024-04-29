@@ -1,4 +1,4 @@
-export let backgroundAndFontCombinations = {
+export let colors = {
   critical: {
     background: "#232323",
     font: "white",
@@ -23,9 +23,9 @@ export let backgroundAndFontCombinations = {
 
 // Handles cases from all tools
 export let scoreToColor = {
-  C: backgroundAndFontCombinations.critical,
-  "0": backgroundAndFontCombinations.red,
-  "1": backgroundAndFontCombinations.amber,
-  "2": backgroundAndFontCombinations.green,
-  "N/A": backgroundAndFontCombinations.notApplicable,
+  C: colors.critical,
+  "0": colors.red,
+  "1": colors.amber,
+  "2": colors.green,
+  "N/A": colors.notApplicable,
 };
