@@ -18,6 +18,7 @@
       "0",
       "<p><3m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Effective width of dedicated equestrian spaces.</p>

@@ -9,6 +9,7 @@
     ["2", "<p>Machine-laid asphalt or smooth and firm blocks.</p>"],
     ["1", "<p>Hand-laid asphalt or smooth blocks.</p>"],
     ["0", "<p>Unsurfaced/unbound or unstable blocks/sets.</p>"],
+    ["N/A", ""],
   ]}
 >
   <p>Type of cycling surface material.</p>

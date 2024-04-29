@@ -18,6 +18,7 @@
       "0",
       "<p>At bus stops, cyclists regularly have to wait behind buses or overtake them in general traffic lanes.</p><p>Or, there are likely to be high-level interactions between pedestrians and cyclists.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Interactions at bus stops.</p>

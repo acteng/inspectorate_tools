@@ -63,8 +63,19 @@ export interface State {
   resultsReviewStatement: string;
 }
 
-// Note "C"ritical is only used in some cases
-type Score = "" | "C" | "0" | "1" | "2";
+// Note "C"ritical and "N/A" are only used in some cases
+type Score = "" | "C" | "0" | "1" | "2" | "N/A";
+
+export function numericScore(score: Score): number {
+  return {
+    "": 0,
+    C: 0,
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "N/A": 0,
+  }[score];
+}
 
 // A collection of metrics. For each one, the user gives a score to describe
 // the existing and proposed state.

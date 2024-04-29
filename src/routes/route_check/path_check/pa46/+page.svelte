@@ -18,6 +18,7 @@
       "0",
       "<p>The route does not link to other routes appropriate for horse riding.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Connectivity with other routes appropriate for horse riding.</p>

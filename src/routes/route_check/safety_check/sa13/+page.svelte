@@ -16,6 +16,7 @@
     ],
     ["0", "<p>Crossing angle between 60 and 80 degrees.</p>"],
     ["C", "<p>Crossing angle less than 60 degrees.</p>"],
+    ["N/A", ""],
   ]}
 >
   <p>Crossing angle (between cyclist desire line and tram or train rails).</p>

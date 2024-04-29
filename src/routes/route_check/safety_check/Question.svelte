@@ -2,18 +2,18 @@
   import { FancyRadio, PrevNext } from "$lib";
   import Progress from "./Progress.svelte";
   import { state } from "../data";
-  import { greenAmberRedCritical } from "$lib/colors";
+  import { scoreToColor } from "$lib/colors";
 
   export let idx: number;
   export let label: string;
-  export let cases: ["C" | "0" | "1" | "2", string][];
+  export let cases: ["C" | "0" | "1" | "2" | "N/A", string][];
 
   let choices: [string, string, string, string][] = cases.map(
-    ([value, label], index) => [
-      value.toString(),
+    ([value, label]) => [
+      value,
       label,
-      greenAmberRedCritical[index].background,
-      greenAmberRedCritical[index].font,
+      scoreToColor[value].background,
+      scoreToColor[value].font,
     ],
   );
 </script>

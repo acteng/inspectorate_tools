@@ -18,6 +18,7 @@
       "0",
       "<p>Delay for cyclists at junctions is greater than for motor vehicles.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Delay to cyclists at junctions.</p>

@@ -18,6 +18,7 @@
       "0",
       "<p>Not all crossings are suitable for all path users.</p><p>Or, crossings selected do not follow LTN 1/20 guidance given the volumes and speeds of traffic on roads being crossed.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>

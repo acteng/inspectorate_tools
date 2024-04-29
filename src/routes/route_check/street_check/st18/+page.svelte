@@ -18,6 +18,7 @@
       "0",
       "<p>Guidance on tactile paving has not been considered.</p><p>Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>

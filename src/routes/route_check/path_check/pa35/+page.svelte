@@ -12,6 +12,7 @@
     ],
     ["1", "<p>Some crossings are located on desire lines.</p>"],
     ["0", "<p>No crossings are located on desire lines.</p>"],
+    ["N/A", ""],
   ]}
 >
   <p>Alignment of crossings with desire lines.</p>

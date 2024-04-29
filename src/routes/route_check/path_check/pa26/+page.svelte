@@ -12,6 +12,7 @@
       "<p>Bound, sealed surface such as tarmac (including tar, spray and chip).</p>",
     ],
     ["0", "<p>Unbound or unsealed surface.</p>"],
+    ["N/A", ""],
   ]}
 >
   <p>Surface of shared use facilities.</p>

@@ -18,6 +18,7 @@
       "0",
       "<p>Walking, wheeling and cycling connections are inaccessible or offer a low level of service.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>

@@ -18,6 +18,7 @@
       "0",
       "<p>At pinch points, cycle facility widths and/or buffers are below the absolute minimums recommended in LTN 1/20.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Effective width for cyclists (when not mixed with motor traffic).</p>

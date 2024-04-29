@@ -18,6 +18,7 @@
       "0",
       "<p>Where people meet, wait or spend time in numbers, it is over 150m to the nearest accessible sanitary facilities.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Provision of sanitary facilities.</p>

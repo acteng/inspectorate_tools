@@ -1,6 +1,7 @@
 import csv
 from common import *
 
+optionals = ["18", "20", "22", "23", "26", "29", "31", "32", "33"]
 
 with open("inputs/street-check.csv") as inputFile:
     idx = 1
@@ -39,6 +40,8 @@ with open("inputs/street-check.csv") as inputFile:
             f.write("""    ["2", "{}"],\n""".format(html(row["Green"])))
             f.write("""    ["1", "{}"],\n""".format(html(row["Amber"])))
             f.write("""    ["0", "{}"],\n""".format(html(row["Red"])))
+            if row["ID"][2:] in optionals:
+                f.write("""    ["N/A", ""],\n""")
             f.write("""  ]}\n""")
             f.write(""">\n""")
 

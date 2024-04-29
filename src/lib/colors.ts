@@ -15,16 +15,17 @@ export let backgroundAndFontCombinations = {
     background: "#006853",
     font: "white",
   },
+  notApplicable: {
+    background: "white",
+    font: "black",
+  },
 };
 
-export let greenAmberRedCritical = [
-  backgroundAndFontCombinations.green,
-  backgroundAndFontCombinations.amber,
-  backgroundAndFontCombinations.red,
-  backgroundAndFontCombinations.critical,
-];
-export let greenAmberRed = [
-  backgroundAndFontCombinations.green,
-  backgroundAndFontCombinations.amber,
-  backgroundAndFontCombinations.red,
-];
+// Handles cases from all tools
+export let scoreToColor = {
+  C: backgroundAndFontCombinations.critical,
+  "0": backgroundAndFontCombinations.red,
+  "1": backgroundAndFontCombinations.amber,
+  "2": backgroundAndFontCombinations.green,
+  "N/A": backgroundAndFontCombinations.notApplicable,
+};

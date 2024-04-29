@@ -22,6 +22,7 @@
       "C",
       "<p>On very busy streets (>8,000vpd), there are uncontrolled crossings of two or more lanes with no gaps in traffic.</p><p>At signal junctions there are arms with dropped kerbs and tactile paving but no green pedestrian symbol.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Suitability of pedestrian crossings in context</p>

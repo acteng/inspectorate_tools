@@ -2,7 +2,7 @@
 # Bold/underlining doesn't show up in the CSV export, so has to be done
 # manually later.
 def html(x):
-    x = x.replace("\"", "\\\"")
+    x = x.replace('"', '\\"')
 
     y = ""
     is_list = False

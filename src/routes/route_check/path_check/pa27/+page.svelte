@@ -18,6 +18,7 @@
       "0",
       "<p>The surface is low-grip (i.e. PTV of 25 or lower).</p><p>If paved, the joints are wider than 5mm.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Type of walking/wheeling surface material.</p>

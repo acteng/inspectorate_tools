@@ -18,6 +18,7 @@
       "0",
       "<p>After pressing the button, pedestrians must wait over 10 seconds for an invitation to cross.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Delay to pedestrians at standalone signal crossings.</p>

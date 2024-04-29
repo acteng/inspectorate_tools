@@ -1,6 +1,24 @@
 import csv
 from common import *
 
+optionals = [
+    "20",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "35",
+    "36",
+    "45",
+    "46",
+]
+
 
 with open("inputs/path-check.csv") as inputFile:
     idx = 1
@@ -39,6 +57,8 @@ with open("inputs/path-check.csv") as inputFile:
             f.write("""    ["2", "{}"],\n""".format(html(row["Green"])))
             f.write("""    ["1", "{}"],\n""".format(html(row["Amber"])))
             f.write("""    ["0", "{}"],\n""".format(html(row["Red"])))
+            if row["ID"][2:] in optionals:
+                f.write("""    ["N/A", ""],\n""")
             f.write("""  ]}\n""")
             f.write(""">\n""")
 

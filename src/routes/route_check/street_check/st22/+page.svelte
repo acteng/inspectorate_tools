@@ -18,6 +18,7 @@
       "0",
       "<p>Where people meet, wait, or spend time in numbers, it is over 150m to the nearest accessible pick-up, drop-off or hailing points, or blue badge parking facilities.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>

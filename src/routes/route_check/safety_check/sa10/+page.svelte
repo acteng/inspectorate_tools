@@ -22,6 +22,7 @@
       "C",
       "<p>Pedestrians who start crossing at the end of the 'invitation to cross' must cross at a speed of over 1.2m/s to get across the whole crossing in time.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>

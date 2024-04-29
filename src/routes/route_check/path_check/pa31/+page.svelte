@@ -18,6 +18,7 @@
       "0",
       "<p>Path access points are not protected, meaning there is a risk that they could be blocked by parking or loading, impeding access for some or all path users.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Potential for access points to be blocked by parking or loading.</p>

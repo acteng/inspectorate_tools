@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TextArea } from "govuk-svelte";
   import { sum } from "$lib";
-  import { state, type Scorecard } from "../data";
+  import { state, type Scorecard, numericScore } from "../data";
   import NetDifferenceResults from "./NetDifferenceResults.svelte";
   import LevelOfServiceResults from "./LevelOfServiceResults.svelte";
 
@@ -36,8 +36,8 @@
   }
 
   function getScorecardDifference(scorecard: Scorecard): number {
-    let existing = sum(scorecard.existingScores.map((x) => parseInt(x || "0")));
-    let proposed = sum(scorecard.proposedScores.map((x) => parseInt(x || "0")));
+    let existing = sum(scorecard.existingScores.map(numericScore));
+    let proposed = sum(scorecard.proposedScores.map(numericScore));
     return proposed - existing;
   }
 </script>

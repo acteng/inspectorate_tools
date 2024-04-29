@@ -18,6 +18,7 @@
       "0",
       "<p>Route signing is poor with signs missing at key decision points. Pedestrians and cyclists follow signs and road markings intended for motor traffic.</p><p>Or, signs and road markings are faded or unclear.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Effectiveness of signage and road markings on wayfinding.</p>

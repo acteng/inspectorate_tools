@@ -9,6 +9,7 @@
     ["2", "<p>>2m.</p>"],
     ["1", "<p>1.5-2m.</p>"],
     ["0", "<p><1.5m.</p>"],
+    ["N/A", ""],
   ]}
 >
   <p>Effective width of dedicated walking/wheeling spaces.</p>

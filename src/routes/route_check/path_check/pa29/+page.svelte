@@ -18,6 +18,7 @@
       "0",
       '<p>Sealed surface, e.g. asphalt or other material rated "reasonable" in Table 5.29 of DMRB CD 143.</p>',
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Type of dedicated equestrian surface material (e.g. trotting strips).</p>

@@ -13,6 +13,7 @@
       "C",
       "<p><2.4m from tramline edge to kerb on a straight run.</p><p>Insufficient clearance on a curve.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Effective width next to tram line on a straight run or a curve</p>

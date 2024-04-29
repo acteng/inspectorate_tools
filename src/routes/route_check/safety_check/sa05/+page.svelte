@@ -22,6 +22,7 @@
       "C",
       "<p>Cycle facility next to parking/loading facility, without a buffer of at least 0.5m.</p><p>Or, an unprotected cycle lane is next to a frequently-used bus layby.</p>",
     ],
+    ["N/A", ""],
   ]}
 >
   <p>Cyclist conflict with kerbside activity, including risk of 'dooring'</p>
