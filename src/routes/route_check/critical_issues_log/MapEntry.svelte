@@ -4,7 +4,7 @@
   import { DefaultButton, WarningButton } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
   import { DraggablePin } from "$lib/map";
-  import { MapLibreMap } from "$lib/map";
+  import { BlueskyKey, MapLibreMap } from "$lib/map";
   import { GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state } from "../data";
@@ -62,6 +62,8 @@
     };
   }
 </script>
+
+<BlueskyKey />
 
 <div style="display: flex">
   <div style="width: 30%;">
