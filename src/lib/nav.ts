@@ -216,6 +216,7 @@ let pages: [string, string][] = [
   ["/route_check/results_analysis", "Results Further Analysis"],
   ["/route_check/results_export", "Results Export"],
 ];
+let mainPageSections = pages.filter(([x, _]) => x.split("/").length == 3);
 let pathToTitle = new Map(pages);
 
 // Returns direct children of a path
@@ -247,9 +248,22 @@ export function getBreadcrumbLinks(rawPath: string): [string, string][] {
   return results;
 }
 
-export function getPrevPage(rawPath: string): [string, string] | null {
+function getSectionPath(rawPath: string): string | null {
   let path = canonicalizePath(rawPath);
-  let idx = pages.findIndex((pair) => pair[0] == path);
+  let parts = path.split("/");
+  if (parts.length < 3) {
+    return null;
+  }
+  return `/${parts[1]}/${parts[2]}`;
+}
+
+export function getPrevPage(rawPath: string): [string, string] | null {
+  let path = getSectionPath(rawPath);
+  if (!path) {
+    return null;
+  }
+
+  let idx = mainPageSections.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
     return null;
@@ -259,7 +273,7 @@ export function getPrevPage(rawPath: string): [string, string] | null {
     return null;
   }
 
-  let result = pages[idx - 1];
+  let result = mainPageSections[idx - 1];
 
   // Don't jump to a different tool entirely
   if (
@@ -274,18 +288,22 @@ export function getPrevPage(rawPath: string): [string, string] | null {
 }
 
 export function getNextPage(rawPath: string): [string, string] | null {
-  let path = canonicalizePath(rawPath);
-  let idx = pages.findIndex((pair) => pair[0] == path);
+  let path = getSectionPath(rawPath);
+  if (!path) {
+    return null;
+  }
+
+  let idx = mainPageSections.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
     return null;
   }
 
-  if (idx == pages.length - 1) {
+  if (idx == mainPageSections.length - 1) {
     return null;
   }
 
-  let result = pages[idx + 1];
+  let result = mainPageSections[idx + 1];
 
   // Don't jump to a different tool entirely
   if (

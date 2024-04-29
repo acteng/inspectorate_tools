@@ -44,17 +44,18 @@ describe("getBreadcrumbLinks", () => {
 
 describe("getPrevPage", () => {
   it("normal cases", () => {
-    expect(getPrevPage("/cross_section/summary")).toStrictEqual([
-      "/cross_section",
-      "Route cross-section tool",
-    ]);
+    expect(getPrevPage("/cross_section/summary")).toBe(null);
     expect(getPrevPage("/cross_section/proposed")).toStrictEqual([
       "/cross_section/summary",
       "Summary of Scheme",
     ]);
     expect(getPrevPage("/area_check/scorecard/q01")).toStrictEqual([
-      "/area_check/scorecard",
-      "Area Scorecard",
+      "/area_check/traffic_mitigation",
+      "Traffic Mitigation Check",
+    ]);
+    expect(getPrevPage("/area_check/scorecard/q05")).toStrictEqual([
+      "/area_check/traffic_mitigation",
+      "Traffic Mitigation Check",
     ]);
   });
 
@@ -68,13 +69,14 @@ describe("getPrevPage", () => {
 
 describe("getNextPage", () => {
   it("normal cases", () => {
-    expect(getNextPage("/cross_section")).toStrictEqual([
-      "/cross_section/summary",
-      "Summary of Scheme",
-    ]);
+    expect(getNextPage("/cross_section")).toBe(null);
     expect(getNextPage("/cross_section/proposed")).toStrictEqual([
       "/cross_section/check",
       "Cross-Sections Check",
+    ]);
+    expect(getNextPage("/area_check/scorecard/q05")).toStrictEqual([
+      "/area_check/results",
+      "Results & Commentary",
     ]);
     expect(getNextPage("/area_check/scorecard/q13")).toStrictEqual([
       "/area_check/results",
