@@ -1,35 +1,38 @@
 <script lang="ts">
   import { ImageSource, Marker, RasterLayer } from "svelte-maplibre";
-  import { settingImage, imgSrc, opacity } from "./stores";
+  import {
+    settingImage,
+    imgSrc,
+    opacity,
+    topLeft,
+    bottomRight,
+  } from "./stores";
   import type { Map } from "maplibre-gl";
 
   export let map: Map;
 
-  let topLeft = { lng: 0, lat: 0 };
-  let bottomRight = { lng: 0, lat: 0 };
-
-  $: if ($imgSrc && $settingImage && topLeft.lng == 0 && topLeft.lat == 0) {
+  $: if ($imgSrc && $settingImage && $topLeft.lng == 0 && $topLeft.lat == 0) {
     // Reset the markers to cover some of the current viewport
     let bounds = map.getBounds();
-    topLeft.lng =
+    $topLeft.lng =
       bounds.getWest() + 0.4 * (bounds.getEast() - bounds.getWest());
-    bottomRight.lng =
+    $bottomRight.lng =
       bounds.getWest() + 0.6 * (bounds.getEast() - bounds.getWest());
-    topLeft.lat =
+    $topLeft.lat =
       bounds.getNorth() + 0.4 * (bounds.getSouth() - bounds.getNorth());
-    bottomRight.lat =
+    $bottomRight.lat =
       bounds.getNorth() + 0.6 * (bounds.getSouth() - bounds.getNorth());
   }
 </script>
 
-{#if $imgSrc && topLeft.lng != bottomRight.lng}
+{#if $imgSrc && $topLeft.lng != $bottomRight.lng}
   <ImageSource
     url={$imgSrc}
     coordinates={[
-      [topLeft.lng, topLeft.lat],
-      [bottomRight.lng, topLeft.lat],
-      [bottomRight.lng, bottomRight.lat],
-      [topLeft.lng, bottomRight.lat],
+      [$topLeft.lng, $topLeft.lat],
+      [$bottomRight.lng, $topLeft.lat],
+      [$bottomRight.lng, $bottomRight.lat],
+      [$topLeft.lng, $bottomRight.lat],
     ]}
   >
     <RasterLayer
@@ -42,10 +45,10 @@
 {/if}
 
 {#if $imgSrc && $settingImage}
-  <Marker bind:lngLat={topLeft} draggable>
+  <Marker bind:lngLat={$topLeft} draggable>
     <span class="dot" style="background-color: red" />
   </Marker>
-  <Marker bind:lngLat={bottomRight} draggable>
+  <Marker bind:lngLat={$bottomRight} draggable>
     <span class="dot" style="background-color: blue" />
   </Marker>
 {/if}

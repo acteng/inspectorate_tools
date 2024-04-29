@@ -6,7 +6,13 @@
     FormElement,
     WarningButton,
   } from "govuk-svelte";
-  import { settingImage, imgSrc, opacity } from "./stores";
+  import {
+    topLeft,
+    bottomRight,
+    settingImage,
+    imgSrc,
+    opacity,
+  } from "./stores";
 
   let fileInput: HTMLInputElement;
 
@@ -14,6 +20,8 @@
     let buffer = await fileInput.files![0].arrayBuffer();
     let blob = new Blob([new Uint8Array(buffer)]);
     $imgSrc = URL.createObjectURL(blob);
+    $topLeft = { lng: 0, lat: 0 };
+    $bottomRight = { lng: 0, lat: 0 };
   }
 
   function deleteImage() {
