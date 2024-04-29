@@ -50,9 +50,9 @@
           {label}
         {/if}
         {#if completed[idx]}
-          <strong class="govuk-tag govuk-tag--green">Done</strong>
+          <strong class="govuk-tag govuk-tag--green tag-row">Done</strong>
         {:else}
-          <strong class="govuk-tag govuk-tag--red">Incomplete</strong>
+          <strong class="govuk-tag govuk-tag--red tag-row">Incomplete</strong>
         {/if}
       </div>
     </li>
@@ -60,7 +60,7 @@
 </ol>
 
 <style>
-  .govuk-tag {
+  .tag-row {
     margin: 1px;
   }
 
