@@ -79,7 +79,7 @@
       </div>
     {:else}
       <li>
-        <div class="progress-list-item govuk-font">
+        <div class="progress-list-item">
           {#if currentIdx - startIdx != item.idx}
             <a href="{base}{urlBase}{formatIndex(item.idx)}">
               {item.label}
@@ -88,9 +88,9 @@
             {item.label}
           {/if}
           {#if completed[item.idx]}
-            <strong class="govuk-tag govuk-tag--green">Done</strong>
+            <strong class="govuk-tag govuk-tag--green tag-row">Done</strong>
           {:else}
-            <strong class="govuk-tag govuk-tag--red">Incomplete</strong>
+            <strong class="govuk-tag govuk-tag--red tag-row">Incomplete</strong>
           {/if}
         </div>
       </li>
@@ -99,7 +99,7 @@
 </ol>
 
 <style>
-  .govuk-tag {
+  .tag-row {
     margin: 1px;
   }
   .progress-list-item {
