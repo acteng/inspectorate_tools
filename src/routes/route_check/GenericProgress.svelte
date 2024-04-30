@@ -95,9 +95,9 @@
             {item.label}
           {/if}
           {#if completed[item.idx]}
-            <strong class="govuk-tag govuk-tag--green tag-row">Done</strong>
+            <strong class="govuk-tag govuk-tag--green tag-row">&#9745;</strong>
           {:else}
-            <strong class="govuk-tag govuk-tag--red tag-row">Incomplete</strong>
+            <strong class="govuk-tag govuk-tag--red tag-row">&#9746;</strong>
           {/if}
         </div>
       </li>
