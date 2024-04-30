@@ -14,7 +14,7 @@ export let files = new LocalStorageFiles(
 );
 
 // geojson library allows for 3D coordinates
-type Position = [number, number];
+export type Position = [number, number];
 
 export interface State {
   summary: {

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import destination from "@turf/destination";
+  import bearing from "@turf/bearing";
   import { pairs } from "$lib";
   import { colors } from "$lib/colors";
   import type { FeatureCollection } from "geojson";
@@ -13,7 +15,7 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { Marker, GeoJSON, LineLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { state, type Movement } from "../data";
+  import { state, type Movement, type Position } from "../data";
   import Arrow from "./Arrow.svelte";
 
   let map: Map;
@@ -25,9 +27,10 @@
     $state.jat.movements = [
       ...$state.jat.movements,
       {
-        point1: e.lngLat.toArray(),
-        // TODO offset a bit
-        point2: e.lngLat.toArray(),
+        point1: e.lngLat.toArray() as Position,
+        // Offset 10 meters to the north
+        point2: destination(e.lngLat.toArray(), 0.01, 0).geometry
+          .coordinates as Position,
         kind: "cycling-straight",
         color: "green",
         name: "",
@@ -107,19 +110,42 @@
     <MapLibreMap bind:map>
       {#each $state.jat.movements as movement}
         <Marker draggable bind:lngLat={movement.point1}>
-          <span class="dot" style={`background-color: ${movement.color}`} />
+          <span
+            class="dot"
+            style={`background-color: ${colors[movement.color].background}`}
+          />
         </Marker>
         <Marker draggable bind:lngLat={movement.point2}>
-          <Arrow color={movement.color} />
+          {#if movement.kind == "pedestrian"}
+            <span
+              class="dot"
+              style={`background-color: ${colors[movement.color].background}`}
+            />
+          {:else}
+            <Arrow
+              color={colors[movement.color].background}
+              angle={bearing(movement.point1, movement.point2)}
+            />
+          {/if}
         </Marker>
       {/each}
 
       <GeoJSON data={toGj($state.jat.movements)}>
+        <!-- TODO Two layers due to https://github.com/maplibre/maplibre-gl-js/issues/1235 -->
         <LineLayer
           paint={{
             "line-width": 6,
             "line-color": ["get", "color"],
           }}
+          filter={["!=", ["get", "kind"], "pedestrian"]}
+        />
+        <LineLayer
+          paint={{
+            "line-width": 6,
+            "line-color": ["get", "color"],
+            "line-dasharray": [3, 2],
+          }}
+          filter={["==", ["get", "kind"], "pedestrian"]}
         />
       </GeoJSON>
 
@@ -137,7 +163,7 @@
   }
 
   .dot:hover {
-    border: 1px solid black;
+    border: 3px solid black;
     cursor: pointer;
   }
 </style>
