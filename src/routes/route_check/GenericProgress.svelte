@@ -72,18 +72,17 @@
 <ol>
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
-      <div style="padding: 20px">
-        <strong
-          class="govuk-tag"
-          style:color={colors.green.font}
-          style:background={colors.green.background}
-        >
-          {item.label}
-        </strong>
-        {#if item.notes}
-          <p>{item.notes}</p>
-        {/if}
-      </div>
+      <strong
+        class="govuk-tag"
+        style:color={colors.green.font}
+        style:background={colors.green.background}
+        style:width="100%"
+      >
+        {item.label}
+      </strong>
+      {#if item.notes}
+        <p>{item.notes}</p>
+      {/if}
     {:else}
       <li>
         <div class="progress-list-item">
