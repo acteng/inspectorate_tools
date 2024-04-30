@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Feature, Position } from "geojson";
   import Form from "./Form.svelte";
-  import { DefaultButton, WarningButton } from "govuk-svelte";
+  import { DefaultButton, SecondaryButton, WarningButton } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
-  import { DraggablePin } from "$lib/map";
+  import { bbox, DraggablePin } from "$lib/map";
   import { BlueskyKey, MapLibreMap } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { GeoJSON, CircleLayer } from "svelte-maplibre";
@@ -37,6 +37,7 @@
   // TODO Wait for loaded
   onMount(() => {
     map.on("click", onMapClick);
+    zoom(false);
   });
   onDestroy(() => {
     map.off("click", onMapClick);
@@ -61,6 +62,19 @@
         coordinates,
       },
     };
+  }
+
+  function zoom(animate: boolean) {
+    if ($state.criticalIssues.length > 0) {
+      let gj = {
+        type: "FeatureCollection" as const,
+        features: $state.criticalIssues.map((i) => pointFeature(i.point)),
+      };
+      map.fitBounds(bbox(gj), {
+        padding: 20,
+        animate: true,
+      });
+    }
   }
 </script>
 
@@ -102,6 +116,7 @@
   </div>
 </div>
 
+<SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
 <BlueskyKey />
 <GeoreferenceControls />
 

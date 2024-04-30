@@ -39,12 +39,7 @@
   // TODO Wait for loaded
   onMount(() => {
     map.on("click", onMapClick);
-    if ($state.jat.movements.length > 0) {
-      map.fitBounds(bbox(toGj($state.jat.movements)), {
-        padding: 20,
-        animate: false,
-      });
-    }
+    zoom(false);
   });
   onDestroy(() => {
     map.off("click", onMapClick);
@@ -75,17 +70,17 @@
     $state.jat.movements = $state.jat.movements;
   }
 
-  function zoom() {
+  function zoom(animate: boolean) {
     if ($state.jat.movements.length > 0) {
       map.fitBounds(bbox(toGj($state.jat.movements)), {
         padding: 20,
-        animate: true,
+        animate,
       });
     }
   }
 </script>
 
-<SecondaryButton on:click={zoom}>Zoom to fit</SecondaryButton>
+<SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
 
 <div style="position: relative; width: 100%; height: 600px;">
   <MapLibreMap bind:map>
