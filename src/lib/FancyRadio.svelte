@@ -83,7 +83,10 @@
       </div>
     </div>
 
-    <div class="govuk-grid-column-one-half">
+    <div
+      class="govuk-grid-column-one-half"
+      style="border-left: 5px solid {thisBackgroundColor}"
+    >
       {@html thisLabel}
     </div>
   </div>

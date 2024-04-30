@@ -20,12 +20,12 @@
 
 <PrevNext {idx} total={26} urlPath="route_check/street_placemaking_check/sp" />
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
+<div class="govuk-grid-row" style="margin: 1em">
+  <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
     <h2>SP{idx.toString().padStart(2, "0")}: {label}</h2>
 
     <slot />

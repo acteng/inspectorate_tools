@@ -20,12 +20,12 @@
 
 <PrevNext {idx} total={30} startIdx={17} urlPath="route_check/path_check/pa" />
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
+<div class="govuk-grid-row" style="margin: 1em">
+  <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
     <h2>PA{16 + idx}: {label}</h2>
 
     <slot />

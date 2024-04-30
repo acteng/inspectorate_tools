@@ -25,12 +25,12 @@
   urlPath="route_check/street_check/st"
 />
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
+<div class="govuk-grid-row" style="margin: 1em">
+  <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
     <h2>ST{16 + idx}: {label}</h2>
 
     <slot />
