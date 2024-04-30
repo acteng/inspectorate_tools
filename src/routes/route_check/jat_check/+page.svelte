@@ -80,49 +80,53 @@
   }
 </script>
 
-<SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
+<div style="display: flex; height: 600px">
+  <div style="width: 30%; overflow-y: scroll; padding: 10px">
+    <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
+    <BlueskyKey />
+    <GeoreferenceControls />
 
-<div style="position: relative; width: 100%; height: 600px;">
-  <MapLibreMap bind:map>
-    {#each $state.jat.movements as movement}
-      <Marker draggable bind:lngLat={movement.point1}>
-        <span class="dot" style={`background-color: ${movement.color}`} />
-      </Marker>
-      <Marker draggable bind:lngLat={movement.point2}>
-        <Arrow color={movement.color} />
-      </Marker>
-    {/each}
+    <ol>
+      {#each $state.jat.movements as movement, idx}
+        <li>
+          <TextInput label="Name" bind:value={movement.name} />
+          <Select label="Kind" choices={kinds} bind:value={movement.kind} />
+          <Select
+            label="Color"
+            choices={colorChoices}
+            bind:value={movement.color}
+          />
+          <WarningButton on:click={() => deleteMovement(idx)}>
+            Delete
+          </WarningButton>
+        </li>
+      {/each}
+    </ol>
+  </div>
+  <div style="position: relative; width: 100%">
+    <MapLibreMap bind:map>
+      {#each $state.jat.movements as movement}
+        <Marker draggable bind:lngLat={movement.point1}>
+          <span class="dot" style={`background-color: ${movement.color}`} />
+        </Marker>
+        <Marker draggable bind:lngLat={movement.point2}>
+          <Arrow color={movement.color} />
+        </Marker>
+      {/each}
 
-    <GeoJSON data={toGj($state.jat.movements)}>
-      <LineLayer
-        paint={{
-          "line-width": 6,
-          "line-color": ["get", "color"],
-        }}
-      />
-    </GeoJSON>
+      <GeoJSON data={toGj($state.jat.movements)}>
+        <LineLayer
+          paint={{
+            "line-width": 6,
+            "line-color": ["get", "color"],
+          }}
+        />
+      </GeoJSON>
 
-    <GeoreferenceLayer {map} />
-  </MapLibreMap>
+      <GeoreferenceLayer {map} />
+    </MapLibreMap>
+  </div>
 </div>
-
-<ol>
-  {#each $state.jat.movements as movement, idx}
-    <li style="display: flex; justify-content: space-evenly">
-      <TextInput label="Name" bind:value={movement.name} />
-      <Select label="Kind" choices={kinds} bind:value={movement.kind} />
-      <Select
-        label="Color"
-        choices={colorChoices}
-        bind:value={movement.color}
-      />
-      <WarningButton on:click={() => deleteMovement(idx)}>Delete</WarningButton>
-    </li>
-  {/each}
-</ol>
-
-<BlueskyKey />
-<GeoreferenceControls />
 
 <style>
   .dot {
