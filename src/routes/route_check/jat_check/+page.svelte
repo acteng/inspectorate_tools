@@ -1,34 +1,77 @@
 <script lang="ts">
   import destination from "@turf/destination";
   import bearing from "@turf/bearing";
-  import { pairs } from "$lib";
   import { colors } from "$lib/colors";
-  import type { FeatureCollection } from "geojson";
+  import type { FeatureCollection, Feature } from "geojson";
   import {
     TextInput,
     Select,
     SecondaryButton,
     WarningButton,
+    DefaultButton,
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
-  import { bbox, MapLibreMap, BlueskyKey, Popup } from "$lib/map";
+  import { bbox, StreetView, MapLibreMap, BlueskyKey, Popup } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import {
     Marker,
     GeoJSON,
     LineLayer,
     hoverStateFilter,
+    type LayerClickInfo,
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { state, type Movement, type Position } from "../data";
+  import { state, type Movement, type Position, type State } from "../data";
   import Arrow from "./Arrow.svelte";
+  import Form from "./Form.svelte";
 
   let map: Map;
 
-  let kinds = pairs(["cycling-straight", "cycling-turn", "pedestrian"]);
-  let colorChoices = pairs(["green", "amber", "red", "critical"]);
+  let editing: number | null = null;
+  let hoveringSidebar: number | null = null;
+  let streetviewOn = false;
+
+  $: hoverGj = getHoverData($state, editing, hoveringSidebar);
+
+  function getHoverData(
+    state: State,
+    editing: number | null,
+    hoveringSidebar: number | null,
+  ): FeatureCollection {
+    let gj: FeatureCollection = {
+      type: "FeatureCollection" as const,
+      features: [],
+    };
+    let id = editing ?? hoveringSidebar;
+    if (id != null) {
+      gj.features.push(lineFeature(state.jat.movements[id], id));
+    }
+    return gj;
+  }
+
+  function select(id: number) {
+    editing = id;
+    hoveringSidebar = null;
+  }
 
   function onMapClick(e: MapMouseEvent) {
+    if (streetviewOn) {
+      return;
+    }
+
+    // TODO Clicks on a LineLayer or Marker should stop the event from reaching here. Until then, use this hack
+    for (let f of map.queryRenderedFeatures(e.point, {
+      layers: ["jat-cycling", "jat-pedestrian"],
+    })) {
+      return;
+    }
+
+    // Deselect something
+    if (editing != null) {
+      editing = null;
+      return;
+    }
+
     $state.jat.movements = [
       ...$state.jat.movements,
       {
@@ -42,6 +85,12 @@
         notes: "",
       },
     ];
+    editing = $state.jat.movements.length - 1;
+    hoveringSidebar = null;
+  }
+
+  function onFeatureClick(e: CustomEvent<LayerClickInfo>) {
+    select(e.detail.features[0].id as number);
   }
 
   // TODO Wait for loaded
@@ -57,27 +106,34 @@
   function toGj(movements: Movement[]): FeatureCollection {
     return {
       type: "FeatureCollection",
-      features: movements.map((movement, idx) => {
-        return {
-          type: "Feature",
-          id: idx,
-          properties: {
-            name: movement.name,
-            kind: movement.kind,
-            color: colors[movement.color].background,
-          },
-          geometry: {
-            type: "LineString",
-            coordinates: [movement.point1, movement.point2],
-          },
-        };
-      }),
+      features: movements.map((movement, idx) => lineFeature(movement, idx)),
     };
   }
 
-  function deleteMovement(idx: number) {
-    $state.jat.movements.splice(idx, 1);
+  function lineFeature(movement: Movement, id: number): Feature {
+    return {
+      type: "Feature",
+      id,
+      properties: {
+        name: movement.name,
+        kind: movement.kind,
+        color: colors[movement.color].background,
+      },
+      geometry: {
+        type: "LineString",
+        coordinates: [movement.point1, movement.point2],
+      },
+    };
+  }
+
+  function deleteMovement() {
+    // TODO Modal
+    if (!window.confirm("Delete this movement?")) {
+      return;
+    }
+    $state.jat.movements.splice(editing!, 1);
     $state.jat.movements = $state.jat.movements;
+    editing = null;
   }
 
   function zoom(animate: boolean) {
@@ -88,41 +144,67 @@
       });
     }
   }
+
+  function onKeyDown(e: KeyboardEvent) {
+    if (editing != null && e.key == "Escape") {
+      e.stopPropagation();
+      editing = null;
+    }
+  }
 </script>
+
+<svelte:window on:keydown={onKeyDown} />
 
 <div style="display: flex; height: 600px">
   <div style="width: 30%; overflow-y: scroll; padding: 10px">
-    <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
-    <BlueskyKey />
-    <GeoreferenceControls />
+    {#if editing == null}
+      <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
+      <BlueskyKey />
+      <GeoreferenceControls />
+      {#if map}
+        <StreetView {map} bind:enabled={streetviewOn} />
+      {/if}
 
-    <ol>
-      {#each $state.jat.movements as movement, idx}
-        <li>
-          <TextInput label="Name" bind:value={movement.name} />
-          <Select label="Kind" choices={kinds} bind:value={movement.kind} />
-          <Select
-            label="Color"
-            choices={colorChoices}
-            bind:value={movement.color}
-          />
-          <WarningButton on:click={() => deleteMovement(idx)}>
-            Delete
-          </WarningButton>
-        </li>
-      {/each}
-    </ol>
+      <h3>Movements</h3>
+      <ol>
+        {#each $state.jat.movements as movement, idx}
+          <li>
+            <!-- svelte-ignore a11y-invalid-attribute -->
+            <a
+              href="#"
+              on:click={() => select(idx)}
+              on:mouseenter={() => (hoveringSidebar = idx)}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              {movement.name || "Unnamed movement"}
+            </a>
+          </li>
+        {/each}
+      </ol>
+    {:else}
+      <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
+      <WarningButton on:click={deleteMovement}>Delete</WarningButton>
+      <Form idx={editing} />
+    {/if}
   </div>
   <div style="position: relative; width: 100%">
     <MapLibreMap bind:map>
-      {#each $state.jat.movements as movement}
-        <Marker draggable bind:lngLat={movement.point1}>
+      {#each $state.jat.movements as movement, idx}
+        <Marker
+          draggable
+          bind:lngLat={movement.point1}
+          on:dragend={() => select(idx)}
+        >
           <span
             class="dot"
             style={`background-color: ${colors[movement.color].background}`}
           />
         </Marker>
-        <Marker draggable bind:lngLat={movement.point2}>
+        <Marker
+          draggable
+          bind:lngLat={movement.point2}
+          on:dragend={() => select(idx)}
+        >
           {#if movement.kind == "pedestrian"}
             <span
               class="dot"
@@ -140,16 +222,19 @@
       <GeoJSON data={toGj($state.jat.movements)}>
         <!-- TODO Two layers due to https://github.com/maplibre/maplibre-gl-js/issues/1235 -->
         <LineLayer
+          id="jat-cycling"
           manageHoverState
           paint={{
             "line-width": hoverStateFilter(6, 10),
             "line-color": ["get", "color"],
           }}
           filter={["!=", ["get", "kind"], "pedestrian"]}
+          on:click={onFeatureClick}
         >
           <Popup let:props>{props.name || "Untitled movement"}</Popup>
         </LineLayer>
         <LineLayer
+          id="jat-pedestrian"
           manageHoverState
           paint={{
             "line-width": hoverStateFilter(6, 8),
@@ -157,9 +242,14 @@
             "line-dasharray": [3, 2],
           }}
           filter={["==", ["get", "kind"], "pedestrian"]}
+          on:click={onFeatureClick}
         >
           <Popup let:props>{props.name || "Untitled movement"}</Popup>
         </LineLayer>
+      </GeoJSON>
+
+      <GeoJSON data={hoverGj}>
+        <LineLayer paint={{ "line-width": 15, "line-color": "yellow" }} />
       </GeoJSON>
 
       <GeoreferenceLayer {map} />
