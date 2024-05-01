@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Feature, Position } from "geojson";
+  import type { Feature, Position, FeatureCollection } from "geojson";
   import Form from "./Form.svelte";
   import { DefaultButton, SecondaryButton, WarningButton } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
@@ -8,17 +8,42 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { state } from "../data";
+  import { state, type CriticalIssue } from "../data";
 
   let map: Map;
 
   let editing: number | null = null;
+  let hoveringSidebar: number | null = null;
+
+  $: hoverGj = getHoverData($state.criticalIssues, editing, hoveringSidebar);
+
+  function getHoverData(
+    list: CriticalIssue[],
+    editing: number | null,
+    hoveringSidebar: number | null,
+  ): FeatureCollection {
+    let idx = editing ?? hoveringSidebar;
+    let gj: FeatureCollection = {
+      type: "FeatureCollection" as const,
+      features: [],
+    };
+    if (idx != null) {
+      gj.features.push(pointFeature(list[idx].point));
+    }
+    return gj;
+  }
 
   function select(idx: number) {
     editing = idx;
+    hoveringSidebar = null;
   }
 
   function onMapClick(e: MapMouseEvent) {
+    // Deselect someting
+    if (editing != null) {
+      editing = null;
+      return;
+    }
     $state.criticalIssues = [
       ...$state.criticalIssues,
       {
@@ -32,6 +57,7 @@
       },
     ];
     editing = $state.criticalIssues.length - 1;
+    hoveringSidebar = null;
   }
 
   // TODO Wait for loaded
@@ -76,7 +102,20 @@
       });
     }
   }
+
+  function labelIssue(issue: CriticalIssue): string {
+    return `${issue.criticalIssue || "Unknown critical"}: ${issue.locationName || "???"}`;
+  }
+
+  function onKeyDown(e: KeyboardEvent) {
+    if (editing != null && e.key == "Escape") {
+      e.stopPropagation();
+      editing = null;
+    }
+  }
 </script>
+
+<svelte:window on:keydown={onKeyDown} />
 
 <div style="display: flex; height: 600px">
   <div style="width: 30%; overflow-y: scroll; padding: 10px">
@@ -85,26 +124,32 @@
       <BlueskyKey />
       <GeoreferenceControls />
 
-      <p>Click the map to add a pin, or click a pin to fill out data</p>
+      <p>
+        Click the map to add a critical, or select a critical to fill out data
+      </p>
 
       <ol>
-        {#each $state.criticalIssues as issue}
+        {#each $state.criticalIssues as issue, idx}
           <li>
-            Critical issue: type={issue.criticalIssue}, stage={issue.stage}, at {issue.locationName}
+            <!-- svelte-ignore a11y-invalid-attribute -->
+            <a
+              href="#"
+              on:click={() => select(idx)}
+              on:mouseenter={() => (hoveringSidebar = idx)}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              {labelIssue(issue)}
+            </a>
           </li>
         {/each}
       </ol>
     {:else}
-      <p>Editing {editing}</p>
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
       <WarningButton on:click={deleteCritical}>Delete</WarningButton>
       <Form idx={editing} />
     {/if}
   </div>
   <div style="position: relative; width: 70%;">
-    {#if editing != null}
-      <div class="block-map" />
-    {/if}
     <MapLibreMap bind:map>
       {#each $state.criticalIssues as issue, idx}
         <Marker
@@ -117,13 +162,11 @@
         </Marker>
       {/each}
 
-      {#if editing != null}
-        <GeoJSON data={pointFeature($state.criticalIssues[editing].point)}>
-          <CircleLayer
-            paint={{ "circle-radius": 20, "circle-color": "yellow" }}
-          />
-        </GeoJSON>
-      {/if}
+      <GeoJSON data={hoverGj}>
+        <CircleLayer
+          paint={{ "circle-radius": 30, "circle-color": "yellow" }}
+        />
+      </GeoJSON>
 
       <GeoreferenceLayer {map} />
     </MapLibreMap>
@@ -131,16 +174,6 @@
 </div>
 
 <style>
-  .block-map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 999;
-  }
-
   .dot {
     width: 30px;
     height: 30px;
@@ -148,13 +181,15 @@
     display: inline-block;
 
     color: white;
-    background-color: red;
+    background-color: black;
+    border: 3px solid white;
     text-align: center;
-    vertical-align: baseline;
+    /* TODO Weird way to vertically align */
+    line-height: 250%;
   }
 
   .dot:hover {
-    border: 3px solid black;
+    border: 6px solid white;
     cursor: pointer;
   }
 </style>

@@ -100,7 +100,7 @@ interface PolicyConflict {
   notes: "";
 }
 
-interface CriticalIssue {
+export interface CriticalIssue {
   id: string;
   // TODO
   criticalIssue:
