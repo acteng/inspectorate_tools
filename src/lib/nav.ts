@@ -30,7 +30,6 @@ let pages: [string, string][] = [
   ["/route_check", "Route check tool"],
   ["/route_check/summary", "Summary of Scheme"],
   ["/route_check/policy_check", "Policy Check"],
-  ["/route_check/policy_conflict_log", "Policy Conflict Log"],
   ["/route_check/safety_check", "Safety Check"],
   [
     "/route_check/safety_check/sa01",

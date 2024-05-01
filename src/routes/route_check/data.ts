@@ -88,13 +88,12 @@ export interface Scorecard {
   proposedScoreNotes: string[];
 }
 
-interface PolicyConflict {
+export interface PolicyConflict {
   id: string;
   // TODO
   conflict: "1" | "2" | "3" | "4" | "5" | "6" | "";
   stage: "Existing" | "Design" | "";
-  // TODO GJ point type?
-  point: string;
+  point: Position;
   locationName: string;
   resolved: "Yes" | "No" | "";
   notes: "";
@@ -148,7 +147,11 @@ export interface Movement {
 function validate(state: State) {
   // Could more thoroughly check for validity, but the format won't change
   // much after initial development calms down
-  if (!state.jat) {
+  if (
+    !state.jat ||
+    (state.policyConflictLog.length > 0 &&
+      typeof state.policyConflictLog[0] == "string")
+  ) {
     throw new Error("File format appears outdated");
   }
 }

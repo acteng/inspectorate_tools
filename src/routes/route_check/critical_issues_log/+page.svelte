@@ -1,40 +1,57 @@
 <script lang="ts">
   import type { Feature, Position, FeatureCollection } from "geojson";
-  import Form from "./Form.svelte";
-  import { DefaultButton, SecondaryButton, WarningButton } from "govuk-svelte";
+  import CriticalForm from "./CriticalForm.svelte";
+  import ConflictForm from "./ConflictForm.svelte";
+  import {
+    DefaultButton,
+    SecondaryButton,
+    WarningButton,
+    Radio,
+  } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
   import { bbox } from "$lib/map";
   import { BlueskyKey, MapLibreMap } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { state, type CriticalIssue } from "../data";
+  import {
+    state,
+    type State,
+    type CriticalIssue,
+    type PolicyConflict,
+  } from "../data";
 
   let map: Map;
 
-  let editing: number | null = null;
-  let hoveringSidebar: number | null = null;
+  type Kind = "critical" | "conflict";
+  type ID = { kind: Kind; idx: number };
 
-  $: hoverGj = getHoverData($state.criticalIssues, editing, hoveringSidebar);
+  let newKind: Kind = "critical";
+  let editing: ID | null = null;
+  let hoveringSidebar: ID | null = null;
+
+  $: hoverGj = getHoverData($state, editing, hoveringSidebar);
 
   function getHoverData(
-    list: CriticalIssue[],
-    editing: number | null,
-    hoveringSidebar: number | null,
+    state: State,
+    editing: ID | null,
+    hoveringSidebar: ID | null,
   ): FeatureCollection {
-    let idx = editing ?? hoveringSidebar;
     let gj: FeatureCollection = {
       type: "FeatureCollection" as const,
       features: [],
     };
-    if (idx != null) {
-      gj.features.push(pointFeature(list[idx].point));
+    let id = editing ?? hoveringSidebar;
+    if (id != null) {
+      let list =
+        id.kind == "critical" ? state.criticalIssues : state.policyConflictLog;
+      gj.features.push(pointFeature(list[id.idx].point));
     }
     return gj;
   }
 
-  function select(idx: number) {
-    editing = idx;
+  function select(id: ID) {
+    editing = id;
     hoveringSidebar = null;
   }
 
@@ -45,19 +62,35 @@
       return;
     }
 
-    $state.criticalIssues = [
-      ...$state.criticalIssues,
-      {
-        id: "TODO",
-        criticalIssue: "",
-        stage: "",
-        point: e.lngLat.toArray(),
-        locationName: "",
-        resolved: "",
-        notes: "",
-      },
-    ];
-    editing = $state.criticalIssues.length - 1;
+    if (newKind == "critical") {
+      $state.criticalIssues = [
+        ...$state.criticalIssues,
+        {
+          id: "TODO",
+          criticalIssue: "",
+          stage: "",
+          point: e.lngLat.toArray(),
+          locationName: "",
+          resolved: "",
+          notes: "",
+        },
+      ];
+      editing = { kind: "critical", idx: $state.criticalIssues.length - 1 };
+    } else {
+      $state.policyConflictLog = [
+        ...$state.policyConflictLog,
+        {
+          id: "TODO",
+          conflict: "",
+          stage: "",
+          point: e.lngLat.toArray(),
+          locationName: "",
+          resolved: "",
+          notes: "",
+        },
+      ];
+      editing = { kind: "conflict", idx: $state.policyConflictLog.length - 1 };
+    }
     hoveringSidebar = null;
   }
 
@@ -70,13 +103,18 @@
     map.off("click", onMapClick);
   });
 
-  function deleteCritical() {
+  function deleteItem() {
     // TODO Modal
     if (!window.confirm("Delete this entry?")) {
       return;
     }
-    $state.criticalIssues.splice(editing!, 1);
-    $state.criticalIssues = $state.criticalIssues;
+    if (editing!.kind == "critical") {
+      $state.criticalIssues.splice(editing!.idx, 1);
+      $state.criticalIssues = $state.criticalIssues;
+    } else {
+      $state.policyConflictLog.splice(editing!.idx, 1);
+      $state.policyConflictLog = $state.policyConflictLog;
+    }
     editing = null;
   }
 
@@ -92,11 +130,14 @@
   }
 
   function zoom(animate: boolean) {
-    if ($state.criticalIssues.length > 0) {
-      let gj = {
-        type: "FeatureCollection" as const,
-        features: $state.criticalIssues.map((i) => pointFeature(i.point)),
-      };
+    let gj = {
+      type: "FeatureCollection" as const,
+      features: [
+        ...$state.criticalIssues.map((i) => pointFeature(i.point)),
+        ...$state.policyConflictLog.map((i) => pointFeature(i.point)),
+      ],
+    };
+    if (gj.features.length > 0) {
       map.fitBounds(bbox(gj), {
         padding: 20,
         animate: true,
@@ -104,8 +145,13 @@
     }
   }
 
+  // TODO Be consistent with terminology
   function labelIssue(issue: CriticalIssue): string {
     return `${issue.criticalIssue || "Unknown critical"}: ${issue.locationName || "???"}`;
+  }
+
+  function labelConflict(conflict: PolicyConflict): string {
+    return `${conflict.conflict || "Unknown conflict"}: ${conflict.locationName || "???"}`;
   }
 
   function onKeyDown(e: KeyboardEvent) {
@@ -125,18 +171,28 @@
       <BlueskyKey />
       <GeoreferenceControls />
 
-      <p>
-        Click the map to add a critical, or select a critical to fill out data
-      </p>
+      <Radio
+        legend="Create new pins"
+        choices={[
+          ["critical", "Critical Issue"],
+          ["conflict", "Policy Conflict"],
+        ]}
+        inlineSmall
+        bind:value={newKind}
+      />
 
+      <p>Click the map to add a pin, or select a pin to fill out data</p>
+
+      <h3>Critical Issues</h3>
       <ol>
         {#each $state.criticalIssues as issue, idx}
           <li>
             <!-- svelte-ignore a11y-invalid-attribute -->
             <a
               href="#"
-              on:click={() => select(idx)}
-              on:mouseenter={() => (hoveringSidebar = idx)}
+              on:click={() => select({ kind: "critical", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "critical", idx })}
               on:mouseleave={() => (hoveringSidebar = null)}
             >
               {labelIssue(issue)}
@@ -144,10 +200,32 @@
           </li>
         {/each}
       </ol>
+
+      <h3>Policy Conflicts</h3>
+      <ol>
+        {#each $state.policyConflictLog as conflict, idx}
+          <li>
+            <!-- svelte-ignore a11y-invalid-attribute -->
+            <a
+              href="#"
+              on:click={() => select({ kind: "conflict", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "conflict", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              {labelConflict(conflict)}
+            </a>
+          </li>
+        {/each}
+      </ol>
     {:else}
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
-      <WarningButton on:click={deleteCritical}>Delete</WarningButton>
-      <Form idx={editing} />
+      <WarningButton on:click={deleteItem}>Delete</WarningButton>
+      {#if editing.kind == "critical"}
+        <CriticalForm idx={editing.idx} />
+      {:else}
+        <ConflictForm idx={editing.idx} />
+      {/if}
     {/if}
   </div>
   <div style="position: relative; width: 70%;">
@@ -156,10 +234,23 @@
         <Marker
           draggable
           bind:lngLat={issue.point}
-          on:click={() => select(idx)}
-          on:dragend={() => select(idx)}
+          on:click={() => select({ kind: "critical", idx })}
+          on:dragend={() => select({ kind: "critical", idx })}
         >
-          <span class="dot">C{issue.criticalIssue}</span>
+          <span class="dot" style:background="black">
+            C{issue.criticalIssue}
+          </span>
+        </Marker>
+      {/each}
+
+      {#each $state.policyConflictLog as conflict, idx}
+        <Marker
+          draggable
+          bind:lngLat={conflict.point}
+          on:click={() => select({ kind: "conflict", idx })}
+          on:dragend={() => select({ kind: "conflict", idx })}
+        >
+          <span class="dot" style:background="blue">P{conflict.conflict}</span>
         </Marker>
       {/each}
 
@@ -182,7 +273,6 @@
     display: inline-block;
 
     color: white;
-    background-color: black;
     border: 3px solid white;
     text-align: center;
     /* TODO Weird way to vertically align */

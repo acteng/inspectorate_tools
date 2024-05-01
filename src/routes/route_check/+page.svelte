@@ -15,9 +15,6 @@
 <ol>
   <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
   <li><a href="{base}/route_check/policy_check">Policy Check</a></li>
-  <li>
-    <a href="{base}/route_check/policy_conflict_log">Policy Conflict Log</a>
-  </li>
 
   <li><a href="{base}/route_check/safety_check">Safety Check</a></li>
   <li>
