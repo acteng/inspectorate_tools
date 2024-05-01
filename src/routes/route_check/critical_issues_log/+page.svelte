@@ -3,10 +3,10 @@
   import Form from "./Form.svelte";
   import { DefaultButton, SecondaryButton, WarningButton } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
-  import { bbox, DraggablePin } from "$lib/map";
+  import { bbox } from "$lib/map";
   import { BlueskyKey, MapLibreMap } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
-  import { GeoJSON, CircleLayer } from "svelte-maplibre";
+  import { Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state } from "../data";
 
@@ -107,18 +107,20 @@
     {/if}
     <MapLibreMap bind:map>
       {#each $state.criticalIssues as issue, idx}
-        <DraggablePin
-          {map}
-          bind:position={issue.point}
+        <Marker
+          draggable
+          bind:lngLat={issue.point}
           on:click={() => select(idx)}
-          on:dragEnd={() => select(idx)}
-        />
+          on:dragend={() => select(idx)}
+        >
+          <span class="dot">C{issue.criticalIssue}</span>
+        </Marker>
       {/each}
 
       {#if editing != null}
         <GeoJSON data={pointFeature($state.criticalIssues[editing].point)}>
           <CircleLayer
-            paint={{ "circle-radius": 10, "circle-color": "yellow" }}
+            paint={{ "circle-radius": 20, "circle-color": "yellow" }}
           />
         </GeoJSON>
       {/if}
@@ -137,5 +139,22 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.1);
     z-index: 999;
+  }
+
+  .dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+
+    color: white;
+    background-color: red;
+    text-align: center;
+    vertical-align: baseline;
+  }
+
+  .dot:hover {
+    border: 3px solid black;
+    cursor: pointer;
   }
 </style>

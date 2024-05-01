@@ -2,7 +2,6 @@ import turfBbox from "@turf/bbox";
 import type { GeoJSON } from "geojson";
 
 export { default as BlueskyKey } from "./BlueskyKey.svelte";
-export { default as DraggablePin } from "./DraggablePin.svelte";
 export { default as MapLibreMap } from "./MapLibreMap.svelte";
 export { default as Popup } from "./Popup.svelte";
 
