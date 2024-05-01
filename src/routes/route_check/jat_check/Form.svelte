@@ -10,11 +10,13 @@
 </script>
 
 <TextInput label="Name" bind:value={$state.jat.movements[idx].name} />
+
 <Select
   label="Kind"
   choices={kinds}
   bind:value={$state.jat.movements[idx].kind}
 />
+
 <Select
   label="Color"
   choices={colorChoices}

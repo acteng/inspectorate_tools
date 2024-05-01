@@ -31,13 +31,13 @@
   {:else}
     <li>
       <i>
-        Street Check (disabled, because of the Route Check Type set in Summary
+        Street Check (disabled, because of the Route Check Type set in Summary)
       </i>
     </li>
     <li>
       <i>
         Street Placemaking Check (disabled, because of the Route Check Type set
-        in Summary
+        in Summary)
       </i>
     </li>
   {/if}
