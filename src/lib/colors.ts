@@ -29,3 +29,5 @@ export let scoreToColor = {
   "2": colors.green,
   "N/A": colors.notApplicable,
 };
+
+export let policyConflictColor = "#0072ba";

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { colors, policyConflictColor } from "$lib/colors";
   import type { Feature, Position, FeatureCollection } from "geojson";
   import CriticalForm from "./CriticalForm.svelte";
   import ConflictForm from "./ConflictForm.svelte";
@@ -237,9 +238,13 @@
           on:click={() => select({ kind: "critical", idx })}
           on:dragend={() => select({ kind: "critical", idx })}
         >
-          <span class="dot" style:background="black">
-            C{issue.criticalIssue}
-          </span>
+          <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+            <polygon
+              points="20,0 0,40 40,40"
+              fill={colors.critical.background}
+            />
+            <text x="13" y="30" style:fill="white">{issue.criticalIssue}</text>
+          </svg>
         </Marker>
       {/each}
 
@@ -250,7 +255,9 @@
           on:click={() => select({ kind: "conflict", idx })}
           on:dragend={() => select({ kind: "conflict", idx })}
         >
-          <span class="dot" style:background="blue">P{conflict.conflict}</span>
+          <span class="dot" style:background={policyConflictColor}>
+            {conflict.conflict}
+          </span>
         </Marker>
       {/each}
 
@@ -278,9 +285,17 @@
     /* TODO Weird way to vertically align */
     line-height: 250%;
   }
-
   .dot:hover {
     border: 6px solid white;
+    cursor: pointer;
+  }
+
+  polygon {
+    stroke: white;
+    stroke-width: 3px;
+  }
+  polygon:hover {
+    stroke-width: 6px;
     cursor: pointer;
   }
 </style>
