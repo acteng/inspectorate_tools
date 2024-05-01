@@ -39,11 +39,12 @@
   }
 
   function onMapClick(e: MapMouseEvent) {
-    // Deselect someting
+    // Deselect something
     if (editing != null) {
       editing = null;
       return;
     }
+
     $state.criticalIssues = [
       ...$state.criticalIssues,
       {
