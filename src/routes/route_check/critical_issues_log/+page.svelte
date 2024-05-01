@@ -163,6 +163,8 @@
     if (editing != null && e.key == "Escape") {
       e.stopPropagation();
       editing = null;
+    } else if (editing != null && e.key == "Delete") {
+      deleteItem();
     }
   }
 </script>
