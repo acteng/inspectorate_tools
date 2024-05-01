@@ -11,9 +11,14 @@
     WarningButton,
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
-  import { bbox, MapLibreMap, BlueskyKey } from "$lib/map";
+  import { bbox, MapLibreMap, BlueskyKey, Popup } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
-  import { Marker, GeoJSON, LineLayer } from "svelte-maplibre";
+  import {
+    Marker,
+    GeoJSON,
+    LineLayer,
+    hoverStateFilter,
+  } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state, type Movement, type Position } from "../data";
   import Arrow from "./Arrow.svelte";
@@ -52,10 +57,12 @@
   function toGj(movements: Movement[]): FeatureCollection {
     return {
       type: "FeatureCollection",
-      features: movements.map((movement) => {
+      features: movements.map((movement, idx) => {
         return {
           type: "Feature",
+          id: idx,
           properties: {
+            name: movement.name,
             kind: movement.kind,
             color: colors[movement.color].background,
           },
@@ -133,20 +140,26 @@
       <GeoJSON data={toGj($state.jat.movements)}>
         <!-- TODO Two layers due to https://github.com/maplibre/maplibre-gl-js/issues/1235 -->
         <LineLayer
+          manageHoverState
           paint={{
-            "line-width": 6,
+            "line-width": hoverStateFilter(6, 10),
             "line-color": ["get", "color"],
           }}
           filter={["!=", ["get", "kind"], "pedestrian"]}
-        />
+        >
+          <Popup let:props>{props.name || "Untitled movement"}</Popup>
+        </LineLayer>
         <LineLayer
+          manageHoverState
           paint={{
-            "line-width": 6,
+            "line-width": hoverStateFilter(6, 8),
             "line-color": ["get", "color"],
             "line-dasharray": [3, 2],
           }}
           filter={["==", ["get", "kind"], "pedestrian"]}
-        />
+        >
+          <Popup let:props>{props.name || "Untitled movement"}</Popup>
+        </LineLayer>
       </GeoJSON>
 
       <GeoreferenceLayer {map} />
