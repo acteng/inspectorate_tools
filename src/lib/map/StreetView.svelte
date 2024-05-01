@@ -2,6 +2,7 @@
   import { Checkbox, Radio } from "govuk-svelte";
   import type { Map, MapMouseEvent } from "maplibre-gl";
   import { onDestroy } from "svelte";
+  import { streetviewUrl, bingUrl } from "./";
 
   export let map: Map;
 
@@ -26,19 +27,13 @@
   }
 
   function onClick(e: MapMouseEvent) {
-    let lon = e.lngLat.lng;
-    let lat = e.lngLat.lat;
-    if (source == "google") {
-      window.open(
-        `http://maps.google.com/maps?q=&layer=c&cbll=${lat},${lon}&cbp=11,0,0,0,0`,
-        "_blank",
-      );
-    } else if (source == "bing") {
-      window.open(
-        `https://www.bing.com/maps?cp=${lat}~${lon}&style=x`,
-        "_blank",
-      );
-    }
+    window.open(
+      source == "google"
+        ? streetviewUrl(e.lngLat.toArray())
+        : bingUrl(e.lngLat.toArray()),
+      "_blank",
+    );
+    enabled = false;
   }
 
   function onKeyDown(e: KeyboardEvent) {

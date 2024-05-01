@@ -10,3 +10,11 @@ export { default as StreetView } from "./StreetView.svelte";
 export function bbox(gj: GeoJSON): [number, number, number, number] {
   return turfBbox(gj) as [number, number, number, number];
 }
+
+export function streetviewUrl(point: [number, number]): string {
+  return `http://maps.google.com/maps?q=&layer=c&cbll=${point[1]},${point[0]}&cbp=11,0,0,0,0`;
+}
+
+export function bingUrl(point: [number, number]): string {
+  return `https://www.bing.com/maps?cp=${point[1]}~${point[0]}&style=x`;
+}

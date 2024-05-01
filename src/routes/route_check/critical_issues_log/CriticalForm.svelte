@@ -4,6 +4,7 @@
   import { YesNo, pairs } from "$lib";
   import { SecondaryButton, Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
+  import { streetviewUrl, bingUrl } from "$lib/map";
 
   export let idx: number;
 
@@ -119,6 +120,15 @@
     $state.criticalIssues[idx].locationName = locationHint;
   }
 </script>
+
+<div style="display: flex; justify-content: space-evenly">
+  <a href={streetviewUrl($state.criticalIssues[idx].point)} target="_blank">
+    Google StreetView
+  </a>
+  <a href={bingUrl($state.criticalIssues[idx].point)} target="_blank">
+    Bing Streetside
+  </a>
+</div>
 
 <Select
   label="Critical Issue"
