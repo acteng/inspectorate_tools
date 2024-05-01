@@ -11,7 +11,7 @@
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
   import { bbox } from "$lib/map";
-  import { BlueskyKey, MapLibreMap } from "$lib/map";
+  import { BlueskyKey, MapLibreMap, StreetView } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
@@ -30,6 +30,7 @@
   let newKind: Kind = "critical";
   let editing: ID | null = null;
   let hoveringSidebar: ID | null = null;
+  let streetviewOn = false;
 
   $: hoverGj = getHoverData($state, editing, hoveringSidebar);
 
@@ -57,6 +58,9 @@
   }
 
   function onMapClick(e: MapMouseEvent) {
+    if (streetviewOn) {
+      return;
+    }
     // Deselect something
     if (editing != null) {
       editing = null;
@@ -171,6 +175,9 @@
       <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
       <BlueskyKey />
       <GeoreferenceControls />
+      {#if map}
+        <StreetView {map} bind:enabled={streetviewOn} />
+      {/if}
 
       <Radio
         legend="Create new pins"

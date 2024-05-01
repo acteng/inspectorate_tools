@@ -4,6 +4,7 @@ import type { GeoJSON } from "geojson";
 export { default as BlueskyKey } from "./BlueskyKey.svelte";
 export { default as MapLibreMap } from "./MapLibreMap.svelte";
 export { default as Popup } from "./Popup.svelte";
+export { default as StreetView } from "./StreetView.svelte";
 
 // Suitable for passing to map.fitBounds. Work around https://github.com/Turfjs/turf/issues/1807.
 export function bbox(gj: GeoJSON): [number, number, number, number] {
