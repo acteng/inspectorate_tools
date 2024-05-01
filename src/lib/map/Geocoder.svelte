@@ -33,5 +33,6 @@
     position: absolute;
     top: 20px;
     left: 50px;
+    z-index: 1;
   }
 </style>
