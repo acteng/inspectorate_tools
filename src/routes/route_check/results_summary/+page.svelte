@@ -3,7 +3,7 @@
   import { TextArea } from "govuk-svelte";
   import { sum } from "$lib";
   import { state, type Scorecard } from "../data";
-  import { getResults } from "./results";
+  import { getResults, type ResultCategory } from "./results";
 
   let policyCheckComplete = $state.policyCheck.every(
     (x) => x.existing != "" && x.proposed != "",
@@ -29,6 +29,11 @@
       !scorecard.existingScores.includes("") &&
       !scorecard.proposedScores.includes("")
     );
+  }
+
+  function netDifference(x: ResultCategory): string {
+    let percent = Math.round(x.proposed.scorePercent - x.existing.scorePercent);
+    return `${percent}%`;
   }
 </script>
 
@@ -86,15 +91,15 @@
   <tr>
     <th><a href="{base}/route_check/safety_check">Safety Check</a></th>
     <td>{yesNo(safetyCheckComplete)}</td>
-    <td>TODO</td>
+    <td>{netDifference(results.safetyCheck)}</td>
     <td>TODO</td>
   </tr>
 
   <tr>
-    {#if $state.summary.checkType == "street"}
+    {#if results.streetCheck}
       <th><a href="{base}/route_check/street_check">Street Check</a></th>
       <td>{yesNo(isScorecardCompleted($state.streetCheck))}</td>
-      <td>TODO</td>
+      <td>{netDifference(results.streetCheck)}</td>
       <td>TODO</td>
     {:else}
       <th>Street Check</th>
@@ -105,14 +110,14 @@
   </tr>
 
   <tr>
-    {#if $state.summary.checkType == "street"}
+    {#if results.streetPlacemaking}
       <th>
         <a href="{base}/route_check/street_placemaking_check">
           Street Placemaking
         </a>
       </th>
       <td>{yesNo(isScorecardCompleted($state.streetPlacemakingCheck))}</td>
-      <td>TODO</td>
+      <td>{netDifference(results.streetPlacemaking)}</td>
       <td>TODO</td>
     {:else}
       <th>Street Placemaking</th>
@@ -123,10 +128,10 @@
   </tr>
 
   <tr>
-    {#if $state.summary.checkType == "path"}
+    {#if results.pathCheck}
       <th><a href="{base}/route_check/path_check">Path Check</a></th>
       <td>{yesNo(isScorecardCompleted($state.pathCheck))}</td>
-      <td>TODO</td>
+      <td>{netDifference(results.pathCheck)}</td>
       <td>TODO</td>
     {:else}
       <th>Path Check</th>
@@ -137,12 +142,12 @@
   </tr>
 
   <tr>
-    {#if $state.summary.checkType == "path"}
+    {#if results.pathPlacemaking}
       <th>
         <a href="{base}/route_check/path_placemaking_check">Path Placemaking</a>
       </th>
       <td>{yesNo(isScorecardCompleted($state.pathPlacemakingCheck))}</td>
-      <td>TODO</td>
+      <td>{netDifference(results.pathPlacemaking)}</td>
       <td>TODO</td>
     {:else}
       <th>Path Placemaking</th>
@@ -178,12 +183,12 @@
     <th>Net difference</th>
   </tr>
 
-  {#each results.categories as x}
+  {#each results.levelOfService as x}
     <tr>
       <th>{x.category}</th>
       <td>{Math.round(x.existing.scorePercent)}%</td>
       <td>{Math.round(x.proposed.scorePercent)}%</td>
-      <td>{Math.round(x.proposed.scorePercent - x.existing.scorePercent)}%</td>
+      <td>{netDifference(x)}</td>
     </tr>
   {/each}
 
@@ -198,12 +203,7 @@
     <th>Overall ATE Score</th>
     <td>{Math.round(results.overall.existing.scorePercent)}%</td>
     <td>{Math.round(results.overall.proposed.scorePercent)}%</td>
-    <td>
-      {Math.round(
-        results.overall.proposed.scorePercent -
-          results.overall.existing.scorePercent,
-      )}%
-    </td>
+    <td>{netDifference(results.overall)}</td>
   </tr>
 </table>
 

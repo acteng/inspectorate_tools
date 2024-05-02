@@ -2,11 +2,19 @@ import { sum } from "$lib";
 import { type Score, type State, type Scorecard, numericScore } from "../data";
 
 export interface Results {
-  categories: ResultCategory[];
+  // For the Overview table
+  safetyCheck: ResultCategory;
+  streetCheck: ResultCategory | null;
+  streetPlacemaking: ResultCategory | null;
+  pathCheck: ResultCategory | null;
+  pathPlacemaking: ResultCategory | null;
+
+  // For the Level of Service table
+  levelOfService: ResultCategory[];
   overall: ResultCategory;
 }
 
-interface ResultCategory {
+export interface ResultCategory {
   category: string;
   existing: Result;
   proposed: Result;
@@ -21,38 +29,75 @@ interface Result {
 }
 
 export function getResults(state: State): Results {
-  let categories = [getResultCategory("Safety", state.safetyCheck, null)];
-  if (state.summary.checkType == "street") {
-    categories.push(
+  let isStreet = state.summary.checkType == "street";
+  let isPath = state.summary.checkType == "path";
+  // Note this has special scoring
+  let safetyCheck = getResultCategory("Safety", state.safetyCheck, null);
+
+  let levelOfService = [safetyCheck];
+  if (isStreet) {
+    levelOfService.push(
       getResultCategory("Accessibility", state.streetCheck, [0, 6]),
     );
-    categories.push(getResultCategory("Comfort", state.streetCheck, [7, 9]));
-    categories.push(
+    levelOfService.push(
+      getResultCategory("Comfort", state.streetCheck, [7, 9]),
+    );
+    levelOfService.push(
       getResultCategory("Directness", state.streetCheck, [10, 15]),
     );
-    categories.push(
+    levelOfService.push(
       getResultCategory("Attractiveness", state.streetCheck, [16, 21]),
     );
-    categories.push(getResultCategory("Cohesion", state.streetCheck, [22, 25]));
-  } else if (state.summary.checkType == "path") {
-    categories.push(
+    levelOfService.push(
+      getResultCategory("Cohesion", state.streetCheck, [22, 25]),
+    );
+  } else if (isPath) {
+    levelOfService.push(
       getResultCategory("Accessibility", state.pathCheck, [0, 4]),
     );
-    categories.push(getResultCategory("Comfort", state.pathCheck, [5, 15]));
-    categories.push(getResultCategory("Directness", state.pathCheck, [16, 19]));
-    categories.push(
+    levelOfService.push(getResultCategory("Comfort", state.pathCheck, [5, 15]));
+    levelOfService.push(
+      getResultCategory("Directness", state.pathCheck, [16, 19]),
+    );
+    levelOfService.push(
       getResultCategory("Attractiveness", state.pathCheck, [20, 24]),
     );
-    categories.push(getResultCategory("Cohesion", state.pathCheck, [25, 29]));
+    levelOfService.push(
+      getResultCategory("Cohesion", state.pathCheck, [25, 29]),
+    );
   }
 
   let overall = {
     category: "overall",
-    existing: sumResults(categories.map((x) => x.existing)),
-    proposed: sumResults(categories.map((x) => x.proposed)),
+    existing: sumResults(levelOfService.map((x) => x.existing)),
+    proposed: sumResults(levelOfService.map((x) => x.proposed)),
   };
 
-  return { categories, overall };
+  return {
+    safetyCheck,
+    // Safety is included in the Street and Path Check results
+    streetCheck: isStreet
+      ? sumResultCategories(
+          safetyCheck,
+          getResultCategory("", state.streetCheck, null),
+        )
+      : null,
+    streetPlacemaking: isStreet
+      ? getResultCategory("", state.streetPlacemakingCheck, null)
+      : null,
+    pathCheck: isPath
+      ? sumResultCategories(
+          safetyCheck,
+          getResultCategory("", state.pathCheck, null),
+        )
+      : null,
+    pathPlacemaking: isPath
+      ? getResultCategory("", state.pathPlacemakingCheck, null)
+      : null,
+
+    levelOfService,
+    overall,
+  };
 }
 
 function getResultCategory(
@@ -100,4 +145,16 @@ function sumResults(results: Result[]): Result {
   let score = sum(results.map((x) => x.score));
   let scorePercent = (score / totalPossibleScore) * 100;
   return { numberMetrics, totalPossibleScore, score, scorePercent };
+}
+
+// The category is left blank
+function sumResultCategories(
+  x1: ResultCategory,
+  x2: ResultCategory,
+): ResultCategory {
+  return {
+    category: "",
+    existing: sumResults([x1.existing, x2.existing]),
+    proposed: sumResults([x1.proposed, x2.proposed]),
+  };
 }
