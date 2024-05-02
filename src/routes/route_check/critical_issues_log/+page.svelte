@@ -171,7 +171,7 @@
 
 <svelte:window on:keydown={onKeyDown} />
 
-<div style="display: flex; height: 600px">
+<div style="display: flex; height: 80vh">
   <div style="width: 30%; overflow-y: scroll; padding: 10px">
     {#if editing == null}
       <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
