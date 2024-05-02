@@ -3,13 +3,7 @@
   import bearing from "@turf/bearing";
   import { colors } from "$lib/colors";
   import type { FeatureCollection, Feature } from "geojson";
-  import {
-    TextInput,
-    Select,
-    SecondaryButton,
-    WarningButton,
-    DefaultButton,
-  } from "govuk-svelte";
+  import { SecondaryButton, WarningButton, DefaultButton } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
   import { bbox, StreetView, MapLibreMap, BlueskyKey, Popup } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
@@ -60,7 +54,7 @@
     }
 
     // TODO Clicks on a LineLayer or Marker should stop the event from reaching here. Until then, use this hack
-    for (let f of map.queryRenderedFeatures(e.point, {
+    for (let _ of map.queryRenderedFeatures(e.point, {
       layers: ["jat-cycling", "jat-pedestrian"],
     })) {
       return;

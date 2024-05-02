@@ -45,9 +45,4 @@
     border: 1px solid black;
     padding: 4px;
   }
-
-  th {
-    background: #006853;
-    color: white;
-  }
 </style>
