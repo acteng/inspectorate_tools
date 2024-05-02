@@ -44,7 +44,7 @@
     "govuk-frontend": "^5.2.0",
     "govuk-svelte": "github:acteng/govuk-svelte",
     "maplibre-draw-polygon": "github:dabreegster/maplibre-draw-polygon",
-    "svelte-maplibre": "github:dabreegster/svelte-maplibre#stop_prop",
+    "svelte-maplibre": "^0.9.1",
     "uuid": "^9.0.1"
   }
 }
