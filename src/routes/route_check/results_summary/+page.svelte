@@ -2,8 +2,8 @@
   import { base } from "$app/paths";
   import { TextArea } from "govuk-svelte";
   import { sum } from "$lib";
-  import { state, type Scorecard, numericScore } from "../data";
-  import LevelOfServiceRow from "./LevelOfServiceRow.svelte";
+  import { state, type Scorecard } from "../data";
+  import { getResults } from "./results";
 
   let policyCheckComplete = $state.policyCheck.every(
     (x) => x.existing != "" && x.proposed != "",
@@ -18,6 +18,8 @@
     (x) => x.resolved != "Yes",
   ).length;
 
+  let results = getResults($state);
+
   function yesNo(x: boolean): string {
     return x ? "Yes" : "No";
   }
@@ -27,20 +29,6 @@
       !scorecard.existingScores.includes("") &&
       !scorecard.proposedScores.includes("")
     );
-  }
-
-  // TODO Move to a .ts file, calculate a summaty, then make some views on it
-  // Returns [existing, proposed] total score as a percentage
-  function scoreDifference(scorecard: Scorecard): [number, number] {
-    let numberMetrics = scorecard.existingScores.filter(
-      (x) => x != "N/A",
-    ).length;
-    // For safety, the scores are multiplied by 3 (or 6
-    let maxScore = numberMetrics * 6;
-
-    let existingScore = 3 * sum(scorecard.existingScores.map(numericScore));
-    let proposedScore = 3 * sum(scorecard.proposedScores.map(numericScore));
-    return [(existingScore / maxScore) * 100, (proposedScore / maxScore) * 100];
   }
 </script>
 
@@ -98,12 +86,7 @@
   <tr>
     <th><a href="{base}/route_check/safety_check">Safety Check</a></th>
     <td>{yesNo(safetyCheckComplete)}</td>
-    <td>
-      {Math.round(
-        scoreDifference($state.safetyCheck)[1] -
-          scoreDifference($state.safetyCheck)[0],
-      )}%
-    </td>
+    <td>TODO</td>
     <td>TODO</td>
   </tr>
 
@@ -179,7 +162,13 @@
   </tr>
 </table>
 
-<h2>Street Check Level of Service</h2>
+{#if $state.summary.checkType == "street"}
+  <h2>Street Check Level of Service</h2>
+{:else if $state.summary.checkType == "path"}
+  <h2>Path Check Level of Service</h2>
+{:else}
+  <h2>Select Street Check or Path Check to calculate the table below</h2>
+{/if}
 
 <table>
   <tr>
@@ -189,32 +178,33 @@
     <th>Net difference</th>
   </tr>
 
-  <LevelOfServiceRow category="Safety" scorecard={$state.safetyCheck} />
-  <LevelOfServiceRow
-    category="Accessibility"
-    scorecard={$state.streetCheck}
-    range={[0, 6]}
-  />
-  <LevelOfServiceRow
-    category="Comfort"
-    scorecard={$state.streetCheck}
-    range={[7, 9]}
-  />
-  <LevelOfServiceRow
-    category="Directness"
-    scorecard={$state.streetCheck}
-    range={[10, 15]}
-  />
-  <LevelOfServiceRow
-    category="Attractiveness"
-    scorecard={$state.streetCheck}
-    range={[16, 21]}
-  />
-  <LevelOfServiceRow
-    category="Cohesion"
-    scorecard={$state.streetCheck}
-    range={[22, 25]}
-  />
+  {#each results.categories as x}
+    <tr>
+      <th>{x.category}</th>
+      <td>{Math.round(x.existing.scorePercent)}%</td>
+      <td>{Math.round(x.proposed.scorePercent)}%</td>
+      <td>{Math.round(x.proposed.scorePercent - x.existing.scorePercent)}%</td>
+    </tr>
+  {/each}
+
+  <tr>
+    <th>&nbsp;</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <th>Overall ATE Score</th>
+    <td>{Math.round(results.overall.existing.scorePercent)}%</td>
+    <td>{Math.round(results.overall.proposed.scorePercent)}%</td>
+    <td>
+      {Math.round(
+        results.overall.proposed.scorePercent -
+          results.overall.existing.scorePercent,
+      )}%
+    </td>
+  </tr>
 </table>
 
 <!-- TODO Hint: "Use the space to provide overall feedback for the proposed scheme" -->

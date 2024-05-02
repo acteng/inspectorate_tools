@@ -64,7 +64,7 @@ export interface State {
 }
 
 // Note "C"ritical and "N/A" are only used in some cases
-type Score = "" | "C" | "0" | "1" | "2" | "N/A";
+export type Score = "" | "C" | "0" | "1" | "2" | "N/A";
 
 export function numericScore(score: Score): number {
   return {
