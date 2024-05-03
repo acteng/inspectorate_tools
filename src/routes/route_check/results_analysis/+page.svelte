@@ -90,17 +90,58 @@
 </table>
 
 <h2>4. Street Check Results</h2>
+{#if $state.summary.checkType == "street"}
+  <h3>Street Level of Service</h3>
+  <LevelOfServiceTable
+    categories={results.levelOfService}
+    overall={results.overall}
+    overallLabel="Overall Street Level of Service"
+  />
 
-<h3>Street Level of Service</h3>
-<LevelOfServiceTable
-  categories={results.levelOfService}
-  overall={results.overall}
-  overallLabel="Overall Street Level of Service"
-/>
+  <h3>Street Level of Service by Transport Mode</h3>
+  <LevelOfServiceTable
+    categories={results.byMode}
+    overall={results.overall}
+    overallLabel="Overall Street Level of Service"
+  />
 
-<h3>Street Level of Service by Transport Mode</h3>
+  <h3>Street Placemaking</h3>
+  <LevelOfServiceTable
+    categories={results.placemakingCategories}
+    overall={results.placemakingOverall}
+    overallLabel="Overall Street Placemaking Score"
+  />
+{:else}
+  <p>This isn't a Street Check</p>
+{/if}
 
-<h3>Street Placemaking</h3>
+<h2>5. Path Check Results</h2>
+{#if $state.summary.checkType == "path"}
+  <h3>Path Level of Service</h3>
+  <LevelOfServiceTable
+    categories={results.levelOfService}
+    overall={results.overall}
+    overallLabel="Overall Path Level of Service"
+  />
+
+  <h3>Path Level of Service by Transport Mode</h3>
+  <LevelOfServiceTable
+    categories={results.byMode}
+    overall={results.overall}
+    overallLabel="Overall Path Level of Service"
+  />
+
+  <h3>Path Placemaking</h3>
+  <LevelOfServiceTable
+    categories={results.placemakingCategories}
+    overall={results.placemakingOverall}
+    overallLabel="Overall Path Placemaking Score"
+  />
+{:else}
+  <p>This isn't a Path Check</p>
+{/if}
+
+<h2>6. Junction Assessment Tool Check</h2>
 
 <style>
   td {

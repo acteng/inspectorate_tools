@@ -2,16 +2,25 @@ import { sum } from "$lib";
 import { type Score, type State, type Scorecard, numericScore } from "./data";
 
 export interface Results {
-  // For the Overview table
+  // For the summary's Overview table
   safetyCheck: ResultCategory;
   streetCheck: ResultCategory | null;
+  // TODO Now redundant with placemakingOverall
   streetPlacemaking: ResultCategory | null;
   pathCheck: ResultCategory | null;
   pathPlacemaking: ResultCategory | null;
 
-  // For the Level of Service table
+  // For the summary's Level of Service table
   levelOfService: ResultCategory[];
   overall: ResultCategory;
+
+  // For the further analysis breakdown
+  // TODO Consider restructuring -- consistently have the category breakdowns,
+  // then the overall summary?
+  placemakingCategories: ResultCategory[];
+  placemakingOverall: ResultCategory;
+
+  byMode: ResultCategory[];
 }
 
 export interface ResultCategory {
@@ -73,6 +82,60 @@ export function getResults(state: State): Results {
     proposed: sumResults(levelOfService.map((x) => x.proposed)),
   };
 
+  let placemakingCategories = [];
+  if (isStreet) {
+    placemakingCategories.push(
+      getResultCategory(
+        "Social activity",
+        state.streetPlacemakingCheck,
+        [0, 2],
+      ),
+    );
+    placemakingCategories.push(
+      getResultCategory(
+        "Personal security",
+        state.streetPlacemakingCheck,
+        [3, 5],
+      ),
+    );
+    placemakingCategories.push(
+      getResultCategory(
+        "Character and legibility",
+        state.streetPlacemakingCheck,
+        [6, 15],
+      ),
+    );
+    placemakingCategories.push(
+      getResultCategory("Environment", state.streetPlacemakingCheck, [16, 25]),
+    );
+  } else if (isPath) {
+    placemakingCategories.push(
+      getResultCategory("Social activity", state.pathPlacemakingCheck, [0, 2]),
+      getResultCategory(
+        "Personal security",
+        state.pathPlacemakingCheck,
+        [3, 5],
+      ),
+      getResultCategory(
+        "Character and legibility",
+        state.pathPlacemakingCheck,
+        [6, 9],
+      ),
+      getResultCategory("Environment", state.pathPlacemakingCheck, [10, 18]),
+    );
+  }
+  let placemakingOverall = {
+    category: "overall",
+    existing: sumResults(placemakingCategories.map((x) => x.existing)),
+    proposed: sumResults(placemakingCategories.map((x) => x.proposed)),
+  };
+
+  // TODO
+  let byMode: ResultCategory[] = [];
+  if (isStreet) {
+  } else if (isPath) {
+  }
+
   return {
     safetyCheck,
     // Safety is included in the Street and Path Check results
@@ -97,6 +160,11 @@ export function getResults(state: State): Results {
 
     levelOfService,
     overall,
+
+    placemakingCategories,
+    placemakingOverall,
+
+    byMode,
   };
 }
 
@@ -124,6 +192,7 @@ function getResult(
 
   let numberMetrics = scores.slice(idx1, idx2).filter((x) => x != "N/A").length;
 
+  // TODO Personal security is 2x?
   let multiplier = category == "Safety" ? 3 : 1;
   let totalPossibleScore = numberMetrics * 2 * multiplier;
 
