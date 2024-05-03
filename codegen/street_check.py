@@ -2,6 +2,9 @@ import csv
 from common import *
 
 optionals = ["18", "20", "22", "23", "26", "29", "31", "32", "33"]
+walkingIndices = []
+wheelingIndices = []
+cyclingIndices = []
 
 with open("inputs/street-check.csv") as inputFile:
     idx = 1
@@ -48,4 +51,16 @@ with open("inputs/street-check.csv") as inputFile:
             f.write("""  {}\n""".format(html(row["Description"])))
             f.write("""  <p>Mode: {}</p>\n""".format(row["Mode"]))
             f.write("""</Question>\n""")
-            idx += 1
+
+        if "Walking" in row["Mode"]:
+            walkingIndices.append(idx - 1)
+        if "Wheeling" in row["Mode"]:
+            wheelingIndices.append(idx - 1)
+        if "Cycling" in row["Mode"]:
+            cyclingIndices.append(idx - 1)
+        idx += 1
+
+with open("../src/lib/route_check_results/street.ts", "w") as f:
+    f.write("export let walkingIndices = {}\n".format(walkingIndices))
+    f.write("export let wheelingIndices = {}\n".format(wheelingIndices))
+    f.write("export let cyclingIndices = {}\n".format(cyclingIndices))
