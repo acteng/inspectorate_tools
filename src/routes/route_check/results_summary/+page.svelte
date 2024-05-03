@@ -3,7 +3,7 @@
   import { TextArea } from "govuk-svelte";
   import { sum } from "$lib";
   import { state, type Scorecard } from "../data";
-  import { getResults, type ResultCategory } from "./results";
+  import { getResults, type ResultCategory } from "../results";
 
   let policyCheckComplete = $state.policyCheck.every(
     (x) => x.existing != "" && x.proposed != "",

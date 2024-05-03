@@ -1,5 +1,5 @@
 import { sum } from "$lib";
-import { type Score, type State, type Scorecard, numericScore } from "../data";
+import { type Score, type State, type Scorecard, numericScore } from "./data";
 
 export interface Results {
   // For the Overview table

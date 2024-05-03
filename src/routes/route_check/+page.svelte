@@ -68,6 +68,8 @@
   <li>
     <a href="{base}/route_check/results_summary">Results Summary</a>
   </li>
-  <li>Results Further Analysis</li>
+  <li>
+    <a href="{base}/route_check/results_analysis">Results Further Analysis</a>
+  </li>
   <li><a href="{base}/route_check/results_export">Results Export</a></li>
 </ol>
