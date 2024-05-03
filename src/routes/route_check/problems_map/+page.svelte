@@ -191,7 +191,9 @@
         bind:value={newKind}
       />
 
-      <p>Click the map to add a problem, or select a problem to fill out data</p>
+      <p>
+        Click the map to add a problem, or select a problem to fill out data
+      </p>
 
       <h3>Critical Issues</h3>
       <ol>
