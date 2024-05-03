@@ -2,9 +2,11 @@ import csv
 from common import *
 
 optionals = ["01", "02", "05", "07", "10", "12", "13"]
-walkingIndices = []
-wheelingIndices = []
-cyclingIndices = []
+modeIndices = {
+    "walking": [],
+    "wheeling": [],
+    "cycling": [],
+}
 
 with open("inputs/safety-check.csv") as inputFile:
     idx = 1
@@ -54,14 +56,12 @@ with open("inputs/safety-check.csv") as inputFile:
             f.write("""</Question>\n""")
 
         if "Walking" in row["Mode"]:
-            walkingIndices.append(idx - 1)
+            modeIndices["walking"].append(idx - 1)
         if "Wheeling" in row["Mode"]:
-            wheelingIndices.append(idx - 1)
+            modeIndices["wheeling"].append(idx - 1)
         if "Cycling" in row["Mode"]:
-            cyclingIndices.append(idx - 1)
+            modeIndices["cycling"].append(idx - 1)
         idx += 1
 
 with open("../src/lib/route_check_results/safety.ts", "w") as f:
-    f.write("export let walkingIndices = {}\n".format(walkingIndices))
-    f.write("export let wheelingIndices = {}\n".format(wheelingIndices))
-    f.write("export let cyclingIndices = {}\n".format(cyclingIndices))
+    f.write("export let safetyModeIndices = {}\n".format(modeIndices))

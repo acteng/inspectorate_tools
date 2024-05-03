@@ -18,11 +18,12 @@ optionals = [
     "45",
     "46",
 ]
-walkingIndices = []
-wheelingIndices = []
-cyclingIndices = []
-horseIndices = []
-
+modeIndices = {
+    "walking": [],
+    "wheeling": [],
+    "cycling": [],
+    "horse": [],
+}
 
 with open("inputs/path-check.csv") as inputFile:
     idx = 1
@@ -71,17 +72,14 @@ with open("inputs/path-check.csv") as inputFile:
             f.write("""</Question>\n""")
 
         if "Walking" in row["Mode"] or row["Mode"] == "All Active Modes":
-            walkingIndices.append(idx - 1)
+            modeIndices["walking"].append(idx - 1)
         if "Wheeling" in row["Mode"] or row["Mode"] == "All Active Modes":
-            wheelingIndices.append(idx - 1)
+            modeIndices["wheeling"].append(idx - 1)
         if "Cycling" in row["Mode"] or row["Mode"] == "All Active Modes":
-            cyclingIndices.append(idx - 1)
+            modeIndices["cycling"].append(idx - 1)
         if "Horse Riding" in row["Mode"] or row["Mode"] == "All Active Modes":
-            horseIndices.append(idx - 1)
+            modeIndices["horse"].append(idx - 1)
         idx += 1
 
 with open("../src/lib/route_check_results/path.ts", "w") as f:
-    f.write("export let walkingIndices = {}\n".format(walkingIndices))
-    f.write("export let wheelingIndices = {}\n".format(wheelingIndices))
-    f.write("export let cyclingIndices = {}\n".format(cyclingIndices))
-    f.write("export let horseIndices = {}\n".format(horseIndices))
+    f.write("export let pathModeIndices = {}\n".format(modeIndices))

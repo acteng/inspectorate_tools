@@ -1,5 +1,8 @@
 import { sum } from "$lib";
 import { type Score, type State, type Scorecard, numericScore } from "./data";
+import { pathModeIndices } from "$lib/route_check_results/path";
+import { streetModeIndices } from "$lib/route_check_results/street";
+import { safetyModeIndices } from "$lib/route_check_results/safety";
 
 export interface Results {
   // For the summary's Overview table
@@ -130,10 +133,11 @@ export function getResults(state: State): Results {
     proposed: sumResults(placemakingCategories.map((x) => x.proposed)),
   };
 
-  // TODO
   let byMode: ResultCategory[] = [];
   if (isStreet) {
+    byMode = getByMode(state.safetyCheck, state.streetCheck, streetModeIndices);
   } else if (isPath) {
+    byMode = getByMode(state.safetyCheck, state.pathCheck, pathModeIndices);
   }
 
   return {
@@ -181,6 +185,7 @@ function getResultCategory(
 }
 
 // Range is inclusive
+// TODO Remove this indirection now
 function getResult(
   scores: Score[],
   category: string,
@@ -189,14 +194,18 @@ function getResult(
   let actualRange = range || [0, scores.length - 1];
   let idx1 = actualRange[0];
   let idx2 = actualRange[1] + 1;
+  return getResultFromScores(scores.slice(idx1, idx2), category);
+}
 
-  let numberMetrics = scores.slice(idx1, idx2).filter((x) => x != "N/A").length;
+// The list of Scores is already filtered
+function getResultFromScores(scores: Score[], category: string): Result {
+  let numberMetrics = scores.filter((x) => x != "N/A").length;
 
   // TODO Personal security is 2x?
   let multiplier = category == "Safety" ? 3 : 1;
   let totalPossibleScore = numberMetrics * 2 * multiplier;
 
-  let score = multiplier * sum(scores.slice(idx1, idx2).map(numericScore));
+  let score = multiplier * sum(scores.map(numericScore));
   let scorePercent = (score / totalPossibleScore) * 100;
 
   return {
@@ -231,4 +240,48 @@ function sumResultCategories(
 export function netDifference(x: ResultCategory): string {
   let percent = Math.round(x.proposed.scorePercent - x.existing.scorePercent);
   return `${percent}%`;
+}
+
+// TODO Partly duplicate code, because of both the different indexing and due to combining two sources per mode?
+function getByMode(
+  safetyScores: Scorecard,
+  losScores: Scorecard,
+  losIndicesPerMode: { [mode: string]: number[] },
+): ResultCategory[] {
+  let results = [];
+  for (let [mode, losIndices] of Object.entries(losIndicesPerMode)) {
+    // TODO No safety questions for horse -- double check the logic is still fine
+    // @ts-expect-error The key types aren't precise
+    let safetyIndices = safetyModeIndices[mode] || [];
+    let safety = {
+      category: "Safety",
+      existing: getResultFromScores(
+        subset(safetyScores.existingScores, safetyIndices),
+        "Safety",
+      ),
+      proposed: getResultFromScores(
+        subset(safetyScores.proposedScores, safetyIndices),
+        "Safety",
+      ),
+    };
+    let los = {
+      category: "",
+      existing: getResultFromScores(
+        subset(losScores.existingScores, losIndices),
+        "",
+      ),
+      proposed: getResultFromScores(
+        subset(losScores.proposedScores, losIndices),
+        "",
+      ),
+    };
+    let combined = sumResultCategories(safety, los);
+    combined.category = mode;
+    results.push(combined);
+  }
+  return results;
+}
+
+function subset<T>(list: T[], indices: number[]): T[] {
+  return indices.map((i) => list[i]);
 }
