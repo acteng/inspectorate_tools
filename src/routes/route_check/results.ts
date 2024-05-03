@@ -158,3 +158,8 @@ function sumResultCategories(
     proposed: sumResults([x1.proposed, x2.proposed]),
   };
 }
+
+export function netDifference(x: ResultCategory): string {
+  let percent = Math.round(x.proposed.scorePercent - x.existing.scorePercent);
+  return `${percent}%`;
+}

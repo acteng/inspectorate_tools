@@ -3,7 +3,8 @@
   import { TextArea } from "govuk-svelte";
   import { sum } from "$lib";
   import { state, type Scorecard } from "../data";
-  import { getResults, type ResultCategory } from "../results";
+  import { getResults, netDifference } from "../results";
+  import LevelOfServiceTable from "./LevelOfServiceTable.svelte";
 
   let policyCheckComplete = $state.policyCheck.every(
     (x) => x.existing != "" && x.proposed != "",
@@ -29,11 +30,6 @@
       !scorecard.existingScores.includes("") &&
       !scorecard.proposedScores.includes("")
     );
-  }
-
-  function netDifference(x: ResultCategory): string {
-    let percent = Math.round(x.proposed.scorePercent - x.existing.scorePercent);
-    return `${percent}%`;
   }
 </script>
 
@@ -175,37 +171,11 @@
   <h2>Select Street Check or Path Check to calculate the table below</h2>
 {/if}
 
-<table>
-  <tr>
-    <th>Categories</th>
-    <th>Existing Layout</th>
-    <th>Proposed Layout</th>
-    <th>Net difference</th>
-  </tr>
-
-  {#each results.levelOfService as x}
-    <tr>
-      <th>{x.category}</th>
-      <td>{Math.round(x.existing.scorePercent)}%</td>
-      <td>{Math.round(x.proposed.scorePercent)}%</td>
-      <td>{netDifference(x)}</td>
-    </tr>
-  {/each}
-
-  <tr>
-    <th>&nbsp;</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <tr>
-    <th>Overall ATE Score</th>
-    <td>{Math.round(results.overall.existing.scorePercent)}%</td>
-    <td>{Math.round(results.overall.proposed.scorePercent)}%</td>
-    <td>{netDifference(results.overall)}</td>
-  </tr>
-</table>
+<LevelOfServiceTable
+  categories={results.levelOfService}
+  overall={results.overall}
+  overallLabel="Overall ATE Score"
+/>
 
 <!-- TODO Hint: "Use the space to provide overall feedback for the proposed scheme" -->
 <TextArea label="Review statement" bind:value={$state.resultsReviewStatement} />

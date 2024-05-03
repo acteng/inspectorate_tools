@@ -1,6 +1,9 @@
 <script lang="ts">
   import { state } from "../data";
   import { getResults } from "../results";
+  import LevelOfServiceTable from "../results_summary/LevelOfServiceTable.svelte";
+
+  let results = getResults($state);
 
   let policyConflicts = {
     existing: $state.policyConflictLog.filter((x) => x.stage == "Existing")
@@ -87,6 +90,17 @@
 </table>
 
 <h2>4. Street Check Results</h2>
+
+<h3>Street Level of Service</h3>
+<LevelOfServiceTable
+  categories={results.levelOfService}
+  overall={results.overall}
+  overallLabel="Overall Street Level of Service"
+/>
+
+<h3>Street Level of Service by Transport Mode</h3>
+
+<h3>Street Placemaking</h3>
 
 <style>
   td {
