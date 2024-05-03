@@ -56,7 +56,7 @@ let pages: [string, string][] = [
     "Walking/Wheeling Surface and Maintenance Defects",
   ],
   ["/route_check/safety_check/sa16", "Guard Railing"],
-  ["/route_check/critical_issues_log", "Critical Issue Log"],
+  ["/route_check/problems_map", "Problems Mapping Page"],
   ["/route_check/street_check", "Street Check"],
   ["/route_check/street_check/st17", "Gradient"],
   [

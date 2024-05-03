@@ -49,7 +49,7 @@
 
   <tr>
     <th>
-      <a href="{base}/route_check/critical_issues_log">Policy Conflicts</a>
+      <a href="{base}/route_check/problems_map">Policy Conflicts</a>
     </th>
     <td>{yesNo(policyCheckComplete)}</td>
     <td>{incompletePolicyConflicts}</td>
@@ -66,7 +66,7 @@
 
   <tr>
     <th>
-      <a href="{base}/route_check/critical_issues_log">Critical Issues</a>
+      <a href="{base}/route_check/problems_map">Critical Issues</a>
     </th>
     <td>{yesNo(safetyCheckComplete)}</td>
     <td>{incompleteCriticalIssues}</td>

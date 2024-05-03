@@ -182,7 +182,7 @@
       {/if}
 
       <Radio
-        legend="Create new pins"
+        legend="Create new problems"
         choices={[
           ["critical", "Critical Issue"],
           ["conflict", "Policy Conflict"],
@@ -191,7 +191,7 @@
         bind:value={newKind}
       />
 
-      <p>Click the map to add a pin, or select a pin to fill out data</p>
+      <p>Click the map to add a problem, or select a problem to fill out data</p>
 
       <h3>Critical Issues</h3>
       <ol>
