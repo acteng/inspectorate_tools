@@ -5,7 +5,12 @@
 
   export let idx: number;
 
-  let kinds = pairs(["cycling-straight", "cycling-turn", "pedestrian"]);
+  let kinds = pairs([
+    "cycling-straight",
+    "cycling-left-turn",
+    "cycling-right-turn",
+    "pedestrian",
+  ]);
   let colorChoices = pairs(["green", "amber", "red", "critical"]);
 </script>
 

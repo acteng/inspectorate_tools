@@ -13,10 +13,10 @@
     LineLayer,
     hoverStateFilter,
     type LayerClickInfo,
+    SymbolLayer,
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state, type Movement, type Position, type State } from "../data";
-  import Arrow from "./Arrow.svelte";
   import Form from "./Form.svelte";
 
   let map: Map;
@@ -96,11 +96,13 @@
     map.off("click", onMapClick);
   });
 
-  // TODO Arrows will have to be an extra symbol at endpoints. Or... just generate a polygon.
   function toGj(movements: Movement[]): FeatureCollection {
     return {
       type: "FeatureCollection",
-      features: movements.map((movement, idx) => lineFeature(movement, idx)),
+      features: movements.flatMap((movement, idx) => [
+        lineFeature(movement, idx),
+        arrowFeature(movement, movements.length + idx),
+      ]),
     };
   }
 
@@ -116,6 +118,22 @@
       geometry: {
         type: "LineString",
         coordinates: [movement.point1, movement.point2],
+      },
+    };
+  }
+
+  function arrowFeature(movement: Movement, id: number): Feature {
+    return {
+      type: "Feature",
+      id,
+      properties: {
+        kind: movement.kind,
+        color: colors[movement.color].background,
+        angle: bearing(movement.point1, movement.point2),
+      },
+      geometry: {
+        type: "Point",
+        coordinates: movement.point2,
       },
     };
   }
@@ -201,17 +219,11 @@
           bind:lngLat={movement.point2}
           on:dragend={() => select(idx)}
         >
-          {#if movement.kind == "pedestrian"}
-            <span
-              class="dot"
-              style={`background-color: ${colors[movement.color].background}`}
-            />
-          {:else}
-            <Arrow
-              color={colors[movement.color].background}
-              angle={bearing(movement.point1, movement.point2)}
-            />
-          {/if}
+          <span
+            class="dot"
+            style:background-color={colors[movement.color].background}
+            style:opacity={movement.kind == "pedestrian" ? "100%" : "0%"}
+          />
         </Marker>
       {/each}
 
@@ -242,6 +254,38 @@
         >
           <Popup let:props>{props.name || "Untitled movement"}</Popup>
         </LineLayer>
+
+        <SymbolLayer
+          id="jat-arrow"
+          filter={[
+            "all",
+            ["has", "angle"],
+            ["!=", ["get", "kind"], "pedestrian"],
+          ]}
+          paint={{
+            "text-color": ["get", "color"],
+            "text-halo-color": "black",
+            "text-halo-width": 1.0,
+          }}
+          layout={{
+            "text-field": "⬆",
+            "text-overlap": "always",
+            "text-rotate": [
+              "+",
+              ["get", "angle"],
+              [
+                "match",
+                ["get", "kind"],
+                "cycling-left-turn",
+                -90,
+                "cycling-right-turn",
+                90,
+                0,
+              ],
+            ],
+            "text-size": 70,
+          }}
+        />
       </GeoJSON>
 
       <GeoJSON data={hoverGj}>

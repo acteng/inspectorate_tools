@@ -135,10 +135,16 @@ export interface CriticalIssue {
   notes: "";
 }
 
+export type MovementKind =
+  | "cycling-straight"
+  | "cycling-left-turn"
+  | "cycling-right-turn"
+  | "pedestrian";
+
 export interface Movement {
   point1: Position;
   point2: Position;
-  kind: "cycling-straight" | "cycling-turn" | "pedestrian";
+  kind: MovementKind;
   color: "green" | "amber" | "red" | "critical";
   name: string;
   notes: string;
