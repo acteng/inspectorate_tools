@@ -145,7 +145,7 @@ export interface Movement {
   point1: Position;
   point2: Position;
   kind: MovementKind;
-  color: "green" | "amber" | "red" | "critical";
+  score: "0" | "1" | "2" | "X";
   name: string;
   notes: string;
 }

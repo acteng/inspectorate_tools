@@ -27,6 +27,13 @@
 
   $: hoverGj = getHoverData($state, editing, hoveringSidebar);
 
+  let scoreColors = {
+    0: colors.red.background,
+    1: colors.amber.background,
+    2: colors.green.background,
+    X: colors.critical.background,
+  };
+
   function getHoverData(
     state: State,
     editing: number | null,
@@ -74,7 +81,7 @@
         point2: destination(e.lngLat.toArray(), 0.01, 0).geometry
           .coordinates as Position,
         kind: "cycling-straight",
-        color: "green",
+        score: "X",
         name: "",
         notes: "",
       },
@@ -97,13 +104,19 @@
   });
 
   function toGj(movements: Movement[]): FeatureCollection {
-    return {
-      type: "FeatureCollection",
-      features: movements.flatMap((movement, idx) => [
-        lineFeature(movement, idx),
-        arrowFeature(movement, movements.length + idx),
-      ]),
+    let gj = {
+      type: "FeatureCollection" as const,
+      features: movements.map((movement, idx) => lineFeature(movement, idx)),
     };
+    for (let m of movements) {
+      gj.features.push(arrowFeature(m, gj.features.length));
+      // Arrows at both ends
+      if (m.kind == "pedestrian") {
+        let opposite = { ...m, point1: m.point2, point2: m.point1 };
+        gj.features.push(arrowFeature(opposite, gj.features.length));
+      }
+    }
+    return gj;
   }
 
   function lineFeature(movement: Movement, id: number): Feature {
@@ -113,7 +126,7 @@
       properties: {
         name: movement.name,
         kind: movement.kind,
-        color: colors[movement.color].background,
+        color: scoreColors[movement.score],
       },
       geometry: {
         type: "LineString",
@@ -128,7 +141,7 @@
       id,
       properties: {
         kind: movement.kind,
-        color: colors[movement.color].background,
+        color: scoreColors[movement.score],
         angle: bearing(movement.point1, movement.point2),
       },
       geometry: {
@@ -208,21 +221,24 @@
           draggable
           bind:lngLat={movement.point1}
           on:dragend={() => select(idx)}
+          on:click={() => select(idx)}
         >
           <span
             class="dot"
-            style={`background-color: ${colors[movement.color].background}`}
+            style={`background-color: ${scoreColors[movement.score]}`}
+            style:opacity={movement.kind == "pedestrian" ? "0%" : "100%"}
           />
         </Marker>
         <Marker
           draggable
           bind:lngLat={movement.point2}
           on:dragend={() => select(idx)}
+          on:click={() => select(idx)}
         >
           <span
             class="dot"
-            style:background-color={colors[movement.color].background}
-            style:opacity={movement.kind == "pedestrian" ? "100%" : "0%"}
+            style:background-color={scoreColors[movement.score]}
+            style:opacity="0%"
           />
         </Marker>
       {/each}
@@ -257,15 +273,11 @@
 
         <SymbolLayer
           id="jat-arrow"
-          filter={[
-            "all",
-            ["has", "angle"],
-            ["!=", ["get", "kind"], "pedestrian"],
-          ]}
+          filter={["has", "angle"]}
           paint={{
             "text-color": ["get", "color"],
-            "text-halo-color": "black",
-            "text-halo-width": 1.0,
+            "text-halo-color": "white",
+            "text-halo-width": 3.0,
           }}
           layout={{
             "text-field": "⬆",

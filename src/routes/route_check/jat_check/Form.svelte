@@ -1,6 +1,6 @@
 <script lang="ts">
   import { pairs } from "$lib";
-  import { TextInput, Select } from "govuk-svelte";
+  import { TextInput, Select, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let idx: number;
@@ -11,19 +11,26 @@
     "cycling-right-turn",
     "pedestrian",
   ]);
-  let colorChoices = pairs(["green", "amber", "red", "critical"]);
+  let scoreChoices: [string, string][] = [
+    ["X", "X - black"],
+    ["0", "0 - red"],
+    ["1", "1 - amber"],
+    ["2", "2 - green"],
+  ];
 </script>
 
 <TextInput label="Name" bind:value={$state.jat.movements[idx].name} />
 
 <Select
-  label="Kind"
+  label="Movement"
   choices={kinds}
   bind:value={$state.jat.movements[idx].kind}
 />
 
 <Select
-  label="Color"
-  choices={colorChoices}
-  bind:value={$state.jat.movements[idx].color}
+  label="Score"
+  choices={scoreChoices}
+  bind:value={$state.jat.movements[idx].score}
 />
+
+<TextArea label="Comments" bind:value={$state.jat.movements[idx].notes} />
