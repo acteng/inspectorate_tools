@@ -74,6 +74,8 @@ export function encode(state: State): [string, any][] {
       isPath,
       placemakingCodes,
     ),
+
+    ...jat(state, results),
   ];
 }
 
@@ -189,92 +191,47 @@ function categoryBreakdowns(
   return out;
 }
 
+function jat(state: State, results: Results): [string, any][] {
+  let out: [string, any][] = [];
+  let numJunctions = 12;
+
+  for (let i = 1; i <= numJunctions; i++) {
+    for (let [mode, code] of [
+      ["walkingWheeling", "WW"],
+      ["cycling", "Cy"],
+      ["total", "To"],
+    ] as const) {
+      out.push([
+        `J${i}-LOS-${code}-E`,
+        i <= results.jat.length ? results.jat[i - 1][mode].existing : "",
+      ]);
+      out.push([
+        `J${i}-LOS-${code}-D`,
+        i <= results.jat.length ? results.jat[i - 1][mode].proposed : "",
+      ]);
+    }
+  }
+
+  for (let i = 1; i <= numJunctions; i++) {
+    if (i <= results.jat.length) {
+      // TODO Maybe need -E and -D variants here
+      // TODO Use movement types as a proxy for arms
+      out.push([
+        `J${i}-Arms`,
+        state.jat[i - 1].proposed.movements.filter(
+          (m) => m.kind == "pedestrian",
+        ).length,
+      ]);
+    } else {
+      out.push([`J${i}-Arms`, 0]);
+    }
+  }
+
+  return out;
+}
+
 /*
 [
-["J1-LOS-WW-E", ],
-["J1-LOS-WW-D", ],
-["J1-LOS-Cy-E", ],
-["J1-LOS-Cy-D", ],
-["J1-LOS-To-E", ],
-["J1-LOS-To-D", ],
-["J2-LOS-WW-E", ],
-["J2-LOS-WW-D", ],
-["J2-LOS-Cy-E", ],
-["J2-LOS-Cy-D", ],
-["J2-LOS-To-E", ],
-["J2-LOS-To-D", ],
-["J3-LOS-WW-E", ],
-["J3-LOS-WW-D", ],
-["J3-LOS-Cy-E", ],
-["J3-LOS-Cy-D", ],
-["J3-LOS-To-E", ],
-["J3-LOS-To-D", ],
-["J4-LOS-WW-E", ],
-["J4-LOS-WW-D", ],
-["J4-LOS-Cy-E", ],
-["J4-LOS-Cy-D", ],
-["J4-LOS-To-E", ],
-["J4-LOS-To-D", ],
-["J5-LOS-WW-E", ],
-["J5-LOS-WW-D", ],
-["J5-LOS-Cy-E", ],
-["J5-LOS-Cy-D", ],
-["J5-LOS-To-E", ],
-["J5-LOS-To-D", ],
-["J6-LOS-WW-E", ],
-["J6-LOS-WW-D", ],
-["J6-LOS-Cy-E", ],
-["J6-LOS-Cy-D", ],
-["J6-LOS-To-E", ],
-["J6-LOS-To-D", ],
-["J7-LOS-WW-E", ],
-["J7-LOS-WW-D", ],
-["J7-LOS-Cy-E", ],
-["J7-LOS-Cy-D", ],
-["J7-LOS-To-E", ],
-["J7-LOS-To-D", ],
-["J8-LOS-WW-E", ],
-["J8-LOS-WW-D", ],
-["J8-LOS-Cy-E", ],
-["J8-LOS-Cy-D", ],
-["J8-LOS-To-E", ],
-["J8-LOS-To-D", ],
-["J9-LOS-WW-E", ],
-["J9-LOS-WW-D", ],
-["J9-LOS-Cy-E", ],
-["J9-LOS-Cy-D", ],
-["J9-LOS-To-E", ],
-["J9-LOS-To-D", ],
-["J10-LOS-WW-E", ],
-["J10-LOS-WW-D", ],
-["J10-LOS-Cy-E", ],
-["J10-LOS-Cy-D", ],
-["J10-LOS-To-E", ],
-["J10-LOS-To-D", ],
-["J11-LOS-WW-E", ],
-["J11-LOS-WW-D", ],
-["J11-LOS-Cy-E", ],
-["J11-LOS-Cy-D", ],
-["J11-LOS-To-E", ],
-["J11-LOS-To-D", ],
-["J12-LOS-WW-E", ],
-["J12-LOS-WW-D", ],
-["J12-LOS-Cy-E", ],
-["J12-LOS-Cy-D", ],
-["J12-LOS-To-E", ],
-["J12-LOS-To-D", ],
-["J1-Arms", ],
-["J2-Arms", ],
-["J3-Arms", ],
-["J4-Arms", ],
-["J5-Arms", ],
-["J6-Arms", ],
-["J7-Arms", ],
-["J8-Arms", ],
-["J9-Arms", ],
-["J10-Arms", ],
-["J11-Arms", ],
-["J12-Arms", ],
 ["01PCRef", ],
 ["01PCTyp", ],
 ["01PCSta", ],

@@ -24,6 +24,8 @@ export interface Results {
   placemakingOverall: ResultCategory;
 
   byMode: ResultCategory[];
+
+  jat: JunctionResult[];
 }
 
 export interface ResultCategory {
@@ -38,6 +40,18 @@ interface Result {
 
   score: number;
   scorePercent: number;
+}
+
+export interface JunctionResult {
+  walkingWheeling: JunctionResultScores;
+  cycling: JunctionResultScores;
+  total: JunctionResultScores;
+}
+
+// "50%" or "Not completed"
+interface JunctionResultScores {
+  existing: string;
+  proposed: string;
 }
 
 export function getResults(state: State): Results {
@@ -140,6 +154,8 @@ export function getResults(state: State): Results {
     byMode = getByMode(state.safetyCheck, state.pathCheck, pathModeIndices);
   }
 
+  let jat = getJatResults(state);
+
   return {
     safetyCheck,
     // Safety is included in the Street and Path Check results
@@ -169,6 +185,8 @@ export function getResults(state: State): Results {
     placemakingOverall,
 
     byMode,
+
+    jat,
   };
 }
 
@@ -284,4 +302,57 @@ function getByMode(
 
 function subset<T>(list: T[], indices: number[]): T[] {
   return indices.map((i) => list[i]);
+}
+
+function getJatResults(state: State): JunctionResult[] {
+  // TODO Duplicate code
+  let scoreLookup = {
+    0: 0,
+    1: 1,
+    2: 2,
+    X: 0,
+  };
+
+  let out = [];
+  for (let junction of state.jat) {
+    let result = {
+      walkingWheeling: {
+        existing: "",
+        proposed: "",
+      },
+      cycling: {
+        existing: "",
+        proposed: "",
+      },
+      total: {
+        existing: "",
+        proposed: "",
+      },
+    };
+    for (let stage of ["existing", "proposed"] as const) {
+      let scoreWW = 0;
+      let totalPossibleWW = 0;
+      let scoreCycling = 0;
+      let totalPossibleCycling = 0;
+      let scoreBoth = 0;
+      let totalPossibleBoth = 0;
+      for (let m of junction[stage].movements) {
+        if (m.kind == "pedestrian") {
+          scoreWW += scoreLookup[m.score];
+          totalPossibleWW += 2;
+        } else {
+          scoreCycling += scoreLookup[m.score];
+          totalPossibleCycling += 2;
+        }
+        scoreBoth += scoreLookup[m.score];
+        totalPossibleBoth += 2;
+      }
+      // TODO Handle 'not completed's
+      result.walkingWheeling[stage] = `${(scoreWW / totalPossibleWW) * 100}%`;
+      result.cycling[stage] = `${(scoreCycling / totalPossibleCycling) * 100}%`;
+      result.total[stage] = `${(scoreBoth / totalPossibleBoth) * 100}%`;
+    }
+    out.push(result);
+  }
+  return out;
 }
