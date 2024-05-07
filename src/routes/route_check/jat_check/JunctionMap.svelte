@@ -21,7 +21,13 @@
     SymbolLayer,
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { state, type Movement, type Position, type State } from "../data";
+  import {
+    state,
+    type Movement,
+    type Position,
+    type State,
+    type JunctionAssessment,
+  } from "../data";
   import Form from "./Form.svelte";
 
   export let junctionIdx: number;
@@ -189,6 +195,21 @@
       deleteMovement();
     }
   }
+
+  function totalScore(ja: JunctionAssessment): number {
+    let score = 0;
+    let totalPossible = 0;
+    for (let m of ja.movements) {
+      score += {
+        0: 0,
+        1: 1,
+        2: 2,
+        X: 0,
+      }[m.score];
+      totalPossible += 2;
+    }
+    return (score / totalPossible) * 100;
+  }
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -222,6 +243,8 @@
           </li>
         {/each}
       </ol>
+
+      <p>Total JAT score: {totalScore($state.jat[junctionIdx][stage])}%</p>
     {:else}
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
       <WarningButton on:click={deleteMovement}>Delete</WarningButton>
