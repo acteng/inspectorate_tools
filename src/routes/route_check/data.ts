@@ -56,9 +56,7 @@ export interface State {
 
   pathPlacemakingCheck: Scorecard;
 
-  jat: {
-    movements: Movement[];
-  };
+  jat: Junction[];
 
   resultsReviewStatement: string;
 }
@@ -135,6 +133,17 @@ export interface CriticalIssue {
   notes: "";
 }
 
+export interface Junction {
+  name: string;
+  existing: JunctionAssessment;
+  proposed: JunctionAssessment;
+}
+
+export interface JunctionAssessment {
+  movements: Movement[];
+  notes: string;
+}
+
 export type MovementKind =
   | "cycling-straight"
   | "cycling-left-turn"
@@ -194,9 +203,7 @@ function emptyState(): State {
     streetPlacemakingCheck: emptyScorecard(26),
     pathCheck: emptyScorecard(30),
     pathPlacemakingCheck: emptyScorecard(19),
-    jat: {
-      movements: [],
-    },
+    jat: [],
     resultsReviewStatement: "",
   };
 }

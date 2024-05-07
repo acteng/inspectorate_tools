@@ -3,6 +3,8 @@
   import { TextInput, Select, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
+  export let junctionIdx: number;
+  export let stage: "existing" | "proposed";
   export let idx: number;
 
   let kinds = pairs([
@@ -19,18 +21,24 @@
   ];
 </script>
 
-<TextInput label="Name" bind:value={$state.jat.movements[idx].name} />
+<TextInput
+  label="Name"
+  bind:value={$state.jat[junctionIdx][stage].movements[idx].name}
+/>
 
 <Select
   label="Movement"
   choices={kinds}
-  bind:value={$state.jat.movements[idx].kind}
+  bind:value={$state.jat[junctionIdx][stage].movements[idx].kind}
 />
 
 <Select
   label="Score"
   choices={scoreChoices}
-  bind:value={$state.jat.movements[idx].score}
+  bind:value={$state.jat[junctionIdx][stage].movements[idx].score}
 />
 
-<TextArea label="Comments" bind:value={$state.jat.movements[idx].notes} />
+<TextArea
+  label="Comments"
+  bind:value={$state.jat[junctionIdx][stage].movements[idx].notes}
+/>
