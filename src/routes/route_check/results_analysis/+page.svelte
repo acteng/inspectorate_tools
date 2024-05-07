@@ -143,6 +143,40 @@
 
 <h2>6. Junction Assessment Tool Check</h2>
 
+<table>
+  <tr>
+    <th>Junction Name</th>
+    <th>Modes</th>
+    <th>Existing Layout</th>
+    <th>Proposed Layout</th>
+    <th>Net difference</th>
+  </tr>
+
+  {#each results.jat as result, i}
+          <tr>
+                  <th rowspan="3">{$state.jat[i].name || "Untitled junction"}</th>
+                  <th>Walking & Wheeling</th>
+                  <td>{result.walkingWheeling.existing}</td>
+                  <td>{result.walkingWheeling.proposed}</td>
+                  <td>TODO net difference</td>
+          </tr>
+          <tr>
+                  <th>Cycling</th>
+                  <td>{result.cycling.existing}</td>
+                  <td>{result.cycling.proposed}</td>
+                  <td>TODO net difference</td>
+          </tr>
+          <tr>
+                  <th><b>All</b></th>
+                  <td>{result.total.existing}</td>
+                  <td>{result.total.proposed}</td>
+                  <td>TODO net difference</td>
+          </tr>
+  {/each}
+</table>
+
+TODO: overall JAT
+
 <style>
   td {
     border: 1px solid black;
