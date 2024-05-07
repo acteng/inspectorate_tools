@@ -153,25 +153,25 @@
   </tr>
 
   {#each results.jat as result, i}
-          <tr>
-                  <th rowspan="3">{$state.jat[i].name || "Untitled junction"}</th>
-                  <th>Walking & Wheeling</th>
-                  <td>{result.walkingWheeling.existing}</td>
-                  <td>{result.walkingWheeling.proposed}</td>
-                  <td>TODO net difference</td>
-          </tr>
-          <tr>
-                  <th>Cycling</th>
-                  <td>{result.cycling.existing}</td>
-                  <td>{result.cycling.proposed}</td>
-                  <td>TODO net difference</td>
-          </tr>
-          <tr>
-                  <th><b>All</b></th>
-                  <td>{result.total.existing}</td>
-                  <td>{result.total.proposed}</td>
-                  <td>TODO net difference</td>
-          </tr>
+    <tr>
+      <th rowspan="3">{$state.jat[i].name || "Untitled junction"}</th>
+      <th>Walking & Wheeling</th>
+      <td>{result.walkingWheeling.existing}</td>
+      <td>{result.walkingWheeling.proposed}</td>
+      <td>TODO net difference</td>
+    </tr>
+    <tr>
+      <th>Cycling</th>
+      <td>{result.cycling.existing}</td>
+      <td>{result.cycling.proposed}</td>
+      <td>TODO net difference</td>
+    </tr>
+    <tr>
+      <th><b>All</b></th>
+      <td>{result.total.existing}</td>
+      <td>{result.total.proposed}</td>
+      <td>TODO net difference</td>
+    </tr>
   {/each}
 </table>
 
