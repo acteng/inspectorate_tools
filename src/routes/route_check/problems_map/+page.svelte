@@ -199,16 +199,14 @@
       <ol>
         {#each $state.criticalIssues as issue, idx}
           <li>
-            <!-- svelte-ignore a11y-invalid-attribute -->
-            <a
-              href="#"
+            <SecondaryButton
               on:click={() => select({ kind: "critical", idx })}
               on:mouseenter={() =>
                 (hoveringSidebar = { kind: "critical", idx })}
               on:mouseleave={() => (hoveringSidebar = null)}
             >
               {labelIssue(issue)}
-            </a>
+            </SecondaryButton>
           </li>
         {/each}
       </ol>
@@ -217,16 +215,14 @@
       <ol>
         {#each $state.policyConflictLog as conflict, idx}
           <li>
-            <!-- svelte-ignore a11y-invalid-attribute -->
-            <a
-              href="#"
+            <SecondaryButton
               on:click={() => select({ kind: "conflict", idx })}
               on:mouseenter={() =>
                 (hoveringSidebar = { kind: "conflict", idx })}
               on:mouseleave={() => (hoveringSidebar = null)}
             >
               {labelConflict(conflict)}
-            </a>
+            </SecondaryButton>
           </li>
         {/each}
       </ol>

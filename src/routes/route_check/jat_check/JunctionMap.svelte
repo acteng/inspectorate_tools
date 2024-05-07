@@ -212,15 +212,13 @@
       <ol>
         {#each $state.jat[junctionIdx][stage].movements as movement, idx}
           <li>
-            <!-- svelte-ignore a11y-invalid-attribute -->
-            <a
-              href="#"
+            <SecondaryButton
               on:click={() => select(idx)}
               on:mouseenter={() => (hoveringSidebar = idx)}
               on:mouseleave={() => (hoveringSidebar = null)}
             >
               {movement.name || "Unnamed movement"}
-            </a>
+            </SecondaryButton>
           </li>
         {/each}
       </ol>

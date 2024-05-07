@@ -143,8 +143,11 @@
       {#if file == $currentFile}
         <li>{file}</li>
       {:else}
-        <!-- svelte-ignore a11y-invalid-attribute -->
-        <li><a href="#" on:click={() => openFile(file)}>{file}</a></li>
+        <li>
+          <SecondaryButton on:click={() => openFile(file)}>
+            {file}
+          </SecondaryButton>
+        </li>
       {/if}
     {/each}
   </ul>
