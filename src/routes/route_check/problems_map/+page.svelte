@@ -145,7 +145,7 @@
     if (gj.features.length > 0) {
       map.fitBounds(bbox(gj), {
         padding: 20,
-        animate: true,
+        animate,
       });
     }
   }

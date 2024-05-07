@@ -1,6 +1,4 @@
 <script lang="ts">
-  import type { Position } from "geojson";
-  import { onMount } from "svelte";
   import { YesNo, pairs } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";

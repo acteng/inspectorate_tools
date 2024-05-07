@@ -1,7 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import { TextArea } from "govuk-svelte";
-  import { sum } from "$lib";
   import { state, type Scorecard } from "../data";
   import { getResults, netDifference } from "../results";
   import LevelOfServiceTable from "./LevelOfServiceTable.svelte";
