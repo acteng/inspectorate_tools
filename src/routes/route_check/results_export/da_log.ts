@@ -1,7 +1,29 @@
 import { type State, type Scorecard } from "../data";
+import { type Results, type ResultCategory, getResults } from "../results";
 
 // Generates an enormous Excel row that encodes the full state, for use in other tools.
 export function encode(state: State): [string, any][] {
+  let results = getResults(state);
+  let isStreet = state.summary.checkType == "street";
+  let isPath = state.summary.checkType == "path";
+
+  let losCodes = {
+    Safety: "Sa",
+    Accessibility: "Ac",
+    Comfort: "Cf",
+    Directness: "Di",
+    Attractiveness: "At",
+    Cohesion: "Co",
+    overall: "To",
+  };
+  let placemakingCodes = {
+    "Social activity": "SA",
+    "Personal security": "PS",
+    "Character and legibility": "CL",
+    Environment: "En",
+    overall: "To",
+  };
+
   return [
     ...schemeSummary(state),
     ...policyCheck(state),
@@ -10,6 +32,48 @@ export function encode(state: State): [string, any][] {
     ...scorecardMetrics("SP", 0, state.streetPlacemakingCheck),
     ...scorecardMetrics("PA", 16, state.pathCheck),
     ...scorecardMetrics("PP", 16, state.pathPlacemakingCheck),
+    ...policyCheckSummary(state),
+    ...safetyCheckSummary(state),
+
+    // TODO If it's neither path or street, levelOfService will be empty
+    ...categoryBreakdowns(
+      "ST-LOS",
+      [...results.levelOfService, results.overall],
+      isStreet,
+      losCodes,
+    ),
+    ...categoryBreakdowns("ST-LOS", results.byMode, isStreet, {
+      // TODO Remember to rename when changing these
+      walking: "Wa",
+      wheeling: "Wh",
+      cycling: "Cy",
+    }),
+    ...categoryBreakdowns(
+      "SP-LOS",
+      [...results.placemakingCategories, results.placemakingOverall],
+      isStreet,
+      placemakingCodes,
+    ),
+
+    ...categoryBreakdowns(
+      "PA-LOS",
+      [...results.levelOfService, results.overall],
+      isPath,
+      losCodes,
+    ),
+    ...categoryBreakdowns("PA-LOS", results.byMode, isPath, {
+      // TODO Remember to rename when changing these
+      walking: "Wa",
+      wheeling: "Wh",
+      cycling: "Cy",
+      horse: "HR",
+    }),
+    ...categoryBreakdowns(
+      "PP-LOS",
+      [...results.placemakingCategories, results.placemakingOverall],
+      isPath,
+      placemakingCodes,
+    ),
   ];
 }
 
@@ -61,79 +125,72 @@ function num(idx: number): string {
   return (idx + 1).toString().padStart(2, "0");
 }
 
+function policyCheckSummary(state: State): [string, any][] {
+  // TODO Some duplication with results_analysis, but not worth folding into Results yet
+  let policyConflicts = {
+    existing: state.policyConflictLog.filter((x) => x.stage == "Existing")
+      .length,
+    designed: state.policyConflictLog.filter((x) => x.stage == "Design").length,
+    removed: state.policyConflictLog.filter((x) => x.resolved == "Yes").length,
+  };
+  return [
+    ["PC-E", policyConflicts.existing],
+    ["PC-D", policyConflicts.designed],
+    ["PC-Rem", policyConflicts.removed],
+    ["PC-Int", policyConflicts.designed],
+    [
+      "PC-Tot",
+      policyConflicts.designed +
+        policyConflicts.existing -
+        policyConflicts.removed,
+    ],
+  ];
+}
+
+function safetyCheckSummary(state: State): [string, any][] {
+  let criticalIssues = {
+    existing: state.criticalIssues.filter((x) => x.stage == "Existing").length,
+    designed: state.criticalIssues.filter((x) => x.stage == "Design").length,
+    removed: state.criticalIssues.filter((x) => x.resolved == "Yes").length,
+  };
+  return [
+    ["SA-E", criticalIssues.existing],
+    ["SA-D", criticalIssues.designed],
+    ["SA-Rem", criticalIssues.removed],
+    ["SA-Int", criticalIssues.designed],
+    [
+      "SA-Tot",
+      criticalIssues.designed +
+        criticalIssues.existing -
+        criticalIssues.removed,
+    ],
+  ];
+}
+
+function categoryBreakdowns(
+  prefix: string,
+  categories: ResultCategory[],
+  blankAnswers: boolean,
+  categoryCodes: { [category: string]: string },
+): [string, any][] {
+  let out: [string, any][] = [];
+  for (let result of categories) {
+    let code = categoryCodes[result.category];
+    // TODO Double check if the % should be there
+    out.push([
+      `${prefix}-${code}-E`,
+      blankAnswers ? "" : `${Math.round(result.existing.scorePercent)}%`,
+    ]);
+    out.push([
+      `${prefix}-${code}-D`,
+      blankAnswers ? "" : `${Math.round(result.proposed.scorePercent)}%`,
+    ]);
+  }
+  return out;
+}
+
 /*
-["PC-E", ],
-["PC-D", ],
-["PC-Rem", ],
-["PC-Int", ],
-["PC-Tot", ],
-["SA-E", ],
-["SA-D", ],
-["SA-Rem", ],
-["SA-Int", ],
-["SA-Tot", ],
-["ST-LOS-Sa-E", ],
-["ST-LOS-Sa-D", ],
-["ST-LOS-Ac-E", ],
-["ST-LOS-Ac-D", ],
-["ST-LOS-Cf-E", ],
-["ST-LOS-Cf-D", ],
-["ST-LOS-Di-E", ],
-["ST-LOS-Di-D", ],
-["ST-LOS-At-E", ],
-["ST-LOS-At-D", ],
-["ST-LOS-Co-E", ],
-["ST-LOS-Co-D", ],
-["ST-LOS-To-E", ],
-["ST-LOS-To-D", ],
-["ST-LOS-Wa", ],
-["ST-LOS-Wa", ],
-["ST-LOS-Wh", ],
-["ST-LOS-Wh", ],
-["ST-LOS-Cy", ],
-["ST-LOS-Cy", ],
-["SP-LOS-SA-E", ],
-["SP-LOS-SA-D", ],
-["SP-LOS-PS-E", ],
-["SP-LOS-PS-D", ],
-["SP-LOS-CL-E", ],
-["SP-LOS-CL-D", ],
-["SP-LOS-En-E", ],
-["SP-LOS-En-D", ],
-["SP-LOS-To-E", ],
-["SP-LOS-To-D", ],
-["PA-LOS-Sa-E", ],
-["PA-LOS-Sa-D", ],
-["PA-LOS-Ac-E", ],
-["PA-LOS-Ac-D", ],
-["PA-LOS-Cf-E", ],
-["PA-LOS-Cf-D", ],
-["PA-LOS-Di-E", ],
-["PA-LOS-Di-D", ],
-["PA-LOS-At-E", ],
-["PA-LOS-At-D", ],
-["PA-LOS-Co-E", ],
-["PA-LOS-Co-D", ],
-["PA-LOS-To-E", ],
-["PA-LOS-To-D", ],
-["PA-LOS-Wa", ],
-["PA-LOS-Wa", ],
-["PA-LOS-Wh", ],
-["PA-LOS-Wh", ],
-["PA-LOS-Cy", ],
-["PA-LOS-Cy", ],
-["PA-LOS-HR", ],
-["PA-LOS-HR", ],
-["PP-LOS-SA-E", ],
-["PP-LOS-SA-D", ],
-["PP-LOS-PS-E", ],
-["PP-LOS-PS-D", ],
-["PP-LOS-CL-E", ],
-["PP-LOS-CL-D", ],
-["PP-LOS-En-E", ],
-["PP-LOS-En-D", ],
-["PP-LOS-To-E", ],
-["PP-LOS-To-D", ],
+[
 ["J1-LOS-WW-E", ],
 ["J1-LOS-WW-D", ],
 ["J1-LOS-Cy-E", ],
@@ -738,4 +795,5 @@ function num(idx: number): string {
 ["EP-D", ],
 ["TM-Comments", ],
 ["AC-Comments", ],
+]
 */
