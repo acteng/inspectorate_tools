@@ -71,7 +71,6 @@
       $state.criticalIssues = [
         ...$state.criticalIssues,
         {
-          id: "TODO",
           criticalIssue: "",
           stage: "",
           point: e.lngLat.toArray(),
@@ -85,7 +84,6 @@
       $state.policyConflictLog = [
         ...$state.policyConflictLog,
         {
-          id: "TODO",
           conflict: "",
           stage: "",
           point: e.lngLat.toArray(),
