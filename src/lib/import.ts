@@ -1,5 +1,5 @@
 import ExcelJS, { type CellValue } from "exceljs";
-import { emptyState, type State, type Score } from "../routes/route_check/data";
+import { emptyState, type State, type Score, type Position } from "../routes/route_check/data";
 
 export function importDalog(workbook: ExcelJS.Workbook): State {
   return dalogToState(getDalog(workbook));
@@ -95,6 +95,10 @@ function dalogToState(dalog: {
     }
     throw new Error(`${key} isn't score, it's ${value}`);
   };
+  let point = (key: string) => {
+    let parts: number[] = normalString(key).split(", ").map(parseFloat);
+    return [parts[1], parts[0]] as Position;
+  };
 
   state.summary = {
     dateDesignReview: normalString("Date of Design Review"),
@@ -137,7 +141,50 @@ function dalogToState(dalog: {
     }
   }
 
-  // TODO The two logs
+  for (let i = 0; i < 35; i++) {
+          let prefix = `${num(i)}PC`;
+          if (dalog[`${prefix}Ref`] == null) {
+                  break;
+          }
+          state.policyConflictLog.push({
+                  conflict: normalString(`${prefix}Typ`).substr(0, 1),
+                  stage: normalString(`${prefix}Sta`),
+                  point: point(`${prefix}LaL`),
+                  locationName: normalString(`${prefix}Loc`),
+                  resolved: yesNoBlank(`${prefix}Res`),
+                  notes: normalString(`${prefix}Com`),
+          });
+  }
+
+  for (let i = 0; i < 35; i++) {
+          let prefix = `${num(i)}PC`;
+          if (dalog[`${prefix}Ref`] == null) {
+                  break;
+          }
+          state.policyConflictLog.push({
+                  conflict: normalString(`${prefix}Typ`).substr(0, 1),
+                  stage: normalString(`${prefix}Sta`),
+                  point: point(`${prefix}LaL`),
+                  locationName: normalString(`${prefix}Loc`),
+                  resolved: yesNoBlank(`${prefix}Res`),
+                  notes: normalString(`${prefix}Com`),
+          });
+  }
+  // TODO Pretty much the same
+  for (let i = 0; i < 35; i++) {
+          let prefix = `${num(i)}SA`;
+          if (dalog[`${prefix}Ref`] == null) {
+                  break;
+          }
+          state.criticalIssues.push({
+                  criticalIssue: normalString(`${prefix}Typ`).substr(0, 1),
+                  stage: normalString(`${prefix}Sta`),
+                  point: point(`${prefix}LaL`),
+                  locationName: normalString(`${prefix}Loc`),
+                  resolved: yesNoBlank(`${prefix}Res`),
+                  notes: normalString(`${prefix}Com`),
+          });
+  }
 
   // TODO JAT
 
