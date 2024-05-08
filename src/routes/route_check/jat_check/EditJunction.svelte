@@ -1,0 +1,190 @@
+<script lang="ts">
+  import MapControls from "./MapControls.svelte";
+  import {
+    SecondaryButton,
+    WarningButton,
+    DefaultButton,
+    TextArea,
+    Radio,
+    TextInput,
+    CollapsibleCard,
+  } from "govuk-svelte";
+  import { StreetView, BlueskyKey } from "$lib/map";
+  import { GeoreferenceControls } from "$lib/map/georef";
+  import { state, type JunctionAssessment } from "../data";
+  import Form from "./Form.svelte";
+
+  export let junctionIdx: number;
+  export let stage: "existing" | "proposed";
+
+  let otherStage: "existing" | "proposed" =
+    stage == "existing" ? "proposed" : "existing";
+
+  type Kind = "arm" | "movement";
+  type ID = { kind: Kind; idx: number };
+
+  let newKind: Kind = "arm";
+  let editing: ID | null = null;
+  let hoveringSidebar: ID | null = null;
+  let streetviewOn = false;
+
+  let mapControls: MapControls | null = null;
+
+  // TODO Could consider sharing this and armLabel
+  function select(id: ID) {
+    editing = id;
+    hoveringSidebar = null;
+  }
+
+  function armLabel(idx: number): string {
+    return String.fromCharCode(idx + "A".charCodeAt(0));
+  }
+
+  function deleteItem() {
+    // TODO Modal
+    if (!window.confirm(`Delete this ${editing!.kind}?`)) {
+      return;
+    }
+    if (editing!.kind == "movement") {
+      $state.jat[junctionIdx][stage].movements.splice(editing!.idx, 1);
+      $state.jat[junctionIdx][stage].movements =
+        $state.jat[junctionIdx][stage].movements;
+    } else {
+      $state.jat[junctionIdx][stage].arms.splice(editing!.idx, 1);
+      $state.jat[junctionIdx][stage].arms = $state.jat[junctionIdx][stage].arms;
+    }
+    editing = null;
+  }
+
+  function onKeyDown(e: KeyboardEvent) {
+    if (editing != null && e.key == "Escape") {
+      e.stopPropagation();
+      editing = null;
+    } else if (editing != null && e.key == "Delete") {
+      deleteItem();
+    }
+  }
+
+  function totalScore(ja: JunctionAssessment): number {
+    let score = 0;
+    let totalPossible = 0;
+    for (let m of ja.movements) {
+      score += {
+        0: 0,
+        1: 1,
+        2: 2,
+        X: 0,
+      }[m.score];
+      totalPossible += 2;
+    }
+    return (score / totalPossible) * 100;
+  }
+
+  function copyArms() {
+    if ($state.jat[junctionIdx][stage].arms.length > 0) {
+      if (!window.confirm("Overwrite arms?")) {
+        return;
+      }
+    }
+    $state.jat[junctionIdx][stage].arms = JSON.parse(
+      JSON.stringify($state.jat[junctionIdx][otherStage].arms),
+    );
+    $state = $state;
+  }
+</script>
+
+<svelte:window on:keydown={onKeyDown} />
+
+<TextArea
+  label="Commentary / Notes"
+  bind:value={$state.jat[junctionIdx][stage].notes}
+/>
+
+<div style="display: flex; height: 80vh">
+  <div
+    style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
+  >
+    {#if editing == null}
+      <CollapsibleCard label="Tools">
+        <SecondaryButton on:click={() => mapControls?.zoom(true)}>
+          Zoom to fit
+        </SecondaryButton>
+        <BlueskyKey />
+        <GeoreferenceControls />
+        {#if mapControls?.getMap()}
+          <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />
+        {/if}
+      </CollapsibleCard>
+
+      <Radio
+        legend="Add to map"
+        choices={[
+          ["arm", "Arm"],
+          ["movement", "Movement"],
+        ]}
+        inlineSmall
+        bind:value={newKind}
+      />
+
+      <h3>Arms</h3>
+      <ul>
+        {#each $state.jat[junctionIdx][stage].arms as arm, idx}
+          <li>
+            <SecondaryButton
+              on:click={() => select({ kind: "arm", idx })}
+              on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              {armLabel(idx)} - {arm.name || "Unnamed arm"}
+            </SecondaryButton>
+          </li>
+        {/each}
+      </ul>
+      {#if $state.jat[junctionIdx][otherStage].arms.length > 0}
+        <SecondaryButton on:click={copyArms}>
+          Copy arms from {otherStage}
+        </SecondaryButton>
+      {/if}
+
+      <h3>Movements</h3>
+      <ol>
+        {#each $state.jat[junctionIdx][stage].movements as movement, idx}
+          <li>
+            <SecondaryButton
+              on:click={() => select({ kind: "movement", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "movement", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              {movement.name || "Unnamed movement"}
+            </SecondaryButton>
+          </li>
+        {/each}
+      </ol>
+
+      <p>Total JAT score: {totalScore($state.jat[junctionIdx][stage])}%</p>
+    {:else}
+      <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
+      <WarningButton on:click={deleteItem}>Delete</WarningButton>
+      {#if editing.kind == "movement"}
+        <Form {junctionIdx} {stage} idx={editing.idx} />
+      {:else}
+        <TextInput
+          label="Arm Name"
+          bind:value={$state.jat[junctionIdx][stage].arms[editing.idx].name}
+        />
+      {/if}
+    {/if}
+  </div>
+  <div style="position: relative; width: 100%">
+    <MapControls
+      bind:this={mapControls}
+      {junctionIdx}
+      {stage}
+      {newKind}
+      bind:editing
+      {hoveringSidebar}
+      {streetviewOn}
+    />
+  </div>
+</div>

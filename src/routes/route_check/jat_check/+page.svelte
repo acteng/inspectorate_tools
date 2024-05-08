@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TextInput, SecondaryButton, WarningButton } from "govuk-svelte";
   import { state } from "../data";
-  import JunctionMap from "./JunctionMap.svelte";
+  import EditJunction from "./EditJunction.svelte";
 
   type Mode =
     | { kind: "list" }
@@ -89,5 +89,5 @@
     Back
   </SecondaryButton>
 
-  <JunctionMap junctionIdx={mode.idx} stage={mode.stage} />
+  <EditJunction junctionIdx={mode.idx} stage={mode.stage} />
 {/if}
