@@ -175,7 +175,7 @@ function validate(state: State) {
   }
 }
 
-function emptyState(): State {
+export function emptyState(): State {
   return {
     summary: {
       dateDesignReview: "",

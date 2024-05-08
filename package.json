@@ -41,6 +41,7 @@
     "@turf/bbox": "^7.0.0-alpha.114",
     "@turf/bearing": "^7.0.0-alpha.114",
     "@turf/destination": "^7.0.0-alpha.114",
+    "exceljs": "^4.4.0",
     "govuk-frontend": "^5.2.0",
     "govuk-svelte": "github:acteng/govuk-svelte",
     "maplibre-draw-polygon": "github:dabreegster/maplibre-draw-polygon",
