@@ -217,13 +217,7 @@ function jat(state: State, results: Results): [string, any][] {
   for (let i = 1; i <= numJunctions; i++) {
     if (i <= results.jat.length) {
       // TODO Maybe need -E and -D variants here
-      // TODO Use movement types as a proxy for arms
-      out.push([
-        `J${i}-Arms`,
-        state.jat[i - 1].proposed.movements.filter(
-          (m) => m.kind == "pedestrian",
-        ).length,
-      ]);
+      out.push([`J${i}-Arms`, state.jat[i - 1].proposed.arms.length]);
     } else {
       out.push([`J${i}-Arms`, 0]);
     }

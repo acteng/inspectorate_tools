@@ -37,6 +37,9 @@
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";
 
+  let otherStage: "existing" | "proposed" =
+    stage == "existing" ? "proposed" : "existing";
+
   let map: Map;
 
   type Kind = "arm" | "movement";
@@ -219,6 +222,10 @@
     };
   }
 
+  function armLabel(idx: number): string {
+    return String.fromCharCode(idx + "A".charCodeAt(0));
+  }
+
   function deleteItem() {
     // TODO Modal
     if (!window.confirm(`Delete this ${editing!.kind}?`)) {
@@ -278,6 +285,18 @@
     }
     return (score / totalPossible) * 100;
   }
+
+  function copyArms() {
+    if ($state.jat[junctionIdx][stage].arms.length > 0) {
+      if (!window.confirm("Overwrite arms?")) {
+        return;
+      }
+    }
+    $state.jat[junctionIdx][stage].arms = JSON.parse(
+      JSON.stringify($state.jat[junctionIdx][otherStage].arms),
+    );
+    $state = $state;
+  }
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -316,11 +335,16 @@
               on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
               on:mouseleave={() => (hoveringSidebar = null)}
             >
-              {idx} - {arm.name || "Unnamed arm"}
+              {armLabel(idx)} - {arm.name || "Unnamed arm"}
             </SecondaryButton>
           </li>
         {/each}
       </ul>
+      {#if $state.jat[junctionIdx][otherStage].arms.length > 0}
+        <SecondaryButton on:click={copyArms}>
+          Copy arms from {otherStage}
+        </SecondaryButton>
+      {/if}
 
       <h3>Movements</h3>
       <ol>
@@ -346,7 +370,7 @@
         <Form {junctionIdx} {stage} idx={editing.idx} />
       {:else}
         <TextInput
-          label="Name"
+          label="Arm Name"
           bind:value={$state.jat[junctionIdx][stage].arms[editing.idx].name}
         />
       {/if}
@@ -361,8 +385,12 @@
           on:dragend={() => select({ kind: "arm", idx })}
           on:click={() => select({ kind: "arm", idx })}
         >
-          <span class="dot" style:background-color="white">
-            {idx} - {arm.name}
+          <span
+            class="dot"
+            style:color="#4472c4"
+            style:background-color="white"
+          >
+            {armLabel(idx)}
           </span>
         </Marker>
       {/each}
@@ -473,6 +501,9 @@
     height: 30px;
     border-radius: 50%;
     display: inline-block;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
   }
 
   .dot:hover {
