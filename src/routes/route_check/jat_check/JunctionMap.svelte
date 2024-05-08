@@ -10,6 +10,7 @@
     TextArea,
     Radio,
     TextInput,
+    CollapsibleCard,
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
   import { bbox, StreetView, MapLibreMap, BlueskyKey, Popup } from "$lib/map";
@@ -297,14 +298,20 @@
 />
 
 <div style="display: flex; height: 80vh">
-  <div style="width: 30%; overflow-y: scroll; padding: 10px">
+  <div
+    style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
+  >
     {#if editing == null}
-      <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
-      <BlueskyKey />
-      <GeoreferenceControls />
-      {#if map}
-        <StreetView {map} bind:enabled={streetviewOn} />
-      {/if}
+      <CollapsibleCard label="Tools">
+        <SecondaryButton on:click={() => zoom(true)}>
+          Zoom to fit
+        </SecondaryButton>
+        <BlueskyKey />
+        <GeoreferenceControls />
+        {#if map}
+          <StreetView {map} bind:enabled={streetviewOn} />
+        {/if}
+      </CollapsibleCard>
 
       <Radio
         legend="Add to map"

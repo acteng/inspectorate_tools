@@ -8,6 +8,7 @@
     SecondaryButton,
     WarningButton,
     Radio,
+    CollapsibleCard,
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
   import { bbox } from "$lib/map";
@@ -170,14 +171,20 @@
 <svelte:window on:keydown={onKeyDown} />
 
 <div style="display: flex; height: 80vh">
-  <div style="width: 30%; overflow-y: scroll; padding: 10px">
+  <div
+    style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
+  >
     {#if editing == null}
-      <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
-      <BlueskyKey />
-      <GeoreferenceControls />
-      {#if map}
-        <StreetView {map} bind:enabled={streetviewOn} />
-      {/if}
+      <CollapsibleCard label="Tools">
+        <SecondaryButton on:click={() => zoom(true)}>
+          Zoom to fit
+        </SecondaryButton>
+        <BlueskyKey />
+        <GeoreferenceControls />
+        {#if map}
+          <StreetView {map} bind:enabled={streetviewOn} />
+        {/if}
+      </CollapsibleCard>
 
       <Radio
         legend="Create new problems"
