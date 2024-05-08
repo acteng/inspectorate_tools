@@ -275,7 +275,12 @@
 
       <GeoJSON data={hoverGj}>
         <CircleLayer
-          paint={{ "circle-radius": 30, "circle-color": "yellow" }}
+          paint={{
+            "circle-radius": 30,
+            "circle-opacity": 0,
+            "circle-stroke-width": 5,
+            "circle-stroke-color": "yellow",
+          }}
         />
       </GeoJSON>
 

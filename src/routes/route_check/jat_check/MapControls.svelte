@@ -327,12 +327,17 @@
   </GeoJSON>
 
   <GeoJSON data={hoverGj}>
-    <LineLayer paint={{ "line-width": 15, "line-color": "yellow" }} />
+    <LineLayer
+      paint={{ "line-width": 5, "line-color": "yellow", "line-gap-width": 45 }}
+    />
+
     <CircleLayer
       filter={["==", ["get", "kind"], "arm"]}
       paint={{
-        "circle-color": "yellow",
         "circle-radius": 20,
+        "circle-opacity": 0,
+        "circle-stroke-width": 5,
+        "circle-stroke-color": "yellow",
       }}
     />
   </GeoJSON>
