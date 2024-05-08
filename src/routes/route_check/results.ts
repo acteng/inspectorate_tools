@@ -347,10 +347,19 @@ function getJatResults(state: State): JunctionResult[] {
         scoreBoth += scoreLookup[m.score];
         totalPossibleBoth += 2;
       }
-      // TODO Handle 'not completed's
-      result.walkingWheeling[stage] = `${(scoreWW / totalPossibleWW) * 100}%`;
-      result.cycling[stage] = `${(scoreCycling / totalPossibleCycling) * 100}%`;
-      result.total[stage] = `${(scoreBoth / totalPossibleBoth) * 100}%`;
+
+      result.walkingWheeling[stage] =
+        totalPossibleWW > 0
+          ? `${(scoreWW / totalPossibleWW) * 100}%`
+          : "Not Completed";
+      result.cycling[stage] =
+        totalPossibleCycling > 0
+          ? `${(scoreCycling / totalPossibleCycling) * 100}%`
+          : "Not Comleted";
+      result.total[stage] =
+        totalPossibleBoth > 0
+          ? `${(scoreBoth / totalPossibleBoth) * 100}%`
+          : "Not Completed";
     }
     out.push(result);
   }

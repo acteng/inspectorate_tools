@@ -162,7 +162,9 @@
         {/each}
       </ol>
 
-      <p>Total JAT score: {totalScore($state.jat[junctionIdx][stage])}%</p>
+      {#if $state.jat[junctionIdx][stage].movements.length > 0}
+        <p>Total JAT score: {totalScore($state.jat[junctionIdx][stage])}%</p>
+      {/if}
     {:else}
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
