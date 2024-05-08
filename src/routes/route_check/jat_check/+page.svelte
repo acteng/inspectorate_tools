@@ -23,10 +23,12 @@
       {
         name: "",
         existing: {
+          arms: [],
           movements: [],
           notes: "",
         },
         proposed: {
+          arms: [],
           movements: [],
           notes: "",
         },

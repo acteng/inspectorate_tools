@@ -8,6 +8,8 @@
     WarningButton,
     DefaultButton,
     TextArea,
+    Radio,
+    TextInput,
   } from "govuk-svelte";
   import { onMount, onDestroy } from "svelte";
   import { bbox, StreetView, MapLibreMap, BlueskyKey, Popup } from "$lib/map";
@@ -19,10 +21,12 @@
     hoverStateFilter,
     type LayerClickInfo,
     SymbolLayer,
+    CircleLayer,
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import {
     state,
+    type Arm,
     type Movement,
     type Position,
     type State,
@@ -35,8 +39,12 @@
 
   let map: Map;
 
-  let editing: number | null = null;
-  let hoveringSidebar: number | null = null;
+  type Kind = "arm" | "movement";
+  type ID = { kind: Kind; idx: number };
+
+  let newKind: Kind = "arm";
+  let editing: ID | null = null;
+  let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
 
   $: hoverGj = getHoverData($state, editing, hoveringSidebar);
@@ -50,8 +58,8 @@
 
   function getHoverData(
     state: State,
-    editing: number | null,
-    hoveringSidebar: number | null,
+    editing: ID | null,
+    hoveringSidebar: ID | null,
   ): FeatureCollection {
     let gj: FeatureCollection = {
       type: "FeatureCollection" as const,
@@ -59,14 +67,20 @@
     };
     let id = editing ?? hoveringSidebar;
     if (id != null) {
-      gj.features.push(
-        lineFeature(state.jat[junctionIdx][stage].movements[id], id),
-      );
+      if (id.kind == "arm") {
+        gj.features.push(
+          armFeature(state.jat[junctionIdx][stage].arms[id.idx], id.idx),
+        );
+      } else {
+        gj.features.push(
+          lineFeature(state.jat[junctionIdx][stage].movements[id.idx], id.idx),
+        );
+      }
     }
     return gj;
   }
 
-  function select(id: number) {
+  function select(id: ID) {
     editing = id;
     hoveringSidebar = null;
   }
@@ -89,25 +103,42 @@
       return;
     }
 
-    $state.jat[junctionIdx][stage].movements = [
-      ...$state.jat[junctionIdx][stage].movements,
-      {
-        point1: e.lngLat.toArray() as Position,
-        // Offset 10 meters to the north
-        point2: destination(e.lngLat.toArray(), 0.01, 0).geometry
-          .coordinates as Position,
-        kind: "cycling-straight",
-        score: "X",
-        name: "",
-        notes: "",
-      },
-    ];
-    editing = $state.jat[junctionIdx][stage].movements.length - 1;
+    if (newKind == "arm") {
+      $state.jat[junctionIdx][stage].arms = [
+        ...$state.jat[junctionIdx][stage].arms,
+        {
+          point: e.lngLat.toArray() as Position,
+          name: "",
+        },
+      ];
+      editing = {
+        kind: "arm",
+        idx: $state.jat[junctionIdx][stage].arms.length - 1,
+      };
+    } else {
+      $state.jat[junctionIdx][stage].movements = [
+        ...$state.jat[junctionIdx][stage].movements,
+        {
+          point1: e.lngLat.toArray() as Position,
+          // Offset 10 meters to the north
+          point2: destination(e.lngLat.toArray(), 0.01, 0).geometry
+            .coordinates as Position,
+          kind: "cycling-straight",
+          score: "X",
+          name: "",
+          notes: "",
+        },
+      ];
+      editing = {
+        kind: "movement",
+        idx: $state.jat[junctionIdx][stage].movements.length - 1,
+      };
+    }
     hoveringSidebar = null;
   }
 
   function onFeatureClick(e: CustomEvent<LayerClickInfo>) {
-    select(e.detail.features[0].id as number);
+    select({ kind: "movement", idx: e.detail.features[0].id as number });
   }
 
   // TODO Wait for loaded
@@ -119,12 +150,15 @@
     map.off("click", onMapClick);
   });
 
-  function toGj(movements: Movement[]): FeatureCollection {
+  // This includes movements and arms for zooming. When rendered, arms aren't shown.
+  function toGj(state: State): FeatureCollection {
     let gj = {
       type: "FeatureCollection" as const,
-      features: movements.map((movement, idx) => lineFeature(movement, idx)),
+      features: state.jat[junctionIdx][stage].movements.map((movement, idx) =>
+        lineFeature(movement, idx),
+      ),
     };
-    for (let m of movements) {
+    for (let m of state.jat[junctionIdx][stage].movements) {
       gj.features.push(arrowFeature(m, gj.features.length));
       // Arrows at both ends
       if (m.kind == "pedestrian") {
@@ -132,6 +166,11 @@
         gj.features.push(arrowFeature(opposite, gj.features.length));
       }
     }
+
+    for (let arm of state.jat[junctionIdx][stage].arms) {
+      gj.features.push(armFeature(arm, gj.features.length));
+    }
+
     return gj;
   }
 
@@ -166,21 +205,50 @@
       },
     };
   }
+  function armFeature(arm: Arm, id: number): Feature {
+    return {
+      type: "Feature",
+      id,
+      properties: {
+        kind: "arm",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: arm.point,
+      },
+    };
+  }
 
-  function deleteMovement() {
+  function deleteItem() {
     // TODO Modal
-    if (!window.confirm("Delete this movement?")) {
+    if (!window.confirm(`Delete this ${editing!.kind}?`)) {
       return;
     }
-    $state.jat[junctionIdx][stage].movements.splice(editing!, 1);
-    $state.jat[junctionIdx][stage].movements =
-      $state.jat[junctionIdx][stage].movements;
+    if (editing!.kind == "movement") {
+      $state.jat[junctionIdx][stage].movements.splice(editing!.idx, 1);
+      $state.jat[junctionIdx][stage].movements =
+        $state.jat[junctionIdx][stage].movements;
+    } else {
+      $state.jat[junctionIdx][stage].arms.splice(editing!.idx, 1);
+      $state.jat[junctionIdx][stage].arms = $state.jat[junctionIdx][stage].arms;
+    }
+    editing = null;
+  }
+
+  function deleteArm() {
+    // TODO Modal
+    if (!window.confirm("Delete this arm?")) {
+      return;
+    }
+    $state.jat[junctionIdx][stage].arms.splice(editing!.idx, 1);
+    $state.jat[junctionIdx][stage].arms = $state.jat[junctionIdx][stage].arms;
     editing = null;
   }
 
   function zoom(animate: boolean) {
-    if ($state.jat[junctionIdx][stage].movements.length > 0) {
-      map.fitBounds(bbox(toGj($state.jat[junctionIdx][stage].movements)), {
+    let gj = toGj($state);
+    if (gj.features.length > 0) {
+      map.fitBounds(bbox(gj), {
         padding: 20,
         animate,
       });
@@ -192,7 +260,7 @@
       e.stopPropagation();
       editing = null;
     } else if (editing != null && e.key == "Delete") {
-      deleteMovement();
+      deleteItem();
     }
   }
 
@@ -229,13 +297,39 @@
         <StreetView {map} bind:enabled={streetviewOn} />
       {/if}
 
+      <Radio
+        legend="Add to map"
+        choices={[
+          ["arm", "Arm"],
+          ["movement", "Movement"],
+        ]}
+        inlineSmall
+        bind:value={newKind}
+      />
+
+      <h3>Arms</h3>
+      <ul>
+        {#each $state.jat[junctionIdx][stage].arms as arm, idx}
+          <li>
+            <SecondaryButton
+              on:click={() => select({ kind: "arm", idx })}
+              on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              {idx} - {arm.name || "Unnamed arm"}
+            </SecondaryButton>
+          </li>
+        {/each}
+      </ul>
+
       <h3>Movements</h3>
       <ol>
         {#each $state.jat[junctionIdx][stage].movements as movement, idx}
           <li>
             <SecondaryButton
-              on:click={() => select(idx)}
-              on:mouseenter={() => (hoveringSidebar = idx)}
+              on:click={() => select({ kind: "movement", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "movement", idx })}
               on:mouseleave={() => (hoveringSidebar = null)}
             >
               {movement.name || "Unnamed movement"}
@@ -247,30 +341,50 @@
       <p>Total JAT score: {totalScore($state.jat[junctionIdx][stage])}%</p>
     {:else}
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
-      <WarningButton on:click={deleteMovement}>Delete</WarningButton>
-      <Form {junctionIdx} {stage} idx={editing} />
+      <WarningButton on:click={deleteItem}>Delete</WarningButton>
+      {#if editing.kind == "movement"}
+        <Form {junctionIdx} {stage} idx={editing.idx} />
+      {:else}
+        <TextInput
+          label="Name"
+          bind:value={$state.jat[junctionIdx][stage].arms[editing.idx].name}
+        />
+      {/if}
     {/if}
   </div>
   <div style="position: relative; width: 100%">
     <MapLibreMap bind:map>
+      {#each $state.jat[junctionIdx][stage].arms as arm, idx}
+        <Marker
+          draggable
+          bind:lngLat={arm.point}
+          on:dragend={() => select({ kind: "arm", idx })}
+          on:click={() => select({ kind: "arm", idx })}
+        >
+          <span class="dot" style:background-color="white">
+            {idx} - {arm.name}
+          </span>
+        </Marker>
+      {/each}
+
       {#each $state.jat[junctionIdx][stage].movements as movement, idx}
         <Marker
           draggable
           bind:lngLat={movement.point1}
-          on:dragend={() => select(idx)}
-          on:click={() => select(idx)}
+          on:dragend={() => select({ kind: "movement", idx })}
+          on:click={() => select({ kind: "movement", idx })}
         >
           <span
             class="dot"
-            style={`background-color: ${scoreColors[movement.score]}`}
+            style:background-color={scoreColors[movement.score]}
             style:opacity={movement.kind == "pedestrian" ? "0%" : "100%"}
           />
         </Marker>
         <Marker
           draggable
           bind:lngLat={movement.point2}
-          on:dragend={() => select(idx)}
-          on:click={() => select(idx)}
+          on:dragend={() => select({ kind: "movement", idx })}
+          on:click={() => select({ kind: "movement", idx })}
         >
           <span
             class="dot"
@@ -280,7 +394,7 @@
         </Marker>
       {/each}
 
-      <GeoJSON data={toGj($state.jat[junctionIdx][stage].movements)}>
+      <GeoJSON data={toGj($state)}>
         <!-- TODO Two layers due to https://github.com/maplibre/maplibre-gl-js/issues/1235 -->
         <LineLayer
           id="jat-cycling"
@@ -339,6 +453,13 @@
 
       <GeoJSON data={hoverGj}>
         <LineLayer paint={{ "line-width": 15, "line-color": "yellow" }} />
+        <CircleLayer
+          filter={["==", ["get", "kind"], "arm"]}
+          paint={{
+            "circle-color": "yellow",
+            "circle-radius": 20,
+          }}
+        />
       </GeoJSON>
 
       <GeoreferenceLayer {map} />

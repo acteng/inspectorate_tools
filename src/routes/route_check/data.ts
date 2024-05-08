@@ -138,8 +138,14 @@ export interface Junction {
 }
 
 export interface JunctionAssessment {
+  arms: Arm[];
   movements: Movement[];
   notes: string;
+}
+
+export interface Arm {
+  point: Position;
+  name: string;
 }
 
 export type MovementKind =
