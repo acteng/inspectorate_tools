@@ -242,16 +242,6 @@
     editing = null;
   }
 
-  function deleteArm() {
-    // TODO Modal
-    if (!window.confirm("Delete this arm?")) {
-      return;
-    }
-    $state.jat[junctionIdx][stage].arms.splice(editing!.idx, 1);
-    $state.jat[junctionIdx][stage].arms = $state.jat[junctionIdx][stage].arms;
-    editing = null;
-  }
-
   function zoom(animate: boolean) {
     let gj = toGj($state);
     if (gj.features.length > 0) {

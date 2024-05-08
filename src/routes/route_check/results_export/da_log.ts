@@ -1,8 +1,10 @@
 import { type State, type Scorecard } from "../data";
 import { type Results, type ResultCategory, getResults } from "../results";
 
+type Value = string | number;
+
 // Generates an enormous Excel row that encodes the full state, for use in other tools.
-export function encode(state: State): [string, any][] {
+export function encode(state: State): [string, Value][] {
   let results = getResults(state);
   let isStreet = state.summary.checkType == "street";
   let isPath = state.summary.checkType == "path";
@@ -82,7 +84,7 @@ export function encode(state: State): [string, any][] {
   ];
 }
 
-function schemeSummary(state: State): [string, any][] {
+function schemeSummary(state: State): [string, Value][] {
   let x = state.summary;
   return [
     ["Scheme Ref", x.schemeReference],
@@ -104,8 +106,8 @@ function schemeSummary(state: State): [string, any][] {
   ];
 }
 
-function policyCheck(state: State): [string, any][] {
-  let out: [string, any][] = [];
+function policyCheck(state: State): [string, Value][] {
+  let out: [string, Value][] = [];
   for (let [i, x] of state.policyCheck.entries()) {
     out.push([`PC${num(i)}-E`, x.existing]);
     out.push([`PC${num(i)}-D`, x.proposed]);
@@ -117,8 +119,8 @@ function scorecardMetrics(
   prefix: string,
   offset: number,
   scorecard: Scorecard,
-): [string, any][] {
-  let out: [string, any][] = [];
+): [string, Value][] {
+  let out: [string, Value][] = [];
   for (let i = 0; i < scorecard.existingScores.length; i++) {
     out.push([`${prefix}${num(i + offset)}-E`, scorecard.existingScores[i]]);
     out.push([`${prefix}${num(i + offset)}-D`, scorecard.proposedScores[i]]);
@@ -130,7 +132,7 @@ function num(idx: number): string {
   return (idx + 1).toString().padStart(2, "0");
 }
 
-function policyCheckSummary(state: State): [string, any][] {
+function policyCheckSummary(state: State): [string, Value][] {
   // TODO Some duplication with results_analysis, but not worth folding into Results yet
   let policyConflicts = {
     existing: state.policyConflictLog.filter((x) => x.stage == "Existing")
@@ -152,7 +154,7 @@ function policyCheckSummary(state: State): [string, any][] {
   ];
 }
 
-function safetyCheckSummary(state: State): [string, any][] {
+function safetyCheckSummary(state: State): [string, Value][] {
   let criticalIssues = {
     existing: state.criticalIssues.filter((x) => x.stage == "Existing").length,
     designed: state.criticalIssues.filter((x) => x.stage == "Design").length,
@@ -177,8 +179,8 @@ function categoryBreakdowns(
   categories: ResultCategory[],
   blankAnswers: boolean,
   categoryCodes: { [category: string]: string },
-): [string, any][] {
-  let out: [string, any][] = [];
+): [string, Value][] {
+  let out: [string, Value][] = [];
   for (let result of categories) {
     let code = categoryCodes[result.category];
     // TODO Double check if the % should be there
@@ -194,8 +196,8 @@ function categoryBreakdowns(
   return out;
 }
 
-function jat(state: State, results: Results): [string, any][] {
-  let out: [string, any][] = [];
+function jat(state: State, results: Results): [string, Value][] {
+  let out: [string, Value][] = [];
   let numJunctions = 12;
 
   for (let i = 1; i <= numJunctions; i++) {
@@ -246,8 +248,8 @@ function policyConflictId(state: State, i: number): string {
   return parts.join("_");
 }
 
-function policyConflictLog(state: State): [string, any][] {
-  let out: [string, any][] = [];
+function policyConflictLog(state: State): [string, Value][] {
+  let out: [string, Value][] = [];
   let numConflicts = 35;
 
   for (let i = 0; i < numConflicts; i++) {
@@ -301,8 +303,8 @@ function criticalIssueId(state: State, i: number): string {
   return parts.join("_");
 }
 
-function criticalIssues(state: State): [string, any][] {
-  let out: [string, any][] = [];
+function criticalIssues(state: State): [string, Value][] {
+  let out: [string, Value][] = [];
   let numCriticals = 35;
 
   for (let i = 0; i < numCriticals; i++) {
@@ -338,7 +340,7 @@ function criticalIssues(state: State): [string, any][] {
 }
 
 // Unused keys in route check
-function areaCheck(): [string, any][] {
+function areaCheck(): [string, Value][] {
   let keys = [
     "Area-E",
     "Area-D",
