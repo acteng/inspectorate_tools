@@ -78,6 +78,7 @@ export function encode(state: State): [string, any][] {
     ...jat(state, results),
     ...policyConflictLog(state),
     ...criticalIssues(state),
+    ...areaCheck(),
   ];
 }
 
@@ -336,37 +337,39 @@ function criticalIssues(state: State): [string, any][] {
   return out;
 }
 
-/*
-[
-["Area-E", ],
-["Area-D", ],
-["Po-WW-E", ],
-["Po-WW-D", ],
-["Po-Cy-E", ],
-["Po-Cy-D", ],
-["Cr-WW-E", ],
-["Cr-WW-D", ],
-["Cr-Cy-E", ],
-["Cr-Cy-D", ],
-["Pe-WW-D", ],
-["Pe-WW-E", ],
-["Pe-Cy-D", ],
-["Pe-Cy-E", ],
-["MD-WW-D", ],
-["MD-WW-E", ],
-["MD-Cy-D", ],
-["MD-Cy-E", ],
-["MT-E", ],
-["MT-D", ],
-["PT-E", ],
-["PT-D", ],
-["GI-E", ],
-["GI-D", ],
-["IT-E", ],
-["IT-D", ],
-["EP-E", ],
-["EP-D", ],
-["TM-Comments", ],
-["AC-Comments", ],
-]
-*/
+// Unused keys in route check
+function areaCheck(): [string, any][] {
+  let keys = [
+    "Area-E",
+    "Area-D",
+    "Po-WW-E",
+    "Po-WW-D",
+    "Po-Cy-E",
+    "Po-Cy-D",
+    "Cr-WW-E",
+    "Cr-WW-D",
+    "Cr-Cy-E",
+    "Cr-Cy-D",
+    "Pe-WW-D",
+    "Pe-WW-E",
+    "Pe-Cy-D",
+    "Pe-Cy-E",
+    "MD-WW-D",
+    "MD-WW-E",
+    "MD-Cy-D",
+    "MD-Cy-E",
+    "MT-E",
+    "MT-D",
+    "PT-E",
+    "PT-D",
+    "GI-E",
+    "GI-D",
+    "IT-E",
+    "IT-D",
+    "EP-E",
+    "EP-D",
+    "TM-Comments",
+    "AC-Comments",
+  ];
+  return keys.map((k) => [k, ""]);
+}
