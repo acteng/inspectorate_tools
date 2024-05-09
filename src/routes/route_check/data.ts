@@ -148,15 +148,12 @@ export interface Arm {
   name: string;
 }
 
-export type MovementKind =
-  | "cycling-straight"
-  | "cycling-left-turn"
-  | "cycling-right-turn"
-  | "pedestrian";
+export type MovementKind = "cycling" | "walking & wheeling";
 
 export interface Movement {
   point1: Position;
   point2: Position;
+  point3: Position;
   kind: MovementKind;
   score: "0" | "1" | "2" | "X";
   name: string;

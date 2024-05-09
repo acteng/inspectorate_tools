@@ -1,18 +1,13 @@
 <script lang="ts">
   import { pairs } from "$lib";
-  import { TextInput, Select, TextArea } from "govuk-svelte";
+  import { Radio, TextInput, Select, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";
   export let idx: number;
 
-  let kinds = pairs([
-    "cycling-straight",
-    "cycling-left-turn",
-    "cycling-right-turn",
-    "pedestrian",
-  ]);
+  let kinds = pairs(["cycling", "walking & wheeling"]);
   let scoreChoices: [string, string][] = [
     ["X", "X - black"],
     ["0", "0 - red"],
@@ -26,9 +21,10 @@
   bind:value={$state.jat[junctionIdx][stage].movements[idx].name}
 />
 
-<Select
-  label="Movement"
-  choices={kinds}
+<Radio
+  legend="Movement"
+  choices={pairs(["cycling", "walking & wheeling"])}
+  inlineSmall
   bind:value={$state.jat[junctionIdx][stage].movements[idx].kind}
 />
 

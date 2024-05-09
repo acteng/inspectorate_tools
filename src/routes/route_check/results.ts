@@ -337,7 +337,7 @@ function getJatResults(state: State): JunctionResult[] {
       let scoreBoth = 0;
       let totalPossibleBoth = 0;
       for (let m of junction[stage].movements) {
-        if (m.kind == "pedestrian") {
+        if (m.kind == "walking & wheeling") {
           scoreWW += scoreLookup[m.score];
           totalPossibleWW += 2;
         } else {

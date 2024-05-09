@@ -81,7 +81,7 @@
 
     // TODO Clicks on a LineLayer or Marker should stop the event from reaching here. Until then, use this hack
     for (let _ of map.queryRenderedFeatures(e.point, {
-      layers: ["jat-cycling", "jat-pedestrian"],
+      layers: ["jat-cycling", "jat-walking-wheeling"],
     })) {
       return;
     }
@@ -109,10 +109,12 @@
         ...$state.jat[junctionIdx][stage].movements,
         {
           point1: e.lngLat.toArray() as Position,
-          // Offset 10 meters to the north
-          point2: destination(e.lngLat.toArray(), 0.01, 0).geometry
+          // Offset 5 and 10 meters to the north
+          point2: destination(e.lngLat.toArray(), 0.005, 0).geometry
             .coordinates as Position,
-          kind: "cycling-straight",
+          point3: destination(e.lngLat.toArray(), 0.01, 0).geometry
+            .coordinates as Position,
+          kind: "cycling",
           score: "X",
           name: "",
           notes: "",
@@ -150,8 +152,8 @@
     for (let m of state.jat[junctionIdx][stage].movements) {
       gj.features.push(arrowFeature(m, gj.features.length));
       // Arrows at both ends
-      if (m.kind == "pedestrian") {
-        let opposite = { ...m, point1: m.point2, point2: m.point1 };
+      if (m.kind == "walking & wheeling") {
+        let opposite = { ...m, point1: m.point3, point3: m.point1 };
         gj.features.push(arrowFeature(opposite, gj.features.length));
       }
     }
@@ -174,7 +176,7 @@
       },
       geometry: {
         type: "LineString",
-        coordinates: [movement.point1, movement.point2],
+        coordinates: [movement.point1, movement.point2, movement.point3],
       },
     };
   }
@@ -186,11 +188,11 @@
       properties: {
         kind: movement.kind,
         color: scoreColors[movement.score],
-        angle: bearing(movement.point1, movement.point2),
+        angle: bearing(movement.point2, movement.point3),
       },
       geometry: {
         type: "Point",
-        coordinates: movement.point2,
+        coordinates: movement.point3,
       },
     };
   }
@@ -252,12 +254,22 @@
       <span
         class="dot"
         style:background-color={scoreColors[movement.score]}
-        style:opacity={movement.kind == "pedestrian" ? "0%" : "100%"}
+        style:opacity={movement.kind == "walking & wheeling" ? "0%" : "100%"}
       />
     </Marker>
+
     <Marker
       draggable
       bind:lngLat={movement.point2}
+      on:dragend={() => select({ kind: "movement", idx })}
+      on:click={() => select({ kind: "movement", idx })}
+    >
+      <span class="dot" style:background-color={scoreColors[movement.score]} />
+    </Marker>
+
+    <Marker
+      draggable
+      bind:lngLat={movement.point3}
       on:dragend={() => select({ kind: "movement", idx })}
       on:click={() => select({ kind: "movement", idx })}
     >
@@ -278,20 +290,20 @@
         "line-width": hoverStateFilter(6, 10),
         "line-color": ["get", "color"],
       }}
-      filter={["!=", ["get", "kind"], "pedestrian"]}
+      filter={["==", ["get", "kind"], "cycling"]}
       on:click={onFeatureClick}
     >
       <Popup let:props>{props.name || "Untitled movement"}</Popup>
     </LineLayer>
     <LineLayer
-      id="jat-pedestrian"
+      id="jat-walking-wheeling"
       manageHoverState
       paint={{
         "line-width": hoverStateFilter(6, 8),
         "line-color": ["get", "color"],
         "line-dasharray": [3, 2],
       }}
-      filter={["==", ["get", "kind"], "pedestrian"]}
+      filter={["==", ["get", "kind"], "walking & wheeling"]}
       on:click={onFeatureClick}
     >
       <Popup let:props>{props.name || "Untitled movement"}</Popup>
@@ -308,19 +320,7 @@
       layout={{
         "text-field": "⬆",
         "text-overlap": "always",
-        "text-rotate": [
-          "+",
-          ["get", "angle"],
-          [
-            "match",
-            ["get", "kind"],
-            "cycling-left-turn",
-            -90,
-            "cycling-right-turn",
-            90,
-            0,
-          ],
-        ],
+        "text-rotate": ["get", "angle"],
         "text-size": 70,
       }}
     />
