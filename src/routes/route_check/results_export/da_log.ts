@@ -44,11 +44,11 @@ export function encode(state: State): [string, Value][] {
       isStreet,
       losCodes,
     ),
+    // TODO If this is a path check, we'll have Horse Riding, but it won't be in this mapping, nor should it be
     ...categoryBreakdowns("ST-LOS", results.byMode, isStreet, {
-      // TODO Remember to rename when changing these
-      walking: "Wa",
-      wheeling: "Wh",
-      cycling: "Cy",
+      Walking: "Wa",
+      Wheeling: "Wh",
+      Cycling: "Cy",
     }),
     ...categoryBreakdowns(
       "SP-LOS",
@@ -64,11 +64,10 @@ export function encode(state: State): [string, Value][] {
       losCodes,
     ),
     ...categoryBreakdowns("PA-LOS", results.byMode, isPath, {
-      // TODO Remember to rename when changing these
-      walking: "Wa",
-      wheeling: "Wh",
-      cycling: "Cy",
-      horse: "HR",
+      Walking: "Wa",
+      Wheeling: "Wh",
+      Cycling: "Cy",
+      "Horse Riding": "HR",
     }),
     ...categoryBreakdowns(
       "PP-LOS",

@@ -3,9 +3,9 @@ from common import *
 
 optionals = ["18", "20", "22", "23", "26", "29", "31", "32", "33"]
 modeIndices = {
-    "walking": [],
-    "wheeling": [],
-    "cycling": [],
+    "Walking": [],
+    "Wheeling": [],
+    "Cycling": [],
 }
 
 with open("inputs/street-check.csv") as inputFile:
@@ -55,11 +55,11 @@ with open("inputs/street-check.csv") as inputFile:
             f.write("""</Question>\n""")
 
         if "Walking" in row["Mode"]:
-            modeIndices["walking"].append(idx - 1)
+            modeIndices["Walking"].append(idx - 1)
         if "Wheeling" in row["Mode"]:
-            modeIndices["wheeling"].append(idx - 1)
+            modeIndices["Wheeling"].append(idx - 1)
         if "Cycling" in row["Mode"]:
-            modeIndices["cycling"].append(idx - 1)
+            modeIndices["Cycling"].append(idx - 1)
         idx += 1
 
 with open("../src/lib/route_check_results/street.ts", "w") as f:

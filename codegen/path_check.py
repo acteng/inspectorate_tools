@@ -19,10 +19,10 @@ optionals = [
     "46",
 ]
 modeIndices = {
-    "walking": [],
-    "wheeling": [],
-    "cycling": [],
-    "horse": [],
+    "Walking": [],
+    "Wheeling": [],
+    "Cycling": [],
+    "Horse Riding": [],
 }
 
 with open("inputs/path-check.csv") as inputFile:
@@ -72,13 +72,13 @@ with open("inputs/path-check.csv") as inputFile:
             f.write("""</Question>\n""")
 
         if "Walking" in row["Mode"] or row["Mode"] == "All Active Modes":
-            modeIndices["walking"].append(idx - 1)
+            modeIndices["Walking"].append(idx - 1)
         if "Wheeling" in row["Mode"] or row["Mode"] == "All Active Modes":
-            modeIndices["wheeling"].append(idx - 1)
+            modeIndices["Wheeling"].append(idx - 1)
         if "Cycling" in row["Mode"] or row["Mode"] == "All Active Modes":
-            modeIndices["cycling"].append(idx - 1)
+            modeIndices["Cycling"].append(idx - 1)
         if "Horse Riding" in row["Mode"] or row["Mode"] == "All Active Modes":
-            modeIndices["horse"].append(idx - 1)
+            modeIndices["Horse Riding"].append(idx - 1)
         idx += 1
 
 with open("../src/lib/route_check_results/path.ts", "w") as f:

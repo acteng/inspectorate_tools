@@ -3,9 +3,9 @@ from common import *
 
 optionals = ["01", "02", "05", "07", "10", "12", "13"]
 modeIndices = {
-    "walking": [],
-    "wheeling": [],
-    "cycling": [],
+    "Walking": [],
+    "Wheeling": [],
+    "Cycling": [],
 }
 
 with open("inputs/safety-check.csv") as inputFile:
@@ -56,11 +56,11 @@ with open("inputs/safety-check.csv") as inputFile:
             f.write("""</Question>\n""")
 
         if "Walking" in row["Mode"]:
-            modeIndices["walking"].append(idx - 1)
+            modeIndices["Walking"].append(idx - 1)
         if "Wheeling" in row["Mode"]:
-            modeIndices["wheeling"].append(idx - 1)
+            modeIndices["Wheeling"].append(idx - 1)
         if "Cycling" in row["Mode"]:
-            modeIndices["cycling"].append(idx - 1)
+            modeIndices["Cycling"].append(idx - 1)
         idx += 1
 
 with open("../src/lib/route_check_results/safety.ts", "w") as f:
