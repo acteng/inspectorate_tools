@@ -32,9 +32,10 @@
   }
 </script>
 
-<h2>Overview</h2>
-
 <table>
+  <caption class="govuk-table__caption govuk-table__caption--m">
+    Overview
+  </caption>
   <tr>
     <th></th>
     <th>Complete</th>
@@ -163,30 +164,22 @@
 </table>
 
 {#if $state.summary.checkType == "street"}
-  <h2>Street Check Level of Service</h2>
+  <LevelOfServiceTable
+    caption="Street Check Level of Service"
+    categories={results.levelOfService}
+    overall={results.overall}
+    overallLabel="Overall ATE Score"
+  />
 {:else if $state.summary.checkType == "path"}
-  <h2>Path Check Level of Service</h2>
+  <LevelOfServiceTable
+    caption="Path Check Level of Service"
+    categories={results.levelOfService}
+    overall={results.overall}
+    overallLabel="Overall ATE Score"
+  />
 {:else}
-  <h2>Select Street Check or Path Check to calculate the table below</h2>
+  <h2>Select Street Check or Path Check for further results</h2>
 {/if}
-
-<LevelOfServiceTable
-  categories={results.levelOfService}
-  overall={results.overall}
-  overallLabel="Overall ATE Score"
-/>
 
 <!-- TODO Hint: "Use the space to provide overall feedback for the proposed scheme" -->
 <TextArea label="Review statement" bind:value={$state.resultsReviewStatement} />
-
-<style>
-  td {
-    border: 1px solid black;
-    padding: 4px;
-  }
-
-  th {
-    background: #006853;
-    color: white;
-  }
-</style>

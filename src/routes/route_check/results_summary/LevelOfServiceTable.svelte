@@ -1,12 +1,16 @@
 <script lang="ts">
   import { netDifference, type ResultCategory } from "../results";
 
+  export let caption: string;
   export let categories: ResultCategory[];
   export let overall: ResultCategory;
   export let overallLabel: string;
 </script>
 
 <table>
+  <caption class="govuk-table__caption govuk-table__caption--m">
+    {caption}
+  </caption>
   <tr>
     <th>Categories</th>
     <th>Existing Layout</th>
@@ -37,15 +41,3 @@
     <td>{netDifference(overall)}</td>
   </tr>
 </table>
-
-<style>
-  td {
-    border: 1px solid black;
-    padding: 4px;
-  }
-
-  th {
-    background: #006853;
-    color: white;
-  }
-</style>

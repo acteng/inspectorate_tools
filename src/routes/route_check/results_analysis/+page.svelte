@@ -19,8 +19,10 @@
   };
 </script>
 
-<h2>1. Summary of Scheme</h2>
 <table>
+  <caption class="govuk-table__caption govuk-table__caption--m">
+    1. Summary of Scheme
+  </caption>
   <tr>
     <th>Scheme Name</th>
     <td>{$state.summary.schemeName}</td>
@@ -43,8 +45,10 @@
   </tr>
 </table>
 
-<h2>2. Policy Check Results</h2>
 <table>
+  <caption class="govuk-table__caption govuk-table__caption--m">
+    2. Policy Check Results
+  </caption>
   <tr>
     <th rowspan="2">Potential Policy Conflicts</th>
     <th>Existing Route</th>
@@ -66,8 +70,10 @@
   </tr>
 </table>
 
-<h2>3. Safety Check Results (Critical Issues only)</h2>
 <table>
+  <caption class="govuk-table__caption govuk-table__caption--m">
+    3. Safety Check Results (Critical Issues only)
+  </caption>
   <tr>
     <th rowspan="2">Critical Issues</th>
     <th>Existing Route</th>
@@ -91,22 +97,22 @@
 
 <h2>4. Street Check Results</h2>
 {#if $state.summary.checkType == "street"}
-  <h3>Street Level of Service</h3>
   <LevelOfServiceTable
+    caption="Street Level of Service"
     categories={results.levelOfService}
     overall={results.overall}
     overallLabel="Overall Street Level of Service"
   />
 
-  <h3>Street Level of Service by Transport Mode</h3>
   <LevelOfServiceTable
+    caption="Street Level of Service by Transport Mode"
     categories={results.byMode}
     overall={results.overall}
     overallLabel="Overall Street Level of Service"
   />
 
-  <h3>Street Placemaking</h3>
   <LevelOfServiceTable
+    caption="Street Placemaking"
     categories={results.placemakingCategories}
     overall={results.placemakingOverall}
     overallLabel="Overall Street Placemaking Score"
@@ -117,22 +123,22 @@
 
 <h2>5. Path Check Results</h2>
 {#if $state.summary.checkType == "path"}
-  <h3>Path Level of Service</h3>
   <LevelOfServiceTable
+    caption="Path Level of Service"
     categories={results.levelOfService}
     overall={results.overall}
     overallLabel="Overall Path Level of Service"
   />
 
-  <h3>Path Level of Service by Transport Mode</h3>
   <LevelOfServiceTable
+    caption="Path Level of Service by Transport Mode"
     categories={results.byMode}
     overall={results.overall}
     overallLabel="Overall Path Level of Service"
   />
 
-  <h3>Path Placemaking</h3>
   <LevelOfServiceTable
+    caption="Path Placemaking"
     categories={results.placemakingCategories}
     overall={results.placemakingOverall}
     overallLabel="Overall Path Placemaking Score"
@@ -141,9 +147,10 @@
   <p>This isn't a Path Check</p>
 {/if}
 
-<h2>6. Junction Assessment Tool Check</h2>
-
 <table>
+  <caption class="govuk-table__caption govuk-table__caption--m">
+    6. Junction Assessment Tool Check
+  </caption>
   <tr>
     <th>Junction Name</th>
     <th>Modes</th>
@@ -176,15 +183,3 @@
 </table>
 
 TODO: overall JAT
-
-<style>
-  td {
-    border: 1px solid black;
-    padding: 4px;
-  }
-
-  th {
-    background: #006853;
-    color: white;
-  }
-</style>
