@@ -1,9 +1,9 @@
 <script lang="ts">
   import ExcelJS from "exceljs";
-  import { encode } from "./da_log";
+  import { encodeDalog } from "./da_log";
   import { state } from "../data";
   import { FormElement } from "govuk-svelte";
-  import { importDalog } from "$lib/import";
+  import { getDalog, dalogToState } from "$lib/import";
 
   // TODO Move this to the FileManager
   let fileInput: HTMLInputElement;
@@ -14,7 +14,8 @@
     try {
       let workbook = new ExcelJS.Workbook();
       await workbook.xlsx.load(buffer);
-      let state = importDalog(workbook);
+      let dalog = getDalog(workbook);
+      let state = dalogToState(dalog);
       // TODO Try to auto-name
       window.localStorage.setItem(
         "route_check/imported",
@@ -39,4 +40,4 @@
 
 <p>TODO. Below is the start to the DALOG output.</p>
 
-<pre>{JSON.stringify(encode($state), null, "  ")}</pre>
+<pre>{JSON.stringify(encodeDalog($state), null, "  ")}</pre>

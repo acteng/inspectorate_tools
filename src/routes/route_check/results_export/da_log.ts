@@ -4,7 +4,7 @@ import { type Results, type ResultCategory, getResults } from "../results";
 type Value = string | number;
 
 // Generates an enormous Excel row that encodes the full state, for use in other tools.
-export function encode(state: State): [string, Value][] {
+export function encodeDalog(state: State): [string, Value][] {
   let results = getResults(state);
   let isStreet = state.summary.checkType == "street";
   let isPath = state.summary.checkType == "path";

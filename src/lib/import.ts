@@ -6,12 +6,8 @@ import {
   type Position,
 } from "../routes/route_check/data";
 
-export function importDalog(workbook: ExcelJS.Workbook): State {
-  return dalogToState(getDalog(workbook));
-}
-
 // TODO More cautious error checking
-function getDalog(workbook: ExcelJS.Workbook): {
+export function getDalog(workbook: ExcelJS.Workbook): {
   [name: string]: string | number | null;
 } {
   let sheet = workbook.getWorksheet("InsLog")!;
@@ -51,7 +47,7 @@ function num(idx: number): string {
   return (idx + 1).toString().padStart(2, "0");
 }
 
-function dalogToState(dalog: {
+export function dalogToState(dalog: {
   [name: string]: string | number | null;
 }): State {
   let state = emptyState();

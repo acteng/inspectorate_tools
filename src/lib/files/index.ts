@@ -87,6 +87,13 @@ export class LocalStorageFiles<StateType> {
 
   // Initially set the currentFile and state store, based on the last opened file or starting a new one.
   private initialLoad() {
+    if (typeof window == "undefined") {
+      console.log(
+        "Running outside of a browser, in test mode -- not loading from local storage",
+      );
+      return;
+    }
+
     console.log(`Initial load; trying to open last opened file`);
     let lastFile = window.localStorage.getItem(this.key("last-opened-file"));
     if (lastFile) {
