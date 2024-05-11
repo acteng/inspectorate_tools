@@ -3,7 +3,7 @@
   import bearing from "@turf/bearing";
   import { colors } from "$lib/colors";
   import type { FeatureCollection, Feature } from "geojson";
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import { bbox, MapLibreMap, Popup } from "$lib/map";
   import { GeoreferenceLayer } from "$lib/map/georef";
   import {
@@ -14,6 +14,7 @@
     type LayerClickInfo,
     SymbolLayer,
     CircleLayer,
+    MapEvents,
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import {
@@ -74,13 +75,13 @@
     hoveringSidebar = null;
   }
 
-  function onMapClick(e: MapMouseEvent) {
+  function onMapClick(e: CustomEvent<MapMouseEvent>) {
     if (streetviewOn) {
       return;
     }
 
     // TODO Clicks on a LineLayer or Marker should stop the event from reaching here. Until then, use this hack
-    for (let _ of map.queryRenderedFeatures(e.point, {
+    for (let _ of map.queryRenderedFeatures(e.detail.point, {
       layers: ["jat-cycling", "jat-walking-wheeling"],
     })) {
       return;
@@ -96,7 +97,7 @@
       $state.jat[junctionIdx][stage].arms = [
         ...$state.jat[junctionIdx][stage].arms,
         {
-          point: e.lngLat.toArray() as Position,
+          point: e.detail.lngLat.toArray() as Position,
           name: "",
         },
       ];
@@ -108,11 +109,11 @@
       $state.jat[junctionIdx][stage].movements = [
         ...$state.jat[junctionIdx][stage].movements,
         {
-          point1: e.lngLat.toArray() as Position,
+          point1: e.detail.lngLat.toArray() as Position,
           // Offset 5 and 10 meters to the north
-          point2: destination(e.lngLat.toArray(), 0.005, 0).geometry
+          point2: destination(e.detail.lngLat.toArray(), 0.005, 0).geometry
             .coordinates as Position,
-          point3: destination(e.lngLat.toArray(), 0.01, 0).geometry
+          point3: destination(e.detail.lngLat.toArray(), 0.01, 0).geometry
             .coordinates as Position,
           kind: "cycling",
           score: "X",
@@ -134,11 +135,7 @@
 
   // TODO Wait for loaded
   onMount(() => {
-    map.on("click", onMapClick);
     zoom(false);
-  });
-  onDestroy(() => {
-    map.off("click", onMapClick);
   });
 
   // This includes movements and arms for zooming. When rendered, arms aren't shown.
@@ -231,6 +228,8 @@
 </script>
 
 <MapLibreMap bind:map>
+  <MapEvents on:click={onMapClick} />
+
   {#each $state.jat[junctionIdx][stage].arms as arm, idx}
     <Marker
       draggable

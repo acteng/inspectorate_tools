@@ -10,11 +10,11 @@
     Radio,
     CollapsibleCard,
   } from "govuk-svelte";
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import { bbox } from "$lib/map";
   import { BlueskyKey, MapLibreMap, StreetView } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
-  import { Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
+  import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import {
     state,
@@ -58,7 +58,7 @@
     hoveringSidebar = null;
   }
 
-  function onMapClick(e: MapMouseEvent) {
+  function onMapClick(e: CustomEvent<MapMouseEvent>) {
     if (streetviewOn) {
       return;
     }
@@ -74,7 +74,7 @@
         {
           criticalIssue: "",
           stage: "",
-          point: e.lngLat.toArray(),
+          point: e.detail.lngLat.toArray(),
           locationName: "",
           resolved: "",
           notes: "",
@@ -87,7 +87,7 @@
         {
           conflict: "",
           stage: "",
-          point: e.lngLat.toArray(),
+          point: e.detail.lngLat.toArray(),
           locationName: "",
           resolved: "",
           notes: "",
@@ -100,11 +100,7 @@
 
   // TODO Wait for loaded
   onMount(() => {
-    map.on("click", onMapClick);
     zoom(false);
-  });
-  onDestroy(() => {
-    map.off("click", onMapClick);
   });
 
   function deleteItem() {
@@ -243,6 +239,8 @@
   </div>
   <div style="position: relative; width: 70%;">
     <MapLibreMap bind:map>
+      <MapEvents on:click={onMapClick} />
+
       {#each $state.criticalIssues as issue, idx}
         <Marker
           draggable
