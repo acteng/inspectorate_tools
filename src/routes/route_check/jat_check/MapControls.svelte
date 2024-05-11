@@ -350,8 +350,10 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-size: 25px;
     font-weight: bold;
   }

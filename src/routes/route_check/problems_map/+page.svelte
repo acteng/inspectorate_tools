@@ -294,13 +294,12 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     color: white;
     border: 3px solid white;
-    text-align: center;
-    /* TODO Weird way to vertically align */
-    line-height: 250%;
   }
   .dot:hover {
     border: 6px solid white;
