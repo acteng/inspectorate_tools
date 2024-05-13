@@ -1,6 +1,6 @@
-import type { Feature, Polygon } from "geojson";
 import { writable } from "svelte/store";
 import { LocalStorageFiles } from "$lib/files";
+import type { FeatureCollection } from "geojson";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");
@@ -29,7 +29,7 @@ export interface State {
     inspectorEmail: string;
     schemeAreaSizeKm2: number;
     notes: string;
-    polygon: Feature<Polygon> | null;
+    networkMap: FeatureCollection;
   };
   trafficMitigationCheck: {
     q1: string;
@@ -53,7 +53,7 @@ export interface State {
 
 function validate(state: State) {
   // Could more thoroughly check for validity, but the format won't change much after initial development calms down
-  if (!state.summary || !state.existingScores || !state.existingScoreNotes) {
+  if (!state.summary.networkMap) {
     throw new Error("File format appears outdated");
   }
 }
@@ -75,7 +75,7 @@ export function emptyState(): State {
       inspectorEmail: "",
       schemeAreaSizeKm2: 0,
       notes: "",
-      polygon: null,
+      networkMap: { type: "FeatureCollection", features: [] },
     },
     trafficMitigationCheck: {
       q1: "",
