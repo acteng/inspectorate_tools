@@ -9,8 +9,20 @@
     fundingProgrammes,
     designStages,
   } from "$lib/lists";
+  import NetworkMap from "./NetworkMap.svelte";
+  import type { FeatureCollection } from "geojson";
+  import turfLength from "@turf/length";
 
-  // TODO Start/endpoints, map
+  $: lengthHint = getLengthHint($state.summary.networkMap);
+  function getLengthHint(gj: FeatureCollection): number | null {
+    let sum = 0;
+    for (let f of gj.features) {
+      if (f.geometry.type == "LineString") {
+        sum += turfLength(f, { units: "kilometers" });
+      }
+    }
+    return sum > 0 ? sum : null;
+  }
 </script>
 
 <div class="govuk-width-container">
@@ -56,6 +68,16 @@
     bind:value={$state.summary.fundingConditions}
   />
 
+  {#if lengthHint}
+    <p>
+      LineStrings in the Network Map cover a total of <b>
+        {lengthHint.toFixed(2)}
+      </b>
+      kilometers. Depending what that map represents, you can use this value directly,
+      or hover on a piece of route on the map to see its individual length.
+    </p>
+  {/if}
+
   <DecimalInput
     label="Route length assessed here (km)"
     bind:value={$state.summary.assessedRouteLengthKm}
@@ -70,4 +92,6 @@
   />
 
   <TextArea label="Notes" bind:value={$state.summary.notes} />
+
+  <NetworkMap />
 </div>

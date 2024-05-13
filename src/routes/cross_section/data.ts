@@ -1,5 +1,6 @@
 import { writable } from "svelte/store";
 import { LocalStorageFiles } from "$lib/files";
+import type { FeatureCollection } from "geojson";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");
@@ -26,6 +27,7 @@ export interface State {
     assessedRouteLengthKm: number;
     totalRouteLengthKm: number;
     notes: string;
+    networkMap: FeatureCollection;
   };
   proposed: {
     trafficData: TrafficData;
@@ -79,7 +81,7 @@ export interface CheckPinchPoint {
 function validate(state: State) {
   // Could more thoroughly check for validity, but the format won't change
   // much after initial development calms down
-  if (!state.checks?.homogeneousSections) {
+  if (!state.summary.networkMap) {
     throw new Error("File format appears outdated");
   }
 }
@@ -99,6 +101,7 @@ function emptyState(): State {
       assessedRouteLengthKm: 0,
       totalRouteLengthKm: 0,
       notes: "",
+      networkMap: { type: "FeatureCollection", features: [] },
     },
     proposed: {
       trafficData: {
