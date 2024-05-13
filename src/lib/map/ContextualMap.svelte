@@ -29,18 +29,20 @@
     }}
   >
     <Popup let:props>
-      {#if props.name}
-        <p>
-          <u>Name</u>
-          : {props.name}
-        </p>
-      {/if}
-      {#if props.description}
-        <p>
-          <u>Description</u>
-          : {props.description}
-        </p>
-      {/if}
+      <div>
+        {#if props.name}
+          <p>
+            <u>Name</u>
+            : {props.name}
+          </p>
+        {/if}
+        {#if props.description}
+          <p>
+            <u>Description</u>
+            : {props.description}
+          </p>
+        {/if}
+      </div>
     </Popup>
   </FillLayer>
 
@@ -58,18 +60,26 @@
     }}
   >
     <Popup let:props>
-      {#if props.name}
-        <p>
-          <u>Name</u>
-          : {props.name}
-        </p>
-      {/if}
-      {#if props.description}
-        <p>
-          <u>Description</u>
-          : {props.description}
-        </p>
-      {/if}
+      <div>
+        {#if props.name}
+          <p>
+            <u>Name</u>
+            : {props.name}
+          </p>
+        {/if}
+        {#if props.description}
+          <p>
+            <u>Description</u>
+            : {props.description}
+          </p>
+        {/if}
+        {#if props.length_meters}
+          <p>
+            <u>Length</u>
+            : {(props.length_meters / 1000).toFixed(2)} kilometers
+          </p>
+        {/if}
+      </div>
     </Popup>
   </LineLayer>
 
@@ -87,18 +97,28 @@
     }}
   >
     <Popup let:props>
-      {#if props.name}
-        <p>
-          <u>Name</u>
-          : {props.name}
-        </p>
-      {/if}
-      {#if props.description}
-        <p>
-          <u>Description</u>
-          : {props.description}
-        </p>
-      {/if}
+      <div>
+        {#if props.name}
+          <p>
+            <u>Name</u>
+            : {props.name}
+          </p>
+        {/if}
+        {#if props.description}
+          <p>
+            <u>Description</u>
+            : {props.description}
+          </p>
+        {/if}
+      </div>
     </Popup>
   </CircleLayer>
 </GeoJSON>
+
+<style>
+  div {
+    max-width: 30vw;
+    max-height: 60vh;
+    overflow: auto;
+  }
+</style>
