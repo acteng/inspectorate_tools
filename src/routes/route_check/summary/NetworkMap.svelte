@@ -1,8 +1,17 @@
 <script lang="ts">
   import { ExternalLink } from "$lib";
-  import { MapLibreMap, ContextualMap } from "$lib/map";
+  import { bbox, MapLibreMap, ContextualMap } from "$lib/map";
   import { state } from "../data";
-  import { FileInput, WarningButton } from "govuk-svelte";
+  import { FileInput, SecondaryButton, WarningButton } from "govuk-svelte";
+  import type { Map } from "maplibre-gl";
+  import { onMount } from "svelte";
+
+  let map: Map;
+
+  // TODO Wait for loaded
+  onMount(() => {
+    zoom(false);
+  });
 
   function clear() {
     // TODO Modals
@@ -32,8 +41,22 @@
       }
 
       $state.summary.networkMap = json;
+      zoom(true);
     } catch (err) {
       // TODO display errors
+    }
+  }
+
+  function zoom(animate: boolean) {
+    let gj = {
+      type: "FeatureCollection" as const,
+      features: $state.summary.networkMap.features,
+    };
+    if (gj.features.length > 0) {
+      map.fitBounds(bbox(gj), {
+        padding: 20,
+        animate,
+      });
     }
   }
 </script>
@@ -54,6 +77,7 @@
 
     {#if $state.summary.networkMap.features.length > 0}
       <WarningButton on:click={clear}>Clear map</WarningButton>
+      <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
     {/if}
 
     <p>You can use the external Scheme Sketcher tool to draw this map:</p>
@@ -89,7 +113,7 @@
   </div>
 
   <div style="position: relative; width: 70%;">
-    <MapLibreMap>
+    <MapLibreMap bind:map>
       <ContextualMap gj={$state.summary.networkMap} show />
     </MapLibreMap>
   </div>
