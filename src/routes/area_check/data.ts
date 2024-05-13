@@ -27,8 +27,7 @@ export interface State {
     designStage: string;
     fundingConditions: string;
     inspectorEmail: string;
-    // TODO number
-    schemeAreaSizeKm2: string;
+    schemeAreaSizeKm2: number;
     notes: string;
     polygon: Feature<Polygon> | null;
   };
@@ -74,7 +73,7 @@ export function emptyState(): State {
       designStage: "",
       fundingConditions: "",
       inspectorEmail: "",
-      schemeAreaSizeKm2: "",
+      schemeAreaSizeKm2: 0,
       notes: "",
       polygon: null,
     },

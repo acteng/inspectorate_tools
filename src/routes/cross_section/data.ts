@@ -23,9 +23,8 @@ export interface State {
     fundingProgramme: string;
     designStage: string;
     fundingConditions: string;
-    // TODO numbers
-    assessedRouteLengthKm: string;
-    totalRouteLengthKm: string;
+    assessedRouteLengthKm: number;
+    totalRouteLengthKm: number;
     notes: string;
   };
   proposed: {
@@ -97,8 +96,8 @@ function emptyState(): State {
       fundingProgramme: "",
       designStage: "",
       fundingConditions: "",
-      assessedRouteLengthKm: "",
-      totalRouteLengthKm: "",
+      assessedRouteLengthKm: 0,
+      totalRouteLengthKm: 0,
       notes: "",
     },
     proposed: {

@@ -30,9 +30,8 @@ export interface State {
     designStage: string;
     fundingConditions: string;
     inspectorEmail: string;
-    // TODO number
-    assessedRouteLengthKm: string;
-    totalRouteLengthKm: string;
+    assessedRouteLengthKm: number;
+    totalRouteLengthKm: number;
     notes: string;
     // Even if the user switches between these, data from the other page is never erased
     checkType: "street" | "path" | "";
@@ -187,8 +186,8 @@ export function emptyState(): State {
       designStage: "",
       fundingConditions: "",
       inspectorEmail: "",
-      assessedRouteLengthKm: "",
-      totalRouteLengthKm: "",
+      assessedRouteLengthKm: 0,
+      totalRouteLengthKm: 0,
       notes: "",
       checkType: "",
     },

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs } from "$lib";
+  import { pairs, DecimalInput } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import DrawArea from "./DrawArea.svelte";
@@ -68,9 +68,11 @@
   label="Inspector email address"
   bind:value={$state.summary.inspectorEmail}
 />
-<TextInput
+<DecimalInput
   label="Scheme area size (km²)"
   bind:value={$state.summary.schemeAreaSizeKm2}
+  width={6}
+  min={0}
 />
 
 <TextArea label="Notes" bind:value={$state.summary.notes} />

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs } from "$lib";
+  import { pairs, DecimalInput } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import {
@@ -67,13 +67,17 @@
   label="Inspector email address"
   bind:value={$state.summary.inspectorEmail}
 />
-<TextInput
+<DecimalInput
   label="Route length assessed here (km)"
   bind:value={$state.summary.assessedRouteLengthKm}
+  width={6}
+  min={0}
 />
-<TextInput
+<DecimalInput
   label="Total route length (km)"
   bind:value={$state.summary.totalRouteLengthKm}
+  width={6}
+  min={0}
 />
 
 <TextArea label="Notes" bind:value={$state.summary.notes} />
