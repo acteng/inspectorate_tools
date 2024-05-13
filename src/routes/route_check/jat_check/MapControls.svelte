@@ -139,7 +139,7 @@
     zoom(false);
   });
 
-  // This includes movements and arms for zooming. When rendered, arms aren't shown.
+  // For rendering movements only
   function toGj(state: State): FeatureCollection {
     let gj = {
       type: "FeatureCollection" as const,
@@ -154,10 +154,6 @@
         let opposite = { ...m, point1: m.point3, point3: m.point1 };
         gj.features.push(arrowFeature(opposite, gj.features.length));
       }
-    }
-
-    for (let arm of state.jat[junctionIdx][stage].arms) {
-      gj.features.push(armFeature(arm, gj.features.length));
     }
 
     return gj;
@@ -214,6 +210,13 @@
 
   export function zoom(animate: boolean) {
     let gj = toGj($state);
+    for (let arm of $state.jat[junctionIdx][stage].arms) {
+      gj.features.push(armFeature(arm, gj.features.length));
+    }
+    for (let f of $state.summary.networkMap.features) {
+      gj.features.push(f);
+    }
+
     if (gj.features.length > 0) {
       map.fitBounds(bbox(gj), {
         padding: 20,

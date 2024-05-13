@@ -11,6 +11,8 @@
 
   export let gj: FeatureCollection;
   export let show: boolean;
+
+  let color = "cyan";
 </script>
 
 <GeoJSON data={gj}>
@@ -19,7 +21,7 @@
     manageHoverState
     eventsIfTopMost
     paint={{
-      "fill-color": "red",
+      "fill-color": color,
       "fill-opacity": hoverStateFilter(0.5, 1.0),
     }}
     layout={{
@@ -48,7 +50,7 @@
     eventsIfTopMost
     paint={{
       "line-width": 8,
-      "line-color": "red",
+      "line-color": color,
       "line-opacity": hoverStateFilter(0.5, 1.0),
     }}
     layout={{
@@ -77,7 +79,7 @@
     eventsIfTopMost
     paint={{
       "circle-radius": 10,
-      "circle-color": "red",
+      "circle-color": color,
       "circle-opacity": hoverStateFilter(0.5, 1.0),
     }}
     layout={{

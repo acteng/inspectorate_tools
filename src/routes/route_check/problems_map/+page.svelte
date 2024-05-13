@@ -137,6 +137,7 @@
       features: [
         ...$state.criticalIssues.map((i) => pointFeature(i.point)),
         ...$state.policyConflictLog.map((i) => pointFeature(i.point)),
+        ...$state.summary.networkMap.features,
       ],
     };
     if (gj.features.length > 0) {
