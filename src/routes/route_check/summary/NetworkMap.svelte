@@ -1,15 +1,8 @@
 <script lang="ts">
   import { ExternalLink } from "$lib";
-  import { MapLibreMap, Popup } from "$lib/map";
+  import { MapLibreMap, ContextualMap } from "$lib/map";
   import { state } from "../data";
   import { FileInput, WarningButton } from "govuk-svelte";
-  import {
-    GeoJSON,
-    hoverStateFilter,
-    CircleLayer,
-    FillLayer,
-    LineLayer,
-  } from "svelte-maplibre";
 
   function clear() {
     // TODO Modals
@@ -97,84 +90,7 @@
 
   <div style="position: relative; width: 70%;">
     <MapLibreMap>
-      <GeoJSON data={$state.summary.networkMap}>
-        <FillLayer
-          filter={["==", ["geometry-type"], "Polygon"]}
-          manageHoverState
-          eventsIfTopMost
-          paint={{
-            "fill-color": "red",
-            "fill-opacity": hoverStateFilter(0.5, 1.0),
-          }}
-        >
-          <Popup let:props>
-            {#if props.name}
-              <p>
-                <u>Name</u>
-                : {props.name}
-              </p>
-            {/if}
-            {#if props.description}
-              <p>
-                <u>Description</u>
-                : {props.description}
-              </p>
-            {/if}
-          </Popup>
-        </FillLayer>
-
-        <LineLayer
-          filter={["==", ["geometry-type"], "LineString"]}
-          manageHoverState
-          eventsIfTopMost
-          paint={{
-            "line-width": 8,
-            "line-color": "red",
-            "line-opacity": hoverStateFilter(0.5, 1.0),
-          }}
-        >
-          <Popup let:props>
-            {#if props.name}
-              <p>
-                <u>Name</u>
-                : {props.name}
-              </p>
-            {/if}
-            {#if props.description}
-              <p>
-                <u>Description</u>
-                : {props.description}
-              </p>
-            {/if}
-          </Popup>
-        </LineLayer>
-
-        <CircleLayer
-          filter={["==", ["geometry-type"], "Point"]}
-          manageHoverState
-          eventsIfTopMost
-          paint={{
-            "circle-radius": 10,
-            "circle-color": "red",
-            "circle-opacity": hoverStateFilter(0.5, 1.0),
-          }}
-        >
-          <Popup let:props>
-            {#if props.name}
-              <p>
-                <u>Name</u>
-                : {props.name}
-              </p>
-            {/if}
-            {#if props.description}
-              <p>
-                <u>Description</u>
-                : {props.description}
-              </p>
-            {/if}
-          </Popup>
-        </CircleLayer>
-      </GeoJSON>
+      <ContextualMap gj={$state.summary.networkMap} show />
     </MapLibreMap>
   </div>
 </div>

@@ -4,7 +4,7 @@
   import { colors } from "$lib/colors";
   import type { FeatureCollection, Feature } from "geojson";
   import { onMount } from "svelte";
-  import { bbox, MapLibreMap, Popup } from "$lib/map";
+  import { bbox, MapLibreMap, Popup, ContextualMap } from "$lib/map";
   import { GeoreferenceLayer } from "$lib/map/georef";
   import {
     Marker,
@@ -34,6 +34,7 @@
   export let editing: ID | null;
   export let hoveringSidebar: ID | null;
   export let streetviewOn: boolean;
+  export let showContext: boolean;
 
   let map: Map;
 
@@ -229,6 +230,8 @@
 
 <MapLibreMap bind:map>
   <MapEvents on:click={onMapClick} />
+
+  <ContextualMap gj={$state.summary.networkMap} show={showContext} />
 
   {#each $state.jat[junctionIdx][stage].arms as arm, idx}
     <Marker

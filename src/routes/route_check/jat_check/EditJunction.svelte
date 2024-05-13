@@ -8,6 +8,7 @@
     Radio,
     TextInput,
     CollapsibleCard,
+    Checkbox,
   } from "govuk-svelte";
   import { StreetView, BlueskyKey } from "$lib/map";
   import { GeoreferenceControls } from "$lib/map/georef";
@@ -27,6 +28,7 @@
   let editing: ID | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
+  let showContext = true;
 
   let mapControls: MapControls | null = null;
 
@@ -114,6 +116,7 @@
         {#if mapControls?.getMap()}
           <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />
         {/if}
+        <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
 
       <Radio
@@ -187,6 +190,7 @@
       bind:editing
       {hoveringSidebar}
       {streetviewOn}
+      {showContext}
     />
   </div>
 </div>

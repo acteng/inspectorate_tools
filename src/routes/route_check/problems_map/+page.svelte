@@ -9,10 +9,11 @@
     WarningButton,
     Radio,
     CollapsibleCard,
+    Checkbox,
   } from "govuk-svelte";
   import { onMount } from "svelte";
   import { bbox } from "$lib/map";
-  import { BlueskyKey, MapLibreMap, StreetView } from "$lib/map";
+  import { BlueskyKey, MapLibreMap, StreetView, ContextualMap } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
@@ -32,6 +33,7 @@
   let editing: ID | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
+  let showContext = true;
 
   $: hoverGj = getHoverData($state, editing, hoveringSidebar);
 
@@ -180,6 +182,7 @@
         {#if map}
           <StreetView {map} bind:enabled={streetviewOn} />
         {/if}
+        <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
 
       <Radio
@@ -240,6 +243,8 @@
   <div style="position: relative; width: 70%;">
     <MapLibreMap bind:map>
       <MapEvents on:click={onMapClick} />
+
+      <ContextualMap gj={$state.summary.networkMap} show={showContext} />
 
       {#each $state.criticalIssues as issue, idx}
         <Marker
