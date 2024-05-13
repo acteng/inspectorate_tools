@@ -11,7 +11,6 @@ describe("import then export", async () => {
   let state = dalogToState(inputDalog);
   let outputDalog = encodeDalog(state);
 
-  // TODO The imported version has null as a value type
   // This compares the array order of pairs, which is vital for copying. The
   // diff is long, but legible.
   expect(Object.entries(inputDalog)).toBe(outputDalog);

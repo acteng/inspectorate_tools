@@ -40,7 +40,19 @@ export function getDalog(workbook: ExcelJS.Workbook): {
 
   let pairs = keys.map((key, i) => [key, values[i]]);
   // TODO There were some duplicate keys to watch out for
-  return Object.fromEntries(pairs);
+  let obj = Object.fromEntries(pairs);
+
+  // TODO The Sub-tool in DALOG is incorrect, so workaround by grabbing the correct field.
+  obj["Sub-tool"] = getSubtool(workbook);
+
+  return obj;
+}
+
+function getSubtool(workbook: ExcelJS.Workbook): "Street Check" | "Path Check" {
+  let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
+  let cell = sheet.getCell("D22");
+  // Assume one or the other is specified
+  return cell.value as "Street Check" | "Path Check";
 }
 
 function num(idx: number): string {
@@ -101,6 +113,9 @@ export function dalogToState(dalog: {
     return [parts[1], parts[0]] as Position;
   };
 
+  let checkType: "street" | "path" =
+    normalString("Sub-tool") == "Street Check" ? "street" : "path";
+
   state.summary = {
     dateDesignReview: normalString("Date of Design Review"),
     schemeReference: normalString("Scheme Ref"),
@@ -119,8 +134,7 @@ export function dalogToState(dalog: {
     assessedRouteLengthKm: normalString("RouteFileLength"),
     totalRouteLengthKm: normalString("RouteLength"),
     notes: normalString("Notes"),
-    // TODO Broken in Excel
-    checkType: normalString("Sub-tool") == "Street Check" ? "street" : "path",
+    checkType,
   };
 
   for (let [i, pc] of state.policyCheck.entries()) {
@@ -136,7 +150,6 @@ export function dalogToState(dalog: {
     [state.pathPlacemakingCheck, "PP", 16],
   ] as const) {
     for (let i = 0; i < scorecard.existingScores.length; i++) {
-      // TODO Interpet null based on checkType... which is wrong in the input
       scorecard.existingScores[i] = score(`${prefix}${num(i + offset)}-E`);
       scorecard.proposedScores[i] = score(`${prefix}${num(i + offset)}-D`);
     }
