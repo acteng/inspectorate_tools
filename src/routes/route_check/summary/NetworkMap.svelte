@@ -2,11 +2,17 @@
   import { ExternalLink } from "$lib";
   import { bbox, MapLibreMap, ContextualMap } from "$lib/map";
   import { state } from "../data";
-  import { FileInput, SecondaryButton, WarningButton } from "govuk-svelte";
+  import {
+    ErrorMessage,
+    FileInput,
+    SecondaryButton,
+    WarningButton,
+  } from "govuk-svelte";
   import type { Map } from "maplibre-gl";
   import { onMount } from "svelte";
 
   let map: Map;
+  let errorMessage = "";
 
   // TODO Wait for loaded
   onMount(() => {
@@ -24,6 +30,7 @@
   }
 
   function importFile(filename: string, contents: string) {
+    errorMessage = "";
     try {
       let json = JSON.parse(contents);
 
@@ -43,7 +50,7 @@
       $state.summary.networkMap = json;
       zoom(true);
     } catch (err) {
-      // TODO display errors
+      errorMessage = `Error importing ${filename}: ${err}`;
     }
   }
 
@@ -74,6 +81,7 @@
     </p>
 
     <FileInput label="Import from GeoJSON file" onLoad={importFile} />
+    <ErrorMessage {errorMessage} />
 
     {#if $state.summary.networkMap.features.length > 0}
       <WarningButton on:click={clear}>Clear map</WarningButton>
