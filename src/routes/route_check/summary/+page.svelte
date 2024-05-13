@@ -9,6 +9,7 @@
     fundingProgrammes,
     designStages,
   } from "$lib/lists";
+  import NetworkMap from "./NetworkMap.svelte";
 
   // TODO https://design-system.service.gov.uk/components/date-input/
 </script>
@@ -95,4 +96,6 @@
     ]}
     bind:value={$state.summary.checkType}
   />
+
+  <NetworkMap />
 </div>

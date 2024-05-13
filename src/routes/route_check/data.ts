@@ -1,6 +1,7 @@
 import { writable } from "svelte/store";
 import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
+import type { FeatureCollection } from "geojson";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");
@@ -35,6 +36,7 @@ export interface State {
     notes: string;
     // Even if the user switches between these, data from the other page is never erased
     checkType: "street" | "path" | "";
+    networkMap: FeatureCollection;
   };
 
   policyCheck: {
@@ -162,11 +164,7 @@ export interface Movement {
 function validate(state: State) {
   // Could more thoroughly check for validity, but the format won't change
   // much after initial development calms down
-  if (
-    !state.jat ||
-    (state.policyConflictLog.length > 0 &&
-      typeof state.policyConflictLog[0] == "string")
-  ) {
+  if (!state.summary.networkMap) {
     throw new Error("File format appears outdated");
   }
 }
@@ -190,6 +188,7 @@ export function emptyState(): State {
       totalRouteLengthKm: 0,
       notes: "",
       checkType: "",
+      networkMap: { type: "FeatureCollection", features: [] },
     },
     policyCheck: repeatCloned(6, {
       existing: "",

@@ -135,6 +135,7 @@ export function dalogToState(dalog: {
     totalRouteLengthKm: normalString("RouteLength"),
     notes: normalString("Notes"),
     checkType,
+    networkMap: { type: "FeatureCollection", features: [] },
   };
 
   for (let [i, pc] of state.policyCheck.entries()) {
