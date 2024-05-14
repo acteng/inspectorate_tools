@@ -10,7 +10,7 @@ import {
 export function getDalog(workbook: ExcelJS.Workbook): {
   [name: string]: string | number | null;
 } {
-  let sheet = workbook.getWorksheet("InsLog")!;
+  let sheet = workbook.getWorksheet("DALog")!;
 
   // @ts-expect-error TODO
   let keys: string[] = sheet.getRow(1).values.map((v: CellValue) => {
@@ -32,27 +32,14 @@ export function getDalog(workbook: ExcelJS.Workbook): {
     }
   });
 
-  // The very two entries are null
+  // The first two entries are null
   keys.shift();
   keys.shift();
   values.shift();
   values.shift();
 
   let pairs = keys.map((key, i) => [key, values[i]]);
-  // TODO There were some duplicate keys to watch out for
-  let obj = Object.fromEntries(pairs);
-
-  // TODO The Sub-tool in DALOG is incorrect, so workaround by grabbing the correct field.
-  obj["Sub-tool"] = getSubtool(workbook);
-
-  return obj;
-}
-
-function getSubtool(workbook: ExcelJS.Workbook): "Street Check" | "Path Check" {
-  let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
-  let cell = sheet.getCell("D22");
-  // Assume one or the other is specified
-  return cell.value as "Street Check" | "Path Check";
+  return Object.fromEntries(pairs);
 }
 
 function num(idx: number): string {
