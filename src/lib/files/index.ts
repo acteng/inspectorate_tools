@@ -85,6 +85,12 @@ export class LocalStorageFiles<StateType> {
     return list;
   }
 
+  // Save a new file and return the updated file list
+  saveAndGetFileList(filename: string, state: StateType): string[] {
+    window.localStorage.setItem(this.key(filename), JSON.stringify(state));
+    return this.getFileList();
+  }
+
   // Initially set the currentFile and state store, based on the last opened file or starting a new one.
   private initialLoad() {
     if (typeof window == "undefined") {

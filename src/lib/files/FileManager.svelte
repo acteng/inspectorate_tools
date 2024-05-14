@@ -71,32 +71,29 @@
   async function newFile() {
     $currentFile = files.newFilename();
     $state = files.emptyState();
-    // Do this immediately, so we can refresh the fileList
-    window.localStorage.setItem(
-      files.key($currentFile),
-      JSON.stringify($state),
-    );
-    fileList = files.getFileList();
+    fileList = files.saveAndGetFileList($currentFile, $state);
     await goto(`${base}/${files.prefix}`);
   }
 
   async function importJsonFile(rawFilename: string, contents: string) {
     // TODO Handle duplicate names
     let file = stripSuffix(rawFilename, ".json");
-    // TODO Validate contents upfront?
-    // Do this immediately, so we can refresh the fileList
-    window.localStorage.setItem(files.key(file), contents);
-    fileList = files.getFileList();
-    await openFile(file);
+
+    try {
+      let value = JSON.parse(contents);
+      files.validate(value);
+      fileList = files.saveAndGetFileList(file, value);
+      await openFile(file);
+    } catch (err) {
+      window.alert(`Couldn't load ${file}: ${err}`);
+    }
   }
 
   async function onXlsxImported(
     e: CustomEvent<{ filename: string; data: StateType }>,
   ) {
     let { filename, data } = e.detail;
-    // Do this immediately, so we can refresh the fileList
-    window.localStorage.setItem(files.key(filename), JSON.stringify(data));
-    fileList = files.getFileList();
+    fileList = files.saveAndGetFileList(filename, data);
     await openFile(filename);
   }
 
