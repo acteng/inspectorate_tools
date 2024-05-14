@@ -10,7 +10,7 @@
     CollapsibleCard,
     Checkbox,
   } from "govuk-svelte";
-  import { StreetView, BlueskyKey } from "$lib/map";
+  import { StreetView, Basemap } from "$lib/map";
   import { GeoreferenceControls } from "$lib/map/georef";
   import { state, type JunctionAssessment } from "../data";
   import Form from "./Form.svelte";
@@ -111,7 +111,7 @@
         <SecondaryButton on:click={() => mapControls?.zoom(true)}>
           Zoom to fit
         </SecondaryButton>
-        <BlueskyKey />
+        <Basemap />
         <GeoreferenceControls />
         {#if mapControls?.getMap()}
           <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />

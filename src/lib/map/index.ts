@@ -1,7 +1,7 @@
 import turfBbox from "@turf/bbox";
 import type { GeoJSON } from "geojson";
 
-export { default as BlueskyKey } from "./BlueskyKey.svelte";
+export { default as Basemap } from "./Basemap.svelte";
 export { default as ContextualMap } from "./ContextualMap.svelte";
 export { default as ContextualMapEntry } from "./ContextualMapEntry.svelte";
 export { default as MapLibreMap } from "./MapLibreMap.svelte";

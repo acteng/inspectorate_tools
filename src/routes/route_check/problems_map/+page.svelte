@@ -13,7 +13,7 @@
   } from "govuk-svelte";
   import { onMount } from "svelte";
   import { bbox } from "$lib/map";
-  import { BlueskyKey, MapLibreMap, StreetView, ContextualMap } from "$lib/map";
+  import { Basemap, MapLibreMap, StreetView, ContextualMap } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
@@ -178,7 +178,7 @@
         <SecondaryButton on:click={() => zoom(true)}>
           Zoom to fit
         </SecondaryButton>
-        <BlueskyKey />
+        <Basemap />
         <GeoreferenceControls />
         {#if map}
           <StreetView {map} bind:enabled={streetviewOn} />

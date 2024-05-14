@@ -2,14 +2,24 @@
   import type { StyleSpecification } from "maplibre-gl";
   import { MapLibre, type Map } from "svelte-maplibre";
   import Geocoder from "./Geocoder.svelte";
+  import { styleChoice } from "./stores";
 
   // TODO Is it worth trying to preserve the map while navigating to other pages?
   export let map: Map | null = null;
 
-  function getStyle(): string | StyleSpecification {
-    let blueskyKey = window.localStorage.getItem("bluesky-api-key") || "";
-    if (blueskyKey.length > 0) {
-      let tiles = `https://ogc.apps.midgard.airbusds-cint.com/apgb/wmts/rest/apgb:AP-12CM5-GB-LATEST/default/EPSG-3857/EPSG:3857:{z}/{y}/{x}?GUID=${blueskyKey}&format=image/png&TRANSPARENT=FALSE`;
+  function getStyle(choice: string): string | StyleSpecification {
+    if (choice == "bluesky" || choice == "os-road") {
+      let tiles, attribution;
+      if (choice == "bluesky") {
+        let apiKey = window.localStorage.getItem("bluesky-api-key") || "";
+        tiles = `https://ogc.apps.midgard.airbusds-cint.com/apgb/wmts/rest/apgb:AP-12CM5-GB-LATEST/default/EPSG-3857/EPSG:3857:{z}/{y}/{x}?GUID=${apiKey}&format=image/png&TRANSPARENT=FALSE`;
+        attribution = "Bluesky";
+      } else {
+        let apiKey = window.localStorage.getItem("os-api-key") || "";
+        tiles = `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`;
+        attribution =
+          "Contains OS data &copy; Crown copyright and database rights 2024";
+      }
       return {
         version: 8,
         sources: {
@@ -17,7 +27,7 @@
             type: "raster",
             tiles: [tiles],
             tileSize: 256,
-            attribution: "Bluesky",
+            attribution,
           },
         },
         layers: [
@@ -32,14 +42,17 @@
           import.meta.env.VITE_MAPTILER_API_KEY
         }`,
       };
-    } else {
-      return `https://api.maptiler.com/maps/hybrid/style.json?key=${import.meta.env.VITE_MAPTILER_API_KEY}`;
     }
+
+    let style = choice.slice("maptiler-".length);
+    return `https://api.maptiler.com/maps/${style}/style.json?key=${
+      import.meta.env.VITE_MAPTILER_API_KEY
+    }`;
   }
 </script>
 
 <MapLibre
-  style={getStyle()}
+  style={getStyle($styleChoice)}
   standardControls
   on:error={(e) => {
     // @ts-expect-error Not exported
