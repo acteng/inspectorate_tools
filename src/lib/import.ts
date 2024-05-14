@@ -162,6 +162,7 @@ export function dalogToState(dalog: {
       break;
     }
     state.policyConflictLog.push({
+      // Just a single digit code
       conflict: normalString(`${prefix}Typ`).substr(0, 1),
       stage: normalString(`${prefix}Sta`),
       point: point(`${prefix}LaL`),
@@ -171,28 +172,13 @@ export function dalogToState(dalog: {
     });
   }
 
-  for (let i = 0; i < 35; i++) {
-    let prefix = `${num(i)}PC`;
-    if (dalog[`${prefix}Ref`] == null) {
-      break;
-    }
-    state.policyConflictLog.push({
-      conflict: normalString(`${prefix}Typ`).substr(0, 1),
-      stage: normalString(`${prefix}Sta`),
-      point: point(`${prefix}LaL`),
-      locationName: normalString(`${prefix}Loc`),
-      resolved: yesNoBlank(`${prefix}Res`),
-      notes: normalString(`${prefix}Com`),
-    });
-  }
-  // TODO Pretty much the same
   for (let i = 0; i < 35; i++) {
     let prefix = `${num(i)}SA`;
     if (dalog[`${prefix}Ref`] == null) {
       break;
     }
     state.criticalIssues.push({
-      criticalIssue: normalString(`${prefix}Typ`).substr(0, 1),
+      criticalIssue: normalString(`${prefix}Typ`).split(" - ")[0],
       stage: normalString(`${prefix}Sta`),
       point: point(`${prefix}LaL`),
       locationName: normalString(`${prefix}Loc`),
@@ -201,7 +187,7 @@ export function dalogToState(dalog: {
     });
   }
 
-  // TODO JAT
+  // JAT level-of-service stats are included, but not enough for us to import anything
 
   return state;
 }
