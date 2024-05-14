@@ -1,6 +1,7 @@
 export { default as Breadcrumbs } from "./Breadcrumbs.svelte";
 export { default as DecimalInput } from "./DecimalInput.svelte";
 export { default as FancyRadio } from "./FancyRadio.svelte";
+export { default as GenericSelect } from "./GenericSelect.svelte";
 export { default as ExternalLink } from "./ExternalLink.svelte";
 export { default as Modal } from "./Modal.svelte";
 export { default as NextButton } from "./NextButton.svelte";

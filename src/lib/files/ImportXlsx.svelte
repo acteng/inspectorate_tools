@@ -1,4 +1,4 @@
-<script lang="ts" generics="StateType">
+<script lang="ts">
   import { FormElement } from "govuk-svelte";
   import Loading from "./Loading.svelte";
 

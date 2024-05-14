@@ -1,12 +1,7 @@
 <script lang="ts">
-  import { pairs, ExternalLink } from "$lib";
+  import { pairs, GenericSelect, ExternalLink } from "$lib";
   import { createEventDispatcher } from "svelte";
-  import {
-    WarningText,
-    SecondaryButton,
-    WarningButton,
-    Select,
-  } from "govuk-svelte";
+  import { WarningText, SecondaryButton, WarningButton } from "govuk-svelte";
   import {
     state,
     streetFeatureTypes,
@@ -42,47 +37,23 @@
     addRightBuffer: void;
   }>();
 
-  // TODO Select only understands string values, but we want to set
-  // StreetFeatureType. This approach works, but it could be wrapped more
-  // nicely in a generic Select component
-  let stringValue: string =
-    typeof value == "object" ? `custom_${value.custom}` : value;
-
-  $: updateValue(stringValue);
-  // If the value is changed by the parent, update stringValue
-  $: updateStringValue(value);
-
-  function updateValue(s: string) {
-    if (s.startsWith("custom_")) {
-      value = { custom: s.slice("custom_".length) };
-    } else {
-      value = s as StreetFeatureType | "";
-    }
-  }
-
-  function updateStringValue(v: StreetFeatureType | "") {
-    stringValue = typeof v == "object" ? `custom_${v.custom}` : v;
-  }
-
   $: choices = makeChoices($state.proposed.customFeatures);
 
-  function makeChoices(customFeatures: CustomFeatures): [string, string][] {
-    // @ts-expect-error TODO Need to make pairs handle readonly types
-    let list = pairs(streetFeatureTypes);
+  function makeChoices(
+    customFeatures: CustomFeatures,
+  ): [StreetFeatureType | "", string][] {
+    let list: [StreetFeatureType | "", string][] = streetFeatureTypes.map(
+      (f) => [f, f],
+    );
     for (let [id, feature] of Object.entries(customFeatures)) {
-      list.push([`custom_${id}`, `Custom: ${feature.name}`]);
+      list.push([{ custom: id }, `Custom: ${feature.name}`]);
     }
     return list;
   }
 </script>
 
 <div>
-  <Select
-    label="Street feature type"
-    emptyOption
-    {choices}
-    bind:value={stringValue}
-  />
+  <GenericSelect label="Street feature type" emptyOption {choices} bind:value />
 
   {#if value}
     <p>Desirable minimum width (m): {widths[0].toFixed(2)}</p>
