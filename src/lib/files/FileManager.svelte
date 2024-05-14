@@ -7,8 +7,7 @@
     WarningButton,
     ButtonGroup,
     SecondaryButton,
-    TextArea,
-    CollapsibleCard,
+    FormElement,
   } from "govuk-svelte";
   import { Modal } from "$lib";
   import { type Writable } from "svelte/store";
@@ -18,6 +17,10 @@
   export let currentFile: Writable<string>;
   // eslint-disable-next-line no-undef
   export let state: Writable<StateType>;
+
+  // If provided, adds an option to import from an XLSX file. Runs the callback
+  // with the ArrayBuffer.
+  export let xlsxImporter: ((buffer: ArrayBuffer) => void) | null;
 
   let fileList = files.getFileList();
   let open = false;
@@ -76,7 +79,7 @@
     await goto(`${base}/${files.prefix}`);
   }
 
-  async function importFile(rawFilename: string, contents: string) {
+  async function importJsonFile(rawFilename: string, contents: string) {
     // TODO Handle duplicate names
     let file = rawFilename.endsWith(".json")
       ? rawFilename.slice(0, -".json".length)
@@ -97,6 +100,14 @@
     } catch (error) {
       window.alert(`Couldn't load ${file}: ${error}`);
     }
+  }
+
+  // TODO At least split up components a bit here
+  let xlsxFileInput: HTMLInputElement;
+  async function xlsxFileLoaded(e: Event) {
+    let buffer = await xlsxFileInput.files![0].arrayBuffer();
+    // TODO Loading screen
+    await xlsxImporter!(buffer);
   }
 </script>
 
@@ -124,18 +135,22 @@
     <WarningButton on:click={deleteFile}>Delete</WarningButton>
   </ButtonGroup>
 
-  <CollapsibleCard label="Debug">
-    <TextArea
-      label="JSON"
-      value={JSON.stringify($state, null, "  ")}
-      rows={10}
-    />
-  </CollapsibleCard>
-
   <hr />
 
   <SecondaryButton on:click={newFile}>New file</SecondaryButton>
-  <FileInput label="Import from file" onLoad={importFile} />
+  <FileInput label="Import from a .json file" onLoad={importJsonFile} />
+
+  {#if xlsxImporter != null}
+    <FormElement label="Import from XLSX file" id="import-xlsx">
+      <input
+        bind:this={xlsxFileInput}
+        on:change={xlsxFileLoaded}
+        class="govuk-file-upload"
+        id="import-xlsx"
+        type="file"
+      />
+    </FormElement>
+  {/if}
 
   <p>Load a saved file:</p>
   <ul>
