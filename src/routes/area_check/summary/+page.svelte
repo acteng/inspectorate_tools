@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs, DecimalInput, SelectWithCustom } from "$lib";
+  import { pairs, ExternalLink, DecimalInput, SelectWithCustom } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import {
@@ -9,7 +9,7 @@
     fundingProgrammes,
     designStages,
   } from "$lib/lists";
-  import NetworkMap from "./NetworkMap.svelte";
+  import { ContextualMapEntry } from "$lib/map";
   import type { FeatureCollection } from "geojson";
   import turfArea from "@turf/area";
 
@@ -102,5 +102,31 @@
 
   <TextArea label="Notes" bind:value={$state.summary.notes} />
 
-  <NetworkMap />
+  <ContextualMapEntry bind:gj={$state.summary.networkMap}>
+    <ol>
+      <li>
+        Go to the <ExternalLink href="https://acteng.github.io/atip">
+          Scheme Sketcher
+        </ExternalLink> tool
+      </li>
+      <li>Choose the area best covering this scheme</li>
+      <li>
+        Use the <i>New polygon</i>
+        tools (freehand or snapped) to sketch the area.
+      </li>
+      <li>Optionally, include more point and route details.</li>
+      <li>
+        You can set <i>Name</i>
+        and
+        <i>Description</i>
+        to whatever is useful for display on the map
+      </li>
+      <li>
+        Save the map by clicking <i>Manage files</i>
+        , then
+        <i>Save</i>
+      </li>
+      <li>Load the saved file above</li>
+    </ol>
+  </ContextualMapEntry>
 </div>

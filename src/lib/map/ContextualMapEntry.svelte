@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { ExternalLink } from "$lib";
   import { bbox, MapLibreMap, ContextualMap } from "$lib/map";
-  import { state } from "../data";
   import {
     ErrorMessage,
     FileInput,
@@ -10,6 +8,9 @@
   } from "govuk-svelte";
   import type { Map } from "maplibre-gl";
   import { onMount } from "svelte";
+  import type { FeatureCollection } from "geojson";
+
+  export let gj: FeatureCollection;
 
   let map: Map;
   let errorMessage = "";
@@ -22,7 +23,7 @@
   function clear() {
     // TODO Modals
     if (window.confirm("Do you really want to erase the map data?")) {
-      $state.summary.networkMap = {
+      gj = {
         type: "FeatureCollection",
         features: [],
       };
@@ -47,7 +48,7 @@
         );
       }
 
-      $state.summary.networkMap = json;
+      gj = json;
       zoom(true);
     } catch (err) {
       errorMessage = `Error importing ${filename}: ${err}`;
@@ -55,10 +56,6 @@
   }
 
   function zoom(animate: boolean) {
-    let gj = {
-      type: "FeatureCollection" as const,
-      features: $state.summary.networkMap.features,
-    };
     if (gj.features.length > 0) {
       map.fitBounds(bbox(gj), {
         padding: 20,
@@ -68,56 +65,32 @@
   }
 </script>
 
-<h2>Network Context</h2>
+<h2>Network Map</h2>
 
 <div style="display: flex; height: 80vh">
   <div
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
   >
     <p>
-      Please add a map showing the area being assessed, including the location
-      of measures proposed by the scheme.
+      Please add a map showing the section of route being scored in this file.
+      If the route is part of a longer route of multiple sections (covered in
+      other files), please show this on the map for context too.
     </p>
 
     <FileInput label="Import from GeoJSON file" onLoad={importFile} />
     <ErrorMessage {errorMessage} />
 
-    {#if $state.summary.networkMap.features.length > 0}
+    {#if gj.features.length > 0}
       <WarningButton on:click={clear}>Clear map</WarningButton>
       <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
     {/if}
 
-    <p>You can use the external Scheme Sketcher tool to draw this map:</p>
-    <ol>
-      <li>
-        Go to the <ExternalLink href="https://acteng.github.io/atip">
-          Scheme Sketcher
-        </ExternalLink> tool
-      </li>
-      <li>Choose the area best covering this scheme</li>
-      <li>
-        Use the <i>New polygon</i>
-        tools (freehand or snapped) to sketch the area.
-      </li>
-      <li>Optionally, include more point and route details.</li>
-      <li>
-        You can set <i>Name</i>
-        and
-        <i>Description</i>
-        to whatever is useful for display on the map
-      </li>
-      <li>
-        Save the map by clicking <i>Manage files</i>
-        , then
-        <i>Save</i>
-      </li>
-      <li>Load the saved file above</li>
-    </ol>
+    <slot />
   </div>
 
   <div style="position: relative; width: 70%;">
     <MapLibreMap bind:map>
-      <ContextualMap gj={$state.summary.networkMap} show />
+      <ContextualMap {gj} show />
     </MapLibreMap>
   </div>
 </div>
