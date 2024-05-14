@@ -7,10 +7,10 @@
     WarningButton,
     ButtonGroup,
     SecondaryButton,
-    FormElement,
   } from "govuk-svelte";
   import { Modal } from "$lib";
   import { type Writable } from "svelte/store";
+  import ImportXlsx from "./ImportXlsx.svelte";
 
   // eslint-disable-next-line no-undef
   export let files: LocalStorageFiles<StateType>;
@@ -101,14 +101,6 @@
       window.alert(`Couldn't load ${file}: ${error}`);
     }
   }
-
-  // TODO At least split up components a bit here
-  let xlsxFileInput: HTMLInputElement;
-  async function xlsxFileLoaded(e: Event) {
-    let buffer = await xlsxFileInput.files![0].arrayBuffer();
-    // TODO Loading screen
-    await xlsxImporter!(buffer);
-  }
 </script>
 
 <div style="display: flex; align-items: baseline;">
@@ -141,15 +133,7 @@
   <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
   {#if xlsxImporter != null}
-    <FormElement label="Import from XLSX file" id="import-xlsx">
-      <input
-        bind:this={xlsxFileInput}
-        on:change={xlsxFileLoaded}
-        class="govuk-file-upload"
-        id="import-xlsx"
-        type="file"
-      />
-    </FormElement>
+    <ImportXlsx {xlsxImporter} />
   {/if}
 
   <p>Load a saved file:</p>
