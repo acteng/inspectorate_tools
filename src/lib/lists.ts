@@ -354,7 +354,6 @@ export let regions = [
   "South West",
   "West Midlands",
   "Yorkshire and the Humber",
-  "Other (please overtype this option)",
 ];
 
 export let fundingProgrammes = [
@@ -367,7 +366,6 @@ export let fundingProgrammes = [
   "Road Investment Strategy ",
   "Housing Infrastructure Fund",
   "National Cycle Network",
-  "Other (please overtype this option)",
 ];
 
 export let designStages = [
@@ -379,5 +377,4 @@ export let designStages = [
   "Pre-outline business case",
   "Outline business case",
   "Final business case",
-  "Other (please overtype this option)",
 ];

@@ -6,6 +6,7 @@ export { default as Modal } from "./Modal.svelte";
 export { default as NextButton } from "./NextButton.svelte";
 export { default as PreviousButton } from "./PreviousButton.svelte";
 export { default as PrevNext } from "./PrevNext.svelte";
+export { default as SelectWithCustom } from "./SelectWithCustom.svelte";
 export { default as YesNo } from "./YesNo.svelte";
 
 export function pairs(list: string[]): [string, string][] {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs, DecimalInput } from "$lib";
+  import { pairs, DecimalInput, SelectWithCustom } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import {
@@ -55,19 +55,19 @@
     choices={pairs(transportOrCombinedAuthorities)}
     bind:value={$state.summary.transportOrCombinedAuthority}
   />
-  <Select
+  <SelectWithCustom
     label="Region"
     emptyOption
     choices={pairs(regions)}
     bind:value={$state.summary.region}
   />
-  <Select
+  <SelectWithCustom
     label="Funding programme"
     emptyOption
     choices={pairs(fundingProgrammes)}
     bind:value={$state.summary.fundingProgramme}
   />
-  <Select
+  <SelectWithCustom
     label="Design stage"
     emptyOption
     choices={pairs(designStages)}
