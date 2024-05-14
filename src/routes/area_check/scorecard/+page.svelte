@@ -4,4 +4,6 @@
   // TODO Include bold in the choices
 </script>
 
-<Progress currentIdx={-1} />
+<div class="govuk-width-container">
+  <Progress currentIdx={-1} />
+</div>

@@ -49,6 +49,7 @@ export interface State {
   // Optional notes for each entry
   existingScoreNotes: string[];
   proposedScoreNotes: string[];
+  resultsNotes: string;
 }
 
 function validate(state: State) {
@@ -93,5 +94,6 @@ export function emptyState(): State {
     proposedScores: Array(13).fill(""),
     existingScoreNotes: Array(13).fill(""),
     proposedScoreNotes: Array(13).fill(""),
+    resultsNotes: "",
   };
 }
