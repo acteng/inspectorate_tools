@@ -16,6 +16,7 @@ export let files = new LocalStorageFiles(
 );
 
 export interface State {
+  version: string;
   summary: {
     dateDesignReview: string;
     schemeReference: string;
@@ -160,15 +161,14 @@ export interface Movement {
 }
 
 function validate(state: State) {
-  // Could more thoroughly check for validity, but the format won't change
-  // much after initial development calms down
-  if (!state.summary.networkMap) {
+  if (state.version != "alpha-0") {
     throw new Error("File format appears outdated");
   }
 }
 
 export function emptyState(): State {
   return {
+    version: "alpha-0",
     summary: {
       dateDesignReview: "",
       schemeReference: "",
