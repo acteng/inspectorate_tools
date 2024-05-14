@@ -1,5 +1,9 @@
 import { type State, type Scorecard } from "../data";
 import { type Results, type ResultCategory, getResults } from "../results";
+import {
+  criticalIssueChoices,
+  policyConflictChoices,
+} from "../problems_map/lists";
 
 type Value = string | number;
 
@@ -257,8 +261,9 @@ function policyConflictLog(state: State): [string, Value][] {
       let conflict = state.policyConflictLog[i];
       values = {
         Ref: policyConflictId(state, i),
-        // TODO n - description
-        Typ: conflict.conflict,
+        Typ: policyConflictChoices.find(
+          (pair) => pair[0] == conflict.conflict,
+        )![1],
         Sta: conflict.stage,
         LaL: `${conflict.point[1]}, ${conflict.point[0]}`,
         Loc: conflict.locationName,
@@ -312,8 +317,9 @@ function criticalIssues(state: State): [string, Value][] {
       let critical = state.criticalIssues[i];
       values = {
         Ref: criticalIssueId(state, i),
-        // TODO n - description
-        Typ: critical.criticalIssue,
+        Typ: criticalIssueChoices.find(
+          (pair) => pair[0] == critical.criticalIssue,
+        )![1],
         Sta: critical.stage,
         LaL: `${critical.point[1]}, ${critical.point[0]}`,
         Loc: critical.locationName,

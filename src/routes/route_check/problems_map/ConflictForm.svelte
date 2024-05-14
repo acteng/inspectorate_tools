@@ -3,21 +3,9 @@
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import { streetviewUrl, bingUrl } from "$lib/map";
+  import { policyConflictChoices } from "./lists";
 
   export let idx: number;
-
-  // TODO Preserve bold formatting?
-  let choices: [string, string][] = [
-    ["1", "1 - Cyclists are not separated from pedestrians"],
-    ["2", '2 - Barriers, steps, or "Cyclist Dismount" signs are present'],
-    ["3", "3 - The route is not direct, logical and intuitive"],
-    ["4", "4 - Inappropriate surface materials"],
-    ["5", "5 - Appropriate lighting is not provided"],
-    [
-      "6",
-      "6 - Routes miss opportunities to join together with other facilities as a network",
-    ],
-  ];
 </script>
 
 <div style="display: flex; justify-content: space-evenly">
@@ -32,7 +20,7 @@
 <Select
   label="Policy Conflict"
   emptyOption
-  {choices}
+  choices={policyConflictChoices}
   bind:value={$state.policyConflictLog[idx].conflict}
 />
 
