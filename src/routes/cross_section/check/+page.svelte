@@ -28,7 +28,8 @@
     $state.checks.pinchPoints = [
       ...$state.checks.pinchPoints,
       {
-        location: "",
+        // TODO This'll become map-based
+        location: [0, 0],
         availableWidth: 0.0,
         notes: "",
       },

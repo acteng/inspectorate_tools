@@ -1,10 +1,6 @@
 import ExcelJS, { type CellValue } from "exceljs";
-import {
-  emptyState,
-  type State,
-  type Score,
-  type Position,
-} from "../routes/route_check/data";
+import { emptyState, type State, type Score } from "../routes/route_check/data";
+import type { Position } from "$lib/map";
 
 // TODO More cautious error checking
 export function getDalog(workbook: ExcelJS.Workbook): {

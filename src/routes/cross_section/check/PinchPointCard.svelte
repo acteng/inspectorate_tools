@@ -2,7 +2,7 @@
   import { DecimalInput } from "$lib";
   import SectionsPossible from "./SectionsPossible.svelte";
   import { createEventDispatcher } from "svelte";
-  import { TextInput, WarningButton, TextArea } from "govuk-svelte";
+  import { WarningButton, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let i: number;
@@ -15,11 +15,6 @@
 </script>
 
 <div>
-  <TextInput
-    label="Location of constraint"
-    bind:value={$state.checks.pinchPoints[i].location}
-  />
-
   <DecimalInput
     label="Available width (m)"
     width={4}

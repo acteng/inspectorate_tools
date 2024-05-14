@@ -1,6 +1,7 @@
 import { writable } from "svelte/store";
 import { LocalStorageFiles } from "$lib/files";
 import type { FeatureCollection } from "geojson";
+import type { Position } from "$lib/map";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");
@@ -72,8 +73,7 @@ export interface CheckHomogeneousSection {
 }
 
 export interface CheckPinchPoint {
-  // TODO A point
-  location: string;
+  location: Position;
   availableWidth: number;
   notes: string;
 }

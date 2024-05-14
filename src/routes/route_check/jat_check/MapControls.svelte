@@ -4,7 +4,13 @@
   import { colors } from "$lib/colors";
   import type { FeatureCollection, Feature } from "geojson";
   import { onMount } from "svelte";
-  import { bbox, MapLibreMap, Popup, ContextualMap } from "$lib/map";
+  import {
+    bbox,
+    MapLibreMap,
+    Popup,
+    ContextualMap,
+    type Position,
+  } from "$lib/map";
   import { GeoreferenceLayer } from "$lib/map/georef";
   import {
     Marker,
@@ -17,13 +23,7 @@
     MapEvents,
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import {
-    state,
-    type Arm,
-    type Movement,
-    type Position,
-    type State,
-  } from "../data";
+  import { state, type Arm, type Movement, type State } from "../data";
 
   type Kind = "arm" | "movement";
   type ID = { kind: Kind; idx: number };

@@ -2,6 +2,7 @@ import { writable } from "svelte/store";
 import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
 import type { FeatureCollection } from "geojson";
+import type { Position } from "$lib/map";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");
@@ -13,9 +14,6 @@ export let files = new LocalStorageFiles(
   state,
   currentFile,
 );
-
-// geojson library allows for 3D coordinates
-export type Position = [number, number];
 
 export interface State {
   summary: {
