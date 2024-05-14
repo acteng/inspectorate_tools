@@ -8,7 +8,7 @@
     ButtonGroup,
     SecondaryButton,
   } from "govuk-svelte";
-  import { Modal } from "$lib";
+  import { stripSuffix, Modal } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
 
@@ -19,8 +19,9 @@
   export let state: Writable<StateType>;
 
   // If provided, adds an option to import from an XLSX file. Runs the callback
-  // with the ArrayBuffer.
-  export let xlsxImporter: ((buffer: ArrayBuffer) => void) | null;
+  // with the ArrayBuffer to produce State. This should throw exceptions if
+  // there's a problem.
+  export let xlsxImporter: ((buffer: ArrayBuffer) => Promise<StateType>) | null;
 
   let fileList = files.getFileList();
   let open = false;
@@ -81,14 +82,22 @@
 
   async function importJsonFile(rawFilename: string, contents: string) {
     // TODO Handle duplicate names
-    let file = rawFilename.endsWith(".json")
-      ? rawFilename.slice(0, -".json".length)
-      : rawFilename;
+    let file = stripSuffix(rawFilename, ".json");
     // TODO Validate contents upfront?
     // Do this immediately, so we can refresh the fileList
     window.localStorage.setItem(files.key(file), contents);
     fileList = files.getFileList();
-    openFile(file);
+    await openFile(file);
+  }
+
+  async function onXlsxImported(
+    e: CustomEvent<{ filename: string; data: StateType }>,
+  ) {
+    let { filename, data } = e.detail;
+    // Do this immediately, so we can refresh the fileList
+    window.localStorage.setItem(files.key(filename), JSON.stringify(data));
+    fileList = files.getFileList();
+    await openFile(filename);
   }
 
   async function openFile(file: string) {
@@ -133,7 +142,7 @@
   <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
   {#if xlsxImporter != null}
-    <ImportXlsx {xlsxImporter} />
+    <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
   {/if}
 
   <p>Load a saved file:</p>

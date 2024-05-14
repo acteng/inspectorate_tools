@@ -1,20 +1,31 @@
-<script lang="ts">
+<script lang="ts" generics="StateType">
+  import { stripSuffix } from "$lib";
   import { FormElement } from "govuk-svelte";
   import Loading from "./Loading.svelte";
+  import { createEventDispatcher } from "svelte";
 
-  export let xlsxImporter: (buffer: ArrayBuffer) => void;
+  let dispatch = createEventDispatcher<{
+    imported: { filename: string; data: StateType };
+  }>();
+
+  export let xlsxImporter: (buffer: ArrayBuffer) => Promise<StateType>;
 
   let loading = "";
 
   let fileInput: HTMLInputElement;
   async function fileLoaded(e: Event) {
     let filename = fileInput.files![0].name;
-    loading = `Loading ${filename}`;
+    try {
+      loading = `Loading ${filename}`;
 
-    let buffer = await fileInput.files![0].arrayBuffer();
-    // TODO Loading screen
-    await xlsxImporter(buffer);
-    loading = "";
+      let buffer = await fileInput.files![0].arrayBuffer();
+      let data = await xlsxImporter(buffer);
+      loading = "";
+      dispatch("imported", { filename: stripSuffix(filename, ".xlsx"), data });
+    } catch (err) {
+      window.alert(`Couldn't import ${filename}: ${err}`);
+      loading = "";
+    }
   }
 </script>
 

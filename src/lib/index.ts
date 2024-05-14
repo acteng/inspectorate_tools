@@ -25,3 +25,7 @@ export function repeatCloned<T>(length: number, x: T): T[] {
 export function sum(list: number[]): number {
   return list.reduce((total, x) => total + x, 0);
 }
+
+export function stripSuffix(value: string, suffix: string): string {
+  return value.endsWith(suffix) ? value.slice(0, -suffix.length) : value;
+}
