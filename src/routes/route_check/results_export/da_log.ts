@@ -5,7 +5,7 @@ import {
   policyConflictChoices,
 } from "../problems_map/lists";
 
-type Value = string | number;
+type Value = string | number | null;
 
 // Generates an enormous Excel row that encodes the full state, for use in other tools.
 export function encodeDalog(state: State): [string, Value][] {
@@ -37,7 +37,7 @@ export function encodeDalog(state: State): [string, Value][] {
     ...scorecardMetrics("ST", 16, state.streetCheck),
     ...scorecardMetrics("SP", 0, state.streetPlacemakingCheck),
     ...scorecardMetrics("PA", 16, state.pathCheck),
-    ...scorecardMetrics("PP", 16, state.pathPlacemakingCheck),
+    ...scorecardMetrics("PP", 0, state.pathPlacemakingCheck),
     ...policyCheckSummary(state),
     ...safetyCheckSummary(state),
 
@@ -180,7 +180,7 @@ function safetyCheckSummary(state: State): [string, Value][] {
 function categoryBreakdowns(
   prefix: string,
   categories: ResultCategory[],
-  blankAnswers: boolean,
+  useAnswers: boolean,
   categoryCodes: { [category: string]: string },
 ): [string, Value][] {
   let out: [string, Value][] = [];
@@ -188,11 +188,11 @@ function categoryBreakdowns(
     let code = categoryCodes[result.category];
     out.push([
       `${prefix}-${code}-E`,
-      blankAnswers ? "" : `${Math.round(result.existing.scorePercent)}%`,
+      useAnswers ? result.existing.scorePercent / 100 : null,
     ]);
     out.push([
       `${prefix}-${code}-D`,
-      blankAnswers ? "" : `${Math.round(result.proposed.scorePercent)}%`,
+      useAnswers ? result.proposed.scorePercent / 100 : null,
     ]);
   }
   return out;
@@ -210,11 +210,15 @@ function jat(state: State, results: Results): [string, Value][] {
     ] as const) {
       out.push([
         `J${i}-LOS-${code}-E`,
-        i <= results.jat.length ? results.jat[i - 1][mode].existing : "",
+        i <= results.jat.length
+          ? results.jat[i - 1][mode].existing
+          : "Not Completed",
       ]);
       out.push([
         `J${i}-LOS-${code}-D`,
-        i <= results.jat.length ? results.jat[i - 1][mode].proposed : "",
+        i <= results.jat.length
+          ? results.jat[i - 1][mode].proposed
+          : "Not Completed",
       ]);
     }
   }
@@ -224,7 +228,7 @@ function jat(state: State, results: Results): [string, Value][] {
       // TODO Maybe need -E and -D variants here
       out.push([`J${i}-Arms`, state.jat[i - 1].proposed.arms.length]);
     } else {
-      out.push([`J${i}-Arms`, 0]);
+      out.push([`J${i}-Arms`, null]);
     }
   }
 
