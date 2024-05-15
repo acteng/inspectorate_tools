@@ -186,7 +186,6 @@ function categoryBreakdowns(
   let out: [string, Value][] = [];
   for (let result of categories) {
     let code = categoryCodes[result.category];
-    // TODO Double check if the % should be there
     out.push([
       `${prefix}-${code}-E`,
       blankAnswers ? "" : `${Math.round(result.existing.scorePercent)}%`,
