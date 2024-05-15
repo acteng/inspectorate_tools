@@ -98,12 +98,6 @@ describe("check street results, example 2", async () => {
   let state = dalogToState(inputDalog);
   let results = getResults(state);
 
-  console.log([...results.levelOfService, results.overall].map(row));
-  console.log([...results.byMode, results.overall].map(row));
-  console.log(
-    [...results.placemakingCategories, results.placemakingOverall].map(row),
-  );
-
   it("level of service", () => {
     expect([...results.levelOfService, results.overall].map(row)).toStrictEqual(
       [
