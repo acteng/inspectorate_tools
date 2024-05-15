@@ -15,3 +15,8 @@
 <TextArea label="TSV output, just the one row of values" value={values} />
 
 <TextArea label="TSV output with header" value={`${header}\n${values}\n`} />
+
+<TextArea
+  label="JSON mapping"
+  value={JSON.stringify(Object.fromEntries(pairs), null, "  ")}
+/>
