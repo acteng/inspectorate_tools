@@ -58,7 +58,7 @@ export function getResults(state: State): Results {
     "Safety",
     checkType,
     state.safetyCheck,
-    null,
+    [0, 15],
   );
 
   let levelOfService = [safetyCheck];
@@ -213,27 +213,21 @@ function getResultCategory(
   category: string,
   checkType: "street" | "path" | "",
   scorecard: Scorecard,
-  range: [number, number] | null,
+  range: [number, number],
 ): ResultCategory {
   return {
     category,
-    existing: getResult(scorecard.existingScores, category, checkType, range),
-    proposed: getResult(scorecard.proposedScores, category, checkType, range),
+    existing: getResultFromScores(
+      scorecard.existingScores.slice(range[0], range[1] + 1),
+      category,
+      checkType,
+    ),
+    proposed: getResultFromScores(
+      scorecard.proposedScores.slice(range[0], range[1] + 1),
+      category,
+      checkType,
+    ),
   };
-}
-
-// Range is inclusive
-// TODO Remove this indirection now
-function getResult(
-  scores: Score[],
-  category: string,
-  checkType: "street" | "path" | "",
-  range: [number, number] | null,
-): Result {
-  let actualRange = range || [0, scores.length - 1];
-  let idx1 = actualRange[0];
-  let idx2 = actualRange[1] + 1;
-  return getResultFromScores(scores.slice(idx1, idx2), category, checkType);
 }
 
 // The list of Scores is already filtered
