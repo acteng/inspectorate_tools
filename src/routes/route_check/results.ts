@@ -55,41 +55,54 @@ interface JunctionResultScores {
 }
 
 export function getResults(state: State): Results {
-  let isStreet = state.summary.checkType == "street";
-  let isPath = state.summary.checkType == "path";
+  let checkType = state.summary.checkType;
+  let isStreet = checkType == "street";
+  let isPath = checkType == "path";
   // Note this has special scoring
-  let safetyCheck = getResultCategory("Safety", state.safetyCheck, null);
+  let safetyCheck = getResultCategory(
+    "Safety",
+    checkType,
+    state.safetyCheck,
+    null,
+  );
 
   let levelOfService = [safetyCheck];
   if (isStreet) {
     levelOfService.push(
-      getResultCategory("Accessibility", state.streetCheck, [0, 6]),
+      getResultCategory("Accessibility", checkType, state.streetCheck, [0, 6]),
     );
     levelOfService.push(
-      getResultCategory("Comfort", state.streetCheck, [7, 9]),
+      getResultCategory("Comfort", checkType, state.streetCheck, [7, 9]),
     );
     levelOfService.push(
-      getResultCategory("Directness", state.streetCheck, [10, 15]),
+      getResultCategory("Directness", checkType, state.streetCheck, [10, 15]),
     );
     levelOfService.push(
-      getResultCategory("Attractiveness", state.streetCheck, [16, 21]),
+      getResultCategory(
+        "Attractiveness",
+        checkType,
+        state.streetCheck,
+        [16, 21],
+      ),
     );
     levelOfService.push(
-      getResultCategory("Cohesion", state.streetCheck, [22, 25]),
+      getResultCategory("Cohesion", checkType, state.streetCheck, [22, 25]),
     );
   } else if (isPath) {
     levelOfService.push(
-      getResultCategory("Accessibility", state.pathCheck, [0, 4]),
-    );
-    levelOfService.push(getResultCategory("Comfort", state.pathCheck, [5, 15]));
-    levelOfService.push(
-      getResultCategory("Directness", state.pathCheck, [16, 19]),
+      getResultCategory("Accessibility", checkType, state.pathCheck, [0, 4]),
     );
     levelOfService.push(
-      getResultCategory("Attractiveness", state.pathCheck, [20, 24]),
+      getResultCategory("Comfort", checkType, state.pathCheck, [5, 15]),
     );
     levelOfService.push(
-      getResultCategory("Cohesion", state.pathCheck, [25, 29]),
+      getResultCategory("Directness", checkType, state.pathCheck, [16, 19]),
+    );
+    levelOfService.push(
+      getResultCategory("Attractiveness", checkType, state.pathCheck, [20, 24]),
+    );
+    levelOfService.push(
+      getResultCategory("Cohesion", checkType, state.pathCheck, [25, 29]),
     );
   }
 
@@ -104,6 +117,7 @@ export function getResults(state: State): Results {
     placemakingCategories.push(
       getResultCategory(
         "Social activity",
+        checkType,
         state.streetPlacemakingCheck,
         [0, 2],
       ),
@@ -111,6 +125,7 @@ export function getResults(state: State): Results {
     placemakingCategories.push(
       getResultCategory(
         "Personal security",
+        checkType,
         state.streetPlacemakingCheck,
         [3, 5],
       ),
@@ -118,27 +133,45 @@ export function getResults(state: State): Results {
     placemakingCategories.push(
       getResultCategory(
         "Character and legibility",
+        checkType,
         state.streetPlacemakingCheck,
         [6, 15],
       ),
     );
     placemakingCategories.push(
-      getResultCategory("Environment", state.streetPlacemakingCheck, [16, 25]),
+      getResultCategory(
+        "Environment",
+        checkType,
+        state.streetPlacemakingCheck,
+        [16, 25],
+      ),
     );
   } else if (isPath) {
     placemakingCategories.push(
-      getResultCategory("Social activity", state.pathPlacemakingCheck, [0, 2]),
+      getResultCategory(
+        "Social activity",
+        checkType,
+        state.pathPlacemakingCheck,
+        [0, 2],
+      ),
       getResultCategory(
         "Personal security",
+        checkType,
         state.pathPlacemakingCheck,
         [3, 5],
       ),
       getResultCategory(
         "Character and legibility",
+        checkType,
         state.pathPlacemakingCheck,
         [6, 9],
       ),
-      getResultCategory("Environment", state.pathPlacemakingCheck, [10, 18]),
+      getResultCategory(
+        "Environment",
+        checkType,
+        state.pathPlacemakingCheck,
+        [10, 18],
+      ),
     );
   }
   let placemakingOverall = {
@@ -149,9 +182,19 @@ export function getResults(state: State): Results {
 
   let byMode: ResultCategory[] = [];
   if (isStreet) {
-    byMode = getByMode(state.safetyCheck, state.streetCheck, streetModeIndices);
+    byMode = getByMode(
+      state.safetyCheck,
+      state.streetCheck,
+      streetModeIndices,
+      state.summary.checkType,
+    );
   } else if (isPath) {
-    byMode = getByMode(state.safetyCheck, state.pathCheck, pathModeIndices);
+    byMode = getByMode(
+      state.safetyCheck,
+      state.pathCheck,
+      pathModeIndices,
+      state.summary.checkType,
+    );
   }
 
   let jat = getJatResults(state);
@@ -162,20 +205,20 @@ export function getResults(state: State): Results {
     streetCheck: isStreet
       ? sumResultCategories(
           safetyCheck,
-          getResultCategory("", state.streetCheck, null),
+          getResultCategory("", checkType, state.streetCheck, null),
         )
       : null,
     streetPlacemaking: isStreet
-      ? getResultCategory("", state.streetPlacemakingCheck, null)
+      ? getResultCategory("", checkType, state.streetPlacemakingCheck, null)
       : null,
     pathCheck: isPath
       ? sumResultCategories(
           safetyCheck,
-          getResultCategory("", state.pathCheck, null),
+          getResultCategory("", checkType, state.pathCheck, null),
         )
       : null,
     pathPlacemaking: isPath
-      ? getResultCategory("", state.pathPlacemakingCheck, null)
+      ? getResultCategory("", checkType, state.pathPlacemakingCheck, null)
       : null,
 
     levelOfService,
@@ -192,13 +235,14 @@ export function getResults(state: State): Results {
 
 function getResultCategory(
   category: string,
+  checkType: "street" | "path" | "",
   scorecard: Scorecard,
   range: [number, number] | null,
 ): ResultCategory {
   return {
     category,
-    existing: getResult(scorecard.existingScores, category, range),
-    proposed: getResult(scorecard.proposedScores, category, range),
+    existing: getResult(scorecard.existingScores, category, checkType, range),
+    proposed: getResult(scorecard.proposedScores, category, checkType, range),
   };
 }
 
@@ -207,26 +251,29 @@ function getResultCategory(
 function getResult(
   scores: Score[],
   category: string,
+  checkType: "street" | "path" | "",
   range: [number, number] | null,
 ): Result {
   let actualRange = range || [0, scores.length - 1];
   let idx1 = actualRange[0];
   let idx2 = actualRange[1] + 1;
-  return getResultFromScores(scores.slice(idx1, idx2), category);
+  return getResultFromScores(scores.slice(idx1, idx2), category, checkType);
 }
 
 // The list of Scores is already filtered
-function getResultFromScores(scores: Score[], category: string): Result {
+function getResultFromScores(
+  scores: Score[],
+  category: string,
+  checkType: "street" | "path" | "",
+): Result {
   let numberMetrics = scores.filter((x) => x != "N/A").length;
 
-  // TODO Personal security is 2x? only for path placemaking, not street
-  let multiplier = category == "Safety" ? 3 : 1;
-  /*let multiplier = 1;
+  let multiplier = 1;
   if (category == "Safety") {
-          multiplier = 3;
-  } else if (category == "Personal security") {
-          multiplier = 2;
-  }*/
+    multiplier = 3;
+  } else if (checkType == "path" && category == "Personal security") {
+    multiplier = 2;
+  }
   let totalPossibleScore = numberMetrics * 2 * multiplier;
 
   let score = multiplier * sum(scores.map(numericScore));
@@ -271,6 +318,7 @@ function getByMode(
   safetyScores: Scorecard,
   losScores: Scorecard,
   losIndicesPerMode: { [mode: string]: number[] },
+  checkType: "street" | "path" | "",
 ): ResultCategory[] {
   let results = [];
   for (let [mode, losIndices] of Object.entries(losIndicesPerMode)) {
@@ -282,10 +330,12 @@ function getByMode(
       existing: getResultFromScores(
         subset(safetyScores.existingScores, safetyIndices),
         "Safety",
+        checkType,
       ),
       proposed: getResultFromScores(
         subset(safetyScores.proposedScores, safetyIndices),
         "Safety",
+        checkType,
       ),
     };
     let los = {
@@ -293,10 +343,12 @@ function getByMode(
       existing: getResultFromScores(
         subset(losScores.existingScores, losIndices),
         "",
+        checkType,
       ),
       proposed: getResultFromScores(
         subset(losScores.proposedScores, losIndices),
         "",
+        checkType,
       ),
     };
     let combined = sumResultCategories(safety, los);

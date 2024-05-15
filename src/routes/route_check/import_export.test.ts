@@ -43,6 +43,7 @@ describe("check path results", async () => {
       ["Walking", 25, 52, "27%"],
       ["Wheeling", 25, 52, "27%"],
       ["Cycling", 29, 57, "28%"],
+      // TODO Failing
       ["Horse Riding", "N/A", "N/A", "N/A"],
       ["overall", 25, 52, "26%"],
     ]);
