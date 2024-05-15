@@ -106,14 +106,14 @@
   </tr>
 
   <tr>
-    {#if results.streetPlacemaking}
+    {#if $state.summary.checkType == "street"}
       <th>
         <a href="{base}/route_check/street_placemaking_check">
           Street Placemaking
         </a>
       </th>
       <td>{yesNo(isScorecardCompleted($state.streetPlacemakingCheck))}</td>
-      <td>{netDifference(results.streetPlacemaking)}</td>
+      <td>{netDifference(results.placemakingOverall)}</td>
       <td>TODO</td>
     {:else}
       <th>Street Placemaking</th>
@@ -138,12 +138,12 @@
   </tr>
 
   <tr>
-    {#if results.pathPlacemaking}
+    {#if $state.summary.checkType == "path"}
       <th>
         <a href="{base}/route_check/path_placemaking_check">Path Placemaking</a>
       </th>
       <td>{yesNo(isScorecardCompleted($state.pathPlacemakingCheck))}</td>
-      <td>{netDifference(results.pathPlacemaking)}</td>
+      <td>{netDifference(results.placemakingOverall)}</td>
       <td>TODO</td>
     {:else}
       <th>Path Placemaking</th>

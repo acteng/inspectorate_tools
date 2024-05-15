@@ -8,10 +8,7 @@ export interface Results {
   // For the summary's Overview table
   safetyCheck: ResultCategory;
   streetCheck: ResultCategory | null;
-  // TODO Now redundant with placemakingOverall
-  streetPlacemaking: ResultCategory | null;
   pathCheck: ResultCategory | null;
-  pathPlacemaking: ResultCategory | null;
 
   // For the summary's Level of Service table
   levelOfService: ResultCategory[];
@@ -208,17 +205,11 @@ export function getResults(state: State): Results {
           getResultCategory("", checkType, state.streetCheck, null),
         )
       : null,
-    streetPlacemaking: isStreet
-      ? getResultCategory("", checkType, state.streetPlacemakingCheck, null)
-      : null,
     pathCheck: isPath
       ? sumResultCategories(
           safetyCheck,
           getResultCategory("", checkType, state.pathCheck, null),
         )
-      : null,
-    pathPlacemaking: isPath
-      ? getResultCategory("", checkType, state.pathPlacemakingCheck, null)
       : null,
 
     levelOfService,
