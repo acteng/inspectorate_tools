@@ -92,10 +92,10 @@
   </tr>
 
   <tr>
-    {#if results.streetCheck}
+    {#if $state.summary.checkType == "street"}
       <th><a href="{base}/route_check/street_check">Street Check</a></th>
       <td>{yesNo(isScorecardCompleted($state.streetCheck))}</td>
-      <td>{netDifference(results.streetCheck)}</td>
+      <td>{netDifference(results.overall)}</td>
       <td>TODO</td>
     {:else}
       <th>Street Check</th>
@@ -124,10 +124,10 @@
   </tr>
 
   <tr>
-    {#if results.pathCheck}
+    {#if $state.summary.checkType == "path"}
       <th><a href="{base}/route_check/path_check">Path Check</a></th>
       <td>{yesNo(isScorecardCompleted($state.pathCheck))}</td>
-      <td>{netDifference(results.pathCheck)}</td>
+      <td>{netDifference(results.overall)}</td>
       <td>TODO</td>
     {:else}
       <th>Path Check</th>

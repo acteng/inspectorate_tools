@@ -7,8 +7,6 @@ import { safetyModeIndices } from "$lib/route_check_results/safety";
 export interface Results {
   // For the summary's Overview table
   safetyCheck: ResultCategory;
-  streetCheck: ResultCategory | null;
-  pathCheck: ResultCategory | null;
 
   // For the summary's Level of Service table
   levelOfService: ResultCategory[];
@@ -198,19 +196,6 @@ export function getResults(state: State): Results {
 
   return {
     safetyCheck,
-    // Safety is included in the Street and Path Check results
-    streetCheck: isStreet
-      ? sumResultCategories(
-          safetyCheck,
-          getResultCategory("", checkType, state.streetCheck, null),
-        )
-      : null,
-    pathCheck: isPath
-      ? sumResultCategories(
-          safetyCheck,
-          getResultCategory("", checkType, state.pathCheck, null),
-        )
-      : null,
 
     levelOfService,
     overall,
