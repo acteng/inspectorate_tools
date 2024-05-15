@@ -131,7 +131,7 @@ export function dalogToState(dalog: {
     [state.streetCheck, "ST", 16],
     [state.streetPlacemakingCheck, "SP", 0],
     [state.pathCheck, "PA", 16],
-    [state.pathPlacemakingCheck, "PP", 16],
+    [state.pathPlacemakingCheck, "PP", 0],
   ] as const) {
     for (let i = 0; i < scorecard.existingScores.length; i++) {
       scorecard.existingScores[i] = score(`${prefix}${num(i + offset)}-E`);

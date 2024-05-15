@@ -219,8 +219,14 @@ function getResult(
 function getResultFromScores(scores: Score[], category: string): Result {
   let numberMetrics = scores.filter((x) => x != "N/A").length;
 
-  // TODO Personal security is 2x?
+  // TODO Personal security is 2x? only for path placemaking, not street
   let multiplier = category == "Safety" ? 3 : 1;
+  /*let multiplier = 1;
+  if (category == "Safety") {
+          multiplier = 3;
+  } else if (category == "Personal security") {
+          multiplier = 2;
+  }*/
   let totalPossibleScore = numberMetrics * 2 * multiplier;
 
   let score = multiplier * sum(scores.map(numericScore));
