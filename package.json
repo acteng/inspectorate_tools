@@ -9,7 +9,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "fmt": "prettier --write .",
     "lint": "prettier --check . && eslint .",
-    "test": "vitest",
+    "test": "vitest run",
     "setup-govuk": "sass src/style/main.sass src/style/main.css; rm -rf public/assets; mkdir -p public/assets; cp -R node_modules/govuk-frontend/dist/govuk/assets/ public/"
   },
   "devDependencies": {
