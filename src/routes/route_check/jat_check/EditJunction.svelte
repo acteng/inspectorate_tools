@@ -93,6 +93,18 @@
     );
     $state = $state;
   }
+
+  function copyMovements() {
+    if ($state.jat[junctionIdx][stage].movements.length > 0) {
+      if (!window.confirm("Overwrite movements?")) {
+        return;
+      }
+    }
+    $state.jat[junctionIdx][stage].movements = JSON.parse(
+      JSON.stringify($state.jat[junctionIdx][otherStage].movements),
+    );
+    $state = $state;
+  }
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -164,9 +176,18 @@
           </li>
         {/each}
       </ol>
+      {#if $state.jat[junctionIdx][otherStage].movements.length > 0}
+        <SecondaryButton on:click={copyMovements}>
+          Copy movements from {otherStage}
+        </SecondaryButton>
+      {/if}
 
       {#if $state.jat[junctionIdx][stage].movements.length > 0}
-        <p>Total JAT score: {totalScore($state.jat[junctionIdx][stage])}%</p>
+        <p>
+          Total JAT score: {totalScore($state.jat[junctionIdx][stage]).toFixed(
+            1,
+          )}%
+        </p>
       {/if}
     {:else}
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
