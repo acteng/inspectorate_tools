@@ -142,7 +142,8 @@ export function dalogToState(dalog: {
   for (let i = 0; i < 35; i++) {
     let prefix = `${num(i)}PC`;
     if (dalog[`${prefix}Ref`] == null) {
-      break;
+      // Blank rows are possible
+      continue;
     }
     state.policyConflictLog.push({
       // Just a single digit code
@@ -158,7 +159,8 @@ export function dalogToState(dalog: {
   for (let i = 0; i < 35; i++) {
     let prefix = `${num(i)}SA`;
     if (dalog[`${prefix}Ref`] == null) {
-      break;
+      // Blank rows are possible
+      continue;
     }
     state.criticalIssues.push({
       criticalIssue: normalString(`${prefix}Typ`).split(" - ")[0],
