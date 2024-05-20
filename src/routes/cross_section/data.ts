@@ -145,3 +145,8 @@ export let streetFeatureTypes = [
 export type BuiltinStreetFeatureType = (typeof streetFeatureTypes)[number];
 // Custom features are identified by UUID
 export type StreetFeatureType = BuiltinStreetFeatureType | { custom: string };
+
+export type BufferDetails = {
+  warning: string;
+  functionsToDispatch: string[];
+};

@@ -5,6 +5,7 @@ import type {
   TrafficData,
   CustomFeatures,
   BuiltinStreetFeatureType,
+  BufferDetails,
 } from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature
@@ -172,10 +173,13 @@ export function needBuffers(
   streetFeature: StreetFeatureType,
   leftFeature: StreetFeatureType | "",
   rightFeature: StreetFeatureType | "",
-): "left" | "right" | "both" | "" {
+): BufferDetails {
   // Only need buffers around active travel features
   if (bufferClass(streetFeature) != 0) {
-    return "";
+    return {
+      warning: "",
+      functionsToDispatch: [],
+    };
   }
 
   let left =
@@ -186,15 +190,29 @@ export function needBuffers(
     (bufferClass(rightFeature) == 2 || bufferClass(rightFeature) == 10);
 
   if (left && right) {
-    return "both";
+    return {
+      warning: "Consider buffer to left and right",
+      // Order matters, since indices will change
+      functionsToDispatch: ["addRightBuffer", "addLeftBuffer"],
+    };
   }
   if (left) {
-    return "left";
+    return {
+      warning: "Consider buffer to left",
+      functionsToDispatch: ["addLeftBuffer"],
+    };
   }
   if (right) {
-    return "right";
+    return {
+      warning: "Consider buffer to right",
+      functionsToDispatch: ["addRightBuffer"],
+    };
   }
-  return "";
+
+  return {
+    warning: "",
+    functionsToDispatch: [],
+  };
 }
 
 // Only used for guidance
