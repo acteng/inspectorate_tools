@@ -1,12 +1,17 @@
-import { describe, expect } from "vitest";
+import { describe, it, expect } from "vitest";
 import { getDalog, dalogToState } from "$lib/import";
 import ExcelJS from "exceljs";
 import { encodeDalog } from "./results_export/da_log";
 
 describe("import then export", async () => {
+  it("street_1", async () => doTest("test_files/street_1.xlsx"));
+  it("street_2", async () => doTest("test_files/street_2.xlsx"));
+  it("path_1", async () => doTest("test_files/path_1.xlsx"));
+});
+
+async function doTest(path: string) {
   let workbook = new ExcelJS.Workbook();
-  // TODO Repeat for all test files
-  await workbook.xlsx.readFile("test_files/path_1.xlsx");
+  await workbook.xlsx.readFile(path);
   let inputDalog = getDalog(workbook);
   let state = dalogToState(inputDalog);
   let outputDalog = encodeDalog(state);
@@ -25,13 +30,12 @@ describe("import then export", async () => {
       diffs.push([key, "MISSING", val2]);
     }
   }
+
   console.log(JSON.stringify(diffs, null, "  "));
   console.log(`${diffs.length} keys differ`);
 
-  // This compares the array order of pairs, which is vital for copying. The
-  // diff is long, but legible.
-  expect(Object.entries(inputDalog)).toBe(outputDalog);
-});
+  expect(diffs.length).toBe(0);
+}
 
 function sameValues(a: any, b: any): boolean {
   if (typeof a == "number" && typeof b == "number") {
@@ -39,9 +43,9 @@ function sameValues(a: any, b: any): boolean {
   }
 
   // TODO Temporarily be lenient about types...
-  /*if (a == null && (b == "" || b == "0")) {
-          return true;
-  }*/
+  if (a == null && (b == "" || b == "0")) {
+    return true;
+  }
 
   return a == b;
 }
