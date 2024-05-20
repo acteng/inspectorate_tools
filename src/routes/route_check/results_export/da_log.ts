@@ -291,20 +291,27 @@ function policyConflictLog(state: State): [string, Value][] {
   return out;
 }
 
+// Critical issue IDs sometimes have a letter as the suffix, like 11A or 11B.
+// Remove that letter for export.
+function stripCharacter(x: string): string {
+  return /\D$/.test(x) ? x.slice(0, -1) : x;
+}
+
 function criticalIssueId(state: State, i: number): string {
   let critical = state.criticalIssues[i];
+  let criticalType = stripCharacter(critical.criticalIssue);
 
   // This critical is what instance of this type?
   let count = 0;
   for (let j = 0; j <= i; j++) {
-    if (state.criticalIssues[j].criticalIssue == critical.criticalIssue) {
+    if (stripCharacter(state.criticalIssues[j].criticalIssue) == criticalType) {
       count++;
     }
   }
 
   let parts = [
     state.summary.schemeReference,
-    `SA${critical.criticalIssue.padStart(2, "0")}`,
+    `SA${criticalType.padStart(2, "0")}`,
     `${count.toString().padStart(2, "0")}P`,
   ];
   return parts.join("_");
