@@ -4,6 +4,6 @@ node_modules/
 
 src/style/main.css
 src/style/main.css.map
-public/assets
+static/assets
 
 test_files

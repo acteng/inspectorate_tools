@@ -10,7 +10,7 @@
     "fmt": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "test": "vitest run",
-    "setup-govuk": "sass src/style/main.sass src/style/main.css; rm -rf public/assets; mkdir -p public/assets; cp -R node_modules/govuk-frontend/dist/govuk/assets/ public/"
+    "setup-govuk": "sass src/style/main.sass src/style/main.css; rm -rf static/assets; mkdir -p static/assets; cp -R node_modules/govuk-frontend/dist/govuk/assets/ static/"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.1",
