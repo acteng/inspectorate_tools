@@ -6,9 +6,9 @@ import type {
 import { calculateEffectiveSpeedLimit } from "./logic";
 
 export function references(
-  streetFeature: StreetFeatureType,
+  streetFeature: StreetFeatureType | "",
 ): [string, string][] {
-  if (typeof streetFeature == "object") {
+  if (typeof streetFeature == "object" || streetFeature == "") {
     return [];
   }
   return builtinReferences[streetFeature];
@@ -57,7 +57,7 @@ function ltn120(page: number): string {
 
 // TODO The text is hard to skim. Would it be useful to highlight some keywords, like the type of segregation in the 2-way case?
 export function guidance(
-  streetFeature: StreetFeatureType,
+  streetFeature: StreetFeatureType | "",
   context: TrafficData,
 ): string {
   let effectiveSpeed = calculateEffectiveSpeedLimit(

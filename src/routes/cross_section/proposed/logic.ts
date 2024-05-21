@@ -9,13 +9,16 @@ import type {
 
 // Get the [desirable, absolute] minimum width for a street feature
 export function getWidths(
-  streetFeature: StreetFeatureType,
+  streetFeature: StreetFeatureType | "",
   context: TrafficData,
   customFeatures: CustomFeatures,
   leftFeature: StreetFeatureType | "",
   rightFeature: StreetFeatureType | "",
 ): [number, number] {
   switch (streetFeature) {
+    case "":
+      return [0, 0];
+
     case "Footway":
       // There's logic based on streetFunction, but the value is always the same
       return [2.6, 2.0];
@@ -169,15 +172,15 @@ function bufferClass(streetFeature: StreetFeatureType): 0 | 1 | 2 | 10 {
 
 // Are buffers recommended on either side?
 export function needBuffers(
-  streetFeature: StreetFeatureType,
+  streetFeature: StreetFeatureType | "",
   leftFeature: StreetFeatureType | "",
   rightFeature: StreetFeatureType | "",
 ): BufferDetails {
   // Only need buffers around active travel features
-  if (bufferClass(streetFeature) != 0) {
+  if (streetFeature == "" || bufferClass(streetFeature) != 0) {
     return {
       warning: "",
-      functionsToDispatch: [],
+      fix: "",
     };
   }
 
@@ -191,26 +194,25 @@ export function needBuffers(
   if (left && right) {
     return {
       warning: "Consider buffer to left and right",
-      // Order matters, since indices will change
-      functionsToDispatch: ["addRightBuffer", "addLeftBuffer"],
+      fix: "both",
     };
   }
   if (left) {
     return {
       warning: "Consider buffer to left",
-      functionsToDispatch: ["addLeftBuffer"],
+      fix: "left",
     };
   }
   if (right) {
     return {
       warning: "Consider buffer to right",
-      functionsToDispatch: ["addRightBuffer"],
+      fix: "right",
     };
   }
 
   return {
     warning: "",
-    functionsToDispatch: [],
+    fix: "",
   };
 }
 
@@ -271,11 +273,5 @@ export function calculateTotalWidths(
 
 export type BufferDetails = {
   warning: string;
-  functionsToDispatch: (
-    | "addRightBuffer"
-    | "addLeftBuffer"
-    | "delete"
-    | "moveLeft"
-    | "moveRight"
-  )[];
+  fix: "" | "left" | "right" | "both";
 };
