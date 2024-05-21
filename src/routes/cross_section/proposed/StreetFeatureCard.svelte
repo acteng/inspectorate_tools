@@ -17,7 +17,10 @@
   export let leftFeature: StreetFeatureType | "";
   export let rightFeature: StreetFeatureType | "";
 
-  $: buffers = value && needBuffers(value, leftFeature, rightFeature);
+  $: buffers = value ? needBuffers(value, leftFeature, rightFeature) : {
+    warning: "",
+    functionsToDispatch: [],
+  };
 
   $: widths = value
     ? getWidths(
@@ -52,39 +55,35 @@
   }
 </script>
 
-<div>
+<div style="width: 400px">
   <GenericSelect label="Street feature type" emptyOption {choices} bind:value />
 
   {#if value}
     <p>Desirable minimum width (m): {widths[0].toFixed(2)}</p>
     <p>Absolute minimum width (m): {widths[1].toFixed(2)}</p>
 
-    {#if buffers == "left"}
+    <div style="display: flex; justify-content: space-between">
+      <SecondaryButton disabled={isFirst} on:click={() => dispatch("moveLeft")}>
+        &larr;
+      </SecondaryButton>
+      <WarningButton on:click={() => dispatch("delete")}>Delete</WarningButton>
+      <SecondaryButton disabled={isLast} on:click={() => dispatch("moveRight")}>
+        &rarr;
+      </SecondaryButton>
+    </div>
+
+    {#if buffers.warning !== ""}
       <WarningText>
-        Consider buffer to left <SecondaryButton
-          on:click={() => dispatch("addLeftBuffer")}
-        >
-          Add buffer
-        </SecondaryButton>
-      </WarningText>
-    {:else if buffers == "right"}
-      <WarningText>
-        Consider buffer to right <SecondaryButton
-          on:click={() => dispatch("addRightBuffer")}
-        >
-          Add buffer
-        </SecondaryButton>
-      </WarningText>
-    {:else if buffers == "both"}
-      <WarningText>
-        Consider buffer to left and right <SecondaryButton
+        {buffers.warning}
+        <br />
+        <SecondaryButton
           on:click={() => {
-            // Order matters, since indices will change
-            dispatch("addRightBuffer");
-            dispatch("addLeftBuffer");
+            buffers.functionsToDispatch.forEach((functionName) => {
+              dispatch(functionName);
+            });
           }}
         >
-          Add buffers
+          Add buffer{buffers.functionsToDispatch.length > 1 ? "s" : ""}
         </SecondaryButton>
       </WarningText>
     {/if}
@@ -111,16 +110,6 @@
       </p>
     {/if}
   {/if}
-
-  <div style="display: flex; justify-content: space-between">
-    <SecondaryButton disabled={isFirst} on:click={() => dispatch("moveLeft")}>
-      &larr;
-    </SecondaryButton>
-    <WarningButton on:click={() => dispatch("delete")}>Delete</WarningButton>
-    <SecondaryButton disabled={isLast} on:click={() => dispatch("moveRight")}>
-      &rarr;
-    </SecondaryButton>
-  </div>
 </div>
 
 <style>

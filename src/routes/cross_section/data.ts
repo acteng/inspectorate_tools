@@ -62,10 +62,10 @@ export interface TrafficData {
   speedLimit: SpeedLimit;
   observedSpeed: number | undefined;
   streetFunction:
-    | "High Street (active frontages)"
-    | "Residential street"
-    | "Local distributor road"
-    | "";
+  | "High Street (active frontages)"
+  | "Residential street"
+  | "Local distributor road"
+  | "";
 }
 
 export interface CheckHomogeneousSection {
