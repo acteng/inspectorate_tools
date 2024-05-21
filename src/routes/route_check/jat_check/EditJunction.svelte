@@ -131,6 +131,17 @@
         <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
 
+      <p>
+        Total JAT score for {stage}
+        <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
+        :
+        {#if $state.jat[junctionIdx][stage].movements.length > 0}
+          {totalScore($state.jat[junctionIdx][stage]).toFixed(1)}%
+        {:else}
+          No movements added
+        {/if}
+      </p>
+
       <Radio
         legend="Add to map"
         choices={[
@@ -180,14 +191,6 @@
         <SecondaryButton on:click={copyMovements}>
           Copy movements from {otherStage}
         </SecondaryButton>
-      {/if}
-
-      {#if $state.jat[junctionIdx][stage].movements.length > 0}
-        <p>
-          Total JAT score: {totalScore($state.jat[junctionIdx][stage]).toFixed(
-            1,
-          )}%
-        </p>
       {/if}
     {:else}
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
