@@ -1,5 +1,6 @@
 <script lang="ts" generics="StateType">
   import { LocalStorageFiles } from "./index";
+  import SelectableCardsList from "../selectable_cards/SelectableCardsList.svelte"
   import {
     FileInput,
     WarningButton,
@@ -105,6 +106,8 @@
     }
   }
 </script>
+
+<SelectableCardsList />
 
 <p>
   All files are auto-saved in your browser's local storage. You can close your
