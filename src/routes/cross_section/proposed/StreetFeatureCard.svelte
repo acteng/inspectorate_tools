@@ -17,10 +17,12 @@
   export let leftFeature: StreetFeatureType | "";
   export let rightFeature: StreetFeatureType | "";
 
-  $: buffers = value ? needBuffers(value, leftFeature, rightFeature) : {
-    warning: "",
-    functionsToDispatch: [],
-  };
+  $: buffers = value
+    ? needBuffers(value, leftFeature, rightFeature)
+    : {
+        warning: "",
+        functionsToDispatch: [],
+      };
 
   $: widths = value
     ? getWidths(

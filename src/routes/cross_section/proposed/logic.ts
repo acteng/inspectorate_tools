@@ -271,6 +271,11 @@ export function calculateTotalWidths(
 
 export type BufferDetails = {
   warning: string;
-  functionsToDispatch: ("addRightBuffer" | "addLeftBuffer" | "delete" | "moveLeft" | "moveRight")[];
+  functionsToDispatch: (
+    | "addRightBuffer"
+    | "addLeftBuffer"
+    | "delete"
+    | "moveLeft"
+    | "moveRight"
+  )[];
 };
-
