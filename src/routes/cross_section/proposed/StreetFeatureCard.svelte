@@ -7,7 +7,6 @@
     streetFeatureTypes,
     type StreetFeatureType,
     type CustomFeatures,
-    type BufferDetails,
   } from "../data";
   import { getWidths, needBuffers } from "./logic";
   import { references, guidance } from "./guidance";

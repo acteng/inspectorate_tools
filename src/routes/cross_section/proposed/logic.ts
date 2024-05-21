@@ -5,7 +5,6 @@ import type {
   TrafficData,
   CustomFeatures,
   BuiltinStreetFeatureType,
-  BufferDetails,
 } from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature
@@ -269,3 +268,9 @@ export function calculateTotalWidths(
 
   return [desirableSum, minimumSum];
 }
+
+export type BufferDetails = {
+  warning: string;
+  functionsToDispatch: ("addRightBuffer" | "addLeftBuffer" | "delete" | "moveLeft" | "moveRight")[];
+};
+
