@@ -18,11 +18,6 @@
   export let leftFeature: StreetFeatureType | "";
   export let rightFeature: StreetFeatureType | "";
 
-  let buffers: BufferDetails = {
-    warning: "",
-    functionsToDispatch: [],
-  };
-
   $: buffers = value ? needBuffers(value, leftFeature, rightFeature) : {
     warning: "",
     functionsToDispatch: [],
