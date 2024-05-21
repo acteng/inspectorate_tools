@@ -7,6 +7,7 @@
     streetFeatureTypes,
     type StreetFeatureType,
     type CustomFeatures,
+    type BufferDetails,
   } from "../data";
   import { getWidths, needBuffers } from "./logic";
   import { references, guidance } from "./guidance";
@@ -17,7 +18,15 @@
   export let leftFeature: StreetFeatureType | "";
   export let rightFeature: StreetFeatureType | "";
 
-  $: buffers = value && needBuffers(value, leftFeature, rightFeature);
+  let buffers: BufferDetails = {
+    warning: "",
+    functionsToDispatch: [],
+  };
+
+  $: buffers = value ? needBuffers(value, leftFeature, rightFeature) : {
+    warning: "",
+    functionsToDispatch: [],
+  };
 
   $: widths = value
     ? getWidths(
@@ -52,7 +61,7 @@
   }
 </script>
 
-<div>
+<div style="width: 400px">
   <GenericSelect label="Street feature type" emptyOption {choices} bind:value />
 
   {#if value}
@@ -75,7 +84,6 @@
         <br />
         <SecondaryButton
           on:click={() => {
-            // Order matters, since indices will change
             buffers.functionsToDispatch.forEach((functionName) => {
               dispatch(functionName);
             });
