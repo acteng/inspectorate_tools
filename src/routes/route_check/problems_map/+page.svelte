@@ -180,9 +180,7 @@
         </SecondaryButton>
         <Basemap />
         <GeoreferenceControls />
-        {#if map}
-          <StreetView {map} bind:enabled={streetviewOn} />
-        {/if}
+        <StreetView {map} bind:enabled={streetviewOn} />
         <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
 

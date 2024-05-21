@@ -4,17 +4,23 @@
   import { onDestroy } from "svelte";
   import { streetviewUrl, bingUrl } from "./";
 
-  export let map: Map;
+  export let map: Map | undefined;
 
   export let enabled = false;
 
   let source = "google";
 
   function on() {
+    if (!map) {
+      return;
+    }
     map.on("click", onClick);
     map.getCanvas().style.cursor = "zoom-in";
   }
   function off() {
+    if (!map) {
+      return;
+    }
     map.off("click", onClick);
     map.getCanvas().style.cursor = "auto";
   }
