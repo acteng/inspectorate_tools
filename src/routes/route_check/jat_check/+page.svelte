@@ -7,6 +7,7 @@
   } from "govuk-svelte";
   import { state } from "../data";
   import EditJunction from "./EditJunction.svelte";
+  import JunctionList from "./JunctionList.svelte";
 
   type Mode =
     | { kind: "list" }
@@ -21,26 +22,6 @@
     return m.idx;
   }
 
-  function add() {
-    $state.jat = [
-      ...$state.jat,
-      {
-        name: "",
-        existing: {
-          arms: [],
-          movements: [],
-          notes: "",
-        },
-        proposed: {
-          arms: [],
-          movements: [],
-          notes: "",
-        },
-      },
-    ];
-    mode = { kind: "edit", idx: $state.jat.length - 1, stage: "existing" };
-  }
-
   function deleteJunction(idx: number) {
     // TODO Modals
     if (!window.confirm("Delete this junction?")) {
@@ -53,19 +34,10 @@
 </script>
 
 {#if mode.kind == "list"}
-  <SecondaryButton on:click={add}>Add new junction</SecondaryButton>
-
-  <ol>
-    {#each $state.jat as junction, idx}
-      <li>
-        <SecondaryButton
-          on:click={() => (mode = { kind: "edit", idx, stage: "existing" })}
-        >
-          {junction.name || "Untitled junction"}
-        </SecondaryButton>
-      </li>
-    {/each}
-  </ol>
+  <JunctionList
+    on:edit={(e) =>
+      (mode = { kind: "edit", idx: e.detail.idx, stage: "existing" })}
+  />
 {:else if mode.kind == "edit"}
   <h2>{$state.jat[mode.idx].name || "Untitled junction"} - {mode.stage}</h2>
 

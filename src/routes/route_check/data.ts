@@ -133,6 +133,7 @@ export interface CriticalIssue {
 
 export interface Junction {
   name: string;
+  point: Position;
   existing: JunctionAssessment;
   proposed: JunctionAssessment;
 }
@@ -161,14 +162,14 @@ export interface Movement {
 }
 
 function validate(state: State) {
-  if (state.version != "alpha-0") {
+  if (state.version != "alpha-1") {
     throw new Error("File format appears outdated");
   }
 }
 
 export function emptyState(): State {
   return {
-    version: "alpha-0",
+    version: "alpha-1",
     summary: {
       dateDesignReview: "",
       schemeReference: "",
