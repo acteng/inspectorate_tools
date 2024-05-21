@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install node
         uses: actions/setup-node@v4
@@ -16,14 +18,35 @@ jobs:
           node-version: 20
           cache: "npm"
 
-      - name: Build web app
+      - name: Build all branches
         run: |
-          npm ci
-          npm run setup-govuk
-          npm run build
+          mkdir deployme
+          for branch in $(git branch -r | sed 's/origin\///' | grep -v nobuild_); do
+            if [ "$branch" == "gh-pages" ]; then
+              continue
+            fi
+
+            echo "Building $branch"
+            git checkout $branch
+            if [ "$branch" == "main" ]; then
+              base=/inspectorate_tools/
+            else
+              base=/inspectorate_tools/$branch
+            fi
+
+            if npm ci && npm run setup-govuk && BASE_PATH=$base npm run build; then
+              if [ "$branch" == "main" ]; then
+                mv build/* deployme
+              else
+                mv build deployme/$branch
+              fi
+            else
+              echo "Building $branch broke; skipping"
+            fi
+          done
 
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/
+          publish_dir: ./deployme/
