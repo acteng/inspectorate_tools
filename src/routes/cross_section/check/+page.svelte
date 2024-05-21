@@ -2,7 +2,7 @@
   import { SecondaryButton } from "govuk-svelte";
   import { state } from "../data";
   import HomogeneousCard from "./HomogeneousCard.svelte";
-  import PinchPointCard from "./PinchPointCard.svelte";
+  import PinchPointMap from "./PinchPointMap.svelte";
   import { calculateTotalWidths } from "../proposed/logic";
 
   // Calculate here and pass down to every card
@@ -22,23 +22,6 @@
   function deleteHomogeneousSection(i: number) {
     $state.checks.homogeneousSections.splice(i, 1);
     $state.checks.homogeneousSections = $state.checks.homogeneousSections;
-  }
-
-  function addPinchPoint() {
-    $state.checks.pinchPoints = [
-      ...$state.checks.pinchPoints,
-      {
-        // TODO This'll become map-based
-        location: [0, 0],
-        availableWidth: 0.0,
-        notes: "",
-      },
-    ];
-  }
-
-  function deletePinchPoint(i: number) {
-    $state.checks.pinchPoints.splice(i, 1);
-    $state.checks.pinchPoints = $state.checks.pinchPoints;
   }
 </script>
 
@@ -103,15 +86,4 @@
   to see if your proposed cross-sections can be accommodated
 </p>
 
-<SecondaryButton on:click={addPinchPoint}>Add</SecondaryButton>
-
-<div style="display: flex; flex-direction: row: overflow-x: scroll">
-  {#each $state.checks.pinchPoints as pinch, i (pinch)}
-    <PinchPointCard
-      {i}
-      on:delete={() => deletePinchPoint(i)}
-      {preferredTotals}
-      {compromisedTotals}
-    />
-  {/each}
-</div>
+<PinchPointMap {preferredTotals} {compromisedTotals} />
