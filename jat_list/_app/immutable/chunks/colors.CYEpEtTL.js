@@ -1,0 +1,1 @@
+let o={critical:{background:"#232323",font:"white"},red:{background:"#b73d25",font:"white"},amber:{background:"#ffd833",font:"black"},green:{background:"#006853",font:"white"},notApplicable:{background:"white",font:"black"}},e={C:o.critical,0:o.red,1:o.amber,2:o.green,"N/A":o.notApplicable},c="#0072ba";export{o as c,c as p,e as s};
