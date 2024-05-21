@@ -83,7 +83,8 @@
 </h2>
 <p>
   At key constraints along the corridor, measure and enter the available width
-  to see if your proposed cross-sections can be accommodated
+  to see if your proposed cross-sections can be accommodated. Click the map to
+  add a pinch point.
 </p>
 
 <PinchPointMap {preferredTotals} {compromisedTotals} />

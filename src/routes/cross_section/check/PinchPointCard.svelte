@@ -1,21 +1,15 @@
 <script lang="ts">
   import { DecimalInput } from "$lib";
   import SectionsPossible from "./SectionsPossible.svelte";
-  import { createEventDispatcher } from "svelte";
   import { WarningButton, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let i: number;
   export let preferredTotals: [number, number];
   export let compromisedTotals: [number, number];
-
-  let dispatch = createEventDispatcher<{
-    delete: void;
-  }>();
 </script>
 
 <div>
-  <h2>Pinch point {i + 1}</h2>
   <DecimalInput
     label="Available width (m)"
     width={4}
@@ -35,8 +29,6 @@
       bind:value={$state.checks.pinchPoints[i].notes}
     />
   {/if}
-
-  <WarningButton on:click={() => dispatch("delete")}>Delete</WarningButton>
 </div>
 
 <style>

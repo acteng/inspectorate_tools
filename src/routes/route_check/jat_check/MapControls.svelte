@@ -102,10 +102,10 @@
           name: "",
         },
       ];
-      editing = {
+      select({
         kind: "arm",
         idx: $state.jat[junctionIdx][stage].arms.length - 1,
-      };
+      });
     } else {
       $state.jat[junctionIdx][stage].movements = [
         ...$state.jat[junctionIdx][stage].movements,
@@ -122,12 +122,11 @@
           notes: "",
         },
       ];
-      editing = {
+      select({
         kind: "movement",
         idx: $state.jat[junctionIdx][stage].movements.length - 1,
-      };
+      });
     }
-    hoveringSidebar = null;
   }
 
   function onFeatureClick(e: CustomEvent<LayerClickInfo>) {

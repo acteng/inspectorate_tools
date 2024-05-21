@@ -82,7 +82,7 @@
           notes: "",
         },
       ];
-      editing = { kind: "critical", idx: $state.criticalIssues.length - 1 };
+      select({ kind: "critical", idx: $state.criticalIssues.length - 1 });
     } else {
       $state.policyConflictLog = [
         ...$state.policyConflictLog,
@@ -95,9 +95,8 @@
           notes: "",
         },
       ];
-      editing = { kind: "conflict", idx: $state.policyConflictLog.length - 1 };
+      select({ kind: "conflict", idx: $state.policyConflictLog.length - 1 });
     }
-    hoveringSidebar = null;
   }
 
   // TODO Wait for loaded

@@ -1,6 +1,13 @@
 <script lang="ts">
   import PinchPointCard from "./PinchPointCard.svelte";
-  import { Checkbox, SecondaryButton, CollapsibleCard } from "govuk-svelte";
+  import SectionsPossible from "./SectionsPossible.svelte";
+  import {
+    Checkbox,
+    SecondaryButton,
+    DefaultButton,
+    WarningButton,
+    CollapsibleCard,
+  } from "govuk-svelte";
   import {
     bbox,
     MapLibreMap,
@@ -32,11 +39,18 @@
   let map: Map;
   let streetviewOn = false;
   let showContext = true;
+  let editing: number | null;
+  let hoveringSidebar: number | null;
 
   // TODO Wait for loaded
   onMount(() => {
     zoom(false);
   });
+
+  function select(id: number) {
+    editing = id;
+    hoveringSidebar = null;
+  }
 
   function zoom(animate: boolean) {
     let gj: FeatureCollection = {
@@ -70,6 +84,12 @@
       return;
     }
 
+    // Deselect something
+    if (editing != null) {
+      editing = null;
+      return;
+    }
+
     $state.checks.pinchPoints = [
       ...$state.checks.pinchPoints,
       {
@@ -78,40 +98,67 @@
         notes: "",
       },
     ];
+    select($state.checks.pinchPoints.length - 1);
   }
 
-  function deletePinchPoint(i: number) {
-    $state.checks.pinchPoints.splice(i, 1);
+  function deletePinchPoint() {
+    $state.checks.pinchPoints.splice(editing!, 1);
     $state.checks.pinchPoints = $state.checks.pinchPoints;
+    editing = null;
   }
 
-  function selectPinchPoint(i: number) {
-    // TODO Scroll into view
+  function onKeyDown(e: KeyboardEvent) {
+    if (editing != null && e.key == "Escape") {
+      e.stopPropagation();
+      editing = null;
+    } else if (editing != null && e.key == "Delete") {
+      deletePinchPoint();
+    }
   }
 </script>
+
+<svelte:window on:keydown={onKeyDown} />
 
 <div style="display: flex; height: 80vh">
   <div
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
   >
-    <CollapsibleCard label="Tools">
-      <SecondaryButton on:click={() => zoom(true)}>Zoom to fit</SecondaryButton>
-      <Basemap />
-      <GeoreferenceControls />
-      {#if map}
-        <StreetView {map} bind:enabled={streetviewOn} />
-      {/if}
-      <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
-    </CollapsibleCard>
+    {#if editing == null}
+      <CollapsibleCard label="Tools">
+        <SecondaryButton on:click={() => zoom(true)}>
+          Zoom to fit
+        </SecondaryButton>
+        <Basemap />
+        <GeoreferenceControls />
+        {#if map}
+          <StreetView {map} bind:enabled={streetviewOn} />
+        {/if}
+        <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
+      </CollapsibleCard>
 
-    {#each $state.checks.pinchPoints as _, i (i)}
-      <PinchPointCard
-        {i}
-        on:delete={() => deletePinchPoint(i)}
-        {preferredTotals}
-        {compromisedTotals}
-      />
-    {/each}
+      {#each $state.checks.pinchPoints as pinch, i}
+        <div>
+          <SecondaryButton
+            on:click={() => select(i)}
+            on:mouseenter={() => (hoveringSidebar = i)}
+            on:mouseleave={() => (hoveringSidebar = null)}
+          >
+            <b>Pinch point {i + 1}</b>
+            <SectionsPossible
+              available={pinch.availableWidth}
+              {preferredTotals}
+              {compromisedTotals}
+            />
+          </SecondaryButton>
+        </div>
+      {/each}
+    {:else}
+      <h2>Pinch point {editing + 1}</h2>
+      <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
+      <WarningButton on:click={() => deletePinchPoint()}>Delete</WarningButton>
+
+      <PinchPointCard i={editing} {preferredTotals} {compromisedTotals} />
+    {/if}
   </div>
   <div style="position: relative; width: 100%">
     <MapLibreMap bind:map>
@@ -120,12 +167,11 @@
       <ContextualMap gj={$state.summary.networkMap} show={showContext} />
 
       {#each $state.checks.pinchPoints as p, i}
-        <Marker
-          draggable
-          bind:lngLat={p.location}
-          on:click={() => selectPinchPoint(i)}
-        >
-          <span class="dot">
+        <Marker draggable bind:lngLat={p.location} on:click={() => select(i)}>
+          <span
+            class="dot"
+            class:highlight={i == editing || i == hoveringSidebar}
+          >
             {i + 1}
           </span>
         </Marker>
@@ -152,5 +198,9 @@
   .dot:hover {
     border: 3px solid black;
     cursor: pointer;
+  }
+
+  .highlight {
+    background: cyan;
   }
 </style>
