@@ -12,7 +12,8 @@
   } from "govuk-svelte";
   import { StreetView, Basemap } from "$lib/map";
   import { GeoreferenceControls } from "$lib/map/georef";
-  import { state, type JunctionAssessment } from "../data";
+  import { colors } from "$lib/colors";
+  import { state, type JunctionAssessment, type Movement } from "../data";
   import Form from "./Form.svelte";
 
   export let junctionIdx: number;
@@ -105,6 +106,16 @@
     );
     $state = $state;
   }
+
+  function score(movement: Movement): string {
+    let color = {
+      0: colors.red.background,
+      1: colors.amber.background,
+      2: colors.green.background,
+      X: colors.critical.background,
+    }[movement.score];
+    return `<span style="color: ${color}">score ${movement.score}</span>`;
+  }
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -180,7 +191,7 @@
                 (hoveringSidebar = { kind: "movement", idx })}
               on:mouseleave={() => (hoveringSidebar = null)}
             >
-              {movement.name || "Unnamed movement"}
+              {movement.name || "Unnamed movement"} ({@html score(movement)})
             </SecondaryButton>
           </li>
         {/each}
