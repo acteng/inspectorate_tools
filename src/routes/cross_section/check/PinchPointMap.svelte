@@ -112,6 +112,12 @@
       e.stopPropagation();
       editing = null;
     } else if (editing != null && e.key == "Delete") {
+      // Let the delete key work in forms
+      let tag = (e.target as HTMLElement).tagName;
+      if (tag == "INPUT" || tag == "TEXTAREA") {
+        return;
+      }
+      e.stopPropagation();
       deletePinchPoint();
     }
   }
