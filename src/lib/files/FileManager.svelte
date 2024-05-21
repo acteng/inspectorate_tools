@@ -1,14 +1,12 @@
 <script lang="ts" generics="StateType">
-  import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./index";
-  import { base } from "$app/paths";
   import {
     FileInput,
     WarningButton,
     ButtonGroup,
     SecondaryButton,
   } from "govuk-svelte";
-  import { stripSuffix, Modal } from "$lib";
+  import { stripSuffix } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
 
@@ -21,10 +19,11 @@
   // If provided, adds an option to import from an XLSX file. Runs the callback
   // with the ArrayBuffer to produce State. This should throw exceptions if
   // there's a problem.
-  export let xlsxImporter: ((buffer: ArrayBuffer) => Promise<StateType>) | null;
+  export let xlsxImporter:
+    | ((buffer: ArrayBuffer) => Promise<StateType>)
+    | null = null;
 
   let fileList = files.getFileList();
-  let open = false;
 
   function renameFile() {
     // TODO Handle overwriting
@@ -72,7 +71,6 @@
     $currentFile = files.newFilename();
     $state = files.emptyState();
     fileList = files.saveAndGetFileList($currentFile, $state);
-    await goto(`${base}/${files.prefix}`);
   }
 
   async function importJsonFile(rawFilename: string, contents: string) {
@@ -102,58 +100,48 @@
       let x = files.loadFile(file);
       $currentFile = file;
       $state = x;
-      await goto(`${base}/${files.prefix}`);
     } catch (error) {
       window.alert(`Couldn't load ${file}: ${error}`);
     }
   }
 </script>
 
-<div style="display: flex; align-items: baseline;">
-  <SecondaryButton on:click={() => (open = true)}>Manage files</SecondaryButton>
-  <span>
-    Editing file <u>{$currentFile}</u>
-  </span>
-</div>
+<p>
+  All files are auto-saved in your browser's local storage. You can close your
+  browser and resume later. You can export the file to your computer to share
+  with someone else, and import from a file below.
+</p>
 
-<Modal title="Manage files" bind:open>
-  <p>
-    All files are auto-saved in your browser's local storage. You can close your
-    browser and resume later. You can export the file to your computer to share
-    with someone else, and import from a file below.
-  </p>
+<p>
+  You're currently editing <u>{$currentFile}</u>
+  .
+</p>
+<ButtonGroup>
+  <SecondaryButton on:click={renameFile}>Rename</SecondaryButton>
+  <SecondaryButton on:click={exportFile}>Export</SecondaryButton>
+  <WarningButton on:click={deleteFile}>Delete</WarningButton>
+</ButtonGroup>
 
-  <p>
-    You're currently editing <u>{$currentFile}</u>
-    .
-  </p>
-  <ButtonGroup>
-    <SecondaryButton on:click={renameFile}>Rename</SecondaryButton>
-    <SecondaryButton on:click={exportFile}>Export</SecondaryButton>
-    <WarningButton on:click={deleteFile}>Delete</WarningButton>
-  </ButtonGroup>
+<hr />
 
-  <hr />
+<SecondaryButton on:click={newFile}>New file</SecondaryButton>
+<FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
-  <SecondaryButton on:click={newFile}>New file</SecondaryButton>
-  <FileInput label="Import from a .json file" onLoad={importJsonFile} />
+{#if xlsxImporter != null}
+  <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
+{/if}
 
-  {#if xlsxImporter != null}
-    <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
-  {/if}
-
-  <p>Load a saved file:</p>
-  <ul>
-    {#each fileList as file (file)}
-      {#if file == $currentFile}
-        <li>{file}</li>
-      {:else}
-        <li>
-          <SecondaryButton on:click={() => openFile(file)}>
-            {file}
-          </SecondaryButton>
-        </li>
-      {/if}
-    {/each}
-  </ul>
-</Modal>
+<p>Load a saved file:</p>
+<ul>
+  {#each fileList as file (file)}
+    {#if file == $currentFile}
+      <li>{file}</li>
+    {:else}
+      <li>
+        <SecondaryButton on:click={() => openFile(file)}>
+          {file}
+        </SecondaryButton>
+      </li>
+    {/if}
+  {/each}
+</ul>

@@ -1,9 +1,14 @@
 <script lang="ts">
-  import { FileManager } from "$lib/files";
-  import { files, currentFile, state } from "./data";
+  import { currentFile } from "./data";
+  import { base } from "$app/paths";
 </script>
 
-<FileManager {files} {currentFile} {state} xlsxImporter={null} />
+<div>
+  <a href="{base}/area_check/files">Manage files</a>
+  <span>
+    Editing file <u>{$currentFile}</u>
+  </span>
+</div>
 
 <hr />
 

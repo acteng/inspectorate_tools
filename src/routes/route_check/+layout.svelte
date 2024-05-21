@@ -1,18 +1,14 @@
 <script lang="ts">
-  import { FileManager } from "$lib/files";
-  import { files, currentFile, state, type State } from "./data";
-  import { getDalog, dalogToState } from "$lib/import";
-  import ExcelJS from "exceljs";
-
-  async function xlsxImporter(buffer: ArrayBuffer): Promise<State> {
-    let workbook = new ExcelJS.Workbook();
-    await workbook.xlsx.load(buffer);
-    let dalog = getDalog(workbook);
-    return dalogToState(dalog);
-  }
+  import { currentFile } from "./data";
+  import { base } from "$app/paths";
 </script>
 
-<FileManager {files} {currentFile} {state} {xlsxImporter} />
+<div>
+  <a href="{base}/route_check/files">Manage files</a>
+  <span>
+    Editing file <u>{$currentFile}</u>
+  </span>
+</div>
 
 <hr />
 

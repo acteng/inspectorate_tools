@@ -3,12 +3,14 @@ let pages: [string, string][] = [
   ["/", "Tools"],
 
   ["/cross_section", "Route cross-section tool"],
+  ["/cross_section/files", "Manage files"],
   ["/cross_section/summary", "Summary of Scheme"],
   ["/cross_section/proposed", "Proposed Cross-Sections"],
   ["/cross_section/check", "Cross-Sections Check"],
   ["/cross_section/results_summary", "ATE Summary"],
 
   ["/area_check", "Area check tool"],
+  ["/area_check/files", "Manage files"],
   ["/area_check/summary", "Summary of Scheme"],
   ["/area_check/traffic_mitigation", "Traffic Mitigation Check"],
   ["/area_check/scorecard", "Area Scorecard"],
@@ -28,6 +30,7 @@ let pages: [string, string][] = [
   ["/area_check/results", "Results & Commentary"],
 
   ["/route_check", "Route check tool"],
+  ["/route_check/files", "Manage files"],
   ["/route_check/summary", "Summary of Scheme"],
   ["/route_check/policy_check", "Policy Check"],
   ["/route_check/safety_check", "Safety Check"],
