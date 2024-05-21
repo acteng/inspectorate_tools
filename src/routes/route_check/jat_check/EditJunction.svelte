@@ -145,7 +145,7 @@
         <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
         :
         {#if $state.jat[junctionIdx][stage].movements.length > 0}
-          {totalScore($state.jat[junctionIdx][stage]).toFixed(1)}%
+          {Math.round(totalScore($state.jat[junctionIdx][stage]))}%
         {:else}
           No movements added
         {/if}

@@ -17,6 +17,10 @@
     designed: $state.criticalIssues.filter((x) => x.stage == "Design").length,
     removed: $state.criticalIssues.filter((x) => x.resolved == "Yes").length,
   };
+
+  function percent(x: number | null): string {
+    return x == null ? "Not Completed" : `${x}%`;
+  }
 </script>
 
 <table>
@@ -159,25 +163,25 @@
     <th>Net difference</th>
   </tr>
 
-  {#each results.jat as result, i}
+  {#each results.jat as result}
     <tr>
-      <th rowspan="3">{$state.jat[i].name || "Untitled junction"}</th>
+      <th rowspan="3">{result.name || "Untitled junction"}</th>
       <th>Walking & Wheeling</th>
-      <td>{result.walkingWheeling.existing}</td>
-      <td>{result.walkingWheeling.proposed}</td>
-      <td>TODO net difference</td>
+      <td>{percent(result.walkingWheeling.existing)}</td>
+      <td>{percent(result.walkingWheeling.proposed)}</td>
+      <td>{percent(result.walkingWheeling.netDifference)}</td>
     </tr>
     <tr>
       <th>Cycling</th>
-      <td>{result.cycling.existing}</td>
-      <td>{result.cycling.proposed}</td>
-      <td>TODO net difference</td>
+      <td>{percent(result.cycling.existing)}</td>
+      <td>{percent(result.cycling.proposed)}</td>
+      <td>{percent(result.cycling.netDifference)}</td>
     </tr>
     <tr>
       <th><b>All</b></th>
-      <td>{result.total.existing}</td>
-      <td>{result.total.proposed}</td>
-      <td>TODO net difference</td>
+      <td>{percent(result.total.existing)}</td>
+      <td>{percent(result.total.proposed)}</td>
+      <td>{percent(result.total.netDifference)}</td>
     </tr>
   {/each}
 </table>

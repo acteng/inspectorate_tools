@@ -2,6 +2,7 @@
   import {
     ButtonGroup,
     TextInput,
+    DefaultButton,
     SecondaryButton,
     WarningButton,
   } from "govuk-svelte";
@@ -53,7 +54,7 @@
 </script>
 
 {#if mode.kind == "list"}
-  <SecondaryButton on:click={add}>Add new junction</SecondaryButton>
+  <DefaultButton on:click={add}>Add new junction</DefaultButton>
 
   <ol>
     {#each $state.jat as junction, idx}

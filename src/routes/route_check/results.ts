@@ -38,15 +38,17 @@ interface Result {
 }
 
 export interface JunctionResult {
+  name: string;
   walkingWheeling: JunctionResultScores;
   cycling: JunctionResultScores;
   total: JunctionResultScores;
 }
 
-// "50%" or "Not completed"
+// A percentage. Null means "Not completed"
 interface JunctionResultScores {
-  existing: string;
-  proposed: string;
+  existing: number | null;
+  proposed: number | null;
+  netDifference: number | null;
 }
 
 export function getResults(state: State): Results {
@@ -343,18 +345,22 @@ function getJatResults(state: State): JunctionResult[] {
 
   let out = [];
   for (let junction of state.jat) {
-    let result = {
+    let result: JunctionResult = {
+      name: junction.name,
       walkingWheeling: {
-        existing: "",
-        proposed: "",
+        existing: null,
+        proposed: null,
+        netDifference: null,
       },
       cycling: {
-        existing: "",
-        proposed: "",
+        existing: null,
+        proposed: null,
+        netDifference: null,
       },
       total: {
-        existing: "",
-        proposed: "",
+        existing: null,
+        proposed: null,
+        netDifference: null,
       },
     };
     for (let stage of ["existing", "proposed"] as const) {
@@ -378,16 +384,23 @@ function getJatResults(state: State): JunctionResult[] {
 
       result.walkingWheeling[stage] =
         totalPossibleWW > 0
-          ? `${(scoreWW / totalPossibleWW) * 100}%`
-          : "Not Completed";
+          ? Math.round((scoreWW / totalPossibleWW) * 100)
+          : null;
       result.cycling[stage] =
         totalPossibleCycling > 0
-          ? `${(scoreCycling / totalPossibleCycling) * 100}%`
-          : "Not Comleted";
+          ? Math.round((scoreCycling / totalPossibleCycling) * 100)
+          : null;
       result.total[stage] =
         totalPossibleBoth > 0
-          ? `${(scoreBoth / totalPossibleBoth) * 100}%`
-          : "Not Completed";
+          ? Math.round((scoreBoth / totalPossibleBoth) * 100)
+          : null;
+    }
+    for (let mode of ["walkingWheeling", "cycling", "total"] as const) {
+      let existing = result[mode].existing;
+      let proposed = result[mode].proposed;
+      if (existing != null && proposed != null) {
+        result[mode].netDifference = proposed - existing;
+      }
     }
     out.push(result);
   }
