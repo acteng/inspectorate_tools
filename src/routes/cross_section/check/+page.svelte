@@ -80,7 +80,7 @@
 <SecondaryButton on:click={addHomogeneousSection}>Add</SecondaryButton>
 
 <div style="display: flex; flex-direction: row; overflow-x: scroll">
-  {#each $state.checks.homogeneousSections as _, i (i)}
+  {#each $state.checks.homogeneousSections as section, i (section)}
     <HomogeneousCard
       {i}
       on:delete={() => deleteHomogeneousSection(i)}
@@ -106,7 +106,7 @@
 <SecondaryButton on:click={addPinchPoint}>Add</SecondaryButton>
 
 <div style="display: flex; flex-direction: row: overflow-x: scroll">
-  {#each $state.checks.pinchPoints as _, i (i)}
+  {#each $state.checks.pinchPoints as pinch, i (pinch)}
     <PinchPointCard
       {i}
       on:delete={() => deletePinchPoint(i)}
