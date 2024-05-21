@@ -2,7 +2,9 @@ name: Deploy web
 
 on:
   push:
-    branches: [main]
+    branches-ignore:
+      - 'gh-pages'
+      - 'nobuild_**'
 
 jobs:
   build:
