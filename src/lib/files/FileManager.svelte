@@ -1,6 +1,6 @@
 <script lang="ts" generics="StateType">
   import { LocalStorageFiles } from "./index";
-  import SelectableCardsList from "../selectable_cards/SelectableCardsList.svelte"
+  import ClickableCardsList from "../clickable_cards/ClickableCardsList.svelte"
   import {
     FileInput,
     WarningButton,
@@ -25,6 +25,15 @@
     | null = null;
 
   let fileList = files.getFileList();
+
+  $: cardDetailsList = fileList.map((fileName) => { 
+    const alreadySelected = fileName === $currentFile;
+    return {
+    name: `File name: ${fileName}`,
+    additionalText: alreadySelected ? "Already selected" : "",
+    onClick: () => {openFile(fileName)},
+    disabled: alreadySelected,
+  }});
 
   function renameFile() {
     // TODO Handle overwriting
@@ -107,8 +116,6 @@
   }
 </script>
 
-<SelectableCardsList />
-
 <p>
   All files are auto-saved in your browser's local storage. You can close your
   browser and resume later. You can export the file to your computer to share
@@ -135,6 +142,9 @@
 {/if}
 
 <p>Load a saved file:</p>
+
+<ClickableCardsList {cardDetailsList} />
+
 <ul>
   {#each fileList as file (file)}
     {#if file == $currentFile}
