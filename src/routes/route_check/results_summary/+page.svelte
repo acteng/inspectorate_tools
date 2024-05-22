@@ -140,7 +140,6 @@
       <td>{yesNo(isScorecardCompleted($state.pathCheck))}</td>
       <td>{netDifference(results.overall)}</td>
       <td>{improveOrReduce(results.overall, "the path quality")}</td>
-      <td>TODO</td>
     {:else}
       <th>Path Check</th>
       <td>N/A</td>
@@ -171,9 +170,15 @@
     <th>
       <a href="{base}/route_check/jat_check">Junction Assessment Tool Check</a>
     </th>
-    <td>TODO</td>
-    <td>TODO</td>
-    <td>TODO</td>
+    {#if results.jat[results.jat.length - 1].total.netDifference == null}
+      <td>No</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    {:else}
+      <td>Yes</td>
+      <td>{results.jat[results.jat.length - 1].total.netDifference}%</td>
+      <td>Review Junction Assessment</td>
+    {/if}
   </tr>
 </table>
 

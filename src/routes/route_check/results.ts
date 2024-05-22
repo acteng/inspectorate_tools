@@ -20,6 +20,7 @@ export interface Results {
 
   byMode: ResultCategory[];
 
+  // The last entry will be Overall
   jat: JunctionResult[];
 }
 
@@ -404,5 +405,49 @@ function getJatResults(state: State): JunctionResult[] {
     }
     out.push(result);
   }
+
+  out.push(overallJat(out));
+
   return out;
+}
+
+function overallJat(results: JunctionResult[]): JunctionResult {
+  let overall: JunctionResult = {
+    name: "Overall",
+    walkingWheeling: {
+      existing: null,
+      proposed: null,
+      netDifference: null,
+    },
+    cycling: {
+      existing: null,
+      proposed: null,
+      netDifference: null,
+    },
+    total: {
+      existing: null,
+      proposed: null,
+      netDifference: null,
+    },
+  };
+
+  // Average each entry, handling null
+  for (let mode of ["walkingWheeling", "cycling", "total"] as const) {
+    for (let key of ["existing", "proposed", "netDifference"] as const) {
+      let sum = 0;
+      let total = 0;
+      for (let result of results) {
+        let value = result[mode][key];
+        if (value != null) {
+          sum += value;
+          total += 100;
+        }
+      }
+      if (total > 0) {
+        overall[mode][key] = Math.round((sum / total) * 100);
+      }
+    }
+  }
+
+  return overall;
 }

@@ -164,6 +164,12 @@
   </tr>
 
   {#each results.jat as result}
+    {#if result.name == "Overall"}
+      <tr>
+        <th colspan="6"></th>
+      </tr>
+    {/if}
+
     <tr>
       <th rowspan="3">{result.name || "Untitled junction"}</th>
       <th>Walking & Wheeling</th>
@@ -185,5 +191,3 @@
     </tr>
   {/each}
 </table>
-
-TODO: overall JAT
