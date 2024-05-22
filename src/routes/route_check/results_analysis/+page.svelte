@@ -113,6 +113,7 @@
     categories={results.byMode}
     overall={results.overall}
     overallLabel="Overall Street Level of Service"
+    barChart
   />
 
   <LevelOfServiceTable
@@ -120,6 +121,7 @@
     categories={results.placemakingCategories}
     overall={results.placemakingOverall}
     overallLabel="Overall Street Placemaking Score"
+    barChart
   />
 {:else}
   <p>This isn't a Street Check</p>
@@ -139,6 +141,7 @@
     categories={results.byMode}
     overall={results.overall}
     overallLabel="Overall Path Level of Service"
+    barChart
   />
 
   <LevelOfServiceTable
@@ -146,6 +149,7 @@
     categories={results.placemakingCategories}
     overall={results.placemakingOverall}
     overallLabel="Overall Path Placemaking Score"
+    barChart
   />
 {:else}
   <p>This isn't a Path Check</p>
