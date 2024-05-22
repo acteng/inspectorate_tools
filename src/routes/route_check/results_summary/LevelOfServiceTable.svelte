@@ -87,9 +87,9 @@
               backgroundColor: darkGrey,
             },
             {
-              label: "Net difference",
+              label: "Proposed Layout",
               data: [...categories, overall].map(
-                (x) => x.proposed.scorePercent - x.existing.scorePercent,
+                (x) => x.proposed.scorePercent,
               ),
               backgroundColor: colors.green.background,
             },
