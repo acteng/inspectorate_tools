@@ -1,6 +1,6 @@
 <script lang="ts" generics="StateType">
   import { LocalStorageFiles } from "./index";
-  import ClickableCardsList from "../clickable_cards/ClickableCardsList.svelte";
+  import ClickableCard from "../clickable_cards/ClickableCard.svelte";
   import {
     FileInput,
     WarningButton,
@@ -25,19 +25,6 @@
     | null = null;
 
   let fileList = files.getFileList();
-
-  $: cardDetailsList = fileList.map((fileName) => {
-    const alreadySelected = fileName === $currentFile;
-    return {
-      name: `File name: ${fileName}`,
-      additionalText: alreadySelected ? "Already selected" : "",
-      html: "<b>hello</b>",
-      onClick: () => {
-        openFile(fileName);
-      },
-      disabled: alreadySelected,
-    };
-  });
 
   function renameFile() {
     // TODO Handle overwriting
@@ -147,4 +134,15 @@
 
 <p>Load a saved file:</p>
 
-<ClickableCardsList {cardDetailsList} />
+{#each fileList as fileName}
+  <ClickableCard
+    cardDetails={{
+      name: `File name: ${fileName}`,
+      additionalText: fileName === $currentFile ? "Already selected" : "",
+      onClick: () => {
+        openFile(fileName);
+      },
+      disabled: fileName === $currentFile,
+    }}
+  />
+{/each}

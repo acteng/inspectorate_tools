@@ -1,19 +1,21 @@
 <script lang="ts">
-  export let cardDetails: ClickableCardDetails;
+    import { type CardDetails} from "./data"
+
+  export let cardDetails: CardDetails;
 </script>
 
 <button
   class="clickable-card govuk-button govuk-button--secondary"
+  on:click={cardDetails.onClick}
   disabled={cardDetails.disabled}
-  on:click={cardDetails.disabled ? () => {} : cardDetails.onClick}
 >
   <div class="top-section section">
     <span>{cardDetails.name}</span>
-    <img src="/assets/right-arrow.svg" alt="arrow pointing right">
+    <img src="/assets/right-arrow.svg" alt="arrow pointing right" />
   </div>
   <div class="section">
     {cardDetails.additionalText}
-    {@html cardDetails.html}
+    <slot />
   </div>
 </button>
 
@@ -30,14 +32,5 @@
   }
   .section {
     padding: 0.5em;
-  }
-  .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    height: 0.1em;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
   }
 </style>

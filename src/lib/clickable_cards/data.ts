@@ -1,7 +1,6 @@
-export type SelectableCardDetails = {
-  name: String;
-  additionalText: String;
-  html: String;
+export type CardDetails = {
+  name: string;
+  additionalText: string;
   onClick: Function;
   disabled: boolean;
 };

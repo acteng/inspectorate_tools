@@ -1,7 +1,8 @@
 <script lang="ts">
   import PinchPointCard from "./PinchPointCard.svelte";
-  import ClickableCardsList from "../../../lib/clickable_cards/ClickableCardsList.svelte";
-  import { getSectionsPossibleHtml} from "./get_sections_possible"
+  import ClickableCard from "../../../lib/clickable_cards/ClickableCard.svelte";
+  import SectionsPossible from "./SectionsPossible.svelte";
+  import { getSectionsPossibleHtml } from "./get_sections_possible";
   import {
     Checkbox,
     SecondaryButton,
@@ -42,20 +43,6 @@
   let showContext = true;
   let editing: number | null;
   let hoveringSidebar: number | null;
-  
-  $: cardDetailsList = $state.checks.pinchPoints.map((pinch, i) => {
-    return {
-      name: `Pinch point ${i + 1}`,
-      additionalText:"",
-      html: getSectionsPossibleHtml(pinch.availableWidth, preferredTotals, compromisedTotals),
-      onClick: () => {
-        select(i);
-      },
-      disabled: false,
-    };
-  });
-
-  console.log(cardDetailsList);
 
   // TODO Wait for loaded
   onMount(() => {
@@ -93,7 +80,6 @@
       });
     }
   }
-
 
   function onMapClick(e: CustomEvent<MapMouseEvent>) {
     if (streetviewOn) {
@@ -157,8 +143,25 @@
         {/if}
         <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
-      
-      <ClickableCardsList {cardDetailsList} />
+
+      {#each $state.checks.pinchPoints as pinch, i}
+        <ClickableCard
+          cardDetails={{
+            name: `Pinch point ${i + 1}`,
+            additionalText: "",
+            onClick: () => {
+            select(i);
+          },
+            disabled: false,
+          }}
+        >
+          <SectionsPossible
+            available={pinch.availableWidth}
+            {preferredTotals}
+            {compromisedTotals}
+          />
+        </ClickableCard>
+      {/each}
     {:else}
       <h2>Pinch point {editing + 1}</h2>
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
