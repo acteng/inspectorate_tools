@@ -1,18 +1,18 @@
 <script lang="ts">
+import rightArrow from "../assets/images/right-arrow.svg?url";
   export let name: string = "";
   export let additionalText: string = "";
-  export let onClick: Function = () =>{};
   export let disabled: boolean = false;
 </script>
 
 <button
   class="clickable-card govuk-button govuk-button--secondary"
   disabled={disabled}
-  on:click={onClick}
+  on:click
 >
   <div class="top-section section">
     <span>{name}</span>
-    <img src="/assets/right-arrow.svg" alt="arrow pointing right" />
+    <img class="arrow" src={rightArrow} alt="arrow pointing right" />
   </div>
   <div class="section">
     {additionalText}
@@ -33,5 +33,8 @@
   }
   .section {
     padding: 0.5em;
+  }
+  .arrow {
+    max-height: 0.75em;
   }
 </style>
