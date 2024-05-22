@@ -19,6 +19,7 @@
   .clickable-card {
     border: 1px solid black;
     display: block;
+    width: 100%
   }
   .top-section {
     border-bottom: 1px solid black;
