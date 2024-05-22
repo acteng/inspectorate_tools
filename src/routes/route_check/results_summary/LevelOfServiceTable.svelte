@@ -22,6 +22,8 @@
   export let barChart = false;
   export let radarChart = false;
 
+  let darkGrey = "#808080";
+
   Chart.register(
     Title,
     Tooltip,
@@ -71,7 +73,7 @@
     </tr>
   </table>
 
-  <div style="width: 50%">
+  <div style="width: 50%; padding: 16px;">
     {#if barChart}
       <Bar
         data={{
@@ -82,7 +84,7 @@
               data: [...categories, overall].map(
                 (x) => x.existing.scorePercent,
               ),
-              backgroundColor: "#808080",
+              backgroundColor: darkGrey,
             },
             {
               label: "Net difference",
@@ -105,8 +107,8 @@
               data: [...categories, overall].map(
                 (x) => x.existing.scorePercent,
               ),
-              borderColor: "#808080",
-              backgroundColor: "#808080",
+              borderColor: darkGrey,
+              backgroundColor: darkGrey,
             },
             {
               label: "Proposed Layout",
@@ -122,3 +124,5 @@
     {/if}
   </div>
 </div>
+
+<hr />

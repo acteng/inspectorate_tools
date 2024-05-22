@@ -188,6 +188,7 @@
     categories={results.levelOfService}
     overall={results.overall}
     overallLabel="Overall ATE Score"
+    barChart
   />
 {:else if $state.summary.checkType == "path"}
   <LevelOfServiceTable
@@ -195,6 +196,7 @@
     categories={results.levelOfService}
     overall={results.overall}
     overallLabel="Overall ATE Score"
+    barChart
   />
 {:else}
   <h2>Select Street Check or Path Check for further results</h2>

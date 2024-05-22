@@ -101,6 +101,8 @@
 
 <h2>4. Street Check Results</h2>
 {#if $state.summary.checkType == "street"}
+  <hr />
+
   <LevelOfServiceTable
     caption="Street Level of Service"
     categories={results.levelOfService}
@@ -130,6 +132,8 @@
 
 <h2>5. Path Check Results</h2>
 {#if $state.summary.checkType == "path"}
+  <hr />
+
   <LevelOfServiceTable
     caption="Path Level of Service"
     categories={results.levelOfService}
