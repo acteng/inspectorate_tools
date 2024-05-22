@@ -2,9 +2,9 @@
   export let cardDetails: ClickableCardDetails;
 </script>
 
-<div
+<button
   class="clickable-card govuk-button govuk-button--secondary"
-  disabled={() => cardDetails.disabled}
+  disabled='{cardDetails.disabled}'
   on:click={cardDetails.disabled ? () => {} : cardDetails.onClick}
 >
   <div class="top-section section">
@@ -13,7 +13,7 @@
   <div class="section">
     {cardDetails.additionalText}
   </div>
-</div>
+</button>
 
 <style>
   .clickable-card {

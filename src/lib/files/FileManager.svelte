@@ -144,17 +144,3 @@
 <p>Load a saved file:</p>
 
 <ClickableCardsList {cardDetailsList} />
-
-<ul>
-  {#each fileList as file (file)}
-    {#if file == $currentFile}
-      <li>{file}</li>
-    {:else}
-      <li>
-        <SecondaryButton on:click={() => openFile(file)}>
-          {file}
-        </SecondaryButton>
-      </li>
-    {/if}
-  {/each}
-</ul>
