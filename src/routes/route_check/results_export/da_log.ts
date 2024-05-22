@@ -200,9 +200,11 @@ function categoryBreakdowns(
 
 function jat(state: State, results: Results): [string, Value][] {
   let out: [string, Value][] = [];
-  let numJunctions = 12;
+  let numExportedJunctions = 12;
+  // Ignore the "Overall" at the end
+  let numDefinedJunctions = results.jat.length - 1;
 
-  for (let i = 1; i <= numJunctions; i++) {
+  for (let i = 1; i <= numExportedJunctions; i++) {
     for (let [mode, code] of [
       ["walkingWheeling", "WW"],
       ["cycling", "Cy"],
@@ -210,21 +212,21 @@ function jat(state: State, results: Results): [string, Value][] {
     ] as const) {
       out.push([
         `J${i}-LOS-${code}-E`,
-        i <= results.jat.length
+        i <= numDefinedJunctions
           ? results.jat[i - 1][mode].existing
           : "Not Completed",
       ]);
       out.push([
         `J${i}-LOS-${code}-D`,
-        i <= results.jat.length
+        i <= numDefinedJunctions
           ? results.jat[i - 1][mode].proposed
           : "Not Completed",
       ]);
     }
   }
 
-  for (let i = 1; i <= numJunctions; i++) {
-    if (i <= results.jat.length) {
+  for (let i = 1; i <= numExportedJunctions; i++) {
+    if (i <= numDefinedJunctions) {
       // TODO Maybe need -E and -D variants here
       out.push([`J${i}-Arms`, state.jat[i - 1].proposed.arms.length]);
     } else {
