@@ -7,8 +7,6 @@
   disabled={() => cardDetails.disabled}
   on:click={cardDetails.disabled ? () => {} : cardDetails.onClick}
 >
-    {cardDetails.disabled}
-    {cardDetails.name}
   <div class="top-section section">
     {cardDetails.name}
   </div>
