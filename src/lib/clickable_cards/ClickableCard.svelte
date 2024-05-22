@@ -1,20 +1,21 @@
 <script lang="ts">
-    import { type CardDetails} from "./data"
-
-  export let cardDetails: CardDetails;
+  export let name: string = "";
+  export let additionalText: string = "";
+  export let onClick: Function = () =>{};
+  export let disabled: boolean = false;
 </script>
 
 <button
   class="clickable-card govuk-button govuk-button--secondary"
-  on:click={cardDetails.onClick}
-  disabled={cardDetails.disabled}
+  disabled={disabled}
+  on:click={onClick}
 >
   <div class="top-section section">
-    <span>{cardDetails.name}</span>
+    <span>{name}</span>
     <img src="/assets/right-arrow.svg" alt="arrow pointing right" />
   </div>
   <div class="section">
-    {cardDetails.additionalText}
+    {additionalText}
     <slot />
   </div>
 </button>

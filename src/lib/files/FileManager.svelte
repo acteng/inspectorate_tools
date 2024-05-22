@@ -136,13 +136,9 @@
 
 {#each fileList as fileName}
   <ClickableCard
-    cardDetails={{
-      name: `File name: ${fileName}`,
-      additionalText: fileName === $currentFile ? "Already selected" : "",
-      onClick: () => {
-        openFile(fileName);
-      },
-      disabled: fileName === $currentFile,
-    }}
+      name={`File name: ${fileName}`}
+      additionalText={fileName === $currentFile ? "Already selected" : ""}
+      onClick={() => {openFile(fileName);}}
+      disabled={fileName === $currentFile}
   />
 {/each}

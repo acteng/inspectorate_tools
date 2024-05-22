@@ -146,14 +146,8 @@
 
       {#each $state.checks.pinchPoints as pinch, i}
         <ClickableCard
-          cardDetails={{
-            name: `Pinch point ${i + 1}`,
-            additionalText: "",
-            onClick: () => {
-            select(i);
-          },
-            disabled: false,
-          }}
+            name={`Pinch point ${i + 1}`},
+            onClick={() => {select(i);}}
         >
           <SectionsPossible
             available={pinch.availableWidth}
