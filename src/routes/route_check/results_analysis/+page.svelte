@@ -106,6 +106,7 @@
     categories={results.levelOfService}
     overall={results.overall}
     overallLabel="Overall Street Level of Service"
+    radarChart
   />
 
   <LevelOfServiceTable
@@ -134,6 +135,7 @@
     categories={results.levelOfService}
     overall={results.overall}
     overallLabel="Overall Path Level of Service"
+    radarChart
   />
 
   <LevelOfServiceTable

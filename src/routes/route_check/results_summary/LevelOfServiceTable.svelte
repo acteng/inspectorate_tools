@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Bar } from "svelte-chartjs";
+  import { Bar, Radar } from "svelte-chartjs";
   import {
     Chart,
     Title,
@@ -8,6 +8,9 @@
     BarElement,
     CategoryScale,
     LinearScale,
+    PointElement,
+    RadialLinearScale,
+    LineElement,
   } from "chart.js";
   import { netDifference, type ResultCategory } from "../results";
   import { colors } from "$lib/colors";
@@ -17,6 +20,7 @@
   export let overall: ResultCategory;
   export let overallLabel: string;
   export let barChart = false;
+  export let radarChart = false;
 
   Chart.register(
     Title,
@@ -25,6 +29,9 @@
     BarElement,
     CategoryScale,
     LinearScale,
+    PointElement,
+    RadialLinearScale,
+    LineElement,
   );
 </script>
 
@@ -87,6 +94,30 @@
           ],
         }}
         options={{ indexAxis: "y", scales: { y: { stacked: true } } }}
+      />
+    {:else if radarChart}
+      <Radar
+        data={{
+          labels: [...categories.map((x) => x.category), overallLabel],
+          datasets: [
+            {
+              label: "Existing Layout",
+              data: [...categories, overall].map(
+                (x) => x.existing.scorePercent,
+              ),
+              borderColor: "#808080",
+              backgroundColor: "#808080",
+            },
+            {
+              label: "Proposed Layout",
+              data: [...categories, overall].map(
+                (x) => x.proposed.scorePercent,
+              ),
+              borderColor: colors.green.background,
+              backgroundColor: colors.green.background,
+            },
+          ],
+        }}
       />
     {/if}
   </div>
