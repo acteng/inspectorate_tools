@@ -9,7 +9,7 @@
 >
   <div class="top-section section">
     <span>{cardDetails.name}</span>
-    <i class="arrow" />
+    <img src="/assets/right-arrow.svg" alt="arrow pointing right">
   </div>
   <div class="section">
     {cardDetails.additionalText}
