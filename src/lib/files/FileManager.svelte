@@ -31,6 +31,7 @@
     return {
       name: `File name: ${fileName}`,
       additionalText: alreadySelected ? "Already selected" : "",
+      html: "<b>hello</b>",
       onClick: () => {
         openFile(fileName);
       },

@@ -13,6 +13,7 @@
   </div>
   <div class="section">
     {cardDetails.additionalText}
+    {@html cardDetails.html}
   </div>
 </button>
 
