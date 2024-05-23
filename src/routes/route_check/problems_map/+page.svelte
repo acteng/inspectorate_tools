@@ -17,6 +17,7 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
+  import { ClickableCard } from "$lib";
   import {
     state,
     type State,
@@ -147,9 +148,8 @@
     }
   }
 
-  // TODO Be consistent with terminology
-  function labelIssue(issue: CriticalIssue): string {
-    return `${issue.criticalIssue || "Unknown critical"}: ${issue.locationName || "???"}`;
+  function labelCritical(critical: CriticalIssue): string {
+    return `${critical.criticalIssue || "Unknown critical"}: ${critical.locationName || "???"}`;
   }
 
   function labelConflict(conflict: PolicyConflict): string {
@@ -204,36 +204,39 @@
       </p>
 
       <h3>Critical Issues</h3>
-      <ol>
-        {#each $state.criticalIssues as issue, idx}
-          <li>
-            <SecondaryButton
-              on:click={() => select({ kind: "critical", idx })}
-              on:mouseenter={() =>
-                (hoveringSidebar = { kind: "critical", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
+      {#each $state.criticalIssues as critical, idx}
+        <li>
+          <ClickableCard
+            name={labelCritical(critical)}
+            on:click={() => select({ kind: "critical", idx })}
+            on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
+            on:mouseleave={() => (hoveringSidebar = null)}
+          >
+            <div
+              style="width: 100%; display: flex; justify-content: space-between"
             >
-              {labelIssue(issue)}
-            </SecondaryButton>
-          </li>
-        {/each}
-      </ol>
+              <span>Stage: {critical.stage}</span>
+              <span>Resolved: {critical.resolved}</span>
+            </div>
+          </ClickableCard>
+        </li>{/each}
 
       <h3>Policy Conflicts</h3>
-      <ol>
-        {#each $state.policyConflictLog as conflict, idx}
-          <li>
-            <SecondaryButton
-              on:click={() => select({ kind: "conflict", idx })}
-              on:mouseenter={() =>
-                (hoveringSidebar = { kind: "conflict", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
-            >
-              {labelConflict(conflict)}
-            </SecondaryButton>
-          </li>
-        {/each}
-      </ol>
+      {#each $state.policyConflictLog as conflict, idx}
+        <ClickableCard
+          name={labelConflict(conflict)}
+          on:click={() => select({ kind: "conflict", idx })}
+          on:mouseenter={() => (hoveringSidebar = { kind: "conflict", idx })}
+          on:mouseleave={() => (hoveringSidebar = null)}
+        >
+          <div
+            style="width: 100%; display: flex; justify-content: space-between"
+          >
+            <span>Stage: {conflict.stage}</span>
+            <span>Resolved: {conflict.resolved}</span>
+          </div>
+        </ClickableCard>
+      {/each}
     {:else}
       <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
@@ -250,10 +253,10 @@
 
       <ContextualMap gj={$state.summary.networkMap} show={showContext} />
 
-      {#each $state.criticalIssues as issue, idx}
+      {#each $state.criticalIssues as critical, idx}
         <Marker
           draggable
-          bind:lngLat={issue.point}
+          bind:lngLat={critical.point}
           on:click={() => select({ kind: "critical", idx })}
           on:dragend={() => select({ kind: "critical", idx })}
         >
@@ -262,7 +265,9 @@
               points="20,0 0,40 40,40"
               fill={colors.critical.background}
             />
-            <text x="13" y="30" style:fill="white">{issue.criticalIssue}</text>
+            <text x="13" y="30" style:fill="white">
+              {critical.criticalIssue}
+            </text>
           </svg>
         </Marker>
       {/each}
