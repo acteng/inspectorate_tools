@@ -237,7 +237,7 @@ function jat(state: State, results: Results): [string, Value][] {
   return out;
 }
 
-function policyConflictId(state: State, i: number): string {
+export function policyConflictId(state: State, i: number): string {
   let conflict = state.policyConflictLog[i];
 
   // This conflict is what instance of this type?
@@ -299,7 +299,8 @@ function stripCharacter(x: string): string {
   return /\D$/.test(x) ? x.slice(0, -1) : x;
 }
 
-function criticalIssueId(state: State, i: number): string {
+// TODO If State was a class, this'd be a perfect method
+export function criticalIssueId(state: State, i: number): string {
   let critical = state.criticalIssues[i];
   let criticalType = stripCharacter(critical.criticalIssue);
 

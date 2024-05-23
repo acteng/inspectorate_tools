@@ -10,6 +10,7 @@
     criticalIssueChoices,
     policyConflictChoices,
   } from "../problems_map/lists";
+  import { policyConflictId, criticalIssueId } from "../dalog/da_log";
 
   let results = getResults($state);
 
@@ -41,18 +42,20 @@
     <th>Location Name</th>
     <th>Commentary & Feedback</th>
   </tr>
-  {#each $state.policyConflictLog.filter((x) => x.resolved != "Yes") as conflict, i}
-    <tr>
-      <th>{i + 1}</th>
-      <td>TODO ID</td>
-      <td>
-        {notNull(
-          policyConflictChoices.find((pair) => pair[0] == conflict.conflict),
-        )[1]}
-      </td>
-      <td>{conflict.locationName}</td>
-      <td>{conflict.notes}</td>
-    </tr>
+  {#each $state.policyConflictLog as conflict, i}
+    {#if conflict.resolved != "Yes"}
+      <tr>
+        <th>{i + 1}</th>
+        <td>{policyConflictId($state, i)}</td>
+        <td>
+          {notNull(
+            policyConflictChoices.find((pair) => pair[0] == conflict.conflict),
+          )[1]}
+        </td>
+        <td>{conflict.locationName}</td>
+        <td>{conflict.notes}</td>
+      </tr>
+    {/if}
   {/each}
 </table>
 
@@ -66,20 +69,22 @@
     <th>Location Name</th>
     <th>Commentary & Feedback</th>
   </tr>
-  {#each $state.criticalIssues.filter((x) => x.resolved != "Yes") as critical, i}
-    <tr>
-      <th>{i + 1}</th>
-      <td>TODO ID</td>
-      <td>
-        {notNull(
-          criticalIssueChoices.find(
-            (pair) => pair[0] == critical.criticalIssue,
-          ),
-        )[1]}
-      </td>
-      <td>{critical.locationName}</td>
-      <td>{critical.notes}</td>
-    </tr>
+  {#each $state.criticalIssues as critical, i}
+    {#if critical.resolved != "Yes"}
+      <tr>
+        <th>{i + 1}</th>
+        <td>{criticalIssueId($state, i)}</td>
+        <td>
+          {notNull(
+            criticalIssueChoices.find(
+              (pair) => pair[0] == critical.criticalIssue,
+            ),
+          )[1]}
+        </td>
+        <td>{critical.locationName}</td>
+        <td>{critical.notes}</td>
+      </tr>
+    {/if}
   {/each}
 </table>
 
