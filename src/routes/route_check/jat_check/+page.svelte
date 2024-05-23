@@ -8,6 +8,7 @@
   } from "govuk-svelte";
   import { state } from "../data";
   import EditJunction from "./EditJunction.svelte";
+  import { ClickableCard } from "$lib";
 
   type Mode =
     | { kind: "list" }
@@ -56,17 +57,12 @@
 {#if mode.kind == "list"}
   <DefaultButton on:click={add}>Add new junction</DefaultButton>
 
-  <ol>
-    {#each $state.jat as junction, idx}
-      <li>
-        <SecondaryButton
-          on:click={() => (mode = { kind: "edit", idx, stage: "existing" })}
-        >
-          {junction.name || "Untitled junction"}
-        </SecondaryButton>
-      </li>
-    {/each}
-  </ol>
+  {#each $state.jat as junction, idx}
+    <ClickableCard
+      name={junction.name || "Untitled junction"}
+      on:click={() => (mode = { kind: "edit", idx, stage: "existing" })}
+    />
+  {/each}
 {:else if mode.kind == "edit"}
   <h2>{$state.jat[mode.idx].name || "Untitled junction"} - {mode.stage}</h2>
 

@@ -12,23 +12,13 @@
   import {
     bbox,
     MapLibreMap,
-    Popup,
     ContextualMap,
     StreetView,
     Basemap,
     type Position,
   } from "$lib/map";
-  import { GeoreferenceLayer, GeoreferenceControls } from "$lib/map/georef";
-  import {
-    Marker,
-    GeoJSON,
-    LineLayer,
-    hoverStateFilter,
-    type LayerClickInfo,
-    SymbolLayer,
-    CircleLayer,
-    MapEvents,
-  } from "svelte-maplibre";
+  import { GeoreferenceControls } from "$lib/map/georef";
+  import { Marker, MapEvents } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state } from "../data";
   import { onMount } from "svelte";

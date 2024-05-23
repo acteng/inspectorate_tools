@@ -13,7 +13,8 @@
   import { StreetView, Basemap } from "$lib/map";
   import { GeoreferenceControls } from "$lib/map/georef";
   import { colors } from "$lib/colors";
-  import { state, type JunctionAssessment, type Movement } from "../data";
+  import { ClickableCard } from "$lib";
+  import { state, type JunctionAssessment } from "../data";
   import Form from "./Form.svelte";
 
   export let junctionIdx: number;
@@ -113,15 +114,12 @@
     $state = $state;
   }
 
-  function score(movement: Movement): string {
-    let color = {
-      0: colors.red.background,
-      1: colors.amber.background,
-      2: colors.green.background,
-      X: colors.critical.background,
-    }[movement.score];
-    return `<span style="color: ${color}">score ${movement.score}</span>`;
-  }
+  let scoreColors = {
+    0: colors.red,
+    1: colors.amber,
+    2: colors.green,
+    X: colors.critical,
+  };
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -168,19 +166,14 @@
       />
 
       <h3>Arms</h3>
-      <ul>
-        {#each $state.jat[junctionIdx][stage].arms as arm, idx}
-          <li>
-            <SecondaryButton
-              on:click={() => select({ kind: "arm", idx })}
-              on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
-            >
-              {armLabel(idx)} - {arm.name || "Unnamed arm"}
-            </SecondaryButton>
-          </li>
-        {/each}
-      </ul>
+      {#each $state.jat[junctionIdx][stage].arms as arm, idx}
+        <ClickableCard
+          name={`${armLabel(idx)} - ${arm.name || "Unnamed arm"}`}
+          on:click={() => select({ kind: "arm", idx })}
+          on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
+          on:mouseleave={() => (hoveringSidebar = null)}
+        />
+      {/each}
       {#if $state.jat[junctionIdx][otherStage].arms.length > 0}
         <SecondaryButton on:click={copyArms}>
           Copy arms from {otherStage}
@@ -188,20 +181,21 @@
       {/if}
 
       <h3>Movements</h3>
-      <ol>
-        {#each $state.jat[junctionIdx][stage].movements as movement, idx}
-          <li>
-            <SecondaryButton
-              on:click={() => select({ kind: "movement", idx })}
-              on:mouseenter={() =>
-                (hoveringSidebar = { kind: "movement", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
-            >
-              {movement.name || "Unnamed movement"} ({@html score(movement)})
-            </SecondaryButton>
-          </li>
-        {/each}
-      </ol>
+      {#each $state.jat[junctionIdx][stage].movements as movement, idx}
+        {@const color = scoreColors[movement.score]}
+        <ClickableCard
+          name={movement.name || "Unnamed movement"}
+          on:click={() => select({ kind: "movement", idx })}
+          on:mouseenter={() => (hoveringSidebar = { kind: "movement", idx })}
+          on:mouseleave={() => (hoveringSidebar = null)}
+        >
+          <span
+            style="color: {color.font}; background-color: {color.background}"
+          >
+            Score: {movement.score}
+          </span>
+        </ClickableCard>
+      {/each}
       {#if $state.jat[junctionIdx][otherStage].movements.length > 0}
         <SecondaryButton on:click={copyMovements}>
           Copy movements from {otherStage}

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { DecimalInput } from "$lib";
   import SectionsPossible from "./SectionsPossible.svelte";
-  import { WarningButton, TextArea } from "govuk-svelte";
+  import { TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let i: number;
