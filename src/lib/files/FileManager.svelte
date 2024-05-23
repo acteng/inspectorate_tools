@@ -1,13 +1,12 @@
 <script lang="ts" generics="StateType">
   import { LocalStorageFiles } from "./index";
-  import ClickableCard from "../clickable_cards/ClickableCard.svelte";
   import {
     FileInput,
     WarningButton,
     ButtonGroup,
     SecondaryButton,
   } from "govuk-svelte";
-  import { stripSuffix } from "$lib";
+  import { stripSuffix, ClickableCard } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
 
@@ -136,9 +135,12 @@
 
 {#each fileList as fileName}
   <ClickableCard
-      name={`File name: ${fileName}`}
-      additionalText={fileName === $currentFile ? "Already selected" : ""}
-      on:click={() => {openFile(fileName);}}
-      disabled={fileName === $currentFile}
-  />
+    name={`File name: ${fileName}`}
+    on:click={() => {
+      openFile(fileName);
+    }}
+    disabled={fileName === $currentFile}
+  >
+    {fileName === $currentFile ? "Already selected" : ""}
+  </ClickableCard>
 {/each}

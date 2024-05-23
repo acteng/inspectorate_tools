@@ -1,8 +1,7 @@
 <script lang="ts">
   import PinchPointCard from "./PinchPointCard.svelte";
-  import ClickableCard from "../../../lib/clickable_cards/ClickableCard.svelte";
+  import { ClickableCard } from "$lib";
   import SectionsPossible from "./SectionsPossible.svelte";
-  import { getSectionsPossibleHtml } from "./get_sections_possible";
   import {
     Checkbox,
     SecondaryButton,
@@ -146,8 +145,11 @@
 
       {#each $state.checks.pinchPoints as pinch, i}
         <ClickableCard
-            name={`Pinch point ${i + 1}`}
-            on:click={() => {select(i);}}
+          name={`Pinch point ${i + 1}`}
+          on:click={() => {
+            select(i);
+          }}
+          on:mouseenter={() => (hoveringSidebar = i)}
         >
           <SectionsPossible
             available={pinch.availableWidth}

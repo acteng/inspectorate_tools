@@ -1,21 +1,20 @@
 <script lang="ts">
-import rightArrow from "../assets/images/right-arrow.svg?url";
-  export let name: string = "";
-  export let additionalText: string = "";
+  import rightArrow from "./assets/images/right-arrow.svg?url";
+  export let name: string;
   export let disabled: boolean = false;
 </script>
 
 <button
   class="clickable-card govuk-button govuk-button--secondary"
-  disabled={disabled}
+  {disabled}
   on:click
+  on:mouseenter
 >
   <div class="top-section section">
     <span>{name}</span>
     <img class="arrow" src={rightArrow} alt="arrow pointing right" />
   </div>
   <div class="section">
-    {additionalText}
     <slot />
   </div>
 </button>
