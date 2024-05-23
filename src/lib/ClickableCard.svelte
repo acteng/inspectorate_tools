@@ -1,5 +1,6 @@
 <script lang="ts">
   import rightArrow from "./assets/images/right-arrow.svg?url";
+
   export let name: string;
   export let disabled: boolean = false;
 </script>
@@ -9,6 +10,7 @@
   {disabled}
   on:click
   on:mouseenter
+  on:mouseleave
 >
   <div class="top-section section">
     <span>{name}</span>

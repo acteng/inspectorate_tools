@@ -146,10 +146,9 @@
       {#each $state.checks.pinchPoints as pinch, i}
         <ClickableCard
           name={`Pinch point ${i + 1}: ${pinch.availableWidth}m`}
-          on:click={() => {
-            select(i);
-          }}
+          on:click={() => select(i)}
           on:mouseenter={() => (hoveringSidebar = i)}
+          on:mouseleave={() => (hoveringSidebar = null)}
         >
           <SectionsPossible
             available={pinch.availableWidth}

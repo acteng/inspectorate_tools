@@ -1,4 +1,5 @@
 export { default as Breadcrumbs } from "./Breadcrumbs.svelte";
+export { default as ClickableCard } from "./ClickableCard.svelte";
 export { default as DecimalInput } from "./DecimalInput.svelte";
 export { default as FancyRadio } from "./FancyRadio.svelte";
 export { default as GenericSelect } from "./GenericSelect.svelte";
@@ -9,7 +10,6 @@ export { default as PreviousButton } from "./PreviousButton.svelte";
 export { default as PrevNext } from "./PrevNext.svelte";
 export { default as SelectWithCustom } from "./SelectWithCustom.svelte";
 export { default as YesNo } from "./YesNo.svelte";
-export { default as ClickableCard } from "./ClickableCard.svelte";
 
 export function pairs(list: string[]): [string, string][] {
   return list.map((x) => [x, x]);
