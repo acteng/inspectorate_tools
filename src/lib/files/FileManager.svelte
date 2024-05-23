@@ -6,7 +6,7 @@
     ButtonGroup,
     SecondaryButton,
   } from "govuk-svelte";
-  import { stripSuffix } from "$lib";
+  import { stripSuffix, ClickableCard } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
 
@@ -132,16 +132,13 @@
 {/if}
 
 <p>Load a saved file:</p>
-<ul>
-  {#each fileList as file (file)}
-    {#if file == $currentFile}
-      <li>{file}</li>
-    {:else}
-      <li>
-        <SecondaryButton on:click={() => openFile(file)}>
-          {file}
-        </SecondaryButton>
-      </li>
-    {/if}
-  {/each}
-</ul>
+
+{#each fileList as fileName}
+  <ClickableCard
+    name={`File name: ${fileName}`}
+    on:click={() => openFile(fileName)}
+    disabled={fileName === $currentFile}
+  >
+    {fileName === $currentFile ? "Already selected" : ""}
+  </ClickableCard>
+{/each}

@@ -1,5 +1,6 @@
 <script lang="ts">
   import PinchPointCard from "./PinchPointCard.svelte";
+  import { ClickableCard } from "$lib";
   import SectionsPossible from "./SectionsPossible.svelte";
   import {
     Checkbox,
@@ -143,20 +144,19 @@
       </CollapsibleCard>
 
       {#each $state.checks.pinchPoints as pinch, i}
-        <div>
-          <SecondaryButton
-            on:click={() => select(i)}
-            on:mouseenter={() => (hoveringSidebar = i)}
-            on:mouseleave={() => (hoveringSidebar = null)}
-          >
-            <b>Pinch point {i + 1}</b>
-            <SectionsPossible
-              available={pinch.availableWidth}
-              {preferredTotals}
-              {compromisedTotals}
-            />
-          </SecondaryButton>
-        </div>
+        <ClickableCard
+          name={`Pinch point ${i + 1}: ${pinch.availableWidth}m`}
+          on:click={() => select(i)}
+          on:mouseenter={() => (hoveringSidebar = i)}
+          on:mouseleave={() => (hoveringSidebar = null)}
+        >
+          <SectionsPossible
+            available={pinch.availableWidth}
+            {preferredTotals}
+            {compromisedTotals}
+            verbose={false}
+          />
+        </ClickableCard>
       {/each}
     {:else}
       <h2>Pinch point {editing + 1}</h2>

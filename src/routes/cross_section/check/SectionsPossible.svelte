@@ -2,6 +2,7 @@
   export let available: number;
   export let preferredTotals: [number, number];
   export let compromisedTotals: [number, number];
+  export let verbose = true;
 
   let sections: [string, [number, number]][] = [
     ["Preferred", preferredTotals],
@@ -11,7 +12,7 @@
 
 {#each sections as [label, [desirableTotal, absoluteTotal]]}
   <p>
-    {label} cross sections possible:
+    {label}{verbose ? "cross sections possible:" : ":"}
     {#if available >= desirableTotal}
       <strong class="govuk-tag govuk-tag--green">Desirable Minimum</strong>
     {:else if available > absoluteTotal}
@@ -21,3 +22,9 @@
     {/if}
   </p>
 {/each}
+
+<style>
+  p {
+    padding: 2px;
+  }
+</style>
