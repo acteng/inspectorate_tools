@@ -210,8 +210,4 @@
   .highlight {
     background: cyan;
   }
-  .card-bottom-half {
-    display: flex;
-    flex-direction: column;
-  }
 </style>
