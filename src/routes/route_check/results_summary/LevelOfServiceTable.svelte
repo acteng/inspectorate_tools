@@ -13,7 +13,6 @@
     LineElement,
   } from "chart.js";
   import { netDifference, type ResultCategory } from "../results";
-  import { colors } from "$lib/colors";
 
   export let caption: string;
   export let categories: ResultCategory[];
@@ -22,6 +21,7 @@
   export let barChart = false;
   export let radarChart = false;
 
+  let midBlue = "#007dbb";
   let darkGrey = "#808080";
 
   Chart.register(
@@ -91,7 +91,7 @@
               data: [...categories, overall].map(
                 (x) => x.proposed.scorePercent,
               ),
-              backgroundColor: colors.green.background,
+              backgroundColor: midBlue,
             },
           ],
         }}
@@ -115,8 +115,8 @@
               data: [...categories, overall].map(
                 (x) => x.proposed.scorePercent,
               ),
-              borderColor: colors.green.background,
-              backgroundColor: colors.green.background,
+              borderColor: midBlue,
+              backgroundColor: midBlue,
             },
           ],
         }}
