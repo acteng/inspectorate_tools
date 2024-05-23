@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { SecondaryButton, WarningButton, WarningText } from "govuk-svelte";
+  import {
+    DefaultButton,
+    SecondaryButton,
+    WarningButton,
+    WarningText,
+  } from "govuk-svelte";
   import {
     state,
     streetFeatureTypes,
@@ -77,7 +82,7 @@
   }
 </script>
 
-<SecondaryButton on:click={addNewStreetFeature}>Add feature</SecondaryButton>
+<DefaultButton on:click={addNewStreetFeature}>Add feature</DefaultButton>
 
 <p>
   Desirable minimum total width required (m): <b>{totalWidths[0].toFixed(2)}</b>

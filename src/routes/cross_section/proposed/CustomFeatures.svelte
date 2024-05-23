@@ -1,7 +1,7 @@
 <script lang="ts">
   import EditCustomFeature from "./EditCustomFeature.svelte";
   import { v4 as uuidv4 } from "uuid";
-  import { SecondaryButton, WarningButton } from "govuk-svelte";
+  import { DefaultButton, SecondaryButton, WarningButton } from "govuk-svelte";
   import { state } from "../data";
 
   let editing: {
@@ -63,20 +63,17 @@
   }
 </script>
 
-<SecondaryButton on:click={add}>Add feature</SecondaryButton>
+<DefaultButton on:click={add}>Add custom feature</DefaultButton>
 
-<ol>
-  {#each Object.keys($state.proposed.customFeatures) as id (id)}
-    <li>
-      <span>
-        <u>{$state.proposed.customFeatures[id].name}</u>
-        : {$state.proposed.customFeatures[id].width} m minimum width
-      </span>
-      <SecondaryButton on:click={() => edit(id)}>Edit</SecondaryButton>
-      <WarningButton on:click={() => deleteFeature(id)}>Delete</WarningButton>
-    </li>
-  {/each}
-</ol>
+{#each Object.keys($state.proposed.customFeatures) as id (id)}
+  <div>
+    <SecondaryButton on:click={() => edit(id)}>
+      <u>{$state.proposed.customFeatures[id].name}</u>
+      : {$state.proposed.customFeatures[id].width} m minimum width
+    </SecondaryButton>
+    <WarningButton on:click={() => deleteFeature(id)}>Delete</WarningButton>
+  </div>
+{/each}
 
 {#if editing}
   <EditCustomFeature
