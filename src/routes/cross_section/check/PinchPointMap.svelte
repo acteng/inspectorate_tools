@@ -145,25 +145,18 @@
 
       {#each $state.checks.pinchPoints as pinch, i}
         <ClickableCard
-          name={`Pinch point ${i + 1}`}
+          name={`Pinch point ${i + 1}: ${pinch.availableWidth}m`}
           on:click={() => {
             select(i);
           }}
           on:mouseenter={() => (hoveringSidebar = i)}
         >
-          <div class="card-bottom-half">
-            <p>
-              Available Width: {pinch.availableWidth}
-            </p>
-            <div style="display:flex;">
-              <SectionsPossible
-                available={pinch.availableWidth}
-                {preferredTotals}
-                {compromisedTotals}
-                verbose={false}
-              />
-            </div>
-          </div>
+          <SectionsPossible
+            available={pinch.availableWidth}
+            {preferredTotals}
+            {compromisedTotals}
+            verbose={false}
+          />
         </ClickableCard>
       {/each}
     {:else}
