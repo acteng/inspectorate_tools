@@ -87,7 +87,6 @@ export interface Scorecard {
 }
 
 export interface PolicyConflict {
-  // TODO
   conflict: "1" | "2" | "3" | "4" | "5" | "6" | "";
   stage: "Existing" | "Design" | "";
   point: Position;
@@ -97,7 +96,6 @@ export interface PolicyConflict {
 }
 
 export interface CriticalIssue {
-  // TODO
   criticalIssue:
     | "1"
     | "2"

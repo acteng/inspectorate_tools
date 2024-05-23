@@ -34,7 +34,6 @@
 
   let mapControls: MapControls | null = null;
 
-  // TODO Could consider sharing this and armLabel
   function select(id: ID) {
     editing = id;
     hoveringSidebar = null;
