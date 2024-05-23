@@ -27,10 +27,10 @@
   }
   .top-section {
     border-bottom: 1px solid black;
-    display: flex;
     justify-content: space-between;
   }
   .section {
+    display: flex;
     padding: 0.5em;
   }
   .arrow {
