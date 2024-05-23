@@ -155,7 +155,7 @@
             <p>
               Available Width: {pinch.availableWidth}
             </p>
-            <div>
+            <div style="display:flex;">
               <SectionsPossible
                 available={pinch.availableWidth}
                 {preferredTotals}
