@@ -151,11 +151,19 @@
           }}
           on:mouseenter={() => (hoveringSidebar = i)}
         >
-          <SectionsPossible
-            available={pinch.availableWidth}
-            {preferredTotals}
-            {compromisedTotals}
-          />
+          <div class="card-bottom-half">
+            <p>
+              Available Width: {pinch.availableWidth}
+            </p>
+            <div>
+              <SectionsPossible
+                available={pinch.availableWidth}
+                {preferredTotals}
+                {compromisedTotals}
+                verbose={false}
+              />
+            </div>
+          </div>
         </ClickableCard>
       {/each}
     {:else}
@@ -208,5 +216,9 @@
 
   .highlight {
     background: cyan;
+  }
+  .card-bottom-half {
+    display: flex;
+    flex-direction: column;
   }
 </style>
