@@ -217,6 +217,7 @@ let pages: [string, string][] = [
   ["/route_check/results_summary", "Results Summary"],
   ["/route_check/results_analysis", "Results Further Analysis"],
   ["/route_check/results_export", "Results Export"],
+  ["/route_check/dalog", "Design Assistance Log"],
 ];
 let mainPageSections = pages.filter(([x, _]) => x.split("/").length == 3);
 let pathToTitle = new Map(pages);

@@ -92,6 +92,6 @@ describe("getNextPage", () => {
     expect(getNextPage("/")).toBe(null);
     expect(getNextPage("/area_check/results")).toBe(null);
     expect(getNextPage("/cross_section/results_summary")).toBe(null);
-    expect(getNextPage("/route_check/results_export")).toBe(null);
+    expect(getNextPage("/route_check/dalog")).toBe(null);
   });
 });

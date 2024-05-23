@@ -7,7 +7,6 @@
   export let stage: "existing" | "proposed";
   export let idx: number;
 
-  let kinds = pairs(["cycling", "walking & wheeling"]);
   let scoreChoices: [string, string][] = [
     ["X", "X - black"],
     ["0", "0 - red"],
