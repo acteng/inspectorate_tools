@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { getDalog, dalogToState } from "$lib/import";
 import ExcelJS from "exceljs";
-import { encodeDalog } from "./results_export/da_log";
+import { encodeDalog } from "./dalog/da_log";
 
 describe("import then export", async () => {
   it("street_1", async () => doTest("test_files/street_1.xlsx"));
