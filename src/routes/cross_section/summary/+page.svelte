@@ -1,6 +1,12 @@
 <script lang="ts">
-  import { pairs, ExternalLink, DecimalInput, SelectWithCustom } from "$lib";
-  import { Select, TextInput, TextArea } from "govuk-svelte";
+  import { pairs, ExternalLink } from "$lib";
+  import {
+    Select,
+    TextInput,
+    TextArea,
+    DecimalInput,
+    SelectWithCustom,
+  } from "govuk-svelte";
   import { state } from "../data";
   import {
     authorities,

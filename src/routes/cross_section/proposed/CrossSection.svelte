@@ -4,6 +4,7 @@
     SecondaryButton,
     WarningButton,
     WarningText,
+    GenericSelect,
   } from "govuk-svelte";
   import {
     state,
@@ -13,7 +14,7 @@
   } from "../data";
   import { calculateTotalWidths } from "./logic";
   import { afterUpdate } from "svelte";
-  import { GenericSelect, ExternalLink } from "$lib";
+  import { ExternalLink } from "$lib";
   import { references, guidance } from "./guidance";
   import { getWidths, needBuffers } from "./logic";
 

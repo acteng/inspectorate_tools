@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { DecimalInput } from "$lib";
   import { createEventDispatcher } from "svelte";
-  import { WarningButton, TextArea } from "govuk-svelte";
+  import { DecimalInput, WarningButton, TextArea } from "govuk-svelte";
   import SectionsPossible from "./SectionsPossible.svelte";
   import { state } from "../data";
 
