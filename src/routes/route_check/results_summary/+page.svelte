@@ -30,5 +30,8 @@
   <h2>Select Street Check or Path Check for further results</h2>
 {/if}
 
-<!-- TODO Hint: "Use the space to provide overall feedback for the proposed scheme" -->
-<TextArea label="Review statement" bind:value={$state.resultsReviewStatement} />
+<TextArea
+  label="Review statement"
+  bind:value={$state.resultsReviewStatement}
+  hint="Use the space to provide overall feedback for the proposed scheme"
+/>
