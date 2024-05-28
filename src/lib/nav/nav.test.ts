@@ -68,6 +68,7 @@ describe("getPrevPage", () => {
     expect(getPrevPage("/area_check", "")).toBe(null);
     expect(getPrevPage("/cross_section", "")).toBe(null);
     expect(getPrevPage("/route_check", "")).toBe(null);
+    expect(getPrevPage("/planning", "")).toBe(null);
   });
 
   it("route check types", () => {
@@ -124,6 +125,7 @@ describe("getNextPage", () => {
     expect(getNextPage("/area_check/results", "")).toBe(null);
     expect(getNextPage("/cross_section/results_summary", "")).toBe(null);
     expect(getNextPage("/route_check/dalog", "")).toBe(null);
+    expect(getNextPage("/planning/scorecard", "")).toBe(null);
   });
 
   it("route check types", () => {

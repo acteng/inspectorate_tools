@@ -8,6 +8,9 @@ export { default as PreviousButton } from "./PreviousButton.svelte";
 let pages: [string, string][] = [
   ["/", "Tools"],
 
+  ["/planning", "Planning Application Assessment Toolkit"],
+  ["/planning/scorecard", "Scorecard"],
+
   ["/cross_section", "Route cross-section tool"],
   ["/cross_section/files", "Manage files"],
   ["/cross_section/summary", "Summary of Scheme"],

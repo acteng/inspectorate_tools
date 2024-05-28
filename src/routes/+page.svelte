@@ -11,4 +11,5 @@
 <ul>
   <li><a href="{base}/area_check">Area check</a></li>
   <li><a href="{base}/route_check">Route check</a></li>
+  <li><a href="{base}/planning">Planning Application Assessment Toolkit</a></li>
 </ul>
