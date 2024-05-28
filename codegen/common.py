@@ -3,6 +3,7 @@
 # manually later.
 def html(x):
     x = x.replace('"', '\\"')
+    x = x.replace("<", "&lt;")
 
     y = ""
     is_list = False

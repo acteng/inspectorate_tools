@@ -10,6 +10,16 @@ let pages: [string, string][] = [
 
   ["/planning", "Planning Application Assessment Toolkit"],
   ["/planning/scorecard", "Scorecard"],
+  ["/planning/scorecard/q01", "Trip generation and assignment"],
+  ["/planning/scorecard/q02", "Active travel route audit"],
+  ["/planning/scorecard/q03", "Pedestrian access to local amenities"],
+  ["/planning/scorecard/q04", "Cycling accessibility"],
+  ["/planning/scorecard/q05", "Access to public transport"],
+  ["/planning/scorecard/q06", "Off-site transport infrastructure"],
+  ["/planning/scorecard/q07", "Site permeability"],
+  ["/planning/scorecard/q08", "Placemaking"],
+  ["/planning/scorecard/q09", "Cycle parking and trip-end facilities"],
+  ["/planning/scorecard/q10", "Travel planning"],
 
   ["/cross_section", "Route cross-section tool"],
   ["/cross_section/files", "Manage files"],
