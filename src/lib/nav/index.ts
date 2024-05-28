@@ -266,7 +266,10 @@ function getSectionPath(rawPath: string): string | null {
   return `/${parts[1]}/${parts[2]}`;
 }
 
-export function getPrevPage(rawPath: string): [string, string] | null {
+export function getPrevPage(
+  rawPath: string,
+  routeCheckType: "street" | "path" | "",
+): [string, string] | null {
   let path = getSectionPath(rawPath);
   if (!path) {
     return null;
@@ -296,7 +299,10 @@ export function getPrevPage(rawPath: string): [string, string] | null {
   return result;
 }
 
-export function getNextPage(rawPath: string): [string, string] | null {
+export function getNextPage(
+  rawPath: string,
+  routeCheckType: "street" | "path" | "",
+): [string, string] | null {
   let path = getSectionPath(rawPath);
   if (!path) {
     return null;

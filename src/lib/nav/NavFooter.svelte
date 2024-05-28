@@ -3,9 +3,11 @@
   import { base } from "$app/paths";
   import { NextButton, PreviousButton, getPrevPage, getNextPage } from "./";
 
+  export let routeCheckType: "street" | "path" | "";
+
   $: pagePath = $page.url.pathname;
-  $: prevPage = getPrevPage(pagePath);
-  $: nextPage = getNextPage(pagePath);
+  $: prevPage = getPrevPage(pagePath, routeCheckType);
+  $: nextPage = getNextPage(pagePath, routeCheckType);
 </script>
 
 <div style="display: flex; justify-content: space-between">

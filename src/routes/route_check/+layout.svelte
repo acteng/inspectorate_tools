@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { currentFile } from "./data";
+  import { state, currentFile } from "./data";
   import { base } from "$app/paths";
   import { NavHeader, NavFooter } from "$lib/nav";
 </script>
 
-<NavHeader />
+<NavHeader routeCheckType={$state.summary.checkType} />
 
 <div>
   <a href="{base}/route_check/files">Manage files</a>
@@ -19,4 +19,4 @@
 
 <hr />
 
-<NavFooter />
+<NavFooter routeCheckType={$state.summary.checkType} />

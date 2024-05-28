@@ -4,7 +4,7 @@
   import { NavHeader, NavFooter } from "$lib/nav";
 </script>
 
-<NavHeader />
+<NavHeader routeCheckType="" />
 
 <div>
   <a href="{base}/cross_section/files">Manage files</a>
@@ -19,4 +19,4 @@
 
 <hr />
 
-<NavFooter />
+<NavFooter routeCheckType="" />
