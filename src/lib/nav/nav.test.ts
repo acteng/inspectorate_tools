@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getTitle, getBreadcrumbLinks, getPrevPage, getNextPage } from "./nav";
+import { getTitle, getBreadcrumbLinks, getPrevPage, getNextPage } from "./";
 
 describe("getTitle", () => {
   it("normal cases", () => {
