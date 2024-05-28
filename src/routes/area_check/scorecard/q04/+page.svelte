@@ -1,5 +1,6 @@
 <script lang="ts">
   import Question from "../Question.svelte";
+  import { ExternalLink } from "$lib";
 </script>
 
 <Question
@@ -8,11 +9,11 @@
   cases={[
     [
       4,
-      "<p>Controlled crossing facilities for cyclists on the perimeter of the area are present wherever required, and they all follow LTN 1/20 guidance and, where applicable, recommendations in the 'Crossing Selector Tool'*.</p>",
+      "<p>Controlled crossing facilities for cyclists on the perimeter of the area are present wherever required, and they all follow LTN 1/20 guidance and, where applicable, recommendations in the 'Crossing Selector Tool'.</p>",
     ],
     [
       3,
-      "<p>Controlled crosing facilities for cyclists on the perimeter of the area are present wherever required, and they follow LTN 1/20 guidance. Some of these cycle crossings comply with recommendations in the 'Crossing Selector Tool'* where applicable.</p>",
+      "<p>Controlled crosing facilities for cyclists on the perimeter of the area are present wherever required, and they follow LTN 1/20 guidance. Some of these cycle crossings comply with recommendations in the 'Crossing Selector Tool' where applicable.</p>",
     ],
     [
       2,
@@ -29,8 +30,12 @@
   ]}
 >
   <p>
-    *The 'Crossing Selector Tool' is another tool developed by Active Travel
-    England to check that any cycle crossing designs are suitable for their
-    context.
+    The <ExternalLink
+      href="https://www.gov.uk/government/publications/active-travel-england-design-assistance-tools"
+    >
+      Crossing Selector Tool
+    </ExternalLink>
+    is another tool developed by Active Travel England to check that any cycle crossing
+    designs are suitable for their context.
   </p>
 </Question>

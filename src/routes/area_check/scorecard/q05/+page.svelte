@@ -8,23 +8,23 @@
   cases={[
     [
       4,
-      "<p>All walking and wheeling routes have all of the features from the list opposite.</p>",
+      "<p>All walking and wheeling routes have all of the features from the list above.</p>",
     ],
     [
       3,
-      "<p>There are more than two walking and wheeling routes with all of the features from the list opposite.</p>",
+      "<p>There are more than two walking and wheeling routes with all of the features from the list above.</p>",
     ],
     [
       2,
-      "<p>There are two walking and wheeling routes with all of the features from the list opposite.</p>",
+      "<p>There are two walking and wheeling routes with all of the features from the list above.</p>",
     ],
     [
       1,
-      "<p>There is one walking and wheeling route with all of the features from the list opposite.</p>",
+      "<p>There is one walking and wheeling route with all of the features from the list above.</p>",
     ],
     [
       0,
-      "<p>There are no walking and wheeling routes with the features from the list opposite.</p>",
+      "<p>There are no walking and wheeling routes with the features from the list above.</p>",
     ],
   ]}
 >

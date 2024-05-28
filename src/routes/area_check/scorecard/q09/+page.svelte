@@ -12,7 +12,7 @@
     ],
     [
       6,
-      "<p>Most motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.</p><p>There are good reasons why  motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.</p>",
+      "<p>Most motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.</p><p>There are good reasons why motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.</p>",
     ],
     [
       4,
@@ -38,5 +38,4 @@
     <li>Blue badge holders</li>
   </ul>
   <p>Please refer to the User Manual for further information.</p>
-  <p></p>
 </Question>
