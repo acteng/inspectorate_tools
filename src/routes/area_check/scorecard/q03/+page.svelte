@@ -8,23 +8,23 @@
   cases={[
     [
       4,
-      "Crossing facilities for pedestrians on the perimeter of the area are controlled, and are present in all places where there are desire lines.",
+      "<p>Crossing facilities for pedestrians on the perimeter of the area are controlled, and are present in all places where there are desire lines.</p>",
     ],
     [
       3,
-      "Crossing facilities for pedestrianson the perimeter of the area are controlled, and are present in most places where there are desire lines.",
+      "<p>Crossing facilities for pedestrianson the perimeter of the area are controlled, and are present in most places where there are desire lines.</p>",
     ],
     [
       2,
-      "Crossing facilities for pedestrians on the perimeter of the area are controlled, and are present in some places where there are desire lines.",
+      "<p>Crossing facilities for pedestrians on the perimeter of the area are controlled, and are present in some places where there are desire lines.</p>",
     ],
     [
       1,
-      "Crossing facilities for pedestrians on the perimeter of the area are uncontrolled.",
+      "<p>Crossing facilities for pedestrians on the perimeter of the area are uncontrolled.</p>",
     ],
     [
       0,
-      "There are no crossing facilities for pedestrians on the perimeter of the area",
+      "<p>There are no crossing facilities for pedestrians on the perimeter of the area</p>",
     ],
   ]}
-/>
+></Question>

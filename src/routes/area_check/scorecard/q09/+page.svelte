@@ -8,23 +8,23 @@
   cases={[
     [
       8,
-      "The area does not allow any motorised through traffic. However, local access for motor traffic is still maintained for residents and businesses.",
+      "<p>The area does not allow any motorised through traffic. However, local access for motor traffic is still maintained for residents and businesses.</p>",
     ],
     [
       6,
-      "Most motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses. There are good reasons why motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.",
+      "<p>Most motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.</p><p>There are good reasons why  motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.</p>",
     ],
     [
       4,
-      "Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses. There are good reasons why motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.",
+      "<p>Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.</p><p>There are good reasons why motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them.</p>",
     ],
     [
       2,
-      "Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses. There are no measures in place to mitigate any potential issues relating to remaining motorised through traffic routes.",
+      "<p>Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.</p><p>There are no measures in place to mitigate any potential issues relating to remaining motorised through traffic routes.</p>",
     ],
     [
       0,
-      "No restrictions to motorised through traffic routes. Measures will have more of an effect on vehicle speeds than vehicle volumes.",
+      "<p>No restrictions to motorised through traffic routes. Measures will have more of an effect on vehicle speeds than vehicle volumes.</p>",
     ],
   ]}
 >
@@ -38,4 +38,5 @@
     <li>Blue badge holders</li>
   </ul>
   <p>Please refer to the User Manual for further information.</p>
+  <p></p>
 </Question>

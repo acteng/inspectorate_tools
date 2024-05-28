@@ -8,21 +8,21 @@
   cases={[
     [
       16,
-      "There are at least five measures from the list of internal treatments (per square km). Residents involved in the design of one or more of these measures.",
+      "<p>There are at least five measures from the list of internal treatments (per square km).</p><p>Residents involved in the design of one or more of these measures.</p>",
     ],
     [
       12,
-      "There are at least three measures from the list of internal treatments (per square km). Residents involved in the design of one or more of these measures.",
+      "<p>There are at least three measures from the list of internal treatments (per square km).</p><p>Residents involved in the design of one or more of these measures.</p>",
     ],
     [
       8,
-      "There are at least three measures from the list of internal treatments (per square km). Residents not involved in the design of the measures.",
+      "<p>There are at least three measures from the list of internal treatments (per square km).</p><p>Residents not involved in the design of the measures.</p>",
     ],
     [
       4,
-      "There are fewer than three measures from the list of internal treatments (per square km).",
+      "<p>There are fewer than three measures from the list of internal treatments (per square km).</p>",
     ],
-    [0, "There are no internal treatments."],
+    [0, "<p>There are no internal treatments.</p>"],
   ]}
 >
   <p>List of internal treatments</p>

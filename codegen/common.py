@@ -11,12 +11,12 @@ def html(x):
         if not line:
             continue
 
-        if line.startswith("• "):
+        if line.startswith("• ") or line.startswith("- "):
             if not is_list:
                 y += "<ul>"
                 is_list = True
             y += "<li>"
-            y += line.removeprefix("• ")
+            y += line.removeprefix("• ").removeprefix("- ")
             y += "</li>"
         else:
             if is_list:

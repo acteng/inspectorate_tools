@@ -8,23 +8,23 @@
   cases={[
     [
       4,
-      "There are more than two quality cycle routes through the area. Each route starts and ends with high-quality crossings into adjacent neighbourhoods or other routes.",
+      "<p>There are more than two quality cycle routes through the area</p><p>Each route starts and ends with high-quality crossings into adjacent neighbourhoods or other routes.</p>",
     ],
     [
       3,
-      "There are two quality cycle routes through the area. Both routes start and end with high-quality crossings into adjacent neighbourhoods or other routes.",
+      "<p>There are two quality cycle routes through the area</p><p>Both routes start and end with high-quality crossings into adjacent neighbourhoods or other routes.</p>",
     ],
     [
       2,
-      "There is one quality cycle route through the area. The route starts and ends with high-quality crossings into adjacent neighbourhoods or other routes.",
+      "<p>There is one quality cycle route through the area.</p><p>The route starts and ends with high-quality crossings into adjacent neighbourhoods or other routes.</p>",
     ],
     [
       1,
-      "There is one quality cycle route through the area which will use more than one street. The route starts and ends with crossings into adjacent neighbourhoods or other routes.",
+      "<p>There is one quality cycle route through the area which will use more than one street.</p><p>The route starts and ends with crossings into adjacent neighbourhoods or other routes.</p>",
     ],
     [
       0,
-      "There are no cycle routes through the area which start and end with high-quality crossings into adjacent neighbourhoods or other routes.",
+      "<p>There are no cycle routes through the area which start and end with high-quality crossings into adjacent neighbourhoods or other routes.</p>",
     ],
   ]}
 >

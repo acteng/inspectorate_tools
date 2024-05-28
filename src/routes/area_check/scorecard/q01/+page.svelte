@@ -8,18 +8,21 @@
   cases={[
     [
       4,
-      "The area is fully porous for pedestrians: More than one gateway per area side.",
+      "<p>The area is fully porous for pedestrians: More than one gateway per area side.</p>",
     ],
-    [3, "The area is porous for pedestrians: One gateway per area side."],
+    [
+      3,
+      "<p>The area is porous for pedestrians: One gateway per area side.</p>",
+    ],
     [
       2,
-      "The area is semi-porous for pedestrians: At least two gateways into the area.",
+      "<p>The area is semi-porous for pedestrians: At least two gateways into the area.</p>",
     ],
     [
       1,
-      "The area is partially porous for pedestrians: At least one gateway into the area.",
+      "<p>The area is partially porous for pedestrians: At least one gateway into the area.</p>",
     ],
-    [0, "There are no gateways into the area"],
+    [0, "<p>There are no gateways into the area</p>"],
   ]}
 >
   <p>(How easy it is to get into the area as a pedestrian)</p>

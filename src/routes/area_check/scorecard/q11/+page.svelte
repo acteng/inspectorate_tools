@@ -8,23 +8,23 @@
   cases={[
     [
       12,
-      "There are at least five measures from the list of green infrastructure measures (per square km).",
+      "<p>There are at least five measures from the list of green infrastructure measures (per square km).</p>",
     ],
     [
       9,
-      "There are at least four measures from the list of green infrastructure measures (per square km).",
+      "<p>There are at least four measures from the list of green infrastructure measures (per square km).</p>",
     ],
     [
       6,
-      "There are at least three measures from the list of green infrastructure measures (per square km).",
+      "<p>There are at least three measures from the list of green infrastructure measures (per square km).</p>",
     ],
     [
       3,
-      "There are fewer than three measures from the list of green infrastructure measures (per square km)",
+      "<p>There are fewer than three measures from the list of green infrastructure measures (per square km)</p>",
     ],
     [
       0,
-      "There are no for green infrastructure measures or there will be an overall net loss in green infratructure.",
+      "<p>There are no for green infrastructure measures or there will be an overall net loss in green infratructure.</p>",
     ],
   ]}
 >

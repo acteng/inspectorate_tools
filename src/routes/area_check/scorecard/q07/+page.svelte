@@ -6,11 +6,11 @@
   idx={7}
   label="Mesh Density - Walking and Wheeling"
   cases={[
-    [4, "The area has an average mesh density of 100m"],
-    [3, "The area has an average mesh density of 101-250m"],
-    [2, "The area has an average mesh density of 251-400m"],
-    [1, "The area has an average mesh density of 401-500m"],
-    [0, "The area has an average mesh density which exceeds 500m."],
+    [4, "<p>The area has an average mesh density of 100m</p>"],
+    [3, "<p>The area has an average mesh density of 101-250m</p>"],
+    [2, "<p>The area has an average mesh density of 251m-400m</p>"],
+    [1, "<p>The area has an average mesh density of 401m-500m.</p>"],
+    [0, "<p>The area has an average mesh density which exceeds 500m.</p>"],
   ]}
 >
   <p>

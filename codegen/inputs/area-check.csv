@@ -1,0 +1,223 @@
+"
+Porosity - Walking and Wheeling
+
+(How easy it is to get into the area as a pedestrian)
+
+A gateway for walking and wheeling is an intervention that enables safe and accessible access into an area for pedestrians. Typically, this will be a controlled crossing facility but it could also be another form of crossing, including bridges and underpasses.",4,"The area is fully porous for pedestrians: More than one gateway per area side."
+,3,"The area is porous for pedestrians: One gateway per area side."
+,2,"The area is semi-porous for pedestrians: At least two gateways into the area."
+,1,"The area is partially porous for pedestrians: At least one gateway into the area."
+,0,"There are no gateways into the area"
+"Porosity - Cycling
+
+(How easy it is to get into the area as a cyclist)
+
+A gateway for cycling is an intervention that enables safe and accessible access into an area for cyclists. Typically, this will be a controlled crossing facility but it could also be another form of crossing, including bridges and underpasses.",4,"The area is fully porous for cyclists: More than one gateway per area side."
+,3,"The area is porous for cyclists: One gateway per area side."
+,2,"The area is semi-porous for cyclists: At least two gateways into the area."
+,1,"The area is partially porous for cyclists: At least one gateway into the area."
+,0,"There are no gateways into the area"
+,,
+"
+Crossings - Walking and Wheeling",4,"
+Crossing facilities for pedestrians on the perimeter of the area are controlled, and are present in all places where there are desire lines."
+,3,"
+Crossing facilities for pedestrianson the perimeter of the area are controlled, and are present in most places where there are desire lines.
+
+"
+,2,"Crossing facilities for pedestrians on the perimeter of the area are controlled, and are present in some places where there are desire lines."
+,1,"Crossing facilities for pedestrians on the perimeter of the area are uncontrolled."
+,0,"There are no crossing facilities for pedestrians on the perimeter of the area"
+"
+
+Crossings - Cycling
+
+*The 'Crossing Selector Tool' is another tool developed by Active Travel England to check that any cycle crossing designs are suitable for their context.",4,"Controlled crossing facilities for cyclists on the perimeter of the area are present wherever required, and they all follow LTN 1/20 guidance and, where applicable, recommendations in the 'Crossing Selector Tool'*."
+,3,"Controlled crosing facilities for cyclists on the perimeter of the area are present wherever required, and they follow LTN 1/20 guidance. Some of these cycle crossings comply with recommendations in the 'Crossing Selector Tool'* where applicable."
+,2,"Some controlled crossing facilities for cyclists on the perimeter of the area are present, but they are mostly toucan crossings."
+,1,"Crossing facilities for cyclists on the perimeter of the area are uncontrolled."
+,0,"There are no crossing facilities for cyclists on the perimeter of the area."
+,,
+"
+Permeability - Walking and Wheeling
+
+(How easy it is to get through the area as a pedestrian)
+
+Suitable routes for walking and wheeling are only those which satisfy all conditions in the following list:
+- Smooth and sealed footway surfaces.
+- Dropped kerbs with suitable gradients and appropriate tactile paving surfaces at crossing locations.
+- Suitable footway widths as defined in DfT’s Inclusive Mobility guidance.
+- Suitable tactile paving surfaces.
+- Acceptable footway camber (≤2.5%).
+- Minimal street clutter.
+- Appropriate street lighting.",4,"All walking and wheeling routes have all of the features from the list opposite."
+,3,"
+There are more than two walking and wheeling routes with all of the features from the list opposite."
+,2,"
+There are two walking and wheeling routes with all of the features from the list opposite."
+,1,"
+There is one walking and wheeling route with all of the features from the list opposite."
+,0,"
+There are no walking and wheeling routes with the features from the list opposite."
+"Permeability - Cycling
+
+(How easy it is to get through the area as a cyclist)
+
+Quality cycle routes and high-quality crossings are those which follow LTN 1/20 guidance and have no critical issues as defined in ATE's Route Check. Please refer to the User Manual for further information.",4,"There are more than two quality cycle routes through the area
+
+Each route starts and ends with high-quality crossings into adjacent neighbourhoods or other routes."
+,3,"There are two quality cycle routes through the area
+
+Both routes start and end with high-quality crossings into adjacent neighbourhoods or other routes."
+,2,"There is one quality cycle route through the area.
+
+The route starts and ends with high-quality crossings into adjacent neighbourhoods or other routes."
+,1,"There is one quality cycle route through the area which will use more than one street.
+
+The route starts and ends with crossings into adjacent neighbourhoods or other routes."
+,0,"There are no cycle routes through the area which start and end with high-quality crossings into adjacent neighbourhoods or other routes."
+,,
+"Mesh Density - Walking and Wheeling
+
+(How tight or loose the pedestrian network is. This is measured by the average distance between streets that have suitable pedestrian facilities as defined in the permability metric above).
+
+",4,"
+The area has an average mesh density of 100m"
+,3,"
+The area has an average mesh density of 101-250m"
+,2,"
+The area has an average mesh density of 251m-400m"
+,1,"
+The area has an average mesh density of 401m-500m."
+,0,"
+The area has an average mesh density which exceeds 500m."
+"Mesh Density - Cycling
+
+(How tight or loose the cycling network is. This is measured by the average distance between routes of a similar quality).
+
+Quality cycle routes and high-quality crossings are those which follow LTN 1/20 guidance and have no critical issues as defined in ATE's Route Check. Please refer to the User Manual for further information.",4,"The area has an average mesh density of 250m."
+,3,"The area has an average mesh density of 251-400m."
+,2,"The area has an average mesh density of 401-800m."
+,1,"The area has an average mesh density of 801-1400m."
+,0,"The area has an average mesh density which exceeds 1400m."
+,,
+"Motorised Through-Traffic
+
+Potential exemptions may include:
+- Buses
+- Taxis
+- Private hire vehicles
+- Emergency services
+- Community transport providers
+- Blue badge holders
+
+Please refer to the User Manual for further information.
+ ",8,"The area does not allow any motorised through traffic. However, local access for motor traffic is still maintained for residents and businesses."
+,6,"Most motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.
+
+There are good reasons why  motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them."
+,4,"Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.
+
+There are good reasons why motor traffic through routes are in place, and there are measures to mitigate any potential issues relating to them."
+,2,"Some motorised through traffic routes are closed in the area. However, local access for motor traffic is still maintained for residents and businesses.
+
+There are no measures in place to mitigate any potential issues relating to remaining motorised through traffic routes."
+,0,"No restrictions to motorised through traffic routes. Measures will have more of an effect on vehicle speeds than vehicle volumes."
+,,
+"
+
+
+
+
+
+
+
+Perimeter Treatment Design
+
+
+
+Potential issues associated with displaced traffic
+- Speeding
+- Road safety
+- Congestion & air quality
+- Delays to public transport",16,"The effects of displaced traffic around the perimeter of the filtered area are fully mitigated. 
+
+Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present wherever needed along the perimeter."
+,12,"The effects of displaced traffic around the perimeter of the filtered area are mostly mitigated. 
+
+Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in most places where they are needed along the perimeter."
+,8,"The effects of displaced traffic around the perimeter of the filtered area are partly mitigated. 
+
+Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter."
+,4,"The effects of displaced traffic around the perimeter of the filtered area are partly mitigated and there are sensitive receptors (e.g. schools, nurseries, hospitals) along the perimeter. 
+
+Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter."
+,0,"There are no measures to mitigate the effects of displaced traffic around the perimeter of the filtered area. 
+
+There are no (or few) plans for junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure along the perimeter."
+,,
+"
+
+
+Green Infrastructure Design
+
+
+
+
+List of green infrastructure measures
+- Sustainable drainage systems (SuDS)
+- Planters
+- Parklets or pocket parks
+- Trees
+- Soft landscaping e.g. planting of wildflowers/hedges/shrubs
+- Community gardens 
+- Green roofs e.g. on bus stops
+- Green walls or screens
+- Bug hotels",12,"There are at least five measures from the list of green infrastructure measures (per square km)."
+,9,"There are at least four measures from the list of green infrastructure measures (per square km)."
+,6,"There are at least three measures from the list of green infrastructure measures (per square km)."
+,3,"There are fewer than three measures from the list of green infrastructure measures (per square km)"
+,0,"There are no for green infrastructure measures or there will be an overall net loss in green infratructure."
+,,
+"
+
+
+
+Other Internal Treatment Design
+
+
+
+
+List of internal treatments
+- Play streets
+- School streets
+- Cycle parking/hangars
+- Resting places e.g. seating
+- Raised tables/entries or continuous footways
+- New social spaces
+- Parklets or pocket parks
+- Wayfinding
+- Art
+- Other (please specify in the scoring justification box)",16,"There are at least five measures from the list of internal treatments (per square km).
+
+Residents involved in the design of one or more of these measures."
+,12,"There are at least three measures from the list of internal treatments (per square km).
+
+Residents involved in the design of one or more of these measures."
+,8,"There are at least three measures from the list of internal treatments (per square km).
+
+Residents not involved in the design of the measures."
+,4,"There are fewer than three measures from the list of internal treatments (per square km)."
+,0,"There are no internal treatments."
+,,
+"Engagement Practice",16,"Resident-led design.
+
+Residents have had or are expected to have strong control and decision-making authority in the area. Local accessibility groups have been comprehensively engaged with throughout the process."
+,12,"Collaborative design.
+
+Residents have had or are expected to have significant control and decision-making authority in the area. Local accessibility groups have been engaged with throughout the process."
+,8,"Collaborative design.
+
+Residents have had or are expected to have some control and decision-making authority in the area. Local accessibility groups have been engaged with on multiple occassions."
+,4,"Residents have been or are expected to be engaged with but this has or will result in little influence in the area. Local accessibility groups have been engaged with once."
+,0,"There has been or is expected to be no or minimal engagement with residents and local accessibility groups."

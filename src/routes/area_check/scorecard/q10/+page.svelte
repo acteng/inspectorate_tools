@@ -8,23 +8,23 @@
   cases={[
     [
       16,
-      "The effects of displaced traffic around the perimeter of the filtered area are fully mitigated. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present wherever needed along the perimeter.",
+      "<p>The effects of displaced traffic around the perimeter of the filtered area are fully mitigated.</p><p>Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present wherever needed along the perimeter.</p>",
     ],
     [
       12,
-      "The effects of displaced traffic around the perimeter of the filtered area are mostly mitigated. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in most places where they are needed along the perimeter.",
+      "<p>The effects of displaced traffic around the perimeter of the filtered area are mostly mitigated.</p><p>Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in most places where they are needed along the perimeter.</p>",
     ],
     [
       8,
-      "The effects of displaced traffic around the perimeter of the filtered area are partly mitigated. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter.",
+      "<p>The effects of displaced traffic around the perimeter of the filtered area are partly mitigated.</p><p>Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter.</p>",
     ],
     [
       4,
-      "The effects of displaced traffic around the perimeter of the filtered area are partly mitigated and there are sensitive receptors (e.g. schools, nurseries, hospitals) along the perimeter. Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter.",
+      "<p>The effects of displaced traffic around the perimeter of the filtered area are partly mitigated and there are sensitive receptors (e.g. schools, nurseries, hospitals) along the perimeter.</p><p>Junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure are present in places along the perimeter.</p>",
     ],
     [
       0,
-      "There are no measures to mitigate the effects of displaced traffic around the perimeter of the filtered area. There are no (or few) plans for junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure along the perimeter.",
+      "<p>There are no measures to mitigate the effects of displaced traffic around the perimeter of the filtered area.</p><p>There are no (or few) plans for junction treatments, traffic calming, bus gates, protected cycle facilities, side road treatments and green infrastructure along the perimeter.</p>",
     ],
   ]}
 >
