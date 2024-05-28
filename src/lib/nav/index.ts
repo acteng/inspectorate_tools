@@ -266,6 +266,30 @@ function getSectionPath(rawPath: string): string | null {
   return `/${parts[1]}/${parts[2]}`;
 }
 
+function filterMainPageSections(
+  routeCheckType: "street" | "path" | "",
+): [string, string][] {
+  let exclude = new Set(
+    {
+      "": [
+        "/route_check/street_check",
+        "/route_check/street_placemaking_check",
+        "/route_check/path_check",
+        "/route_check/path_placemaking_check",
+      ],
+      street: [
+        "/route_check/path_check",
+        "/route_check/path_placemaking_check",
+      ],
+      path: [
+        "/route_check/street_check",
+        "/route_check/street_placemaking_check",
+      ],
+    }[routeCheckType],
+  );
+  return mainPageSections.filter(([x, _]) => !exclude.has(x));
+}
+
 export function getPrevPage(
   rawPath: string,
   routeCheckType: "street" | "path" | "",
@@ -275,7 +299,8 @@ export function getPrevPage(
     return null;
   }
 
-  let idx = mainPageSections.findIndex((pair) => pair[0] == path);
+  let sections = filterMainPageSections(routeCheckType);
+  let idx = sections.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
     return null;
@@ -285,7 +310,7 @@ export function getPrevPage(
     return null;
   }
 
-  let result = mainPageSections[idx - 1];
+  let result = sections[idx - 1];
 
   // Don't jump to a different tool entirely
   if (
@@ -308,17 +333,18 @@ export function getNextPage(
     return null;
   }
 
-  let idx = mainPageSections.findIndex((pair) => pair[0] == path);
+  let sections = filterMainPageSections(routeCheckType);
+  let idx = sections.findIndex((pair) => pair[0] == path);
   if (idx == -1) {
     console.error(`Couldn't find page ${path}; probably a 404`);
     return null;
   }
 
-  if (idx == mainPageSections.length - 1) {
+  if (idx == sections.length - 1) {
     return null;
   }
 
-  let result = mainPageSections[idx + 1];
+  let result = sections[idx + 1];
 
   // Don't jump to a different tool entirely
   if (

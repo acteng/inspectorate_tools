@@ -69,6 +69,37 @@ describe("getPrevPage", () => {
     expect(getPrevPage("/cross_section", "")).toBe(null);
     expect(getPrevPage("/route_check", "")).toBe(null);
   });
+
+  it("route check types", () => {
+    expect(getPrevPage("/route_check/jat_check", "")).toStrictEqual([
+      "/route_check/problems_map",
+      "Problems Mapping Page",
+    ]);
+
+    expect(getPrevPage("/route_check/jat_check", "street")).toStrictEqual([
+      "/route_check/street_placemaking_check",
+      "Street Placemaking Check",
+    ]);
+    expect(
+      getPrevPage("/route_check/street_placemaking_check", "street"),
+    ).toStrictEqual(["/route_check/street_check", "Street Check"]);
+    expect(getPrevPage("/route_check/street_check", "street")).toStrictEqual([
+      "/route_check/problems_map",
+      "Problems Mapping Page",
+    ]);
+
+    expect(getPrevPage("/route_check/jat_check", "path")).toStrictEqual([
+      "/route_check/path_placemaking_check",
+      "Path Placemaking Check",
+    ]);
+    expect(
+      getPrevPage("/route_check/path_placemaking_check", "path"),
+    ).toStrictEqual(["/route_check/path_check", "Path Check"]);
+    expect(getPrevPage("/route_check/path_check", "path")).toStrictEqual([
+      "/route_check/problems_map",
+      "Problems Mapping Page",
+    ]);
+  });
 });
 
 describe("getNextPage", () => {
@@ -93,5 +124,36 @@ describe("getNextPage", () => {
     expect(getNextPage("/area_check/results", "")).toBe(null);
     expect(getNextPage("/cross_section/results_summary", "")).toBe(null);
     expect(getNextPage("/route_check/dalog", "")).toBe(null);
+  });
+
+  it("route check types", () => {
+    expect(getNextPage("/route_check/problems_map", "")).toStrictEqual([
+      "/route_check/jat_check",
+      "JAT Check",
+    ]);
+
+    expect(getNextPage("/route_check/problems_map", "street")).toStrictEqual([
+      "/route_check/street_check",
+      "Street Check",
+    ]);
+    expect(getNextPage("/route_check/street_check", "street")).toStrictEqual([
+      "/route_check/street_placemaking_check",
+      "Street Placemaking Check",
+    ]);
+    expect(
+      getNextPage("/route_check/street_placemaking_check", "street"),
+    ).toStrictEqual(["/route_check/jat_check", "JAT Check"]);
+
+    expect(getNextPage("/route_check/problems_map", "path")).toStrictEqual([
+      "/route_check/path_check",
+      "Path Check",
+    ]);
+    expect(getNextPage("/route_check/path_check", "path")).toStrictEqual([
+      "/route_check/path_placemaking_check",
+      "Path Placemaking Check",
+    ]);
+    expect(
+      getNextPage("/route_check/path_placemaking_check", "path"),
+    ).toStrictEqual(["/route_check/jat_check", "JAT Check"]);
   });
 });
