@@ -49,14 +49,16 @@
     </p>
   </div>
   <div slot="guidance">
-    <p>National Planning Policy Framework: 114, 116;</p>
-    <p>National Design Guide: 85;</p>
-    <p>National Model Design Code: 59iv (Part 1); M.3.ii (Part 2);</p>
-    <p>Active Design (Sport England): 7.1, 8.2;</p>
-    <p>Inclusive Mobility: 7.4;</p>
-    <p>LTN 1/20: Chapter 11;</p>
-    <p>Manual for Streets: 8.2;</p>
-    <p>Manual for Streets 2: 2.5.4;</p>
-    <p>PAS 6463: 5.2.3;</p>
+    <ul>
+      <li>National Planning Policy Framework: 114, 116</li>
+      <li>National Design Guide: 85</li>
+      <li>National Model Design Code: 59iv (Part 1); M.3.ii (Part 2)</li>
+      <li>Active Design (Sport England): 7.1, 8.2</li>
+      <li>Inclusive Mobility: 7.4</li>
+      <li>LTN 1/20: Chapter 11</li>
+      <li>Manual for Streets: 8.2</li>
+      <li>Manual for Streets 2: 2.5.4</li>
+      <li>PAS 6463: 5.2.3</li>
+    </ul>
   </div>
 </Question>

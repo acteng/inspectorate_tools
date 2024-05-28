@@ -58,21 +58,23 @@
     </p>
   </div>
   <div slot="guidance">
-    <p>
-      National Planning Policy Framework: 8, 74, 87, 96, 97, 99, 108, 114, 116,
-      135, 136;
-    </p>
-    <p>National Design Guide;</p>
-    <p>
-      National Model Design Code: 51i, 59iii, 62i, 63, 64i-ii (Part 1); N.1.iii,
-      M.3.i, I.1, P.1-3, U.1 (Part 2);
-    </p>
-    <p>Active Design (Sport England): Principles 4, 5, 6;</p>
-    <p>Designing for Walking (CIHT);</p>
-    <p>Inclusive Mobility;</p>
-    <p>LTN 1/20;</p>
-    <p>LTN 1/24: 4.6;</p>
-    <p>Manual for Streets: 2.2.5, 5.7, 6.3, 6.4, 7.2.8-7.2.22, 8.3;</p>
-    <p>PAS 6463;</p>
+    <ul>
+      <li>
+        National Planning Policy Framework: 8, 74, 87, 96, 97, 99, 108, 114,
+        116, 135, 136
+      </li>
+      <li>National Design Guide</li>
+      <li>
+        National Model Design Code: 51i, 59iii, 62i, 63, 64i-ii (Part 1);
+        N.1.iii, M.3.i, I.1, P.1-3, U.1 (Part 2)
+      </li>
+      <li>Active Design (Sport England): Principles 4, 5, 6</li>
+      <li>Designing for Walking (CIHT)</li>
+      <li>Inclusive Mobility</li>
+      <li>LTN 1/20</li>
+      <li>LTN 1/24: 4.6</li>
+      <li>Manual for Streets: 2.2.5, 5.7, 6.3, 6.4, 7.2.8-7.2.22, 8.3</li>
+      <li>PAS 6463</li>
+    </ul>
   </div>
 </Question>

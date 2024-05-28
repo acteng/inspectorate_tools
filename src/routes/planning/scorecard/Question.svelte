@@ -1,6 +1,6 @@
 <script lang="ts">
   import { PrevNext } from "$lib";
-  import { Radio } from "govuk-svelte";
+  import { CollapsibleCard, Radio, TextArea } from "govuk-svelte";
   import Progress from "./Progress.svelte";
   import { state } from "../data";
 
@@ -40,10 +40,17 @@
 
 <Radio legend="Rating" {choices} bind:value={$state.ratings[idx - 1]} />
 
-<h2>Common Shortfalls</h2>
-<slot name="shortfalls" />
+<TextArea
+  label="Appraiser Comments"
+  bind:value={$state.appraiserComments[idx - 1]}
+/>
 
-<h2>Policy & Guidance</h2>
-<slot name="guidance" />
+<CollapsibleCard label="Common Shortfalls" open>
+  <slot name="shortfalls" />
+</CollapsibleCard>
+
+<CollapsibleCard label="Policy & Guidance" open>
+  <slot name="guidance" />
+</CollapsibleCard>
 
 <PrevNext {idx} total={10} urlPath="planning/scorecard/q" />

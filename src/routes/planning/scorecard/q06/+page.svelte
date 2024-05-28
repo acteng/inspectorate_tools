@@ -41,12 +41,14 @@
     </p>
   </div>
   <div slot="guidance">
-    <p>National Planning Policy Framework: 108, 112, 114, 116;</p>
-    <p>
-      National Model Design Code: 59i-ii, 64iv-vi (Part 1); M.1.ii, M.2, U.3
-      (Part 2);
-    </p>
-    <p>Planning Practice Guidance: Planning Obligations;</p>
-    <p>LTN 1/20: 14.3.12;</p>
+    <ul>
+      <li>National Planning Policy Framework: 108, 112, 114, 116</li>
+      <li>
+        National Model Design Code: 59i-ii, 64iv-vi (Part 1); M.1.ii, M.2, U.3
+        (Part 2)
+      </li>
+      <li>Planning Practice Guidance: Planning Obligations</li>
+      <li>LTN 1/20: 14.3.12</li>
+    </ul>
   </div>
 </Question>

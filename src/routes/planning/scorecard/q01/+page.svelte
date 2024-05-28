@@ -27,11 +27,13 @@
     </p>
   </div>
   <div slot="guidance">
-    <p>National Planning Policy Framework: 108, 114, 117;</p>
-    <p>
-      Planning Policy Guidance: Travel Plans, Transport Assessments and
-      Statements;
-    </p>
-    <p>LTN 1/20: 14.3.6;</p>
+    <ul>
+      <li>National Planning Policy Framework: 108, 114, 117</li>
+      <li>
+        Planning Policy Guidance: Travel Plans, Transport Assessments and
+        Statements
+      </li>
+      <li>LTN 1/20: 14.3.6</li>
+    </ul>
   </div>
 </Question>

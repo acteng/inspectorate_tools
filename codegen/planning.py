@@ -2,6 +2,23 @@ import csv
 from common import *
 
 
+def htmlList(x):
+    x = x.replace('"', '\\"')
+    x = x.replace("<", "&lt;")
+
+    y = "<ul>"
+    for line in x.split("\n"):
+        # Skip empty lines
+        if not line:
+            continue
+
+        y += "<li>"
+        y += line.removesuffix(";")
+        y += "</li>"
+    y += "</ul>"
+    return y
+
+
 with open("inputs/planning.csv") as inputFile:
     idx = 1
     for row in csv.DictReader(
@@ -33,7 +50,7 @@ with open("inputs/planning.csv") as inputFile:
             )
             f.write(
                 """  <div slot="guidance">{}</div>\n""".format(
-                    html(row["Policy & Guidance"])
+                    htmlList(row["Policy & Guidance"])
                 )
             )
 

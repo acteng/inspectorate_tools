@@ -31,16 +31,19 @@
     </p>
   </div>
   <div slot="guidance">
-    <p>
-      National Planning Policy Framework: 8, 74, 87, 96, 97, 108, 112, 114, 116;
-    </p>
-    <p>National Design Guide: 82, 83, 119;</p>
-    <p>
-      National Model Design Code: 59ii, 64iv-vi (Part 1); M.2, U.3 (Part 2);
-    </p>
-    <p>Active Design (Sport England): Principles 2, 3;</p>
-    <p>Inclusive Mobility;</p>
-    <p>LTN 1/20;</p>
-    <p>PAS 6463;</p>
+    <ul>
+      <li>
+        National Planning Policy Framework: 8, 74, 87, 96, 97, 108, 112, 114,
+        116
+      </li>
+      <li>National Design Guide: 82, 83, 119</li>
+      <li>
+        National Model Design Code: 59ii, 64iv-vi (Part 1); M.2, U.3 (Part 2)
+      </li>
+      <li>Active Design (Sport England): Principles 2, 3</li>
+      <li>Inclusive Mobility</li>
+      <li>LTN 1/20</li>
+      <li>PAS 6463</li>
+    </ul>
   </div>
 </Question>

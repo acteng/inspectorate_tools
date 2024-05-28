@@ -44,12 +44,14 @@
     </ul>
   </div>
   <div slot="guidance">
-    <p>National Planning Policy Framework: 8, 74, 85, 87, 108, 116;</p>
-    <p>National Design Guide: 81;</p>
-    <p>National Model Design Code: 59i-ii (Part 1); M.1.ii, M.2 (Part 2);</p>
-    <p>Active Design (Sport England): Principles 2, 3;</p>
-    <p>Buses in Urban Developments (CIHT): A.4.1-A.4.5, B.2.3, B.7.2;</p>
-    <p>Inclusive Mobility: Chapter 9;</p>
-    <p>LTN 1/24;</p>
+    <ul>
+      <li>National Planning Policy Framework: 8, 74, 85, 87, 108, 116</li>
+      <li>National Design Guide: 81</li>
+      <li>National Model Design Code: 59i-ii (Part 1); M.1.ii, M.2 (Part 2)</li>
+      <li>Active Design (Sport England): Principles 2, 3</li>
+      <li>Buses in Urban Developments (CIHT): A.4.1-A.4.5, B.2.3, B.7.2</li>
+      <li>Inclusive Mobility: Chapter 9</li>
+      <li>LTN 1/24;</li>
+    </ul>
   </div>
 </Question>

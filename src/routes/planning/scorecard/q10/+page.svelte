@@ -44,11 +44,13 @@
     </ul>
   </div>
   <div slot="guidance">
-    <p>National Planning Policy Framework: 114, 117;</p>
-    <p>
-      Planning Practice Guidance: Travel Plans, Transport Assessments and
-      Statements;
-    </p>
-    <p>Active Design (Sport England): 2.4;</p>
+    <ul>
+      <li>National Planning Policy Framework: 114, 117</li>
+      <li>
+        Planning Practice Guidance: Travel Plans, Transport Assessments and
+        Statements
+      </li>
+      <li>Active Design (Sport England): 2.4</li>
+    </ul>
   </div>
 </Question>
