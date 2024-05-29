@@ -60,6 +60,10 @@
 
     <slot name="description" />
 
+    <CollapsibleCard label="Common Shortfalls" open>
+      <slot name="shortfalls" />
+    </CollapsibleCard>
+
     <ColoredRadio {choices} bind:value={$state.ratings[idx - 1]} />
 
     <TextArea
@@ -67,9 +71,10 @@
       bind:value={$state.appraiserComments[idx - 1]}
     />
 
-    <CollapsibleCard label="Common Shortfalls" open>
-      <slot name="shortfalls" />
-    </CollapsibleCard>
+    <TextArea
+      label="Local Policy & Guidance"
+      bind:value={$state.localGuidance[idx - 1]}
+    />
 
     <CollapsibleCard label="Policy & Guidance" open>
       <slot name="guidance" />

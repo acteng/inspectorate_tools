@@ -6,7 +6,8 @@
   <div slot="description">
     <p>
       Are all buildings within 400m of a high-frequency bus stop or 800m of a
-      rail station, with appropriate facilities, using well-designed routes?
+      rail/light rail station or tram stop, with appropriate facilities, using
+      well-designed routes?
     </p>
   </div>
   <div slot="shortfalls">
