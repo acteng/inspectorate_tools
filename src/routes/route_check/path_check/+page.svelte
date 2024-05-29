@@ -1,7 +1,27 @@
 <script lang="ts">
+  import { Radio, WarningText } from "govuk-svelte";
   import Progress from "./Progress.svelte";
+  import { state } from "../data";
 </script>
 
-<p>TODO: Special horse question</p>
+<div class="govuk-width-container">
+  <Radio
+    legend="Are horse riders expected on this route?"
+    choices={[
+      ["", "Unanswered"],
+      ["Yes", "Yes"],
+      ["No", "No"],
+    ]}
+    bind:value={$state.horseRiders}
+  />
 
-<Progress currentIdx={-1} />
+  <hr />
+
+  {#if $state.horseRiders == ""}
+    <WarningText>
+      You must answer the question above to start the Path Check
+    </WarningText>
+  {:else}
+    <Progress currentIdx={-1} />
+  {/if}
+</div>

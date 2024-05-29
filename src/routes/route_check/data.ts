@@ -53,6 +53,7 @@ export interface State {
   streetPlacemakingCheck: Scorecard;
 
   pathCheck: Scorecard;
+  horseRiders: "Yes" | "No" | "";
 
   pathPlacemakingCheck: Scorecard;
 
@@ -159,14 +160,21 @@ export interface Movement {
 }
 
 function validate(state: State) {
-  if (state.version != "alpha-0") {
+  if (state.version == "alpha-0") {
+    // Upgrade
+    state.version = "alpha-1";
+    // New field, unanswered by default
+    state.horseRiders = "";
+  }
+
+  if (state.version != "alpha-1") {
     throw new Error("File format appears outdated");
   }
 }
 
 export function emptyState(): State {
   return {
-    version: "alpha-0",
+    version: "alpha-1",
     summary: {
       dateDesignReview: "",
       schemeReference: "",
@@ -197,6 +205,7 @@ export function emptyState(): State {
     streetCheck: emptyScorecard(26),
     streetPlacemakingCheck: emptyScorecard(26),
     pathCheck: emptyScorecard(30),
+    horseRiders: "",
     pathPlacemakingCheck: emptyScorecard(19),
     jat: [],
     resultsReviewStatement: "",

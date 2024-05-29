@@ -7,7 +7,7 @@ export class LocalStorageFiles<StateType> {
   prefix: string;
   // Generate an empty copy of the state.
   emptyState: () => StateType;
-  // Should throw an exception if the file state has some problem.
+  // This may also backfill fields to repair any problems. Should throw an exception if the file state has some unrecoverable problem.
   validate: (state: StateType) => void;
   state: Writable<StateType>;
   // A key into local storage, excluding prefix
