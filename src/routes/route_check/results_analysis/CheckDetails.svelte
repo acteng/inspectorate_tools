@@ -59,6 +59,7 @@
     overall={results.overall}
     overallLabel="Overall Path Level of Service"
     barChart
+    excludeCategory={$state.horseRiders == "No" ? "Horse Riding" : null}
   />
 
   <LevelOfServiceTable

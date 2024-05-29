@@ -287,6 +287,7 @@ export function netDifference(x: ResultCategory): string {
 }
 
 // TODO Partly duplicate code, because of both the different indexing and due to combining two sources per mode?
+// Note for path checks, this always returns an entry for horse riders, even if they should be disabled.
 function getByMode(
   safetyScores: Scorecard,
   losScores: Scorecard,
@@ -295,7 +296,7 @@ function getByMode(
 ): ResultCategory[] {
   let results = [];
   for (let [mode, losIndices] of Object.entries(losIndicesPerMode)) {
-    // TODO No safety questions for horse -- double check the logic is still fine
+    // Note there are no safety questions for horses
     // @ts-expect-error The key types aren't precise
     let safetyIndices = safetyModeIndices[mode] || [];
     let safety = {

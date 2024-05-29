@@ -20,6 +20,11 @@
   export let overallLabel: string;
   export let barChart = false;
   export let radarChart = false;
+  export let excludeCategory: string | null = null;
+
+  $: filteredCategories = categories.filter(
+    (x) => x.category != excludeCategory,
+  );
 
   let midBlue = "#007dbb";
   let darkGrey = "#808080";
@@ -52,9 +57,15 @@
     {#each categories as x}
       <tr>
         <th>{x.category}</th>
-        <td>{Math.round(x.existing.scorePercent)}%</td>
-        <td>{Math.round(x.proposed.scorePercent)}%</td>
-        <td>{netDifference(x)}</td>
+        {#if excludeCategory != x.category}
+          <td>{Math.round(x.existing.scorePercent)}%</td>
+          <td>{Math.round(x.proposed.scorePercent)}%</td>
+          <td>{netDifference(x)}</td>
+        {:else}
+          <td>N/A</td>
+          <td>N/A</td>
+          <td>N/A</td>
+        {/if}
       </tr>
     {/each}
 
@@ -77,18 +88,18 @@
     {#if barChart}
       <Bar
         data={{
-          labels: [...categories.map((x) => x.category), overallLabel],
+          labels: [...filteredCategories.map((x) => x.category), overallLabel],
           datasets: [
             {
               label: "Existing Layout",
-              data: [...categories, overall].map(
+              data: [...filteredCategories, overall].map(
                 (x) => x.existing.scorePercent,
               ),
               backgroundColor: darkGrey,
             },
             {
               label: "Proposed Layout",
-              data: [...categories, overall].map(
+              data: [...filteredCategories, overall].map(
                 (x) => x.proposed.scorePercent,
               ),
               backgroundColor: midBlue,
@@ -100,11 +111,11 @@
     {:else if radarChart}
       <Radar
         data={{
-          labels: [...categories.map((x) => x.category), overallLabel],
+          labels: [...filteredCategories.map((x) => x.category), overallLabel],
           datasets: [
             {
               label: "Existing Layout",
-              data: [...categories, overall].map(
+              data: [...filteredCategories, overall].map(
                 (x) => x.existing.scorePercent,
               ),
               borderColor: darkGrey,
@@ -112,7 +123,7 @@
             },
             {
               label: "Proposed Layout",
-              data: [...categories, overall].map(
+              data: [...filteredCategories, overall].map(
                 (x) => x.proposed.scorePercent,
               ),
               borderColor: midBlue,
