@@ -29,8 +29,10 @@ describe("check path results", async () => {
       ["Walking", 25, 52, "27%"],
       ["Wheeling", 25, 52, "27%"],
       ["Cycling", 29, 57, "28%"],
-      // TODO Failing
-      ["Horse Riding", "N/A", "N/A", "N/A"],
+      // In the input, horse riders not expected, so in the results tables and
+      // DALOG, this gets changed to "N/A". But this test is checking
+      // something upstream of both, so validate the hidden scores
+      ["Horse Riding", 20, 75, "55%"],
       ["overall", 25, 52, "26%"],
     ]);
   });
