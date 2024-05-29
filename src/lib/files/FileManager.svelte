@@ -1,4 +1,5 @@
 <script lang="ts" generics="StateType">
+  import { base } from "$app/paths";
   import { LocalStorageFiles } from "./index";
   import {
     FileInput,
@@ -106,39 +107,50 @@
   }
 </script>
 
-<p>
-  All files are auto-saved in your browser's local storage. You can close your
-  browser and resume later. You can export the file to your computer to share
-  with someone else, and import from a file below.
-</p>
+<div class="govuk-width-container">
+  <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
 
-<p>
-  You're currently editing <u>{$currentFile}</u>
-  .
-</p>
-<ButtonGroup>
-  <SecondaryButton on:click={renameFile}>Rename</SecondaryButton>
-  <SecondaryButton on:click={exportFile}>Export</SecondaryButton>
-  <WarningButton on:click={deleteFile}>Delete</WarningButton>
-</ButtonGroup>
+  <p>
+    All files are auto-saved in your browser's local storage. You can close your
+    browser and resume later. You can export the file to your computer to share
+    with someone else, and import from a file below.
+  </p>
 
-<hr />
+  <p>
+    You're currently editing <u>{$currentFile}</u>
+    .
+  </p>
+  <ButtonGroup>
+    <SecondaryButton on:click={renameFile}>Rename this file</SecondaryButton>
+    <SecondaryButton on:click={exportFile}>Export this file</SecondaryButton>
+    <WarningButton on:click={deleteFile}>Delete this file</WarningButton>
+  </ButtonGroup>
 
-<SecondaryButton on:click={newFile}>New file</SecondaryButton>
-<FileInput label="Import from a .json file" onLoad={importJsonFile} />
+  <hr />
 
-{#if xlsxImporter != null}
-  <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
-{/if}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <h2>Create or import a file</h2>
+      <SecondaryButton on:click={newFile}>New blank file</SecondaryButton>
+      <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
-<p>Load a saved file:</p>
+      {#if xlsxImporter != null}
+        <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
+      {/if}
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <h2>Load a saved file</h2>
 
-{#each fileList as fileName}
-  <ClickableCard
-    name={`File name: ${fileName}`}
-    on:click={() => openFile(fileName)}
-    disabled={fileName === $currentFile}
-  >
-    {fileName === $currentFile ? "Already selected" : ""}
-  </ClickableCard>
-{/each}
+      {#each fileList as fileName}
+        <ClickableCard
+          name={`File name: ${fileName}`}
+          on:click={() => openFile(fileName)}
+          disabled={fileName === $currentFile}
+        >
+          {fileName === $currentFile ? "Already selected" : ""}
+        </ClickableCard>
+      {/each}
+    </div>
+  </div>
+  <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
+</div>
