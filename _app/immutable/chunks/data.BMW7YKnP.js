@@ -1,0 +1,1 @@
+import{w as a}from"./index.CNuztRLT.js";import{L as t}from"./index.BsKkgVvI.js";let i=a(r()),l=a(""),p=new t("planning/",r,o,i,l);function o(e){if(e.version!="alpha-0")throw new Error("File format appears outdated")}function r(){return{version:"alpha-0",ratings:Array(10).fill(""),appraiserComments:Array(10).fill("")}}export{l as c,p as f,i as s};
