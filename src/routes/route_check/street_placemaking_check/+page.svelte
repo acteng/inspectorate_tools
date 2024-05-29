@@ -2,4 +2,6 @@
   import Progress from "./Progress.svelte";
 </script>
 
-<Progress currentIdx={-1} />
+<div class="govuk-width-container">
+  <Progress currentIdx={-1} />
+</div>

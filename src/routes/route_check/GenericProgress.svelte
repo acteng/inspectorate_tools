@@ -69,7 +69,7 @@
   }
 </script>
 
-<ol>
+<ol start={startIdx}>
   {#each flatten(sections) as item}
     {#if item.kind == "section"}
       <strong
