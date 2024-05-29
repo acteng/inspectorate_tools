@@ -67,12 +67,19 @@ export function encodeDalog(state: State): [string, Value][] {
       isPath,
       losCodes,
     ),
-    ...categoryBreakdowns("PA-LOS", results.byMode, isPath, {
-      Walking: "Wa",
-      Wheeling: "Wh",
-      Cycling: "Cy",
-      "Horse Riding": "HR",
-    }),
+    ...categoryBreakdowns(
+      "PA-LOS",
+      results.byMode,
+      isPath,
+      {
+        Walking: "Wa",
+        Wheeling: "Wh",
+        Cycling: "Cy",
+        "Horse Riding": "HR",
+      },
+      // excludeCategory
+      state.horseRiders == "No" ? "Horse Riding" : null,
+    ),
     ...categoryBreakdowns(
       "PP-LOS",
       [...results.placemakingCategories, results.placemakingOverall],
@@ -182,18 +189,32 @@ function categoryBreakdowns(
   categories: ResultCategory[],
   useAnswers: boolean,
   categoryCodes: { [category: string]: string },
+  excludeCategory: string | null = null,
 ): [string, Value][] {
   let out: [string, Value][] = [];
   for (let result of categories) {
+    if (result.category in categoryCodes === false) {
+      // There's an edge case with an extra mode without a code
+      if (result.category != "Horse Riding") {
+        throw new Error(`Unexpected unknown category ${result.category}`);
+      }
+      continue;
+    }
+
     let code = categoryCodes[result.category];
-    out.push([
-      `${prefix}-${code}-E`,
-      useAnswers ? result.existing.scorePercent / 100 : null,
-    ]);
-    out.push([
-      `${prefix}-${code}-D`,
-      useAnswers ? result.proposed.scorePercent / 100 : null,
-    ]);
+    if (result.category != excludeCategory) {
+      out.push([
+        `${prefix}-${code}-E`,
+        useAnswers ? result.existing.scorePercent / 100 : null,
+      ]);
+      out.push([
+        `${prefix}-${code}-D`,
+        useAnswers ? result.proposed.scorePercent / 100 : null,
+      ]);
+    } else {
+      out.push([`${prefix}-${code}-E`, "N/A"]);
+      out.push([`${prefix}-${code}-D`, "N/A"]);
+    }
   }
   return out;
 }
