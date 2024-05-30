@@ -65,6 +65,15 @@ function sameValues(key: string, a: any, b: any): boolean {
     return true;
   }
 
+  // TODO street_1 has a bug upstream in Excel; an 11A and 11B violation both get assigned the same ID
+  if (
+    key == "07SARef" &&
+    a == "ATE01034_SA11_01P" &&
+    b == "ATE01034_SA11_02P"
+  ) {
+    return true;
+  }
+
   if (typeof a == "number" && typeof b == "number") {
     return Math.abs(a - b) < 0.000001;
   }
