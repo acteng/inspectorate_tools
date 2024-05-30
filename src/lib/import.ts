@@ -121,6 +121,9 @@ export function dalogToState(dalog: {
     networkMap: { type: "FeatureCollection", features: [] },
   };
 
+  // The horse rider question isn't directly in the DALOG, but the LOS column is derived from it
+  state.horseRiders = dalog["PA-LOS-HR-E"] == "N/A" ? "No" : "Yes";
+
   for (let [i, pc] of state.policyCheck.entries()) {
     pc.existing = yesNoBlank(`PC${num(i)}-E`);
     pc.proposed = yesNoBlank(`PC${num(i)}-D`);
