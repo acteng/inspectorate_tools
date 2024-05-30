@@ -6,4 +6,4 @@ src/style/main.css
 src/style/main.css.map
 static/assets
 
-test_files
+test_files/*xlsx
