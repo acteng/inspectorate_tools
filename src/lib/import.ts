@@ -103,9 +103,8 @@ export function dalogToState(dalog: {
     dateDesignReview: normalString("Date of Design Review"),
     schemeReference: normalString("Scheme Ref"),
     schemeName: normalString("Scheme Name"),
-    // TODO
+    // Not in the DALOG
     schemeSummary: "",
-    // TODO
     schemeInfoReviewed: "",
     authority: normalString("Authority"),
     transportOrCombinedAuthority: normalString("Transport/ Combined Authority"),

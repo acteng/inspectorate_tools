@@ -135,6 +135,7 @@
       <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
       {#if xlsxImporter != null}
+        <hr />
         <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
       {/if}
     </div>

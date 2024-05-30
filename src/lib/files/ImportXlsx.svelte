@@ -37,6 +37,20 @@
     id="import-xlsx"
     type="file"
   />
+
+  <div class="govuk-hint">
+    You can import from an existing route check .xlsx file, <b>
+      only if there's an up-to-date DALOG sheet added
+    </b>
+    . After importing, there will still be some problems:
+    <ul>
+      <li>
+        You must fill out the Junction Assessment Tool (JAT); it won't be
+        imported
+      </li>
+      <li>Some text fields on the Summary of Scheme page will be missing</li>
+    </ul>
+  </div>
 </FormElement>
 
 <Loading {loading} />
