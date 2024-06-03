@@ -80,6 +80,7 @@ export function encodeDalog(state: State): [string, Value][] {
       // excludeCategory
       state.horseRiders == "No" ? "Horse Riding" : null,
     ),
+    ...blankHorseRiders("PA-LOS", isPath),
     ...categoryBreakdowns(
       "PP-LOS",
       [...results.placemakingCategories, results.placemakingOverall],
@@ -219,6 +220,17 @@ function categoryBreakdowns(
   return out;
 }
 
+// categoryBreakdowns will exclude one mode for street checks, but we need to pad the columns with blank values
+function blankHorseRiders(prefix: string, isPath: boolean): [string, Value][] {
+  if (isPath) {
+    return [];
+  }
+  return [
+    [`${prefix}-HR-E`, "N/A"],
+    [`${prefix}-HR-D`, "N/A"],
+  ];
+}
+
 function jat(state: State, results: Results): [string, Value][] {
   let out: [string, Value][] = [];
   let numExportedJunctions = 12;
@@ -251,7 +263,7 @@ function jat(state: State, results: Results): [string, Value][] {
       // TODO Maybe need -E and -D variants here
       out.push([`J${i}-Arms`, state.jat[i - 1].proposed.arms.length]);
     } else {
-      out.push([`J${i}-Arms`, null]);
+      out.push([`J${i}-Arms`, 0]);
     }
   }
 

@@ -5,7 +5,8 @@
 
   let pairs = encodeDalog($state);
   let header = pairs.map((pair) => pair[0]).join("\t");
-  let values = pairs.map((pair) => pair[1]).join("\t");
+  // TODO Need to escape " in the values, then
+  let values = pairs.map((pair) => `"${pair[1]}"`).join("\t");
 </script>
 
 <p>
