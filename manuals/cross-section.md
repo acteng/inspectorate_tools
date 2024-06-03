@@ -135,13 +135,7 @@ Regional Management team.
     assessed over multiple Excel tool copies.
 - Notes is a space for the user to add any other relevant notes on the scheme.
 
-3.3 There are additional spaces below the first table where you must give the network
-context by providing co-ordinates for the start and end of the route being assessed,
-along with a map showing the route in its wider context. You must include the
-locations of each cross-section taken along it on this map, and label them with the
-reference number corresponding to their entry in the Cross-Section Check ta b (#1,
-#2, #3 etc.), so they can easily be identified. There is more information on where to
-take cross-sections in the Cross-Section Check part of this user manual.
+3.3 After filling the above details, you should sketch the route on a  map. At the bottom of this summary section there is a map and a link to our [Scheme Sketcher](https://acteng.github.io/atip/?style=streets#6.06/53.021/-1.825). You can use  our scheme sketcher to sketch your route, then download the file and upload it into the cross-section tool. This sketch will be used later in the process when considering pinch points along the route.
 
 -
 ```
@@ -152,319 +146,60 @@ Route Cross-Section Tool User Manual
 ```
 ## 4. Proposed Cross-Sections
 
-4 .1 In this tab, you will enter contextual information to work out what types of infrastructure
+4 .1 In this section, you will enter contextual information to work out what types of infrastructure
 are suitable for the locations you are assessing. You can build different cross-sections
 to standards and test them to see if they fit the available space.
 
 4.2 You must start by adding the data asked for in the ‘Traffic data and additional
 information’ table. These inputs are mandatory, and the tool will not work if all the
-relevant fields are not populated. The exception to this rule are cells C8, C9, C10 &
-C11. You should only fill in these cells if applicable to the proposed cross-section.
-For example, you can leave out ‘Expected peak hour cycle flow: shared use cycle
-tracks’ (cell C11) if you are not proposing any shared-use cycle tracks.
+relevant fields are not populated. In future versions we will make it optional to fill in information about unused lane types. E.g. if you are only proposing 1-way cycle tracks, you will not need to fill in `Expected peak hour cycle flow: 2-way cycle tracks`.
+
+4.3 Next, you will create a preferred cross-section as follows:
 
 ```
-Feature Minimum Width (m) Feature Minimum Width (m)
+a. You can then build the proposed cross-section. Use the `Add feature` button to add a new feature to you cross section.
 ```
-```
-Expected peak hour cycle flow:
-1-way cycle tracks Speed limit (MPH)
-```
-```
-Custom Feature
-#10.
-```
-```
-Custom Feature
-#50.
-Expected peak hour cycle flow:
-2-way cycle tracks
-```
-```
-Observed 85th percentile
-speed (MPH)
-```
-```
-Custom Feature
-#20.
-```
-```
-Custom Feature
-#60.
-```
-```
-Expected peak cycle hour flow:
-shared use cycle tracks Street function
-```
-```
-Custom Feature
-#30.
-```
-```
-Custom Feature
-#70.
-```
-```
-Traffic flow (vpd) Custom Feature #40.00 Custom Feature #80.
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-#REF! #REF! #REF! #REF! #REF!
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF! #REF! #REF!
-```
-```
-Available Width
-(m):
-```
-```
-Build your scheme's absolute minimum cross-section
-from left to right by selecting the street features from
-the drop-downs in the cells opposite >>>>>>
-```
-**Route Cross-Section Tool**
-
-**Desirable Minimum and Absolute Minimum Cross-Sections**
-
-**Desirable Minimum Cross-Section**
 
 ```
-Build your scheme's desirable minimum cross-section
-from left to right by selecting the street features from
-the drop-downs in the cells opposite >>>>>>
-```
-```
-Absolute Minimum
-Width (m):
-Total Width Required
-(m):
-```
-```
-Based on the traffic data and
-additional information provided
-above, to create a facility
-suitable for most users,
-consider the following
-references & guidance >>>>>
-```
-```
-Key references:
-```
-```
-#REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF!
-```
-```
-Traffic data and additional information
-**Before inputting your cross-section, the cells below
-must be populated**
-```
-```
-#REF! #REF!
-```
-```
-#REF!
-```
-```
-0.
-```
-```
-#REF!
-```
-```
-#REF!
-```
-**Custom Street Features**
-
-```
-#REF!
-```
-```
-#REF!
-```
-```
-#REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF!
-```
-```
-#REF! #REF! #REF!
-```
-```
-#REF!
-```
-```
-#REF! #REF!
-```
-```
-#REF!
-```
-```
-#REF!
-```
-```
-#REF! #REF! #REF!
-```
-```
-#REF!
-```
-```
-Guidance:
-```
-```
-#REF!
-```
-```
-Guidance:
-```
-```
-#REF!
-```
-```
-Key references:
-```
-```
-Total Width Required
-(m):
-Available Width
-(m):
-```
-**Absolute Minimum Cross-Section**
-
-```
-Desirable Minimum
-Width (m):
-```
-```
-#REF!
-```
-```
-Based on the traffic data and
-additional information provided
-above, to create a facility
-suitable for most users,
-consider the following
-references & guidance >>>>>
-```
-```
-#REF!
-```
-Figure 2 – Screenshot of a completed ‘Traffic data and additional information’ table in
-the Proposed Cross-Sections tab
-
-4.3 Next, you must fill in the ‘Desirable Minimum Cross-Section’ table. You will build your
-ideal cross-section here:
-
-Figure 3 – Partial screenshot of a completed ‘Desirable Minimum Cross-Section’
-table in the Proposed Cross-Sections tab.
-
-4.4 You will build the desired cross-section as follows:
-
-```
-a. First, choose a point on the corridor that looks wide enough to fit the infrastructure you
-want to include. Next, measure this width using the most accurate method available
-(Topographical data is best, followed by OS data. You can use Google Earth in the
-absence of topographical or OS data, although it is less reliable). The width measured
-should be the full width of the adopted highway.
-```
-```
-b. Now, enter this width in cell F/G23.
-```
-
-Route Cross-Section Tool User Manual
-
-```
-c. You can then build the proposed cross-section in Row 15 using the dropdown options
+b. Each feature in your cross-section will be represented by aa card with a drop down to select the feature type, a delete button to remove it, and left/right arrows to move the feature around in your cross section.
 ```
 - see Appendix A for these and any important points to note. As you start to work
-through this, some cells in this section will autocomplete with:
+through this, the following information might be displayed to you with hyperlinks where appropriate:
     - links to references in the relevant guidance e.g., LTN 1/20 and a brief
        summary;
     - suggested considerations where the proposed cross-section does not comply
        with guidance; and
     - desirable minimum widths for each feature, based on the relevant guidance.
 
-As you add features to the cross-section, you will see the total width needed to accommodate
-them shown in cell F/G22. You can clearly identify whether this total width exceeds the
-available width you entered into cell F/G23 by comparing the numbers in cells F/G22 and F/G23.
-For additional clarity, cell F/G23 will turn red if there is not enough width available (see Figure 4
-below). If this happens, you may need to propose an alternative cross-section in the ‘Absolute
-Minimum Cross-Section’ table, as described in (e).
-
-Figure 4 – Partial Screenshot showing an example of completed Total Width Required
-(m) and Available Width (m) cells.
+```
+c. As you add features you will see the desirable and absolute minimum width of your cross  section displayed above it. 
+```
 
 ```
-d. You can add up to eight extra items for any feature types that are not covered in the
-preset options (see Figure 5) in the ‘Custom Street Features’ table. These custom
-features will then appear in the dropdown lists in row 15. Any spare width highlighted
+d. You can add extra items for any feature types that are not covered in the
+preset options (see Figure 5) in the ‘Custom Street Features’ section. These custom
+features will then appear in the dropdown lists. Any spare width highlighted
 as available by the tool could be used for features such as rain gardens and other
 sustainable drainage features, benches and resting places, additional planting and/or
 trees. Adding these to the street improves the Placemaking score in ATE’s separate
 Route Check tool. The names you give these custom features must not be the same
-as any of the existing options in the dropdown menus on row 15.
+as any of the existing options in the dropdown menus for `Street feature type`.
 ```
 
 ```
-Route Cross-Section Tool User Manual
+e. If the required width is greater than that available on your route you will have to redesign which features you include. If there are some places with insufficient width you can design a 'Compromised Cross-section' which requires less width. There is  a section beneath `Preferred Cross-Section` for this, which you can populate with a copy of your preferred cross-section using the `Copy Preferred` button.
 ```
-Figure 5 – Partial screenshots of the Proposed Cross-Sections tab showing how a
-user can add a 1.4m wide SUDS (Sustainable Drainage Systems) feature as
-a custom street feature.
-e. Where the available highway width will not accommodate features at their desirable
-minimum widths, you can use the ‘Absolute Minimum Cross-Section’ table to test if the
-same features will fit based on the absolute minimum widths allowed in the relevant
-guidance. To check this, you should input the same features in the same order that you
-used in the ‘Desirable Minimum Cross-Section’ table and enter the same value for
-available width in cell F/G35. Any custom options you entered previously can also be used
-here and will be set to the width requirements specified in the ‘Custom Street Features’
-table. The absolute minimum widths in row 33 will then default to the minimum allowed as
-specified in the relevant guidance and the tool will provide the total width needed in cell F/
-G22. It will also highlight if the total width needed exceeds the available width.
 
-4.5 If either the desirable minimum or absolute minimum cross-sections include shared-
+4.4 If either the desirable minimum or absolute minimum cross-sections include shared-
 use cycle tracks, the tool will remind you that you will need to justify this in light of
-LTN 1/20 guidance in row 9 of the Cross-Sections Check tab – see guidance on
-this tab below.
+LTN 1/20 guidance.
 
 
 Route Cross-Section Tool User Manual
 
 ## 5. Cross-Sections Check
 
-5 .1 This tab tests if the desirable minimum or absolute minimum cross-sections built in the
-Proposed Cross-Sections tab can be delivered at regular intervals along the route,
-and at any constrained or atypical locations.
+5 .1 This section allows you to mark points along your route where you've measured the available width. It will  tell you for each of these 'pinch points' whether you can build the preferred or compromised cross-sections.
 
 5.2 A cross-section deliverability test should be completed:
 
@@ -473,58 +208,21 @@ and at any constrained or atypical locations.
 - At every ‘pinch point’ where there is less available width, and at every atypical
     section along the route, to make sure that every challenging location is tested.
 
-The first cross-section deliverability test, for group (1) above, is covered in the first table in the
-tab: Checking possible cross-sections of homogenous sections of route along the proposed
-corridor.
-
-Figure 6 – Partial screenshot of the first table in the Cross-Sections Check tab,
-which checks which cross-sections are possible at different homogenous
-sections along the proposed corridor.
-
 5.3 To complete this section, you should measure the available width for each
 homogenous section of route where the width stays similar and enter these values in
-row 7. You must make sure that the map you put in the Summary of Scheme tab is
-marked-up with the locations of cross-sections and that you clearly label each of these
-with the matching Cross-Section # from row 6.
+row. Add a new section using the `Add` button beneath `Checking possible cross-sections of homogeneous sections of route along the proposed corridor`, then simply add the available width for that homogenous section.
 
 5.4 You should be as accurate as possible with every measurement you enter in the tool,
 as confidence in the output of the Route Cross-Section Tool depends on the quality
 of the measurements you put into it.
 
-5.5 Once you have entered the available width, the Cross-Sections Possible (row 8) will
-auto-populate to show whether your proposed cross-section will fit that location.
-
-Figure 7 – Partial screenshot of the Cross-Sections Check tab showing which (if any)
-cross-sections are possible at the first three cross-sections (of
-homogenous sections of route) made.
-
-5.6 The second cross-section deliverability test, for group (2) above, is covered in the
-second table: Checking possible cross-sections of any constrained or atypical
-locations along the corridor.
-
-
-```
-Route Cross-Section Tool User Manual
-```
-5.7 You now need to locate any pinch-points or atypical sections of the route and repeat
+5.6 You now need to locate any pinch-points or atypical sections of the route and repeat
 the exercise described above, to check which cross-sections are possible at more
-constrained or challenging places along the route. You should also add a reference in
-row 14 to allow locations to be pin-pointed and enter the available width at each
-location into row 15.
+constrained or challenging places along the route. Underneath `Checking possible cross-sections of any constrained or atypical locations along the proposed corridor` is a map showing the sketch you  uploaded earlier. Simply click on the map to add a pinch point. Pinch points can be dragged around the map to change their location if needed.
 
-Figure 8 – Partial screenshot of the second table in the Cross-Sections Check tab,
-which checks which cross-sections are possible at constrained or atypical
-locations along the proposed corridor.
-
-5.8 For any locations where the cross-section does not fit the available width, in rows 9 &
-10, and 17 & 18, you must then provide a description of what would need to change in
+5.8 For any locations where the cross-section does not fit the available width you must then provide a description of what would need to change in
 order to fit the infrastructure in and what, if anything, could change in order to fit a
 more suitable cross-section there.
-
-Figure 9 – Partial screenshot of the Cross-Sections Check tab showing which (if any)
-cross-sections are possible at the three constrained or atypical cross-
-sections along the route. This screenshot also shows example comments
-on the results.
 
 5.9 When considering alternative arrangements, you must make sure that schemes
 implementing cycling infrastructure do not compromise pedestrian facilities
@@ -534,8 +232,6 @@ tracks are not suitable for many locations and contexts and should only ever be 
 last resort when all other possible options have been considered and evidenced
 as undeliverable.
 
-
-Route Cross-Section Tool User Manual
 
 ## Appendix A – List of Preset Options in
 
