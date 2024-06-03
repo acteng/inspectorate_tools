@@ -206,11 +206,11 @@ function categoryBreakdowns(
     if (result.category != excludeCategory) {
       out.push([
         `${prefix}-${code}-E`,
-        useAnswers ? result.existing.scorePercent / 100 : null,
+        useAnswers ? result.existing.scorePercent / 100 : "",
       ]);
       out.push([
         `${prefix}-${code}-D`,
-        useAnswers ? result.proposed.scorePercent / 100 : null,
+        useAnswers ? result.proposed.scorePercent / 100 : "",
       ]);
     } else {
       out.push([`${prefix}-${code}-E`, "N/A"]);
