@@ -55,7 +55,7 @@ function sameValues(key: string, a: any, b: any): boolean {
   if (
     (key.startsWith("PA-LOS-") || key.startsWith("ST-LOS-")) &&
     a != null &&
-    b == null
+    b == ""
   ) {
     return true;
   }
