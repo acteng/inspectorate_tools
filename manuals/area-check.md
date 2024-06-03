@@ -117,7 +117,7 @@ an Area Check assessment to be generally quieter, with lower motor traffic volum
 higher walking and cycling volumes and higher place functions.
 
 2.5 Take time to understand the types and functions of streets within and around an area.
-This will help make sure that internal and perimeter treatments are suitable and
+This will help make sure that internal and perimeter treatments are suisectionle and
 proportionate to the street types they are applied to.
 
 Assessing the Existing Network
@@ -131,20 +131,20 @@ local stakeholders.
 
 ## 3. Area Check Structure
 
-3 .1 The Area Check consists of three input tabs and one output tab. You work through the
+3 .1 The Area Check consists of three input sections and one output section. You work through the
 input tabs consecutively as shown in Figure 1 below:
 
-Figure 1 – Area Check input tabs
+Figure 1 – Area Check input sections
 
 Summary of Scheme
 
-3.2 It is important to fill the Summary of Scheme tab in to make sure you provide a
+3.2 It is important to fill the Summary of Scheme section in to make sure you provide a
 complete, accurate record of key scheme information. You should populate as many
-of the fields in the Summary of Scheme tab as you can before moving to the next tab.
+of the fields in the Summary of Scheme section as you can before moving to the next section.
 If you don’t have some of this information, you can contact the relevant member of
 ATE’s Regional Management team for it.
 
-3.3 The fields in the first table under the Summary of Scheme tab are:
+3.3 The fields in the first section under the Summary of Scheme section are:
 
 - Date of Design Review is for the date (or dates) on which the design review took
     place.
@@ -177,16 +177,11 @@ ATE’s Regional Management team for it.
 - Notes is a space where you can add any other relevant notes on the scheme
     or design review.
 
-3.4 The Network Context section gives you the opportunity to talk about the context
-of the area being assessed if, for example, it is part of a wider programme or scheme
-that contains multiple connected areas and routes. You should include a drawing or
-plan to show which area is being assessed in the file, and give details of any
-neighbouring areas being assessed in separate files, as well as any neighbouring
-areas that are not part of the wider scheme.
+3.4 After these there is an opportunity to upload a `Network Map`. This should be sketched using our Scheme Sketcher tool and represent the area being scored, and other areas that are part of the same scheme. These should be distinguished somehow {I don't know how we are going to suggest doing this}.
 
 Traffic Mitigation Check
 
-3.5 The Traffic Mitigation Check tab asks you to respond to a sequence of questions on
+3.5 The Traffic Mitigation Check section asks you to respond to a sequence of questions on
 the anticipated effects of the scheme on motor vehicle traffic. It is important that you
 complete the Traffic Mitigation Check before moving on to the Area Scorecard as its
 results can cause you to redesign parts of your scheme before proceeding to the
@@ -195,14 +190,7 @@ Area Scorecard test.
 3.6 Further information on the Traffic Mitigation Check’s purpose and logic is given in the
 Traffic Mitigation Check section of this user manual (Section 4).
 
-3.7 To carry out the Traffic Mitigation Check, you start at the top and work downwards
-until you cannot ‘proceed to the next question’, and a result is generated. You then
-make a comment on the results of the check in the assigned box. This process is
-illustrated in Figure 2 below.
-
-
-Figure 2 – The Traffic Mitigation Check process
-
+3.7 To carry out the Traffic Mitigation Check, answer question using the dropdowns until you have answered all the questions. Note that these are branching so depending on your answers you may be answered a different set of questions. Once complete you will either be encouraged to proceed with the scheme as designed, or redesign the scheme somehow. There is then a commentary box for adding a note about the result.
 
 Area Scorecard
 
@@ -212,84 +200,21 @@ Area Scorecard
 metrics. You can do this by selecting ‘yes’ against the descriptor that best matches
 the situation being assessed.
 
-3 .10 You must give a short justification for each of the scores you chose in the adjacent
+3 .10 You must give a short justification for each of the scores you chose in the appropriate text
 boxes (highlighted in Figure 3 below), along with any assumptions you made.
 
-3 .11 Once you have chosen a score for all nine metrics, you will see the total scores for
+3 .11 As you fill these in you will see the total scores for
 both ‘Existing’ and ‘Proposed’ scenarios at the top of the page.
 
-Figure 3 – Descriptor justification boxes in the Area Scorecard
-
-
-3 .12 Don’t choose ‘yes’ for more than one descriptor per metric, otherwise the spreadsheet
-will not know which score to assign and the error message shown below in Figure 4
-will appear:
-
-Figure 4 – Error message with selection of two or more descriptors
-
-3 .13 Some metrics have been split into two strands: one for walking and wheeling, and one
+3 .12 Some metrics have been split into two strands: one for walking and wheeling, and one
 for cycling. This is because there are different relevant criteria to assessing the quality
 of the pedestrian network compared to assessing the quality of the cycle network
 (the mesh density metric shown in Figure 5, for example, which is explained further in
 Section 5).
 
-Figure 5 – Mesh density metric in the Area Scorecard
-
-3 .14 The total potential scores for each metric are shown in Figure 6 below. The first four
+3 .13 The total potential scores for each metric are shown in Figure 6 below. The first four
 metrics are split by mode to make them easier to assess. Later metrics are weighted
 more heavily to reflect their importance to the design of an area scheme.
-
-
-```
-Metric Mode
-```
-```
-Mode
-Score
-```
-```
-Tot a l
-Score
-```
-```
-Porosity Walking and wheeling 4
-8
-Cycling 4
-```
-```
-Crossings Walking and wheeling 4
-8
-Cycling 4
-```
-```
-Permeability Walking and wheeling 4
-8
-Cycling 4
-```
-```
-Mesh Density Walking and wheeling 4
-8
-Cycling 4
-```
-```
-Motorised through-traffic All modes 8 8
-```
-```
-Perimeter treatment design All modes 16 16
-```
-```
-Green infrastructure design All modes 12 12
-```
-```
-Other internal treatment design All modes 16 16
-```
-```
-Engagement practice All modes 16 16
-```
-```
-Tot a l 100
-```
-Figure 6 – Summary of metric scores for the Area Scorecard.
 
 
 ## 4. Traffic Mitigation Check

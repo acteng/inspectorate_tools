@@ -107,9 +107,9 @@ Route Cross-Section Tool User Manual
 
 ## 3. Summary of Scheme
 
-3 .1 It is important that you fill in the Summary of Scheme tab to make sure there is a
+3 .1 It is important that you fill in the Summary of Scheme section to make sure there is a
 complete and accurate record of key scheme information. You should fill in all the
-Summary of Scheme tab fields before moving on to the next tab. If you do not have
+Summary of Scheme tab fields before moving on to the next section. If you do not have
 some of this information, you can get in touch with a relevant member of ATE’s
 Regional Management team.
 
