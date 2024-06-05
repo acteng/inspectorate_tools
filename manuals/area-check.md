@@ -777,7 +777,7 @@ comprehensive monitoring programme, to evaluate their effectiveness.
 ## 6. Outputs
 
 6 .1 Once you have completed the Area Scorecard, you can move on to the Results &
-Commentary tab, which summarises the results of the Area Check. The tool will
+Commentary section, which summarises the results of the Area Check. The tool will
 automatically populate the Traffic Mitigation Check results and Area Scorecard boxes
 and calculate and show an uplift score for the latter. You then only have to provide a
 final comment on the scores and recommendations to be considered for the area
