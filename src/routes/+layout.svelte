@@ -14,7 +14,14 @@
 </svelte:head>
 
 <WarningText>
-  This is an experimental tool. Use only for internal testing.
+  This is an experimental tool. Use only for internal testing. Contact <a
+    href="mailto:dcarlino@turing.ac.uk"
+  >
+    Dustin
+  </a>
+  and
+  <a href="mailto:Peter.York@activetravelengland.gov.uk">Pete</a>
+  with any feedback.
 </WarningText>
 
 <div class="govuk-prose">
