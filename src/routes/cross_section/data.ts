@@ -80,6 +80,14 @@ export interface CheckPinchPoint {
 }
 
 function validate(state: State) {
+  // Start with a blank entry for nicer styling. This doesn't require a version change.
+  if (state.proposed.desirableMinimumCrossSection.length == 0) {
+    state.proposed.desirableMinimumCrossSection = [""];
+  }
+  if (state.proposed.absoluteMinimumCrossSection.length == 0) {
+    state.proposed.absoluteMinimumCrossSection = [""];
+  }
+
   if (state.version != "alpha-0") {
     throw new Error("File format appears outdated");
   }
@@ -114,8 +122,9 @@ function emptyState(): State {
         streetFunction: "",
       },
       customFeatures: {},
-      desirableMinimumCrossSection: [],
-      absoluteMinimumCrossSection: [],
+      // Start with a blank entry for nicer styling
+      desirableMinimumCrossSection: [""],
+      absoluteMinimumCrossSection: [""],
     },
     checks: {
       homogeneousSections: [],
