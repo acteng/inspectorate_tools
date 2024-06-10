@@ -30,6 +30,7 @@ let pages: [string, string][] = [
 
   ["/area_check", "Area check tool"],
   ["/area_check/files", "Manage files"],
+  ["/area_check/manual", "Area check manual"],
   ["/area_check/summary", "Summary of Scheme"],
   ["/area_check/traffic_mitigation", "Traffic Mitigation Check"],
   ["/area_check/scorecard", "Area Scorecard"],
@@ -50,6 +51,7 @@ let pages: [string, string][] = [
 
   ["/route_check", "Route check tool"],
   ["/route_check/files", "Manage files"],
+  ["/route_check/manual", "Route check manual"],
   ["/route_check/summary", "Summary of Scheme"],
   ["/route_check/policy_check", "Policy Check"],
   ["/route_check/safety_check", "Safety Check"],

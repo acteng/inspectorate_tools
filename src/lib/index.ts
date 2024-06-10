@@ -4,6 +4,8 @@ export { default as ExternalLink } from "./ExternalLink.svelte";
 export { default as Modal } from "./Modal.svelte";
 export { default as PrevNext } from "./PrevNext.svelte";
 export { default as YesNo } from "./YesNo.svelte";
+export { default as ManualPage } from "./manual/ManualPage.svelte";
+export { type ManualSection } from "./manual/data";
 
 export function pairs(list: string[]): [string, string][] {
   return list.map((x) => [x, x]);
