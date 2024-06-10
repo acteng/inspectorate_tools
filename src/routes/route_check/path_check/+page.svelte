@@ -2,7 +2,15 @@
   import { Radio, WarningText } from "govuk-svelte";
   import Progress from "./Progress.svelte";
   import { state } from "../data";
+  import { ManualSectionModal } from "$lib";
+  import {contents} from "../manual/content";
 </script>
+
+<ManualSectionModal
+  title={"Path Check Manual"}
+  section={contents[8]}
+  link={"/route_check/manual"}
+/>
 
 <div class="govuk-width-container">
   <Radio

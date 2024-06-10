@@ -2,10 +2,18 @@
   import MajorRoutes from "./MajorRoutes.svelte";
   import MinorRoutes from "./MinorRoutes.svelte";
   import Confirmation from "./Confirmation.svelte";
-  import { TextArea, Select, WarningText } from "govuk-svelte";
+  import { TextArea, Select, WarningText, SecondaryButton } from "govuk-svelte";
   import { state } from "../data";
-  import { YesNo, pairs } from "$lib";
+  import { YesNo, pairs, Modal, ManualSectionModal } from "$lib";
+  import { contents } from "../manual/content";
+  let displayManual = false;
 </script>
+
+<ManualSectionModal 
+  title={"Traffic Mitigation Manual"}
+  section={contents[3]}
+  link={"/area_check/manual"}
+/>
 
 <div class="govuk-width-container">
   <YesNo

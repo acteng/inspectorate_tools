@@ -1,5 +1,6 @@
 <script lang="ts">
   import { type ManualSection } from "./data";
+  import Section from "./Section.svelte"
   import { ClickableCard } from "$lib";
 
   export let contents: ManualSection[];
@@ -30,19 +31,7 @@
     {/each}
   </div>
 
-  <div class="body">
-    <h2>{selectedSection.sectionName}</h2>
-    <ol>
-      {#each selectedSection.elements as element}
-        {#if typeof element === "string"}
-          <p><li>{element}</li></p>
-        {:else}
-          <img src={element.routeToImage} alt={element.explanation} />
-          <p>Figure {element.number} - {element.explanation}</p>
-        {/if}
-      {/each}
-    </ol>
-  </div>
+  <Section section={selectedSection}/>
 </div>
 
 <style>

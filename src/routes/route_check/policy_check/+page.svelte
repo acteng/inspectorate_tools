@@ -1,7 +1,8 @@
 <script lang="ts">
   import { state } from "../data";
   import { TextArea } from "govuk-svelte";
-  import { YesNo } from "$lib";
+  import { YesNo, ManualSectionModal } from "$lib";
+  import {contents} from "../manual/content";
 
   let questions = [
     "Are cyclists separated from pedestrians?",
@@ -12,6 +13,12 @@
     "Does the route join together, or join other facilities together, as part of a holistic, connected network?",
   ];
 </script>
+
+<ManualSectionModal
+  title={"Policy Check Manual"}
+  section={contents[3]}
+  link={"/route_check/manual"}
+/>
 
 {#each questions as question, idx}
   <h2>P00{idx + 1}: {question}</h2>

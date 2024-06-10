@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs, ExternalLink } from "$lib";
+  import { pairs, ExternalLink} from "$lib";
   import {
     Select,
     TextInput,
