@@ -1,7 +1,8 @@
 <script lang="ts">
   import { encodeDalog } from "./da_log";
   import { state } from "../data";
-  import { TextArea } from "govuk-svelte";
+  import { DefaultButton, TextArea } from "govuk-svelte";
+  import { downloadExcelFile } from "./export";
 
   let pairs = encodeDalog($state);
   let header = pairs.map((pair) => pair[0]).join("\t");
@@ -22,3 +23,7 @@
   label="JSON mapping"
   value={JSON.stringify(Object.fromEntries(pairs), null, "  ")}
 />
+
+<DefaultButton on:click={() => downloadExcelFile($state)}>
+  Convert to .xlsx (takes a few seconds)
+</DefaultButton>
