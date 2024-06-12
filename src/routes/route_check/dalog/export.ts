@@ -80,6 +80,13 @@ export async function downloadExcelFile(state: State) {
     ]),
   );
 
+  jat(state, workbook);
+
+  workbook.getWorksheet("5.1 Path Check")!.getCell("D7").value =
+    state.horseRiders;
+  workbook.getWorksheet("7.1 Results Summary")!.getCell("G7").value =
+    state.resultsReviewStatement;
+
   console.log("Writing route check xlsx");
   let outBytes = await workbook.xlsx.writeBuffer();
   downloadGeneratedFile(outBytes, "out.xlsx");
@@ -174,6 +181,71 @@ function populateScorecard(
   }
 }
 
+function jat(state: State, workbook: ExcelJS.Workbook) {
+  let sheet = workbook.getWorksheet("6. JAT Check")!;
+
+  let junctionIdx = 0;
+
+  for (let junction of state.jat) {
+    for (let assessment of [junction.existing, junction.proposed]) {
+      let baseCol = col("H", junctionIdx * 5);
+
+      sheet.getCell(col(baseCol, 1) + "9").value = junction.name;
+      sheet.getCell(col(baseCol, 1) + "10").value = assessment.notes;
+
+      for (let [movementIdx, movement] of assessment.movements
+        .filter((m) => m.kind == "walking & wheeling")
+        .entries()) {
+        sheet.getCell(baseCol + (13 + movementIdx)).value = movement.name;
+        sheet.getCell(col(baseCol, 2) + (13 + movementIdx)).value = fixJatScore(
+          movement.score,
+        );
+        sheet.getCell(col(baseCol, 3) + (13 + movementIdx)).value =
+          movement.notes;
+      }
+
+      for (let [movementIdx, movement] of assessment.movements
+        .filter((m) => m.kind == "cycling")
+        .entries()) {
+        sheet.getCell(baseCol + (26 + movementIdx)).value = movement.name;
+        sheet.getCell(col(baseCol, 2) + (26 + movementIdx)).value = fixJatScore(
+          movement.score,
+        );
+        sheet.getCell(col(baseCol, 3) + (26 + movementIdx)).value =
+          movement.notes;
+      }
+
+      // Increment twice per junction (once per assessment)
+      junctionIdx++;
+    }
+  }
+}
+
+// TODO Needs unit testing
+function col(base: string, offset: number): string {
+  return numberToCol(colToNumber(base) + offset);
+}
+
+function colToNumber(column: string): number {
+  let result = 0;
+  for (let i = 0; i < column.length; i++) {
+    result *= 26;
+    result += column.charCodeAt(i) - "A".charCodeAt(0) + 1;
+  }
+  return result - 1;
+}
+
+function numberToCol(num: number): string {
+  let result = "";
+  num += 1;
+  while (num > 0) {
+    let remainder = (num - 1) % 26;
+    result = String.fromCharCode(remainder + "A".charCodeAt(0)) + result;
+    num = Math.floor((num - 1) / 26);
+  }
+  return result;
+}
+
 function makeRanges(ranges: [number, number][]): number[] {
   let results = [];
   for (let [a, b] of ranges) {
@@ -192,6 +264,15 @@ function fixScore(s: Score): number | string {
     "1": 1,
     "2": 2,
     "N/A": s,
+  }[s];
+}
+
+function fixJatScore(s: "0" | "1" | "2" | "X"): number | string {
+  return {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    X: s,
   }[s];
 }
 
