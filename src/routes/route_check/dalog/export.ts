@@ -1,6 +1,7 @@
 import ExcelJS from "exceljs";
 import blankUrl from "$lib/assets/blank_route_check.xlsx?url";
 import type { State, Scorecard, Score } from "../data";
+import type { Position } from "$lib/map";
 
 export async function downloadExcelFile(state: State) {
   console.log("Loading blank route check xlsx");
@@ -16,6 +17,9 @@ export async function downloadExcelFile(state: State) {
   });
 
   summaryOfScheme(state, workbook);
+  policyCheck(state, workbook);
+  policyConflictLog(state, workbook);
+  criticalIssueLog(state, workbook);
 
   populateScorecard(
     state.safetyCheck,
@@ -81,9 +85,66 @@ export async function downloadExcelFile(state: State) {
 }
 
 function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
-  let sheet = workbook.getWorksheet("1. Summary of Scheme");
+  let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
+
+  sheet.getCell("C6").value = state.summary.dateDesignReview;
+  sheet.getCell("C7").value = state.summary.schemeReference;
+  sheet.getCell("C8").value = state.summary.schemeName;
+  sheet.getCell("C9").value = state.summary.schemeSummary;
+  sheet.getCell("C10").value = state.summary.schemeInfoReviewed;
+  sheet.getCell("C11").value = state.summary.authority;
+  sheet.getCell("C12").value = state.summary.transportOrCombinedAuthority;
+  sheet.getCell("C13").value = state.summary.region;
+  sheet.getCell("C14").value = state.summary.fundingProgramme;
+  sheet.getCell("C15").value = state.summary.designStage;
+  sheet.getCell("C16").value = state.summary.fundingConditions;
+  sheet.getCell("C17").value = state.summary.inspectorEmail;
+  sheet.getCell("C18").value = state.summary.assessedRouteLengthKm;
+  sheet.getCell("C19").value = state.summary.totalRouteLengthKm;
+  sheet.getCell("C20").value = state.summary.notes;
+
   if (state.summary.checkType == "path") {
     sheet.getCell("D22").value = "Path Check";
+  }
+
+  // TODO Fill out coordinates
+}
+
+function policyCheck(state: State, workbook: ExcelJS.Workbook) {
+  let sheet = workbook.getWorksheet("2.1 Policy Check")!;
+
+  for (let i = 0; i < 6; i++) {
+    sheet.getCell("D" + (8 + i)).value = state.policyCheck[i].existing;
+    sheet.getCell("E" + (8 + i)).value = state.policyCheck[i].proposed;
+    sheet.getCell("F" + (8 + i)).value = state.policyCheck[i].commentary;
+  }
+}
+
+function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
+  let sheet = workbook.getWorksheet("2.2 Policy Conflict Log")!;
+
+  for (let [i, pc] of state.policyConflictLog.entries()) {
+    // TODO Need the full name
+    sheet.getCell("F" + (8 + i)).value = pc.conflict;
+    sheet.getCell("H" + (8 + i)).value = pc.stage;
+    sheet.getCell("I" + (8 + i)).value = point(pc.point);
+    sheet.getCell("J" + (8 + i)).value = pc.locationName;
+    sheet.getCell("K" + (8 + i)).value = pc.resolved;
+    sheet.getCell("L" + (8 + i)).value = pc.notes;
+  }
+}
+
+function criticalIssueLog(state: State, workbook: ExcelJS.Workbook) {
+  let sheet = workbook.getWorksheet("3.2 Critical Issues Log")!;
+
+  for (let [i, ci] of state.criticalIssues.entries()) {
+    // TODO Need the full name
+    sheet.getCell("F" + (8 + i)).value = ci.criticalIssue;
+    sheet.getCell("H" + (8 + i)).value = ci.stage;
+    sheet.getCell("I" + (8 + i)).value = point(ci.point);
+    sheet.getCell("J" + (8 + i)).value = ci.locationName;
+    sheet.getCell("K" + (8 + i)).value = ci.resolved;
+    sheet.getCell("L" + (8 + i)).value = ci.notes;
   }
 }
 
@@ -133,6 +194,10 @@ function fixScore(s: Score): number | string {
     "2": 2,
     "N/A": s,
   }[s];
+}
+
+function point(pt: Position): string {
+  return `${pt[1]}, ${pt[0]}`;
 }
 
 function downloadGeneratedFile(bytes: ArrayBuffer, filename: string) {
