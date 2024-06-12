@@ -5,7 +5,7 @@ import type { Position } from "$lib/map";
 import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
 import { downloadBinaryFile } from "$lib";
 
-export async function downloadExcelFile(state: State) {
+export async function downloadExcelFile(state: State, currentFile: string) {
   console.log("Loading blank route check xlsx");
   let resp = await fetch(blankUrl);
   let bytes = await resp.arrayBuffer();
@@ -90,7 +90,7 @@ export async function downloadExcelFile(state: State) {
 
   console.log("Writing route check xlsx");
   let outBytes = await workbook.xlsx.writeBuffer();
-  downloadBinaryFile(outBytes, "out.xlsx");
+  downloadBinaryFile(outBytes, `route_check_${currentFile}.xlsx`);
 }
 
 function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {

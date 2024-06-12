@@ -1,6 +1,6 @@
 <script lang="ts">
   import { encodeDalog } from "./da_log";
-  import { state } from "../data";
+  import { state, currentFile } from "../data";
   import { DefaultButton, TextArea } from "govuk-svelte";
   import { downloadExcelFile } from "./export";
 
@@ -11,7 +11,7 @@
 
   async function download() {
     try {
-      await downloadExcelFile($state);
+      await downloadExcelFile($state, $currentFile);
     } catch (err) {
       window.alert(`Conversion failed: ${err}`);
     }
@@ -32,7 +32,7 @@
   value={JSON.stringify(Object.fromEntries(pairs), null, "  ")}
 />
 
-<DefaultButton on:click={() => downloadExcelFile($state)}>
+<DefaultButton on:click={download}>
   Convert to .xlsx (takes a few seconds)
 </DefaultButton>
 <p>

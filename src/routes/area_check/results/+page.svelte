@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { state } from "../data";
+  import { state, currentFile } from "../data";
   import { sum } from "$lib";
   import { SecondaryButton, TextArea } from "govuk-svelte";
   import { downloadExcelFile } from "./export";
@@ -9,7 +9,7 @@
 
   async function download() {
     try {
-      await downloadExcelFile($state);
+      await downloadExcelFile($state, $currentFile);
     } catch (err) {
       window.alert(`Conversion failed: ${err}`);
     }
@@ -44,7 +44,7 @@
   />
 </div>
 
-<SecondaryButton on:click={() => downloadExcelFile($state)}>
+<SecondaryButton on:click={download}>
   Convert to .xlsx (takes a few seconds)
 </SecondaryButton>
 <p>
