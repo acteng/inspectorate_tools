@@ -6,7 +6,6 @@
 
 ## February
 
-
 Active Travel England
 West Offices
 Station Rise
@@ -28,7 +27,6 @@ This publication is also available on our website at
 Any enquiries regarding this publication should be sent to us at
 https://www.gov.uk/government/organisations/active-travel-england
 
-
 ## Contents
 
 - Route Check User Manual
@@ -45,7 +43,6 @@ https://www.gov.uk/government/organisations/active-travel-england
 - 11. Path Placemaking Check
 - 12. Junction Assessment Tool Check
 - 13. Results and Scoring
-
 
 Publication date: February 2024
 
@@ -84,7 +81,6 @@ on each different section of the tool (see Figure 1).
 1 Local Transport Note 1/20 Cycle Infrastructure Design (DfT) Appendix A
 2 https://tfl.gov.uk/corporate/about-tfl/how-we-work/planning-for-the-future/healthy-streets
 
-
 Figure 1 – Route Check User Manual Structure
 
 1.6 The Route Check tool includes a Policy Check section (described in Chapter 4) and
@@ -118,7 +114,6 @@ assessed in the JAT, in Chapter 12.
 might happen after a Route Check has been completed. It also contains information
 on how the Route Check calculates scores.
 
-
 2. Route Check Structure
 
 2.1 The Route Check, being an Excel-based tool, uses various tabs to categorise and
@@ -142,7 +137,6 @@ and must be completed regardless of whether your scheme is based on streets or
 traffic-free paths.
 
 Figure 3 – The first five input tabs, which are mandatory to complete for all schemes.
-
 
 2.5 The Summary of Scheme tab must be completed. Here, you fill in details of the
 scheme such as its name, length, design stage and wider network context. It is
@@ -188,9 +182,9 @@ traffic-free path.
 ```
 4.1. Street Check 4.2. Street Placemaking Check
 ```
+
 Figure 4 – The two ‘street’ input tabs, which are mandatory to complete for street-
 based schemes.
-
 
 2.11 The Street Check tab asks you to assess and score the existing situation and
 proposed scheme design against 26 metrics categorised under accessibility, comfort,
@@ -211,6 +205,7 @@ on a street.
 ```
 5.1. Path Check 5.2. Path Placemaking Check
 ```
+
 Figure 5 – The two ‘path’ input tabs, which are mandatory to complete for schemes
 based on traffic-free paths.
 
@@ -240,7 +235,6 @@ which junction types you must assess and score, in Chapter 12.
 Figure 6 – The final input tab, which is mandatory to complete for any schemes which
 contain signal-controlled junctions or roundabouts.
 
-
 2.17 It sometimes happens that while you are filling in the later tabs in Route Check and
 getting into the design details, you may reconsider scores in the earlier tabs, or notice
 extra policy conflicts or critical issues that you did not log previously. You can always
@@ -255,6 +249,7 @@ You can find more information on these tabs in Chapter 13.
 ```
 7.1. Results Summary 7.2. Results Further Analysis 7.3. Results Export
 ```
+
 Figure 7 – The three output tabs
 
 2.19 The Results Summary tab gives a concise snapshot of key results by section.
@@ -267,7 +262,6 @@ see how schemes score by mode of active travel.
 
 2.21 The Results Export tab gives a full summary of both the qualitative and quantitative
 results of the Route Check assessment, optimised for export into PDF file format.
-
 
 3. Summary of Scheme
 
@@ -283,12 +277,14 @@ For example, if the scheme forms part of a funding bid and ATE are reviewing it,
 then inputs such as ‘scheme information reviewed’ and ‘design stage’ will be
 important for tracking the scheme through the funding bid process.
 ```
+
 ```
 B. Route Check Type (Street or Path), which must be answered for the
 spreadsheet to work correctly.
 C. Network Map, which you must fill in to allow the scheme to be located and
 defined in its wider context.
 ```
+
 Summary of Scheme
 
 3.3 You should populate as many of the fields in the Summary of Scheme table as you can
@@ -298,46 +294,45 @@ relevant member of ATE’s Regional Management team for it.
 3.4 The fields in the first table in the Summary of Scheme tab are as follows:
 
 - Date of Design Review is for the date (or dates) over which the design
-    review took place.
+  review took place.
 - Scheme Reference is for the relevant funding programme scheme reference,
-    if applicable.
+  if applicable.
 - Scheme Name means the name of the scheme according to the funding
-    programme.
+  programme.
 - Scheme Summary can be used to give a brief description of the scheme,
-    including any relevant programme-level information.
+  including any relevant programme-level information.
 - Scheme Information Reviewed is where you should give information about
-    the documents the review is based on. For example, if a General Arrangement
-    drawing has been reviewed, you should enter details here.
+  the documents the review is based on. For example, if a General Arrangement
+  drawing has been reviewed, you should enter details here.
 - Authority means the provisioning authority for the scheme.
 - Transport/Combined Authority means the combined authority, if the
-    scheme is in a combined authority area.
+  scheme is in a combined authority area.
 - Region is the part of England where the scheme is located. There are also
-    options for Scotland, Wales, and Northern Ireland.
+  options for Scotland, Wales, and Northern Ireland.
 - Funding Programme means the main funding source for the scheme.
 - Design Stage is the current design stage of the scheme.
 
-
 - Funding Conditions are any conditions on infrastructure attached to the
-    relevant funding programme.
+  relevant funding programme.
 - Inspector Email Address means the email address of the ATE inspector
-    who completed the design review. If someone outside of ATE completed the
-    spreadsheet, then you should leave this section blank, and put details in the
-    ‘Notes’ field.
+  who completed the design review. If someone outside of ATE completed the
+  spreadsheet, then you should leave this section blank, and put details in the
+  ‘Notes’ field.
 - Route Length Assessed in this File (km) is where you should enter the
-    length of route being assessed in the file in kilometres.
+  length of route being assessed in the file in kilometres.
 - Total Route Length (km) is where you can enter the total length of the
-    scheme, if the route is too long and varied to assess in a single Route
-    Check file.
+  scheme, if the route is too long and varied to assess in a single Route
+  Check file.
 - Notes is a space where you can add any other relevant notes on the scheme
-    or design review.
+  or design review.
 
-3.5 The reason for these two separate route length inputs is that sometimes longer
-corridor schemes may need to be split up into smaller sections for assessment.
-We recommend you do this if there is a big change in the characteristics of the street
-(for example, if a route goes from a quiet residential street onto a busy dual
-carriageway). However, in many cases, it will be possible and preferable to assess the
-entire route in a single file. In such cases, the length you enter in the boxes for Route
-length assessed in this file (km) and Total route length (km) will be the same.
+  3.5 The reason for these two separate route length inputs is that sometimes longer
+  corridor schemes may need to be split up into smaller sections for assessment.
+  We recommend you do this if there is a big change in the characteristics of the street
+  (for example, if a route goes from a quiet residential street onto a busy dual
+  carriageway). However, in many cases, it will be possible and preferable to assess the
+  entire route in a single file. In such cases, the length you enter in the boxes for Route
+  length assessed in this file (km) and Total route length (km) will be the same.
 
 Route Check Type (Street or Path)
 
@@ -361,7 +356,6 @@ reference within the file. If the section of route you are assessing in the spre
 part of a longer route contained in several different files, you should make this clear in
 this drawing or plan.
 
-
 4. Policy Check
 
 4 .1 This section of the Route Check asks you to assess schemes against six active travel
@@ -373,22 +367,27 @@ formulated as six questions:
 ```
 PO01. Are cyclists separated from pedestrians?
 ```
+
 ```
 PO02. Is the route free from barriers, such as chicane barriers, steps or dismount
 signs?
 ```
+
 ```
 PO03. Does the route feel direct, logical and intuitive to understand for all road
 users?
 ```
+
 ```
 PO04. Are surfaces suitable for all users?
 PO05. Is appropriate lighting provided?
 ```
+
 ```
 PO06. Does the route join together, or join other facilities together, as part of a
 holistic, connected network?
 ```
+
 4.2 The themes these policy principles address reoccur in metrics in other sections of the
 Route Check. For example, metric ST38 in the Street Check is about shared-use cycle
 tracks and toucan crossings and goes into more detail about the first policy principle
@@ -418,11 +417,11 @@ appears in your design, you should think about how you might redesign the scheme
 achieve compliance. In cases where ATE is involved with reviewing the scheme, policy
 conflicts will be discussed during correspondence and meetings. Wherever possible,
 
-
 ```
 ATE will provide local authorities with design advice on how to achieve compliance
 with the policy principles.
 ```
+
 4.6 In some cases, you may not be able to achieve compliance with all six policy
 principles. While this is not ideal, it may be acceptable in certain contexts. Please also
 note that, in some cases, failing to comply with certain policy principles may mean that
@@ -471,11 +470,11 @@ feel direct, logical and be intuitively understandable by all road users”. Any
 choosing to walk, wheel or cycle, including people with disabilities, must be confident
 and clear about how any part of a route links into a coherent whole. If people trust the
 
-
 ```
 network to get them to their destination, they are more likely to choose to walk, wheel
 or cycle.
 ```
+
 4 .13 Routes for people walking, wheeling and cycling should be direct and not involve
 unnecessary and difficult turns, especially for people in wheelchairs, on cycles or on
 horses. This applies to the route as a whole and to desire lines at junctions and
@@ -523,12 +522,12 @@ considered appropriate and acceptable.
 everyone walking, wheeling and cycling, including people with disabilities. You should
 also consider how this policy principle aligns with mode shift targets and whether
 
-
 ```
 missing or uneven lighting is likely to dissuade people from walking, wheeling and
 cycling. You should give a summary of the situation, your conclusions and how your
 design meets this principle, in the commentary column.
 ```
+
 Does the route join together, or join other facilities together,
 
 as part of a holistic connected network? (PO06)
@@ -544,8 +543,7 @@ to consider the wider network context of your scheme. Furthermore, it acts as a
 prompt for a discussion with ATE on how to best link the route with other routes and
 destinations.
 
-
-16 
+16
 
 5. Policy Conflict Log
 
@@ -605,6 +603,7 @@ generate a Policy Conflict Reference ID in the preceding column (Figure 8).
 ```
 Figure 8 The first two columns of the Policy Conflict Log
 ```
+
 The next column (column H) asks the user to enter the Stage (‘Existing’ or ‘Design’). In the
 worked example, the user should select ‘Existing’ from the drop down. Next, the user
 should enter information about the location of the policy conflict in the Latitude and
@@ -613,6 +612,7 @@ Longitude column (column I) and the Location Name column (column J).
 ```
 Figure 9 The middle three columns of the Policy Conflict Log
 ```
+
 Recording latitude and longitude helps you plot a location on your software or note it
 elsewhere on ATE’s systems. You can easily get latitude and longitude from a free online
 
@@ -628,6 +628,7 @@ Latitude and Longitude column (column I) and the Location Name column (column J)
 ```
 16
 ```
+
 **5 Policy Conflict Log**
 
 If you identify any policy conflicts in the Policy Check (see _Chapter 4_ ), you must also
@@ -656,6 +657,7 @@ generate a Policy Conflict Reference ID in the preceding column (Figure 8).
 ```
 Figure 8 The first two columns of the Policy Conflict Log
 ```
+
 The next column (column H) asks the user to enter the Stage (‘Existing’ or ‘Design’). In the
 worked example, the user should select ‘Existing’ from the drop down. Next, the user
 should enter information about the location of the policy conflict in the Latitude and
@@ -664,11 +666,11 @@ Longitude column (column I) and the Location Name column (column J).
 ```
 Figure 9 The middle three columns of the Policy Conflict Log
 ```
+
 Recording latitude and longitude helps you plot a location on your software or note it
 elsewhere on ATE’s systems. You can easily get latitude and longitude from a free online
 
 Figure 9 – The middle three columns of the Policy Conflict Log
-
 
 5.8 Recording latitude and longitude aids in plotting the location on software packages or
 recording it elsewhere on ATE’s systems. You can easily get latitude and longitude
@@ -688,53 +690,47 @@ ambiguous. You should follow the guidance below when identifying discrete policy
 conflicts and logging their locations:
 
 - PO01 (Are cyclists separated from pedestrians?)
-    - • You should log each continuous section of shared use facilities (e.g., a shared
-       use cycle track and/or toucan crossing) individually.
-    - • For example, if a route has a section where a shared use cycle track on one
-       side of the street connects with another shared use cycle track on the other
-       side of the street via a toucan crossing, this would be logged once as the
-       shared use facilities are continuous. However, if there is a shared use cycle
-       track that transitions into separate pedestrian and cycle facilities and then
-       back into a shared use cycle track again, this would be logged twice.
-    - • As sections of shared-use facilities cannot easily be represented by points, you
-       can pick any latitude and longitude point as long as it is on the facility. The
-       location name should describe the full facility in more detail.
+  - • You should log each continuous section of shared use facilities (e.g., a shared
+    use cycle track and/or toucan crossing) individually.
+  - • For example, if a route has a section where a shared use cycle track on one
+    side of the street connects with another shared use cycle track on the other
+    side of the street via a toucan crossing, this would be logged once as the
+    shared use facilities are continuous. However, if there is a shared use cycle
+    track that transitions into separate pedestrian and cycle facilities and then
+    back into a shared use cycle track again, this would be logged twice.
+  - • As sections of shared-use facilities cannot easily be represented by points, you
+    can pick any latitude and longitude point as long as it is on the facility. The
+    location name should describe the full facility in more detail.
 - PO02 (Is the route free from barriers, such as chicane barriers, steps or
-    dismount signs?)
-       - • Every individual barrier, set of steps, or ‘cyclists dismount’ sign should be
-          logged individually, with its own latitude, longitude and location name.
+  dismount signs?) - • Every individual barrier, set of steps, or ‘cyclists dismount’ sign should be
+  logged individually, with its own latitude, longitude and location name.
 - PO03 (Does the route feel direct, logical and intuitive to understand for all
-    road users?)
-       - • Every indirect, illogical or unintuitive section of the route should be logged
-          individually.
-       - • Users can select any latitude and longitude point on the route section to
-          represent it but you should enter a description of the section and why it is
-          indirect, illogical or unintuitive the Location Name and Commentary &
-          Feedback columns.
+  road users?) - • Every indirect, illogical or unintuitive section of the route should be logged
+  individually. - • Users can select any latitude and longitude point on the route section to
+  represent it but you should enter a description of the section and why it is
+  indirect, illogical or unintuitive the Location Name and Commentary &
+  Feedback columns.
 
-
-18 
+18
 
 - PO04 (Are surfaces suitable for all users?)
-    - • You should log every continuous section of surfacing which is not suitable for
-       all users individually.
-    - • You can pick any latitude and longitude point on the section of poor surfacing
-       to represent it. You must also enter a description of the section and why it is
-       unsuitable for all users in the Location Name and Commentary & Feedback
-       columns.
+  - • You should log every continuous section of surfacing which is not suitable for
+    all users individually.
+  - • You can pick any latitude and longitude point on the section of poor surfacing
+    to represent it. You must also enter a description of the section and why it is
+    unsuitable for all users in the Location Name and Commentary & Feedback
+    columns.
 - PO05 (Is appropriate lighting provided?)
-    - • You should log every continuous section of unsuitable lighting individually.
-    - • You can pick any latitude and longitude point on the section of inappropriate
-       lighting to represent it. You must also enter a description of the section and
-       why the lighting is inappropriate in the Location Name and Commentary &
-       Feedback columns.
+  - • You should log every continuous section of unsuitable lighting individually.
+  - • You can pick any latitude and longitude point on the section of inappropriate
+    lighting to represent it. You must also enter a description of the section and
+    why the lighting is inappropriate in the Location Name and Commentary &
+    Feedback columns.
 - PO06 (Does the route join together or join other facilities together, as part
-    of a holistic, connected network?)
-       - • You should log every instance where a route doesn’t quite connect with
-          another route or nearby origin/destination individually.
-       - • You can pick any latitude and longitude point to represent the missed
-          connection. You must also enter a description of the missed connection in the
-          Location Name and Commentary & Feedback columns.
+  of a holistic, connected network?) - • You should log every instance where a route doesn’t quite connect with
+  another route or nearby origin/destination individually. - • You can pick any latitude and longitude point to represent the missed
+  connection. You must also enter a description of the missed connection in the
+  Location Name and Commentary & Feedback columns.
 
 5 .10 Once you have entered its location information, you should fill in the final Commentary
 & Feedback column (column L) with more information about the policy conflict. Once
@@ -748,13 +744,14 @@ information into the Resolved by Design column (column K).
 why the lighting is unsuitable in the Location Name and Commentary &
 Feedback columns.
 ```
+
 - **PO06 (Does the route join together or join other facilities together, as part of a**
-    **holistic, connected network?)**
-       o You should log every instance where a route doesn’t quite connect with
-          another route or nearby origin/destination individually.
-       o You can pick any latitude and longitude point to represent the missed
-          connection. You must also enter a description of the missed connection in
-          the Location Name and Commentary & Feedback columns.
+  **holistic, connected network?)**
+  o You should log every instance where a route doesn’t quite connect with
+  another route or nearby origin/destination individually.
+  o You can pick any latitude and longitude point to represent the missed
+  connection. You must also enter a description of the missed connection in
+  the Location Name and Commentary & Feedback columns.
 
 Once you have entered its location information, you should fill in the final Commentary &
 Feedback column (column L) withmore information about the policy conflict. Once you
@@ -765,6 +762,7 @@ into the Resolved by Design column (column K).
 ```
 Figure 10 The final two columns of the Policy Conflict Log
 ```
+
 You must also check whether the proposed design introduces any new policy conflicts to
 the street or path and enter these in the Policy Conflict Log, choosing ‘Design’ in the Stage
 column (and ‘No’ in the Resolved by Design column).
@@ -805,7 +803,6 @@ column to add comments on potential solutions that might remove the policy confl
 which are not resolved by the proposed design or new policy conflicts introduced by the
 proposed design) will be highlighted in Route Check outputs (in the Results tabs).
 
-
 6. Safety Check
 
 6 .1 The Safety Check section in the Route Check prompts you to check for the presence
@@ -828,38 +825,37 @@ the ‘rule of worst’, in that it should reflect the worst conditions on the r
 Junctions) as follows:
 
 - A roundabout/signal-controlled junction scores 2 points if all pedestrian and cyclist
-    movements are separated from all motor traffic movements.
+  movements are separated from all motor traffic movements.
 - A roundabout/signal-controlled junction scores 1 point if the main pedestrian and
-    cyclist movements are separated from motor traffic movements.
+  cyclist movements are separated from motor traffic movements.
 - A roundabout/signal-controlled junction scores 0 points if there are main pedestrian
-    and/or cyclist movements in conflict with motor traffic flows of under 2,500 vehicles
-    per day.
+  and/or cyclist movements in conflict with motor traffic flows of under 2,500 vehicles
+  per day.
 - A roundabout/signal-controlled junction is considered to have a critical issue if there
-    are over 2,500 vehicles per day cutting across main walking, wheeling or cycling
-    streams.
+  are over 2,500 vehicles per day cutting across main walking, wheeling or cycling
+  streams.
 
-6.5 The score for a street or path is the same as the score for its worst scoring
-roundabout or signal-controlled junction.
+  6.5 The score for a street or path is the same as the score for its worst scoring
+  roundabout or signal-controlled junction.
 
-6.6 The ‘rule of worst’ is a very important concept in the Route Check and should be
-borne in mind when assessing every metric, especially safety metrics.
+  6.6 The ‘rule of worst’ is a very important concept in the Route Check and should be
+  borne in mind when assessing every metric, especially safety metrics.
 
-6.7 You must assess the scheme against the scoring criteria for each metric and enter a
-score for both the existing situation and the design proposals. You should provide any
-assumptions made (for example, if flows were estimated rather than measured) in the
-comments/assumptions boxes. Entering comprehensive comments and information in
-these boxes will help people reviewing the Safety Check to understand your
-justifications for your original scores.
+  6.7 You must assess the scheme against the scoring criteria for each metric and enter a
+  score for both the existing situation and the design proposals. You should provide any
+  assumptions made (for example, if flows were estimated rather than measured) in the
+  comments/assumptions boxes. Entering comprehensive comments and information in
+  these boxes will help people reviewing the Safety Check to understand your
+  justifications for your original scores.
 
-6.8 The Safety Check tab does not allow recording multiple instances of the same critical
-issue. You must enter every critical issue identified in the existing situation or proposed
-design in the Critical Issues Log (see Chapter 7).
+  6.8 The Safety Check tab does not allow recording multiple instances of the same critical
+  issue. You must enter every critical issue identified in the existing situation or proposed
+  design in the Critical Issues Log (see Chapter 7).
 
-
-6.9 For example, excessive camber (>2.5%) on footways is a critical issue. If there are four
-instances of an excessive camber on an existing footway, then you must enter ‘C’ in
-the ‘Existing’ column for metric SA15 in the Safety Check, and create four entries in
-the Critical Issues Log – one for each time the critical issue occurs.
+  6.9 For example, excessive camber (>2.5%) on footways is a critical issue. If there are four
+  instances of an excessive camber on an existing footway, then you must enter ‘C’ in
+  the ‘Existing’ column for metric SA15 in the Safety Check, and create four entries in
+  the Critical Issues Log – one for each time the critical issue occurs.
 
 6 .10 Critical issues are also known by the same names as their metrics in the Safety Check.
 They are as follows:
@@ -867,43 +863,55 @@ They are as follows:
 ```
 SA01. Conflict at Side Roads and Priority Junctions
 ```
+
 ```
 SA02. Conflict at Roundabouts and Signal Junctions
 SA03. Lane Widths
 ```
+
 ```
 SA04. Trip Hazards
 ```
+
 ```
 SA05. Kerbside Activity
 SA06. Provision of Crossings
 ```
+
 ```
 S A 0 7. Standard of CrossingsStandard of Crossings
 ```
+
 ```
 SA08.SA08. Motor Traffic SpeedMotor Traffic Speed
 ```
+
 ```
 SA09.SA09. Motor Traffic VolumeMotor Traffic Volume
 SA10.SA10. Pedestrian Crossing Speed
 ```
+
 ```
 SA11.SA11. Footway Widths
 ```
+
 ```
 SA12.SA12. Effective Width next to Tram Lines
 ```
+
 ```
 SA13.SA13. Crossing Angle of Tram or Train Rails
 SA14.SA14. Cycling Surface and Maintenance Defects
 ```
+
 ```
 SA15.SA15. Walking/Wheeling Surface and Maintenance Defects
 ```
+
 ```
 SA16.SA16. Guard Railing
 ```
+
 6 .11 While you must consider all sixteen metrics when assessing a street or a path, some
 metrics are less likely to apply in a path context (unless the path interfaces with the
 road network). When reviewing a path, you can simply mark irrelevant metrics as ‘not
@@ -915,7 +923,6 @@ interactions with trams on the route, metrics 12 and 13 will not apply.
 while six only apply to walking and wheeling. The remaining five metrics apply to all
 three modes. You can find information on which metrics apply to which modes in the
 ‘Mode’ column in the Route Check spreadsheet.
-
 
 6 .13 People walking and wheeling sometimes have different needs. However, in the Route
 Check, walking and wheeling are often assessed using the same metrics. ATE has
@@ -934,8 +941,7 @@ base than some of the more context-specific metrics also included in the Route C
 tool. Future ATE publications will set out this evidence base and provide further
 guidance on how to identify and remove critical issues, with worked examples.
 
-
-22 
+22
 
 7. Critical Issues Log
 
@@ -943,25 +949,25 @@ guidance on how to identify and remove critical issues, with worked examples.
 complete the Critical Issues Log tab.
 
 7. 2 In Safety Check, you will assess and score the scheme (both the existing situation and
-    the proposed design) against 16 safety metrics – all of which have potential critical
-    conditions, called ‘critical issues’. The scoring process follows the rule of worst, which
-    means that you must score any critical issue with ‘C’ even if there is only one instance
-    on the street or path. However, there is only one row per metric – so if there are
-    multiple issues of the same critical issue on a street or path, the metric score will be
-    the same: ‘C’.
-7. 3 To give an example, the critical condition for SA01 is where there are more than 2,500
-    vehicles per day cutting across main walking, wheeling or cycling streams at side
-    roads or priority junctions. If this condition is fulfilled at multiple side roads along a
-    street, you would only record it once in the Safety Check, giving it a ‘C’ score for
-    SA01.
-7. 4 As one of ATE’s key aims is identifying and reducing the number of critical issues in
-    any scheme, it follows that a separate log is needed to record each one. The ‘3.1
-    Critical Issues Log’ tab contains this log.
-7. 5 When completing the Safety Check tab, start with the existing street or path layout,
+   the proposed design) against 16 safety metrics – all of which have potential critical
+   conditions, called ‘critical issues’. The scoring process follows the rule of worst, which
+   means that you must score any critical issue with ‘C’ even if there is only one instance
+   on the street or path. However, there is only one row per metric – so if there are
+   multiple issues of the same critical issue on a street or path, the metric score will be
+   the same: ‘C’.
+8. 3 To give an example, the critical condition for SA01 is where there are more than 2,500
+   vehicles per day cutting across main walking, wheeling or cycling streams at side
+   roads or priority junctions. If this condition is fulfilled at multiple side roads along a
+   street, you would only record it once in the Safety Check, giving it a ‘C’ score for
+   SA01.
+9. 4 As one of ATE’s key aims is identifying and reducing the number of critical issues in
+   any scheme, it follows that a separate log is needed to record each one. The ‘3.1
+   Critical Issues Log’ tab contains this log.
+10. 5 When completing the Safety Check tab, start with the existing street or path layout,
     and enter every critical issue in the Critical Issues Log. Then check the whole length of
     the street or path for each critical issue, as the same critical issue can appear multiple
     times.
-7. 6 When you have identified a critical issue in the existing layout, choose the issue type
+11. 6 When you have identified a critical issue in the existing layout, choose the issue type
     from the dropdown column in the Critical Issue column (column F). This will
     automatically generate a Critical Reference ID in the preceding column (Figure 11).
 
@@ -999,6 +1005,7 @@ generate a Critical Reference ID in the preceding column (Figure 11).
 ```
 Figure 11 The first two columns of the Critical Issues Log
 ```
+
 The next column (column H) asks you to enter the Stage (‘Existing’ or ‘Design’). In the
 worked example, you should select ‘Existing’ from the dropdown. Next, you should enter
 information about the location of the critical issue in the Latitude and Longitude column
@@ -1008,6 +1015,7 @@ information about the location of the critical issue in the Latitude and Longitu
 Commented [TH16]: We are missing info on how to 'count'
 critical issues / their discreteness
 ```
+
 Figure 11 – The first two columns of the Critical Issues Log
 
 7.7 The next column (column H) asks you to enter the Stage (‘Existing’ or ‘Design’). In the
@@ -1015,15 +1023,16 @@ worked example, you should select ‘Existing’ from the dropdown. Next, you sh
 enter information about the location of the critical issue in the Latitude and Longitude
 column (column I) and the Location Name column (column J).
 
-
 ## Route Check User Manual
 
 ```
 23
 ```
+
 ```
 Figure 12 The middle three columns of the Critical Issues Log
 ```
+
 You should add location information for each critical issue. The way to do this is the same
 as how you add location information to policy conflicts in the Policy Conflict Log. This is set
 out in _Chapter 5_. In short, you must record latitude and longitude for each critical issue, as
@@ -1039,6 +1048,7 @@ Design column (column K).
 ```
 Figure 13 The final two columns of the Critical Issues Log
 ```
+
 You must also check whether the proposed design introduces any new critical issues to
 the street or path and enter these in the Critical Issues Log, choosing ‘Design’ in the Stage
 column (and ‘No’ in the Resolved by Design column).
@@ -1055,24 +1065,26 @@ introduced by the proposed design) will be highlighted in the outputs of the Rou
 Figure 12 – The middle three columns of the Critical Issues Log
 
 7. 8 You should add location information for each critical issue. The way to do this is the same
-    as how you add location information to policy conflicts in the Policy Conflict Log. This is set
-    out in Chapter 5. In short, you must record latitude and longitude for each critical issue, as
-    well as a description of the location to aid the understanding of anyone reviewing the tool,
-    such as an ATE Inspector, an LA officer or a local councillor.
-7. 9 Once you have entered location information, you should fill in the final Commentary &
-    Feedback column (column L) with more information about the critical issue. Once you have
-    added all the critical issues present in the existing layout, you should check whether the
-    proposed design removes or resolves them and put this information in the Resolved by
-    Design column (column K).
+   as how you add location information to policy conflicts in the Policy Conflict Log. This is set
+   out in Chapter 5. In short, you must record latitude and longitude for each critical issue, as
+   well as a description of the location to aid the understanding of anyone reviewing the tool,
+   such as an ATE Inspector, an LA officer or a local councillor.
+8. 9 Once you have entered location information, you should fill in the final Commentary &
+   Feedback column (column L) with more information about the critical issue. Once you have
+   added all the critical issues present in the existing layout, you should check whether the
+   proposed design removes or resolves them and put this information in the Resolved by
+   Design column (column K).
 
 ## Route Check User Manual
 
 ```
 23
 ```
+
 ```
 Figure 12 The middle three columns of the Critical Issues Log
 ```
+
 You should add location information for each critical issue. The way to do this is the same
 as how you add location information to policy conflicts in the Policy Conflict Log. This is set
 out in _Chapter 5_. In short, you must record latitude and longitude for each critical issue, as
@@ -1088,6 +1100,7 @@ Design column (column K).
 ```
 Figure 13 The final two columns of the Critical Issues Log
 ```
+
 You must also check whether the proposed design introduces any new critical issues to
 the street or path and enter these in the Critical Issues Log, choosing ‘Design’ in the Stage
 column (and ‘No’ in the Resolved by Design column).
@@ -1116,7 +1129,6 @@ needed from ATE).
 the existing layout which are not resolved by the proposed design or new critical issues
 introduced by the proposed design) will be highlighted in the outputs of the Route Check
 (in the Results tabs).
-
 
 8. Street Check
 
@@ -1152,26 +1164,26 @@ the street, then you should choose ‘N/A’.
 - Score 1 point if it is between 50 and 150m between resting points.
 - Score 0 points if it is over 150m between resting points.
 
-8.6 As with the Safety Check, the score entered should reflect the ‘rule of worst,’ that is,
-the score should reflect the worst conditions on the route. In the example above, if
-there are any instances along the street where it is over 150m between resting points,
-then you should give the metric a score of ‘0’. You should always provide any
-assumptions in the comments/assumptions boxes, along with comments and
-information to help anyone reviewing the scheme understand the justifications for your
-original scores.
+  8.6 As with the Safety Check, the score entered should reflect the ‘rule of worst,’ that is,
+  the score should reflect the worst conditions on the route. In the example above, if
+  there are any instances along the street where it is over 150m between resting points,
+  then you should give the metric a score of ‘0’. You should always provide any
+  assumptions in the comments/assumptions boxes, along with comments and
+  information to help anyone reviewing the scheme understand the justifications for your
+  original scores.
 
-8.7 There are 26 metrics assessed in the Street Check. These metrics are only relevant if
-you are assessing a street. If you are assessing a path, you should skip this tab and
-complete the ‘5.1 Path Check’ tab, covered in Chapter 10, instead.
+  8.7 There are 26 metrics assessed in the Street Check. These metrics are only relevant if
+  you are assessing a street. If you are assessing a path, you should skip this tab and
+  complete the ‘5.1 Path Check’ tab, covered in Chapter 10, instead.
 
-8.8 Seven of the 26 street metrics apply only to cycling, while only six apply to walking and
-wheeling. Only one street metric (ST21) applies to wheeling alone and the remaining
-
+  8.8 Seven of the 26 street metrics apply only to cycling, while only six apply to walking and
+  wheeling. Only one street metric (ST21) applies to wheeling alone and the remaining
 
 ```
 12 metrics apply to all three modes. You can find information on which metrics apply
 to which modes in the ‘Mode’ column in the Route Check spreadsheet.
 ```
+
 8.9 The 26 metrics in Street Check are given below, organised by category (key design
 principle). Note that numbering starts at 17 to reflect that you should already have
 scored the street against 16 metrics as part of your Safety Check.
@@ -1230,25 +1242,24 @@ anyone reviewing the scheme understand the justifications for your original scor
 9.4 For example, you would score metric SP19 (Planting) as follows:
 
 - The street scores 2 if there is a variety of suitable planting that provides habitats for
-    fauna and wider experiential benefits.
+  fauna and wider experiential benefits.
 - The street scores 1 if there are some planted elements providing visual interest.
 - The street scores 0 if there is little or no planting, providing limited visual interest.
 
-9.5 Unlike Street Check, there are no ‘N/A’ options possible when scoring metrics.
-Placemaking metrics are not associated with any particular transport mode – the
-quality of place will affect the experience of anyone travelling through or spending time
-in the space.
+  9.5 Unlike Street Check, there are no ‘N/A’ options possible when scoring metrics.
+  Placemaking metrics are not associated with any particular transport mode – the
+  quality of place will affect the experience of anyone travelling through or spending time
+  in the space.
 
-9.6 You should only assess these metrics if you are assessing a street. If you are
-assessing a path, then you should skip this tab. There is an equivalent Path
-Placemaking Check in the ‘5.2 Path Placemaking’ tab, which is covered in Chapter 11
-of this user manual.
+  9.6 You should only assess these metrics if you are assessing a street. If you are
+  assessing a path, then you should skip this tab. There is an equivalent Path
+  Placemaking Check in the ‘5.2 Path Placemaking’ tab, which is covered in Chapter 11
+  of this user manual.
 
-9.7 You can see the 26 metrics in the Street Placemaking Check below, organised into the
-following categories: social activity, personal security, character and legibility, and
-environment. The metrics have the SP prefix and numbering restarts at 1 to reflect the
-fact the Street Placemaking Check is a separate part of the Route Check assessment.
-
+  9.7 You can see the 26 metrics in the Street Placemaking Check below, organised into the
+  following categories: social activity, personal security, character and legibility, and
+  environment. The metrics have the SP prefix and numbering restarts at 1 to reflect the
+  fact the Street Placemaking Check is a separate part of the Route Check assessment.
 
 Social Activity
 
@@ -1310,7 +1321,6 @@ SP25. Light Pollution
 
 SP26. Sunlight
 
-
 10. Path Check
 
 10 .1 Traffic-free paths are an important part of the walking, wheeling and cycling network
@@ -1357,15 +1367,14 @@ metrics do not have critical conditions.
 - Score 2 points if the cycling surface is machine-laid asphalt or smooth, firm blocks.
 - Score 1 point if the cycling surface is hand-laid asphalt or smooth blocks.
 - Score 0 points if the cycling surface is unsurfaced/unbound or unstable blocks/
-    sets.
+  sets.
 
-
-10.10 As with the Safety Check, the score entered should reflect the ‘rule of worst’, in that it
-should reflect the worst conditions on the route. In the example above, if the cycling
-surface is unsurfaced anywhere along the path, then the metric should be given a
-score of ‘0’. You should always provide any assumptions in the comments/
-assumptions boxes, along with comments and information to help anyone reviewing
-the scheme understand the justifications for your original scores.
+  10.10 As with the Safety Check, the score entered should reflect the ‘rule of worst’, in that it
+  should reflect the worst conditions on the route. In the example above, if the cycling
+  surface is unsurfaced anywhere along the path, then the metric should be given a
+  score of ‘0’. You should always provide any assumptions in the comments/
+  assumptions boxes, along with comments and information to help anyone reviewing
+  the scheme understand the justifications for your original scores.
 
 10 .11 There are 30 metrics assessed in the Path Check. Some of these are similar to
 metrics in the Street Check and the Street Placemaking Check, however, many are
@@ -1393,7 +1402,6 @@ increasing levels of walking and cycling in England Eleventh Report of Session 2
 formal minutes relating to the report (London, 2019): “Active travel covers any journey that is made by physi-
 cally active means, and covers such diverse activities as horse riding, skateboarding, roller skating, and riding a
 scooter.” p6.
-
 
 Accessibility
 
@@ -1465,7 +1473,6 @@ PA45. Quality of Connections
 
 PA46. Connectivity with Other Horse Riding Routes
 
-
 11. Path Placemaking Check
 
 11.1 The Path Placemaking Check assesses paths against 19 metrics to evaluate design
@@ -1476,23 +1483,23 @@ metrics, but they are not identical.
 
 11. 2 The metrics in the Street Placemaking Check do not have critical conditions, as they
     are less linked with collision risks than the metrics assessed in Safety Check.
-11. 3 As with other Route Check sections, you should assess both the existing layout and
+12. 3 As with other Route Check sections, you should assess both the existing layout and
     the proposed design against the scoring descriptors for each metric and give them a
     score of ‘0,’ ‘1’ or ‘2’. Follow the ‘rule of worst’ when scoring. You should always
     provide any assumptions in the comments/assumptions boxes, along with comments
     and information to help anyone reviewing the scheme understand the justifications for
     your original scores.
-11. 4 For example, you score metric PP06 (Visibility of Others) as follows:
+13. 4 For example, you score metric PP06 (Visibility of Others) as follows:
     - The path scores 2 if there is lighting that does not create high-contrast areas with
-       shadows and the path environment does not create hiding or loitering places.
+      shadows and the path environment does not create hiding or loitering places.
     - The path scores 1 if there is inadequate lighting, or bright lighting that creates high
-       contrast areas with shadows.
+      contrast areas with shadows.
     - The path scores 0 if there is no lighting and/or a path environment that creates
-       potential ambush points.
-11. 5 No ‘N/A’ options are possible when scoring metrics. Furthermore, these placemaking
+      potential ambush points.
+14. 5 No ‘N/A’ options are possible when scoring metrics. Furthermore, these placemaking
     metrics are not associated with any particular mode of transport. The quality of place
     will affect the experience of anyone travelling through or spending time in the space.
-11. 6 You should only assess these metrics if you are assessing a path. If you are
+15. 6 You should only assess these metrics if you are assessing a path. If you are
     assessing a street is being assessed, this tab should be skipped. There is an
     equivalent Street Placemaking Check in the ‘4.2 Street Placemaking’ tab, which is
     covered in Chapter 9 of this user manual.
@@ -1508,7 +1515,6 @@ fact the Path Placemaking Check is a separate part of the Route Check assessment
     street. Paths can sometimes be isolated, with fewer ‘escape points’. Things like this
     can influence how likely some user groups, such as women, are to want to walk,
     wheel or cycle on paths.
-
 
 Social Activity
 
@@ -1556,7 +1562,6 @@ PP18. Light Pollution
 
 PP19. Quality of Connections
 
-
 12. Junction Assessment Tool Check
 
 12.1 The ‘6. JAT Check’ tab contains the Junction Assessment Tool (JAT) Check, which
@@ -1592,11 +1597,11 @@ at junctions along the following route types:
 - Signal-controlled roundabouts
 - Roundabouts, including mini-roundabouts.
 - Large priority junctions, including four-arm crossroads junctions and three-arm
-    T-junctions, but excluding small side road junctions and private driveways.
+  T-junctions, but excluding small side road junctions and private driveways.
 
-12.6 The reason that you do not need to assess side road junctions or private driveways is
-that any potential critical issues at these junction types will be picked up by SA01 and
-other metrics in the Safety Check.
+  12.6 The reason that you do not need to assess side road junctions or private driveways is
+  that any potential critical issues at these junction types will be picked up by SA01 and
+  other metrics in the Safety Check.
 
 Entering Information into the JAT Check
 
@@ -1605,14 +1610,15 @@ the existing layout and the proposed design. In terms of scoring, each movement
 must be given a rating of X, 0, 1 or 2, based on its possible level of conflict, with the
 worst score of 0 representing the most conflict, and X a desire line that has not been
 
-
 ```
 34 
 ```
+
 ```
 provided for. The next two sections of this chapter describe how to score cycle and
 pedestrian movements respectively.
 ```
+
 ```
 12.8 In the JAT Check tab, the space for diagrams and entering scores in tables is
 organised in pairs, with each junction requiring two entries. Firstly, you must assess
@@ -1620,12 +1626,14 @@ the existing junction layout on the left, and then the proposed design on the ri
 The junction name only needs to be entered once for each pair (on the left) and it will
 automatically populate on the right.
 ```
+
 ```
 12.9 Satellite imagery from sources like Google Maps can be used as a template for the
 JAT diagram of the existing junction, as shown in Figure 14. Scheme drawings can be
 used as a template for the JAT diagram of the proposed design. Street names should
 ideally be visible in any satellite imagery or scheme drawings included.
 ```
+
 ```
 12.10 You must enter all movements and associated scores into the tables in the JAT Check
 as well as adding arrows to the JAT diagrams to show movements at the junction.
@@ -1633,6 +1641,7 @@ You can represent these movements and their scores of 0, 1, 2 and X with red,
 amber, green and black arrows respectively. Cycle movements are shown with solid
 arrows while pedestrian movements are shown with dashed double ended arrows.
 ```
+
 ```
 12.11 Each pedestrian movement can be assigned a letter, and each cycle movement a
 number. You can then label the arrows representing these movements on the
@@ -1641,6 +1650,7 @@ where you can enter justification for how you scored individual movements. It is
 recommended that you do this for all amber, red and black movements as a
 minimum.
 ```
+
 ## Route Check User Manual
 
 next two sections of this chapter describe how to score cycle and pedestrian movements
@@ -1673,6 +1683,7 @@ for all amber, red and black movements as a minimum.
 Figure 14 A completed JAT Diagram for the existing situation at a junction, using satellite imagery
 from Google Maps
 ```
+
 ```
 Figure 14 – A completed JAT Diagram for the existing situation at a junction, using
 satellite imagery from Google Maps
@@ -1681,6 +1692,7 @@ satellite imagery from Google Maps
 ```
 Route Check User Manual
 ```
+
 12.12 Once you have entered scores for all these movements, the spreadsheet will calculate
 an overall score for the junction’s pedestrian movements, an overall score for its
 cycling movements and finally, an overall JAT score for the junction combining the
@@ -1691,6 +1703,7 @@ multiplied by 2, which is the highest potential score for each movement).
 ```
 Total Sum of Scores ÷ (Total Movements × 2) = JAT Score
 ```
+
 12.13 A completed table of pedestrian crossing movements for the example given above in
 Figure 14 is shown below in Figure 15. You should fill in the rows completely, adding a
 justification for the scoring in the comments column for at least all amber, red and
@@ -1702,6 +1715,7 @@ pedestrian movements, so four rows have been filled (A-D).
 ```
 35
 ```
+
 ```
 Once you have entered scores for all these movements, the spreadsheet will calculate an
 overall score for the junction’s pedestrian movements, an overall score for its cycling
@@ -1710,9 +1724,11 @@ scores are expressed as percentages of the maximum possible score (which is the 
 number of cycle and pedestrian movements at the junction multiplied by 2, which is the
 highest potential score for each movement).
 ```
+
 ```
 Total Sum of Scores ÷ (Total Movements × 2) = JAT Score
 ```
+
 ```
 A completed table of pedestrian crossing movements for the example given above in
 Figure 14 is shown below in Figure 15. You should fill in the rows completely, adding a
@@ -1722,15 +1738,18 @@ you enter a crossing name in the crossing column without a score, the spreadshee
 record a zero score. The example junction has four possible pedestrian movements, so
 four rows have been filled (A-D).
 ```
+
 ```
 Figure 15 A completed table of pedestrian movements for a junction in the JAT check.
 ```
+
 ## Scoring Pedestrian Movements
 
 ```
 Unlike cycle movements, which are covered in LTN 1/20, pedestrian movements have no
 codified scoring resource elsewhere.
 ```
+
 ```
 Black pedestrian movements are where an obvious pedestrian desire line is somehow
 blocked, or not accommodated by the physical presence of a crossing. For example, you
@@ -1739,6 +1758,7 @@ Another example would be a pedestrian desire line on an arm of a junction with n
 controlled crossing, no dropped kerbs and no tactile paving to support pedestrians wishing
 to cross. Black pedestrian movements score zero.
 ```
+
 ```
 Red pedestrian movements are where there is some form of crossing, but it is not fully
 accessible and/or does not sufficiently protect pedestrians. Red pedestrian movements
@@ -1746,6 +1766,7 @@ therefore have high potential for conflict with motor traffic. Most red pedestri
 will also appear in Route Check as critical issues. Red pedestrian movements score 0 and
 some examples include:
 ```
+
 Figure 15 – A completed table of pedestrian movements for a junction in the JAT
 check.
 
@@ -1761,7 +1782,6 @@ pedestrian movements. Another example would be a pedestrian desire line on an ar
 of a junction with no controlled crossing, no dropped kerbs and no tactile paving to
 support pedestrians wishing to cross. Black pedestrian movements score zero.
 
-
 12.16 Red pedestrian movements are where there is some form of crossing, but it is not
 fully accessible and/or does not sufficiently protect pedestrians. Red pedestrian
 movements therefore have high potential for conflict with motor traffic. Most red
@@ -1769,39 +1789,38 @@ pedestrian movements will also appear in Route Check as critical issues. Red
 pedestrian movements score 0 and some examples include:
 
 - Where a pedestrian desire line does not have adequate crossing provision.
-    Adequate crossing provision means all the essential elements of a safe, fully
-    accessible design, including dropped kerbs, visibility, surface condition and
-    drainage, tactile paving, adequate waiting and passing space (particularly in
-    shared-use situations) and gradients, etc.
+  Adequate crossing provision means all the essential elements of a safe, fully
+  accessible design, including dropped kerbs, visibility, surface condition and
+  drainage, tactile paving, adequate waiting and passing space (particularly in
+  shared-use situations) and gradients, etc.
 - Pedestrian desire lines that conflict with more than 2,500 vehicles per day and
-    have no controlled crossing provision.
+  have no controlled crossing provision.
 - Pedestrian desire lines where pedestrians must cross at over 1.2 m/s to get across
-    a crossing in time.
+  a crossing in time.
 
-12.17 Amber pedestrian movements have some form of crossing provision, but it
-doesn’t fully meet the needs of everyone walking and wheeling. For example, the
-provision doesn’t fully meet desire lines and is less used by some pedestrians, who
-many instead cross on their desire lines at increased risk. Amber pedestrian
-movements score 1 and some examples include:
+  12.17 Amber pedestrian movements have some form of crossing provision, but it
+  doesn’t fully meet the needs of everyone walking and wheeling. For example, the
+  provision doesn’t fully meet desire lines and is less used by some pedestrians, who
+  many instead cross on their desire lines at increased risk. Amber pedestrian
+  movements score 1 and some examples include:
 
 - Crossings located away from desire lines or which are not intuitive for the intended
-    movement.
+  movement.
 - Staggered crossings.
 - Crossings with guard railing that encourages off-crossing movements.
 - Crossings with excessive waiting times, either at individual crossings or
-    cumulatively through a series of crossings.
+  cumulatively through a series of crossings.
 
-12.18 Green pedestrian movements score 2. These are movements where the potential
-for conflict with motor traffic has been almost entirely removed by the provision of
-fit-for-purpose controlled crossings, or uncontrolled crossings that fully meet the
-requirements of traffic speed, volumes and geometry.
+  12.18 Green pedestrian movements score 2. These are movements where the potential
+  for conflict with motor traffic has been almost entirely removed by the provision of
+  fit-for-purpose controlled crossings, or uncontrolled crossings that fully meet the
+  requirements of traffic speed, volumes and geometry.
 
 Scoring cycle movements
 
 12.19 Scoring cycle movements in this version of the JAT Check is exactly the same as in
 the version of the JAT Check introduced in LTN 1/20. You can therefore refer to
 Section 5 of Appendix B of LTN 1/20 for guidance on scoring cycle movements.
-
 
 JAT Results
 
@@ -1822,7 +1841,6 @@ sometimes also amber movements) are discussed via correspondence and meetings.
 However, the removal of all such red movements is not necessarily a requirement of
 schemes assessed by ATE, especially if such movements are mitigated.
 
-
 13. Results and Scoring
 
 13 .1 This chapter explains the three output tabs in the Route Check and then gives
@@ -1838,14 +1856,14 @@ route for people walking, wheeling and cycling.
 13.3 The outputs are split into three tabs:
 
 - Results Summary – this tab gives a top-level overview of Route
-    Check’s findings, focusing on the change in score between the
-    existing layout and the proposed design, as well as any remaining
-    issues.
+  Check’s findings, focusing on the change in score between the
+  existing layout and the proposed design, as well as any remaining
+  issues.
 - Results Further Analysis – this tab gives a full summary of the
-    quantitative results of the assessment, with extra analysis into the
-    strengths and weaknesses of the route and interventions.
+  quantitative results of the assessment, with extra analysis into the
+  strengths and weaknesses of the route and interventions.
 - Results Export – this tab gives all the Route Check results, both
-    qualitative and quantitative, and is optimised for export and printing.
+  qualitative and quantitative, and is optimised for export and printing.
 
 Why is this important?
 
@@ -1872,7 +1890,6 @@ recommend further action to remove issues.
 13.8 As the table contains the key results and potential next steps from the Route Check,
 it can be used as a quick reference for scheme performance. It can also be used as a
 starting point to explore Route Check results further.
-
 
 13.9 With the exception of the ‘Review Statement’ box, all the results in the table will
 populate automatically once you have filled in the various sections of the Route Check
@@ -1924,7 +1941,6 @@ Safety Check metrics, 26 Street Check metrics and 30 Path Check metrics.
 the metrics shown in Safety Check, Street Check and Path Check, in the first column
 of the spreadsheet.
 
-
 Results Further Analysis tab
 
 13 .17 This tab summarises the quantitative results of the Route Check. The results are
@@ -1946,16 +1962,16 @@ Policy Conflict Log. From left to right, it shows:
 - How many policy conflicts there are in the existing layout.
 - How many policy conflicts there are in the proposed design.
 - How many policy conflicts were removed. That is, how many policy conflicts were
-    present in the existing layout that the proposed design removed.
+  present in the existing layout that the proposed design removed.
 - How many policy conflicts were introduced. That is, how many policy conflicts
-    were not present in the existing layout but were introduced by the proposed
-    design.
+  were not present in the existing layout but were introduced by the proposed
+  design.
 - The number of policy conflicts remaining in the proposed design.
 
-13.20 If there are any remaining potential policy conflicts, the local authority or ATE should
-add comments in the Policy Conflict Log tab, along with an overall comment in the
-Policy Check tab. These comments are not shown in the Results Further Analysis tab,
-but pull through into the Results Export tab.
+  13.20 If there are any remaining potential policy conflicts, the local authority or ATE should
+  add comments in the Policy Conflict Log tab, along with an overall comment in the
+  Policy Check tab. These comments are not shown in the Results Further Analysis tab,
+  but pull through into the Results Export tab.
 
 Safety Check Results (Critical Issues Only)
 
@@ -1965,19 +1981,18 @@ Critical Issues Log. From left to right, these are:
 - How many critical issues are present in the existing layout.
 - How many critical issues are present in the proposed design.
 - How many critical issues were removed. That is, how many critical issues were
-    present in the existing layout that the proposed design removed.
+  present in the existing layout that the proposed design removed.
 - How many critical issues were introduced. That is, how many critical issues were
-    not present in the existing layout but were introduced by the proposed design.
+  not present in the existing layout but were introduced by the proposed design.
 - The number of critical issues remaining in the proposed design.
 
+  13.22 If there are any remaining critical safety issues, the local authority or ATE should add
+  comments in the Critical Issues log. These comments are not shown in the Results
+  Further Analysis tab, but do pull through into the Results Export tab.
 
-13.22 If there are any remaining critical safety issues, the local authority or ATE should add
-comments in the Critical Issues log. These comments are not shown in the Results
-Further Analysis tab, but do pull through into the Results Export tab.
-
-13.23 The Level of Service scores for the metrics in the Safety Check are not shown here
-but are shown instead in the Street Check Results or Path Check Results tables
-below, depending on the type of scheme you are assessing.
+  13.23 The Level of Service scores for the metrics in the Safety Check are not shown here
+  but are shown instead in the Street Check Results or Path Check Results tables
+  below, depending on the type of scheme you are assessing.
 
 Street Check Results
 
@@ -2021,7 +2036,6 @@ design and the difference between the two. It also gives overall scores for all 
 levels of service. The ‘spider chart’ graph shows the two sets of levels for the core
 design principles.
 
-
 13.31 The second table and chart break down the levels of service for each of the active
 travel modes: walking, wheeling, cycling and (if applicable) horse riding. It does this
 for both the existing layout and the proposed design. You can use these results to
@@ -2063,15 +2077,14 @@ with the following additions:
 
 - The Overview Table from the Results Summary tab.
 - A table listing any remaining policy conflicts from the Policy Conflict Log, including
-    their reference ID, type and location information plus any comments and feedback.
+  their reference ID, type and location information plus any comments and feedback.
 - A table listing any remaining critical issues from the Critical Issues Log, including
-    their reference ID, type and location information plus any comments and feedback.
+  their reference ID, type and location information plus any comments and feedback.
 
-13.38 The remaining policy conflicts and critical issues listed in the tables are simply those
-present in the proposed design, whether they are unresolved policy conflicts and
-critical issues from the existing layout, or new ones introduced by the proposed
-design.
-
+  13.38 The remaining policy conflicts and critical issues listed in the tables are simply those
+  present in the proposed design, whether they are unresolved policy conflicts and
+  critical issues from the existing layout, or new ones introduced by the proposed
+  design.
 
 Exporting the Results
 
@@ -2135,6 +2148,7 @@ Character and Legibility 10 20
 Environmental 10 20
 Summary 26 52
 ```
+
 Path Check Scoring
 
 13.48 There are up to 46 metrics scored for the Path Check. The first 16 of these are the
@@ -2175,7 +2189,3 @@ Character and Legibility 4 8
 Environmental 9 18
 Summary 19 44
 ```
-
-
-
-
