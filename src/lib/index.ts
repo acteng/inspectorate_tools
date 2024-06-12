@@ -24,3 +24,19 @@ export function sum(list: number[]): number {
 export function stripSuffix(value: string, suffix: string): string {
   return value.endsWith(suffix) ? value.slice(0, -suffix.length) : value;
 }
+
+export function downloadBinaryFile(bytes: ArrayBuffer, filename: string) {
+  let blob = new Blob([bytes], { type: "application/octet-stream" });
+  let url = URL.createObjectURL(blob);
+
+  let link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.style.display = "none";
+
+  document.body.appendChild(link);
+  link.click();
+
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}

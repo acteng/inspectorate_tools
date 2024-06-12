@@ -3,6 +3,7 @@ import blankUrl from "$lib/assets/blank_route_check.xlsx?url";
 import type { State, Scorecard, Score } from "../data";
 import type { Position } from "$lib/map";
 import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
+import { downloadBinaryFile } from "$lib";
 
 export async function downloadExcelFile(state: State) {
   console.log("Loading blank route check xlsx");
@@ -89,7 +90,7 @@ export async function downloadExcelFile(state: State) {
 
   console.log("Writing route check xlsx");
   let outBytes = await workbook.xlsx.writeBuffer();
-  downloadGeneratedFile(outBytes, "out.xlsx");
+  downloadBinaryFile(outBytes, "out.xlsx");
 }
 
 function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
@@ -278,20 +279,4 @@ function fixJatScore(s: "0" | "1" | "2" | "X"): number | string {
 
 function point(pt: Position): string {
   return `${pt[1]}, ${pt[0]}`;
-}
-
-function downloadGeneratedFile(bytes: ArrayBuffer, filename: string) {
-  let blob = new Blob([bytes], { type: "application/octet-stream" });
-  let url = URL.createObjectURL(blob);
-
-  let link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  link.style.display = "none";
-
-  document.body.appendChild(link);
-  link.click();
-
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
 }
