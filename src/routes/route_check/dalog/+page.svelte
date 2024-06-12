@@ -8,6 +8,14 @@
   let header = pairs.map((pair) => pair[0]).join("\t");
   // TODO Need to escape " in the values, then
   let values = pairs.map((pair) => `"${pair[1]}"`).join("\t");
+
+  async function download() {
+    try {
+      await downloadExcelFile($state);
+    } catch (err) {
+      window.alert(`Conversion failed: ${err}`);
+    }
+  }
 </script>
 
 <p>
@@ -27,3 +35,9 @@
 <DefaultButton on:click={() => downloadExcelFile($state)}>
   Convert to .xlsx (takes a few seconds)
 </DefaultButton>
+<p>
+  <i>
+    When you open the file, you need to force Excel to recalculate all formulas
+    with Ctrl + Alt + F9
+  </i>
+</p>

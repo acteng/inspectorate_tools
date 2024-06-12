@@ -3,7 +3,7 @@
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import { streetviewUrl, bingUrl } from "$lib/map";
-  import { policyConflictChoices } from "./lists";
+  import { policyConflictChoices } from "../lists";
 
   export let idx: number;
 </script>

@@ -2,6 +2,7 @@ import ExcelJS from "exceljs";
 import blankUrl from "$lib/assets/blank_route_check.xlsx?url";
 import type { State, Scorecard, Score } from "../data";
 import type { Position } from "$lib/map";
+import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
 
 export async function downloadExcelFile(state: State) {
   console.log("Loading blank route check xlsx");
@@ -124,8 +125,7 @@ function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
   let sheet = workbook.getWorksheet("2.2 Policy Conflict Log")!;
 
   for (let [i, pc] of state.policyConflictLog.entries()) {
-    // TODO Need the full name
-    sheet.getCell("F" + (8 + i)).value = pc.conflict;
+    sheet.getCell("F" + (8 + i)).value = getFullPolicyConflict(pc.conflict);
     sheet.getCell("H" + (8 + i)).value = pc.stage;
     sheet.getCell("I" + (8 + i)).value = point(pc.point);
     sheet.getCell("J" + (8 + i)).value = pc.locationName;
@@ -138,8 +138,7 @@ function criticalIssueLog(state: State, workbook: ExcelJS.Workbook) {
   let sheet = workbook.getWorksheet("3.2 Critical Issues Log")!;
 
   for (let [i, ci] of state.criticalIssues.entries()) {
-    // TODO Need the full name
-    sheet.getCell("F" + (8 + i)).value = ci.criticalIssue;
+    sheet.getCell("F" + (8 + i)).value = getFullCriticalIssue(ci.criticalIssue);
     sheet.getCell("H" + (8 + i)).value = ci.stage;
     sheet.getCell("I" + (8 + i)).value = point(ci.point);
     sheet.getCell("J" + (8 + i)).value = ci.locationName;

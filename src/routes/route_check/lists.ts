@@ -100,3 +100,19 @@ export let criticalIssueChoices: [string, string][] = [
     "16 - Guard Railing: used as standard without consideration of inherent safety risks",
   ],
 ];
+
+export function getFullPolicyConflict(code: string): string {
+  let result = policyConflictChoices.find((pair) => pair[0] == code);
+  if (result) {
+    return result[1];
+  }
+  throw new Error(`Unknown policy conflict ${code}`);
+}
+
+export function getFullCriticalIssue(code: string): string {
+  let result = criticalIssueChoices.find((pair) => pair[0] == code);
+  if (result) {
+    return result[1];
+  }
+  throw new Error(`Unknown critical issue ${code}`);
+}
