@@ -1,10 +1,19 @@
 <script lang="ts">
   import { state } from "../data";
   import { sum } from "$lib";
-  import { TextArea } from "govuk-svelte";
+  import { SecondaryButton, TextArea } from "govuk-svelte";
+  import { downloadExcelFile } from "./export";
 
   $: totalExisting = sum($state.existingScores.map((x) => parseInt(x || "0")));
   $: totalProposed = sum($state.proposedScores.map((x) => parseInt(x || "0")));
+
+  async function download() {
+    try {
+      await downloadExcelFile($state);
+    } catch (err) {
+      window.alert(`Conversion failed: ${err}`);
+    }
+  }
 </script>
 
 <div class="govuk-width-container">
@@ -34,3 +43,13 @@
     bind:value={$state.resultsNotes}
   />
 </div>
+
+<SecondaryButton on:click={() => downloadExcelFile($state)}>
+  Convert to .xlsx (takes a few seconds)
+</SecondaryButton>
+<p>
+  <i>
+    When you open the file, you need to force Excel to recalculate all formulas
+    with Ctrl + Alt + F9
+  </i>
+</p>

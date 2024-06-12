@@ -1,6 +1,6 @@
 import ExcelJS from "exceljs";
 import blankUrl from "$lib/assets/blank_area_check.xlsx?url";
-import type { State } from "./data";
+import type { State } from "../data";
 import { downloadBinaryFile } from "$lib";
 
 export async function downloadExcelFile(state: State) {
@@ -64,5 +64,25 @@ function trafficMitigationCheck(state: State, workbook: ExcelJS.Workbook) {
 
 function areaScorecard(state: State, workbook: ExcelJS.Workbook) {
   let sheet = workbook.getWorksheet("Area Scorecard")!;
-  // TODO
+  // The top row for each question
+  let rows = [10, 15, 21, 26, 32, 37, 43, 48, 54, 60, 66, 72, 78];
+
+  for (let i = 0; i < state.existingScores.length; i++) {
+    sheet.getCell("H" + rows[i]).value = state.existingScoreNotes[i];
+    sheet.getCell("L" + rows[i]).value = state.proposedScoreNotes[i];
+
+    // We have to overwrite every single answer
+    for (let [offset, score] of ["4", "3", "2", "1", "0"].entries()) {
+      sheet.getCell("F" + (rows[i] + offset)).value =
+        state.existingScores[i] == score ||
+        (offset == 0 && state.existingScores[i] == "")
+          ? "Yes"
+          : "No";
+      sheet.getCell("J" + (rows[i] + offset)).value =
+        state.proposedScores[i] == score ||
+        (offset == 0 && state.proposedScores[i] == "")
+          ? "Yes"
+          : "No";
+    }
+  }
 }
