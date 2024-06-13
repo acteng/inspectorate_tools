@@ -1,1 +1,0 @@
-var s;const t=((s=globalThis.__sveltekit_g0i2da)==null?void 0:s.base)??"/inspectorate_tools/manual-content-updates";var a;const e=((a=globalThis.__sveltekit_g0i2da)==null?void 0:a.assets)??t;export{e as a,t as b};
