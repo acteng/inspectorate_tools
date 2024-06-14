@@ -1,7 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import { ExternalLink } from "$lib";
-  import { getChildren } from "$lib/nav";
 </script>
 
 <p>
@@ -13,7 +12,10 @@
 </p>
 
 <ol>
-  {#each getChildren("/area_check") as [path, title]}
-    <li><a href="{base}{path}">{title}</a></li>
-  {/each}
+  <li><a href="{base}/area_check/summary">Summary of Scheme</a></li>
+  <li>
+    <a href="{base}/area_check/traffic_mitigation">Traffic Mitigation Check</a>
+  </li>
+  <li><a href="{base}/area_check/scorecard">Area Scorecard</a></li>
+  <li><a href="{base}/area_check/results">Results & Commentary</a></li>
 </ol>

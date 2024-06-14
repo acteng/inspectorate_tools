@@ -241,15 +241,6 @@ let pages: [string, string][] = [
 let mainPageSections = pages.filter(([x, _]) => x.split("/").length == 3);
 let pathToTitle = new Map(pages);
 
-// Returns direct children of a path
-export function getChildren(rawPath: string): [string, string][] {
-  let path = canonicalizePath(rawPath);
-  let numParts = path.split("/").length;
-  return pages.filter(
-    ([x, _]) => x.startsWith(path) && x.split("/").length == numParts + 1,
-  );
-}
-
 export function getTitle(path: string): string {
   return pathToTitle.get(canonicalizePath(path))!;
 }
