@@ -10,6 +10,7 @@ let pages: [string, string][] = [
 
   ["/planning", "Planning Application Assessment Toolkit"],
   ["/planning/files", "Manage files"],
+  ["/planning/app_details", "Application details"],
   ["/planning/scorecard", "Scorecard"],
   ["/planning/scorecard/q01", "Trip generation and assignment"],
   ["/planning/scorecard/q02", "Active travel route audit"],

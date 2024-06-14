@@ -15,6 +15,18 @@ export let files = new LocalStorageFiles(
 export interface State {
   version: string;
 
+  summary: {
+    siteAddress: string;
+    localAuthorityReference: string;
+    ateReference: string;
+    localPlanningAuthority: string;
+    localHighwayAuthority: string;
+    completedBy: string;
+    date: string;
+    applicationType: string;
+    proposalSummary: string;
+  };
+
   // Exactly 10 entries, matching up with the scorecard questions
   ratings: string[];
   // Optional notes for each entry
@@ -24,19 +36,33 @@ export interface State {
 
 function validate(state: State) {
   if (state.version == "alpha-0") {
-    // Upgrade
     state.version = "alpha-1";
     state.localGuidance = Array(10).fill("");
   }
+  if (state.version == "alpha-1") {
+    state.version = "alpha-2";
+    state.summary = emptyState().summary;
+  }
 
-  if (state.version != "alpha-1") {
+  if (state.version != "alpha-2") {
     throw new Error("File format appears outdated");
   }
 }
 
 export function emptyState(): State {
   return {
-    version: "alpha-1",
+    version: "alpha-2",
+    summary: {
+      siteAddress: "",
+      localAuthorityReference: "",
+      ateReference: "",
+      localPlanningAuthority: "",
+      localHighwayAuthority: "",
+      completedBy: "",
+      date: "",
+      applicationType: "",
+      proposalSummary: "",
+    },
     ratings: Array(10).fill(""),
     appraiserComments: Array(10).fill(""),
     localGuidance: Array(10).fill(""),
