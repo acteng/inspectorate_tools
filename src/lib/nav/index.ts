@@ -9,6 +9,7 @@ let pages: [string, string][] = [
   ["/", "Tools"],
 
   ["/planning", "Planning Application Assessment Toolkit"],
+  ["/planning/files", "Manage files"],
   ["/planning/scorecard", "Scorecard"],
   ["/planning/scorecard/q01", "Trip generation and assignment"],
   ["/planning/scorecard/q02", "Active travel route audit"],
@@ -291,6 +292,10 @@ function filterMainPageSections(
       ],
     }[routeCheckType],
   );
+  exclude.add("/area_check/files");
+  exclude.add("/cross_section/files");
+  exclude.add("/planning/files");
+  exclude.add("/route_check/files");
   return mainPageSections.filter(([x, _]) => !exclude.has(x));
 }
 

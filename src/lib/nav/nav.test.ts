@@ -44,11 +44,7 @@ describe("getBreadcrumbLinks", () => {
 
 describe("getPrevPage", () => {
   it("normal cases", () => {
-    expect(getPrevPage("/cross_section/files", "")).toBe(null);
-    expect(getPrevPage("/cross_section/summary", "")).toStrictEqual([
-      "/cross_section/files",
-      "Manage files",
-    ]);
+    expect(getPrevPage("/cross_section/summary", "")).toBe(null);
     expect(getPrevPage("/cross_section/proposed", "")).toStrictEqual([
       "/cross_section/summary",
       "Summary of Scheme",
