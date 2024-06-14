@@ -1,5 +1,18 @@
 // Deliberately separate from the one in $lib
 
+export let criteria = [
+  "Trip generation and assignment",
+  "Active travel route audit",
+  "Pedestrian access to local amenities",
+  "Cycling accessibility",
+  "Access to public transport",
+  "Off-site transport infrastructure",
+  "Site permeability",
+  "Placemaking",
+  "Cycle parking and trip-end facilities",
+  "Travel planning",
+];
+
 export let localPlanningAuthorities = [
   "Adur",
   "Amber Valley",

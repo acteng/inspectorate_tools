@@ -7,4 +7,5 @@
 <ol>
   <li><a href="{base}/planning/app_details">Application details</a></li>
   <li><a href="{base}/planning/scorecard">Scorecard</a></li>
+  <li><a href="{base}/planning/report">Report</a></li>
 </ol>

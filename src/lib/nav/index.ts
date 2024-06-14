@@ -22,6 +22,7 @@ let pages: [string, string][] = [
   ["/planning/scorecard/q08", "Placemaking"],
   ["/planning/scorecard/q09", "Cycle parking and trip-end facilities"],
   ["/planning/scorecard/q10", "Travel planning"],
+  ["/planning/report", "Report"],
 
   ["/cross_section", "Route cross-section tool"],
   ["/cross_section/files", "Manage files"],

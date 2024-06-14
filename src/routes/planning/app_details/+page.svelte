@@ -6,7 +6,7 @@
     localPlanningAuthorities,
     localHighwayAuthorities,
     applicationTypes,
-  } from "./lists";
+  } from "../lists";
 </script>
 
 <div class="govuk-width-container">
