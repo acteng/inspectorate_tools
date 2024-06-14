@@ -8,7 +8,8 @@
   } from "govuk-svelte";
   import { state } from "../data";
   import EditJunction from "./EditJunction.svelte";
-  import { ClickableCard } from "$lib";
+  import { ClickableCard, ManualSectionModal } from "$lib";
+  import {contents} from "../manual/content";
 
   type Mode =
     | { kind: "list" }
@@ -53,6 +54,13 @@
     mode = { kind: "list" };
   }
 </script>
+
+<ManualSectionModal
+  title={"Junction Assessment Tool Check Manual"}
+  section={contents[10]}
+  link={"/route_check/manual"}
+/>
+<br>
 
 {#if mode.kind == "list"}
   <DefaultButton on:click={add}>Add new junction</DefaultButton>

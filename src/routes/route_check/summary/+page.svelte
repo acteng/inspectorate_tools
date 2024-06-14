@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs, ExternalLink } from "$lib";
+  import { pairs, ExternalLink, ManualSectionModal } from "$lib";
   import {
     Select,
     TextInput,
@@ -18,6 +18,7 @@
   import { ContextualMapEntry } from "$lib/map";
   import type { FeatureCollection } from "geojson";
   import turfLength from "@turf/length";
+  import {contents} from "../manual/content";
 
   // TODO https://design-system.service.gov.uk/components/date-input/
 
@@ -32,6 +33,13 @@
     return sum > 0 ? sum : null;
   }
 </script>
+
+<ManualSectionModal 
+  title={"Summary of Scheme Manual"}
+  section={contents[2]}
+  link={"/route_check/manual"}
+
+/>
 
 <div class="govuk-width-container">
   <TextInput
