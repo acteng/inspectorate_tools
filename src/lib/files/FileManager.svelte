@@ -61,8 +61,11 @@
   async function deleteFile() {
     // TODO Use a full Modal
     if (
-      window.confirm(`Really delete file ${$currentFile}? You can't undo this.`)
+      window.confirm(
+        `Really delete file ${$currentFile}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
+      )
     ) {
+      exportFile();
       window.localStorage.removeItem(files.key($currentFile));
       await newFile();
     }
