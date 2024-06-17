@@ -18,6 +18,18 @@
   }
 </script>
 
+<DefaultButton on:click={download}>
+  Convert to .xlsx (takes a few seconds)
+</DefaultButton>
+<p>
+  <i>
+    When you open the file, you need to force Excel to recalculate all formulas
+    with Ctrl + Alt + F9
+  </i>
+</p>
+
+<hr />
+
 <p>
   This page is for internal use only. The values below are TSV (tab-separated
   values), copyable into Excel.
@@ -31,13 +43,3 @@
   label="JSON mapping"
   value={JSON.stringify(Object.fromEntries(pairs), null, "  ")}
 />
-
-<DefaultButton on:click={download}>
-  Convert to .xlsx (takes a few seconds)
-</DefaultButton>
-<p>
-  <i>
-    When you open the file, you need to force Excel to recalculate all formulas
-    with Ctrl + Alt + F9
-  </i>
-</p>
