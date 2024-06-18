@@ -1,4 +1,7 @@
 <script lang="ts" generics="StateType">
+  import editUrl from "$lib/assets/images/edit.svg?url";
+  import deleteUrl from "$lib/assets/images/delete.svg?url";
+  import downloadUrl from "$lib/assets/images/download.svg?url";
   import { base } from "$app/paths";
   import { LocalStorageFiles } from "./index";
   import {
@@ -132,9 +135,16 @@
     .
   </p>
   <ButtonGroup>
-    <SecondaryButton on:click={renameFile}>Rename this file</SecondaryButton>
-    <SecondaryButton on:click={exportFile}>Export this file</SecondaryButton>
+    <SecondaryButton on:click={renameFile}>
+      <img src={editUrl} alt="Rename this file" />
+      Rename this file
+    </SecondaryButton>
+    <SecondaryButton on:click={exportFile}>
+      <img src={downloadUrl} alt="Download this file" />
+      Download this file
+    </SecondaryButton>
     <WarningButton on:click={() => deleteFile($currentFile)}>
+      <img src={deleteUrl} alt="Delete this file" />
       Delete this file
     </WarningButton>
   </ButtonGroup>
@@ -145,6 +155,7 @@
     <div class="govuk-grid-column-one-half">
       <h2>Create or import a file</h2>
       <SecondaryButton on:click={newFile}>New blank file</SecondaryButton>
+      <hr />
       <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
       {#if xlsxImporter != null}
@@ -175,3 +186,9 @@
   </div>
   <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
 </div>
+
+<style>
+  img {
+    vertical-align: middle;
+  }
+</style>

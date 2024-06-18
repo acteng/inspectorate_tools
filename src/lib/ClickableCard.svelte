@@ -14,7 +14,7 @@
 >
   <div class="top-section section">
     <span>{name}</span>
-    <img class="arrow" src={rightArrow} alt="arrow pointing right" />
+    <img class="arrow" src={rightArrow} alt="Select {name}" />
   </div>
   <div class="section">
     <slot />
