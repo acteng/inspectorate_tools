@@ -58,16 +58,24 @@
     document.body.removeChild(element);
   }
 
-  async function deleteFile() {
+  async function deleteFile(filename: string) {
     // TODO Use a full Modal
     if (
       window.confirm(
-        `Really delete file ${$currentFile}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
+        `Really delete file ${filename}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
       )
     ) {
-      exportFile();
-      window.localStorage.removeItem(files.key($currentFile));
-      await newFile();
+      let key = files.key(filename);
+      downloadGeneratedFile(
+        `${filename}.json`,
+        window.localStorage.getItem(key)!,
+      );
+      window.localStorage.removeItem(key);
+      if (filename == $currentFile) {
+        await newFile();
+      } else {
+        fileList = files.saveAndGetFileList($currentFile, $state);
+      }
     }
   }
 
@@ -126,7 +134,9 @@
   <ButtonGroup>
     <SecondaryButton on:click={renameFile}>Rename this file</SecondaryButton>
     <SecondaryButton on:click={exportFile}>Export this file</SecondaryButton>
-    <WarningButton on:click={deleteFile}>Delete this file</WarningButton>
+    <WarningButton on:click={() => deleteFile($currentFile)}>
+      Delete this file
+    </WarningButton>
   </ButtonGroup>
 
   <hr />
@@ -146,15 +156,20 @@
       <h2>Load a saved file</h2>
 
       {#each fileList as filename}
-        <ClickableCard
-          name={`File name: ${filename}`}
-          on:click={() => openFile(filename)}
-          disabled={filename === $currentFile}
-        >
-          {filename == $currentFile
-            ? "Currently open"
-            : files.describeFile(filename)}
-        </ClickableCard>
+        <div style="display: flex; justify-content: space-between">
+          <ClickableCard
+            name={`File name: ${filename}`}
+            on:click={() => openFile(filename)}
+            disabled={filename === $currentFile}
+          >
+            {filename == $currentFile
+              ? "Currently open"
+              : files.describeFile(filename)}
+          </ClickableCard>
+          <WarningButton on:click={() => deleteFile(filename)}>
+            Delete
+          </WarningButton>
+        </div>
       {/each}
     </div>
   </div>
