@@ -1,4 +1,5 @@
 export { default as ClickableCard } from "./ClickableCard.svelte";
+export { default as DateInput } from "./DateInput.svelte";
 export { default as FancyRadio } from "./FancyRadio.svelte";
 export { default as ExternalLink } from "./ExternalLink.svelte";
 export { default as Loading } from "./Loading.svelte";
@@ -40,4 +41,12 @@ export function downloadBinaryFile(bytes: ArrayBuffer, filename: string) {
 
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+}
+
+// Format dates as YYYY-MM-DD for <input type="date">. Amazingly there seems to be no easier way than this.
+export function dateToString(date: Date): string {
+  let year = date.getFullYear();
+  let month = (date.getMonth() + 1).toString().padStart(2, "0");
+  let day = date.getDate().toString().padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }

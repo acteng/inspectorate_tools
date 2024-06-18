@@ -121,7 +121,7 @@ describe("getNextPage", () => {
     expect(getNextPage("/area_check/results", "")).toBe(null);
     expect(getNextPage("/cross_section/results_summary", "")).toBe(null);
     expect(getNextPage("/route_check/dalog", "")).toBe(null);
-    expect(getNextPage("/planning/scorecard", "")).toBe(null);
+    expect(getNextPage("/planning/report", "")).toBe(null);
   });
 
   it("route check types", () => {

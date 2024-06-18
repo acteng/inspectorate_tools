@@ -93,7 +93,7 @@ export interface PolicyConflict {
   point: Position;
   locationName: string;
   resolved: "Yes" | "No" | "";
-  notes: "";
+  notes: string;
 }
 
 export interface CriticalIssue {
@@ -127,7 +127,7 @@ export interface CriticalIssue {
   point: Position;
   locationName: string;
   resolved: "Yes" | "No" | "";
-  notes: "";
+  notes: string;
 }
 
 export interface Junction {

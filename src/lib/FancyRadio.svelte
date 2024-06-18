@@ -1,6 +1,5 @@
 <script lang="ts">
   import { TextArea } from "govuk-svelte";
-
   import { v4 as uuidv4 } from "uuid";
 
   // A list of [value, label, background color, font color] representing the choices

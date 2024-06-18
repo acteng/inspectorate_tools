@@ -96,6 +96,7 @@ export async function downloadExcelFile(state: State, currentFile: string) {
 function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
   let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
 
+  // TODO Back in Excel, it looks like there's a leading ' in the value, but it renders fine in the DALOG
   sheet.getCell("C6").value = state.summary.dateDesignReview;
   sheet.getCell("C7").value = state.summary.schemeReference;
   sheet.getCell("C8").value = state.summary.schemeName;

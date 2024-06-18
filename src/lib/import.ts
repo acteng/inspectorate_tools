@@ -1,10 +1,11 @@
 import ExcelJS, { type CellValue } from "exceljs";
 import { emptyState, type State, type Score } from "../routes/route_check/data";
 import type { Position } from "$lib/map";
+import { dateToString } from "./";
 
 // TODO More cautious error checking
 export function getDalog(workbook: ExcelJS.Workbook): {
-  [name: string]: string | number | null;
+  [name: string]: string | number | Date | null;
 } {
   let sheet = workbook.getWorksheet("DALog")!;
 
@@ -43,7 +44,7 @@ function num(idx: number): string {
 }
 
 export function dalogToState(dalog: {
-  [name: string]: string | number | null;
+  [name: string]: string | number | Date | null;
 }): State {
   let state = emptyState();
 
@@ -52,20 +53,29 @@ export function dalogToState(dalog: {
     if (typeof value == "string") {
       return value;
     }
-    // TODO Figure out how to represent these
-    // @ts-expect-error TODO also TS fail
-    if (typeof value == "object" && value instanceof Date) {
-      // @ts-expect-error TODO also TS fail
-      return value.toString();
-    }
-    // TODO RouteFileLength and such
-    if (typeof value == "number") {
-      return value.toString();
-    }
     if (value == null) {
       return "";
     }
     throw new Error(`${key} isn't a string, it's ${value}`);
+  };
+  // Log warnings and return 0 for invalid values
+  let numberOrZero = (key: string) => {
+    let value = dalog[key];
+    if (typeof value == "number") {
+      return value;
+    }
+    if (value == null) {
+      return 0;
+    }
+    console.warn(`${key} isn't a number, it's ${value}. Defaulting to 0`);
+    return 0;
+  };
+  let date = (key: string) => {
+    let value = dalog[key];
+    if (typeof value == "object" && value instanceof Date) {
+      return dateToString(value);
+    }
+    return "";
   };
   let yesNoBlank = (key: string) => {
     let value = dalog[key];
@@ -100,7 +110,7 @@ export function dalogToState(dalog: {
     normalString("Sub-tool") == "Street Check" ? "street" : "path";
 
   state.summary = {
-    dateDesignReview: normalString("Date of Design Review"),
+    dateDesignReview: date("Date of Design Review"),
     schemeReference: normalString("Scheme Ref"),
     schemeName: normalString("Scheme Name"),
     // Not in the DALOG
@@ -113,8 +123,9 @@ export function dalogToState(dalog: {
     designStage: normalString("Design Stage"),
     fundingConditions: normalString("Funding Conditions"),
     inspectorEmail: normalString("Inspector"),
-    assessedRouteLengthKm: normalString("RouteFileLength"),
-    totalRouteLengthKm: normalString("RouteLength"),
+    // TODO These seem to be swapped in Excel, so fix here
+    assessedRouteLengthKm: numberOrZero("RouteLength"),
+    totalRouteLengthKm: numberOrZero("RouteFileLength"),
     notes: normalString("Notes"),
     checkType,
     networkMap: { type: "FeatureCollection", features: [] },
@@ -149,7 +160,9 @@ export function dalogToState(dalog: {
     }
     state.policyConflictLog.push({
       // Just a single digit code
+      // @ts-expect-error TODO Check more carefully for enum errors
       conflict: normalString(`${prefix}Typ`).substr(0, 1),
+      // @ts-expect-error TODO Check more carefully for enum errors
       stage: normalString(`${prefix}Sta`),
       point: point(`${prefix}LaL`),
       locationName: normalString(`${prefix}Loc`),
@@ -165,7 +178,9 @@ export function dalogToState(dalog: {
       continue;
     }
     state.criticalIssues.push({
+      // @ts-expect-error TODO Check more carefully for enum errors
       criticalIssue: normalString(`${prefix}Typ`).split(" - ")[0],
+      // @ts-expect-error TODO Check more carefully for enum errors
       stage: normalString(`${prefix}Sta`),
       point: point(`${prefix}LaL`),
       locationName: normalString(`${prefix}Loc`),

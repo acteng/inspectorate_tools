@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs, ExternalLink } from "$lib";
+  import { pairs, DateInput, ExternalLink } from "$lib";
   import { Select, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
   import {
@@ -35,7 +35,7 @@
 
   <TextInput label="Completed by" bind:value={$state.summary.completedBy} />
 
-  <TextInput label="Date" bind:value={$state.summary.date} />
+  <DateInput label="Date" bind:value={$state.summary.date} />
 
   <Select
     label="Application type"

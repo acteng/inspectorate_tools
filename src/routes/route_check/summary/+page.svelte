@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs, ExternalLink } from "$lib";
+  import { pairs, ExternalLink, DateInput } from "$lib";
   import {
     Select,
     TextInput,
@@ -19,8 +19,6 @@
   import type { FeatureCollection } from "geojson";
   import turfLength from "@turf/length";
 
-  // TODO https://design-system.service.gov.uk/components/date-input/
-
   $: lengthHint = getLengthHint($state.summary.networkMap);
   function getLengthHint(gj: FeatureCollection): number | null {
     let sum = 0;
@@ -34,7 +32,7 @@
 </script>
 
 <div class="govuk-width-container">
-  <TextInput
+  <DateInput
     label="Date of design review"
     bind:value={$state.summary.dateDesignReview}
   />

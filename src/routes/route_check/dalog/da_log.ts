@@ -105,8 +105,9 @@ function schemeSummary(state: State): [string, Value][] {
     ["Design Stage", x.designStage],
     ["Funding Conditions", x.fundingConditions],
     ["Inspector", x.inspectorEmail],
-    ["RouteLength", x.totalRouteLengthKm],
-    ["RouteFileLength", x.assessedRouteLengthKm],
+    // TODO These're swapped in Excel. Output in the buggy way for consistency.
+    ["RouteLength", x.assessedRouteLengthKm],
+    ["RouteFileLength", x.totalRouteLengthKm],
     ["Notes", x.notes],
     ["Tool", "Route Check online-alpha"],
     // Don't worry about the blank case; the output of this log wouldn't matter anyway
