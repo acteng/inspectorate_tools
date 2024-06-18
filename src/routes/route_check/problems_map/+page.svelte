@@ -61,6 +61,18 @@
     hoveringSidebar = null;
   }
 
+  function selectAndZoom(id: ID) {
+    editing = id;
+    hoveringSidebar = null;
+
+    let list =
+      id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
+    map.flyTo({
+      center: list[id.idx].point,
+      duration: 500,
+    });
+  }
+
   function onMapClick(e: CustomEvent<MapMouseEvent>) {
     if (streetviewOn) {
       return;
@@ -208,7 +220,7 @@
         <li>
           <ClickableCard
             name={labelCritical(critical)}
-            on:click={() => select({ kind: "critical", idx })}
+            on:click={() => selectAndZoom({ kind: "critical", idx })}
             on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
             on:mouseleave={() => (hoveringSidebar = null)}
           >
@@ -225,7 +237,7 @@
       {#each $state.policyConflictLog as conflict, idx}
         <ClickableCard
           name={labelConflict(conflict)}
-          on:click={() => select({ kind: "conflict", idx })}
+          on:click={() => selectAndZoom({ kind: "conflict", idx })}
           on:mouseenter={() => (hoveringSidebar = { kind: "conflict", idx })}
           on:mouseleave={() => (hoveringSidebar = null)}
         >

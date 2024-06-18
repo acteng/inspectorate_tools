@@ -189,7 +189,7 @@
           on:mouseleave={() => (hoveringSidebar = null)}
         >
           <span
-            style="color: {color.font}; background-color: {color.background}"
+            style="padding: 4px; color: {color.font}; background-color: {color.background}"
           >
             Score: {movement.score}
           </span>
