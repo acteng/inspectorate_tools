@@ -16,6 +16,7 @@
   import { ClickableCard } from "$lib";
   import { state, type JunctionAssessment } from "../data";
   import Form from "./Form.svelte";
+  import { tick } from "svelte";
 
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";
@@ -28,15 +29,30 @@
 
   let newKind: Kind = "arm";
   let editing: ID | null = null;
+  // When changing to a form, preserve the list position and restore later
+  let preserveListScroll: number | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
   let showContext = true;
 
   let mapControls: MapControls | null = null;
+  let sidebar: HTMLDivElement;
 
-  function select(id: ID) {
+  async function select(id: ID) {
+    preserveListScroll = sidebar.scrollTop;
     editing = id;
     hoveringSidebar = null;
+    // Note after the form appears in the sidebar, we don't need to scroll to
+    // the top. The form is small and doesn't cause a scrollbar on most screens.
+  }
+
+  async function stopEditing() {
+    editing = null;
+    if (preserveListScroll != null) {
+      await tick();
+      sidebar.scrollTop = preserveListScroll;
+      preserveListScroll = null;
+    }
   }
 
   function armLabel(idx: number): string {
@@ -56,13 +72,13 @@
       $state.jat[junctionIdx][stage].arms.splice(editing!.idx, 1);
       $state.jat[junctionIdx][stage].arms = $state.jat[junctionIdx][stage].arms;
     }
-    editing = null;
+    stopEditing();
   }
 
   function onKeyDown(e: KeyboardEvent) {
     if (editing != null && e.key == "Escape") {
       e.stopPropagation();
-      editing = null;
+      stopEditing();
     } else if (editing != null && e.key == "Delete") {
       // Let the delete key work in forms
       let tag = (e.target as HTMLElement).tagName;
@@ -131,6 +147,7 @@
 <div style="display: flex; height: 80vh">
   <div
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
+    bind:this={sidebar}
   >
     {#if editing == null}
       <CollapsibleCard label="Tools">
@@ -201,7 +218,7 @@
         </SecondaryButton>
       {/if}
     {:else}
-      <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
+      <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       {#if editing.kind == "movement"}
         <Form {junctionIdx} {stage} idx={editing.idx} />
@@ -223,6 +240,8 @@
       {hoveringSidebar}
       {streetviewOn}
       {showContext}
+      {select}
+      {stopEditing}
     />
   </div>
 </div>

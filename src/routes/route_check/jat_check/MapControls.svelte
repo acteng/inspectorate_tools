@@ -35,6 +35,8 @@
   export let hoveringSidebar: ID | null;
   export let streetviewOn: boolean;
   export let showContext: boolean;
+  export let select: (id: ID) => Promise<void>;
+  export let stopEditing: () => Promise<void>;
 
   let map: Map;
 
@@ -71,12 +73,7 @@
     return gj;
   }
 
-  function select(id: ID) {
-    editing = id;
-    hoveringSidebar = null;
-  }
-
-  function onMapClick(e: CustomEvent<MapMouseEvent>) {
+  async function onMapClick(e: CustomEvent<MapMouseEvent>) {
     if (streetviewOn) {
       return;
     }
@@ -90,7 +87,7 @@
 
     // Deselect something
     if (editing != null) {
-      editing = null;
+      await stopEditing();
       return;
     }
 
@@ -102,7 +99,7 @@
           name: "",
         },
       ];
-      select({
+      await select({
         kind: "arm",
         idx: $state.jat[junctionIdx][stage].arms.length - 1,
       });
@@ -122,15 +119,15 @@
           notes: "",
         },
       ];
-      select({
+      await select({
         kind: "movement",
         idx: $state.jat[junctionIdx][stage].movements.length - 1,
       });
     }
   }
 
-  function onFeatureClick(e: CustomEvent<LayerClickInfo>) {
-    select({ kind: "movement", idx: e.detail.features[0].id as number });
+  async function onFeatureClick(e: CustomEvent<LayerClickInfo>) {
+    await select({ kind: "movement", idx: e.detail.features[0].id as number });
   }
 
   // TODO Wait for loaded
