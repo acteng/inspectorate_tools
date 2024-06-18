@@ -145,13 +145,15 @@
     <div class="govuk-grid-column-one-half">
       <h2>Load a saved file</h2>
 
-      {#each fileList as fileName}
+      {#each fileList as filename}
         <ClickableCard
-          name={`File name: ${fileName}`}
-          on:click={() => openFile(fileName)}
-          disabled={fileName === $currentFile}
+          name={`File name: ${filename}`}
+          on:click={() => openFile(filename)}
+          disabled={filename === $currentFile}
         >
-          {fileName === $currentFile ? "Already selected" : ""}
+          {filename == $currentFile
+            ? "Currently open"
+            : files.describeFile(filename)}
         </ClickableCard>
       {/each}
     </div>

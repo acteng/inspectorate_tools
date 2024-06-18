@@ -8,6 +8,7 @@ export let files = new LocalStorageFiles(
   "planning/",
   emptyState,
   validate,
+  describe,
   state,
   currentFile,
 );
@@ -47,6 +48,14 @@ function validate(state: State) {
   if (state.version != "alpha-2") {
     throw new Error("File format appears outdated");
   }
+}
+
+function describe(state: State): string {
+  let x = state.summary.siteAddress;
+  if (state.summary.ateReference) {
+    x += ` (${state.summary.ateReference})`;
+  }
+  return x;
 }
 
 export function emptyState(): State {

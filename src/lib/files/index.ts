@@ -9,6 +9,8 @@ export class LocalStorageFiles<StateType> {
   emptyState: () => StateType;
   // This may also backfill fields to repair any problems. Should throw an exception if the file state has some unrecoverable problem.
   validate: (state: StateType) => void;
+  // For valid state, returns a one-liner summary to show in the list of files.
+  describe: (state: StateType) => string;
   state: Writable<StateType>;
   // A key into local storage, excluding prefix
   currentFile: Writable<string>;
@@ -18,12 +20,14 @@ export class LocalStorageFiles<StateType> {
     prefix: string,
     emptyState: () => StateType,
     validate: (state: StateType) => void,
+    describe: (state: StateType) => string,
     state: Writable<StateType>,
     currentFile: Writable<string>,
   ) {
     this.prefix = prefix;
     this.emptyState = emptyState;
     this.validate = validate;
+    this.describe = describe;
     this.state = state;
     this.currentFile = currentFile;
 
@@ -89,6 +93,24 @@ export class LocalStorageFiles<StateType> {
   saveAndGetFileList(filename: string, state: StateType): string[] {
     window.localStorage.setItem(this.key(filename), JSON.stringify(state));
     return this.getFileList();
+  }
+
+  describeFile(filename: string): string {
+    let json = window.localStorage.getItem(this.key(filename));
+    if (!json) {
+      return "Error: missing";
+    }
+    try {
+      let state = JSON.parse(json);
+      this.validate(state);
+      // Compare structurally
+      if (JSON.stringify(state) == JSON.stringify(this.emptyState())) {
+        return "Empty";
+      }
+      return this.describe(state);
+    } catch (error) {
+      return "Error: invalid or broken file";
+    }
   }
 
   // Initially set the currentFile and state store, based on the last opened file or starting a new one.

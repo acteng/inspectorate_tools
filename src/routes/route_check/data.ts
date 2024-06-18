@@ -11,6 +11,7 @@ export let files = new LocalStorageFiles(
   "route_check/",
   emptyState,
   validate,
+  describe,
   state,
   currentFile,
 );
@@ -170,6 +171,14 @@ function validate(state: State) {
   if (state.version != "alpha-1") {
     throw new Error("File format appears outdated");
   }
+}
+
+function describe(state: State): string {
+  let x = state.summary.schemeName;
+  if (state.summary.schemeReference) {
+    x += ` (${state.summary.schemeReference})`;
+  }
+  return x;
 }
 
 export function emptyState(): State {

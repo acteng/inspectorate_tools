@@ -10,6 +10,7 @@ export let files = new LocalStorageFiles(
   "cross_section/",
   emptyState,
   validate,
+  describe,
   state,
   currentFile,
 );
@@ -91,6 +92,14 @@ function validate(state: State) {
   if (state.version != "alpha-0") {
     throw new Error("File format appears outdated");
   }
+}
+
+function describe(state: State): string {
+  let x = state.summary.schemeName;
+  if (state.summary.schemeReference) {
+    x += ` (${state.summary.schemeReference})`;
+  }
+  return x;
 }
 
 function emptyState(): State {
