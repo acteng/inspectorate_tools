@@ -11,7 +11,7 @@
     CollapsibleCard,
     Checkbox,
   } from "govuk-svelte";
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import { bbox } from "$lib/map";
   import { Basemap, MapLibreMap, StreetView, ContextualMap } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
@@ -26,12 +26,15 @@
   } from "../data";
 
   let map: Map;
+  let sidebar: HTMLDivElement;
 
   type Kind = "critical" | "conflict";
   type ID = { kind: Kind; idx: number };
 
   let newKind: Kind = "critical";
   let editing: ID | null = null;
+  // When changing to a form, preserve the list position and restore later
+  let preserveListScroll: number | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
   let showContext = true;
@@ -56,14 +59,20 @@
     return gj;
   }
 
-  function select(id: ID) {
+  async function select(id: ID) {
+    preserveListScroll = sidebar.scrollTop;
     editing = id;
     hoveringSidebar = null;
+    await tick();
+    sidebar.scrollTop = 0;
   }
 
-  function selectAndZoom(id: ID) {
+  async function selectAndZoom(id: ID) {
+    preserveListScroll = sidebar.scrollTop;
     editing = id;
     hoveringSidebar = null;
+    await tick();
+    sidebar.scrollTop = 0;
 
     let list =
       id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
@@ -73,13 +82,22 @@
     });
   }
 
+  async function stopEditing() {
+    editing = null;
+    if (preserveListScroll != null) {
+      await tick();
+      sidebar.scrollTop = preserveListScroll;
+      preserveListScroll = null;
+    }
+  }
+
   function onMapClick(e: CustomEvent<MapMouseEvent>) {
     if (streetviewOn) {
       return;
     }
     // Deselect something
     if (editing != null) {
-      editing = null;
+      stopEditing();
       return;
     }
 
@@ -129,7 +147,7 @@
       $state.policyConflictLog.splice(editing!.idx, 1);
       $state.policyConflictLog = $state.policyConflictLog;
     }
-    editing = null;
+    stopEditing();
   }
 
   function pointFeature(coordinates: Position): Feature {
@@ -171,7 +189,7 @@
   function onKeyDown(e: KeyboardEvent) {
     if (editing != null && e.key == "Escape") {
       e.stopPropagation();
-      editing = null;
+      stopEditing();
     } else if (editing != null && e.key == "Delete") {
       // Let the delete key work in forms
       let tag = (e.target as HTMLElement).tagName;
@@ -189,6 +207,7 @@
 <div style="display: flex; height: 80vh">
   <div
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
+    bind:this={sidebar}
   >
     {#if editing == null}
       <CollapsibleCard label="Tools">
@@ -250,7 +269,7 @@
         </ClickableCard>
       {/each}
     {:else}
-      <DefaultButton on:click={() => (editing = null)}>Save</DefaultButton>
+      <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       {#if editing.kind == "critical"}
         <CriticalForm idx={editing.idx} />
@@ -259,6 +278,7 @@
       {/if}
     {/if}
   </div>
+
   <div style="position: relative; width: 70%;">
     <MapLibreMap bind:map>
       <MapEvents on:click={onMapClick} />
