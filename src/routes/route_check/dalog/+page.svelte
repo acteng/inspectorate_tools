@@ -3,30 +3,34 @@
   import { state, currentFile } from "../data";
   import { DefaultButton, TextArea } from "govuk-svelte";
   import { downloadExcelFile } from "./export";
+  import { Loading } from "$lib";
 
   let pairs = encodeDalog($state);
   let header = pairs.map((pair) => pair[0]).join("\t");
   // TODO Need to escape " in the values, then
   let values = pairs.map((pair) => `"${pair[1]}"`).join("\t");
 
+  let loading = "";
+
   async function download() {
+    loading = "Converting to .xlsx (takes about 20 seconds)";
     try {
       await downloadExcelFile($state, $currentFile);
     } catch (err) {
       window.alert(`Conversion failed: ${err}`);
     }
+    loading = "";
   }
 </script>
 
-<DefaultButton on:click={download}>
-  Convert to .xlsx (takes a few seconds)
-</DefaultButton>
+<DefaultButton on:click={download}>Convert to .xlsx</DefaultButton>
 <p>
   <i>
     When you open the file, you need to force Excel to recalculate all formulas
     with Ctrl + Alt + F9
   </i>
 </p>
+<Loading {loading} />
 
 <hr />
 

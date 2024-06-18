@@ -1,7 +1,6 @@
 <script lang="ts" generics="StateType">
-  import { stripSuffix } from "$lib";
+  import { stripSuffix, Loading } from "$lib";
   import { FormElement } from "govuk-svelte";
-  import Loading from "./Loading.svelte";
   import { createEventDispatcher } from "svelte";
 
   let dispatch = createEventDispatcher<{
