@@ -36,10 +36,12 @@
   bind:value={$state.criticalIssues[idx].locationName}
 />
 
-<YesNo
-  label="Resolved by Design"
-  bind:value={$state.criticalIssues[idx].resolved}
-/>
+{#if $state.criticalIssues[idx].stage != "Design"}
+  <YesNo
+    label="Resolved by Design"
+    bind:value={$state.criticalIssues[idx].resolved}
+  />
+{/if}
 
 <TextArea
   label="Commentary & Feedback"

@@ -254,7 +254,9 @@
               style="width: 100%; display: flex; justify-content: space-between"
             >
               <span>Stage: {critical.stage}</span>
-              <span>Resolved: {critical.resolved}</span>
+              {#if critical.stage != "Design"}
+                <span>Resolved: {critical.resolved}</span>
+              {/if}
             </div>
           </ClickableCard>
         </li>{/each}
@@ -271,7 +273,9 @@
             style="width: 100%; display: flex; justify-content: space-between"
           >
             <span>Stage: {conflict.stage}</span>
-            <span>Resolved: {conflict.resolved}</span>
+            {#if conflict.stage != "Design"}
+              <span>Resolved: {conflict.resolved}</span>
+            {/if}
           </div>
         </ClickableCard>
       {/each}
