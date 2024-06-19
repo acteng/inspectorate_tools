@@ -89,6 +89,10 @@
       {@html thisLabel}
     </div>
   </div>
+
+  {#if i != choices.length - 1}
+    <hr />
+  {/if}
 {/each}
 
 <div class="govuk-grid-row">
