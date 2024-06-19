@@ -8,9 +8,12 @@
   import SafetyCheckResults from "../results_analysis/SafetyCheckResults.svelte";
   import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
   import { policyConflictId, criticalIssueId } from "../dalog/da_log";
+  import ConvertToXlsx from "./ConvertToXlsx.svelte";
 
   let results = getResults($state);
 </script>
+
+<ConvertToXlsx />
 
 <SummaryOfScheme />
 
