@@ -28,6 +28,7 @@ export let scoreToColor = {
   "1": colors.amber,
   "2": colors.green,
   "N/A": colors.notApplicable,
+  "": { background: "white", font: "black" },
 };
 
 export let policyConflictColor = "#0072ba";

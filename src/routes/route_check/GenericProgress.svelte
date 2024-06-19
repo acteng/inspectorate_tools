@@ -1,16 +1,20 @@
 <script lang="ts">
-  import { state, type State } from "./data";
+  import { state, type State, type Scorecard } from "./data";
   import { base } from "$app/paths";
   import { sum } from "$lib";
-  import { colors } from "$lib/colors";
+  import { colors, scoreToColor } from "$lib/colors";
 
   export let sections: Section[];
 
   export let startIdx: number;
+  // When currentIdx is -1, this component renders a large summary table, meant
+  // for the scorecard overview page. Otherwise, it renders a thin list for navigation.
   export let currentIdx: number;
   export let scorecardKey: keyof State;
   // Not including {base}
   export let urlBase: string;
+
+  $: scores = $state[scorecardKey] as Scorecard;
 
   type Section = {
     section: string;
@@ -57,52 +61,107 @@
     return (idx + startIdx).toString().padStart(2, "0");
   }
 
-  $: completed = getCompleted($state);
-  function getCompleted(_: State): boolean[] {
+  $: completed = getCompleted(scores);
+  function getCompleted(scores: Scorecard): boolean[] {
     return Array.from(Array(numQuestions).keys()).map(
       (idx) =>
-        // @ts-expect-error TODO Need to further constrain scorecardKey
-        $state[scorecardKey].existingScores[idx] != "" &&
-        // @ts-expect-error TODO Need to further constrain scorecardKey
-        $state[scorecardKey].proposedScores[idx] != "",
+        scores.existingScores[idx] != "" && scores.proposedScores[idx] != "",
     );
   }
 </script>
 
-<ol start={startIdx}>
-  {#each flatten(sections) as item}
-    {#if item.kind == "section"}
-      <strong
-        class="govuk-tag"
-        style:color={colors.green.font}
-        style:background={colors.green.background}
-        style:width="100%"
-      >
-        {item.label}
-      </strong>
-      {#if item.notes}
-        <p>{item.notes}</p>
-      {/if}
-    {:else}
-      <li>
-        <div class="progress-list-item">
-          {#if currentIdx - startIdx != item.idx}
+{#if currentIdx == -1}
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>Completed</th>
+      <th>Existing</th>
+      <th>Proposed</th>
+    </tr>
+    {#each flatten(sections) as item}
+      <tr>
+        {#if item.kind == "section"}
+          <td colspan="4">
+            <b>{item.label}</b>
+            {#if item.notes}
+              <p>{item.notes}</p>
+            {/if}
+          </td>
+        {:else}
+          <td>
             <a href="{base}{urlBase}{formatIndex(item.idx)}">
-              {item.label}
+              {startIdx + item.idx}. {item.label}
             </a>
-          {:else}
-            {item.label}
-          {/if}
-          {#if completed[item.idx]}
-            <strong class="govuk-tag govuk-tag--green tag-row">&#9745;</strong>
-          {:else}
-            <strong class="govuk-tag govuk-tag--red tag-row">&#9746;</strong>
-          {/if}
-        </div>
-      </li>
-    {/if}
-  {/each}
-</ol>
+          </td>
+          <td>
+            {#if completed[item.idx]}
+              <strong class="govuk-tag govuk-tag--green tag-row">
+                &#9745;
+              </strong>
+            {:else}
+              <strong class="govuk-tag govuk-tag--red tag-row">&#9746;</strong>
+            {/if}
+          </td>
+          <td>
+            <span
+              class="box"
+              style:background={scoreToColor[scores.existingScores[item.idx]]
+                .background}
+              style:color={scoreToColor[scores.existingScores[item.idx]].font}
+            >
+              {@html scores.existingScores[item.idx] || "&nbsp;"}
+            </span>
+          </td>
+          <td>
+            <span
+              class="box"
+              style:background={scoreToColor[scores.proposedScores[item.idx]]
+                .background}
+              style:color={scoreToColor[scores.proposedScores[item.idx]].font}
+            >
+              {@html scores.proposedScores[item.idx] || "&nbsp;"}
+            </span>
+          </td>
+        {/if}
+      </tr>
+    {/each}
+  </table>
+{:else}
+  <ol start={startIdx}>
+    {#each flatten(sections) as item}
+      {#if item.kind == "section"}
+        <strong
+          class="govuk-tag"
+          style:color={colors.green.font}
+          style:background={colors.green.background}
+          style:width="100%"
+        >
+          {item.label}
+        </strong>
+      {:else}
+        <li>
+          <div class="progress-list-item">
+            {#if currentIdx - startIdx != item.idx}
+              <a href="{base}{urlBase}{formatIndex(item.idx)}">
+                {item.label}
+              </a>
+            {:else}
+              {item.label}
+            {/if}
+
+            {#if completed[item.idx]}
+              <strong class="govuk-tag govuk-tag--green tag-row">
+                &#9745;
+              </strong>
+            {:else}
+              <strong class="govuk-tag govuk-tag--red tag-row">&#9746;</strong>
+            {/if}
+          </div>
+        </li>
+      {/if}
+    {/each}
+  </ol>
+{/if}
 
 <style>
   .tag-row {
@@ -112,5 +171,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .box {
+    display: inline-block;
+    width: 40px;
+    border: 1px solid black;
+    padding: 4px;
+    text-align: center;
   }
 </style>
