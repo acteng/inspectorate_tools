@@ -13,9 +13,13 @@
 <div style="display: flex; justify-content: space-between">
   {#if prevPage}
     <PreviousButton href="{base}{prevPage[0]}" label={prevPage[1]} />
+  {:else}
+    &nbsp;
   {/if}
 
   {#if nextPage}
     <NextButton href="{base}{nextPage[0]}" label={nextPage[1]} />
+  {:else}
+    &nbsp;
   {/if}
 </div>
