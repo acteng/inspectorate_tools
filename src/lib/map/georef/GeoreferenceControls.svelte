@@ -23,6 +23,15 @@
     $imgSrc = URL.createObjectURL(blob);
     $topLeft = { lng: 0, lat: 0 };
     $bottomRight = { lng: 0, lat: 0 };
+
+    let filename = fileInput.files![0].name.toLowerCase();
+    if (
+      ![".gif", ".jpg", ".jpeg", ".png"].some((ext) => filename.endsWith(ext))
+    ) {
+      window.alert(
+        "You can only georeference image files (GIF, JPEG, PNG). If you don't see anything on the map, try a different file type.",
+      );
+    }
   }
 
   function deleteImage() {
