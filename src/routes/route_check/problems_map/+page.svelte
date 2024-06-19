@@ -24,6 +24,7 @@
     type CriticalIssue,
     type PolicyConflict,
   } from "../data";
+  import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -179,11 +180,17 @@
   }
 
   function labelCritical(critical: CriticalIssue): string {
-    return `${critical.criticalIssue || "Unknown critical"}: ${critical.locationName || "???"}`;
+    let base = critical.criticalIssue
+      ? getFullCriticalIssue(critical.criticalIssue)
+      : "Unknown critical";
+    return critical.locationName ? `${base} (${critical.locationName})` : base;
   }
 
   function labelConflict(conflict: PolicyConflict): string {
-    return `${conflict.conflict || "Unknown conflict"}: ${conflict.locationName || "???"}`;
+    let base = conflict.conflict
+      ? getFullPolicyConflict(conflict.conflict)
+      : "Unknown conflict";
+    return conflict.locationName ? `${base} (${conflict.locationName})` : base;
   }
 
   function onKeyDown(e: KeyboardEvent) {
