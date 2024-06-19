@@ -24,7 +24,7 @@
     type CriticalIssue,
     type PolicyConflict,
   } from "../data";
-  import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
+  import { getFullPolicyConflict, getTerseCriticalIssue } from "../lists";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -181,7 +181,7 @@
 
   function labelCritical(critical: CriticalIssue): string {
     let base = critical.criticalIssue
-      ? getFullCriticalIssue(critical.criticalIssue)
+      ? getTerseCriticalIssue(critical.criticalIssue)
       : "Unknown critical";
     return critical.locationName ? `${base} (${critical.locationName})` : base;
   }

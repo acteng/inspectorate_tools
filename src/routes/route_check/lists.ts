@@ -116,3 +116,8 @@ export function getFullCriticalIssue(code: string): string {
   }
   throw new Error(`Unknown critical issue ${code}`);
 }
+
+// Returns the numeric code and short descripton
+export function getTerseCriticalIssue(code: string): string {
+  return getFullCriticalIssue(code).split(":")[0];
+}
