@@ -2,6 +2,7 @@
   import { state } from "../data";
   import { TextArea } from "govuk-svelte";
   import { YesNo } from "$lib";
+  import { base } from "$app/paths";
 
   let questions = [
     "Are cyclists separated from pedestrians?",
@@ -20,9 +21,18 @@
       <YesNo label="Existing" bind:value={$state.policyCheck[idx].existing} />
       <YesNo label="Proposed" bind:value={$state.policyCheck[idx].proposed} />
     </div>
+    {#if $state.policyCheck[idx].existing == "No" || $state.policyCheck[idx].proposed == "No"}
+      <p>
+        <a href="{base}/route_check/problems_map">Log this policy conflict</a>
+      </p>
+    {/if}
     <TextArea
       label="Commentary"
       bind:value={$state.policyCheck[idx].commentary}
     />
+
+    {#if idx != questions.length - 1}
+      <br />
+    {/if}
   {/each}
 </div>

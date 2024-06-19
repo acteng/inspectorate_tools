@@ -3,6 +3,7 @@
   import Progress from "./Progress.svelte";
   import { state } from "../data";
   import { scoreToColor } from "$lib/colors";
+  import { base } from "$app/paths";
 
   export let idx: number;
   export let label: string;
@@ -37,6 +38,12 @@
       bind:existingNotes={$state.safetyCheck.existingScoreNotes[idx - 1]}
       bind:proposedNotes={$state.safetyCheck.proposedScoreNotes[idx - 1]}
     />
+
+    {#if $state.safetyCheck.existingScores[idx - 1] == "C" || $state.safetyCheck.proposedScores[idx - 1] == "C"}
+      <p>
+        <a href="{base}/route_check/problems_map">Log this critical issue</a>
+      </p>
+    {/if}
   </div>
 </div>
 
