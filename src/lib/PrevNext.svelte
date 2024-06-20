@@ -11,7 +11,11 @@
   }
 </script>
 
-<nav class="govuk-pagination" aria-label="Pagination">
+<nav
+  class="govuk-pagination"
+  aria-label="Pagination"
+  style="display: flex; justify-content: space-between"
+>
   {#if idx != 1}
     <div class="govuk-pagination__prev">
       <a
@@ -32,18 +36,19 @@
             d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"
           ></path>
         </svg>
-        <span class="govuk-pagination__link-title">
-          Previous
-          <span class="govuk-visually-hidden">question</span>
-        </span>
+        <span class="govuk-pagination__link-title">Previous question</span>
       </a>
     </div>
+  {:else}
+    &nbsp;
   {/if}
+
   <ul class="govuk-pagination__list">
     <li class="govuk-pagination__item">
       Question {idx} / {total}
     </li>
   </ul>
+
   {#if idx != total}
     <div class="govuk-pagination__next">
       <a
@@ -51,10 +56,7 @@
         href="{base}/{urlPath}{formatIndex(idx + 1)}"
         rel="next"
       >
-        <span class="govuk-pagination__link-title">
-          Next
-          <span class="govuk-visually-hidden">question</span>
-        </span>
+        <span class="govuk-pagination__link-title">Next question</span>
         <svg
           class="govuk-pagination__icon govuk-pagination__icon--next"
           xmlns="http://www.w3.org/2000/svg"
@@ -70,5 +72,7 @@
         </svg>
       </a>
     </div>
+  {:else}
+    &nbsp;
   {/if}
 </nav>
