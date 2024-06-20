@@ -72,7 +72,10 @@ function areaScorecard(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("L" + rows[i]).value = state.proposedScoreNotes[i];
 
     // We have to overwrite every single answer
-    for (let [offset, score] of ["4", "3", "2", "1", "0"].entries()) {
+    for (let offset = 0; offset < 5; offset++) {
+      // The scores for each question change; grab them from Excel directly
+      let score = sheet.getCell("C" + (rows[i] + offset)).value;
+
       sheet.getCell("F" + (rows[i] + offset)).value =
         state.existingScores[i] == score ||
         (offset == 0 && state.existingScores[i] == "")
