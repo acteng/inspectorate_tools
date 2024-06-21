@@ -205,11 +205,16 @@
           on:mouseenter={() => (hoveringSidebar = { kind: "movement", idx })}
           on:mouseleave={() => (hoveringSidebar = null)}
         >
-          <span
-            style="padding: 4px; color: {color.font}; background-color: {color.background}"
+          <div
+            style="width: 100%; display: flex; justify-content: space-between"
           >
-            Score: {movement.score}
-          </span>
+            <span
+              style="padding: 4px; color: {color.font}; background-color: {color.background}"
+            >
+              Score: {movement.score}
+            </span>
+            <span>{movement.kind}</span>
+          </div>
         </ClickableCard>
       {/each}
       {#if $state.jat[junctionIdx][otherStage].movements.length > 0}
