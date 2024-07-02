@@ -2,7 +2,7 @@
   import MajorRoutes from "./MajorRoutes.svelte";
   import MinorRoutes from "./MinorRoutes.svelte";
   import Confirmation from "./Confirmation.svelte";
-  import { TextArea, Select, WarningText } from "govuk-svelte";
+  import { TextArea, WarningText, Radio } from "govuk-svelte";
   import { state } from "../data";
   import { YesNo, pairs } from "$lib";
 </script>
@@ -16,8 +16,8 @@
   {#if $state.trafficMitigationCheck.q1 == "No"}
     <WarningText>Stop. Redesign scheme to reduce traffic.</WarningText>
   {:else if $state.trafficMitigationCheck.q1 == "Yes"}
-    <Select
-      label="Is it expected to reduce traffic both within the scheme and elsewhere?"
+    <Radio
+      legend="Is it expected to reduce traffic both within the scheme and elsewhere?"
       emptyOption
       choices={[
         [
@@ -32,8 +32,8 @@
     {#if $state.trafficMitigationCheck.q2 == "Yes"}
       <Confirmation />
     {:else if $state.trafficMitigationCheck.q2 == "No"}
-      <Select
-        label="Where will displaced traffic go?"
+      <Radio
+        legend="Where will displaced traffic go?"
         emptyOption
         choices={pairs([
           "Major routes (e.g. scheme eliminates a rat run)",
