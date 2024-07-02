@@ -18,7 +18,6 @@
   {:else if $state.trafficMitigationCheck.q1 == "Yes"}
     <Radio
       legend="Is it expected to reduce traffic both within the scheme and elsewhere?"
-      emptyOption
       choices={[
         [
           "Yes",
@@ -34,7 +33,6 @@
     {:else if $state.trafficMitigationCheck.q2 == "No"}
       <Radio
         legend="Where will displaced traffic go?"
-        emptyOption
         choices={pairs([
           "Major routes (e.g. scheme eliminates a rat run)",
           "Minor streets (e.g. residential)",

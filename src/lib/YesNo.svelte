@@ -6,4 +6,4 @@
   export let value: string;
 </script>
 
-<Radio legend={label} emptyOption choices={pairs(["Yes", "No"])} bind:value />
+<Radio legend={label} choices={pairs(["Yes", "No"])} bind:value />
