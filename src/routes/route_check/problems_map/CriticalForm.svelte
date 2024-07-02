@@ -1,6 +1,6 @@
 <script lang="ts">
   import { YesNo, pairs } from "$lib";
-  import { Select, TextInput, TextArea } from "govuk-svelte";
+  import { Select, TextInput, TextArea, Radio } from "govuk-svelte";
   import { state } from "../data";
   import { streetviewUrl, bingUrl } from "$lib/map";
   import { criticalIssueChoices } from "../lists";
@@ -24,9 +24,8 @@
   bind:value={$state.criticalIssues[idx].criticalIssue}
 />
 
-<Select
-  label="Stage"
-  emptyOption
+<Radio
+  legend="Stage"
   choices={pairs(["Existing", "Design"])}
   bind:value={$state.criticalIssues[idx].stage}
 />
