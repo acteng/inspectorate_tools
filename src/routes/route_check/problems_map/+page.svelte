@@ -17,14 +17,14 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { ClickableCard, ManualSectionModal} from "$lib";
+  import { ClickableCard, ManualSectionModal } from "$lib";
   import {
     state,
     type State,
     type CriticalIssue,
     type PolicyConflict,
   } from "../data";
-  import {contents} from "../manual/content";
+  import { contents } from "../manual/content";
 
   let map: Map;
 
@@ -178,7 +178,6 @@
   section={contents[5]}
   link={"/route_check/manual"}
 />
-
 
 <svelte:window on:keydown={onKeyDown} />
 

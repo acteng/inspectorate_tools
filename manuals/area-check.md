@@ -4,7 +4,6 @@
 
 February
 
-
 Active Travel England
 West Offices
 Station Rise
@@ -26,7 +25,6 @@ This publication is also available on our website at
 Any enquiries regarding this publication should be sent to us at
 https://www.gov.uk/government/organisations/active-travel-england
 
-
 ## Contents
 
 - 1. Introduction
@@ -35,7 +33,6 @@ https://www.gov.uk/government/organisations/active-travel-england
 - 4. Traffic Mitigation Check
 - 5. Area Scorecard
 - 6. Outputs
-
 
 Publication date: February 2024
 
@@ -72,24 +69,22 @@ outcomes. The Area Check therefore asks users to complete two separate but relat
 tests in sequence:
 
 - Traffic Mitigation Check: this test checks that the scheme being assessed
-    effectively manages the impact of any motor vehicle traffic to potentially be
-    displaced from the area to the perimeter or beyond.
+  effectively manages the impact of any motor vehicle traffic to potentially be
+  displaced from the area to the perimeter or beyond.
 - Area Scorecard: this test assesses and scores the scheme against a range of
-    factors, including quality of place and provision of walking, wheeling and cycling
-    infrastructure, including for people with disabilities. It will be relevant to everyone
-    involved in the planning, development and delivery stages of area schemes.
+  factors, including quality of place and provision of walking, wheeling and cycling
+  infrastructure, including for people with disabilities. It will be relevant to everyone
+  involved in the planning, development and delivery stages of area schemes.
 
+  1.5 This user manual aims to clarify how to score even the most complex scenarios.
+  Where there is scoring ambiguity, users are encouraged to contact the ATE
+  Inspectorate for support. ATE intends to update Area Check as and when new
+  evidence is available.
 
-1.5 This user manual aims to clarify how to score even the most complex scenarios.
-Where there is scoring ambiguity, users are encouraged to contact the ATE
-Inspectorate for support. ATE intends to update Area Check as and when new
-evidence is available.
-
-1.6 The next section of this user manual gives advice on defining an area. Section 3
-explains the tool’s structure, and is followed by sections giving detailed guidance
-on the Traffic Mitigation Check and Area Scorecard. The last section explains the
-tool’s outputs.
-
+  1.6 The next section of this user manual gives advice on defining an area. Section 3
+  explains the tool’s structure, and is followed by sections giving detailed guidance
+  on the Traffic Mitigation Check and Area Scorecard. The last section explains the
+  tool’s outputs.
 
 ## 2. Defining an Area
 
@@ -128,7 +123,6 @@ Assumptions about the quality of existing infrastructure should be avoided and i
 is strongly recommended that you appraise the local network in collaboration with
 local stakeholders.
 
-
 ## 3. Area Check Structure
 
 3 .1 The Area Check consists of three input tabs and one output tab. You work through the
@@ -147,42 +141,41 @@ ATE’s Regional Management team for it.
 3.3 The fields in the first table under the Summary of Scheme tab are:
 
 - Date of Design Review is for the date (or dates) on which the design review took
-    place.
+  place.
 - Scheme Reference is for the relevant funding programme scheme reference,
-    if applicable.
+  if applicable.
 - Scheme Name means the name of the scheme according to the funding
-    programme.
+  programme.
 - Scheme Summary can be used to give a brief description of the area scheme,
-    including any relevant programme-level information.
+  including any relevant programme-level information.
 - Scheme Information Reviewed is where you should give information about the
-    documents the review is based on. For example, if a General Arrangement drawing
-    has been reviewed, you should enter details here.
+  documents the review is based on. For example, if a General Arrangement drawing
+  has been reviewed, you should enter details here.
 - Authority means the provisioning authority for the scheme.
 - Transport/Combined Authority means the combined authority, if the scheme is
-    in a combined authority area.
+  in a combined authority area.
 - Region is the part of England where the scheme is located. There are also options
-    for Scotland, Wales and Northern Ireland.
+  for Scotland, Wales and Northern Ireland.
 - Funding Programme means the main funding source for the scheme.
-
 
 - Design Stage is the current design stage of the scheme.
 - Funding Conditions are any specific conditions regarding infrastructure attached
-    to the relevant funding programme.
+  to the relevant funding programme.
 - Inspector Email Address means the email address of the ATE inspector
-    who completed the design review. If someone outside of ATE completed the
-    spreadsheet, then you should leave this section blank, and put details in the
-    ‘Notes’ field.
+  who completed the design review. If someone outside of ATE completed the
+  spreadsheet, then you should leave this section blank, and put details in the
+  ‘Notes’ field.
 - Scheme Area Size (km^2 ) is where you should enter the size of the area scheme
-    being assessed in square kilometres.
+  being assessed in square kilometres.
 - Notes is a space where you can add any other relevant notes on the scheme
-    or design review.
+  or design review.
 
-3.4 The Network Context section gives you the opportunity to talk about the context
-of the area being assessed if, for example, it is part of a wider programme or scheme
-that contains multiple connected areas and routes. You should include a drawing or
-plan to show which area is being assessed in the file, and give details of any
-neighbouring areas being assessed in separate files, as well as any neighbouring
-areas that are not part of the wider scheme.
+  3.4 The Network Context section gives you the opportunity to talk about the context
+  of the area being assessed if, for example, it is part of a wider programme or scheme
+  that contains multiple connected areas and routes. You should include a drawing or
+  plan to show which area is being assessed in the file, and give details of any
+  neighbouring areas being assessed in separate files, as well as any neighbouring
+  areas that are not part of the wider scheme.
 
 Traffic Mitigation Check
 
@@ -200,9 +193,7 @@ until you cannot ‘proceed to the next question’, and a result is generated. 
 make a comment on the results of the check in the assigned box. This process is
 illustrated in Figure 2 below.
 
-
 Figure 2 – The Traffic Mitigation Check process
-
 
 Area Scorecard
 
@@ -219,7 +210,6 @@ boxes (highlighted in Figure 3 below), along with any assumptions you made.
 both ‘Existing’ and ‘Proposed’ scenarios at the top of the page.
 
 Figure 3 – Descriptor justification boxes in the Area Scorecard
-
 
 3 .12 Don’t choose ‘yes’ for more than one descriptor per metric, otherwise the spreadsheet
 will not know which score to assign and the error message shown below in Figure 4
@@ -239,58 +229,69 @@ Figure 5 – Mesh density metric in the Area Scorecard
 metrics are split by mode to make them easier to assess. Later metrics are weighted
 more heavily to reflect their importance to the design of an area scheme.
 
-
 ```
 Metric Mode
 ```
+
 ```
 Mode
 Score
 ```
+
 ```
 Tot a l
 Score
 ```
+
 ```
 Porosity Walking and wheeling 4
 8
 Cycling 4
 ```
+
 ```
 Crossings Walking and wheeling 4
 8
 Cycling 4
 ```
+
 ```
 Permeability Walking and wheeling 4
 8
 Cycling 4
 ```
+
 ```
 Mesh Density Walking and wheeling 4
 8
 Cycling 4
 ```
+
 ```
 Motorised through-traffic All modes 8 8
 ```
+
 ```
 Perimeter treatment design All modes 16 16
 ```
+
 ```
 Green infrastructure design All modes 12 12
 ```
+
 ```
 Other internal treatment design All modes 16 16
 ```
+
 ```
 Engagement practice All modes 16 16
 ```
+
 ```
 Tot a l 100
 ```
-Figure 6 – Summary of metric scores for the Area Scorecard.
 
+Figure 6 – Summary of metric scores for the Area Scorecard.
 
 ## 4. Traffic Mitigation Check
 
@@ -320,29 +321,33 @@ provided in the box next to the check (shown in Figure 7).
 
 Figure 7 – Proposed results box for the Traffic Mitigation Check
 
-
 ```
 SSTTAARRTT
 Is the scheme expected to
 reduce traffic
 ```
+
 ```
 Stop. Redesign the scheme
 to reduce traffic
 ```
+
 ```
 Is it expected to reduce traffic
 both within the scheme and
 elsewhere??
 ```
+
 ```
 PPrroocceeeedd wwiitthh tthhee
 sscchheemmee
 ```
+
 ```
 Where will the displaced
 Major Routes traffic go? Minor Routes
 ```
+
 ```
 Are there sensitive receptors
 on these streets or to the
@@ -350,6 +355,7 @@ existing pollution levels
 exceed or approach limit
 values?
 ```
+
 ```
 Redesign Scheme with
 alternative diversionary
@@ -357,24 +363,29 @@ routes, a wider focus, or
 mitigation measure to
 protect sensitive receptor
 ```
+
 ```
 Is the scheme expected to
 add significant levels of
 traffic or congestion to these
 streets?
 ```
+
 ```
 Proceed with the scheme
 ```
+
 ```
 Redesign scheme with
 alternative diversionary
 routes or wider focus
 ```
+
 ```
 Are there sensitive
 receptors present?
 ```
+
 ```
 Redesign scheme with
 alternative diversionary
@@ -382,6 +393,7 @@ routes, a wider focus, or
 mitigating measures to
 protect sensitive receptors
 ```
+
 ```
 Is the scheme expected
 to add significant levels
@@ -389,20 +401,24 @@ of traffic or congestion to
 any part of the road
 network?
 ```
+
 ```
 Proceed with the scheme
 ```
+
 ```
 Do the major routes(s)
 exceed or approach the
 pollution limit values?
 ```
+
 ```
 Is the major route suitable for
 local solutions, does it need
 wider measures, or are both
 currently inadequate?
 ```
+
 ```
 LOCAL: Consider local
 solutions, either as part of
@@ -411,6 +427,7 @@ scheme, where possible. A
 range of examples are given
 in the user guide.
 ```
+
 ```
 WIDER: Address major route
 congestion and/or pollution
@@ -418,6 +435,7 @@ through wider schemes. A
 range of examples are given
 in the User Guide.
 ```
+
 ```
 If planned measures are
 inadequate to address
@@ -428,6 +446,7 @@ cause ‘moderate’ or
 pollution, reconsider the
 scheme
 ```
+
 ```
 Address major route
 congestion and/or
@@ -436,47 +455,60 @@ schemes. A range of
 examples are given in
 the User Guide.
 ```
-```
-YES
-```
-```
-NO
-```
-```
-YES
-```
-```
-NO
-```
-```
-YES
-```
-```
-NO
-```
-```
-NO
-```
-```
-YES
-```
-```
-YES
-```
-```
-NO
-```
-```
-NO
-```
-```
-YES
-```
-```
-NO
-```
-Figure 8 – Flowchart illustrating the logic of the Traffic Mitigation Check
 
+```
+YES
+```
+
+```
+NO
+```
+
+```
+YES
+```
+
+```
+NO
+```
+
+```
+YES
+```
+
+```
+NO
+```
+
+```
+NO
+```
+
+```
+YES
+```
+
+```
+YES
+```
+
+```
+NO
+```
+
+```
+NO
+```
+
+```
+YES
+```
+
+```
+NO
+```
+
+Figure 8 – Flowchart illustrating the logic of the Traffic Mitigation Check
 
 ## 5. Area Scorecard
 
@@ -524,11 +556,11 @@ as cycling gateways have different requirements from walking and wheeling gatewa
 The cycling porosity score is usually lower than the walking and wheeling porosity
 score. This is because most areas in the UK are more likely to have gateways for
 
-
 ```
 walking and wheeling, such as puffin crossings, than they are to have suitable
 gateways for cycling.
 ```
+
 5.8 ATE’s separate Route Check tool may also help you review the quality of crossings on
 perimeter streets, with further guidance on siting crossings.
 
@@ -539,7 +571,6 @@ Figure 9 – Example of low porosity – only one gateway into the area
 5 .10 Figure 10 shows the same example area with multiple gateways and high porosity.
 
 Figure 10 – Example of high porosity – at least one gateway per area side
-
 
 Crossings
 
@@ -590,13 +621,12 @@ assessment needs an advanced level of design detail, which may not be available 
 every street in and around an area, we have provided a simplified way of working out
 pedestrian and cyclist levels of service below.
 
-
 5 .17 For a pedestrian network, suitable routes are defined as those which satisfy the
 following minimum accessibility requirements:
 
 - Smooth, sealed footway surfaces.
 - Dropped kerbs with suitable gradients and appropriate tactile paving surfaces at
-    crossing locations.
+  crossing locations.
 - Suitable footway widths as defined in DfT’s Inclusive Mobility guidance.
 - Suitable tactile paving surfaces.
 - Acceptable footway camber (≤2.5%).
@@ -622,7 +652,6 @@ network, is typically defined as running from one side of an area to another. Ro
 should be direct and follow the shortest practical distance. For additional assurance,
 you can carry out a full ATE Route Check assessment to confirm route quality.
 
-
 5.21 Figure 11 below shows an example area with low walking and wheeling permeability.
 
 Figure 11 – Example of low walking and wheeling permeability – One route with all of
@@ -633,7 +662,6 @@ permeability.
 
 Figure 12 – Example of high walking and wheeling permeability – Multiple routes with
 all of the features from the list
-
 
 5.23 Figure 13 below shows an example area with no cycling permeability.
 
@@ -651,7 +679,6 @@ are, both inside and around an area. It is measured by the average distance betw
 parallel streets that are considered suitable for most people to walk, wheel and cycle,
 including people with disabilities (as defined by the same minimum quality standards
 as for the permeability metric above).
-
 
 5.26 The reason for analysing mesh density is to check that there is good pedestrian and
 cycle network coverage in the wider area. This is particularly important for larger areas
@@ -703,11 +730,11 @@ For example, controlled crossings might be necessary to help people cross the st
 if traffic volumes are going to be high on certain routes. You should include details of
 why you have left motorised through-traffic routes in place, along with their expected
 
-
 ```
 impacts and proposed mitigations, in column L (the scoring justification box) of the
 Area Scorecard tab.
 ```
+
 5.34 Interventions to reduce motorised through-traffic include modal filters, timed traffic
 restrictions, banned movements and bus gates. These should be considered in the
 context of the broader pedestrian and cycle network as they have the potential to
@@ -730,27 +757,26 @@ Issues that may arise on perimeter streets include potential increases in:
 - Air or noise pollution
 - Delays to public transport
 
-5.36 It is important that your scheme addresses and mitigates any such issues wherever
-possible, particularly where there are sensitive receptors on the area perimeter.
-For example, where you anticipate more congestion on one or more perimeter streets,
-you should consider possible junction improvements to increase traffic capacity,
-reduce queue lengths and smooth traffic flows. If there is a bus route on a perimeter
-where you expect increased traffic, you could consider bus lanes or bus gates to
-reduce delays to public transport journey times.
+  5.36 It is important that your scheme addresses and mitigates any such issues wherever
+  possible, particularly where there are sensitive receptors on the area perimeter.
+  For example, where you anticipate more congestion on one or more perimeter streets,
+  you should consider possible junction improvements to increase traffic capacity,
+  reduce queue lengths and smooth traffic flows. If there is a bus route on a perimeter
+  where you expect increased traffic, you could consider bus lanes or bus gates to
+  reduce delays to public transport journey times.
 
-5.37 Your designs should be proportionate to the place and movement function of a
-perimeter street, as explained in Manual for Streets. The level of protection needed for
-cyclists will likely be higher on a main arterial route than a neighbourhood street, for
-example. Ultimately, we recommend a holistic approach to area schemes, and you
-should review perimeter treatments alongside the internal organisation of an area.
-Wider local pedestrian and cycle network strategies, such as LCWIPs, should also
-inform the prioritisation and design of perimeter treatments.
+  5.37 Your designs should be proportionate to the place and movement function of a
+  perimeter street, as explained in Manual for Streets. The level of protection needed for
+  cyclists will likely be higher on a main arterial route than a neighbourhood street, for
+  example. Ultimately, we recommend a holistic approach to area schemes, and you
+  should review perimeter treatments alongside the internal organisation of an area.
+  Wider local pedestrian and cycle network strategies, such as LCWIPs, should also
+  inform the prioritisation and design of perimeter treatments.
 
-5.38 You can use the ATE Route Check to review the design quality of perimeter treatments
-for people walking, wheeling and cycling, including people with disabilities. The ATE
-Cross-Section Tool may also be useful to assess what interventions are possible in the
-space available on perimeter streets.
-
+  5.38 You can use the ATE Route Check to review the design quality of perimeter treatments
+  for people walking, wheeling and cycling, including people with disabilities. The ATE
+  Cross-Section Tool may also be useful to assess what interventions are possible in the
+  space available on perimeter streets.
 
 Green Infrastructure Design
 
@@ -770,30 +796,29 @@ options to consider, such as:
 - Green walls or screens
 - Bug hotels
 
-5.40 This is not an exhaustive list and you can consider other measures if they can be
-suitably justified. For example, you can consider blue infrastructure beyond SuDS if
-it helps make the area a more pleasant, temperate place to be, enhance its climate
-resilience and/or improve its biodiversity.
+  5.40 This is not an exhaustive list and you can consider other measures if they can be
+  suitably justified. For example, you can consider blue infrastructure beyond SuDS if
+  it helps make the area a more pleasant, temperate place to be, enhance its climate
+  resilience and/or improve its biodiversity.
 
-5.41 It is worth considering how street functions can be merged when designing internal
-treatments. For example, you can incorporate planters into modal filters or combine
-them with seating, and incorporate trees or SuDS into new public spaces to provide
-shade and manage surface water.
+  5.41 It is worth considering how street functions can be merged when designing internal
+  treatments. For example, you can incorporate planters into modal filters or combine
+  them with seating, and incorporate trees or SuDS into new public spaces to provide
+  shade and manage surface water.
 
-5.42 Where sensitive receptors may be affected by displaced motor vehicle traffic, you can
-consider green infrastructure measures as contributing towards mitigation, as they can
-capture certain air pollutants (assuming the kind and amount of green infrastructure is
-apposite to the anticipated effects from displaced traffic).
+  5.42 Where sensitive receptors may be affected by displaced motor vehicle traffic, you can
+  consider green infrastructure measures as contributing towards mitigation, as they can
+  capture certain air pollutants (assuming the kind and amount of green infrastructure is
+  apposite to the anticipated effects from displaced traffic).
 
-5.43 You should carry out green infrastructure design in line with DfT Inclusive Mobility
-guidance. For example, new trees or planters should be placed in a way that does not
-restrict footways beyond recommended clearance widths. You can use ATE’s Route
-Check tool and Route Cross-Section tool to check appropriate widths for footways
-and cycle tracks. Considersation should also be given to the choice of tree, tree pit
-and the need for maintenance. Trees should not be planted that will then grow to then
-damage footways or create obstructions. For more guidance, see the Forestry
-Commission’s Operations Note 51 on highway tree management.
-
+  5.43 You should carry out green infrastructure design in line with DfT Inclusive Mobility
+  guidance. For example, new trees or planters should be placed in a way that does not
+  restrict footways beyond recommended clearance widths. You can use ATE’s Route
+  Check tool and Route Cross-Section tool to check appropriate widths for footways
+  and cycle tracks. Considersation should also be given to the choice of tree, tree pit
+  and the need for maintenance. Trees should not be planted that will then grow to then
+  damage footways or create obstructions. For more guidance, see the Forestry
+  Commission’s Operations Note 51 on highway tree management.
 
 Other Internal Treatments
 
@@ -814,18 +839,18 @@ improvements might include (but are not limited to):
 - Wayfinding
 - Art
 
-5.45 Area schemes featuring a variety of these treatments will achieve a higher score for
-this metric. For example, school streets, play streets, new social spaces, parklets and
-pocket parks can all make streets more inclusive and encourage social activity. It is
-important that you develop such proposals together with local stakeholders to make
-sure that internal treatments meet the many needs of local communities. Parklets and
-pocket parks feature in both this metric and the previous green infrastructure metric,
-as they can have multiple functions.
+  5.45 Area schemes featuring a variety of these treatments will achieve a higher score for
+  this metric. For example, school streets, play streets, new social spaces, parklets and
+  pocket parks can all make streets more inclusive and encourage social activity. It is
+  important that you develop such proposals together with local stakeholders to make
+  sure that internal treatments meet the many needs of local communities. Parklets and
+  pocket parks feature in both this metric and the previous green infrastructure metric,
+  as they can have multiple functions.
 
-5.46 You should design internal treatments in line with DfT Inclusive Mobility guidance.
-For example, new seating should comply with recommended specifications. The ATE
-Route Check also includes several metrics relevant to the type, quantity and
-placement of internal treatments.
+  5.46 You should design internal treatments in line with DfT Inclusive Mobility guidance.
+  For example, new seating should comply with recommended specifications. The ATE
+  Route Check also includes several metrics relevant to the type, quantity and
+  placement of internal treatments.
 
 Engagement practice
 
@@ -834,7 +859,6 @@ or limited engagement are less likely to address local needs and be accepted by 
 local communities you seek to serve. When assessing the existing engagement
 practice scenario, you can use a score of 0 as default, unless there is evidence of
 good engagement on recent schemes.
-
 
 5.48 Engagement must be inclusive, comprehensive and meaningful for area schemes to
 succeed and their benefits realised. Engagement channels must set up an effective
@@ -847,7 +871,6 @@ and do not negatively affect disabled people.
 5.50 On some occasions, there might be uncertainty around the effects of an area scheme.
 If this is the case, you could implement temporary measures or treatments with a
 comprehensive monitoring programme, to evaluate their effectiveness.
-
 
 ## 6. Outputs
 
@@ -872,7 +895,3 @@ will improve walking, wheeling and cycling facilities in an area, mitigate displ
 traffic around it effectively, address accessibility problems and demonstrate significant
 transformation with a strong uplift score. They will also clearly evidence diligent,
 inclusive engagement practices with local people.
-
-
-
-

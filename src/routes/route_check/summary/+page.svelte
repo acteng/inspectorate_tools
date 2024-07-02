@@ -18,7 +18,7 @@
   import { ContextualMapEntry } from "$lib/map";
   import type { FeatureCollection } from "geojson";
   import turfLength from "@turf/length";
-  import {contents} from "../manual/content";
+  import { contents } from "../manual/content";
 
   // TODO https://design-system.service.gov.uk/components/date-input/
 
@@ -34,11 +34,10 @@
   }
 </script>
 
-<ManualSectionModal 
+<ManualSectionModal
   title={"Summary of Scheme Manual"}
   section={contents[2]}
   link={"/route_check/manual"}
-
 />
 
 <div class="govuk-width-container">

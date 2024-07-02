@@ -9,7 +9,7 @@
   let displayManual = false;
 </script>
 
-<ManualSectionModal 
+<ManualSectionModal
   title={"Traffic Mitigation Manual"}
   section={contents[3]}
   link={"/area_check/manual"}

@@ -6,7 +6,7 @@
   // TODO Include bold in the choices
 </script>
 
-<ManualSectionModal 
+<ManualSectionModal
   title={"Area Scorecard Manual"}
   section={contents[4]}
   link={"/area_check/manual"}

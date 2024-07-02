@@ -9,7 +9,7 @@
   import { state } from "../data";
   import EditJunction from "./EditJunction.svelte";
   import { ClickableCard, ManualSectionModal } from "$lib";
-  import {contents} from "../manual/content";
+  import { contents } from "../manual/content";
 
   type Mode =
     | { kind: "list" }
@@ -60,7 +60,7 @@
   section={contents[10]}
   link={"/route_check/manual"}
 />
-<br>
+<br />
 
 {#if mode.kind == "list"}
   <DefaultButton on:click={add}>Add new junction</DefaultButton>

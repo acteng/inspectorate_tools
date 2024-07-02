@@ -1,6 +1,6 @@
 <script lang="ts">
   import { type ManualSection } from "./data";
-  import Section from "./Section.svelte"
+  import Section from "./Section.svelte";
   import { ClickableCard } from "$lib";
 
   export let contents: ManualSection[];
@@ -31,7 +31,7 @@
     {/each}
   </div>
 
-  <Section section={selectedSection}/>
+  <Section section={selectedSection} />
 </div>
 
 <style>

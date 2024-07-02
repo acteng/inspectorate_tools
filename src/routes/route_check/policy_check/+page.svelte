@@ -2,7 +2,7 @@
   import { state } from "../data";
   import { TextArea } from "govuk-svelte";
   import { YesNo, ManualSectionModal } from "$lib";
-  import {contents} from "../manual/content";
+  import { contents } from "../manual/content";
 
   let questions = [
     "Are cyclists separated from pedestrians?",

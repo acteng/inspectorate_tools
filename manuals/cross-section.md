@@ -6,7 +6,6 @@
 
 February
 
-
 Active Travel England
 West Offices
 Station Rise
@@ -28,7 +27,6 @@ This publication is also available on our website at
 Any enquiries regarding this publication should be sent to us at
 https://www.gov.uk/government/organisations/active-travel-england
 
-
 ## Contents
 
 - Route Cross-Section Tool User Manual
@@ -37,8 +35,7 @@ https://www.gov.uk/government/organisations/active-travel-england
 - 3. Summary of Scheme
 - 4. Proposed Cross-Sections
 - 5. Cross-Sections Check
-   - List of Preset Options in the Proposed Cross-Sections tab Appendix A
-
+  - List of Preset Options in the Proposed Cross-Sections tab Appendix A
 
 ## Route Cross-Section Tool User Manual
 
@@ -81,10 +78,10 @@ all the needs of a street.
 2 Inclusive Mobility: making transport accessible for passengers and pedestrians (DfT,2022)
 3 Design Manual for Roads and Bridges (DMRB) – Standards for Highways (https://standardsforhighways.co.uk)
 
-
 ```
 Route Cross-Section Tool User Manual
 ```
+
 ## 2. Route Cross-Section Tool Structure
 
 2.1 The tool has three input tabs:
@@ -93,15 +90,15 @@ Route Cross-Section Tool User Manual
 - Proposed Cross-Sections
 - Cross-Sections Check
 
-2.2 There is a fourth tab, called ATE S ummar y, where the ATE inspectorate team can
-add comments and further guidance.
+  2.2 There is a fourth tab, called ATE S ummar y, where the ATE inspectorate team can
+  add comments and further guidance.
 
 ```
 Summary of Scheme Proposed Cross-Sections Cross-Sections Check ATE Summary
 ```
+
 Figure 1 – Structure of the Route Cross-Section Tool: a screenshot of the tabs in the
 Excel file.
-
 
 Route Cross-Section Tool User Manual
 
@@ -116,40 +113,43 @@ Regional Management team.
 3.2 The fields in the first table in the Summary of Scheme tab are as follows:
 
 - Scheme Reference – the relevant funding programme scheme reference, where
-    applicable.
+  applicable.
 - Scheme Name – the scheme name according to the funding programme.
 - Scheme Summary – use to provide a brief description of the scheme including
-    any relevant programme-level information.
+  any relevant programme-level information.
 - Authority – the provisioning authority for the scheme.
 - Transport/Combined Authority – the combined authority, where the scheme falls
-    under a combined authority area.
+  under a combined authority area.
 - Region – the part of England where the scheme is located. There are also options
-    for Scotland, Wales and Northern Ireland.
+  for Scotland, Wales and Northern Ireland.
 - Funding Programme – the main funding source for the scheme.
 - Design Stage – the current design stage of the scheme.
 - Funding Conditions – any specific conditions regarding infrastructure attached to
-    the relevant funding programme.
+  the relevant funding programme.
 - Route Length Assessed in this File (km) – the length of route assessed in the
-    specific Excel tool copy.
+  specific Excel tool copy.
 - Total Route Length (km) – where the scheme is part of a longer scheme,
-    assessed over multiple Excel tool copies.
+  assessed over multiple Excel tool copies.
 - Notes is a space for the user to add any other relevant notes on the scheme.
 
-3.3 There are additional spaces below the first table where you must give the network
-context by providing co-ordinates for the start and end of the route being assessed,
-along with a map showing the route in its wider context. You must include the
-locations of each cross-section taken along it on this map, and label them with the
-reference number corresponding to their entry in the Cross-Section Check ta b (#1,
-#2, #3 etc.), so they can easily be identified. There is more information on where to
-take cross-sections in the Cross-Section Check part of this user manual.
+  3.3 There are additional spaces below the first table where you must give the network
+  context by providing co-ordinates for the start and end of the route being assessed,
+  along with a map showing the route in its wider context. You must include the
+  locations of each cross-section taken along it on this map, and label them with the
+  reference number corresponding to their entry in the Cross-Section Check ta b (#1,
+  #2, #3 etc.), so they can easily be identified. There is more information on where to
+  take cross-sections in the Cross-Section Check part of this user manual.
 
 -
+
 ```
 Route Cross-Section Tool User Manual
 ```
+
 ```
 7 
 ```
+
 ## 4. Proposed Cross-Sections
 
 4 .1 In this tab, you will enter contextual information to work out what types of infrastructure
@@ -166,86 +166,108 @@ tracks’ (cell C11) if you are not proposing any shared-use cycle tracks.
 ```
 Feature Minimum Width (m) Feature Minimum Width (m)
 ```
+
 ```
 Expected peak hour cycle flow:
 1-way cycle tracks Speed limit (MPH)
 ```
+
 ```
 Custom Feature
 #10.
 ```
+
 ```
 Custom Feature
 #50.
 Expected peak hour cycle flow:
 2-way cycle tracks
 ```
+
 ```
 Observed 85th percentile
 speed (MPH)
 ```
+
 ```
 Custom Feature
 #20.
 ```
+
 ```
 Custom Feature
 #60.
 ```
+
 ```
 Expected peak cycle hour flow:
 shared use cycle tracks Street function
 ```
+
 ```
 Custom Feature
 #30.
 ```
+
 ```
 Custom Feature
 #70.
 ```
+
 ```
 Traffic flow (vpd) Custom Feature #40.00 Custom Feature #80.
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 #REF! #REF! #REF! #REF! #REF!
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF! #REF! #REF!
 ```
+
 ```
 Available Width
 (m):
 ```
+
 ```
 Build your scheme's absolute minimum cross-section
 from left to right by selecting the street features from
 the drop-downs in the cells opposite >>>>>>
 ```
+
 **Route Cross-Section Tool**
 
 **Desirable Minimum and Absolute Minimum Cross-Sections**
@@ -257,12 +279,14 @@ Build your scheme's desirable minimum cross-section
 from left to right by selecting the street features from
 the drop-downs in the cells opposite >>>>>>
 ```
+
 ```
 Absolute Minimum
 Width (m):
 Total Width Required
 (m):
 ```
+
 ```
 Based on the traffic data and
 additional information provided
@@ -271,103 +295,133 @@ suitable for most users,
 consider the following
 references & guidance >>>>>
 ```
+
 ```
 Key references:
 ```
+
 ```
 #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF!
 ```
+
 ```
 Traffic data and additional information
 **Before inputting your cross-section, the cells below
 must be populated**
 ```
+
 ```
 #REF! #REF!
 ```
+
 ```
 #REF!
 ```
+
 ```
 0.
 ```
+
 ```
 #REF!
 ```
+
 ```
 #REF!
 ```
+
 **Custom Street Features**
 
 ```
 #REF!
 ```
+
 ```
 #REF!
 ```
+
 ```
 #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF!
 ```
+
 ```
 #REF! #REF! #REF!
 ```
+
 ```
 #REF!
 ```
+
 ```
 #REF! #REF!
 ```
+
 ```
 #REF!
 ```
+
 ```
 #REF!
 ```
+
 ```
 #REF! #REF! #REF!
 ```
+
 ```
 #REF!
 ```
+
 ```
 Guidance:
 ```
+
 ```
 #REF!
 ```
+
 ```
 Guidance:
 ```
+
 ```
 #REF!
 ```
+
 ```
 Key references:
 ```
+
 ```
 Total Width Required
 (m):
 Available Width
 (m):
 ```
+
 **Absolute Minimum Cross-Section**
 
 ```
 Desirable Minimum
 Width (m):
 ```
+
 ```
 #REF!
 ```
+
 ```
 Based on the traffic data and
 additional information provided
@@ -376,9 +430,11 @@ suitable for most users,
 consider the following
 references & guidance >>>>>
 ```
+
 ```
 #REF!
 ```
+
 Figure 2 – Screenshot of a completed ‘Traffic data and additional information’ table in
 the Proposed Cross-Sections tab
 
@@ -397,6 +453,7 @@ want to include. Next, measure this width using the most accurate method availab
 absence of topographical or OS data, although it is less reliable). The width measured
 should be the full width of the adopted highway.
 ```
+
 ```
 b. Now, enter this width in cell F/G23.
 ```
@@ -406,13 +463,11 @@ Route Cross-Section Tool User Manual
 ```
 c. You can then build the proposed cross-section in Row 15 using the dropdown options
 ```
+
 - see Appendix A for these and any important points to note. As you start to work
-through this, some cells in this section will autocomplete with:
-    - links to references in the relevant guidance e.g., LTN 1/20 and a brief
-       summary;
-    - suggested considerations where the proposed cross-section does not comply
-       with guidance; and
-    - desirable minimum widths for each feature, based on the relevant guidance.
+  through this, some cells in this section will autocomplete with: - links to references in the relevant guidance e.g., LTN 1/20 and a brief
+  summary; - suggested considerations where the proposed cross-section does not comply
+  with guidance; and - desirable minimum widths for each feature, based on the relevant guidance.
 
 As you add features to the cross-section, you will see the total width needed to accommodate
 them shown in cell F/G22. You can clearly identify whether this total width exceeds the
@@ -438,6 +493,7 @@ as any of the existing options in the dropdown menus on row 15.
 ```
 Route Cross-Section Tool User Manual
 ```
+
 Figure 5 – Partial screenshots of the Proposed Cross-Sections tab showing how a
 user can add a 1.4m wide SUDS (Sustainable Drainage Systems) feature as
 a custom street feature.
@@ -457,7 +513,6 @@ use cycle tracks, the tool will remind you that you will need to justify this in
 LTN 1/20 guidance in row 9 of the Cross-Sections Check tab – see guidance on
 this tab below.
 
-
 Route Cross-Section Tool User Manual
 
 ## 5. Cross-Sections Check
@@ -469,9 +524,9 @@ and at any constrained or atypical locations.
 5.2 A cross-section deliverability test should be completed:
 
 - Once for every homogenous section of route, where the total available width and
-    the proposed features are the same.
+  the proposed features are the same.
 - At every ‘pinch point’ where there is less available width, and at every atypical
-    section along the route, to make sure that every challenging location is tested.
+  section along the route, to make sure that every challenging location is tested.
 
 The first cross-section deliverability test, for group (1) above, is covered in the first table in the
 tab: Checking possible cross-sections of homogenous sections of route along the proposed
@@ -502,10 +557,10 @@ homogenous sections of route) made.
 second table: Checking possible cross-sections of any constrained or atypical
 locations along the corridor.
 
-
 ```
 Route Cross-Section Tool User Manual
 ```
+
 5.7 You now need to locate any pinch-points or atypical sections of the route and repeat
 the exercise described above, to check which cross-sections are possible at more
 constrained or challenging places along the route. You should also add a reference in
@@ -534,7 +589,6 @@ tracks are not suitable for many locations and contexts and should only ever be 
 last resort when all other possible options have been considered and evidenced
 as undeliverable.
 
-
 Route Cross-Section Tool User Manual
 
 ## Appendix A – List of Preset Options in
@@ -544,59 +598,71 @@ Route Cross-Section Tool User Manual
 ```
 Preset option Notes
 ```
+
 ```
 Footway
 ```
+
 ```
 Preset width will vary with street function (Cell E10) to account
 for scenarios with higher pedestrian traffic. Test pedestrian
 comfort level with ATE’s Route Check tool.
 ```
+
 ```
 Narrow traffic/
 bus lane
 ```
+
 ```
 Where conditions are favourable, cycling in mixed traffic on the
 carriageway may be an option. The tool highlights where
 speed and traffic volumes will not suit most cyclists, according
 to Table 4-2 of LTN 1/20.
 ```
+
 ```
 Wide traffic/
 bus lane
 ```
+
 ```
 Where conditions are favourable, cycling in mixed traffic on the
 carriageway may be an option. The tool highlights where
 speed and traffic volumes will not suit most cyclists, according
 to Table 4-2 of LTN 1/20.
 ```
+
 ```
 Traf fic lane
 (no buses):
 speed limit 20/
 ```
+
 ```
 Where conditions are favourable, cycling in mixed traffic on the
 carriageway may be an option. The tool highlights where
 speed and traffic volumes will not suit most cyclists, according
 to Table 4-2 of LTN 1/20.
 ```
+
 ```
 On-highway
 advisory/mandatory
 cycle lane
 ```
+
 ```
 The tool highlights where speed and traffic volumes will mean
 that this provision will not suit most cyclists, according to Table
 4-2 of LTN 1/20.
 ```
+
 ```
 1-way protected
 cycle track
 ```
+
 ```
 The width needed is taken from Table 5-2 in LTN 1/20 with an
 extra 0.3m added to allow for the minimum width needed to
@@ -606,42 +672,46 @@ lane and width is very constrained, this extra 0.3m can be
 taken off the buffer width: use Custom Street Features to
 create a custom-width buffer.
 ```
+
 ```
 2-way protected
 cycle track
 ```
+
 ```
 Justification is needed for this provision. For more information
 see LTN 1.20 paragraph 6.5.
 ```
+
 ```
 Shared-use
 cycle track
 ```
+
 ```
 Buffer required between this and any cycle facility (due to
 potential for ‘dooring’)
 ```
+
 ```
 Parking bay Wider buffer needed between this and any cycle facility (due to
 potential for ‘dooring’)
 ```
+
 ```
 Disabled
 parking bay
 ```
+
 ```
 Buffer needed between this and any cycle facility (due to
 potential for ‘dooring’)
 ```
+
 ```
 Loading bay Preset at variable widths depending on context.
 ```
+
 ```
 Buffer/verge Preset at variable widths depending on context.
 ```
-
-
-
-
-

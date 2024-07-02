@@ -3,7 +3,7 @@
   import Progress from "./Progress.svelte";
   import { state } from "../data";
   import { ManualSectionModal } from "$lib";
-  import {contents} from "../manual/content";
+  import { contents } from "../manual/content";
 </script>
 
 <ManualSectionModal

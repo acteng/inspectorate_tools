@@ -1,7 +1,7 @@
 <script lang="ts">
   import Progress from "./Progress.svelte";
   import { ManualSectionModal } from "$lib";
-  import {contents} from "../manual/content";
+  import { contents } from "../manual/content";
 </script>
 
 <ManualSectionModal
