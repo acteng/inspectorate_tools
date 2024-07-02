@@ -1,6 +1,6 @@
 <script lang="ts">
   import Confirmation from "./Confirmation.svelte";
-  import { Select, WarningText } from "govuk-svelte";
+  import { Radio, WarningText } from "govuk-svelte";
   import { pairs, YesNo } from "$lib";
   import { state } from "../data";
 </script>
@@ -37,8 +37,8 @@
         range of examples are given in the User Guide
       </WarningText>
     {:else if $state.trafficMitigationCheck.majorQ3 == "No"}
-      <Select
-        label="Is the major route suitable for local solutions, does it need wider measues, or are both currently inadequate?"
+      <Radio
+        legend="Is the major route suitable for local solutions, does it need wider measues, or are both currently inadequate?"
         emptyOption
         choices={pairs(["Local", "Wider", "Measures are inadequate"])}
         bind:value={$state.trafficMitigationCheck.majorQ4}
