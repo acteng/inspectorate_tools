@@ -4,6 +4,10 @@
   import { getResults } from "../results";
   import LevelOfServiceTable from "./LevelOfServiceTable.svelte";
   import Overview from "./Overview.svelte";
+  import CheckDetails from "./CheckDetails.svelte";
+  import SummaryOfScheme from "../results_analysis/SummaryOfScheme.svelte";
+  import PolicyCheckResults from "../results_analysis/PolicyCheckResults.svelte";
+  import SafetyCheckResults from "../results_analysis/SafetyCheckResults.svelte";
 
   let results = getResults($state);
 </script>
@@ -35,3 +39,13 @@
   bind:value={$state.resultsReviewStatement}
   hint="Use the space to provide overall feedback for the proposed scheme"
 />
+
+<h2> Results - Further Analysis </h2>
+
+<SummaryOfScheme />
+
+<PolicyCheckResults />
+
+<SafetyCheckResults />
+
+<CheckDetails {results} />

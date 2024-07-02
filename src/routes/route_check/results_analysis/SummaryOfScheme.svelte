@@ -27,3 +27,12 @@
     <td>{$state.summary.assessedRouteLengthKm}</td>
   </tr>
 </table>
+
+<style>
+  th, td {
+    border-top: 1px solid #b1b4b6;
+  }
+  th {
+    width: 40vw;
+  }
+</style>

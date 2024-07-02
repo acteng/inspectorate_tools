@@ -237,7 +237,6 @@ let pages: [string, string][] = [
   ["/route_check/path_placemaking_check/pp19", "Sunlight"],
   ["/route_check/jat_check", "JAT Check"],
   ["/route_check/results_summary", "Results Summary"],
-  ["/route_check/results_analysis", "Results Further Analysis"],
   ["/route_check/results_export", "Results Export"],
   ["/route_check/dalog", "Design Assistance Log"],
 ];
