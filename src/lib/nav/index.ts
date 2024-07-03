@@ -369,6 +369,28 @@ export function getNextPage(
   return result;
 }
 
+export function getNavList(
+  rawPath: string,
+  routeCheckType: "street" | "path" | "",
+): [string, string, boolean][] | null {
+  let path = getSectionPath(rawPath);
+  if (!path) {
+    return null;
+  }
+
+  let sections = filterMainPageSections(routeCheckType);
+  const toolName = path != "/" ? path.split("/")[1] : "";
+  sections = sections.filter((section) => {
+    return section[0] != "/" &&
+      section[0].split("/")[1] == toolName;
+  });
+  let idx = sections.findIndex((pair) => pair[0] == path);
+  const result: [string, string, boolean][] = sections.map((section) => [section[0], section[1], false]);
+
+  result[idx][2] = true;
+  return result;
+}
+
 function canonicalizePath(path: string): string {
   // Deduplicate consecutive slashes
   path = path.replace(/\/{2,}/g, "/");
