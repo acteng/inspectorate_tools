@@ -8,6 +8,7 @@
     getBreadcrumbLinks,
     getPrevPage,
     getNextPage,
+    getNavList,
     getTitle,
   } from "./";
 
@@ -16,6 +17,7 @@
   $: pagePath = $page.url.pathname;
   $: prevPage = getPrevPage(pagePath, routeCheckType);
   $: nextPage = getNextPage(pagePath, routeCheckType);
+  $: navList = getNavList(pagePath, routeCheckType);
 </script>
 
 <div style="display: flex; justify-content: space-between">
@@ -36,3 +38,28 @@
     &nbsp;
   {/if}
 </div>
+{#if navList}
+  <ol
+    style="display: flex; justify-content: space-around; flex-direction: row; flex-wrap: wrap;"
+  >
+    {#each navList as navItem}
+      {#if navItem[2]}
+        <li>{navItem[1]}</li>
+      {:else}
+        <li>
+          <a href={navItem[0]}>{navItem[1]}</a>
+        </li>
+      {/if}
+    {/each}
+  </ol>
+{/if}
+
+<style>
+  li {
+    font-family: "GDS Transport", arial, sans-serif;
+    margin-left: 2em;
+  }
+  li:first-child {
+    margin-left: 0;
+  }
+</style>

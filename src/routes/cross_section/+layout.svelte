@@ -6,15 +6,15 @@
   import folderUrl from "$lib/assets/images/folder.svg?url";
 </script>
 
-<NavHeader routeCheckType="" />
-
 <div>
   <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
   <a href="{base}/cross_section/files">Manage files</a>
-  <span style="margin-left: 8px;">
+  <span class="editing" style="margin-left: 8px;">
     Editing file <u>{$currentFile}</u>
   </span>
 </div>
+
+<NavHeader routeCheckType="" />
 
 <hr />
 
@@ -25,3 +25,9 @@
 <hr />
 
 <NavFooter routeCheckType="" />
+
+<style>
+  .editing {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+</style>

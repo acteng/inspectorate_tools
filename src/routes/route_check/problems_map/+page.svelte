@@ -217,7 +217,7 @@
     bind:this={sidebar}
   >
     {#if editing == null}
-      <CollapsibleCard label="Tools">
+      <CollapsibleCard label="Tools" open>
         <SecondaryButton on:click={() => zoom(true)}>
           Zoom to fit
         </SecondaryButton>

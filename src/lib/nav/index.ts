@@ -245,7 +245,23 @@ let mainPageSections = pages.filter(([x, _]) => x.split("/").length == 3);
 let pathToTitle = new Map(pages);
 
 export function getTitle(path: string): string {
-  return pathToTitle.get(canonicalizePath(path))!;
+  let titleAnyCase = pathToTitle.get(canonicalizePath(path))!;
+  return captialiseWords(titleAnyCase);
+}
+
+function captialiseWords(title: string): string {
+  let words: string[] = title.split(" ");
+  if (words.length == 0) return "";
+  let result = "";
+  for (let i = 0; i < words.length; i++) {
+    result = result + capitaliseFirstCharacter(words[i]) + " ";
+  }
+
+  return result;
+}
+
+function capitaliseFirstCharacter(word: string): string {
+  return word[0].toUpperCase() + word.substring(1);
 }
 
 export function getBreadcrumbLinks(rawPath: string): [string, string][] {
@@ -366,6 +382,33 @@ export function getNextPage(
     return null;
   }
 
+  return result;
+}
+
+export function getNavList(
+  rawPath: string,
+  routeCheckType: "street" | "path" | "",
+): [string, string, boolean][] | null {
+  let path = getSectionPath(rawPath);
+  if (!path) {
+    return null;
+  }
+
+  let sections = filterMainPageSections(routeCheckType);
+  const toolName = path != "/" ? path.split("/")[1] : "";
+  sections = sections.filter((section) => {
+    return section[0] != "/" && section[0].split("/")[1] == toolName;
+  });
+  let idx = sections.findIndex((pair) => pair[0] == path);
+  const result: [string, string, boolean][] = sections.map((section) => [
+    section[0],
+    section[1],
+    false,
+  ]);
+
+  if (idx >= 0) {
+    result[idx][2] = true;
+  }
   return result;
 }
 

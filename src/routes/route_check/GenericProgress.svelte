@@ -130,14 +130,9 @@
   <ol start={startIdx}>
     {#each flatten(sections) as item}
       {#if item.kind == "section"}
-        <strong
-          class="govuk-tag"
-          style:color={colors.green.font}
-          style:background={colors.green.background}
-          style:width="100%"
-        >
+        <h3>
           {item.label}
-        </strong>
+        </h3>
       {:else}
         <li>
           <div class="progress-list-item">
@@ -178,5 +173,12 @@
     border: 1px solid black;
     padding: 4px;
     text-align: center;
+  }
+  li {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+  h3 {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
   }
 </style>
