@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_l8n2al)==null?void 0:s.base)??"/inspectorate_tools/area-check-manual";var a;const l=((a=globalThis.__sveltekit_l8n2al)==null?void 0:a.assets)??e;export{l as a,e as b};
