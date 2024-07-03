@@ -390,7 +390,7 @@ export function getNavList(
     false,
   ]);
 
-  if (idx > 0) {
+  if (idx >= 0) {
     result[idx][2] = true;
   }
   return result;
