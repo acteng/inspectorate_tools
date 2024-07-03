@@ -66,15 +66,14 @@
     choices={pairs(regions)}
     bind:value={$state.summary.region}
   />
-  <SelectWithCustom
-    label="Funding programme"
-    emptyOption
+  <Radio
+    legend="Funding programme"
     choices={pairs(fundingProgrammes)}
     bind:value={$state.summary.fundingProgramme}
   />
-  <SelectWithCustom
-    label="Design stage"
-    emptyOption
+  <Radio
+    legend="Design stage"
+    inlineSmall 
     choices={pairs(designStages)}
     bind:value={$state.summary.designStage}
   />
