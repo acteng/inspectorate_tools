@@ -250,6 +250,9 @@ export function getTitle(path: string): string {
 }
 
 function captialiseWords(title: string): string {
+  if (!title) {
+    return "";
+  }
   let words: string[] = title.split(" ");
   if (words.length == 0) return "";
   let result = "";
