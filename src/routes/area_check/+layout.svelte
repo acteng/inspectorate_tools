@@ -6,7 +6,6 @@
   import folderUrl from "$lib/assets/images/folder.svg?url";
 </script>
 
-
 <div>
   <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
   <a href="{base}/area_check/files">Manage files</a>
@@ -16,7 +15,6 @@
 </div>
 
 <NavHeader routeCheckType="" />
-
 
 <hr />
 

@@ -39,15 +39,16 @@
   {/if}
 </div>
 {#if navList}
-  <ol style="display: flex; justify-content: space-between; flex-direction: row; flex-wrap: wrap;">
+  <ol
+    style="display: flex; justify-content: space-between; flex-direction: row; flex-wrap: wrap;"
+  >
     {#each navList as navItem}
       {#if navItem[2]}
-      <li>{navItem[1]}</li>
-
+        <li>{navItem[1]}</li>
       {:else}
-      <li>
-        <a href={navItem[0]}>{navItem[1]}</a>
-      </li>
+        <li>
+          <a href={navItem[0]}>{navItem[1]}</a>
+        </li>
       {/if}
     {/each}
   </ol>
@@ -58,7 +59,7 @@
     font-family: "GDS Transport", arial, sans-serif;
     margin-left: 2em;
   }
-  li:first-child{
+  li:first-child {
     margin-left: 0;
   }
 </style>
