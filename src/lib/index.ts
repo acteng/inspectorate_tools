@@ -11,6 +11,16 @@ export function pairs(list: string[]): [string, string][] {
   return list.map((x) => [x, x]);
 }
 
+export function capitaliseWords(words:string): string {
+  let wordsList: string[] = words.split(" ");
+
+  return wordsList.reduce( 
+    (accumulator, currentValue) => {
+      return accumulator + " " + currentValue[0].toUpperCase() + currentValue.substring(1);
+    }
+    ,"");
+}
+
 export function repeatCloned<T>(length: number, x: T): T[] {
   let result = [];
   for (let i = 0; i < length; i++) {

@@ -1,8 +1,11 @@
+import { capitaliseWords } from "../index";
+
 export { default as Breadcrumbs } from "./Breadcrumbs.svelte";
 export { default as NavHeader } from "./NavHeader.svelte";
 export { default as NavFooter } from "./NavFooter.svelte";
 export { default as NextButton } from "./NextButton.svelte";
 export { default as PreviousButton } from "./PreviousButton.svelte";
+
 
 // Produced manually with great care
 let pages: [string, string][] = [
@@ -246,19 +249,9 @@ let pathToTitle = new Map(pages);
 
 export function getTitle(path: string): string {
   let titleAnyCase = pathToTitle.get(canonicalizePath(path))!;
-  return captialiseWords(titleAnyCase);
+  return capitaliseWords(titleAnyCase);
 }
 
-function captialiseWords(title: string): string {
-  let words: string[] = title.split(" ");
-  if (words.length == 0) return "";
-  let result = "";
-  for (let i = 0; i < words.length; i++) {
-    result = result + capitaliseFirstCharacter(words[i]) + " ";
-  }
-
-  return result;
-}
 
 function capitaliseFirstCharacter(word: string): string {
   return word[0].toUpperCase() + word.substring(1);
