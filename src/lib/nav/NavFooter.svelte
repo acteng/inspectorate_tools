@@ -31,3 +31,9 @@
     &nbsp;
   {/if}
 </div>
+
+<style>
+  span {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+</style>

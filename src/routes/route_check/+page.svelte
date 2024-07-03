@@ -52,13 +52,13 @@
   {:else}
     <li>
       <i>
-        Path Check (disabled, because of the Route Check Type set in Summary
+        Path Check (disabled, because of the Route Check Type set in Summary)
       </i>
     </li>
     <li>
       <i>
         Path Placemaking Check (disabled, because of the Route Check Type set in
-        Summary
+        Summary)
       </i>
     </li>
   {/if}
@@ -74,3 +74,9 @@
   <li><a href="{base}/route_check/results_export">Results Export</a></li>
   <li><a href="{base}/route_check/dalog">Design Assistance Log</a></li>
 </ol>
+
+<style>
+  li {
+    font-family: "GDS Transport", arial, sans-serif;
+  }
+</style>
