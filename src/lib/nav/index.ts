@@ -245,7 +245,23 @@ let mainPageSections = pages.filter(([x, _]) => x.split("/").length == 3);
 let pathToTitle = new Map(pages);
 
 export function getTitle(path: string): string {
-  return pathToTitle.get(canonicalizePath(path))!;
+  let titleAnyCase = pathToTitle.get(canonicalizePath(path))!;
+  return captialiseWords(titleAnyCase);
+}
+
+function captialiseWords(title: string): string {
+  let words: string[] = title.split(" ");
+  if (words.length == 0) return "";
+  let result = "";
+  for (let i = 0; i < words.length; i++) {
+    result = result + capitaliseFirstCharacter(words[i]) + " ";
+  }
+
+  return result;
+}
+
+function capitaliseFirstCharacter(word: string): string {
+  return word[0].toUpperCase() + word.substring(1);
 }
 
 export function getBreadcrumbLinks(rawPath: string): [string, string][] {

@@ -40,7 +40,7 @@
 </div>
 {#if navList}
   <ol
-    style="display: flex; justify-content: space-between; flex-direction: row; flex-wrap: wrap;"
+    style="display: flex; justify-content: space-around; flex-direction: row; flex-wrap: wrap;"
   >
     {#each navList as navItem}
       {#if navItem[2]}
