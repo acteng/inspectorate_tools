@@ -129,6 +129,16 @@
     $state = $state;
   }
 
+  function capitalise(words:string): string {
+    let wordsList: string[] = words.split(" ");
+
+    return wordsList.reduce( 
+      (accumulator, currentValue) => {
+        return accumulator + " " + currentValue[0].toUpperCase() + currentValue.substring(1);
+      }
+      ,"");
+  }
+
   let scoreColors = {
     0: colors.red,
     1: colors.amber,
@@ -213,7 +223,7 @@
             >
               Score: {movement.score}
             </span>
-            <span>{movement.kind}</span>
+            <span>{capitalise(movement.kind)}</span>
           </div>
         </ClickableCard>
       {/each}
