@@ -6,7 +6,6 @@ export { default as NavFooter } from "./NavFooter.svelte";
 export { default as NextButton } from "./NextButton.svelte";
 export { default as PreviousButton } from "./PreviousButton.svelte";
 
-
 // Produced manually with great care
 let pages: [string, string][] = [
   ["/", "Tools"],
