@@ -14,11 +14,21 @@ export function pairs(list: string[]): [string, string][] {
 export function capitaliseWords(words:string): string {
   let wordsList: string[] = words.split(" ");
 
-  return wordsList.reduce( 
+  let capitalisedWordsString: string = wordsList.reduce( 
     (accumulator, currentValue) => {
       return accumulator + " " + currentValue[0].toUpperCase() + currentValue.substring(1);
     }
     ,"");
+
+  if (capitalisedWordsString[0] === " ") {
+    capitalisedWordsString = capitalisedWordsString.substring(1);
+  }
+  const length = capitalisedWordsString.length;
+  if (capitalisedWordsString[length - 1] === " ") {
+    capitalisedWordsString = capitalisedWordsString.substring(0, length - 1);
+  }
+
+  return capitalisedWordsString;
 }
 
 export function repeatCloned<T>(length: number, x: T): T[] {
