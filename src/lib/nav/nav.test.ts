@@ -37,7 +37,7 @@ describe("getBreadcrumbLinks", () => {
     ]);
     expect(getBreadcrumbLinks("/cross_section/proposed")).toStrictEqual([
       ["/", "Tools"],
-      ["/cross_section", "Route cross-section tool"],
+      ["/cross_section", "Route Cross-section Tool"],
     ]);
   });
 });

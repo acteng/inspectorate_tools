@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { capitaliseWords } from "$lib";
   import MapControls from "./MapControls.svelte";
   import {
     SecondaryButton,
@@ -213,7 +214,7 @@
             >
               Score: {movement.score}
             </span>
-            <span>{movement.kind}</span>
+            <span>{capitaliseWords(movement.kind)}</span>
           </div>
         </ClickableCard>
       {/each}
