@@ -252,11 +252,6 @@ export function getTitle(path: string): string {
   return capitaliseWords(titleAnyCase);
 }
 
-
-function capitaliseFirstCharacter(word: string): string {
-  return word[0].toUpperCase() + word.substring(1);
-}
-
 export function getBreadcrumbLinks(rawPath: string): [string, string][] {
   let path = canonicalizePath(rawPath);
   if (path == "/") {
