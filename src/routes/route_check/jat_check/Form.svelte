@@ -21,7 +21,10 @@
 
 <Radio
   legend="Movement"
-  choices={[["cycling", "Cycling"], ["walking & wheeling", "Walking & Wheeling"]]}
+  choices={[
+    ["cycling", "Cycling"],
+    ["walking & wheeling", "Walking & Wheeling"],
+  ]}
   inlineSmall
   bind:value={$state.jat[junctionIdx][stage].movements[idx].kind}
 />

@@ -11,14 +11,20 @@ export function pairs(list: string[]): [string, string][] {
   return list.map((x) => [x, x]);
 }
 
-export function capitaliseWords(words:string): string {
+export function capitaliseWords(words: string): string {
   let wordsList: string[] = words.split(" ");
 
-  let capitalisedWordsString: string = wordsList.reduce( 
+  let capitalisedWordsString: string = wordsList.reduce(
     (accumulator, currentValue) => {
-      return accumulator + " " + currentValue[0].toUpperCase() + currentValue.substring(1);
-    }
-    ,"");
+      return (
+        accumulator +
+        " " +
+        currentValue[0].toUpperCase() +
+        currentValue.substring(1)
+      );
+    },
+    "",
+  );
 
   if (capitalisedWordsString[0] === " ") {
     capitalisedWordsString = capitalisedWordsString.substring(1);
