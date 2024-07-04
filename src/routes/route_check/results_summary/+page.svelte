@@ -5,9 +5,9 @@
   import LevelOfServiceTable from "./LevelOfServiceTable.svelte";
   import Overview from "./Overview.svelte";
   import CheckDetails from "./CheckDetails.svelte";
-  import SummaryOfScheme from "../results_analysis/SummaryOfScheme.svelte";
-  import PolicyCheckResults from "../results_analysis/PolicyCheckResults.svelte";
-  import SafetyCheckResults from "../results_analysis/SafetyCheckResults.svelte";
+  import SummaryOfScheme from "./SummaryOfScheme.svelte";
+  import PolicyCheckResults from "./PolicyCheckResults.svelte";
+  import SafetyCheckResults from "./SafetyCheckResults.svelte";
 
   let results = getResults($state);
 </script>
@@ -40,7 +40,7 @@
   hint="Use the space to provide overall feedback for the proposed scheme"
 />
 
-<h2> Results - Further Analysis </h2>
+<h2>Results - Further Analysis</h2>
 
 <SummaryOfScheme />
 
