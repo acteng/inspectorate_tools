@@ -1,1 +1,0 @@
-var s;const t=((s=globalThis.__sveltekit_1i7f09g)==null?void 0:s.base)??"/inspectorate_tools/design-stage-issues-default-unresolved";var e;const a=((e=globalThis.__sveltekit_1i7f09g)==null?void 0:e.assets)??t;export{a,t as b};
