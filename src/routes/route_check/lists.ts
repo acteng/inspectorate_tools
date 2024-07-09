@@ -1,7 +1,7 @@
 // TODO Preserve bold formatting?
 export let policyConflictChoices: [string, string][] = [
   ["1", "1 - Cyclists are not separated from pedestrians"],
-  ["2", '2 - Barriers, steps, or "Cyclist Dismount" signs are present'],
+  ["2", '2 - Barriers, steps or "Cyclist Dismount" signs are present'],
   ["3", "3 - The route is not direct, logical and intuitive"],
   ["4", "4 - Inappropriate surface materials"],
   ["5", "5 - Appropriate lighting is not provided"],
