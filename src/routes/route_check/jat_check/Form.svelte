@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { pairs } from "$lib";
   import { Radio, TextInput, Select, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
@@ -22,7 +21,10 @@
 
 <Radio
   legend="Movement"
-  choices={pairs(["cycling", "walking & wheeling"])}
+  choices={[
+    ["cycling", "Cycling"],
+    ["walking & wheeling", "Walking & Wheeling"],
+  ]}
   inlineSmall
   bind:value={$state.jat[junctionIdx][stage].movements[idx].kind}
 />

@@ -47,7 +47,7 @@
         <li>{navItem[1]}</li>
       {:else}
         <li>
-          <a href={navItem[0]}>{navItem[1]}</a>
+          <a href="{base}{navItem[0]}">{navItem[1]}</a>
         </li>
       {/if}
     {/each}
