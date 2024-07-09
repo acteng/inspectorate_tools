@@ -85,6 +85,7 @@
 
   async function stopEditing() {
     editing = null;
+    sortLists();
     if (preserveListScroll != null) {
       await tick();
       sidebar.scrollTop = preserveListScroll;
@@ -129,6 +130,39 @@
       ];
       select({ kind: "conflict", idx: $state.policyConflictLog.length - 1 });
     }
+  }
+
+  function sortLists() {
+    $state.policyConflictLog =
+      $state.policyConflictLog.toSorted(orderConflicts);
+    $state.criticalIssues = $state.criticalIssues.toSorted(orderCriticals);
+  }
+
+  function orderConflicts(thisConflict, thatConflict) {
+    const thisConflictString = thisConflict.conflict || "";
+    const thatConflictString = thatConflict.conflict || "";
+    return thisConflictString.localeCompare(thatConflictString);
+  }
+
+  function orderCriticals(thisCritical, thatCritical) {
+    const thisCriticalString = thisCritical.criticalIssue || "";
+    const thatCriticalString = thatCritical.criticalIssue || "";
+    const [thisInt, thisString] =
+      getIntAndCharFromCriticalString(thisCriticalString);
+    const [thatInt, thatString] =
+      getIntAndCharFromCriticalString(thatCriticalString);
+    return (thisInt - thatInt) * 10 + thisString.localeCompare(thatString);
+  }
+
+  function getIntAndCharFromCriticalString(
+    criticalString: string,
+  ): [number, string] {
+    if (criticalString === "") {
+      return [0, ""];
+    }
+    let lastChar = criticalString.substring(criticalString.length - 1);
+    let char = isNaN(lastChar) ? lastChar : "";
+    return [parseInt(criticalString), char];
   }
 
   // TODO Wait for loaded
