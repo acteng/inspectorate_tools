@@ -6,6 +6,7 @@
     TextArea,
     DecimalInput,
     SelectWithCustom,
+    Radio,
   } from "govuk-svelte";
   import { state } from "../data";
   import {
@@ -65,15 +66,16 @@
     choices={pairs(regions)}
     bind:value={$state.summary.region}
   />
-  <SelectWithCustom
-    label="Funding programme"
-    emptyOption
-    choices={pairs(fundingProgrammes)}
-    bind:value={$state.summary.fundingProgramme}
-  />
-  <SelectWithCustom
-    label="Design stage"
-    emptyOption
+  <div class="funding-programme">
+    <Radio
+      legend="Funding programme"
+      choices={pairs(fundingProgrammes)}
+      bind:value={$state.summary.fundingProgramme}
+    />
+  </div>
+  <Radio
+    legend="Design stage"
+    inlineSmall
     choices={pairs(designStages)}
     bind:value={$state.summary.designStage}
   />
@@ -114,10 +116,9 @@
 
   <hr />
 
-  <Select
-    label="Route Check Type (Street or Path)"
+  <Radio
+    legend="Route Check Type (Street or Path)"
     hint="What type of route is being reviewed: Street Check (e.g. on- or by-carriageway) or Path Check (e.g. a traffic-free path featuring minimal interactions with motor traffic)"
-    emptyOption
     choices={[
       ["street", "Street Check"],
       ["path", "Path Check"],
@@ -157,3 +158,12 @@
     </ol>
   </ContextualMapEntry>
 </div>
+
+<style>
+  .govuk-radios {
+    height: 270px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+  }
+</style>

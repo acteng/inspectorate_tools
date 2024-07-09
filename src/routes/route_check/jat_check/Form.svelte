@@ -29,8 +29,8 @@
   bind:value={$state.jat[junctionIdx][stage].movements[idx].kind}
 />
 
-<Select
-  label="Score"
+<Radio
+  legend="Score"
   choices={scoreChoices}
   bind:value={$state.jat[junctionIdx][stage].movements[idx].score}
 />
