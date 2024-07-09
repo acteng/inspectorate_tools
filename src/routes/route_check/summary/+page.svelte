@@ -67,15 +67,15 @@
     bind:value={$state.summary.region}
   />
   <div class="funding-programme">
-  <Radio
-    legend="Funding programme"
-    choices={pairs(fundingProgrammes)}
-    bind:value={$state.summary.fundingProgramme}
-  />
+    <Radio
+      legend="Funding programme"
+      choices={pairs(fundingProgrammes)}
+      bind:value={$state.summary.fundingProgramme}
+    />
   </div>
   <Radio
     legend="Design stage"
-    inlineSmall 
+    inlineSmall
     choices={pairs(designStages)}
     bind:value={$state.summary.designStage}
   />
