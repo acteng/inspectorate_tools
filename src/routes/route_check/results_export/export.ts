@@ -138,7 +138,9 @@ function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("H" + (8 + i)).value = pc.stage;
     sheet.getCell("I" + (8 + i)).value = point(pc.point);
     sheet.getCell("J" + (8 + i)).value = pc.locationName;
-    sheet.getCell("K" + (8 + i)).value = pc.resolved;
+    // if the issue is noted on Design stage then it is not resolved by design
+    sheet.getCell("K" + (8 + i)).value =
+      pc.stage === "Design" ? "No" : pc.resolved;
     sheet.getCell("L" + (8 + i)).value = pc.notes;
   }
 }
@@ -151,7 +153,9 @@ function criticalIssueLog(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("H" + (8 + i)).value = ci.stage;
     sheet.getCell("I" + (8 + i)).value = point(ci.point);
     sheet.getCell("J" + (8 + i)).value = ci.locationName;
-    sheet.getCell("K" + (8 + i)).value = ci.resolved;
+    // if the issue is noted on Design stage then it is not resolved by design
+    sheet.getCell("K" + (8 + i)).value =
+      ci.stage === "Design" ? "No" : ci.resolved;
     sheet.getCell("L" + (8 + i)).value = ci.notes;
   }
 }
