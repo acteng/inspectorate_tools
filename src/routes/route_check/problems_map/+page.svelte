@@ -146,17 +146,6 @@
     return getCriticalIssueIndex(thisCritical.criticalIssue) - getCriticalIssueIndex(thatCritical.criticalIssue);
   }
 
-  function getIntAndCharFromCriticalString(
-    criticalString: string,
-  ): [number, string] {
-    if (criticalString === "") {
-      return [0, ""];
-    }
-    let lastChar = criticalString.substring(criticalString.length - 1);
-    let char = isNaN(lastChar) ? lastChar : "";
-    return [parseInt(criticalString), char];
-  }
-
   // TODO Wait for loaded
   onMount(() => {
     zoom(false);
