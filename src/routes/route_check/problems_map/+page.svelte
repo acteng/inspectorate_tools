@@ -24,7 +24,7 @@
     type CriticalIssue,
     type PolicyConflict,
   } from "../data";
-  import { getFullPolicyConflict, getTerseCriticalIssue } from "../lists";
+  import { getFullPolicyConflict, getTerseCriticalIssue, getCriticalIssueIndex, getPolicyConflictIndex } from "../lists";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -139,19 +139,11 @@
   }
 
   function orderConflicts(thisConflict, thatConflict) {
-    const thisConflictString = thisConflict.conflict || "";
-    const thatConflictString = thatConflict.conflict || "";
-    return thisConflictString.localeCompare(thatConflictString);
+    return getPolicyConflictIndex(thisConflict.conflict) - getPolicyConflictIndex(thatConflict.conflict);
   }
 
   function orderCriticals(thisCritical, thatCritical) {
-    const thisCriticalString = thisCritical.criticalIssue || "";
-    const thatCriticalString = thatCritical.criticalIssue || "";
-    const [thisInt, thisString] =
-      getIntAndCharFromCriticalString(thisCriticalString);
-    const [thatInt, thatString] =
-      getIntAndCharFromCriticalString(thatCriticalString);
-    return (thisInt - thatInt) * 10 + thisString.localeCompare(thatString);
+    return getCriticalIssueIndex(thisCritical.criticalIssue) - getCriticalIssueIndex(thatCritical.criticalIssue);
   }
 
   function getIntAndCharFromCriticalString(

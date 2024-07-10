@@ -117,6 +117,14 @@ export function getFullCriticalIssue(code: string): string {
   throw new Error(`Unknown critical issue ${code}`);
 }
 
+export function getCriticalIssueIndex(code: string): number {
+  return criticalIssueChoices.findIndex((pair) => pair[0] == code); 
+}
+
+export function getPolicyConflictIndex(code: string): number {
+  return policyConflictChoices.findIndex((pair) => pair[0] == code);
+}
+
 // Returns the numeric code and short descripton
 export function getTerseCriticalIssue(code: string): string {
   return getFullCriticalIssue(code).split(":")[0];
