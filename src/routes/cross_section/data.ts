@@ -144,7 +144,7 @@ function emptyState(): State {
 }
 
 export let speedLimits = ["<30", "30", "40", "50", "60", "70"] as const;
-export type SpeedLimit = (typeof speedLimits)[number];
+export type SpeedLimit = (typeof speedLimits)[number] | "";
 
 export let streetFeatureTypes = [
   "Footway",
