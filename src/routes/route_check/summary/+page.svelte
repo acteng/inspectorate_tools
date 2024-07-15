@@ -66,16 +66,13 @@
     choices={pairs(regions)}
     bind:value={$state.summary.region}
   />
-  <div class="funding-programme">
-    <Radio
-      legend="Funding programme"
-      choices={pairs(fundingProgrammes)}
-      bind:value={$state.summary.fundingProgramme}
-    />
-  </div>
+  <Radio
+    legend="Funding programme"
+    choices={pairs(fundingProgrammes)}
+    bind:value={$state.summary.fundingProgramme}
+  />
   <Radio
     legend="Design stage"
-    inlineSmall
     choices={pairs(designStages)}
     bind:value={$state.summary.designStage}
   />
@@ -158,12 +155,3 @@
     </ol>
   </ContextualMapEntry>
 </div>
-
-<style>
-  .govuk-radios {
-    height: 270px;
-    flex-wrap: wrap;
-    display: flex;
-    flex-direction: column;
-  }
-</style>
