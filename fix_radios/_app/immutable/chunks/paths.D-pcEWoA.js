@@ -1,0 +1,1 @@
+var s;const a=((s=globalThis.__sveltekit_1lxlthx)==null?void 0:s.base)??"/inspectorate_tools/fix_radios";var t;const e=((t=globalThis.__sveltekit_1lxlthx)==null?void 0:t.assets)??a;export{e as a,a as b};
