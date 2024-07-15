@@ -90,7 +90,18 @@
 
   async function stopEditing() {
     editing = null;
-    sortLists();
+
+    // Sort by the conflict or critical type. The scroll position may be slightly irrelevant if the user changes these types.
+    $state.policyConflictLog = $state.policyConflictLog.toSorted(
+      (a, b) =>
+        getPolicyConflictIndex(a.conflict) - getPolicyConflictIndex(b.conflict),
+    );
+    $state.criticalIssues = $state.criticalIssues.toSorted(
+      (a, b) =>
+        getCriticalIssueIndex(a.criticalIssue) -
+        getCriticalIssueIndex(b.criticalIssue),
+    );
+
     if (preserveListScroll != null) {
       await tick();
       sidebar.scrollTop = preserveListScroll;
@@ -135,26 +146,6 @@
       ];
       select({ kind: "conflict", idx: $state.policyConflictLog.length - 1 });
     }
-  }
-
-  function sortLists() {
-    $state.policyConflictLog =
-      $state.policyConflictLog.toSorted(orderConflicts);
-    $state.criticalIssues = $state.criticalIssues.toSorted(orderCriticals);
-  }
-
-  function orderConflicts(thisConflict, thatConflict) {
-    return (
-      getPolicyConflictIndex(thisConflict.conflict) -
-      getPolicyConflictIndex(thatConflict.conflict)
-    );
-  }
-
-  function orderCriticals(thisCritical, thatCritical) {
-    return (
-      getCriticalIssueIndex(thisCritical.criticalIssue) -
-      getCriticalIssueIndex(thatCritical.criticalIssue)
-    );
   }
 
   // TODO Wait for loaded
