@@ -118,7 +118,7 @@ export function getFullCriticalIssue(code: string): string {
 }
 
 export function getCriticalIssueIndex(code: string): number {
-  return criticalIssueChoices.findIndex((pair) => pair[0] == code); 
+  return criticalIssueChoices.findIndex((pair) => pair[0] == code);
 }
 
 export function getPolicyConflictIndex(code: string): number {

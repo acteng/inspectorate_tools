@@ -24,7 +24,12 @@
     type CriticalIssue,
     type PolicyConflict,
   } from "../data";
-  import { getFullPolicyConflict, getTerseCriticalIssue, getCriticalIssueIndex, getPolicyConflictIndex } from "../lists";
+  import {
+    getFullPolicyConflict,
+    getTerseCriticalIssue,
+    getCriticalIssueIndex,
+    getPolicyConflictIndex,
+  } from "../lists";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -139,11 +144,17 @@
   }
 
   function orderConflicts(thisConflict, thatConflict) {
-    return getPolicyConflictIndex(thisConflict.conflict) - getPolicyConflictIndex(thatConflict.conflict);
+    return (
+      getPolicyConflictIndex(thisConflict.conflict) -
+      getPolicyConflictIndex(thatConflict.conflict)
+    );
   }
 
   function orderCriticals(thisCritical, thatCritical) {
-    return getCriticalIssueIndex(thisCritical.criticalIssue) - getCriticalIssueIndex(thatCritical.criticalIssue);
+    return (
+      getCriticalIssueIndex(thisCritical.criticalIssue) -
+      getCriticalIssueIndex(thatCritical.criticalIssue)
+    );
   }
 
   // TODO Wait for loaded
