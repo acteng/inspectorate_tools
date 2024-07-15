@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_1d54uxr)==null?void 0:s.base)??"/inspectorate_tools/sort-issues-and-conflicts";var t;const a=((t=globalThis.__sveltekit_1d54uxr)==null?void 0:t.assets)??e;export{a,e as b};
