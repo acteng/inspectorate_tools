@@ -24,7 +24,12 @@
     type CriticalIssue,
     type PolicyConflict,
   } from "../data";
-  import { getFullPolicyConflict, getTerseCriticalIssue } from "../lists";
+  import {
+    getFullPolicyConflict,
+    getTerseCriticalIssue,
+    getCriticalIssueIndex,
+    getPolicyConflictIndex,
+  } from "../lists";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -85,6 +90,18 @@
 
   async function stopEditing() {
     editing = null;
+
+    // Sort by the conflict or critical type. The scroll position may be slightly irrelevant if the user changes these types.
+    $state.policyConflictLog = $state.policyConflictLog.toSorted(
+      (a, b) =>
+        getPolicyConflictIndex(a.conflict) - getPolicyConflictIndex(b.conflict),
+    );
+    $state.criticalIssues = $state.criticalIssues.toSorted(
+      (a, b) =>
+        getCriticalIssueIndex(a.criticalIssue) -
+        getCriticalIssueIndex(b.criticalIssue),
+    );
+
     if (preserveListScroll != null) {
       await tick();
       sidebar.scrollTop = preserveListScroll;
