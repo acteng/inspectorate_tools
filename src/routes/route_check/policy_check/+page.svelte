@@ -18,8 +18,16 @@
   {#each questions as question, idx}
     <h2>P00{idx + 1}: {question}</h2>
     <div style="display: flex; justify-content: space-evenly">
-      <YesNo label="Existing" bind:value={$state.policyCheck[idx].existing} />
-      <YesNo label="Proposed" bind:value={$state.policyCheck[idx].proposed} />
+      <YesNo
+        inlineSmall
+        label="Existing"
+        bind:value={$state.policyCheck[idx].existing}
+      />
+      <YesNo
+        inlineSmall
+        label="Proposed"
+        bind:value={$state.policyCheck[idx].proposed}
+      />
     </div>
     {#if $state.policyCheck[idx].existing == "No" || $state.policyCheck[idx].proposed == "No"}
       <p>

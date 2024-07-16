@@ -28,6 +28,7 @@
   legend="Stage"
   choices={pairs(["Existing", "Design"])}
   bind:value={$state.criticalIssues[idx].stage}
+  inlineSmall
 />
 
 <TextInput
@@ -39,6 +40,7 @@
   <YesNo
     label="Resolved by Design"
     bind:value={$state.criticalIssues[idx].resolved}
+    inlineSmall
   />
 {/if}
 
