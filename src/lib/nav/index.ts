@@ -375,7 +375,7 @@ export function getNextPage(
 export function getNavList(
   rawPath: string,
   routeCheckType: "street" | "path" | "",
-): [string, string, boolean][] | null {
+): [string, string][] | null {
   let path = getSectionPath(rawPath);
   if (!path) {
     return null;
@@ -383,20 +383,9 @@ export function getNavList(
 
   let sections = filterMainPageSections(routeCheckType);
   const toolName = path != "/" ? path.split("/")[1] : "";
-  sections = sections.filter((section) => {
+  return sections.filter((section) => {
     return section[0] != "/" && section[0].split("/")[1] == toolName;
   });
-  let idx = sections.findIndex((pair) => pair[0] == path);
-  const result: [string, string, boolean][] = sections.map((section) => [
-    section[0],
-    section[1],
-    false,
-  ]);
-
-  if (idx >= 0) {
-    result[idx][2] = true;
-  }
-  return result;
 }
 
 function canonicalizePath(path: string): string {

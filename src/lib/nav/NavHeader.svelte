@@ -43,13 +43,9 @@
     style="display: flex; justify-content: space-around; flex-direction: row; flex-wrap: wrap;"
   >
     {#each navList as navItem}
-      {#if navItem[2]}
-        <li>{navItem[1]}</li>
-      {:else}
-        <li>
-          <a href="{base}{navItem[0]}">{navItem[1]}</a>
-        </li>
-      {/if}
+      <li>
+        <a href="{base}{navItem[0]}">{navItem[1]}</a>
+      </li>
     {/each}
   </ol>
 {/if}
