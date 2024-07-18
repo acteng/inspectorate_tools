@@ -1,0 +1,1 @@
+var s;const t=((s=globalThis.__sveltekit_chss7k)==null?void 0:s.base)??"/inspectorate_tools/blank_branch";var a;const e=((a=globalThis.__sveltekit_chss7k)==null?void 0:a.assets)??t;export{e as a,t as b};
