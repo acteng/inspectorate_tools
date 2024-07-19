@@ -389,8 +389,6 @@ export function getNavList(
 }
 
 function canonicalizePath(path: string): string {
-  // TODO Remove
-  console.log({ path, baseUrl: import.meta.env.VITE_BASE_PATH });
   // Deduplicate consecutive slashes
   path = path.replace(/\/{2,}/g, "/");
 
