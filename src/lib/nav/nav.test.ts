@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { capitaliseWords } from "../";
 import { getTitle, getBreadcrumbLinks, getPrevPage, getNextPage } from "./";
 
 describe("getTitle", () => {
@@ -19,6 +20,7 @@ describe("getTitle", () => {
   });
 
   it("GH deployment", () => {
+    import.meta.env.BASE_URL = "/inspectorate_tools";
     expect(getTitle("/inspectorate_tools")).toBe("Tools");
     expect(getTitle("/inspectorate_tools/")).toBe("Tools");
     expect(getTitle("/inspectorate_tools/cross_section/proposed/")).toBe(
@@ -153,5 +155,14 @@ describe("getNextPage", () => {
     expect(
       getNextPage("/route_check/path_placemaking_check", "path"),
     ).toStrictEqual(["/route_check/jat_check", "JAT Check"]);
+  });
+});
+
+describe("capitaliseWords", () => {
+  it("normal cases", () => {
+    expect(capitaliseWords("")).toBe("");
+    expect(capitaliseWords("  ")).toBe("  ");
+    expect(capitaliseWords("foo bar 123")).toBe("Foo Bar 123");
+    expect(capitaliseWords("FOO Bar 123")).toBe("FOO Bar 123");
   });
 });

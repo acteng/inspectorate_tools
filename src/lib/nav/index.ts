@@ -247,7 +247,7 @@ let mainPageSections = pages.filter(([x, _]) => x.split("/").length == 3);
 let pathToTitle = new Map(pages);
 
 export function getTitle(path: string): string {
-  let titleAnyCase = pathToTitle.get(canonicalizePath(path))!;
+  let titleAnyCase = pathToTitle.get(canonicalizePath(path)) || "";
   return capitaliseWords(titleAnyCase);
 }
 
@@ -395,9 +395,11 @@ function canonicalizePath(path: string): string {
   // Remove trailing slashes
   path = path.replace(/\/+$/, "");
 
-  // When deployed to GH Pages, remove the leading base path.
-  if (path.startsWith("/inspectorate_tools")) {
-    path = path.slice("/inspectorate_tools".length);
+  // When deployed to GH Pages, remove the leading base path. This is just
+  // /inspectorate_tools for the main branch, but other git branches have
+  // the branch name prefixed there.
+  if (path.startsWith(import.meta.env.BASE_URL)) {
+    path = path.slice(import.meta.env.BASE_URL.length);
   }
 
   // Guarantee a leading slash
