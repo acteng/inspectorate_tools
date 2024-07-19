@@ -389,7 +389,7 @@ export function getNavList(
 }
 
 function canonicalizePath(path: string): string {
-  console.log({path, baseUrl: import.meta.env.BASE_URL});
+  console.log({ path, baseUrl: import.meta.env.BASE_URL });
   // Deduplicate consecutive slashes
   path = path.replace(/\/{2,}/g, "/");
 
@@ -399,8 +399,12 @@ function canonicalizePath(path: string): string {
   // When deployed to GH Pages, remove the leading base path. This is just
   // /inspectorate_tools for the main branch, but other git branches have
   // the branch name prefixed there.
-  if (path.startsWith(import.meta.env.BASE_URL)) {
-    path = path.slice(import.meta.env.BASE_URL.length);
+  let baseUrl = import.meta.env.BASE_URL;
+  if (baseUrl == "./") {
+    baseUrl = "/";
+  }
+  if (path.startsWith(baseUrl)) {
+    path = path.slice(baseUrl.length);
   }
 
   // Guarantee a leading slash
