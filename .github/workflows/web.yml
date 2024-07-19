@@ -36,7 +36,7 @@ jobs:
               base=/inspectorate_tools/$branch
             fi
 
-            if npm ci && npm run setup-govuk && BASE_PATH=$base npm run build; then
+            if npm ci && npm run setup-govuk && BASE_PATH=$base VITE_BASE_PATH=$base npm run build; then
               if [ "$branch" == "main" ]; then
                 mv build/* deployme
               else

@@ -389,7 +389,8 @@ export function getNavList(
 }
 
 function canonicalizePath(path: string): string {
-  console.log({ path, baseUrl: import.meta.env.BASE_URL });
+  // TODO Remove
+  console.log({ path, baseUrl: import.meta.env.VITE_BASE_PATH });
   // Deduplicate consecutive slashes
   path = path.replace(/\/{2,}/g, "/");
 
@@ -397,12 +398,11 @@ function canonicalizePath(path: string): string {
   path = path.replace(/\/+$/, "");
 
   // When deployed to GH Pages, remove the leading base path. This is just
-  // /inspectorate_tools for the main branch, but other git branches have
-  // the branch name prefixed there.
-  let baseUrl = import.meta.env.BASE_URL;
-  if (baseUrl == "./") {
-    baseUrl = "/";
-  }
+  // /inspectorate_tools for the main branch, but other git branches have the
+  // branch name prefixed there. Theoretically we could use the special
+  // vite BASE_URL variable, but during builds, this is somehow getting
+  // set to "./"
+  let baseUrl = import.meta.env.VITE_BASE_PATH;
   if (path.startsWith(baseUrl)) {
     path = path.slice(baseUrl.length);
   }
