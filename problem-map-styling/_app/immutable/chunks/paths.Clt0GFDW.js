@@ -1,0 +1,1 @@
+var s;const t=((s=globalThis.__sveltekit_7ye9fe)==null?void 0:s.base)??"/inspectorate_tools/problem-map-styling";var e;const a=((e=globalThis.__sveltekit_7ye9fe)==null?void 0:e.assets)??t;export{a,t as b};
