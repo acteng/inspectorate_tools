@@ -1,1 +1,0 @@
-var a;const t=((a=globalThis.__sveltekit_tapaxf)==null?void 0:a.base)??"/inspectorate_tools/area-check-manual";var s;const e=((s=globalThis.__sveltekit_tapaxf)==null?void 0:s.assets)??t;export{e as a,t as b};
