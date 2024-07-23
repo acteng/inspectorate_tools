@@ -260,23 +260,22 @@
 
       <h3>Critical Issues</h3>
       {#each $state.criticalIssues as critical, idx}
-        <li>
-          <ClickableCard
-            name={labelCritical(critical)}
-            on:click={() => selectAndZoom({ kind: "critical", idx })}
-            on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
-            on:mouseleave={() => (hoveringSidebar = null)}
+        <ClickableCard
+          name={labelCritical(critical)}
+          on:click={() => selectAndZoom({ kind: "critical", idx })}
+          on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
+          on:mouseleave={() => (hoveringSidebar = null)}
+        >
+          <div
+            style="width: 100%; display: flex; justify-content: space-between"
           >
-            <div
-              style="width: 100%; display: flex; justify-content: space-between"
-            >
-              <span>Stage: {critical.stage}</span>
-              {#if critical.stage != "Design"}
-                <span>Resolved: {critical.resolved}</span>
-              {/if}
-            </div>
-          </ClickableCard>
-        </li>{/each}
+            <span>Stage: {critical.stage}</span>
+            {#if critical.stage != "Design"}
+              <span>Resolved: {critical.resolved}</span>
+            {/if}
+          </div>
+        </ClickableCard>
+      {/each}
 
       <h3>Policy Conflicts</h3>
       {#each $state.policyConflictLog as conflict, idx}
