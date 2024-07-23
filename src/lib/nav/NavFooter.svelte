@@ -23,7 +23,9 @@
     &nbsp;
   {/if}
 
-  <span style="display: flex; align-items: center">{getTitle(pagePath)}</span>
+  <span class="govuk-body" style="display: flex; align-items: center">
+    {getTitle(pagePath)}
+  </span>
 
   {#if nextPage}
     <NextButton href="{base}{nextPage[0]}" label={nextPage[1]} />
@@ -31,9 +33,3 @@
     &nbsp;
   {/if}
 </div>
-
-<style>
-  span {
-    font-family: "GDS Transport", arial, sans-serif;
-  }
-</style>
