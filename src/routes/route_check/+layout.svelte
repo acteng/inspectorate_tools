@@ -9,7 +9,7 @@
 <div>
   <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
   <a href="{base}/route_check/files">Manage files</a>
-  <span class="editing" style="margin-left: 8px;">
+  <span class="govuk-body" style="margin-left: 8px;">
     Editing file <u>{$currentFile}</u>
   </span>
 </div>
@@ -25,9 +25,3 @@
 <hr />
 
 <NavFooter routeCheckType={$state.summary.checkType} />
-
-<style>
-  .editing {
-    font-family: "GDS Transport", arial, sans-serif;
-  }
-</style>
