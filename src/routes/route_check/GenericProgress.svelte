@@ -174,9 +174,6 @@
     padding: 4px;
     text-align: center;
   }
-  li {
-    font-family: "GDS Transport", arial, sans-serif;
-  }
   h3 {
     margin-top: 0.75em;
     margin-bottom: 0.75em;
