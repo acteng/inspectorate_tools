@@ -88,6 +88,27 @@
     });
   }
 
+  async function createCopy(id: ID) {
+    let list =
+      id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
+
+    console.log(list);
+    let newItem = JSON.parse(JSON.stringify(list[id.idx]));
+    let newList = list
+      .slice(0, id.idx + 1)
+      .concat([newItem])
+      .concat(list.slice(id.idx + 1));
+    console.log(newList);
+
+    if (id.kind == "critical") {
+      $state.criticalIssues = newList;
+    } else {
+      $state.policyConflictLog = newList;
+    }
+
+    console.log("done");
+  }
+
   async function stopEditing() {
     editing = null;
 
@@ -260,25 +281,41 @@
 
       <h3>Critical Issues</h3>
       {#each $state.criticalIssues as critical, idx}
-        <ClickableCard
-          name={labelCritical(critical)}
-          on:click={() => selectAndZoom({ kind: "critical", idx })}
-          on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
-          on:mouseleave={() => (hoveringSidebar = null)}
-        >
-          <div
-            style="width: 100%; display: flex; justify-content: space-between"
-          >
-            <span>Stage: {critical.stage}</span>
-            {#if critical.stage != "Design"}
-              <span>Resolved: {critical.resolved}</span>
-            {/if}
+        <div class="select-or-copy">
+          <div class="select">
+            <ClickableCard
+              name={labelCritical(critical)}
+              on:click={() => selectAndZoom({ kind: "critical", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "critical", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              <div
+                style="width: 100%; display: flex; justify-content: space-between"
+              >
+                <span>Stage: {critical.stage}</span>
+                {#if critical.stage != "Design"}
+                  <span>Resolved: {critical.resolved}</span>
+                {/if}
+              </div>
+            </ClickableCard>
           </div>
-        </ClickableCard>
+          <div class="copy">
+            <ClickableCard
+              name={`Copy critical issue`}
+              on:click={() => createCopy({ kind: "critical", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "critical", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            />
+          </div>
+        </div>
       {/each}
 
       <h3>Policy Conflicts</h3>
       {#each $state.policyConflictLog as conflict, idx}
+        <div class="select-or-copy">
+          <div class="select">
         <ClickableCard
           name={labelConflict(conflict)}
           on:click={() => selectAndZoom({ kind: "conflict", idx })}
@@ -286,7 +323,7 @@
           on:mouseleave={() => (hoveringSidebar = null)}
         >
           <div
-            style="width: 100%; display: flex; justify-content: space-between"
+            style="width: 70%; display: flex; justify-content: space-between"
           >
             <span>Stage: {conflict.stage}</span>
             {#if conflict.stage != "Design"}
@@ -294,6 +331,17 @@
             {/if}
           </div>
         </ClickableCard>
+          </div>
+          <div class="copy">
+            <ClickableCard
+              name={`Copy policy conflict`}
+              on:click={() => createCopy({ kind: "conflict", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "conflict", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            />
+          </div>
+        </div>
       {/each}
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
@@ -384,5 +432,17 @@
   polygon:hover {
     stroke-width: 6px;
     cursor: pointer;
+  }
+  .select-or-copy {
+    display: flex;
+  }
+  .select-or-copy button {
+    min-height: 131px;
+  }
+  .select {
+    width: 70%;
+  }
+  .copy {
+    width: 30%;
   }
 </style>
