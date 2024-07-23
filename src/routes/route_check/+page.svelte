@@ -74,9 +74,3 @@
   <li><a href="{base}/route_check/results_export">Results Export</a></li>
   <li><a href="{base}/route_check/dalog">Design Assistance Log</a></li>
 </ol>
-
-<style>
-  li {
-    font-family: "GDS Transport", arial, sans-serif;
-  }
-</style>

@@ -52,7 +52,6 @@
 
 <style>
   li {
-    font-family: "GDS Transport", arial, sans-serif;
     margin-left: 2em;
   }
   li:first-child {
