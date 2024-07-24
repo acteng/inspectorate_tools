@@ -117,7 +117,21 @@ function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("D22").value = "Path Check";
   }
 
-  // TODO Fill out coordinates
+  // The route could be split into many pieces. Arbitrarily use coordinates from the first LineString.
+  for (let f of state.summary.networkMap.features) {
+    if (f.geometry.type == "LineString") {
+      // Start point
+      sheet.getCell("C26").value = f.geometry.coordinates[0][1];
+      sheet.getCell("D26").value = f.geometry.coordinates[0][0];
+      // End point
+      sheet.getCell("C27").value = f.geometry.coordinates[0][1];
+      sheet.getCell("D27").value = f.geometry.coordinates[0][0];
+      // For the webmap link, just center on the start point
+      sheet.getCell("C28").value =
+        `https://www.openstreetmap.org/#map=18/${f.geometry.coordinates[0][1]}/${f.geometry.coordinates[0][0]}`;
+      break;
+    }
+  }
 }
 
 function policyCheck(state: State, workbook: ExcelJS.Workbook) {

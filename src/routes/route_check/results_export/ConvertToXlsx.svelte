@@ -21,7 +21,9 @@
 <p>
   <i>
     When you open the file, you need to force Excel to recalculate all formulas
-    with Ctrl + Alt + F9
+    with Ctrl + Alt + F9. The route coordinates in the Summary of Scheme may not
+    capture everything mapped when the route is split into multiple pieces. The
+    map weblink only shows the route start point.
   </i>
 </p>
 <Loading {loading} />
