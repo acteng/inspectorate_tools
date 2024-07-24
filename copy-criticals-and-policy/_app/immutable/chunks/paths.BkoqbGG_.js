@@ -1,1 +1,0 @@
-var s;const t=((s=globalThis.__sveltekit_1adq5yy)==null?void 0:s.base)??"/inspectorate_tools/copy-criticals-and-policy";var a;const e=((a=globalThis.__sveltekit_1adq5yy)==null?void 0:a.assets)??t;export{e as a,t as b};
