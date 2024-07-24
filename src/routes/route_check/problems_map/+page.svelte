@@ -101,10 +101,10 @@
     let newList = list.toSpliced(id.idx + 1, 0, newItem);
 
     if (id.kind == "critical") {
-      // @ts-ignore we know that we've taken the correctly typed list from earlier
+      // @ts-expect-error we know that we've taken the correctly typed list from earlier
       $state.criticalIssues = newList;
     } else {
-      // @ts-ignore
+      // @ts-expect-error
       $state.policyConflictLog = newList;
     }
 
@@ -289,7 +289,9 @@
           on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
           on:mouseleave={() => (hoveringSidebar = null)}
         >
-          <div style="display: flex; justify-content: space-between">
+          <div
+            style="width: 100%; display: flex; justify-content: space-between"
+          >
             <span>Stage: {critical.stage}</span>
             {#if critical.stage != "Design"}
               <span>Resolved: {critical.resolved}</span>
@@ -306,7 +308,9 @@
           on:mouseenter={() => (hoveringSidebar = { kind: "conflict", idx })}
           on:mouseleave={() => (hoveringSidebar = null)}
         >
-          <div style="display: flex; justify-content: space-between">
+          <div
+            style="width: 100%; display: flex; justify-content: space-between"
+          >
             <span>Stage: {conflict.stage}</span>
             {#if conflict.stage != "Design"}
               <span>Resolved: {conflict.resolved}</span>
@@ -317,18 +321,19 @@
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
+      <SecondaryButton
+        on:click={() =>
+          createCopy({
+            kind: editing.kind,
+            idx: editing.idx,
+          })}
+      >
+        Copy
+      </SecondaryButton>
       {#if editing.kind == "critical"}
-        <CriticalForm
-          idx={editing.idx}
-          copyCritical={() =>
-            createCopy({ kind: "critical", idx: editing.idx })}
-        />
+        <CriticalForm idx={editing.idx} />
       {:else}
-        <ConflictForm
-          idx={editing.idx}
-          copyConflict={() =>
-            createCopy({ kind: "conflict", idx: editing.idx })}
-        />
+        <ConflictForm idx={editing.idx} />
       {/if}
     {/if}
   </div>
