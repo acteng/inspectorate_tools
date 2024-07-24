@@ -95,11 +95,10 @@
     let newItem = JSON.parse(JSON.stringify(list[id.idx]));
 
     // Arbitrarily put the point slightly to the right of the previous one so that it's visible
-    newItem.point[0] += 0.004;
-    let newList = list
-      .slice(0, id.idx + 1)
-      .concat([newItem])
-      .concat(list.slice(id.idx + 1));
+    let westLimit = map.getBounds().getWest();
+    let eastLimit = map.getBounds().getEast();
+    newItem.point[0] += (eastLimit - westLimit) * 0.05;
+    let newList = list.toSpliced(id.idx + 1, 0, newItem);
 
     if (id.kind == "critical") {
       // @ts-ignore we know that we've taken the correctly typed list from earlier
