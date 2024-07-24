@@ -1,0 +1,1 @@
+var s;const t=((s=globalThis.__sveltekit_1lgllwf)==null?void 0:s.base)??"/inspectorate_tools/split_both_pages";var l;const e=((l=globalThis.__sveltekit_1lgllwf)==null?void 0:l.assets)??t;export{e as a,t as b};
