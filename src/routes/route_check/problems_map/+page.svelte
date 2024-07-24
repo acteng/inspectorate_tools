@@ -17,7 +17,7 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { ClickableCard } from "$lib";
+  import { ClickableCard, confirmNotNull } from "$lib";
   import {
     state,
     type State,
@@ -86,6 +86,29 @@
       center: list[id.idx].point,
       duration: 500,
     });
+  }
+
+  async function createCopy(id: ID) {
+    let list =
+      id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
+
+    let newItem = JSON.parse(JSON.stringify(list[id.idx]));
+
+    // Arbitrarily put the point slightly to the right of the previous one so that it's visible
+    let westLimit = map.getBounds().getWest();
+    let eastLimit = map.getBounds().getEast();
+    newItem.point[0] += (eastLimit - westLimit) * 0.05;
+    let newList = list.toSpliced(id.idx + 1, 0, newItem);
+
+    if (id.kind == "critical") {
+      // @ts-expect-error we know that we've taken the correctly typed list from earlier
+      $state.criticalIssues = newList;
+    } else {
+      // @ts-expect-error
+      $state.policyConflictLog = newList;
+    }
+
+    select({ kind: id.kind, idx: id.idx + 1 });
   }
 
   async function stopEditing() {
@@ -298,6 +321,17 @@
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
+      <SecondaryButton
+        on:click={() => {
+          let editingNotNull = confirmNotNull(editing);
+          createCopy({
+            kind: editingNotNull.kind,
+            idx: editingNotNull.idx,
+          });
+        }}
+      >
+        Copy
+      </SecondaryButton>
       {#if editing.kind == "critical"}
         <CriticalForm idx={editing.idx} />
       {:else}
