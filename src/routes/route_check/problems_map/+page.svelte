@@ -92,17 +92,20 @@
     let list =
       id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
 
-    console.log(list);
     let newItem = JSON.parse(JSON.stringify(list[id.idx]));
+
+    // Arbitrarily put the point slightly to the right of the previous one so that it's visible
+    newItem.point[0] += 0.004;
     let newList = list
       .slice(0, id.idx + 1)
       .concat([newItem])
       .concat(list.slice(id.idx + 1));
-    console.log(newList);
 
     if (id.kind == "critical") {
+      // @ts-ignore we know that we've taken the correctly typed list from earlier
       $state.criticalIssues = newList;
     } else {
+      // @ts-ignore
       $state.policyConflictLog = newList;
     }
 
@@ -316,21 +319,22 @@
       {#each $state.policyConflictLog as conflict, idx}
         <div class="select-or-copy">
           <div class="select">
-        <ClickableCard
-          name={labelConflict(conflict)}
-          on:click={() => selectAndZoom({ kind: "conflict", idx })}
-          on:mouseenter={() => (hoveringSidebar = { kind: "conflict", idx })}
-          on:mouseleave={() => (hoveringSidebar = null)}
-        >
-          <div
-            style="width: 70%; display: flex; justify-content: space-between"
-          >
-            <span>Stage: {conflict.stage}</span>
-            {#if conflict.stage != "Design"}
-              <span>Resolved: {conflict.resolved}</span>
-            {/if}
-          </div>
-        </ClickableCard>
+            <ClickableCard
+              name={labelConflict(conflict)}
+              on:click={() => selectAndZoom({ kind: "conflict", idx })}
+              on:mouseenter={() =>
+                (hoveringSidebar = { kind: "conflict", idx })}
+              on:mouseleave={() => (hoveringSidebar = null)}
+            >
+              <div
+                style="width: 70%; display: flex; justify-content: space-between"
+              >
+                <span>Stage: {conflict.stage}</span>
+                {#if conflict.stage != "Design"}
+                  <span>Resolved: {conflict.resolved}</span>
+                {/if}
+              </div>
+            </ClickableCard>
           </div>
           <div class="copy">
             <ClickableCard
@@ -435,9 +439,6 @@
   }
   .select-or-copy {
     display: flex;
-  }
-  .select-or-copy button {
-    min-height: 131px;
   }
   .select {
     width: 70%;
