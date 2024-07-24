@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pairs, ExternalLink, DateInput } from "$lib";
+  import { pairs, DateInput } from "$lib";
   import {
     Select,
     TextInput,
@@ -16,9 +16,9 @@
     fundingProgrammes,
     designStages,
   } from "$lib/lists";
-  import { ContextualMapEntry } from "$lib/map";
   import type { FeatureCollection } from "geojson";
   import turfLength from "@turf/length";
+  import MapEntry from "./MapEntry.svelte";
 
   $: lengthHint = getLengthHint($state.summary.networkMap);
   function getLengthHint(gj: FeatureCollection): number | null {
@@ -123,35 +123,5 @@
     bind:value={$state.summary.checkType}
   />
 
-  <ContextualMapEntry bind:gj={$state.summary.networkMap}>
-    <ol>
-      <li>
-        Go to the <ExternalLink href="https://acteng.github.io/atip">
-          Scheme Sketcher
-        </ExternalLink> tool
-      </li>
-      <li>Choose the area best covering this scheme</li>
-      <li>
-        Use the <i>New route</i>
-        tool to sketch the route. It can contain segments snapped to existing roads
-        or free-hand segments.
-      </li>
-      <li>
-        Optionally, use the <i>Split route</i>
-        tool to denote just the sections assessed in this file.
-      </li>
-      <li>
-        You can set <i>Name</i>
-        and
-        <i>Description</i>
-        to whatever is useful for display on the map
-      </li>
-      <li>
-        Save the map by clicking <i>Manage files</i>
-        , then
-        <i>Save</i>
-      </li>
-      <li>Load the saved file above</li>
-    </ol>
-  </ContextualMapEntry>
+  <MapEntry />
 </div>

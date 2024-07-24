@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
-import type { FeatureCollection } from "geojson";
+import type { FeatureCollection, LineString } from "geojson";
 import type { Position } from "$lib/map";
 
 export let state = writable(emptyState());
@@ -36,7 +36,7 @@ export interface State {
     notes: string;
     // Even if the user switches between these, data from the other page is never erased
     checkType: "street" | "path" | "";
-    networkMap: FeatureCollection;
+    networkMap: FeatureCollection<LineString>;
   };
 
   policyCheck: {
@@ -169,6 +169,8 @@ function validate(state: State) {
     // New field, unanswered by default
     state.horseRiders = "";
   }
+
+  // TODO Keep only one LineString in networkMap?
 
   if (state.version != "alpha-1") {
     throw new Error("File format appears outdated");
