@@ -102,6 +102,9 @@ export let criticalIssueChoices: [string, string][] = [
 ];
 
 export function getFullPolicyConflict(code: string): string {
+  if (code == "") {
+    return "";
+  }
   let result = policyConflictChoices.find((pair) => pair[0] == code);
   if (result) {
     return result[1];
@@ -110,6 +113,9 @@ export function getFullPolicyConflict(code: string): string {
 }
 
 export function getFullCriticalIssue(code: string): string {
+  if (code == "") {
+    return "";
+  }
   let result = criticalIssueChoices.find((pair) => pair[0] == code);
   if (result) {
     return result[1];
@@ -117,15 +123,17 @@ export function getFullCriticalIssue(code: string): string {
   throw new Error(`Unknown critical issue ${code}`);
 }
 
+// Returns -1 for unknown codes
 export function getCriticalIssueIndex(code: string): number {
   return criticalIssueChoices.findIndex((pair) => pair[0] == code);
 }
 
+// Returns -1 for unknown codes
 export function getPolicyConflictIndex(code: string): number {
   return policyConflictChoices.findIndex((pair) => pair[0] == code);
 }
 
 // Returns the numeric code and short descripton
 export function getTerseCriticalIssue(code: string): string {
-  return getFullCriticalIssue(code).split(":")[0];
+  return code == "" ? "" : getFullCriticalIssue(code).split(":")[0];
 }
