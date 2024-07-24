@@ -17,7 +17,7 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { ClickableCard } from "$lib";
+  import { ClickableCard, confirmNotNull } from "$lib";
   import {
     state,
     type State,
@@ -322,11 +322,13 @@
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       <SecondaryButton
-        on:click={() =>
+        on:click={() => {
+          let editingNotNull = confirmNotNull(editing);
           createCopy({
-            kind: editing.kind,
-            idx: editing.idx,
-          })}
+            kind: editingNotNull.kind,
+            idx: editingNotNull.idx,
+          });
+        }}
       >
         Copy
       </SecondaryButton>
