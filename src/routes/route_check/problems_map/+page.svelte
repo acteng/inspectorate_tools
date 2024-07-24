@@ -283,76 +283,52 @@
 
       <h3>Critical Issues</h3>
       {#each $state.criticalIssues as critical, idx}
-        <div class="select-or-copy">
-          <div class="select">
-            <ClickableCard
-              name={labelCritical(critical)}
-              on:click={() => selectAndZoom({ kind: "critical", idx })}
-              on:mouseenter={() =>
-                (hoveringSidebar = { kind: "critical", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
-            >
-              <div
-                style="width: 100%; display: flex; justify-content: space-between"
-              >
-                <span>Stage: {critical.stage}</span>
-                {#if critical.stage != "Design"}
-                  <span>Resolved: {critical.resolved}</span>
-                {/if}
-              </div>
-            </ClickableCard>
+        <ClickableCard
+          name={labelCritical(critical)}
+          on:click={() => selectAndZoom({ kind: "critical", idx })}
+          on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
+          on:mouseleave={() => (hoveringSidebar = null)}
+        >
+          <div style="display: flex; justify-content: space-between">
+            <span>Stage: {critical.stage}</span>
+            {#if critical.stage != "Design"}
+              <span>Resolved: {critical.resolved}</span>
+            {/if}
           </div>
-          <div class="copy">
-            <ClickableCard
-              name={`Copy critical issue`}
-              on:click={() => createCopy({ kind: "critical", idx })}
-              on:mouseenter={() =>
-                (hoveringSidebar = { kind: "critical", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
-            />
-          </div>
-        </div>
+        </ClickableCard>
       {/each}
 
       <h3>Policy Conflicts</h3>
       {#each $state.policyConflictLog as conflict, idx}
-        <div class="select-or-copy">
-          <div class="select">
-            <ClickableCard
-              name={labelConflict(conflict)}
-              on:click={() => selectAndZoom({ kind: "conflict", idx })}
-              on:mouseenter={() =>
-                (hoveringSidebar = { kind: "conflict", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
-            >
-              <div
-                style="width: 70%; display: flex; justify-content: space-between"
-              >
-                <span>Stage: {conflict.stage}</span>
-                {#if conflict.stage != "Design"}
-                  <span>Resolved: {conflict.resolved}</span>
-                {/if}
-              </div>
-            </ClickableCard>
+        <ClickableCard
+          name={labelConflict(conflict)}
+          on:click={() => selectAndZoom({ kind: "conflict", idx })}
+          on:mouseenter={() => (hoveringSidebar = { kind: "conflict", idx })}
+          on:mouseleave={() => (hoveringSidebar = null)}
+        >
+          <div style="display: flex; justify-content: space-between">
+            <span>Stage: {conflict.stage}</span>
+            {#if conflict.stage != "Design"}
+              <span>Resolved: {conflict.resolved}</span>
+            {/if}
           </div>
-          <div class="copy">
-            <ClickableCard
-              name={`Copy policy conflict`}
-              on:click={() => createCopy({ kind: "conflict", idx })}
-              on:mouseenter={() =>
-                (hoveringSidebar = { kind: "conflict", idx })}
-              on:mouseleave={() => (hoveringSidebar = null)}
-            />
-          </div>
-        </div>
+        </ClickableCard>
       {/each}
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       {#if editing.kind == "critical"}
-        <CriticalForm idx={editing.idx} />
+        <CriticalForm
+          idx={editing.idx}
+          copyCritical={() =>
+            createCopy({ kind: "critical", idx: editing.idx })}
+        />
       {:else}
-        <ConflictForm idx={editing.idx} />
+        <ConflictForm
+          idx={editing.idx}
+          copyConflict={() =>
+            createCopy({ kind: "conflict", idx: editing.idx })}
+        />
       {/if}
     {/if}
   </div>
@@ -435,14 +411,5 @@
   polygon:hover {
     stroke-width: 6px;
     cursor: pointer;
-  }
-  .select-or-copy {
-    display: flex;
-  }
-  .select {
-    width: 70%;
-  }
-  .copy {
-    width: 30%;
   }
 </style>

@@ -1,11 +1,18 @@
 <script lang="ts">
   import { YesNo, pairs } from "$lib";
-  import { Select, TextInput, TextArea, Radio } from "govuk-svelte";
+  import {
+    SecondaryButton,
+    Select,
+    TextInput,
+    TextArea,
+    Radio,
+  } from "govuk-svelte";
   import { state } from "../data";
   import { streetviewUrl, bingUrl } from "$lib/map";
   import { policyConflictChoices } from "../lists";
 
   export let idx: number;
+  export let copyConflict: Function;
 </script>
 
 <div style="display: flex; justify-content: space-evenly">
@@ -48,3 +55,5 @@
   label="Commentary & Feedback"
   bind:value={$state.policyConflictLog[idx].notes}
 />
+
+<SecondaryButton on:click={() => copyConflict()}>Copy Conflict</SecondaryButton>
