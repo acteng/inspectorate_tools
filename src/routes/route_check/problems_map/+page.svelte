@@ -109,7 +109,7 @@
       $state.policyConflictLog = newList;
     }
 
-    console.log("done");
+    select({ kind: id.kind, idx: id.idx + 1 });
   }
 
   async function stopEditing() {
