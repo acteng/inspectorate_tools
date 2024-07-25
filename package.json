@@ -48,7 +48,7 @@
     "exceljs": "^4.4.0",
     "govuk-frontend": "^5.4.0",
     "govuk-svelte": "github:acteng/govuk-svelte",
-    "route-snapper-ts": "^0.0.5",
+    "scheme-sketcher-lib": "github:acteng/scheme-sketcher-lib",
     "svelte-chartjs": "^3.1.5",
     "svelte-maplibre": "^0.9.8",
     "uuid": "^10.0.0"

@@ -7,15 +7,16 @@
     Feature,
     Polygon,
   } from "geojson";
-  import { routeToolGj, snapMode, undoLength } from "./sketch/stores";
-  import { init, RouteTool } from "route-snapper-ts";
-  import RouteSnapperControls from "./sketch/RouteSnapperControls.svelte";
+  import {
+    RouteControls,
+    RouteSnapperLoader,
+  } from "scheme-sketcher-lib/draw/route";
+  import { routeTool } from "scheme-sketcher-lib/draw/stores";
   import { onMount } from "svelte";
   import { type Map } from "svelte-maplibre";
   import { SecondaryButton } from "govuk-svelte";
 
   onMount(async () => {
-    await init();
     await loadAuthorities();
   });
 
@@ -25,26 +26,14 @@
     Polygon,
     { name: string; level: string }
   > | null;
-
-  let routeTool: Writable<RouteTool | null> = writable(null);
   export let drawingRoute = false;
 
-  async function getRouteSnapper() {
+  let url = "";
+
+  function getRouteSnapper() {
     routeAuthority = getBestMatch(map);
     let authority = `${routeAuthority.properties.level}_${routeAuthority.properties.name}`;
-    let url = `https://atip.uk/route-snappers/v3/${authority}.bin.gz`;
-    let resp = await fetch(url);
-    let bytes = await resp.arrayBuffer();
-
-    routeTool.set(
-      new RouteTool(
-        map,
-        new Uint8Array(bytes),
-        routeToolGj,
-        snapMode,
-        undoLength,
-      ),
-    );
+    url = `https://atip.uk/route-snappers/v3/${authority}.bin.gz`;
   }
 
   function startDrawing(edit: boolean) {
@@ -70,13 +59,27 @@
   }
 </script>
 
+{#if routeAuthority}
+  <p>
+    Currently drawing a route in {routeAuthority.properties.name} ({routeAuthority
+      .properties.level}))
+  </p>
+{/if}
+
+{#key url}
+  {#if url}
+    <RouteSnapperLoader {map} {url} />
+  {/if}
+{/key}
+
 <div>
   <SecondaryButton on:click={getRouteSnapper}>
     Get route snapper
-    {#if routeAuthority}(currently {routeAuthority.properties.name} ({routeAuthority
-        .properties.level})){/if}
   </SecondaryButton>
 </div>
+
+<hr />
+
 <div>
   <SecondaryButton
     on:click={() => startDrawing(false)}
@@ -94,5 +97,8 @@
   </SecondaryButton>
 </div>
 {#if drawingRoute && $routeTool}
-  <RouteSnapperControls route_tool={$routeTool} />
+  <RouteControls
+    maptilerApiKey={import.meta.env.VITE_MAPTILER_API_KEY}
+    extendRoute
+  />
 {/if}

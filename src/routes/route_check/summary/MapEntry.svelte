@@ -5,7 +5,24 @@
   import DrawRoute from "./DrawRoute.svelte";
   import { state } from "../data";
   import { bbox, MapLibreMap } from "$lib/map";
-  import RouteSnapperLayer from "./sketch/RouteSnapperLayer.svelte";
+  import { RouteSnapperLayer } from "scheme-sketcher-lib/draw/route";
+
+  let cfg = {
+    layerZorder: [
+      // Bluesky
+      "raster-basemap",
+
+      // The route tool
+      "route-points",
+      "route-lines",
+      "route-polygons",
+
+      // Streets
+      "road_label",
+      // Zoomstack
+      "Road labels",
+    ],
+  };
 
   let map: Map;
 
@@ -46,11 +63,11 @@
         </GeoJSON>
       {/if}
 
-      <RouteSnapperLayer />
-
       <GeoJSON data={$state.summary.networkMap}>
         <LineLayer paint={{ "line-color": "cyan", "line-width": 5 }} />
       </GeoJSON>
+
+      <RouteSnapperLayer {cfg} />
     </MapLibreMap>
   </div>
 </div>
