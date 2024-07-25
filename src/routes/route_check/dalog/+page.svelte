@@ -10,18 +10,20 @@
   let values = pairs.map((pair) => `"${pair[1]}"`).join("\t");
 </script>
 
-<ConvertToXlsx />
+<div class="govuk-width-container">
+  <ConvertToXlsx />
 
-<p>
-  This page is for internal use only. The values below are TSV (tab-separated
-  values), copyable into Excel.
-</p>
+  <p>
+    This page is for internal use only. The values below are TSV (tab-separated
+    values), copyable into Excel.
+  </p>
 
-<TextArea label="TSV output, just the one row of values" value={values} />
+  <TextArea label="TSV output, just the one row of values" value={values} />
 
-<TextArea label="TSV output with header" value={`${header}\n${values}\n`} />
+  <TextArea label="TSV output with header" value={`${header}\n${values}\n`} />
 
-<TextArea
-  label="JSON mapping"
-  value={JSON.stringify(Object.fromEntries(pairs), null, "  ")}
-/>
+  <TextArea
+    label="JSON mapping"
+    value={JSON.stringify(Object.fromEntries(pairs), null, "  ")}
+  />
+</div>

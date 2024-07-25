@@ -8,30 +8,32 @@
   let results = getResults($state);
 </script>
 
-<Overview {results} />
+<div class="govuk-width-container">
+  <Overview {results} />
 
-{#if $state.summary.checkType == "street"}
-  <LevelOfServiceTable
-    caption="Street Check Level of Service"
-    categories={results.levelOfService}
-    overall={results.overall}
-    overallLabel="Overall ATE Score"
-    barChart
-  />
-{:else if $state.summary.checkType == "path"}
-  <LevelOfServiceTable
-    caption="Path Check Level of Service"
-    categories={results.levelOfService}
-    overall={results.overall}
-    overallLabel="Overall ATE Score"
-    barChart
-  />
-{:else}
-  <h2>Select Street Check or Path Check for further results</h2>
-{/if}
+  {#if $state.summary.checkType == "street"}
+    <LevelOfServiceTable
+      caption="Street Check Level of Service"
+      categories={results.levelOfService}
+      overall={results.overall}
+      overallLabel="Overall ATE Score"
+      barChart
+    />
+  {:else if $state.summary.checkType == "path"}
+    <LevelOfServiceTable
+      caption="Path Check Level of Service"
+      categories={results.levelOfService}
+      overall={results.overall}
+      overallLabel="Overall ATE Score"
+      barChart
+    />
+  {:else}
+    <h2>Select Street Check or Path Check for further results</h2>
+  {/if}
 
-<TextArea
-  label="Review statement"
-  bind:value={$state.resultsReviewStatement}
-  hint="Use the space to provide overall feedback for the proposed scheme"
-/>
+  <TextArea
+    label="Review statement"
+    bind:value={$state.resultsReviewStatement}
+    hint="Use the space to provide overall feedback for the proposed scheme"
+  />
+</div>

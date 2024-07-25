@@ -140,10 +140,12 @@
 
 <svelte:window on:keydown={onKeyDown} />
 
-<TextArea
-  label="Commentary / Notes"
-  bind:value={$state.jat[junctionIdx][stage].notes}
-/>
+<div class="govuk-width-container">
+  <TextArea
+    label="Commentary / Notes"
+    bind:value={$state.jat[junctionIdx][stage].notes}
+  />
+</div>
 
 <div style="display: flex; height: 80vh">
   <div

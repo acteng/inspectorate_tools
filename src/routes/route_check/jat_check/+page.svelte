@@ -55,44 +55,48 @@
 </script>
 
 {#if mode.kind == "list"}
-  <DefaultButton on:click={add}>Add new junction</DefaultButton>
+  <div class="govuk-width-container">
+    <DefaultButton on:click={add}>Add new junction</DefaultButton>
 
-  {#each $state.jat as junction, idx}
-    <ClickableCard
-      name={junction.name || "Untitled junction"}
-      on:click={() => (mode = { kind: "edit", idx, stage: "existing" })}
-    />
-  {/each}
+    {#each $state.jat as junction, idx}
+      <ClickableCard
+        name={junction.name || "Untitled junction"}
+        on:click={() => (mode = { kind: "edit", idx, stage: "existing" })}
+      />
+    {/each}
+  </div>
 {:else if mode.kind == "edit"}
-  <h2>{$state.jat[mode.idx].name || "Untitled junction"} - {mode.stage}</h2>
+  <div class="govuk-width-container">
+    <h2>{$state.jat[mode.idx].name || "Untitled junction"} - {mode.stage}</h2>
 
-  <ButtonGroup>
-    <SecondaryButton on:click={() => (mode = { kind: "list" })}>
-      Back to all junctions
-    </SecondaryButton>
-
-    {#if mode.stage == "proposed"}
-      <SecondaryButton
-        on:click={() =>
-          (mode = { kind: "edit", idx: getIdx(mode), stage: "existing" })}
-      >
-        Edit Existing
+    <ButtonGroup>
+      <SecondaryButton on:click={() => (mode = { kind: "list" })}>
+        Back to all junctions
       </SecondaryButton>
-    {:else}
-      <SecondaryButton
-        on:click={() =>
-          (mode = { kind: "edit", idx: getIdx(mode), stage: "proposed" })}
-      >
-        Edit Proposed
-      </SecondaryButton>
-    {/if}
 
-    <WarningButton on:click={() => deleteJunction(getIdx(mode))}>
-      Delete
-    </WarningButton>
-  </ButtonGroup>
+      {#if mode.stage == "proposed"}
+        <SecondaryButton
+          on:click={() =>
+            (mode = { kind: "edit", idx: getIdx(mode), stage: "existing" })}
+        >
+          Edit Existing
+        </SecondaryButton>
+      {:else}
+        <SecondaryButton
+          on:click={() =>
+            (mode = { kind: "edit", idx: getIdx(mode), stage: "proposed" })}
+        >
+          Edit Proposed
+        </SecondaryButton>
+      {/if}
 
-  <TextInput label="Junction Name" bind:value={$state.jat[mode.idx].name} />
+      <WarningButton on:click={() => deleteJunction(getIdx(mode))}>
+        Delete
+      </WarningButton>
+    </ButtonGroup>
+
+    <TextInput label="Junction Name" bind:value={$state.jat[mode.idx].name} />
+  </div>
 
   {#key mode.stage}
     <EditJunction junctionIdx={mode.idx} stage={mode.stage} />

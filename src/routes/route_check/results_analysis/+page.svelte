@@ -9,10 +9,12 @@
   let results = getResults($state);
 </script>
 
-<SummaryOfScheme />
+<div class="govuk-width-container">
+  <SummaryOfScheme />
 
-<PolicyCheckResults />
+  <PolicyCheckResults />
 
-<SafetyCheckResults />
+  <SafetyCheckResults />
 
-<CheckDetails {results} />
+  <CheckDetails {results} />
+</div>
