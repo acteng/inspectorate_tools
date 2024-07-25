@@ -3,12 +3,14 @@
   import deleteUrl from "$lib/assets/images/delete.svg?url";
   import downloadUrl from "$lib/assets/images/download.svg?url";
   import { base } from "$app/paths";
+  import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./index";
   import {
     FileInput,
     WarningButton,
     ButtonGroup,
     SecondaryButton,
+    DefaultButton,
   } from "govuk-svelte";
   import { stripSuffix, ClickableCard } from "$lib";
   import { type Writable } from "svelte/store";
@@ -177,9 +179,15 @@
               ? "Currently open"
               : files.describeFile(filename)}
           </ClickableCard>
-          <WarningButton on:click={() => deleteFile(filename)}>
-            Delete
-          </WarningButton>
+          {#if filename == $currentFile}
+            <DefaultButton on:click={() => goto(`${base}/${files.prefix}`)}>
+              Start
+            </DefaultButton>
+          {:else}
+            <WarningButton on:click={() => deleteFile(filename)}>
+              Delete
+            </WarningButton>
+          {/if}
         </div>
       {/each}
     </div>
