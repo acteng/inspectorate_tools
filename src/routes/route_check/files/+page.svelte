@@ -3,6 +3,7 @@
   import { files, currentFile, state, type State } from "../data";
   import { getDalog, dalogToState } from "$lib/import";
   import ExcelJS from "exceljs";
+  import ConvertToXlsx from "../results_export/ConvertToXlsx.svelte";
 
   async function xlsxImporter(buffer: ArrayBuffer): Promise<State> {
     let workbook = new ExcelJS.Workbook();
@@ -12,4 +13,6 @@
   }
 </script>
 
-<FileManager {files} {currentFile} {state} {xlsxImporter} />
+<FileManager {files} {currentFile} {state} {xlsxImporter}>
+  <ConvertToXlsx />
+</FileManager>

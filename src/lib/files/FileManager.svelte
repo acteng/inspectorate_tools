@@ -143,13 +143,15 @@
     </SecondaryButton>
     <SecondaryButton on:click={exportFile}>
       <img src={downloadUrl} alt="Download this file" />
-      Download this file
+      Export .json
     </SecondaryButton>
     <WarningButton on:click={() => deleteFile($currentFile)}>
       <img src={deleteUrl} alt="Delete this file" />
       Delete this file
     </WarningButton>
   </ButtonGroup>
+
+  <slot />
 
   <hr />
 
