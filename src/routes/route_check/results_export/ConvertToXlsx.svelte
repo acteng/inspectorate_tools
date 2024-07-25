@@ -3,6 +3,7 @@
   import { SecondaryButton } from "govuk-svelte";
   import { downloadExcelFile } from "./export";
   import { Loading } from "$lib";
+  import downloadUrl from "$lib/assets/images/download.svg?url";
 
   let loading = "";
 
@@ -17,7 +18,10 @@
   }
 </script>
 
-<SecondaryButton on:click={download}>Export .xlsx</SecondaryButton>
+<SecondaryButton on:click={download}>
+  <img src={downloadUrl} alt="Export .xlsx" />
+  Export .xlsx
+</SecondaryButton>
 <p>
   <i>
     When you open the file, you need to force Excel to recalculate all formulas

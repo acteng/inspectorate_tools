@@ -142,7 +142,7 @@
       Rename this file
     </SecondaryButton>
     <SecondaryButton on:click={exportFile}>
-      <img src={downloadUrl} alt="Download this file" />
+      <img src={downloadUrl} alt="Export .json" />
       Export .json
     </SecondaryButton>
     <WarningButton on:click={() => deleteFile($currentFile)}>
