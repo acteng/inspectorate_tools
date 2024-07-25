@@ -29,15 +29,17 @@
         bind:value={$state.policyCheck[idx].proposed}
       />
     </div>
-    {#if $state.policyCheck[idx].existing == "No" || $state.policyCheck[idx].proposed == "No"}
-      <p>
-        <a href="{base}/route_check/problems_map">Log this policy conflict</a>
-      </p>
-    {/if}
     <TextArea
       label="Commentary"
       bind:value={$state.policyCheck[idx].commentary}
     />
+    {#if $state.policyCheck[idx].existing == "No" || $state.policyCheck[idx].proposed == "No"}
+      <p>
+        <a href="{base}/route_check/problems_map?kind=conflict&code={idx + 1}">
+          Log this policy conflict
+        </a>
+      </p>
+    {/if}
 
     {#if idx != questions.length - 1}
       <br />

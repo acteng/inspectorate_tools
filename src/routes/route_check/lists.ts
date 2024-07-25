@@ -1,3 +1,5 @@
+import type { CriticalIssueCode } from "./data";
+
 // TODO Preserve bold formatting?
 export let policyConflictChoices: [string, string][] = [
   ["1", "1 - Cyclists are not separated from pedestrians"],
@@ -136,4 +138,13 @@ export function getPolicyConflictIndex(code: string): number {
 // Returns the numeric code and short descripton
 export function getTerseCriticalIssue(code: string): string {
   return code == "" ? "" : getFullCriticalIssue(code).split(":")[0];
+}
+
+// When creating a critical issue from a safety check question, arbitrarily
+// pick a critical type when there are multiple choices.
+export function defaultCriticalType(code: number): CriticalIssueCode {
+  if ([5, 6, 7, 9, 11, 12].includes(code)) {
+    return `${code}A` as CriticalIssueCode;
+  }
+  return code.toString() as CriticalIssueCode;
 }

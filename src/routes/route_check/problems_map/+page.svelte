@@ -23,6 +23,8 @@
     type State,
     type CriticalIssue,
     type PolicyConflict,
+    type CriticalIssueCode,
+    type PolicyConflictCode,
   } from "../data";
   import {
     getFullPolicyConflict,
@@ -30,6 +32,7 @@
     getCriticalIssueIndex,
     getPolicyConflictIndex,
   } from "../lists";
+  import { page } from "$app/stores";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -37,7 +40,10 @@
   type Kind = "critical" | "conflict";
   type ID = { kind: Kind; idx: number };
 
-  let newKind: Kind = "critical";
+  let urlKind = $page.url.searchParams.get("kind") || "";
+  let newKind: Kind = ["critical", "conflict"].includes(urlKind)
+    ? (urlKind as Kind)
+    : "critical";
   let editing: ID | null = null;
   // When changing to a form, preserve the list position and restore later
   let preserveListScroll: number | null = null;
@@ -146,7 +152,8 @@
       $state.criticalIssues = [
         ...$state.criticalIssues,
         {
-          criticalIssue: "",
+          criticalIssue:
+            ($page.url.searchParams.get("code") as CriticalIssueCode) || "",
           stage: "",
           point: e.detail.lngLat.toArray(),
           locationName: "",
@@ -159,7 +166,8 @@
       $state.policyConflictLog = [
         ...$state.policyConflictLog,
         {
-          conflict: "",
+          conflict:
+            ($page.url.searchParams.get("code") as PolicyConflictCode) || "",
           stage: "",
           point: e.detail.lngLat.toArray(),
           locationName: "",
