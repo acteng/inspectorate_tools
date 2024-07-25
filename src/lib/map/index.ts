@@ -1,9 +1,5 @@
 import turfBbox from "@turf/bbox";
 import type { GeoJSON } from "geojson";
-import type {
-  DataDrivenPropertyValueSpecification,
-  ExpressionSpecification,
-} from "maplibre-gl";
 
 export { default as Basemap } from "./Basemap.svelte";
 export { default as ContextualMap } from "./ContextualMap.svelte";
@@ -26,34 +22,4 @@ export function streetviewUrl(point: Position): string {
 
 export function bingUrl(point: Position): string {
   return `https://www.bing.com/maps?cp=${point[1]}~${point[0]}&style=x`;
-}
-
-export const isPolygon: ExpressionSpecification = [
-  "==",
-  ["geometry-type"],
-  "Polygon",
-];
-export const isLine: ExpressionSpecification = [
-  "==",
-  ["geometry-type"],
-  "LineString",
-];
-export const isPoint: ExpressionSpecification = [
-  "==",
-  ["geometry-type"],
-  "Point",
-];
-
-export function constructMatchExpression<OutputType>(
-  getter: any[],
-  map: { [name: string]: OutputType },
-  fallback: OutputType,
-): DataDrivenPropertyValueSpecification<OutputType> {
-  let x: any[] = ["match", getter];
-  for (let [key, value] of Object.entries(map)) {
-    x.push(key);
-    x.push(value);
-  }
-  x.push(fallback);
-  return x as DataDrivenPropertyValueSpecification<OutputType>;
 }
