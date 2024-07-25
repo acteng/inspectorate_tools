@@ -1,6 +1,6 @@
 <script lang="ts">
   import { state, currentFile } from "../data";
-  import { DefaultButton } from "govuk-svelte";
+  import { SecondaryButton } from "govuk-svelte";
   import { downloadExcelFile } from "./export";
   import { Loading } from "$lib";
 
@@ -17,7 +17,7 @@
   }
 </script>
 
-<DefaultButton on:click={download}>Convert to .xlsx</DefaultButton>
+<SecondaryButton on:click={download}>Export .xlsx</SecondaryButton>
 <p>
   <i>
     When you open the file, you need to force Excel to recalculate all formulas
