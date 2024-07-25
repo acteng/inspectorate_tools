@@ -89,47 +89,49 @@ export interface Scorecard {
 }
 
 export interface PolicyConflict {
-  conflict: "1" | "2" | "3" | "4" | "5" | "6" | "";
+  conflict: PolicyConflictCode;
   stage: "Existing" | "Design" | "";
   point: Position;
   locationName: string;
   resolved: "Yes" | "No" | "";
   notes: string;
 }
+export type PolicyConflictCode = "1" | "2" | "3" | "4" | "5" | "6" | "";
 
 export interface CriticalIssue {
-  criticalIssue:
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5A"
-    | "5B"
-    | "6A"
-    | "6B"
-    | "7A"
-    | "7B"
-    | "8"
-    | "9A"
-    | "9B"
-    | "10"
-    | "11A"
-    | "11B"
-    | "11C"
-    | "11D"
-    | "12A"
-    | "12B"
-    | "13"
-    | "14"
-    | "15"
-    | "16"
-    | "";
+  criticalIssue: CriticalIssueCode;
   stage: "Existing" | "Design" | "";
   point: Position;
   locationName: string;
   resolved: "Yes" | "No" | "";
   notes: string;
 }
+export type CriticalIssueCode =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5A"
+  | "5B"
+  | "6A"
+  | "6B"
+  | "7A"
+  | "7B"
+  | "8"
+  | "9A"
+  | "9B"
+  | "10"
+  | "11A"
+  | "11B"
+  | "11C"
+  | "11D"
+  | "12A"
+  | "12B"
+  | "13"
+  | "14"
+  | "15"
+  | "16"
+  | "";
 
 export interface Junction {
   name: string;

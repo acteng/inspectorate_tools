@@ -4,6 +4,7 @@
   import { state } from "../data";
   import { scoreToColor } from "$lib/colors";
   import { base } from "$app/paths";
+  import { defaultCriticalType } from "../lists";
 
   export let idx: number;
   export let label: string;
@@ -41,7 +42,13 @@
 
     {#if $state.safetyCheck.existingScores[idx - 1] == "C" || $state.safetyCheck.proposedScores[idx - 1] == "C"}
       <p>
-        <a href="{base}/route_check/problems_map">Log this critical issue</a>
+        <a
+          href="{base}/route_check/problems_map?kind=critical&code={defaultCriticalType(
+            idx,
+          )}"
+        >
+          Log this critical issue
+        </a>
       </p>
     {/if}
   </div>
