@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_c36ooo)==null?void 0:s.base)??"/inspectorate_tools/map_edit_panels";var o;const t=((o=globalThis.__sveltekit_c36ooo)==null?void 0:o.assets)??e;export{t as a,e as b};
