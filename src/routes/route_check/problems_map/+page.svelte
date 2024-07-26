@@ -7,7 +7,6 @@
     DefaultButton,
     SecondaryButton,
     WarningButton,
-    Radio,
     CollapsibleCard,
     Checkbox,
   } from "govuk-svelte";
@@ -17,7 +16,7 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { ClickableCard, confirmNotNull } from "$lib";
+  import { ClickableCard } from "$lib";
   import {
     state,
     type State,
@@ -40,29 +39,46 @@
   type Kind = "critical" | "conflict";
   type ID = { kind: Kind; idx: number };
 
+  type Mode =
+    | { mode: "select" }
+    | { mode: "editing"; id: ID }
+    | { mode: "new-critical" }
+    | { mode: "new-conflict" };
+
+  let mode: Mode = { mode: "select" };
   let urlKind = $page.url.searchParams.get("kind") || "";
-  let newKind: Kind = ["critical", "conflict"].includes(urlKind)
-    ? (urlKind as Kind)
-    : "critical";
-  let editing: ID | null = null;
+  if (urlKind == "critical") {
+    mode = { mode: "new-critical" };
+  } else if (urlKind == "conflict") {
+    mode = { mode: "new-conflict" };
+  }
+
   // When changing to a form, preserve the list position and restore later
+  // TODO Some of this can be in Mode
   let preserveListScroll: number | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
   let showContext = true;
 
-  $: hoverGj = getHoverData($state, editing, hoveringSidebar);
+  $: if (map) {
+    map.getCanvas().style.cursor =
+      mode.mode == "new-critical" || mode.mode == "new-conflict"
+        ? "crosshair"
+        : "auto";
+  }
+
+  $: hoverGj = getHoverData($state, mode, hoveringSidebar);
 
   function getHoverData(
     state: State,
-    editing: ID | null,
+    mode: Mode,
     hoveringSidebar: ID | null,
   ): FeatureCollection {
     let gj: FeatureCollection = {
       type: "FeatureCollection" as const,
       features: [],
     };
-    let id = editing ?? hoveringSidebar;
+    let id = mode.mode == "editing" ? mode.id : hoveringSidebar;
     if (id != null) {
       let list =
         id.kind == "critical" ? state.criticalIssues : state.policyConflictLog;
@@ -73,7 +89,7 @@
 
   async function select(id: ID) {
     preserveListScroll = sidebar.scrollTop;
-    editing = id;
+    mode = { mode: "editing", id };
     hoveringSidebar = null;
     await tick();
     sidebar.scrollTop = 0;
@@ -81,7 +97,7 @@
 
   async function selectAndZoom(id: ID) {
     preserveListScroll = sidebar.scrollTop;
-    editing = id;
+    mode = { mode: "editing", id };
     hoveringSidebar = null;
     await tick();
     sidebar.scrollTop = 0;
@@ -118,7 +134,7 @@
   }
 
   async function stopEditing() {
-    editing = null;
+    mode = { mode: "select" };
 
     // Sort by the conflict or critical type. The scroll position may be slightly irrelevant if the user changes these types.
     $state.policyConflictLog = $state.policyConflictLog.toSorted(
@@ -142,13 +158,16 @@
     if (streetviewOn) {
       return;
     }
+    if (mode.mode == "select") {
+      return;
+    }
     // Deselect something
-    if (editing != null) {
+    if (mode.mode == "editing") {
       stopEditing();
       return;
     }
 
-    if (newKind == "critical") {
+    if (mode.mode == "new-critical") {
       $state.criticalIssues = [
         ...$state.criticalIssues,
         {
@@ -162,7 +181,7 @@
         },
       ];
       select({ kind: "critical", idx: $state.criticalIssues.length - 1 });
-    } else {
+    } else if (mode.mode == "new-conflict") {
       $state.policyConflictLog = [
         ...$state.policyConflictLog,
         {
@@ -185,15 +204,18 @@
   });
 
   function deleteItem() {
+    if (mode.mode != "editing") {
+      return;
+    }
     // TODO Modal
     if (!window.confirm("Delete this entry?")) {
       return;
     }
-    if (editing!.kind == "critical") {
-      $state.criticalIssues.splice(editing!.idx, 1);
+    if (mode.id.kind == "critical") {
+      $state.criticalIssues.splice(mode.id.idx, 1);
       $state.criticalIssues = $state.criticalIssues;
     } else {
-      $state.policyConflictLog.splice(editing!.idx, 1);
+      $state.policyConflictLog.splice(mode.id.idx, 1);
       $state.policyConflictLog = $state.policyConflictLog;
     }
     stopEditing();
@@ -242,18 +264,22 @@
   }
 
   function onKeyDown(e: KeyboardEvent) {
-    if (editing == null) {
-      return;
-    }
-    let tag = (e.target as HTMLElement).tagName;
-    let formFocused = tag == "INPUT" || tag == "TEXTAREA";
+    if (mode.mode == "editing") {
+      let tag = (e.target as HTMLElement).tagName;
+      let formFocused = tag == "INPUT" || tag == "TEXTAREA";
 
-    if (e.key == "Escape" || (e.key == "Enter" && !formFocused)) {
-      e.stopPropagation();
-      stopEditing();
-    } else if (e.key == "Delete" && !formFocused) {
-      e.stopPropagation();
-      deleteItem();
+      if (e.key == "Escape" || (e.key == "Enter" && !formFocused)) {
+        e.stopPropagation();
+        stopEditing();
+      } else if (e.key == "Delete" && !formFocused) {
+        e.stopPropagation();
+        deleteItem();
+      }
+    } else if (mode.mode == "new-critical" || mode.mode == "new-conflict") {
+      if (e.key == "Escape") {
+        e.stopPropagation();
+        mode = { mode: "select" };
+      }
     }
   }
 </script>
@@ -265,7 +291,7 @@
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
     bind:this={sidebar}
   >
-    {#if editing == null}
+    {#if mode.mode != "editing"}
       <CollapsibleCard label="Tools" open>
         <SecondaryButton on:click={() => zoom(true)}>
           Zoom to fit
@@ -275,20 +301,6 @@
         <StreetView {map} bind:enabled={streetviewOn} />
         <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
-
-      <Radio
-        legend="Create new problems"
-        choices={[
-          ["critical", "Critical Issue"],
-          ["conflict", "Policy Conflict"],
-        ]}
-        inlineSmall
-        bind:value={newKind}
-      />
-
-      <p>
-        Click the map to add a problem, or select a problem to fill out data
-      </p>
 
       <h3>Critical Issues</h3>
       {#each $state.criticalIssues as critical, idx}
@@ -331,20 +343,18 @@
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       <SecondaryButton
-        on:click={() => {
-          let editingNotNull = confirmNotNull(editing);
+        on:click={() =>
           createCopy({
-            kind: editingNotNull.kind,
-            idx: editingNotNull.idx,
-          });
-        }}
+            kind: mode.id.kind,
+            idx: mode.id.idx,
+          })}
       >
         Copy
       </SecondaryButton>
-      {#if editing.kind == "critical"}
-        <CriticalForm idx={editing.idx} />
+      {#if mode.id.kind == "critical"}
+        <CriticalForm idx={mode.id.idx} />
       {:else}
-        <ConflictForm idx={editing.idx} />
+        <ConflictForm idx={mode.id.idx} />
       {/if}
     {/if}
   </div>
@@ -352,6 +362,32 @@
   <div style="position: relative; width: 70%;">
     <MapLibreMap bind:map>
       <MapEvents on:click={onMapClick} />
+
+      {#if mode.mode != "editing"}
+        <div class="control-panel">
+          <SecondaryButton
+            disabled={mode.mode == "select"}
+            on:click={() => stopEditing()}
+            style="margin-bottom: 0px"
+          >
+            Select
+          </SecondaryButton>
+          <SecondaryButton
+            disabled={mode.mode == "new-critical"}
+            on:click={() => (mode = { mode: "new-critical" })}
+            style="margin-bottom: 0px"
+          >
+            New critical issue
+          </SecondaryButton>
+          <SecondaryButton
+            disabled={mode.mode == "new-conflict"}
+            on:click={() => (mode = { mode: "new-conflict" })}
+            style="margin-bottom: 0px"
+          >
+            New policy conflict
+          </SecondaryButton>
+        </div>
+      {/if}
 
       <ContextualMap gj={$state.summary.networkMap} show={showContext} />
 
@@ -427,5 +463,12 @@
   polygon:hover {
     stroke-width: 6px;
     cursor: pointer;
+  }
+
+  .control-panel {
+    background: white;
+    position: absolute;
+    top: 10px;
+    left: 350px;
   }
 </style>
