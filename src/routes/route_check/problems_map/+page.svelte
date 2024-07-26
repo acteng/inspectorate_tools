@@ -16,7 +16,7 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { ClickableCard } from "$lib";
+  import { ClickableCard, IconButton } from "$lib";
   import {
     state,
     type State,
@@ -32,6 +32,7 @@
     getPolicyConflictIndex,
   } from "../lists";
   import { page } from "$app/stores";
+  import panUrl from "$lib/assets/images/pan.svg?url";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -365,27 +366,32 @@
 
       {#if mode.mode != "editing"}
         <div class="control-panel">
-          <SecondaryButton
+          <IconButton
             disabled={mode.mode == "select"}
             on:click={() => stopEditing()}
-            style="margin-bottom: 0px"
           >
-            Select
-          </SecondaryButton>
-          <SecondaryButton
+            <img src={panUrl} alt="Move map" />
+            Move map
+          </IconButton>
+          <IconButton
             disabled={mode.mode == "new-critical"}
             on:click={() => (mode = { mode: "new-critical" })}
-            style="margin-bottom: 0px"
           >
+            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+              <polygon
+                points="20,0 0,40 40,40"
+                fill={colors.critical.background}
+              />
+            </svg>
             New critical issue
-          </SecondaryButton>
-          <SecondaryButton
+          </IconButton>
+          <IconButton
             disabled={mode.mode == "new-conflict"}
             on:click={() => (mode = { mode: "new-conflict" })}
-            style="margin-bottom: 0px"
           >
+            <span class="dot" style:background={policyConflictColor} />
             New policy conflict
-          </SecondaryButton>
+          </IconButton>
         </div>
       {/if}
 
