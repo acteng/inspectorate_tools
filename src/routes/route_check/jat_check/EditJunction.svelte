@@ -18,6 +18,7 @@
   import Form from "./Form.svelte";
   import { tick } from "svelte";
   import { describeScore } from "./score";
+  import { generateMovements } from "./generate";
 
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";
@@ -132,30 +133,9 @@
     X: colors.critical,
   };
 
-  function generateMovements() {
+  function autogenerateMovements() {
     let [center, ...arms] = $state.jat[junctionIdx][stage].arms;
-
-    let movements = [];
-    for (let i = 0; i < arms.length; i++) {
-      for (let j = 0; j < arms.length; j++) {
-        if (i == j) {
-          continue;
-        }
-        let arm1 = arms[i];
-        let arm2 = arms[j];
-        movements.push({
-          point1: arm1.point,
-          point2: center.point,
-          point3: arm2.point,
-          kind: "cycling" as const,
-          score: "0" as const,
-          name: `${arm1.name} to ${arm2.name}`,
-          notes: "",
-        });
-      }
-    }
-
-    $state.jat[junctionIdx][stage].movements = movements;
+    $state.jat[junctionIdx][stage].movements = generateMovements(center, arms);
   }
 </script>
 
@@ -214,6 +194,11 @@
         <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
         : {describeScore($state.jat[junctionIdx][stage])}
       </p>
+      {#if $state.jat[junctionIdx][stage].arms.length > 0}
+        <SecondaryButton on:click={autogenerateMovements}>
+          Generate movements between all arms (1st arm is the center)
+        </SecondaryButton>
+      {/if}
       {#each $state.jat[junctionIdx][stage].movements as movement, idx}
         {@const color = scoreColors[movement.score]}
         <ClickableCard
@@ -237,11 +222,6 @@
       {#if $state.jat[junctionIdx][otherStage].movements.length > 0}
         <SecondaryButton on:click={copyMovements}>
           Copy movements from {otherStage}
-        </SecondaryButton>
-      {/if}
-      {#if $state.jat[junctionIdx][stage].arms.length > 0}
-        <SecondaryButton on:click={generateMovements}>
-          Generate movements between all arms (1st arm is the center)
         </SecondaryButton>
       {/if}
     {:else}
