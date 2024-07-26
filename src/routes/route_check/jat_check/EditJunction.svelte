@@ -131,6 +131,32 @@
     2: colors.green,
     X: colors.critical,
   };
+
+  function generateMovements() {
+    let [center, ...arms] = $state.jat[junctionIdx][stage].arms;
+
+    let movements = [];
+    for (let i = 0; i < arms.length; i++) {
+      for (let j = 0; j < arms.length; j++) {
+        if (i == j) {
+          continue;
+        }
+        let arm1 = arms[i];
+        let arm2 = arms[j];
+        movements.push({
+          point1: arm1.point,
+          point2: center.point,
+          point3: arm2.point,
+          kind: "cycling" as const,
+          score: "0" as const,
+          name: `${arm1.name} to ${arm2.name}`,
+          notes: "",
+        });
+      }
+    }
+
+    $state.jat[junctionIdx][stage].movements = movements;
+  }
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -211,6 +237,11 @@
       {#if $state.jat[junctionIdx][otherStage].movements.length > 0}
         <SecondaryButton on:click={copyMovements}>
           Copy movements from {otherStage}
+        </SecondaryButton>
+      {/if}
+      {#if $state.jat[junctionIdx][stage].arms.length > 0}
+        <SecondaryButton on:click={generateMovements}>
+          Generate movements between all arms (1st arm is the center)
         </SecondaryButton>
       {/if}
     {:else}
