@@ -23,7 +23,7 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
     // Update
     perArm[idx]++;
 
-    return destination(pt, projectDistance, perpAngle % 360).geometry
+    return destination(pt, projectDistance, perpAngle).geometry
       .coordinates as Position;
   };
 
@@ -36,10 +36,19 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
       let arm1 = arms[i];
       let arm2 = arms[j];
 
+      let point1 = jitter(i);
+      let point3 = jitter(j);
+
+      // For the middle point, average the angle from the center to each of the two arms and project a bit that way
+      // TODO Actually this doesn't look good
+      //let midptAngle = betweenBearings(bearing(center.point, point1), bearing(center.point, point3));
+      let midptAngle = bearing(center.point, point3);
+
       movements.push({
-        point1: jitter(i),
-        point2: center.point,
-        point3: jitter(j),
+        point1,
+        point2: destination(center.point, spacingMeters, midptAngle).geometry
+          .coordinates as Position,
+        point3,
         kind: "cycling" as const,
         score: "0" as const,
         name: `${arm1.name} to ${arm2.name}`,
@@ -50,4 +59,14 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
     //break;
   }
   return movements;
+}
+
+// TODO Actually, not sure we need this
+function normalizeBearing(b: number): number {
+  return ((b % 360) + 360) % 360;
+}
+
+function betweenBearings(b1: number, b2: number): number {
+  let difference = Math.abs(normalizeBearing(b1) - normalizeBearing(b2));
+  return Math.min(difference, 360 - difference);
 }
