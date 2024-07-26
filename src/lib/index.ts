@@ -60,10 +60,3 @@ export function dateToString(date: Date): string {
   let day = date.getDate().toString().padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
-
-export function confirmNotNull<T>(x: T | null | undefined): T {
-  if (x == null || x == undefined) {
-    throw new Error("Oops, notNull given something null");
-  }
-  return x;
-}
