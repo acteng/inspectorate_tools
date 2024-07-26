@@ -242,15 +242,16 @@
   }
 
   function onKeyDown(e: KeyboardEvent) {
-    if (editing != null && e.key == "Escape") {
+    if (editing == null) {
+      return;
+    }
+    let tag = (e.target as HTMLElement).tagName;
+    let formFocused = tag == "INPUT" || tag == "TEXTAREA";
+
+    if (e.key == "Escape" || (e.key == "Enter" && !formFocused)) {
       e.stopPropagation();
       stopEditing();
-    } else if (editing != null && e.key == "Delete") {
-      // Let the delete key work in forms
-      let tag = (e.target as HTMLElement).tagName;
-      if (tag == "INPUT" || tag == "TEXTAREA") {
-        return;
-      }
+    } else if (e.key == "Delete" && !formFocused) {
       e.stopPropagation();
       deleteItem();
     }
