@@ -2,26 +2,16 @@ import type { Arm, Movement } from "../data";
 import type { Position } from "$lib/map";
 import destination from "@turf/destination";
 import bearing from "@turf/bearing";
+import distance from "@turf/distance";
 
 export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
-  // Calculate the angle from each arm to the center
-  let armAngles = arms.map((arm) => bearing(arm.point, center.point));
-
-  // If every arm is connected, how many movements will start or end at each arm?
-  let totalPerArm = 2 * (arms.length - 1);
-  let halfPerArm = arms.length - 1;
-  // Track how many movements to/from an arm we've drawn so far
-  let perArm = Array(arms.length).fill(0);
-
-  let spacingMeters = 0.002;
-  let jitter = (idx: number) => {
+  let spacingMeters = 0.003;
+  let jitter = (idx: number, offset: number) => {
     let pt = arms[idx].point;
     let angleToCenter = bearing(pt, center.point);
-    let perpAngle = angleToCenter + (perArm[idx] < halfPerArm ? 90 : -90);
-    let projectDistance = spacingMeters * (1 + (perArm[idx] % halfPerArm));
-
-    // Update
-    perArm[idx]++;
+    // This should wind up on the left side of the road
+    let perpAngle = angleToCenter - 90;
+    let projectDistance = spacingMeters * offset;
 
     return destination(pt, projectDistance, perpAngle).geometry
       .coordinates as Position;
@@ -29,6 +19,8 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
 
   let movements = [];
   for (let i = 0; i < arms.length; i++) {
+    let toCount = 1;
+    // TODO Order by clockwise
     for (let j = 0; j < arms.length; j++) {
       if (i == j) {
         continue;
@@ -36,18 +28,20 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
       let arm1 = arms[i];
       let arm2 = arms[j];
 
-      let point1 = jitter(i);
-      let point3 = jitter(j);
-
-      // For the middle point, average the angle from the center to each of the two arms and project a bit that way
-      // TODO Actually this doesn't look good
-      //let midptAngle = betweenBearings(bearing(center.point, point1), bearing(center.point, point3));
-      let midptAngle = bearing(center.point, point3);
+      let angleStartToCenter = bearing(arm1.point, center.point);
+      let angleCenterToEnd = bearing(center.point, arm2.point);
+      // Start at the arm, far from the junction
+      let point1 = jitter(i, toCount++);
+      // Then go some percent towards the junction
+      let dist = distance(arm1.point, center.point);
+      let point2 = destination(point1, 0.5 * dist, angleStartToCenter).geometry
+        .coordinates as Position;
+      let point3 = destination(point2, 0.2 * dist, angleCenterToEnd).geometry
+        .coordinates as Position;
 
       movements.push({
         point1,
-        point2: destination(center.point, spacingMeters, midptAngle).geometry
-          .coordinates as Position,
+        point2,
         point3,
         kind: "cycling" as const,
         score: "0" as const,
@@ -59,14 +53,4 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
     //break;
   }
   return movements;
-}
-
-// TODO Actually, not sure we need this
-function normalizeBearing(b: number): number {
-  return ((b % 360) + 360) % 360;
-}
-
-function betweenBearings(b1: number, b2: number): number {
-  let difference = Math.abs(normalizeBearing(b1) - normalizeBearing(b2));
-  return Math.min(difference, 360 - difference);
 }
