@@ -15,9 +15,10 @@
   import { GeoreferenceControls } from "$lib/map/georef";
   import { colors } from "$lib/colors";
   import { ClickableCard } from "$lib";
-  import { state, type JunctionAssessment } from "../data";
+  import { state } from "../data";
   import Form from "./Form.svelte";
   import { tick } from "svelte";
+  import { describeScore } from "./score";
 
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";
@@ -43,8 +44,9 @@
     preserveListScroll = sidebar.scrollTop;
     editing = id;
     hoveringSidebar = null;
-    // Note after the form appears in the sidebar, we don't need to scroll to
-    // the top. The form is small and doesn't cause a scrollbar on most screens.
+    // Scroll to the top of the form, which can be long for movements
+    await tick();
+    sidebar.scrollTop = 0;
   }
 
   async function stopEditing() {
@@ -92,21 +94,6 @@
     }
   }
 
-  function totalScore(ja: JunctionAssessment): number {
-    let score = 0;
-    let totalPossible = 0;
-    for (let m of ja.movements) {
-      score += {
-        0: 0,
-        1: 1,
-        2: 2,
-        X: 0,
-      }[m.score];
-      totalPossible += 2;
-    }
-    return (score / totalPossible) * 100;
-  }
-
   function copyArms() {
     if ($state.jat[junctionIdx][stage].arms.length > 0) {
       if (!window.confirm("Overwrite arms?")) {
@@ -143,9 +130,16 @@
 
 <div class="govuk-width-container">
   <TextArea
-    label="Commentary / Notes"
+    label="Commentary / Notes about {stage} junction"
     bind:value={$state.jat[junctionIdx][stage].notes}
   />
+
+  <p>
+    Total JAT score: <b>{describeScore($state.jat[junctionIdx].existing)}</b>
+    existing,
+    <b>{describeScore($state.jat[junctionIdx].proposed)}</b>
+    proposed
+  </p>
 </div>
 
 <div style="display: flex; height: 80vh">
@@ -154,6 +148,8 @@
     bind:this={sidebar}
   >
     {#if editing == null}
+      <slot />
+
       <CollapsibleCard label="Tools">
         <SecondaryButton on:click={() => mapControls?.zoom(true)}>
           Zoom to fit
@@ -163,17 +159,6 @@
         <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />
         <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
-
-      <p>
-        Total JAT score for {stage}
-        <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
-        :
-        {#if $state.jat[junctionIdx][stage].movements.length > 0}
-          {Math.round(totalScore($state.jat[junctionIdx][stage]))}%
-        {:else}
-          No movements added
-        {/if}
-      </p>
 
       <Radio
         legend="Add to map"
@@ -201,6 +186,11 @@
       {/if}
 
       <h3>Movements</h3>
+      <p>
+        Total JAT score for {stage}
+        <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
+        : {describeScore($state.jat[junctionIdx][stage])}
+      </p>
       {#each $state.jat[junctionIdx][stage].movements as movement, idx}
         {@const color = scoreColors[movement.score]}
         <ClickableCard
@@ -231,6 +221,8 @@
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       {#if editing.kind == "movement"}
         <Form {junctionIdx} {stage} idx={editing.idx} />
+        <DefaultButton on:click={stopEditing}>Save</DefaultButton>
+        <WarningButton on:click={deleteItem}>Delete</WarningButton>
       {:else}
         <TextInput
           label="Arm Name"
