@@ -1,6 +1,11 @@
 <script lang="ts">
   import type { StyleSpecification } from "maplibre-gl";
-  import { MapLibre, type Map } from "svelte-maplibre";
+  import {
+    MapLibre,
+    type Map,
+    NavigationControl,
+    ScaleControl,
+  } from "svelte-maplibre";
   import Geocoder from "./Geocoder.svelte";
   import { styleChoice } from "./stores";
 
@@ -53,7 +58,6 @@
 
 <MapLibre
   style={getStyle($styleChoice)}
-  standardControls
   on:error={(e) => {
     // @ts-expect-error Not exported
     console.log(e.detail.error);
@@ -62,6 +66,8 @@
   bind:map
   bounds={[-5.96, 49.89, 2.31, 55.94]}
 >
+  <NavigationControl />
+  <ScaleControl />
   <Geocoder {map} />
   <slot />
 </MapLibre>

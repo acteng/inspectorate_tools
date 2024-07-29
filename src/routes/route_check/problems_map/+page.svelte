@@ -366,31 +366,46 @@
 
       {#if mode.mode != "editing"}
         <div class="control-panel">
-          <IconButton
-            disabled={mode.mode == "select"}
-            on:click={() => stopEditing()}
-          >
-            <img src={panUrl} alt="Move map" />
-            Move map
+          <IconButton on:click={() => stopEditing()}>
+            <img src={panUrl} alt="Move map" style="vertical-align: middle;" />
+            {#if mode.mode == "select"}
+              <u>Move map</u>
+            {:else}
+              Move map
+            {/if}
           </IconButton>
-          <IconButton
-            disabled={mode.mode == "new-critical"}
-            on:click={() => (mode = { mode: "new-critical" })}
-          >
-            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <IconButton on:click={() => (mode = { mode: "new-critical" })}>
+            <svg
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              style="vertical-align: middle;"
+            >
               <polygon
-                points="20,0 0,40 40,40"
+                points="12,0 0,24 24,24"
                 fill={colors.critical.background}
               />
             </svg>
-            New critical issue
+            {#if mode.mode == "new-critical"}
+              <u>New critical issue</u>
+            {:else}
+              New critical issue
+            {/if}
           </IconButton>
-          <IconButton
-            disabled={mode.mode == "new-conflict"}
-            on:click={() => (mode = { mode: "new-conflict" })}
-          >
-            <span class="dot" style:background={policyConflictColor} />
-            New policy conflict
+          <IconButton on:click={() => (mode = { mode: "new-conflict" })}>
+            <svg
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              style="vertical-align: middle;"
+            >
+              <circle cx="12" cy="12" r="12" fill={policyConflictColor} />
+            </svg>
+            {#if mode.mode == "new-conflict"}
+              <u>New policy conflict</u>
+            {:else}
+              New policy conflict
+            {/if}
           </IconButton>
         </div>
       {/if}
