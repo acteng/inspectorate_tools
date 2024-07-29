@@ -24,14 +24,21 @@
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state, type Arm, type Movement, type State } from "../data";
+  import { IconButton } from "$lib";
+  import panUrl from "$lib/assets/images/pan.svg?url";
+  import movementUrl from "$lib/assets/images/movement.svg?url";
 
+  type Mode =
+    | { mode: "select" }
+    | { mode: "editing"; id: ID }
+    | { mode: "new-arm" }
+    | { mode: "new-movement" };
   type Kind = "arm" | "movement";
   type ID = { kind: Kind; idx: number };
 
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";
-  export let newKind: Kind;
-  export let editing: ID | null;
+  export let mode: Mode;
   export let hoveringSidebar: ID | null;
   export let streetviewOn: boolean;
   export let showContext: boolean;
@@ -40,7 +47,7 @@
 
   let map: Map;
 
-  $: hoverGj = getHoverData($state, editing, hoveringSidebar);
+  $: hoverGj = getHoverData($state, mode, hoveringSidebar);
 
   let scoreColors = {
     0: colors.red.background,
@@ -51,14 +58,14 @@
 
   function getHoverData(
     state: State,
-    editing: ID | null,
+    mode: Mode,
     hoveringSidebar: ID | null,
   ): FeatureCollection {
     let gj: FeatureCollection = {
       type: "FeatureCollection" as const,
       features: [],
     };
-    let id = editing ?? hoveringSidebar;
+    let id = mode.mode == "editing" ? mode.id : hoveringSidebar;
     if (id != null) {
       if (id.kind == "arm") {
         gj.features.push(
@@ -85,13 +92,16 @@
       return;
     }
 
+    if (mode.mode == "select") {
+      return;
+    }
     // Deselect something
-    if (editing != null) {
+    if (mode.mode == "editing") {
       await stopEditing();
       return;
     }
 
-    if (newKind == "arm") {
+    if (mode.mode == "new-arm") {
       $state.jat[junctionIdx][stage].arms = [
         ...$state.jat[junctionIdx][stage].arms,
         {
@@ -230,6 +240,47 @@
 <MapLibreMap bind:map>
   <MapEvents on:click={onMapClick} />
 
+  {#if mode.mode != "editing"}
+    <div class="control-panel">
+      <IconButton on:click={stopEditing}>
+        <img src={panUrl} alt="Move map" style="vertical-align: middle;" />
+        {#if mode.mode == "select"}
+          <u>Move map</u>
+        {:else}
+          Move map
+        {/if}
+      </IconButton>
+      <IconButton on:click={() => (mode = { mode: "new-arm" })}>
+        <svg
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          style="vertical-align: middle;"
+        >
+          <circle cx="12" cy="12" r="12" fill="white" />
+          <text x="6" y="16" fill="#4472c4">A</text>
+        </svg>
+        {#if mode.mode == "new-arm"}
+          <u>New arm</u>
+        {:else}
+          New arm
+        {/if}
+      </IconButton>
+      <IconButton on:click={() => (mode = { mode: "new-movement" })}>
+        <img
+          src={movementUrl}
+          alt="New movement"
+          style="vertical-align: middle;"
+        />
+        {#if mode.mode == "new-movement"}
+          <u>New movement</u>
+        {:else}
+          New movement
+        {/if}
+      </IconButton>
+    </div>
+  {/if}
+
   <ContextualMap gj={$state.summary.networkMap} show={showContext} />
 
   {#each $state.jat[junctionIdx][stage].arms as arm, idx}
@@ -362,5 +413,16 @@
   .dot:hover {
     border: 3px solid black;
     cursor: pointer;
+  }
+
+  .control-panel {
+    background: white;
+    position: absolute;
+    top: 10px;
+
+    left: 50%;
+    transform: translate(-50%, 0);
+    /* TODO Specified manually */
+    width: 450px;
   }
 </style>

@@ -6,7 +6,6 @@
     WarningButton,
     DefaultButton,
     TextArea,
-    Radio,
     TextInput,
     CollapsibleCard,
     Checkbox,
@@ -26,12 +25,17 @@
   let otherStage: "existing" | "proposed" =
     stage == "existing" ? "proposed" : "existing";
 
+  type Mode =
+    | { mode: "select" }
+    | { mode: "editing"; id: ID }
+    | { mode: "new-arm" }
+    | { mode: "new-movement" };
   type Kind = "arm" | "movement";
   type ID = { kind: Kind; idx: number };
 
-  let newKind: Kind = "arm";
-  let editing: ID | null = null;
+  let mode: Mode = { mode: "select" };
   // When changing to a form, preserve the list position and restore later
+  // TODO Some of this could be in Mode
   let preserveListScroll: number | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
@@ -42,7 +46,7 @@
 
   async function select(id: ID) {
     preserveListScroll = sidebar.scrollTop;
-    editing = id;
+    mode = { mode: "editing", id };
     hoveringSidebar = null;
     // Scroll to the top of the form, which can be long for movements
     await tick();
@@ -50,7 +54,7 @@
   }
 
   async function stopEditing() {
-    editing = null;
+    mode = { mode: "select" };
     if (preserveListScroll != null) {
       await tick();
       sidebar.scrollTop = preserveListScroll;
@@ -63,23 +67,26 @@
   }
 
   function deleteItem() {
-    // TODO Modal
-    if (!window.confirm(`Delete this ${editing!.kind}?`)) {
+    if (mode.mode != "editing") {
       return;
     }
-    if (editing!.kind == "movement") {
-      $state.jat[junctionIdx][stage].movements.splice(editing!.idx, 1);
+    // TODO Modal
+    if (!window.confirm(`Delete this ${mode.id.kind}?`)) {
+      return;
+    }
+    if (mode.id.kind == "movement") {
+      $state.jat[junctionIdx][stage].movements.splice(mode.id.idx, 1);
       $state.jat[junctionIdx][stage].movements =
         $state.jat[junctionIdx][stage].movements;
     } else {
-      $state.jat[junctionIdx][stage].arms.splice(editing!.idx, 1);
+      $state.jat[junctionIdx][stage].arms.splice(mode.id.idx, 1);
       $state.jat[junctionIdx][stage].arms = $state.jat[junctionIdx][stage].arms;
     }
     stopEditing();
   }
 
   function onKeyDown(e: KeyboardEvent) {
-    if (editing == null) {
+    if (mode.mode != "editing") {
       return;
     }
     let tag = (e.target as HTMLElement).tagName;
@@ -147,7 +154,7 @@
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
     bind:this={sidebar}
   >
-    {#if editing == null}
+    {#if mode.mode != "editing"}
       <slot />
 
       <CollapsibleCard label="Tools">
@@ -159,16 +166,6 @@
         <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />
         <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
       </CollapsibleCard>
-
-      <Radio
-        legend="Add to map"
-        choices={[
-          ["arm", "Arm"],
-          ["movement", "Movement"],
-        ]}
-        inlineSmall
-        bind:value={newKind}
-      />
 
       <h3>Arms</h3>
       {#each $state.jat[junctionIdx][stage].arms as arm, idx}
@@ -219,14 +216,14 @@
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
-      {#if editing.kind == "movement"}
-        <Form {junctionIdx} {stage} idx={editing.idx} />
+      {#if mode.id.kind == "movement"}
+        <Form {junctionIdx} {stage} idx={mode.id.idx} />
         <DefaultButton on:click={stopEditing}>Save</DefaultButton>
         <WarningButton on:click={deleteItem}>Delete</WarningButton>
       {:else}
         <TextInput
           label="Arm Name"
-          bind:value={$state.jat[junctionIdx][stage].arms[editing.idx].name}
+          bind:value={$state.jat[junctionIdx][stage].arms[mode.id.idx].name}
         />
       {/if}
     {/if}
@@ -236,8 +233,7 @@
       bind:this={mapControls}
       {junctionIdx}
       {stage}
-      {newKind}
-      bind:editing
+      {mode}
       {hoveringSidebar}
       {streetviewOn}
       {showContext}
