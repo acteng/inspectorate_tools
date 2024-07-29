@@ -9,6 +9,7 @@
   import { state } from "../data";
   import EditJunction from "./EditJunction.svelte";
   import { ClickableCard } from "$lib";
+  import { describeScore } from "./score";
 
   type Mode =
     | { kind: "list" }
@@ -62,7 +63,12 @@
       <ClickableCard
         name={junction.name || "Untitled junction"}
         on:click={() => (mode = { kind: "edit", idx, stage: "existing" })}
-      />
+      >
+        <div style="width: 100%; display: flex; justify-content: space-between">
+          <span>Existing: {describeScore(junction.existing)}</span>
+          <span>Proposed: {describeScore(junction.proposed)}</span>
+        </div>
+      </ClickableCard>
     {/each}
   </div>
 {:else if mode.kind == "edit"}
@@ -74,6 +80,20 @@
         Back to all junctions
       </SecondaryButton>
 
+      <WarningButton on:click={() => deleteJunction(getIdx(mode))}>
+        Delete junction
+      </WarningButton>
+    </ButtonGroup>
+
+    <TextInput label="Junction Name" bind:value={$state.jat[mode.idx].name} />
+  </div>
+
+  {#key mode.stage}
+    <EditJunction junctionIdx={mode.idx} stage={mode.stage}>
+      <p>
+        Currently editing {mode.stage} junction
+        <u>{$state.jat[mode.idx].name}</u>
+      </p>
       {#if mode.stage == "proposed"}
         <SecondaryButton
           on:click={() =>
@@ -89,16 +109,6 @@
           Edit Proposed
         </SecondaryButton>
       {/if}
-
-      <WarningButton on:click={() => deleteJunction(getIdx(mode))}>
-        Delete
-      </WarningButton>
-    </ButtonGroup>
-
-    <TextInput label="Junction Name" bind:value={$state.jat[mode.idx].name} />
-  </div>
-
-  {#key mode.stage}
-    <EditJunction junctionIdx={mode.idx} stage={mode.stage} />
+    </EditJunction>
   {/key}
 {/if}
