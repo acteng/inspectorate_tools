@@ -111,7 +111,11 @@
     });
   }
 
-  async function createCopy(id: ID) {
+  async function createCopy() {
+    if (mode.mode != "editing") {
+      return;
+    }
+    let id = mode.id;
     let list =
       id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
 
@@ -131,7 +135,7 @@
       $state.policyConflictLog = newList;
     }
 
-    select({ kind: id.kind, idx: id.idx + 1 });
+    await select({ kind: id.kind, idx: id.idx + 1 });
   }
 
   async function stopEditing() {
@@ -343,15 +347,7 @@
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
-      <SecondaryButton
-        on:click={() =>
-          createCopy({
-            kind: mode.id.kind,
-            idx: mode.id.idx,
-          })}
-      >
-        Copy
-      </SecondaryButton>
+      <SecondaryButton on:click={createCopy}>Copy</SecondaryButton>
       {#if mode.id.kind == "critical"}
         <CriticalForm idx={mode.id.idx} />
       {:else}
@@ -366,7 +362,7 @@
 
       {#if mode.mode != "editing"}
         <div class="control-panel">
-          <IconButton on:click={() => stopEditing()}>
+          <IconButton on:click={stopEditing}>
             <img src={panUrl} alt="Move map" style="vertical-align: middle;" />
             {#if mode.mode == "select"}
               <u>Move map</u>
