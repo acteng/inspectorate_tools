@@ -6,10 +6,23 @@
   import folderUrl from "$lib/assets/images/folder.svg?url";
 
   function storageChange(ev: StorageEvent) {
-    if (files.key($currentFile) == ev.key) {
-      window.alert(
-        "The file you're editing just changed in another browser tab. Please don't edit the same file in multiple tabs at the same time; your changes in one of the tabs will be lost.",
-      );
+    let key = files.key($currentFile);
+    if (key == ev.key) {
+      // If it's null, then the file was deleted in another tab
+      if (ev.newValue) {
+        try {
+          console.log(`${key} changed in another tab; applying the data here`);
+          $state = JSON.parse(ev.newValue);
+        } catch (err) {
+          console.error(
+            `${key} changed in another tab, but the new value is broken: ${err}`,
+          );
+        }
+      } else {
+        window.alert(
+          `You deleted ${$currentFile} from another tab. If you continue editing it here, it'll be saved again.`,
+        );
+      }
     }
   }
 </script>
