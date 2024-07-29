@@ -490,6 +490,10 @@
     background: white;
     position: absolute;
     top: 10px;
-    left: 350px;
+
+    left: 50%;
+    transform: translate(-50%, 0);
+    /* TODO Specified manually */
+    width: 550px;
   }
 </style>

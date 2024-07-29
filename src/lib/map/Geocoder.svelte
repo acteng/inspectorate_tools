@@ -31,8 +31,8 @@
 <style>
   div {
     position: absolute;
-    top: 20px;
-    left: 50px;
+    top: 100px;
+    left: 10px;
     z-index: 1;
   }
 </style>
