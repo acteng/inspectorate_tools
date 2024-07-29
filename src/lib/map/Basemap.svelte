@@ -20,6 +20,11 @@
     window.localStorage.setItem(key, value || "");
     choices = makeChoices();
     updates += 1;
+
+    // Immediately switch to the new basemap after entering a key
+    if (value && value.length > 0) {
+      $styleChoice = key == bluesky ? "bluesky" : "os-road";
+    }
   }
 
   let choices = makeChoices();
