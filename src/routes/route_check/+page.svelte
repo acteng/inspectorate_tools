@@ -15,6 +15,7 @@
 
   <ol>
     <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
+    <li><a href="{base}/route_check/route_map">Route Map</a></li>
     <li><a href="{base}/route_check/policy_check">Policy Check</a></li>
 
     <li><a href="{base}/route_check/safety_check">Safety Check</a></li>
