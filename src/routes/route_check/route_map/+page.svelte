@@ -1,13 +1,30 @@
 <script lang="ts">
-  import { DecimalInput } from "govuk-svelte";
+  import { SecondaryButton, DecimalInput } from "govuk-svelte";
   import { state } from "../data";
   import turfLength from "@turf/length";
   import { GeoJSON, LineLayer } from "svelte-maplibre";
   import type { Map } from "maplibre-gl";
-  import type { FeatureCollection, Feature, Polygon } from "geojson";
-  import DrawRoute from "./DrawRoute.svelte";
-  import { bbox, MapLibreMap } from "$lib/map";
-  import { RouteSnapperLayer } from "scheme-sketcher-lib/draw/route";
+  import { bbox, Basemap, MapLibreMap } from "$lib/map";
+  import { loadAuthorities, getBestMatch } from "./match_area";
+  import { writable } from "svelte/store";
+  import type {
+    FeatureCollection,
+    LineString,
+    Feature,
+    Polygon,
+  } from "geojson";
+  import { BoundaryLayer } from "scheme-sketcher-lib/draw";
+  import {
+    RouteControls,
+    RouteSnapperLayer,
+    RouteSnapperLoader,
+  } from "scheme-sketcher-lib/draw/route";
+  import { routeTool } from "scheme-sketcher-lib/draw/stores";
+  import { onMount } from "svelte";
+
+  onMount(async () => {
+    await loadAuthorities();
+  });
 
   let cfg = {
     layerZorder: [
@@ -23,6 +40,9 @@
       "road_label",
       // Zoomstack
       "Road labels",
+
+      // Draw the inverted boundary fade on top of basemap labels
+      "boundary",
     ],
   };
 
@@ -31,6 +51,13 @@
   let drawingRoute = false;
   let routeAuthority: Feature<Polygon, { name: string; level: string }> | null =
     null;
+  let url = "";
+
+  function getRouteSnapper() {
+    routeAuthority = getBestMatch(map);
+    let authority = `${routeAuthority.properties.level}_${routeAuthority.properties.name}`;
+    url = `https://atip.uk/route-snappers/v3/${authority}.bin.gz`;
+  }
 
   function initiallyZoom(map: Map) {
     if (!map || $state.summary.networkMap.features.length == 0) {
@@ -43,7 +70,6 @@
   }
   $: initiallyZoom(map);
 
-  $: lengthHint = getLengthHint($state.summary.networkMap);
   function getLengthHint(gj: FeatureCollection): number | null {
     let sum = 0;
     for (let f of gj.features) {
@@ -53,6 +79,29 @@
     }
     return sum > 0 ? sum : null;
   }
+  $: lengthHint = getLengthHint($state.summary.networkMap);
+
+  function startDrawing(edit: boolean) {
+    let copy = JSON.parse(JSON.stringify($state.summary.networkMap));
+    $state.summary.networkMap.features = [];
+    drawingRoute = true;
+
+    $routeTool!.addEventListenerSuccess((feature) => {
+      $state.summary.networkMap.features = [feature as Feature<LineString>];
+      drawingRoute = false;
+      $routeTool!.clearEventListeners();
+    });
+    $routeTool!.addEventListenerFailure(() => {
+      drawingRoute = false;
+      $routeTool!.clearEventListeners();
+    });
+
+    if (edit) {
+      $routeTool!.editExistingRoute(copy.features[0]);
+    } else {
+      $routeTool!.startRoute();
+    }
+  }
 </script>
 
 <div style="display: flex; height: 80vh">
@@ -60,43 +109,77 @@
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
   >
     {#if map}
-      <DrawRoute
-        {map}
-        bind:routeGj={$state.summary.networkMap}
-        bind:routeAuthority
-        bind:drawingRoute
-      />
-    {/if}
+      {#key url}
+        {#if url}
+          <RouteSnapperLoader {map} {url} />
+        {/if}
+      {/key}
 
-    {#if lengthHint}
-      <p>
-        LineStrings in the Network Map cover a total of <b>
-          {lengthHint.toFixed(2)}
-        </b>
-        kilometers. Depending what that map represents, you can use this value directly,
-        or hover on a piece of route on the map to see its individual length.
-      </p>
-    {/if}
+      {#if drawingRoute}
+        <RouteControls
+          maptilerApiKey={import.meta.env.VITE_MAPTILER_API_KEY}
+          extendRoute={false}
+        />
+      {:else}
+        <div>
+          <SecondaryButton on:click={getRouteSnapper}>
+            Set up drawing for the area shown on the map
+          </SecondaryButton>
+        </div>
 
-    <DecimalInput
-      label="Route length assessed here (km)"
-      bind:value={$state.summary.assessedRouteLengthKm}
-      width={6}
-      min={0}
-    />
-    <DecimalInput
-      label="Total route length (km)"
-      bind:value={$state.summary.totalRouteLengthKm}
-      width={6}
-      min={0}
-    />
+        {#if routeAuthority}
+          <p>
+            Currently drawing a route in {routeAuthority.properties.name} ({routeAuthority
+              .properties.level}))
+          </p>
+        {/if}
+
+        <hr />
+
+        {#if $routeTool}
+          <div>
+            <SecondaryButton on:click={() => startDrawing(false)}>
+              Draw a new route
+            </SecondaryButton>
+            <SecondaryButton
+              on:click={() => startDrawing(true)}
+              disabled={$state.summary.networkMap.features.length == 0}
+            >
+              Edit this route
+            </SecondaryButton>
+          </div>
+        {/if}
+
+        {#if lengthHint}
+          <p>
+            LineStrings in the Network Map cover a total of <b>
+              {lengthHint.toFixed(2)}
+            </b>
+            kilometers
+          </p>
+        {/if}
+
+        <DecimalInput
+          label="Route length assessed here (km)"
+          bind:value={$state.summary.assessedRouteLengthKm}
+          width={6}
+          min={0}
+        />
+        <DecimalInput
+          label="Total route length (km)"
+          bind:value={$state.summary.totalRouteLengthKm}
+          width={6}
+          min={0}
+        />
+
+        <Basemap />
+      {/if}
+    {/if}
   </div>
   <div style="position: relative; width: 70%;">
     <MapLibreMap bind:map>
       {#if routeAuthority}
-        <GeoJSON data={routeAuthority}>
-          <LineLayer paint={{ "line-color": "black", "line-width": 5 }} />
-        </GeoJSON>
+        <BoundaryLayer {cfg} boundaryGeojson={routeAuthority} />
       {/if}
 
       <GeoJSON data={$state.summary.networkMap}>
