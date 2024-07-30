@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { DecimalInput } from "govuk-svelte";
+  import { state } from "../data";
+  import turfLength from "@turf/length";
   import { GeoJSON, LineLayer } from "svelte-maplibre";
   import type { Map } from "maplibre-gl";
-  import type { Feature, Polygon } from "geojson";
+  import type { FeatureCollection, Feature, Polygon } from "geojson";
   import DrawRoute from "./DrawRoute.svelte";
-  import { state } from "../data";
   import { bbox, MapLibreMap } from "$lib/map";
   import { RouteSnapperLayer } from "scheme-sketcher-lib/draw/route";
 
@@ -40,6 +42,17 @@
     });
   }
   $: initiallyZoom(map);
+
+  $: lengthHint = getLengthHint($state.summary.networkMap);
+  function getLengthHint(gj: FeatureCollection): number | null {
+    let sum = 0;
+    for (let f of gj.features) {
+      if (f.geometry.type == "LineString") {
+        sum += turfLength(f, { units: "kilometers" });
+      }
+    }
+    return sum > 0 ? sum : null;
+  }
 </script>
 
 <div style="display: flex; height: 80vh">
@@ -54,6 +67,29 @@
         bind:drawingRoute
       />
     {/if}
+
+    {#if lengthHint}
+      <p>
+        LineStrings in the Network Map cover a total of <b>
+          {lengthHint.toFixed(2)}
+        </b>
+        kilometers. Depending what that map represents, you can use this value directly,
+        or hover on a piece of route on the map to see its individual length.
+      </p>
+    {/if}
+
+    <DecimalInput
+      label="Route length assessed here (km)"
+      bind:value={$state.summary.assessedRouteLengthKm}
+      width={6}
+      min={0}
+    />
+    <DecimalInput
+      label="Total route length (km)"
+      bind:value={$state.summary.totalRouteLengthKm}
+      width={6}
+      min={0}
+    />
   </div>
   <div style="position: relative; width: 70%;">
     <MapLibreMap bind:map>

@@ -4,7 +4,6 @@
     Select,
     TextInput,
     TextArea,
-    DecimalInput,
     SelectWithCustom,
     Radio,
   } from "govuk-svelte";
@@ -16,20 +15,6 @@
     fundingProgrammes,
     designStages,
   } from "$lib/lists";
-  import type { FeatureCollection } from "geojson";
-  import turfLength from "@turf/length";
-  import MapEntry from "./MapEntry.svelte";
-
-  $: lengthHint = getLengthHint($state.summary.networkMap);
-  function getLengthHint(gj: FeatureCollection): number | null {
-    let sum = 0;
-    for (let f of gj.features) {
-      if (f.geometry.type == "LineString") {
-        sum += turfLength(f, { units: "kilometers" });
-      }
-    }
-    return sum > 0 ? sum : null;
-  }
 </script>
 
 <div class="govuk-width-container">
@@ -86,29 +71,6 @@
     bind:value={$state.summary.inspectorEmail}
   />
 
-  {#if lengthHint}
-    <p>
-      LineStrings in the Network Map cover a total of <b>
-        {lengthHint.toFixed(2)}
-      </b>
-      kilometers. Depending what that map represents, you can use this value directly,
-      or hover on a piece of route on the map to see its individual length.
-    </p>
-  {/if}
-
-  <DecimalInput
-    label="Route length assessed here (km)"
-    bind:value={$state.summary.assessedRouteLengthKm}
-    width={6}
-    min={0}
-  />
-  <DecimalInput
-    label="Total route length (km)"
-    bind:value={$state.summary.totalRouteLengthKm}
-    width={6}
-    min={0}
-  />
-
   <TextArea label="Notes" bind:value={$state.summary.notes} />
 
   <hr />
@@ -122,6 +84,4 @@
     ]}
     bind:value={$state.summary.checkType}
   />
-
-  <MapEntry />
 </div>

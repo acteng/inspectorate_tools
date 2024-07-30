@@ -56,6 +56,7 @@ let pages: [string, string][] = [
   ["/route_check", "Route check tool"],
   ["/route_check/files", "Manage files"],
   ["/route_check/summary", "Summary of Scheme"],
+  ["/route_check/route_map", "Route Map"],
   ["/route_check/policy_check", "Policy Check"],
   ["/route_check/safety_check", "Safety Check"],
   [
