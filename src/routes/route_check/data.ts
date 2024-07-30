@@ -170,8 +170,6 @@ function validate(state: State) {
     state.horseRiders = "";
   }
 
-  // TODO Keep only one LineString in networkMap?
-
   if (state.version != "alpha-1") {
     throw new Error("File format appears outdated");
   }
