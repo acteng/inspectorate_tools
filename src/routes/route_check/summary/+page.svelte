@@ -1,6 +1,7 @@
 <script lang="ts">
   import { pairs, ExternalLink, DateInput } from "$lib";
   import {
+    AutocompleteTextInput,
     Select,
     TextInput,
     TextArea,
@@ -48,16 +49,16 @@
     bind:value={$state.summary.schemeInfoReviewed}
   />
 
-  <Select
+  <AutocompleteTextInput
     label="Authority"
-    emptyOption
-    choices={pairs(authorities)}
+    name="Authority"
+    options={pairs(authorities)}
     bind:value={$state.summary.authority}
   />
-  <Select
+  <AutocompleteTextInput
     label="Transport / Combined Authority"
-    emptyOption
-    choices={pairs(transportOrCombinedAuthorities)}
+    name="Transport / Combined Authority"
+    options={pairs(transportOrCombinedAuthorities)}
     bind:value={$state.summary.transportOrCombinedAuthority}
   />
   <SelectWithCustom
