@@ -154,10 +154,10 @@
 
         {#if lengthHint}
           <p>
-            LineStrings in the Network Map cover a total of <b>
+            The drawn route is <b>
               {lengthHint.toFixed(2)}
             </b>
-            kilometers
+            kilometers long
           </p>
         {/if}
 
