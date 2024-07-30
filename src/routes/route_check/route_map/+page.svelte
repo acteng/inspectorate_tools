@@ -2,7 +2,6 @@
   import { SecondaryButton, DecimalInput } from "govuk-svelte";
   import { state } from "../data";
   import turfLength from "@turf/length";
-  import { GeoJSON, LineLayer } from "svelte-maplibre";
   import type { Map } from "maplibre-gl";
   import { bbox, Basemap, MapLibreMap } from "$lib/map";
   import { loadAuthorities, getBestMatch } from "./match_area";
@@ -22,6 +21,7 @@
   } from "scheme-sketcher-lib/draw/route";
   import { routeTool } from "scheme-sketcher-lib/draw/stores";
   import { onMount } from "svelte";
+  import RouteMapLayer from "../RouteMapLayer.svelte";
 
   onMount(async () => {
     await loadAuthorities();
@@ -137,6 +137,8 @@
         <hr />
 
         {#if $routeTool}
+          <p>Please sketch the route being assessed here.</p>
+
           <div>
             <SecondaryButton on:click={() => startDrawing(false)}>
               Draw a new route
@@ -182,9 +184,7 @@
         <BoundaryLayer {cfg} boundaryGeojson={routeAuthority} />
       {/if}
 
-      <GeoJSON data={$state.summary.networkMap}>
-        <LineLayer paint={{ "line-color": "cyan", "line-width": 5 }} />
-      </GeoJSON>
+      <RouteMapLayer />
 
       <RouteSnapperLayer {cfg} />
     </MapLibreMap>

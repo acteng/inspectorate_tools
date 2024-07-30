@@ -12,7 +12,7 @@
   } from "govuk-svelte";
   import { onMount, tick } from "svelte";
   import { bbox } from "$lib/map";
-  import { Basemap, MapLibreMap, StreetView, ContextualMap } from "$lib/map";
+  import { Basemap, MapLibreMap, StreetView } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
@@ -33,6 +33,7 @@
   } from "../lists";
   import { page } from "$app/stores";
   import panUrl from "$lib/assets/images/pan.svg?url";
+  import RouteMapLayer from "../RouteMapLayer.svelte";
 
   let map: Map;
   let sidebar: HTMLDivElement;
@@ -59,7 +60,7 @@
   let preserveListScroll: number | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
-  let showContext = true;
+  let showRoute = true;
 
   $: if (map) {
     map.getCanvas().style.cursor =
@@ -304,7 +305,7 @@
         <Basemap />
         <GeoreferenceControls />
         <StreetView {map} bind:enabled={streetviewOn} />
-        <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
+        <Checkbox bind:checked={showRoute}>Show route</Checkbox>
       </CollapsibleCard>
 
       <h3>Critical Issues</h3>
@@ -406,7 +407,7 @@
         </div>
       {/if}
 
-      <ContextualMap gj={$state.summary.networkMap} show={showContext} />
+      <RouteMapLayer show={showRoute} />
 
       {#each $state.criticalIssues as critical, idx}
         <Marker

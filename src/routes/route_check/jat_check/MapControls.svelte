@@ -4,13 +4,7 @@
   import { colors } from "$lib/colors";
   import type { FeatureCollection, Feature } from "geojson";
   import { onMount } from "svelte";
-  import {
-    bbox,
-    MapLibreMap,
-    Popup,
-    ContextualMap,
-    type Position,
-  } from "$lib/map";
+  import { bbox, MapLibreMap, Popup, type Position } from "$lib/map";
   import { GeoreferenceLayer } from "$lib/map/georef";
   import {
     Marker,
@@ -27,6 +21,7 @@
   import { IconButton } from "$lib";
   import panUrl from "$lib/assets/images/pan.svg?url";
   import movementUrl from "$lib/assets/images/movement.svg?url";
+  import RouteMapLayer from "../RouteMapLayer.svelte";
 
   type Mode =
     | { mode: "select" }
@@ -41,7 +36,7 @@
   export let mode: Mode;
   export let hoveringSidebar: ID | null;
   export let streetviewOn: boolean;
-  export let showContext: boolean;
+  export let showRoute: boolean;
   export let select: (id: ID) => Promise<void>;
   export let stopEditing: () => Promise<void>;
 
@@ -281,7 +276,7 @@
     </div>
   {/if}
 
-  <ContextualMap gj={$state.summary.networkMap} show={showContext} />
+  <RouteMapLayer show={showRoute} />
 
   {#each $state.jat[junctionIdx][stage].arms as arm, idx}
     <Marker

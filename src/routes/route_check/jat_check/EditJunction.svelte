@@ -39,7 +39,7 @@
   let preserveListScroll: number | null = null;
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
-  let showContext = true;
+  let showRoute = true;
 
   let mapControls: MapControls | null = null;
   let sidebar: HTMLDivElement;
@@ -164,7 +164,7 @@
         <Basemap />
         <GeoreferenceControls />
         <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />
-        <Checkbox bind:checked={showContext}>Show scheme context</Checkbox>
+        <Checkbox bind:checked={showRoute}>Show route</Checkbox>
       </CollapsibleCard>
 
       <h3>Arms</h3>
@@ -236,7 +236,7 @@
       {mode}
       {hoveringSidebar}
       {streetviewOn}
-      {showContext}
+      {showRoute}
       {select}
       {stopEditing}
     />
