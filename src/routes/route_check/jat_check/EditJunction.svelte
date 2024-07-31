@@ -196,7 +196,7 @@
       </p>
       {#if $state.jat[junctionIdx][stage].arms.length > 0}
         <SecondaryButton on:click={autogenerateMovements}>
-          Generate movements between all arms (1st arm is the center)
+          Generate cycling movements between all arms (1st arm is the center)
         </SecondaryButton>
       {/if}
       {#each $state.jat[junctionIdx][stage].movements as movement, idx}

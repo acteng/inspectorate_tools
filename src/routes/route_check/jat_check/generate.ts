@@ -17,18 +17,30 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
       .coordinates as Position;
   };
 
+  // TODO Need arms to be sorted CCW
+
+  /*for (let i = 0; i < arms.length; i++) {
+    for (let j = 0; j < arms.length; j++) {
+      if (i != j) {
+              let arm1 = arms[i];
+              let arm2 = arms[j];
+              let b = normalize(bearing(arm1.point, arm2.point));
+              console.log(`bearing from ${arm1.name} to ${arm2.name} is ${b}`);
+      }
+    }
+  }*/
+  // Sort by angle from arm1
+  //let destinations = arms.filter((a) => a.point != arm1.point).toSorted((a1, a2) => normalize(bearing(arm1.point, a1.point)) - normalize(bearing(arm1.point, a2.point)));
+
   let movements = [];
   for (let i = 0; i < arms.length; i++) {
-    let toCount = 1;
-    // TODO Order by clockwise
-    for (let j = 0; j < arms.length; j++) {
-      if (i == j) {
-        continue;
-      }
-      let arm1 = arms[i];
-      let arm2 = arms[j];
+    let arm1 = arms[i];
+    let angleStartToCenter = bearing(arm1.point, center.point);
 
-      let angleStartToCenter = bearing(arm1.point, center.point);
+    // Continue in order
+    let toCount = 1;
+    for (let j of order(i, arms.length)) {
+      let arm2 = arms[j];
       let angleCenterToEnd = bearing(center.point, arm2.point);
       // Start at the arm, far from the junction
       let point1 = jitter(i, toCount++);
@@ -44,13 +56,26 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
         point2,
         point3,
         kind: "cycling" as const,
-        score: "0" as const,
+        score: "X" as const,
         name: `${arm1.name} to ${arm2.name}`,
         notes: "",
       });
     }
-    // Just work on one for now
-    //break;
   }
   return movements;
+}
+
+function normalize(b: number): number {
+  return (b + 360) % 360;
+}
+
+function order(i: number, n: number): number[] {
+  let out = [];
+  for (let x = i + 1; x < n; x++) {
+    out.push(x);
+  }
+  for (let x = 0; x < i; x++) {
+    out.push(x);
+  }
+  return out;
 }
