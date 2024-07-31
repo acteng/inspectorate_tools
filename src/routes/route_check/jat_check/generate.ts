@@ -6,31 +6,20 @@ import distance from "@turf/distance";
 import turfCenter from "@turf/center";
 
 export function generateMovements(arms: Arm[]): Movement[] {
-  let spacingMeters = 0.003;
-  let jitter = (idx: number, offset: number) => {
-    let pt = arms[idx].point;
-    let angleToCenter = bearing(pt, center);
-    // This should wind up on the left side of the road
-    let perpAngle = angleToCenter - 90;
-    let projectDistance = spacingMeters * offset;
-
-    return destination(pt, projectDistance, perpAngle).geometry
-      .coordinates as Position;
-  };
-
   // Sort arms around center in CCW order
   let center = turfCenter({
-    type: "FeatureCollection",
+    type: "FeatureCollection" as const,
     features: arms.map((arm) => {
       return {
-        type: "Feature",
+        type: "Feature" as const,
         geometry: {
-          type: "Point",
+          type: "Point" as const,
           coordinates: arm.point,
         },
+        properties: {},
       };
     }),
-  }).geometry.coordinates;
+  }).geometry.coordinates as Position;
   arms.sort(
     (a1, a2) =>
       normalize(bearing(center, a2.point)) -
@@ -42,13 +31,13 @@ export function generateMovements(arms: Arm[]): Movement[] {
     let arm1 = arms[i];
     let angleStartToCenter = bearing(arm1.point, center);
 
-    // Continue in order
+    // Continue in CCW order
     let toCount = 1;
     for (let j of order(i, arms.length)) {
       let arm2 = arms[j];
       let angleCenterToEnd = bearing(center, arm2.point);
       // Start at the arm, far from the junction
-      let point1 = jitter(i, toCount++);
+      let point1 = jitter(arm1.point, center, toCount++);
       // Then go some percent towards the junction
       let dist = distance(arm1.point, center);
       let point2 = destination(point1, 0.5 * dist, angleStartToCenter).geometry
@@ -70,10 +59,24 @@ export function generateMovements(arms: Arm[]): Movement[] {
   return movements;
 }
 
+function jitter(pt: Position, center: Position, offset: number): Position {
+  let spacingMeters = 0.003;
+
+  let angleToCenter = bearing(pt, center);
+  // This should wind up on the left side of the road
+  let perpAngle = angleToCenter - 90;
+  let projectDistance = spacingMeters * offset;
+
+  return destination(pt, projectDistance, perpAngle).geometry
+    .coordinates as Position;
+}
+
+// Normalize a bearing to [0, 360)
 function normalize(b: number): number {
   return (b + 360) % 360;
 }
 
+// Returns [i, n) U [0, i)
 function order(i: number, n: number): number[] {
   let out = [];
   for (let x = i + 1; x < n; x++) {
