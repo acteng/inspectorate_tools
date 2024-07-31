@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_fpac36)==null?void 0:s.base)??"/inspectorate_tools/split_scheme_summary";var a;const t=((a=globalThis.__sveltekit_fpac36)==null?void 0:a.assets)??e;export{t as a,e as b};
