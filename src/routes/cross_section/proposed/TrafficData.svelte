@@ -28,28 +28,28 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
       <Radio
-        legend="Expected peak hour cycle flow: 1-way cycle tracks"
+        label="Expected peak hour cycle flow: 1-way cycle tracks"
         inlineSmall
         choices={pairs(["<200", "200-800", ">800"])}
         bind:value={$state.proposed.trafficData.flowOneWay}
       />
 
       <Radio
-        legend="Expected peak hour cycle flow: 2-way cycle tracks"
+        label="Expected peak hour cycle flow: 2-way cycle tracks"
         inlineSmall
         choices={pairs(["<300", "300-1,000", ">1,000"])}
         bind:value={$state.proposed.trafficData.flowTwoWay}
       />
 
       <Radio
-        legend="Expected peak hour cycle flow: shared use cycle tracks"
+        label="Expected peak hour cycle flow: shared use cycle tracks"
         inlineSmall
         choices={pairs(["<300", ">300"])}
         bind:value={$state.proposed.trafficData.flowSharedUse}
       />
 
       <Radio
-        legend="Traffic flow (vpd)"
+        label="Traffic flow (vpd)"
         inlineSmall
         choices={pairs(["<2,500", "2,500-5,000", "5,000-10,000", ">10,000"])}
         bind:value={$state.proposed.trafficData.trafficFlow}
@@ -66,7 +66,7 @@
       {/if}
 
       <Radio
-        legend="Speed limit (MPH)"
+        label="Speed limit (MPH)"
         inlineSmall
         choices={speedLimitChoices}
         bind:value={$state.proposed.trafficData.speedLimit}
@@ -81,7 +81,7 @@
       />
 
       <Radio
-        legend="Street function"
+        label="Street function"
         inlineSmall
         choices={pairs([
           "High Street (active frontages)",

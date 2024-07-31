@@ -114,7 +114,7 @@
   <hr />
 
   <Radio
-    legend="Route Check Type (Street or Path)"
+    label="Route Check Type (Street or Path)"
     hint="What type of route is being reviewed: Street Check (e.g. on- or by-carriageway) or Path Check (e.g. a traffic-free path featuring minimal interactions with motor traffic)"
     choices={[
       ["street", "Street Check"],

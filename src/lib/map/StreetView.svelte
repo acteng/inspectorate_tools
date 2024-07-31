@@ -54,7 +54,7 @@
 <Checkbox bind:checked={enabled}>StreetView</Checkbox>
 {#if enabled}
   <Radio
-    legend="Source"
+    label="Source"
     choices={[
       ["google", "Google StreetView"],
       ["bing", "Bing Streetside"],

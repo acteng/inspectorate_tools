@@ -25,7 +25,7 @@
 />
 
 <Radio
-  legend="Stage"
+  label="Stage"
   choices={pairs(["Existing", "Design"])}
   bind:value={$state.criticalIssues[idx].stage}
   inlineSmall
