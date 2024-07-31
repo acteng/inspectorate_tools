@@ -3,12 +3,13 @@ import type { Position } from "$lib/map";
 import destination from "@turf/destination";
 import bearing from "@turf/bearing";
 import distance from "@turf/distance";
+import turfCenter from "@turf/center";
 
-export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
+export function generateMovements(arms: Arm[]): Movement[] {
   let spacingMeters = 0.003;
   let jitter = (idx: number, offset: number) => {
     let pt = arms[idx].point;
-    let angleToCenter = bearing(pt, center.point);
+    let angleToCenter = bearing(pt, center);
     // This should wind up on the left side of the road
     let perpAngle = angleToCenter - 90;
     let projectDistance = spacingMeters * offset;
@@ -18,26 +19,38 @@ export function generateMovements(center: Arm, arms: Arm[]): Movement[] {
   };
 
   // Sort arms around center in CCW order
+  let center = turfCenter({
+    type: "FeatureCollection",
+    features: arms.map((arm) => {
+      return {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: arm.point,
+        },
+      };
+    }),
+  }).geometry.coordinates;
   arms.sort(
     (a1, a2) =>
-      normalize(bearing(center.point, a2.point)) -
-      normalize(bearing(center.point, a1.point)),
+      normalize(bearing(center, a2.point)) -
+      normalize(bearing(center, a1.point)),
   );
 
   let movements = [];
   for (let i = 0; i < arms.length; i++) {
     let arm1 = arms[i];
-    let angleStartToCenter = bearing(arm1.point, center.point);
+    let angleStartToCenter = bearing(arm1.point, center);
 
     // Continue in order
     let toCount = 1;
     for (let j of order(i, arms.length)) {
       let arm2 = arms[j];
-      let angleCenterToEnd = bearing(center.point, arm2.point);
+      let angleCenterToEnd = bearing(center, arm2.point);
       // Start at the arm, far from the junction
       let point1 = jitter(i, toCount++);
       // Then go some percent towards the junction
-      let dist = distance(arm1.point, center.point);
+      let dist = distance(arm1.point, center);
       let point2 = destination(point1, 0.5 * dist, angleStartToCenter).geometry
         .coordinates as Position;
       let point3 = destination(point2, 0.2 * dist, angleCenterToEnd).geometry
