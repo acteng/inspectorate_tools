@@ -134,8 +134,9 @@
   };
 
   function autogenerateMovements() {
-    let [center, ...arms] = $state.jat[junctionIdx][stage].arms;
-    $state.jat[junctionIdx][stage].movements = generateMovements(center, arms);
+    $state.jat[junctionIdx][stage].movements = generateMovements(
+      $state.jat[junctionIdx][stage].arms,
+    );
   }
 </script>
 
@@ -196,7 +197,7 @@
       </p>
       {#if $state.jat[junctionIdx][stage].arms.length > 0}
         <SecondaryButton on:click={autogenerateMovements}>
-          Generate cycling movements between all arms (1st arm is the center)
+          Generate cycling movements between all arms
         </SecondaryButton>
       {/if}
       {#each $state.jat[junctionIdx][stage].movements as movement, idx}
