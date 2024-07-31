@@ -1,0 +1,1 @@
+var s;const e=((s=globalThis.__sveltekit_11adp8z)==null?void 0:s.base)??"/inspectorate_tools/jat_generate";var a;const t=((a=globalThis.__sveltekit_11adp8z)==null?void 0:a.assets)??e;export{t as a,e as b};
