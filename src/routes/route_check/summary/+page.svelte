@@ -2,6 +2,7 @@
   import { pairs, ExternalLink, DateInput } from "$lib";
   import {
     AutocompleteTextInput,
+    RadioWithCustom,
     Select,
     TextInput,
     TextArea,
@@ -51,13 +52,11 @@
 
   <AutocompleteTextInput
     label="Authority"
-    name="Authority"
     options={pairs(authorities)}
     bind:value={$state.summary.authority}
   />
   <AutocompleteTextInput
     label="Transport / Combined Authority"
-    name="Transport / Combined Authority"
     options={pairs(transportOrCombinedAuthorities)}
     bind:value={$state.summary.transportOrCombinedAuthority}
   />
@@ -67,13 +66,13 @@
     choices={pairs(regions)}
     bind:value={$state.summary.region}
   />
-  <Radio
-    legend="Funding programme"
+  <RadioWithCustom
+    label="Funding programme"
     choices={pairs(fundingProgrammes)}
     bind:value={$state.summary.fundingProgramme}
   />
-  <Radio
-    legend="Design stage"
+  <RadioWithCustom
+    label="Design stage"
     choices={pairs(designStages)}
     bind:value={$state.summary.designStage}
   />
