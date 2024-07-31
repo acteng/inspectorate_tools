@@ -7,4 +7,4 @@
   export let inlineSmall = false;
 </script>
 
-<Radio legend={label} choices={pairs(["Yes", "No"])} bind:value {inlineSmall} />
+<Radio {label} choices={pairs(["Yes", "No"])} bind:value {inlineSmall} />

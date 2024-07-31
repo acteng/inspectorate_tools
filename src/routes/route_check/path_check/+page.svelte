@@ -6,7 +6,7 @@
 
 <div class="govuk-width-container">
   <Radio
-    legend="Are horse riders expected on this route?"
+    label="Are horse riders expected on this route?"
     choices={[
       ["", "Unanswered"],
       ["Yes", "Yes"],

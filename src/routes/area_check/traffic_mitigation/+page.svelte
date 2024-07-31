@@ -17,7 +17,7 @@
     <WarningText>Stop. Redesign scheme to reduce traffic.</WarningText>
   {:else if $state.trafficMitigationCheck.q1 == "Yes"}
     <Radio
-      legend="Is it expected to reduce traffic both within the scheme and elsewhere?"
+      label="Is it expected to reduce traffic both within the scheme and elsewhere?"
       choices={[
         [
           "Yes",
@@ -32,7 +32,7 @@
       <Confirmation />
     {:else if $state.trafficMitigationCheck.q2 == "No"}
       <Radio
-        legend="Where will displaced traffic go?"
+        label="Where will displaced traffic go?"
         choices={pairs([
           "Major routes (e.g. scheme eliminates a rat run)",
           "Minor streets (e.g. residential)",

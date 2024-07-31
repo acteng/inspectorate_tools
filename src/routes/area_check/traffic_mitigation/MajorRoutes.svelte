@@ -38,7 +38,7 @@
       </WarningText>
     {:else if $state.trafficMitigationCheck.majorQ3 == "No"}
       <Radio
-        legend="Is the major route suitable for local solutions, does it need wider measues, or are both currently inadequate?"
+        label="Is the major route suitable for local solutions, does it need wider measues, or are both currently inadequate?"
         choices={pairs(["Local", "Wider", "Measures are inadequate"])}
         bind:value={$state.trafficMitigationCheck.majorQ4}
       />

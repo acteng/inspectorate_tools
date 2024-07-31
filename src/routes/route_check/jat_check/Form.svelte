@@ -20,7 +20,7 @@
 />
 
 <Radio
-  legend="Movement"
+  label="Movement"
   choices={[
     ["cycling", "Cycling"],
     ["walking & wheeling", "Walking & Wheeling"],
@@ -29,7 +29,7 @@
 />
 
 <Radio
-  legend="Score"
+  label="Score"
   choices={scoreChoices}
   bind:value={$state.jat[junctionIdx][stage].movements[idx].score}
 />

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { pairs, DateInput } from "$lib";
   import {
+    AutocompleteTextInput,
+    RadioWithCustom,
     Select,
     TextInput,
     TextArea,
@@ -33,16 +35,14 @@
     bind:value={$state.summary.schemeInfoReviewed}
   />
 
-  <Select
+  <AutocompleteTextInput
     label="Authority"
-    emptyOption
-    choices={pairs(authorities)}
+    options={pairs(authorities)}
     bind:value={$state.summary.authority}
   />
-  <Select
+  <AutocompleteTextInput
     label="Transport / Combined Authority"
-    emptyOption
-    choices={pairs(transportOrCombinedAuthorities)}
+    options={pairs(transportOrCombinedAuthorities)}
     bind:value={$state.summary.transportOrCombinedAuthority}
   />
   <SelectWithCustom
@@ -51,13 +51,13 @@
     choices={pairs(regions)}
     bind:value={$state.summary.region}
   />
-  <Radio
-    legend="Funding programme"
+  <RadioWithCustom
+    label="Funding programme"
     choices={pairs(fundingProgrammes)}
     bind:value={$state.summary.fundingProgramme}
   />
-  <Radio
-    legend="Design stage"
+  <RadioWithCustom
+    label="Design stage"
     choices={pairs(designStages)}
     bind:value={$state.summary.designStage}
   />
@@ -76,7 +76,7 @@
   <hr />
 
   <Radio
-    legend="Route Check Type (Street or Path)"
+    label="Route Check Type (Street or Path)"
     hint="What type of route is being reviewed: Street Check (e.g. on- or by-carriageway) or Path Check (e.g. a traffic-free path featuring minimal interactions with motor traffic)"
     choices={[
       ["street", "Street Check"],
