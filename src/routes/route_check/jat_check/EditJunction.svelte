@@ -134,11 +134,6 @@
   };
 
   function autogenerateMovements() {
-    if ($state.jat[junctionIdx][stage].arms.length < 2) {
-      window.alert("You need at least 2 arms");
-      return;
-    }
-
     if (
       $state.jat[junctionIdx][stage].movements.length > 0 &&
       !window.confirm(`Overwrite all movements?`)
@@ -206,11 +201,12 @@
         <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
         : {describeScore($state.jat[junctionIdx][stage])}
       </p>
-      {#if $state.jat[junctionIdx][stage].arms.length > 0}
-        <SecondaryButton on:click={autogenerateMovements}>
-          Generate cycling movements between all arms
-        </SecondaryButton>
-      {/if}
+      <SecondaryButton
+        on:click={autogenerateMovements}
+        disabled={$state.jat[junctionIdx][stage].arms.length < 2}
+      >
+        Generate cycling movements between all arms
+      </SecondaryButton>
       {#each $state.jat[junctionIdx][stage].movements as movement, idx}
         {@const color = scoreColors[movement.score]}
         <ClickableCard
