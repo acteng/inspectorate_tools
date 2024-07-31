@@ -134,6 +134,17 @@
   };
 
   function autogenerateMovements() {
+    if ($state.jat[junctionIdx][stage].arms.length < 2) {
+      window.alert("You need at least 2 arms");
+      return;
+    }
+
+    if (
+      $state.jat[junctionIdx][stage].movements.length > 0 &&
+      !window.confirm(`Overwrite all movements?`)
+    ) {
+      return;
+    }
     $state.jat[junctionIdx][stage].movements = generateMovements(
       $state.jat[junctionIdx][stage].arms,
     );
