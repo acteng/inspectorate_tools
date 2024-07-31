@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { SecondaryButton, DecimalInput } from "govuk-svelte";
+  import {
+    DefaultButton,
+    ButtonGroup,
+    SecondaryButton,
+    DecimalInput,
+  } from "govuk-svelte";
   import { state } from "../data";
   import turfLength from "@turf/length";
   import type { Map } from "maplibre-gl";
@@ -51,6 +56,7 @@
   let routeAuthority: Feature<Polygon, { name: string; level: string }> | null =
     null;
   let url = "";
+  let extendRoute = true;
 
   function getRouteSnapper() {
     routeAuthority = getBestMatch($map!);
@@ -116,9 +122,18 @@
       {/key}
 
       {#if drawingRoute}
+        <ButtonGroup>
+          <DefaultButton on:click={() => $routeTool?.finish()}>
+            Finish
+          </DefaultButton>
+          <SecondaryButton on:click={() => $routeTool?.cancel()}>
+            Cancel
+          </SecondaryButton>
+        </ButtonGroup>
+
         <RouteControls
           maptilerApiKey={import.meta.env.VITE_MAPTILER_API_KEY}
-          extendRoute={false}
+          bind:extendRoute
         />
       {:else}
         <div>
