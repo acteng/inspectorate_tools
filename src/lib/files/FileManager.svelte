@@ -124,7 +124,6 @@
 </script>
 
 <div class="govuk-width-container">
-  <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
 
   <p>
     All files are auto-saved in your browser's local storage. You can close your
@@ -133,8 +132,10 @@
   </p>
 
   <p>
-    You're currently editing <u>{$currentFile}</u>
+    <b>
+      You are editing: <a href="{base}/{files.prefix}">{$currentFile}</a>
     .
+    </b>
   </p>
   <ButtonGroup>
     <SecondaryButton on:click={renameFile}>
