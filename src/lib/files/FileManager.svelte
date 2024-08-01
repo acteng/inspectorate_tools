@@ -47,7 +47,7 @@
       window.localStorage.setItem(files.key(newName), contents);
       window.localStorage.removeItem(oldKey);
       fileList = files.getFileList();
-      if($currentFile === fileToRename) {
+      if ($currentFile === fileToRename) {
         $currentFile = newName;
       }
     }
@@ -130,24 +130,22 @@
 </script>
 
 <div class="govuk-width-container">
-
   <slot />
 
   <hr />
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-
       <p>
-        All files are auto-saved in your browser's local storage. You can close your
-        browser and resume later. You can export the file to your computer to share
-        with someone else, and import from a file below.
+        All files are auto-saved in your browser's local storage. You can close
+        your browser and resume later. You can export the file to your computer
+        to share with someone else, and import from a file below.
       </p>
-    
+
       <p>
         <b>
           You are editing: <a href="{base}/{files.prefix}">{$currentFile}</a>
-        .
+          .
         </b>
       </p>
       <ButtonGroup>
@@ -175,7 +173,11 @@
     <div class="govuk-grid-column-one-half">
       <h2>Manage Existing Files</h2>
       <div class="file-radio-container">
-        <Radio label="Selected file:" choices={fileListPairs} bind:value={selectedFileForManagement}/>
+        <Radio
+          label="Selected file:"
+          choices={fileListPairs}
+          bind:value={selectedFileForManagement}
+        />
       </div>
       <ButtonGroup>
         <SecondaryButton on:click={openFile(selectedFileForManagement)}>

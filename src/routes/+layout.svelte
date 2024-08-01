@@ -37,7 +37,7 @@
     border-bottom: 0.5rem solid #007161;
   }
   .ate-logo {
-    height: 90%; 
+    height: 90%;
     background: white;
   }
 </style>
