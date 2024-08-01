@@ -143,10 +143,8 @@
 <div class="govuk-width-container">
   <slot />
 
-  <hr />
-
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds left-bar">
       <p>
         All files are auto-saved in your browser's local storage. You can close
         your browser and resume later. You can export the file to your computer
@@ -188,7 +186,6 @@
       {/if}
       <h2>Create or import a file</h2>
       <DefaultButton on:click={newFile}>New blank file</DefaultButton>
-      <hr />
       <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
       {#if xlsxImporter != null}
@@ -196,7 +193,7 @@
         <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
       {/if}
     </div>
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-third manage-existing">
       <h2>Manage Existing Files</h2>
       <ButtonGroup>
         <SecondaryButton
@@ -241,5 +238,12 @@
     height: 350px;
     overflow-y: scroll;
     margin-bottom: 1em;
+  }
+  .manage-existing {
+    border-top: 0.5rem solid #007161;
+    margin-top: -0.5rem;
+  }
+  .left-bar > p {
+    margin-bottom: 30px;
   }
 </style>

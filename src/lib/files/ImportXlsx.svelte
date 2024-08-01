@@ -37,23 +37,31 @@
     type="file"
   />
 
-  <WarningText>
-    <p>
-      <b>
-        You can import from an existing route check .xlsx file, only if there's
-        an up-to-date DALOG sheet added.
-      </b>
-    </p>
-    <p><b>After importing, there will still be some problems:</b></p>
+  <div class="warning">
+    <WarningText>
+      <p>
+        <b>
+          You can import from an existing route check .xlsx file, only if
+          there's an up-to-date DALOG sheet added.
+        </b>
+      </p>
+      <p><b>After importing, there will still be some problems:</b></p>
 
-    <ul>
-      <li>
-        You must fill out the Junction Assessment Tool (JAT); it won't be
-        imported
-      </li>
-      <li>Some text fields on the Summary of Scheme page will be missing</li>
-    </ul>
-  </WarningText>
+      <ul>
+        <li>
+          You must fill out the Junction Assessment Tool (JAT); it won't be
+          imported
+        </li>
+        <li>Some text fields on the Summary of Scheme page will be missing</li>
+      </ul>
+    </WarningText>
+  </div>
 </FormElement>
 
 <Loading {loading} />
+
+<style>
+  .warning {
+    margin-top: 30px;
+  }
+</style>
