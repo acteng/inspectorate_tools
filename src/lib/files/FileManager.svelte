@@ -92,16 +92,12 @@
 
   async function newFile() {
     // TODO Handle overwriting
-    let newName = window.prompt(
-      "What should the file be called?",
-      "",
-    );
+    let newName =
+      window.prompt("What should the file be called?", "") ||
+      files.newFilename();
     let contents = files.emptyState();
-    $state = contents;
-    window.localStorage.setItem(files.key(newName), contents);
-    fileList = files.getFileList();
+    fileList = files.saveAndGetFileList(newName, contents);
     $currentFile = newName;
-    fileList = files.saveAndGetFileList($currentFile, $state);
   }
 
   async function importJsonFile(rawFilename: string, contents: string) {
