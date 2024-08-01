@@ -1,5 +1,6 @@
 <script lang="ts">
   import "../style/main.css";
+  import logoUrl from "$lib/assets/images/ATE-Logo.webp?url";
   // @ts-expect-error no declarations
   import { initAll } from "govuk-frontend";
   import { AlphaBanner, WarningText } from "govuk-svelte";
@@ -17,7 +18,7 @@
     <img
       class="ate-logo"
       alt="Active Travel England logo"
-      src="/assets/images/ATE-Logo.webp"
+      src={logoUrl}
     />
   </header>
 </div>
