@@ -91,8 +91,16 @@
   }
 
   async function newFile() {
-    $currentFile = files.newFilename();
-    $state = files.emptyState();
+    // TODO Handle overwriting
+    let newName = window.prompt(
+      "What should the file be called?",
+      "",
+    );
+    let contents = files.emptyState();
+    $state = contents;
+    window.localStorage.setItem(files.key(newName), contents);
+    fileList = files.getFileList();
+    $currentFile = newName;
     fileList = files.saveAndGetFileList($currentFile, $state);
   }
 
