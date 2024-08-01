@@ -83,7 +83,12 @@
       );
       window.localStorage.removeItem(key);
       if (filename == $currentFile) {
-        await newFile();
+        fileList = files.getFileList();
+        if(fileList.length > 0) {
+          openFile(fileList[0]);
+        } else {
+          await newFile();
+        }
       } else {
         fileList = files.saveAndGetFileList($currentFile, $state);
       }
