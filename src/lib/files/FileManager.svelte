@@ -87,6 +87,7 @@
       } else {
         fileList = files.saveAndGetFileList($currentFile, $state);
       }
+      selectedFileForManagement = fileList[0] || "";
     }
   }
 
