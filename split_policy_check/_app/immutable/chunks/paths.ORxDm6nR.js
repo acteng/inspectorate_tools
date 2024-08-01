@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_17ukbo9)==null?void 0:s.base)??"/inspectorate_tools/split_policy_check";var t;const o=((t=globalThis.__sveltekit_17ukbo9)==null?void 0:t.assets)??e;export{o as a,e as b};
