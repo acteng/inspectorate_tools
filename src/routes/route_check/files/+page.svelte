@@ -3,13 +3,23 @@
   import { files, currentFile, state, type State } from "../data";
   import { getDalog, dalogToState } from "$lib/import";
   import ExcelJS from "exceljs";
-  import ConvertToXlsx from "../results_export/ConvertToXlsx.svelte";
+  import { downloadExcelFile } from "../results_export/export";
 
   async function xlsxImporter(buffer: ArrayBuffer): Promise<State> {
     let workbook = new ExcelJS.Workbook();
     await workbook.xlsx.load(buffer);
     let dalog = getDalog(workbook);
     return dalogToState(dalog);
+  }
+
+  async function downloadXlsx() {
+    loading = "Converting to .xlsx (takes about 20 seconds)";
+    try {
+      await downloadExcelFile($state, $currentFile);
+    } catch (err) {
+      window.alert(`Conversion failed: ${err}`);
+    }
+    loading = "";
   }
 </script>
 
@@ -18,6 +28,4 @@
   <h2>Manage my schemes</h2>
 </div>
 
-<FileManager {files} {currentFile} {state} {xlsxImporter}>
-  <ConvertToXlsx />
-</FileManager>
+<FileManager {files} {currentFile} {state} {xlsxImporter} {downloadXlsx} />

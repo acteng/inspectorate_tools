@@ -11,8 +11,9 @@
     ButtonGroup,
     SecondaryButton,
     DefaultButton,
+    Radio,
   } from "govuk-svelte";
-  import { stripSuffix, ClickableCard } from "$lib";
+  import { stripSuffix, pairs } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
 
@@ -21,6 +22,7 @@
   export let currentFile: Writable<string>;
   // eslint-disable-next-line no-undef
   export let state: Writable<StateType>;
+  export let downloadXlsx: Function | undefined = undefined;
 
   // If provided, adds an option to import from an XLSX file. Runs the callback
   // with the ArrayBuffer to produce State. This should throw exceptions if
@@ -30,20 +32,24 @@
     | null = null;
 
   let fileList = files.getFileList();
+  let selectedFileForManagement: string = fileList[0];
+  $: fileListPairs = pairs(fileList);
 
-  function renameFile() {
+  function renameFile(fileToRename: string) {
     // TODO Handle overwriting
     let newName = window.prompt(
-      `Rename file ${$currentFile} to what?`,
-      $currentFile,
+      `Rename file ${fileToRename} to what?`,
+      fileToRename,
     );
     if (newName) {
-      let oldKey = files.key($currentFile);
+      let oldKey = files.key(fileToRename);
       let contents = window.localStorage.getItem(oldKey)!;
       window.localStorage.setItem(files.key(newName), contents);
       window.localStorage.removeItem(oldKey);
-      $currentFile = newName;
       fileList = files.getFileList();
+      if($currentFile === fileToRename) {
+        $currentFile = newName;
+      }
     }
   }
 
@@ -125,41 +131,39 @@
 
 <div class="govuk-width-container">
 
-  <p>
-    All files are auto-saved in your browser's local storage. You can close your
-    browser and resume later. You can export the file to your computer to share
-    with someone else, and import from a file below.
-  </p>
-
-  <p>
-    <b>
-      You are editing: <a href="{base}/{files.prefix}">{$currentFile}</a>
-    .
-    </b>
-  </p>
-  <ButtonGroup>
-    <SecondaryButton on:click={renameFile}>
-      <img src={editUrl} alt="Rename this file" />
-      Rename this file
-    </SecondaryButton>
-    <SecondaryButton on:click={exportFile}>
-      <img src={downloadUrl} alt="Export .json" />
-      Export .json
-    </SecondaryButton>
-    <WarningButton on:click={() => deleteFile($currentFile)}>
-      <img src={deleteUrl} alt="Delete this file" />
-      Delete this file
-    </WarningButton>
-  </ButtonGroup>
-
   <slot />
 
   <hr />
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
+
+      <p>
+        All files are auto-saved in your browser's local storage. You can close your
+        browser and resume later. You can export the file to your computer to share
+        with someone else, and import from a file below.
+      </p>
+    
+      <p>
+        <b>
+          You are editing: <a href="{base}/{files.prefix}">{$currentFile}</a>
+        .
+        </b>
+      </p>
+      <ButtonGroup>
+        <SecondaryButton on:click={exportFile}>
+          <img src={downloadUrl} alt="Export .json" />
+          Export .json
+        </SecondaryButton>
+        {#if downloadXlsx}
+          <SecondaryButton on:click={downloadXlsx}>
+            <img src={downloadUrl} alt="Export .xlsx" />
+            Export .xlsx
+          </SecondaryButton>
+        {/if}
+      </ButtonGroup>
       <h2>Create or import a file</h2>
-      <SecondaryButton on:click={newFile}>New blank file</SecondaryButton>
+      <DefaultButton on:click={newFile}>New blank file</DefaultButton>
       <hr />
       <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
@@ -169,30 +173,21 @@
       {/if}
     </div>
     <div class="govuk-grid-column-one-half">
-      <h2>Load a saved file</h2>
-
-      {#each fileList as filename}
-        <div style="display: flex; justify-content: space-between">
-          <ClickableCard
-            name={`File name: ${filename}`}
-            on:click={() => openFile(filename)}
-            disabled={filename === $currentFile}
-          >
-            {filename == $currentFile
-              ? "Currently open"
-              : files.describeFile(filename)}
-          </ClickableCard>
-          {#if filename == $currentFile}
-            <DefaultButton on:click={() => goto(`${base}/${files.prefix}`)}>
-              Start
-            </DefaultButton>
-          {:else}
-            <WarningButton on:click={() => deleteFile(filename)}>
-              Delete
-            </WarningButton>
-          {/if}
-        </div>
-      {/each}
+      <h2>Manage Existing Files</h2>
+      <div class="file-radio-container">
+        <Radio label="Selected file:" choices={fileListPairs} bind:value={selectedFileForManagement}/>
+      </div>
+      <ButtonGroup>
+        <SecondaryButton on:click={openFile(selectedFileForManagement)}>
+          Load saved file
+        </SecondaryButton>
+        <SecondaryButton on:click={renameFile(selectedFileForManagement)}>
+          Rename saved file
+        </SecondaryButton>
+        <WarningButton on:click={deleteFile(selectedFileForManagement)}>
+          Delete saved file
+        </WarningButton>
+      </ButtonGroup>
     </div>
   </div>
   <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
@@ -201,5 +196,10 @@
 <style>
   img {
     vertical-align: middle;
+  }
+  .file-radio-container {
+    height: 350px;
+    overflow-y: scroll;
+    margin-bottom: 1em;
   }
 </style>
