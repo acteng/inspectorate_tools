@@ -139,7 +139,7 @@
   <hr />
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-two-thirds">
       <p>
         All files are auto-saved in your browser's local storage. You can close
         your browser and resume later. You can export the file to your computer
@@ -178,8 +178,31 @@
         <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
       {/if}
     </div>
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-one-third">
       <h2>Manage Existing Files</h2>
+      <ButtonGroup>
+        <SecondaryButton
+          on:click={() => {
+            openFile(selectedFileForManagement);
+          }}
+        >
+          Load selected file
+        </SecondaryButton>
+        <SecondaryButton
+          on:click={() => {
+            renameFile(selectedFileForManagement);
+          }}
+        >
+          Rename selected file
+        </SecondaryButton>
+        <WarningButton
+          on:click={() => {
+            deleteFile(selectedFileForManagement);
+          }}
+        >
+          Delete selected file
+        </WarningButton>
+      </ButtonGroup>
       <div class="file-radio-container">
         <Radio
           label="Selected file:"
@@ -187,29 +210,6 @@
           bind:value={selectedFileForManagement}
         />
       </div>
-      <ButtonGroup>
-        <SecondaryButton
-          on:click={() => {
-            openFile(selectedFileForManagement);
-          }}
-        >
-          Load saved file
-        </SecondaryButton>
-        <SecondaryButton
-          on:click={() => {
-            renameFile(selectedFileForManagement);
-          }}
-        >
-          Rename saved file
-        </SecondaryButton>
-        <WarningButton
-          on:click={() => {
-            deleteFile(selectedFileForManagement);
-          }}
-        >
-          Delete saved file
-        </WarningButton>
-      </ButtonGroup>
     </div>
   </div>
   <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
