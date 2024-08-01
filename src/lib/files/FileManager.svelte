@@ -6,6 +6,7 @@
   import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./index";
   import {
+    CollapsibleCard,
     FileInput,
     WarningButton,
     ButtonGroup,
@@ -174,6 +175,17 @@
           </SecondaryButton>
         {/if}
       </ButtonGroup>
+      {#if downloadXlsx}
+        <CollapsibleCard label="Help with excel exports">
+          <p>
+            When you open the file, you need to force Excel to recalculate all
+            formulas with Ctrl + Alt + F9. The route coordinates in the Summary
+            of Scheme may not capture everything mapped when the route is split
+            into multiple pieces. The map weblink only shows the route start
+            point.
+          </p>
+        </CollapsibleCard>
+      {/if}
       <h2>Create or import a file</h2>
       <DefaultButton on:click={newFile}>New blank file</DefaultButton>
       <hr />

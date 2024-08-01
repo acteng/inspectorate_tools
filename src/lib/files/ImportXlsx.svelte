@@ -38,9 +38,12 @@
   />
 
   <WarningText>
-    <p><b>
-      You can import from an existing route check .xlsx file, only if there's an up-to-date DALOG sheet added.
-    </b></p>
+    <p>
+      <b>
+        You can import from an existing route check .xlsx file, only if there's
+        an up-to-date DALOG sheet added.
+      </b>
+    </p>
     <p><b>After importing, there will still be some problems:</b></p>
 
     <ul>
