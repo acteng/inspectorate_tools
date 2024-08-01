@@ -154,7 +154,11 @@
           Export .json
         </SecondaryButton>
         {#if downloadXlsx}
-          <SecondaryButton on:click={downloadXlsx}>
+          <SecondaryButton
+            on:click={() => {
+              downloadXlsx();
+            }}
+          >
             <img src={downloadUrl} alt="Export .xlsx" />
             Export .xlsx
           </SecondaryButton>
@@ -180,13 +184,25 @@
         />
       </div>
       <ButtonGroup>
-        <SecondaryButton on:click={openFile(selectedFileForManagement)}>
+        <SecondaryButton
+          on:click={() => {
+            openFile(selectedFileForManagement);
+          }}
+        >
           Load saved file
         </SecondaryButton>
-        <SecondaryButton on:click={renameFile(selectedFileForManagement)}>
+        <SecondaryButton
+          on:click={() => {
+            renameFile(selectedFileForManagement);
+          }}
+        >
           Rename saved file
         </SecondaryButton>
-        <WarningButton on:click={deleteFile(selectedFileForManagement)}>
+        <WarningButton
+          on:click={() => {
+            deleteFile(selectedFileForManagement);
+          }}
+        >
           Delete saved file
         </WarningButton>
       </ButtonGroup>

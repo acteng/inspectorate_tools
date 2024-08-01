@@ -14,7 +14,11 @@
 </svelte:head>
 <div class="govuk-width-container">
   <header class="govuk-header">
-    <img class="ate-logo" src="/assets/images/ATE-Logo.webp" />
+    <img
+      class="ate-logo"
+      alt="Active Travel England logo"
+      src="/assets/images/ATE-Logo.webp"
+    />
   </header>
 </div>
 <div class="sub-header-border" />

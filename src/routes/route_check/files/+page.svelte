@@ -13,13 +13,11 @@
   }
 
   async function downloadXlsx() {
-    loading = "Converting to .xlsx (takes about 20 seconds)";
     try {
       await downloadExcelFile($state, $currentFile);
     } catch (err) {
       window.alert(`Conversion failed: ${err}`);
     }
-    loading = "";
   }
 </script>
 
