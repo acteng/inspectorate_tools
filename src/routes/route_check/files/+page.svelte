@@ -22,8 +22,8 @@
 </script>
 
 <div class="govuk-width-container">
-  <h3>Route Check Tool</h3>
-  <h2>Manage my schemes</h2>
+  <div class="govuk-caption-l">Route Check Tool</div>
+  <div class="govuk-heading-l">Manage my schemes</div>
 </div>
 
 <FileManager {files} {currentFile} {state} {xlsxImporter} {downloadXlsx} />
