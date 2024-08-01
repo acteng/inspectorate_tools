@@ -84,7 +84,7 @@
       window.localStorage.removeItem(key);
       if (filename == $currentFile) {
         fileList = files.getFileList();
-        if(fileList.length > 0) {
+        if (fileList.length > 0) {
           openFile(fileList[0]);
         } else {
           await newFile();

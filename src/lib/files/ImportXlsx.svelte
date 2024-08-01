@@ -1,6 +1,6 @@
 <script lang="ts" generics="StateType">
   import { stripSuffix, Loading } from "$lib";
-  import { FormElement } from "govuk-svelte";
+  import { FormElement, WarningText } from "govuk-svelte";
   import { createEventDispatcher } from "svelte";
 
   let dispatch = createEventDispatcher<{
@@ -37,11 +37,12 @@
     type="file"
   />
 
-  <div class="govuk-hint">
-    You can import from an existing route check .xlsx file, <b>
-      only if there's an up-to-date DALOG sheet added
-    </b>
-    . After importing, there will still be some problems:
+  <WarningText>
+    <p><b>
+      You can import from an existing route check .xlsx file, only if there's an up-to-date DALOG sheet added.
+    </b></p>
+    <p><b>After importing, there will still be some problems:</b></p>
+
     <ul>
       <li>
         You must fill out the Junction Assessment Tool (JAT); it won't be
@@ -49,7 +50,7 @@
       </li>
       <li>Some text fields on the Summary of Scheme page will be missing</li>
     </ul>
-  </div>
+  </WarningText>
 </FormElement>
 
 <Loading {loading} />
