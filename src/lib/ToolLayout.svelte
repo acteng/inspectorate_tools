@@ -45,19 +45,23 @@
 
 <svelte:window on:storage={storageChange} />
 
-<div>
-  <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
-  <a href="{base}/{tool}">Manage files</a>
-  <span class="govuk-body" style="margin-left: 8px;">
-    Editing file <u>{$currentFile}</u>
-  </span>
-</div>
+<div class="govuk-width-container">
+  <div style="margin-bottom: 30px">
+    <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
+    <a href="{base}/{tool}">Manage files</a>
+    <span class="govuk-body" style="margin-left: 8px;">
+      Editing file <u>{$currentFile}</u>
+    </span>
+  </div>
 
-<NavHeader {routeCheckType} />
+  <NavHeader {routeCheckType} />
+</div>
 
 <hr />
 
-<h1 style="text-align: center">{getTitle($page.url.pathname)}</h1>
+<div class="govuk-width-container">
+  <div class="govuk-heading-l">{getTitle($page.url.pathname)}</div>
+</div>
 
 <slot />
 

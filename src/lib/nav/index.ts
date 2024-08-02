@@ -1,6 +1,5 @@
 import { capitaliseWords } from "../index";
 
-export { default as Breadcrumbs } from "./Breadcrumbs.svelte";
 export { default as NavHeader } from "./NavHeader.svelte";
 export { default as NavFooter } from "./NavFooter.svelte";
 export { default as NextButton } from "./NextButton.svelte";
@@ -250,22 +249,6 @@ let pathToTitle = new Map(pages);
 export function getTitle(path: string): string {
   let titleAnyCase = pathToTitle.get(canonicalizePath(path)) || "";
   return capitaliseWords(titleAnyCase);
-}
-
-export function getBreadcrumbLinks(rawPath: string): [string, string][] {
-  let path = canonicalizePath(rawPath);
-  if (path == "/") {
-    return [];
-  }
-  let results: [string, string][] = [];
-  let parts = [];
-  for (let part of path.split("/")) {
-    parts.push(part);
-    let pathSoFar = parts.join("/") || "/";
-    results.push([pathSoFar, getTitle(pathSoFar)]);
-  }
-  results.pop();
-  return results;
 }
 
 function getSectionPath(rawPath: string): string | null {

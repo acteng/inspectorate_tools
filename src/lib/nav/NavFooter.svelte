@@ -1,13 +1,7 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { base } from "$app/paths";
-  import {
-    NextButton,
-    PreviousButton,
-    getPrevPage,
-    getNextPage,
-    getTitle,
-  } from "./";
+  import { NextButton, PreviousButton, getPrevPage, getNextPage } from "./";
 
   export let routeCheckType: "street" | "path" | "";
 
@@ -22,10 +16,6 @@
   {:else}
     &nbsp;
   {/if}
-
-  <span class="govuk-body" style="display: flex; align-items: center">
-    {getTitle(pagePath)}
-  </span>
 
   {#if nextPage}
     <NextButton href="{base}{nextPage[0]}" label={nextPage[1]} />

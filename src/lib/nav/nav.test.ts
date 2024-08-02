@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { capitaliseWords } from "../";
-import { getTitle, getBreadcrumbLinks, getPrevPage, getNextPage } from "./";
+import { getTitle, getPrevPage, getNextPage } from "./";
 
 describe("getTitle", () => {
   it("normal cases", () => {
@@ -26,21 +26,6 @@ describe("getTitle", () => {
     expect(getTitle("/inspectorate_tools/cross_section/proposed/")).toBe(
       "Proposed Cross-Sections",
     );
-  });
-});
-
-describe("getBreadcrumbLinks", () => {
-  it("normal cases", () => {
-    expect(getBreadcrumbLinks("")).toStrictEqual([]);
-    expect(getBreadcrumbLinks("/")).toStrictEqual([]);
-
-    expect(getBreadcrumbLinks("/cross_section")).toStrictEqual([
-      ["/", "Tools"],
-    ]);
-    expect(getBreadcrumbLinks("/cross_section/proposed")).toStrictEqual([
-      ["/", "Tools"],
-      ["/cross_section", "Route Cross-section Tool"],
-    ]);
   });
 });
 
