@@ -11,7 +11,7 @@ let pages: [string, string][] = [
   ["/", "Tools"],
 
   ["/planning", "Planning Application Assessment Toolkit"],
-  ["/planning/files", "Manage files"],
+  ["/planning/nav", "Navigation"],
   ["/planning/app_details", "Application details"],
   ["/planning/scorecard", "Scorecard"],
   ["/planning/scorecard/q01", "Trip generation and assignment"],
@@ -27,14 +27,14 @@ let pages: [string, string][] = [
   ["/planning/report", "Report"],
 
   ["/cross_section", "Route cross-section tool"],
-  ["/cross_section/files", "Manage files"],
+  ["/cross_section/nav", "Navigation"],
   ["/cross_section/summary", "Summary of Scheme"],
   ["/cross_section/proposed", "Proposed Cross-Sections"],
   ["/cross_section/check", "Cross-Sections Check"],
   ["/cross_section/results_summary", "ATE Summary"],
 
   ["/area_check", "Area check tool"],
-  ["/area_check/files", "Manage files"],
+  ["/area_check/nav", "Navigation"],
   ["/area_check/summary", "Summary of Scheme"],
   ["/area_check/traffic_mitigation", "Traffic Mitigation Check"],
   ["/area_check/scorecard", "Area Scorecard"],
@@ -298,10 +298,6 @@ function filterMainPageSections(
       ],
     }[routeCheckType],
   );
-  // TODO Update these when all tools follow the same file-page-first pattern
-  exclude.add("/area_check/files");
-  exclude.add("/cross_section/files");
-  exclude.add("/planning/files");
   return mainPageSections.filter(([x, _]) => !exclude.has(x));
 }
 
