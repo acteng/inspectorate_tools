@@ -1,9 +1,9 @@
 <script lang="ts">
   import { FileManager } from "$lib/files";
-  import { files, currentFile, state, type State } from "../data";
+  import { files, currentFile, state, type State } from "./data";
   import { getDalog, dalogToState } from "$lib/import";
   import ExcelJS from "exceljs";
-  import ConvertToXlsx from "../results_export/ConvertToXlsx.svelte";
+  import ConvertToXlsx from "./results_export/ConvertToXlsx.svelte";
 
   async function xlsxImporter(buffer: ArrayBuffer): Promise<State> {
     let workbook = new ExcelJS.Workbook();

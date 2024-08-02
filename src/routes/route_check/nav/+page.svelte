@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ExternalLink } from "$lib";
   import { base } from "$app/paths";
-  import { state } from "./data";
+  import { state } from "../data";
 </script>
 
 <div class="govuk-width-container">

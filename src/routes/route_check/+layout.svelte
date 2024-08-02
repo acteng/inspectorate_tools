@@ -31,7 +31,7 @@
 
 <div>
   <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
-  <a href="{base}/route_check/files">Manage files</a>
+  <a href="{base}/route_check">Manage files</a>
   <span class="govuk-body" style="margin-left: 8px;">
     Editing file <u>{$currentFile}</u>
   </span>

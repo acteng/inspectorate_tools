@@ -64,18 +64,6 @@ export class LocalStorageFiles<StateType> {
     return state;
   }
 
-  // Returns an unused filename.
-  newFilename(): string {
-    let fileList = this.getFileList();
-    for (let n = 1; n <= fileList.length + 1; n++) {
-      let file = `untitled${n}`;
-      if (!fileList.includes(file)) {
-        return file;
-      }
-    }
-    throw new Error("Couldn't make a new filename; this shouldn't be possible");
-  }
-
   // Returns a sorted list of all filenames in local storage.
   getFileList(): string[] {
     let list = [];
@@ -113,7 +101,7 @@ export class LocalStorageFiles<StateType> {
     }
   }
 
-  // Initially set the currentFile and state store, based on the last opened file or starting a new one.
+  // Initially set the currentFile and state store, based on the last opened file. If there is no last file, leaves both stores alone.
   private initialLoad() {
     if (typeof window == "undefined") {
       console.log(
@@ -137,9 +125,6 @@ export class LocalStorageFiles<StateType> {
       }
     }
 
-    console.log(`Starting with a new file`);
-    let file = this.newFilename();
-    this.currentFile.set(file);
-    this.state.set(this.emptyState());
+    console.log(`Not starting with any file`);
   }
 }
