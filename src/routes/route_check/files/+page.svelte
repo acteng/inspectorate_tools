@@ -22,7 +22,7 @@
 </script>
 
 <div class="govuk-width-container">
-  <div class="govuk-caption-l">Route Check Tool</div>
+  <div class="govuk-caption-l" style="margin-top: 30px">Route Check Tool</div>
   <div class="govuk-heading-l">Manage my schemes</div>
 </div>
 

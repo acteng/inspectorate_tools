@@ -194,7 +194,7 @@
       {/if}
     </div>
     <div class="govuk-grid-column-one-third manage-existing">
-      <h2>Manage Existing Files</h2>
+      <h2 style="margin-top: 30px">Manage Existing Files</h2>
       <ButtonGroup>
         <SecondaryButton
           on:click={() => {
