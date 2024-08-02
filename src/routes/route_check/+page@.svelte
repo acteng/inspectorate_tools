@@ -26,7 +26,7 @@
     criteria.
   </p>
 
-  <div slot="import">
+  <svelte:fragment slot="export">
     <ConvertToXlsx />
-  </div>
+  </svelte:fragment>
 </FileManager>

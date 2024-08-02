@@ -6,6 +6,8 @@
   import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./index";
   import {
+    ButtonGroup,
+    StartButton,
     FileInput,
     WarningButton,
     SecondaryButton,
@@ -15,7 +17,6 @@
   import { pairs, stripSuffix } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
-  import StartButton from "./StartButton.svelte";
 
   // eslint-disable-next-line no-undef
   export let files: LocalStorageFiles<StateType>;
@@ -172,12 +173,14 @@
           <StartButton href={`${base}/${files.prefix}nav`} />
         </div>
 
-        <SecondaryButton on:click={exportFile}>
-          <img src={downloadUrl} alt="Export .json" />
-          Export .json
-        </SecondaryButton>
+        <ButtonGroup>
+          <SecondaryButton on:click={exportFile}>
+            <img src={downloadUrl} alt="Export .json" />
+            Export .json
+          </SecondaryButton>
 
-        <slot name="import" />
+          <slot name="export" />
+        </ButtonGroup>
       {/if}
 
       <h2>Create or import a file</h2>
