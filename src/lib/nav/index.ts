@@ -11,7 +11,7 @@ let pages: [string, string][] = [
   ["/", "Tools"],
 
   ["/planning", "Planning Application Assessment Toolkit"],
-  ["/planning/nav", "Navigation"],
+  ["/planning/overview", "Overview"],
   ["/planning/app_details", "Application details"],
   ["/planning/scorecard", "Scorecard"],
   ["/planning/scorecard/q01", "Trip generation and assignment"],
@@ -27,14 +27,14 @@ let pages: [string, string][] = [
   ["/planning/report", "Report"],
 
   ["/cross_section", "Route cross-section tool"],
-  ["/cross_section/nav", "Navigation"],
+  ["/cross_section/overview", "Overview"],
   ["/cross_section/summary", "Summary of Scheme"],
   ["/cross_section/proposed", "Proposed Cross-Sections"],
   ["/cross_section/check", "Cross-Sections Check"],
   ["/cross_section/results_summary", "ATE Summary"],
 
   ["/area_check", "Area check tool"],
-  ["/area_check/nav", "Navigation"],
+  ["/area_check/overview", "Overview"],
   ["/area_check/summary", "Summary of Scheme"],
   ["/area_check/traffic_mitigation", "Traffic Mitigation Check"],
   ["/area_check/scorecard", "Area Scorecard"],
@@ -54,7 +54,7 @@ let pages: [string, string][] = [
   ["/area_check/results", "Results & Commentary"],
 
   ["/route_check", "Route check tool"],
-  ["/route_check/nav", "Navigation"],
+  ["/route_check/overview", "Overview"],
   ["/route_check/summary", "Summary of Scheme"],
   ["/route_check/route_map", "Route Map"],
   ["/route_check/policy_check", "Policy Check"],

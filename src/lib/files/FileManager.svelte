@@ -168,7 +168,7 @@
             value={$currentFile}
             disabled
           />
-          <StartButton href={`${base}/${files.prefix}nav`} />
+          <StartButton href={`${base}/${files.prefix}overview`} />
         </div>
 
         <ButtonGroup>
