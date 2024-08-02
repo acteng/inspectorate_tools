@@ -3,7 +3,6 @@
   import deleteUrl from "$lib/assets/images/delete.svg?url";
   import downloadUrl from "$lib/assets/images/download.svg?url";
   import { base } from "$app/paths";
-  import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./index";
   import {
     ButtonGroup,
@@ -11,7 +10,6 @@
     FileInput,
     WarningButton,
     SecondaryButton,
-    DefaultButton,
     Radio,
   } from "govuk-svelte";
   import { pairs, stripSuffix } from "$lib";

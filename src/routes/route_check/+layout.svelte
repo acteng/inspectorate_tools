@@ -1,9 +1,18 @@
 <script lang="ts">
   import { state, currentFile, files } from "./data";
   import { base } from "$app/paths";
-  import { NavHeader, NavFooter, getTitle } from "$lib/nav";
+  import { NavHeader, NavFooter, getTitle, canonicalizePath } from "$lib/nav";
   import { page } from "$app/stores";
   import folderUrl from "$lib/assets/images/folder.svg?url";
+  import { goto } from "$app/navigation";
+
+  $: if (
+    $currentFile == "" &&
+    canonicalizePath($page.url.pathname) != "/route_check"
+  ) {
+    console.log("On a content page without any file loaded; redirecting");
+    goto(`${base}/route_check`);
+  }
 
   function storageChange(ev: StorageEvent) {
     let key = files.key($currentFile);
