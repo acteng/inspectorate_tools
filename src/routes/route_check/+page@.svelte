@@ -13,6 +13,20 @@
   }
 </script>
 
+<div class="govuk-width-container">
+  <div class="govuk-caption-l">Route Check Tool</div>
+  <div class="govuk-heading-l">Manage my schemes</div>
+</div>
+
 <FileManager {files} {currentFile} {state} {xlsxImporter}>
-  <ConvertToXlsx />
+  <p slot="description">
+    The Route Check Tool is used by ATE for assessing the design quality of
+    linear schemes. However, it may also be used by local authorities and others
+    wishing to assess the design quality of schemes against ATE's quality
+    criteria.
+  </p>
+
+  <div slot="import">
+    <ConvertToXlsx />
+  </div>
 </FileManager>

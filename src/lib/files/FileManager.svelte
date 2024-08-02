@@ -8,13 +8,14 @@
   import {
     FileInput,
     WarningButton,
-    ButtonGroup,
     SecondaryButton,
     DefaultButton,
+    Radio,
   } from "govuk-svelte";
-  import { stripSuffix, ClickableCard } from "$lib";
+  import { pairs, stripSuffix } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
+  import StartButton from "./StartButton.svelte";
 
   // eslint-disable-next-line no-undef
   export let files: LocalStorageFiles<StateType>;
@@ -29,22 +30,64 @@
     | ((buffer: ArrayBuffer) => Promise<StateType>)
     | null = null;
 
+  let chosenFile = $currentFile;
   let fileList = files.getFileList();
 
-  function renameFile() {
+  function loadChosenFile() {
+    if (!chosenFile) {
+      return;
+    }
+    openFile(chosenFile);
+  }
+
+  function renameChosenFile() {
+    if (!chosenFile) {
+      return;
+    }
+    let isCurrent = chosenFile == $currentFile;
     // TODO Handle overwriting
     let newName = window.prompt(
-      `Rename file ${$currentFile} to what?`,
-      $currentFile,
+      `Rename file ${chosenFile} to what?`,
+      chosenFile,
     );
     if (newName) {
-      let oldKey = files.key($currentFile);
+      let oldKey = files.key(chosenFile);
       let contents = window.localStorage.getItem(oldKey)!;
       window.localStorage.setItem(files.key(newName), contents);
       window.localStorage.removeItem(oldKey);
-      $currentFile = newName;
+      if (isCurrent) {
+        $currentFile = newName;
+      }
+      chosenFile = newName;
       fileList = files.getFileList();
     }
+  }
+
+  function deleteChosenFile() {
+    if (!chosenFile) {
+      return;
+    }
+    // TODO Use a full Modal
+    if (
+      !window.confirm(
+        `Really delete file ${chosenFile}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
+      )
+    ) {
+      return;
+    }
+
+    let key = files.key(chosenFile);
+    downloadGeneratedFile(
+      `${chosenFile}.json`,
+      window.localStorage.getItem(key)!,
+    );
+    window.localStorage.removeItem(key);
+    if (chosenFile == $currentFile) {
+      $currentFile = "";
+      $state = files.emptyState();
+    }
+    chosenFile = "";
+    fileList = files.getFileList();
   }
 
   function exportFile() {
@@ -61,27 +104,6 @@
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-  }
-
-  function deleteFile(filename: string) {
-    // TODO Use a full Modal
-    if (
-      window.confirm(
-        `Really delete file ${filename}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
-      )
-    ) {
-      let key = files.key(filename);
-      downloadGeneratedFile(
-        `${filename}.json`,
-        window.localStorage.getItem(key)!,
-      );
-      window.localStorage.removeItem(key);
-      if (filename == $currentFile) {
-        newFile();
-      } else {
-        fileList = files.saveAndGetFileList($currentFile, $state);
-      }
-    }
   }
 
   function newFile() {
@@ -129,39 +151,35 @@
 </script>
 
 <div class="govuk-width-container">
-  <p>
-    All files are auto-saved in your browser's local storage. You can close your
-    browser and resume later. You can export the file to your computer to share
-    with someone else, and import from a file below.
-  </p>
-
-  {#if $currentFile}
-    <p>
-      You're currently editing <u>{$currentFile}</u>
-      .
-    </p>
-    <ButtonGroup>
-      <SecondaryButton on:click={renameFile}>
-        <img src={editUrl} alt="Rename this file" />
-        Rename this file
-      </SecondaryButton>
-      <SecondaryButton on:click={exportFile}>
-        <img src={downloadUrl} alt="Export .json" />
-        Export .json
-      </SecondaryButton>
-      <WarningButton on:click={() => deleteFile($currentFile)}>
-        <img src={deleteUrl} alt="Delete this file" />
-        Delete this file
-      </WarningButton>
-    </ButtonGroup>
-
-    <slot />
-  {/if}
-
-  <hr />
-
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-two-thirds">
+      <slot name="description" />
+
+      <p>
+        All files are auto-saved in your browser's local storage. You can close
+        your browser and resume later. You can export the file to your computer
+        to share with someone else, and import from a file below.
+      </p>
+
+      {#if $currentFile}
+        <p><b>You are editing:</b></p>
+        <div>
+          <input
+            class="govuk-input govuk-!-width-three-quarters"
+            value={$currentFile}
+            disabled
+          />
+          <StartButton href={`${base}/${files.prefix}nav`} />
+        </div>
+
+        <SecondaryButton on:click={exportFile}>
+          <img src={downloadUrl} alt="Export .json" />
+          Export .json
+        </SecondaryButton>
+
+        <slot name="import" />
+      {/if}
+
       <h2>Create or import a file</h2>
       <SecondaryButton on:click={newFile}>New blank file</SecondaryButton>
       <hr />
@@ -172,36 +190,43 @@
         <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
       {/if}
     </div>
-    <div class="govuk-grid-column-one-half">
-      <h2>Load a saved file</h2>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="green-bar">Manage existing files</h2>
 
-      {#each fileList as filename}
-        <div style="display: flex; justify-content: space-between">
-          <ClickableCard
-            name={`File name: ${filename}`}
-            on:click={() => openFile(filename)}
-            disabled={filename === $currentFile}
-          >
-            {filename == $currentFile
-              ? "Currently open"
-              : files.describeFile(filename)}
-          </ClickableCard>
-          {#if filename == $currentFile}
-            <DefaultButton on:click={() => goto(`${base}/${files.prefix}nav`)}>
-              Start
-            </DefaultButton>
-          {:else}
-            <WarningButton on:click={() => deleteFile(filename)}>
-              Delete
-            </WarningButton>
-          {/if}
-        </div>
-      {/each}
+      {#if fileList.length > 0}
+        <SecondaryButton on:click={loadChosenFile} disabled={chosenFile == ""}>
+          Load saved file
+        </SecondaryButton>
+        <SecondaryButton
+          on:click={renameChosenFile}
+          disabled={chosenFile == ""}
+        >
+          <img src={editUrl} alt="Rename saved file" />
+          Rename saved file
+        </SecondaryButton>
+        <WarningButton on:click={deleteChosenFile} disabled={chosenFile == ""}>
+          <img src={deleteUrl} alt="Delete saved file" />
+          Delete saved file
+        </WarningButton>
+
+        <Radio
+          label="Manage existing file"
+          choices={pairs(fileList)}
+          bind:value={chosenFile}
+        />
+      {:else}
+        <p>No saved files</p>
+      {/if}
     </div>
   </div>
 </div>
 
 <style>
+  .green-bar {
+    border-top: 0.3rem solid #007161;
+    padding-top: 30px;
+  }
+
   img {
     vertical-align: middle;
   }
