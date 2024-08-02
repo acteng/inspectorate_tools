@@ -2,7 +2,7 @@
   import "../style/main.css";
   // @ts-expect-error no declarations
   import { initAll } from "govuk-frontend";
-  import { AlphaBanner } from "govuk-svelte";
+  import { AlphaBanner, Footer } from "govuk-svelte";
   import { page } from "$app/stores";
   import { getTitle } from "$lib/nav";
   import logoUrl from "$lib/assets/images/ate_logo.png?url";
@@ -27,6 +27,8 @@
 
   <!-- It's up to each page to use govuk-width-container or not -->
   <slot />
+
+  <Footer />
 </div>
 
 <style>
