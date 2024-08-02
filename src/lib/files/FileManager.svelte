@@ -63,7 +63,7 @@
     document.body.removeChild(element);
   }
 
-  async function deleteFile(filename: string) {
+  function deleteFile(filename: string) {
     // TODO Use a full Modal
     if (
       window.confirm(
@@ -77,20 +77,25 @@
       );
       window.localStorage.removeItem(key);
       if (filename == $currentFile) {
-        await newFile();
+        newFile();
       } else {
         fileList = files.saveAndGetFileList($currentFile, $state);
       }
     }
   }
 
-  async function newFile() {
-    $currentFile = files.newFilename();
+  function newFile() {
+    // TODO Handle overwriting
+    let name = window.prompt("What do you want to name your new file?");
+    if (!name) {
+      return;
+    }
+    $currentFile = name;
     $state = files.emptyState();
     fileList = files.saveAndGetFileList($currentFile, $state);
   }
 
-  async function importJsonFile(rawFilename: string, contents: string) {
+  function importJsonFile(rawFilename: string, contents: string) {
     // TODO Handle duplicate names
     let file = stripSuffix(rawFilename, ".json");
 
@@ -98,21 +103,21 @@
       let value = JSON.parse(contents);
       files.validate(value);
       fileList = files.saveAndGetFileList(file, value);
-      await openFile(file);
+      openFile(file);
     } catch (err) {
       window.alert(`Couldn't load ${file}: ${err}`);
     }
   }
 
-  async function onXlsxImported(
+  function onXlsxImported(
     e: CustomEvent<{ filename: string; data: StateType }>,
   ) {
     let { filename, data } = e.detail;
     fileList = files.saveAndGetFileList(filename, data);
-    await openFile(filename);
+    openFile(filename);
   }
 
-  async function openFile(file: string) {
+  function openFile(file: string) {
     try {
       let x = files.loadFile(file);
       $currentFile = file;
@@ -124,34 +129,34 @@
 </script>
 
 <div class="govuk-width-container">
-  <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
-
   <p>
     All files are auto-saved in your browser's local storage. You can close your
     browser and resume later. You can export the file to your computer to share
     with someone else, and import from a file below.
   </p>
 
-  <p>
-    You're currently editing <u>{$currentFile}</u>
-    .
-  </p>
-  <ButtonGroup>
-    <SecondaryButton on:click={renameFile}>
-      <img src={editUrl} alt="Rename this file" />
-      Rename this file
-    </SecondaryButton>
-    <SecondaryButton on:click={exportFile}>
-      <img src={downloadUrl} alt="Export .json" />
-      Export .json
-    </SecondaryButton>
-    <WarningButton on:click={() => deleteFile($currentFile)}>
-      <img src={deleteUrl} alt="Delete this file" />
-      Delete this file
-    </WarningButton>
-  </ButtonGroup>
+  {#if $currentFile}
+    <p>
+      You're currently editing <u>{$currentFile}</u>
+      .
+    </p>
+    <ButtonGroup>
+      <SecondaryButton on:click={renameFile}>
+        <img src={editUrl} alt="Rename this file" />
+        Rename this file
+      </SecondaryButton>
+      <SecondaryButton on:click={exportFile}>
+        <img src={downloadUrl} alt="Export .json" />
+        Export .json
+      </SecondaryButton>
+      <WarningButton on:click={() => deleteFile($currentFile)}>
+        <img src={deleteUrl} alt="Delete this file" />
+        Delete this file
+      </WarningButton>
+    </ButtonGroup>
 
-  <slot />
+    <slot />
+  {/if}
 
   <hr />
 
@@ -182,7 +187,7 @@
               : files.describeFile(filename)}
           </ClickableCard>
           {#if filename == $currentFile}
-            <DefaultButton on:click={() => goto(`${base}/${files.prefix}`)}>
+            <DefaultButton on:click={() => goto(`${base}/${files.prefix}nav`)}>
               Start
             </DefaultButton>
           {:else}
@@ -194,7 +199,6 @@
       {/each}
     </div>
   </div>
-  <a href="{base}/{files.prefix}" class="govuk-back-link">Back to overview</a>
 </div>
 
 <style>

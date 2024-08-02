@@ -54,7 +54,7 @@ let pages: [string, string][] = [
   ["/area_check/results", "Results & Commentary"],
 
   ["/route_check", "Route check tool"],
-  ["/route_check/files", "Manage files"],
+  ["/route_check/nav", "Navigation"],
   ["/route_check/summary", "Summary of Scheme"],
   ["/route_check/route_map", "Route Map"],
   ["/route_check/policy_check", "Policy Check"],
@@ -298,10 +298,10 @@ function filterMainPageSections(
       ],
     }[routeCheckType],
   );
+  // TODO Update these when all tools follow the same file-page-first pattern
   exclude.add("/area_check/files");
   exclude.add("/cross_section/files");
   exclude.add("/planning/files");
-  exclude.add("/route_check/files");
   return mainPageSections.filter(([x, _]) => !exclude.has(x));
 }
 
