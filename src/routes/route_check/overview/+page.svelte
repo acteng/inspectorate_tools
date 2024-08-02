@@ -13,7 +13,7 @@
     </ExternalLink>.
   </p>
 
-  <ol>
+  <ol start="2">
     <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
     <li><a href="{base}/route_check/route_map">Route Map</a></li>
     <li><a href="{base}/route_check/policy_check">Policy Check</a></li>
@@ -30,22 +30,7 @@
           Street Placemaking Check
         </a>
       </li>
-    {:else}
-      <li>
-        <i>
-          Street Check (disabled, because of the Route Check Type set in
-          Summary)
-        </i>
-      </li>
-      <li>
-        <i>
-          Street Placemaking Check (disabled, because of the Route Check Type
-          set in Summary)
-        </i>
-      </li>
-    {/if}
-
-    {#if $state.summary.checkType == "path"}
+    {:else if $state.summary.checkType == "path"}
       <li><a href="{base}/route_check/path_check">Path Check</a></li>
       <li>
         <a href="{base}/route_check/path_placemaking_check">
@@ -53,17 +38,8 @@
         </a>
       </li>
     {:else}
-      <li>
-        <i>
-          Path Check (disabled, because of the Route Check Type set in Summary)
-        </i>
-      </li>
-      <li>
-        <i>
-          Path Placemaking Check (disabled, because of the Route Check Type set
-          in Summary)
-        </i>
-      </li>
+      <li>Street/Path Check</li>
+      <li>Street/Path Placemaking Check</li>
     {/if}
 
     <li><a href="{base}/route_check/jat_check">JAT Check</a></li>
