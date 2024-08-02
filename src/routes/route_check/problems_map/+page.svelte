@@ -132,7 +132,7 @@
       // @ts-expect-error we know that we've taken the correctly typed list from earlier
       $state.criticalIssues = newList;
     } else {
-      // @ts-expect-error
+      // @ts-expect-error we know that we've taken the correctly typed list from earlier
       $state.policyConflictLog = newList;
     }
 

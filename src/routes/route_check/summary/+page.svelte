@@ -3,7 +3,6 @@
   import {
     AutocompleteTextInput,
     RadioWithCustom,
-    Select,
     TextInput,
     TextArea,
     SelectWithCustom,

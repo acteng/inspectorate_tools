@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Radio, TextInput, Select, TextArea } from "govuk-svelte";
+  import { Radio, TextInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
 
   export let junctionIdx: number;

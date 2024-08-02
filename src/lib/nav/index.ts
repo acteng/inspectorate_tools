@@ -389,7 +389,7 @@ export function getNavList(
   });
 }
 
-function canonicalizePath(path: string): string {
+export function canonicalizePath(path: string): string {
   // Deduplicate consecutive slashes
   path = path.replace(/\/{2,}/g, "/");
 

@@ -10,7 +10,6 @@
   import type { Map } from "maplibre-gl";
   import { bbox, Basemap, MapLibreMap } from "$lib/map";
   import { loadAuthorities, getBestMatch } from "./match_area";
-  import { writable } from "svelte/store";
   import type {
     FeatureCollection,
     LineString,
