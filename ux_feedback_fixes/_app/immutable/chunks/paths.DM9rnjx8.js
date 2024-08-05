@@ -1,0 +1,1 @@
+var s;const a=((s=globalThis.__sveltekit_ai10gg)==null?void 0:s.base)??"/inspectorate_tools/ux_feedback_fixes";var e;const t=((e=globalThis.__sveltekit_ai10gg)==null?void 0:e.assets)??a;export{t as a,a as b};
