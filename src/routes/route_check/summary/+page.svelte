@@ -63,6 +63,7 @@
   <TextArea
     label="Funding conditions"
     bind:value={$state.summary.fundingConditions}
+    hint="Any conditions on infrastructure attached to the relevant funding programme"
   />
 
   <TextInput
