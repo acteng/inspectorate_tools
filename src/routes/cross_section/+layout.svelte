@@ -8,6 +8,7 @@
   {currentFile}
   {files}
   tool="cross_section"
+  service="Cross Section Check Tool"
   routeCheckType=""
 >
   <slot />

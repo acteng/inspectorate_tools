@@ -9,9 +9,7 @@
 </script>
 
 {#if navList}
-  <ol
-    style="display: flex; justify-content: space-around; flex-direction: row; flex-wrap: wrap;"
-  >
+  <ol>
     {#each navList as navItem}
       <li>
         <a href="{base}{navItem[0]}">{navItem[1]}</a>
@@ -21,6 +19,13 @@
 {/if}
 
 <style>
+  ol {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #b1b4b6;
+  }
   li {
     margin-left: 2em;
   }

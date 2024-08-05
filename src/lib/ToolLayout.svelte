@@ -6,11 +6,14 @@
   import folderUrl from "$lib/assets/images/folder.svg?url";
   import { goto } from "$app/navigation";
   import { LocalStorageFiles } from "./files";
+  import { AlphaBanner } from "govuk-svelte";
+  import { ServiceHeader } from "./";
 
   export let state: Writable<StateType>;
   export let currentFile: Writable<string>;
   export let files: LocalStorageFiles<StateType>;
   export let tool: string;
+  export let service: string;
   export let routeCheckType: "street" | "path" | "";
 
   $: if (
@@ -45,7 +48,11 @@
 
 <svelte:window on:storage={storageChange} />
 
+<ServiceHeader {service} />
+
 <div class="govuk-width-container">
+  <AlphaBanner />
+
   <div style="margin-bottom: 30px">
     <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
     <a href="{base}/{tool}">Manage files</a>
@@ -57,14 +64,10 @@
   <NavHeader {routeCheckType} />
 </div>
 
-<hr />
-
 <div class="govuk-width-container">
   <div class="govuk-heading-l">{getTitle($page.url.pathname)}</div>
 </div>
 
 <slot />
-
-<hr />
 
 <NavFooter {routeCheckType} />

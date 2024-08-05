@@ -11,8 +11,9 @@
     WarningButton,
     SecondaryButton,
     Radio,
+    AlphaBanner,
   } from "govuk-svelte";
-  import { pairs, stripSuffix } from "$lib";
+  import { pairs, stripSuffix, ServiceHeader } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
 
@@ -21,6 +22,7 @@
   export let currentFile: Writable<string>;
   // eslint-disable-next-line no-undef
   export let state: Writable<StateType>;
+  export let service: string;
 
   // If provided, adds an option to import from an XLSX file. Runs the callback
   // with the ArrayBuffer to produce State. This should throw exceptions if
@@ -149,7 +151,13 @@
   }
 </script>
 
+<ServiceHeader {service} />
+
 <div class="govuk-width-container">
+  <AlphaBanner />
+
+  <div class="govuk-heading-l">Manage my schemes</div>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <slot name="description" />

@@ -3,9 +3,4 @@
   import { files, currentFile, state, type State } from "./data";
 </script>
 
-<div class="govuk-width-container">
-  <div class="govuk-caption-l">Area Check Tool</div>
-  <div class="govuk-heading-l">Manage my schemes</div>
-</div>
-
-<FileManager {files} {currentFile} {state} />
+<FileManager {files} {currentFile} {state} service="Area Check Tool" />
