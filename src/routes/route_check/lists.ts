@@ -137,7 +137,14 @@ export function getPolicyConflictIndex(code: string): number {
 
 // Returns the numeric code and short descripton
 export function getTerseCriticalIssue(code: string): string {
-  return code == "" ? "" : getFullCriticalIssue(code).split(":")[0];
+  if (code == "") {
+    return "";
+  }
+
+  let result = getFullCriticalIssue(code).split(":")[0];
+  let prefix =
+    result.startsWith("1") && !result.startsWith("1 - ") ? "SA" : "SA0";
+  return prefix + result;
 }
 
 // When creating a critical issue from a safety check question, arbitrarily
