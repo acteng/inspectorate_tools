@@ -1,5 +1,3 @@
-import { capitaliseWords } from "../index";
-
 export { default as NavHeader } from "./NavHeader.svelte";
 export { default as NavFooter } from "./NavFooter.svelte";
 export { default as NextButton } from "./NextButton.svelte";
@@ -247,8 +245,7 @@ let mainPageSections = pages.filter(([x, _]) => x.split("/").length == 3);
 let pathToTitle = new Map(pages);
 
 export function getTitle(path: string): string {
-  let titleAnyCase = pathToTitle.get(canonicalizePath(path)) || "";
-  return capitaliseWords(titleAnyCase);
+  return pathToTitle.get(canonicalizePath(path)) || "";
 }
 
 function getSectionPath(rawPath: string): string | null {
