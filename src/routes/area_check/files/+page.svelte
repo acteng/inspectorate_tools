@@ -3,4 +3,4 @@
   import { files, currentFile, state } from "../data";
 </script>
 
-<FileManager {files} {currentFile} {state} />
+<FileManager {files} {currentFile} {state} service="Area Check Tool" />

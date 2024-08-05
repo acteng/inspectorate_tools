@@ -3,6 +3,13 @@
   import { ToolLayout } from "$lib";
 </script>
 
-<ToolLayout {state} {currentFile} {files} tool="area_check" routeCheckType="">
+<ToolLayout
+  {state}
+  {currentFile}
+  {files}
+  tool="area_check"
+  service="Area Check Tool"
+  routeCheckType=""
+>
   <slot />
 </ToolLayout>

@@ -8,6 +8,7 @@
   {currentFile}
   {files}
   tool="route_check"
+  service="Route Check Tool"
   routeCheckType={$state.summary.checkType}
 >
   <slot />
