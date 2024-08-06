@@ -100,9 +100,6 @@
   {/if}
   {#if guidanceObject}
     <h3>{`${selectedJunctionType}: ${selectedMovementType}`}</h3>
-    {#if guidance[selectedJunctionType].summary}
-      <p>{guidance[selectedJunctionType].summary}</p>
-    {/if}
     <table>
       <tr>
         <th class="score-zero-header">
