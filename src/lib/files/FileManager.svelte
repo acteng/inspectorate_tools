@@ -170,17 +170,11 @@
       </p>
 
       {#if $currentFile}
-        <p><b>You are editing:</b></p>
-        <div>
-          <input
-            class="govuk-input govuk-!-width-three-quarters"
-            value={$currentFile}
-            disabled
-          />
-          <StartButton
-            on:click={() => goto(`${base}/${files.prefix}overview`)}
-          />
-        </div>
+        <p>
+          <b>You are editing:</b>
+          {$currentFile}
+        </p>
+        <StartButton on:click={() => goto(`${base}/${files.prefix}overview`)} />
 
         <ButtonGroup>
           <SecondaryButton on:click={exportFile}>
