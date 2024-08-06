@@ -38,11 +38,13 @@
     label="Authority"
     options={pairs(authorities)}
     bind:value={$state.summary.authority}
+    hint="Start typing to auto-complete the authority"
   />
   <AutocompleteTextInput
     label="Transport / Combined Authority"
     options={pairs(transportOrCombinedAuthorities)}
     bind:value={$state.summary.transportOrCombinedAuthority}
+    hint="Start typing to auto-complete the transport / combined authority"
   />
   <SelectWithCustom
     label="Region"
