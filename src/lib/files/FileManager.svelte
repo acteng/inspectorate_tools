@@ -79,6 +79,11 @@
     chosenFile = "";
     $state = files.emptyState();
     fileList = files.getFileList();
+
+    // This is normally done in the LocalStorageFiles subscription, but it
+    // ignores the case when this value is empty. Since the last opened
+    // file is gone, we do need to clear this.
+    window.localStorage.setItem(files.key("last-opened-file"), "");
   }
 
   function exportFile() {
@@ -201,7 +206,7 @@
 
       {#if fileList.length > 0}
         <Radio
-          label="Manage existing file"
+          label=""
           choices={pairs(fileList)}
           bind:value={chosenFile}
           on:change={loadChosenFile}
