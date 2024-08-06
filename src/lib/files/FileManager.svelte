@@ -6,16 +6,17 @@
   import { LocalStorageFiles } from "./index";
   import {
     ButtonGroup,
-    StartButton,
     FileInput,
     WarningButton,
     SecondaryButton,
     Radio,
     AlphaBanner,
+    StartButton,
   } from "govuk-svelte";
   import { pairs, stripSuffix, ServiceHeader } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
+  import { goto } from "$app/navigation";
 
   // eslint-disable-next-line no-undef
   export let files: LocalStorageFiles<StateType>;
@@ -176,7 +177,9 @@
             value={$currentFile}
             disabled
           />
-          <StartButton href={`${base}/${files.prefix}overview`} />
+          <StartButton
+            on:click={() => goto(`${base}/${files.prefix}overview`)}
+          />
         </div>
 
         <ButtonGroup>
