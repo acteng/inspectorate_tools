@@ -1,11 +1,12 @@
 export const guidance = {
   "Any type of junction": {
-    "Any movement": {
+    otherJunctionTypeWhichApplies: "",
+    "All movements": {
       scoreZero: [
         "Cycle movement in potential conflict with heavy motor traffic flow",
         "Cycle movement mixed with or crossing traffic with 85th percentile speed exceeding 60kph, or where vehicles accelerate rapidly.",
         "Necessary to cross more than one traffic lane (without refuge or protection) to complete cycle movement unless traffic flows are low.",
-        "Cycle movementcrosses wide junctionentry or exit: e.g. withmerge or diverge taper or slip lane.",
+        "Cycle movement crosses wide junction entry or exit: e.g. with merge or diverge taper or slip lane.",
         "Pinch points on junction entry or exit (lane width 3.2m-3.9m).",
         "Cycle movement affected by very poor surface quality utility reinstatement, gully positioning, debris.",
       ],
@@ -25,6 +26,7 @@ export const guidance = {
   "Simple priority T-junction": {
     summary:
       "This guidance is in addition to and notwithstanding any of the above “any junction” conditions.",
+    otherJunctionTypeWhichApplies: "",
     "Right turn from minor arm": {
       scoreZero: [
         "Heavy traffic movements and/or high bus and HGV flows in potential conflict with cycle movement, with no physical refuge in the centre of the major road (including ghost island junction).",
@@ -70,6 +72,7 @@ export const guidance = {
   Crossroads: {
     summary:
       "This guidance is in addition to and notwithstanding any of the above “any junction” and T junction conditions.",
+    otherJunctionTypeWhichApplies: "Simple priority T-junction",
     "Ahead from minor arm": {
       scoreZero: [
         "Heavy opposing traffic movements with no physical refuge (including ghost island junction).",
@@ -85,6 +88,7 @@ export const guidance = {
   "Traffic Signals": {
     summary:
       "This guidance is in addition to and notwithstanding any of the above “any junction” conditions.",
+    otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
         "Single or multiple queuing lanes with no cycle lanes or tracks on approaches.",
@@ -103,7 +107,7 @@ export const guidance = {
     "Right turn": {
       scoreZero: [],
       scoreOne: [
-        "Two-stage right turn viaASL or marked area in front of stop line.",
+        "Two-stage right turn via ASL or marked area in front of stop line.",
       ],
       scoreTwo: [
         "Two-stage right turn with physically protected waiting area.",
@@ -113,9 +117,10 @@ export const guidance = {
   Roundabout: {
     summary:
       "This guidance is in addition to and notwithstanding any of the above “any junction” conditions.",
+    otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
-        "a Any type of roundabout with high traffic throughput.",
+        "Any type of roundabout with high traffic throughput.",
         "Normal roundabout with multi-lane flared approaches.",
         "Any type of roundabout with annular cycle lane marked on the circulatory carriageway.",
       ],
@@ -130,3 +135,9 @@ export const guidance = {
     },
   },
 };
+
+export interface GuidanceObject {
+  scoreZero: string[];
+  scoreOne: string[];
+  scoreTwo: string[];
+}
