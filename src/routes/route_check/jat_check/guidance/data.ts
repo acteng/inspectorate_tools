@@ -24,8 +24,6 @@ export const guidance = {
     },
   },
   "Simple priority T-junction": {
-    summary:
-      "This guidance is in addition to and notwithstanding any of the above “any junction” conditions.",
     otherJunctionTypeWhichApplies: "",
     "Right turn from minor arm": {
       scoreZero: [
@@ -69,9 +67,7 @@ export const guidance = {
       ],
     },
   },
-  Crossroads: {
-    summary:
-      "This guidance is in addition to and notwithstanding any of the above “any junction” and T junction conditions.",
+  "Crossroads": {
     otherJunctionTypeWhichApplies: "Simple priority T-junction",
     "Ahead from minor arm": {
       scoreZero: [
@@ -86,8 +82,6 @@ export const guidance = {
     },
   },
   "Traffic Signals": {
-    summary:
-      "This guidance is in addition to and notwithstanding any of the above “any junction” conditions.",
     otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
@@ -115,8 +109,6 @@ export const guidance = {
     },
   },
   Roundabout: {
-    summary:
-      "This guidance is in addition to and notwithstanding any of the above “any junction” conditions.",
     otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
