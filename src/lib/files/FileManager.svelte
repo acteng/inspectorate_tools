@@ -42,53 +42,42 @@
     openFile(chosenFile);
   }
 
-  function renameChosenFile() {
-    if (!chosenFile) {
-      return;
-    }
-    let isCurrent = chosenFile == $currentFile;
+  function renameFile() {
     // TODO Handle overwriting
     let newName = window.prompt(
-      `Rename file ${chosenFile} to what?`,
-      chosenFile,
+      `Rename file ${$currentFile} to what?`,
+      $currentFile,
     );
     if (newName) {
-      let oldKey = files.key(chosenFile);
+      let oldKey = files.key($currentFile);
       let contents = window.localStorage.getItem(oldKey)!;
       window.localStorage.setItem(files.key(newName), contents);
       window.localStorage.removeItem(oldKey);
-      if (isCurrent) {
-        $currentFile = newName;
-      }
-      chosenFile = newName;
+      $currentFile = newName;
+      chosenFile = $currentFile;
       fileList = files.getFileList();
     }
   }
 
-  function deleteChosenFile() {
-    if (!chosenFile) {
-      return;
-    }
+  function deleteFile() {
     // TODO Use a full Modal
     if (
       !window.confirm(
-        `Really delete file ${chosenFile}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
+        `Really delete file ${$currentFile}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
       )
     ) {
       return;
     }
 
-    let key = files.key(chosenFile);
+    let key = files.key($currentFile);
     downloadGeneratedFile(
-      `${chosenFile}.json`,
+      `${$currentFile}.json`,
       window.localStorage.getItem(key)!,
     );
     window.localStorage.removeItem(key);
-    if (chosenFile == $currentFile) {
-      $currentFile = "";
-      $state = files.emptyState();
-    }
+    $currentFile = "";
     chosenFile = "";
+    $state = files.emptyState();
     fileList = files.getFileList();
   }
 
@@ -115,6 +104,7 @@
       return;
     }
     $currentFile = name;
+    chosenFile = name;
     $state = files.emptyState();
     fileList = files.saveAndGetFileList($currentFile, $state);
   }
@@ -144,6 +134,7 @@
   function openFile(file: string) {
     try {
       let x = files.loadFile(file);
+      chosenFile = file;
       $currentFile = file;
       $state = x;
     } catch (error) {
@@ -183,6 +174,15 @@
           </SecondaryButton>
 
           <slot name="export" />
+
+          <SecondaryButton on:click={renameFile}>
+            <img src={editUrl} alt="Rename file" />
+            Rename file
+          </SecondaryButton>
+          <WarningButton on:click={deleteFile}>
+            <img src={deleteUrl} alt="Delete file" />
+            Delete file
+          </WarningButton>
         </ButtonGroup>
       {/if}
 
@@ -200,25 +200,11 @@
       <h2 class="green-bar">Manage existing files</h2>
 
       {#if fileList.length > 0}
-        <SecondaryButton on:click={loadChosenFile} disabled={chosenFile == ""}>
-          Load saved file
-        </SecondaryButton>
-        <SecondaryButton
-          on:click={renameChosenFile}
-          disabled={chosenFile == ""}
-        >
-          <img src={editUrl} alt="Rename saved file" />
-          Rename saved file
-        </SecondaryButton>
-        <WarningButton on:click={deleteChosenFile} disabled={chosenFile == ""}>
-          <img src={deleteUrl} alt="Delete saved file" />
-          Delete saved file
-        </WarningButton>
-
         <Radio
           label="Manage existing file"
           choices={pairs(fileList)}
           bind:value={chosenFile}
+          on:change={loadChosenFile}
         />
       {:else}
         <p>No saved files</p>
