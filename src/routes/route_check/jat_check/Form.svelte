@@ -35,9 +35,9 @@
   bind:value={$state.jat[junctionIdx][stage].movements[idx].score}
 />
 
+<Guidance />
+
 <TextArea
   label="Comments"
   bind:value={$state.jat[junctionIdx][stage].movements[idx].notes}
 />
-
-<Guidance />

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { Radio, SecondaryButton } from "govuk-svelte";
   import { pairs, Modal } from "$lib";
-  import { guidance, type GuidanceObject } from "./data.ts";
+  import { guidance, type GuidanceObject, type JunctionType } from "./data";
 
-  let junctionTypes: string[] = Object.keys(guidance);
-  let selectedJunctionType: string = junctionTypes[0];
+  let junctionTypes = Object.keys(guidance) as JunctionType[];
+  let selectedJunctionType: JunctionType = junctionTypes[0];
   let movementTypes: string[] = [];
   let selectedMovementType: string = "";
 
@@ -20,12 +20,12 @@
     selectedMovementType,
   );
 
-  function getMovementTypes(junctionType: string): string[] {
+  function getMovementTypes(junctionType: JunctionType): string[] {
     let result = Object.keys(guidance[junctionType]).filter(
       (key) => key !== "summary" && key !== "otherJunctionTypeWhichApplies",
     );
-    let otherJunctionTypeWhichApplies =
-      guidance[junctionType].otherJunctionTypeWhichApplies;
+    let otherJunctionTypeWhichApplies = guidance[junctionType]
+      .otherJunctionTypeWhichApplies as JunctionType | "";
     if (otherJunctionTypeWhichApplies) {
       result = result.concat(
         Object.keys(guidance[otherJunctionTypeWhichApplies]).filter(
@@ -37,7 +37,7 @@
   }
 
   function getGuidanceObject(
-    junctionType: string,
+    junctionType: JunctionType,
     movementType: string,
   ): GuidanceObject {
     if (!movementTypes.includes(movementType)) {
