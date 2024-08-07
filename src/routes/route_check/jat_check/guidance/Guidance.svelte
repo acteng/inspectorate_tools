@@ -53,10 +53,11 @@
 
     // @ts-expect-error it's a faff to properly scope the type of this data
     if (!specificGuidance && guidance[otherJunctionTypeWhichApplies]) {
+      // @ts-expect-error it's a faff to properly scope the type of this data
       specificGuidance = guidance[otherJunctionTypeWhichApplies][movementType];
     }
 
-    let result = JSON.parse(
+        let result = JSON.parse(
       JSON.stringify(guidance["Any type of junction"]["All movements"]),
     );
     if (
