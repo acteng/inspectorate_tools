@@ -21,9 +21,9 @@ export const guidance = {
         "Cycle movement made by transiting onto section of shared use footway.",
       ],
       scoreTwo: [
-        "Low traffic speed and volume in mixed traffic environment (e.g. accessonly streets in a residential area).",
+        "Low traffic speed and volume in mixed traffic environment (e.g. access-only streets in a residential area).",
         "Cycle movement separated physically and/or in time from motor traffic and also separated from pedestrians.",
-        "Cycle movement bypasses junction completely, including via good quality grade separation",
+        "Cycle movement bypasses junction completely, including via good quality grade separation.",
       ],
     },
   },
@@ -54,16 +54,16 @@ export const guidance = {
         "Protected turning refuge allowing two stage cycle movement, crossing one lane at a time.",
       ],
       scoreTwo: [
-        "Cycle movement made via crossing of major arm via dedicated cycle signals or cycle priority",
+        "Cycle movement made via crossing of major arm via dedicated cycle signals or cycle priority.",
       ],
     },
     "Ahead on major arm, crossing minor arm": {
       scoreZero: [
         "Congested conditions causing poor visibility for right-turning motor vehicles from major arm.",
-        "Cycle movement mixed with or crossing traffic with 85th percentile speed exceeding 60kph, or where vehicles accelerate rapidly.Junction corner radius ≥9m, including where off-carriageway cycle track crosses minor arm.",
+        "Junction corner radius ≥9m, including where off-carriageway cycle track crosses minor arm.",
       ],
       scoreOne: [
-        "Cycle movement in potential conflict with moderate traffic flow.Junction free from queueing traffic and cycle lane on major arm meeting desirable minimum width requirements.",
+        "Junction free from queueing traffic and cycle lane on major arm meeting desirable minimum width requirements.",
         "Junction corner radius <9m, including where off-carriageway cycle track crosses minor arm without priority.",
         "Side road entry treatment (table across minor arm).",
       ],
@@ -127,7 +127,6 @@ export const guidance = {
       scoreOne: [
         "Compact roundabout or raised mini roundabout with no more than moderate traffic throughput",
         "Off-carriageway cycle track with crossings of entries and exits without cycle priority, crossing single traffic lanes with traffic flows < 4000 vehicles per day or 400 HGV/bus flow. ",
-        "Cycle/pedestrian scramble (toucan crossings with all-red stage).",
       ],
       scoreTwo: [
         "Off-carriageway cycle track with crossings of entries and exits with signals or cycle priority.",
