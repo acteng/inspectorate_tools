@@ -349,10 +349,11 @@ export function getNextPage(
   return result;
 }
 
+// Returns [path, title, currently here]
 export function getNavList(
   rawPath: string,
   routeCheckType: "street" | "path" | "",
-): [string, string][] | null {
+): [string, string, boolean][] | null {
   let path = getSectionPath(rawPath);
   if (!path) {
     return null;
@@ -360,9 +361,11 @@ export function getNavList(
 
   let sections = filterMainPageSections(routeCheckType);
   const toolName = path != "/" ? path.split("/")[1] : "";
-  return sections.filter((section) => {
-    return section[0] != "/" && section[0].split("/")[1] == toolName;
-  });
+  return sections
+    .filter((section) => {
+      return section[0] != "/" && section[0].split("/")[1] == toolName;
+    })
+    .map(([p, title]) => [p, title, p == path]);
 }
 
 export function canonicalizePath(path: string): string {
