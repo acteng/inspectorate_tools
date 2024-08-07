@@ -45,11 +45,13 @@
       movementType = movementTypes[0];
     }
 
+    // @ts-expect-error it's a faff to properly scope the type of this data
     let specificGuidance = guidance[junctionType][movementType];
 
     let otherJunctionTypeWhichApplies =
       guidance[junctionType].otherJunctionTypeWhichApplies;
 
+    // @ts-expect-error it's a faff to properly scope the type of this data
     if (!specificGuidance && guidance[otherJunctionTypeWhichApplies]) {
       specificGuidance = guidance[otherJunctionTypeWhichApplies][movementType];
     }
@@ -58,10 +60,17 @@
       JSON.stringify(guidance["Any type of junction"]["All movements"]),
     );
     if (
-      junctionType !== "Any type of junction" &&
-      movementType !== "All movements" &&
+      junctionType === "Any type of junction" &&
+      movementType === "All movements"
+    ) {
+      return result;
+    }
+
+    if (
+      // @ts-expect-error it's a faff to properly scope the type of this data
       guidance[junctionType]["All movements"]
     ) {
+      // @ts-expect-error it's a faff to properly scope the type of this data
       let guidanceToAdd = guidance[junctionType]["All movements"];
       result.scoreZero = result.scoreZero.concat(guidanceToAdd.scoreZero);
       result.scoreOne = result.scoreOne.concat(guidanceToAdd.scoreOne);
