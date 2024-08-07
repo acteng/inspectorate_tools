@@ -85,7 +85,7 @@
 <div>
   <SecondaryButton on:click={openModal}>Display guidance</SecondaryButton>
 </div>
-<Modal title={`Guidance`} bind:open={showModal}>
+<Modal title={`Guidance`} bind:open={showModal} viewWidth={80}>
   <Radio
     label="What type of junction do you need guidance for"
     choices={pairs(junctionTypes)}

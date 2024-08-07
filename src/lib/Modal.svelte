@@ -5,6 +5,8 @@
   export let open = false;
   export let displayEscapeButton = true;
   export let canCloseByClickingBackground = true;
+  export let viewWidth: number | undefined = undefined;
+  console.log("viewWidth" + viewWidth);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -19,6 +21,7 @@
 >
   <div
     class="content centered-fullscreen"
+    style={viewWidth ? `width: ${viewWidth}vw;` : ""}
     on:click|stopPropagation={() => null}
   >
     <div style="display: flex; justify-content: space-between;">
