@@ -13,5 +13,7 @@
     border-bottom: 1px solid #b1b4b6;
     margin-left: -8px;
     margin-right: -8px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 </style>

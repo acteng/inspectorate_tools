@@ -17,7 +17,7 @@
 <div class="govuk-prose">
   <div class="black-bar">
     <div class="govuk-width-container">
-      <img src={logoUrl} alt="Active Travel England logo" height="30" />
+      <img src={logoUrl} alt="Active Travel England logo" />
     </div>
   </div>
 
@@ -41,5 +41,11 @@
     width: 100vw;
     margin-left: -8px;
     border-bottom: 10px solid #007161;
+  }
+
+  img {
+    height: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 </style>
