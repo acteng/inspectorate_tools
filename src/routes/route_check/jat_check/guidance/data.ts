@@ -1,3 +1,7 @@
+// Copied manually from
+// https://assets.publishing.service.gov.uk/media/5ffa1f96d3bf7f65d9e35825/cycle-infrastructure-design-ltn-1-20.pdf
+// (LTN 1/20) appendix B
+
 export const guidance = {
   "Any type of junction": {
     otherJunctionTypeWhichApplies: "",
@@ -23,6 +27,7 @@ export const guidance = {
       ],
     },
   },
+
   "Simple priority T-junction": {
     otherJunctionTypeWhichApplies: "",
     "Right turn from minor arm": {
@@ -67,7 +72,8 @@ export const guidance = {
       ],
     },
   },
-  "Crossroads": {
+
+  Crossroads: {
     otherJunctionTypeWhichApplies: "Simple priority T-junction",
     "Ahead from minor arm": {
       scoreZero: [
@@ -81,6 +87,7 @@ export const guidance = {
       ],
     },
   },
+
   "Traffic Signals": {
     otherJunctionTypeWhichApplies: "",
     "All movements": {
@@ -108,6 +115,7 @@ export const guidance = {
       ],
     },
   },
+
   Roundabout: {
     otherJunctionTypeWhichApplies: "",
     "All movements": {
@@ -127,6 +135,8 @@ export const guidance = {
     },
   },
 };
+
+export type JunctionType = keyof typeof guidance;
 
 export interface GuidanceObject {
   scoreZero: string[];
