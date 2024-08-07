@@ -50,7 +50,7 @@
   <Select
     label="Authority"
     emptyOption
-    choices={pairs(authorities)}
+    choices={authorities.map(([a, x, y]) => [a, a])}
     bind:value={$state.summary.authority}
   />
   <Select
