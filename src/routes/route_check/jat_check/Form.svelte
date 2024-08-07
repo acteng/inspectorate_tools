@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Radio, TextInput, TextArea } from "govuk-svelte";
+  import Guidance from "./guidance/Guidance.svelte";
   import { state } from "../data";
 
   export let junctionIdx: number;
@@ -33,6 +34,8 @@
   choices={scoreChoices}
   bind:value={$state.jat[junctionIdx][stage].movements[idx].score}
 />
+
+<Guidance />
 
 <TextArea
   label="Comments"
