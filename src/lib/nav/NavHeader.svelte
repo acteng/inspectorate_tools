@@ -10,9 +10,11 @@
 
 {#if navList}
   <ol>
-    {#each navList as navItem}
+    {#each navList as [path, title, currentlyHere]}
       <li>
-        <a href="{base}{navItem[0]}">{navItem[1]}</a>
+        <a href="{base}{path}" class:govuk-link--no-underline={!currentlyHere}>
+          {title}
+        </a>
       </li>
     {/each}
   </ol>
