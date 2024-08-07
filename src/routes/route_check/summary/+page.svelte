@@ -16,6 +16,17 @@
     fundingProgrammes,
     designStages,
   } from "$lib/lists";
+
+  function setAuthorityFields() {
+    let hit = authorities.find(
+      (triple) => triple[0] == $state.summary.authority,
+    );
+    if (hit) {
+      $state.summary.transportOrCombinedAuthority = hit[1];
+      // TODO SelectWithCustom doesn't handle the value changing externally, so use AutocompleteTextInput
+      $state.summary.region = hit[2];
+    }
+  }
 </script>
 
 <div class="govuk-width-container">
@@ -36,9 +47,10 @@
 
   <AutocompleteTextInput
     label="Authority"
-    options={pairs(authorities)}
+    options={authorities.map(([a, x, y]) => [a, a])}
     bind:value={$state.summary.authority}
     hint="Start typing to auto-complete the authority"
+    on:change={setAuthorityFields}
   />
   <AutocompleteTextInput
     label="Transport / Combined Authority"
@@ -46,11 +58,11 @@
     bind:value={$state.summary.transportOrCombinedAuthority}
     hint="Start typing to auto-complete the transport / combined authority"
   />
-  <SelectWithCustom
+  <AutocompleteTextInput
     label="Region"
-    emptyOption
-    choices={pairs(regions)}
+    options={pairs(regions)}
     bind:value={$state.summary.region}
+    hint="Start typing to auto-complete the region"
   />
   <RadioWithCustom
     label="Funding programme"
