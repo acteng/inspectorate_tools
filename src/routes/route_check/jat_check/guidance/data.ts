@@ -7,7 +7,7 @@ export const guidance = {
     otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
-        "Cycle movement in potential conflict with heavy motor traffic flow",
+        "Cycle movement in potential conflict with heavy motor traffic flow.",
         "Cycle movement mixed with or crossing traffic with 85th percentile speed exceeding 60kph, or where vehicles accelerate rapidly.",
         "Necessary to cross more than one traffic lane (without refuge or protection) to complete cycle movement unless traffic flows are low.",
         "Cycle movement crosses wide junction entry or exit: e.g. with merge or diverge taper or slip lane.",
