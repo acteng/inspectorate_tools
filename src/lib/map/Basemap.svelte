@@ -34,7 +34,7 @@
       list.push(["bluesky", "Bluesky Satellite (12.5cm)"]);
     }
     if (checkKey(os)) {
-      list.push(["os-road", "OS Road"]);
+      list.push(["os-road", "Ordnance Survey MasterMap"]);
     }
     list.push(["maptiler-hybrid", "MapTiler Satellite"]);
     list.push(["maptiler-streets", "MapTiler Streets"]);
