@@ -4,7 +4,6 @@
   import { base } from "$app/paths";
   import { LocalStorageFiles, downloadGeneratedFile } from "./index";
   import {
-    ButtonGroup,
     FileInput,
     WarningButton,
     SecondaryButton,
@@ -154,7 +153,7 @@
             <tr>
               <th>File name</th>
               <th>Scheme name</th>
-              <th class="govuk-!-width-one-half">Action</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -169,16 +168,16 @@
                     {filename}
                   </a>
                 </td>
-                <td>TODO</td>
+                <td>{files.describeFile(filename)}</td>
                 <td>
-                  <ButtonGroup>
+                  <div class="govuk-button-group" style="flex-wrap: nowrap">
                     <SecondaryButton on:click={() => renameFile(filename)}>
                       Rename
                     </SecondaryButton>
                     <WarningButton on:click={() => deleteFile(filename)}>
                       Delete
                     </WarningButton>
-                  </ButtonGroup>
+                  </div>
                 </td>
               </tr>
             {/each}
@@ -191,7 +190,7 @@
 
     <div class="govuk-grid-column-one-third">
       <h2 class="green-bar">Create or import a file</h2>
-      <SecondaryButton on:click={newFile}>New blank file</SecondaryButton>
+      <SecondaryButton on:click={newFile}>New blank scheme file</SecondaryButton>
       <hr />
       <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 
