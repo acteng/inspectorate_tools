@@ -36,7 +36,7 @@
             d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"
           ></path>
         </svg>
-        <span class="govuk-pagination__link-title">Previous question</span>
+        <span class="govuk-pagination__link-title">Previous metric</span>
       </a>
     </div>
   {:else}
@@ -45,7 +45,7 @@
 
   <ul class="govuk-pagination__list">
     <li class="govuk-pagination__item">
-      Question {idx} / {total}
+      Metric {idx} / {total}
     </li>
   </ul>
 
@@ -56,7 +56,7 @@
         href="{base}/{urlPath}{formatIndex(idx + 1)}"
         rel="next"
       >
-        <span class="govuk-pagination__link-title">Next question</span>
+        <span class="govuk-pagination__link-title">Next metric</span>
         <svg
           class="govuk-pagination__icon govuk-pagination__icon--next"
           xmlns="http://www.w3.org/2000/svg"
