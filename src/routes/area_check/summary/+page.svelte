@@ -130,7 +130,7 @@
         , then
         <i>Save</i>
       </li>
-      <li>Load the saved file above</li>
+      <li>Load the saved file</li>
     </ol>
   </ContextualMapEntry>
 </div>
