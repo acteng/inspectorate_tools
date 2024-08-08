@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { ExternalLink } from "$lib";
   import { base } from "$app/paths";
   import { currentFile, state } from "../data";
   import { ExportFile } from "$lib/files";
@@ -7,14 +6,6 @@
 </script>
 
 <div class="govuk-width-container">
-  <p>
-    This is an experimental version of a <ExternalLink
-      href="https://www.gov.uk/government/publications/active-travel-england-scheme-review-tools"
-    >
-      scheme review tool
-    </ExternalLink>.
-  </p>
-
   <ExportFile {currentFile} {state}>
     <ConvertToXlsx />
   </ExportFile>

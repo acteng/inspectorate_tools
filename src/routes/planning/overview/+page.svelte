@@ -5,8 +5,6 @@
 </script>
 
 <div class="govuk-width-container">
-  <p>This is an experimental version of an internal tool.</p>
-
   <ExportFile {currentFile} {state} />
 
   <p>
