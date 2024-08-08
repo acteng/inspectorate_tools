@@ -19,6 +19,7 @@
   <p>Check what you need to do to assess the design quality of a scheme.</p>
 
   <ol>
+    <li><a href="{base}/area_check/overview">Overview</a></li>
     <li><a href="{base}/area_check/summary">Summary of Scheme</a></li>
     <li>
       <a href="{base}/area_check/traffic_mitigation">

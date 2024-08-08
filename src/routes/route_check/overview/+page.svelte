@@ -21,7 +21,8 @@
 
   <p>Check what you need to do to assess the design quality of a scheme.</p>
 
-  <ol start="2">
+  <ol>
+    <li><a href="{base}/route_check/overview">Overview</a></li>
     <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
     <li><a href="{base}/route_check/route_map">Route Map</a></li>
     <li><a href="{base}/route_check/policy_check">Policy Check</a></li>
