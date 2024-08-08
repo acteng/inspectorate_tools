@@ -54,10 +54,14 @@
   <AlphaBanner />
 
   <div style="margin-bottom: 30px">
-    <img src={folderUrl} alt="Manage files" style="vertical-align: middle;" />
-    <a href="{base}/{tool}">Manage files</a>
+    <img
+      src={folderUrl}
+      alt="Manage my schemes"
+      style="vertical-align: middle;"
+    />
+    <a href="{base}/{tool}">Manage my schemes</a>
     <span class="govuk-body" style="margin-left: 8px;">
-      Editing file <u>{$currentFile}</u>
+      You are editing: {$currentFile}
     </span>
   </div>
 
