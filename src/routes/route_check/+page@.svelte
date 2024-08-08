@@ -3,7 +3,6 @@
   import { files, currentFile, state, type State } from "./data";
   import { getDalog, dalogToState } from "$lib/import";
   import ExcelJS from "exceljs";
-  import ConvertToXlsx from "./results_export/ConvertToXlsx.svelte";
 
   async function xlsxImporter(buffer: ArrayBuffer): Promise<State> {
     let workbook = new ExcelJS.Workbook();
@@ -26,8 +25,4 @@
     wishing to assess the design quality of schemes against ATE's quality
     criteria.
   </p>
-
-  <svelte:fragment slot="export">
-    <ConvertToXlsx />
-  </svelte:fragment>
 </FileManager>

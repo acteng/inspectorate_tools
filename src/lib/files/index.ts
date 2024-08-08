@@ -1,4 +1,5 @@
 export { default as FileManager } from "./FileManager.svelte";
+export { default as ExportFile } from "./ExportFile.svelte";
 import { get, type Writable } from "svelte/store";
 
 export class LocalStorageFiles<StateType> {
@@ -127,4 +128,16 @@ export class LocalStorageFiles<StateType> {
 
     console.log(`Not starting with any file`);
   }
+}
+
+export function downloadGeneratedFile(filename: string, textInput: string) {
+  let element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(textInput),
+  );
+  element.setAttribute("download", filename);
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }

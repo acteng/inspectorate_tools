@@ -1,17 +1,14 @@
 <script lang="ts" generics="StateType">
   import editUrl from "$lib/assets/images/edit.svg?url";
   import deleteUrl from "$lib/assets/images/delete.svg?url";
-  import downloadUrl from "$lib/assets/images/download.svg?url";
   import { base } from "$app/paths";
-  import { LocalStorageFiles } from "./index";
+  import { LocalStorageFiles, downloadGeneratedFile } from "./index";
   import {
     ButtonGroup,
     FileInput,
     WarningButton,
     SecondaryButton,
-    Radio,
     AlphaBanner,
-    StartButton,
   } from "govuk-svelte";
   import { pairs, stripSuffix, ServiceHeader } from "$lib";
   import { type Writable } from "svelte/store";
@@ -32,74 +29,49 @@
     | ((buffer: ArrayBuffer) => Promise<StateType>)
     | null = null;
 
-  let chosenFile = $currentFile;
   let fileList = files.getFileList();
 
-  function loadChosenFile() {
-    if (!chosenFile) {
-      return;
-    }
-    openFile(chosenFile);
-  }
-
-  function renameFile() {
+  function renameFile(filename: string) {
     // TODO Handle overwriting
-    let newName = window.prompt(
-      `Rename file ${$currentFile} to what?`,
-      $currentFile,
-    );
+    let newName = window.prompt(`Rename file ${filename} to what?`, filename);
     if (newName) {
-      let oldKey = files.key($currentFile);
+      let oldKey = files.key(filename);
       let contents = window.localStorage.getItem(oldKey)!;
       window.localStorage.setItem(files.key(newName), contents);
       window.localStorage.removeItem(oldKey);
-      $currentFile = newName;
-      chosenFile = $currentFile;
       fileList = files.getFileList();
+      if ($currentFile == filename) {
+        $currentFile = newName;
+      }
     }
   }
 
-  function deleteFile() {
+  function deleteFile(filename: string) {
     // TODO Use a full Modal
     if (
       !window.confirm(
-        `Really delete file ${$currentFile}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
+        `Really delete file ${filename}? You can't undo this. (If you delete, a copy will still be downloaded to your browser's download folder, in case you make a mistake.)`,
       )
     ) {
       return;
     }
 
-    let key = files.key($currentFile);
+    let key = files.key(filename);
     downloadGeneratedFile(
-      `${$currentFile}.json`,
+      `${filename}.json`,
       window.localStorage.getItem(key)!,
     );
     window.localStorage.removeItem(key);
-    $currentFile = "";
-    chosenFile = "";
-    $state = files.emptyState();
+
+    if ($currentFile == filename) {
+      $currentFile = "";
+      $state = files.emptyState();
+      // This is normally done in the LocalStorageFiles subscription, but it
+      // ignores the case when this value is empty. Since the last opened
+      // file is gone, we do need to clear this.
+      window.localStorage.setItem(files.key("last-opened-file"), "");
+    }
     fileList = files.getFileList();
-
-    // This is normally done in the LocalStorageFiles subscription, but it
-    // ignores the case when this value is empty. Since the last opened
-    // file is gone, we do need to clear this.
-    window.localStorage.setItem(files.key("last-opened-file"), "");
-  }
-
-  function exportFile() {
-    downloadGeneratedFile($currentFile + ".json", JSON.stringify($state));
-  }
-
-  function downloadGeneratedFile(filename: string, textInput: string) {
-    let element = document.createElement("a");
-    element.setAttribute(
-      "href",
-      "data:text/plain;charset=utf-8," + encodeURIComponent(textInput),
-    );
-    element.setAttribute("download", filename);
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
   }
 
   function newFile() {
@@ -109,9 +81,9 @@
       return;
     }
     $currentFile = name;
-    chosenFile = name;
     $state = files.emptyState();
     fileList = files.saveAndGetFileList($currentFile, $state);
+    goto(`${base}/${files.prefix}overview`);
   }
 
   function importJsonFile(rawFilename: string, contents: string) {
@@ -136,15 +108,18 @@
     openFile(filename);
   }
 
-  function openFile(file: string) {
+  function openFile(file: string): boolean {
     try {
       let x = files.loadFile(file);
-      chosenFile = file;
       $currentFile = file;
       $state = x;
+      goto(`${base}/${files.prefix}overview`);
     } catch (error) {
       window.alert(`Couldn't load ${file}: ${error}`);
     }
+
+    // So this can be a callback on an <a>
+    return false;
   }
 </script>
 
@@ -168,30 +143,54 @@
       {#if $currentFile}
         <p>
           <b>You are editing:</b>
-          {$currentFile}
+          <a href={`${base}/${files.prefix}overview`}>{$currentFile}</a>
         </p>
-        <StartButton on:click={() => goto(`${base}/${files.prefix}overview`)} />
-
-        <ButtonGroup>
-          <SecondaryButton on:click={exportFile}>
-            <img src={downloadUrl} alt="Export .json" />
-            Export .json
-          </SecondaryButton>
-
-          <slot name="export" />
-
-          <SecondaryButton on:click={renameFile}>
-            <img src={editUrl} alt="Rename file" />
-            Rename file
-          </SecondaryButton>
-          <WarningButton on:click={deleteFile}>
-            <img src={deleteUrl} alt="Delete file" />
-            Delete file
-          </WarningButton>
-        </ButtonGroup>
       {/if}
 
-      <h2>Create or import a file</h2>
+      {#if fileList.length > 0}
+        <h2>Manage existing files</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>File name</th>
+              <th>Scheme name</th>
+              <th class="govuk-!-width-one-half">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each fileList as filename}
+              <tr>
+                <td>
+                  <!-- svelte-ignore a11y-invalid-attribute -->
+                  <a
+                    href="#"
+                    on:click|preventDefault={() => openFile(filename)}
+                  >
+                    {filename}
+                  </a>
+                </td>
+                <td>TODO</td>
+                <td>
+                  <ButtonGroup>
+                    <SecondaryButton on:click={() => renameFile(filename)}>
+                      Rename
+                    </SecondaryButton>
+                    <WarningButton on:click={() => deleteFile(filename)}>
+                      Delete
+                    </WarningButton>
+                  </ButtonGroup>
+                </td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      {:else}
+        <p>No saved files</p>
+      {/if}
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <h2 class="green-bar">Create or import a file</h2>
       <SecondaryButton on:click={newFile}>New blank file</SecondaryButton>
       <hr />
       <FileInput label="Import from a .json file" onLoad={importJsonFile} />
@@ -201,20 +200,6 @@
         <ImportXlsx {xlsxImporter} on:imported={onXlsxImported} />
       {/if}
     </div>
-    <div class="govuk-grid-column-one-third">
-      <h2 class="green-bar">Manage existing files</h2>
-
-      {#if fileList.length > 0}
-        <Radio
-          label=""
-          choices={pairs(fileList)}
-          bind:value={chosenFile}
-          on:change={loadChosenFile}
-        />
-      {:else}
-        <p>No saved files</p>
-      {/if}
-    </div>
   </div>
 </div>
 
@@ -222,9 +207,5 @@
   .green-bar {
     border-top: 0.3rem solid #007161;
     padding-top: 30px;
-  }
-
-  img {
-    vertical-align: middle;
   }
 </style>

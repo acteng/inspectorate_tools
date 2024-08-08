@@ -1,7 +1,9 @@
 <script lang="ts">
   import { ExternalLink } from "$lib";
   import { base } from "$app/paths";
-  import { state } from "../data";
+  import { currentFile, state } from "../data";
+  import { ExportFile } from "$lib/files";
+  import ConvertToXlsx from "../results_export/ConvertToXlsx.svelte";
 </script>
 
 <div class="govuk-width-container">
@@ -12,6 +14,12 @@
       scheme review tool
     </ExternalLink>.
   </p>
+
+  <ExportFile {currentFile} {state}>
+    <ConvertToXlsx />
+  </ExportFile>
+
+  <p>Check what you need to do to assess the design quality of a scheme.</p>
 
   <ol start="2">
     <li><a href="{base}/route_check/summary">Summary of Scheme</a></li>
