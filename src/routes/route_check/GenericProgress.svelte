@@ -136,7 +136,7 @@
       {:else}
         <li>
           <div class="progress-list-item">
-            {#if currentIdx - startIdx != item.idx}
+            {#if currentIdx - 1 != item.idx}
               <a href="{base}{urlBase}{formatIndex(item.idx)}">
                 {item.label}
               </a>
