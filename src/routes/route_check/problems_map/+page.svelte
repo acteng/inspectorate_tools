@@ -308,43 +308,55 @@
         <Checkbox bind:checked={showRoute}>Show route</Checkbox>
       </CollapsibleCard>
 
-      <h3>Critical Issues</h3>
-      {#each $state.criticalIssues as critical, idx}
-        <ClickableCard
-          name={labelCritical(critical)}
-          on:click={() => selectAndZoom({ kind: "critical", idx })}
-          on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
-          on:mouseleave={() => (hoveringSidebar = null)}
-        >
-          <div
-            style="width: 100%; display: flex; justify-content: space-between"
+      <div style="background-color: grey; padding: 4px">
+        <h3>Critical Issue Log</h3>
+        {#each $state.criticalIssues as critical, idx}
+          <ClickableCard
+            name={labelCritical(critical)}
+            on:click={() => selectAndZoom({ kind: "critical", idx })}
+            on:mouseenter={() => (hoveringSidebar = { kind: "critical", idx })}
+            on:mouseleave={() => (hoveringSidebar = null)}
           >
-            <span>Stage: {critical.stage}</span>
-            {#if critical.stage != "Design"}
-              <span>Resolved: {critical.resolved}</span>
-            {/if}
-          </div>
-        </ClickableCard>
-      {/each}
+            <div
+              style="width: 100%; display: flex; justify-content: space-between"
+            >
+              <span>Stage: {critical.stage}</span>
+              {#if critical.stage != "Design"}
+                {#if critical.resolved == "No"}
+                  <span><b>Resolved: {critical.resolved}</b></span>
+                {:else}
+                  <span>Resolved: {critical.resolved}</span>
+                {/if}
+              {/if}
+            </div>
+          </ClickableCard>
+        {/each}
+      </div>
 
-      <h3>Policy Conflicts</h3>
-      {#each $state.policyConflictLog as conflict, idx}
-        <ClickableCard
-          name={labelConflict(conflict)}
-          on:click={() => selectAndZoom({ kind: "conflict", idx })}
-          on:mouseenter={() => (hoveringSidebar = { kind: "conflict", idx })}
-          on:mouseleave={() => (hoveringSidebar = null)}
-        >
-          <div
-            style="width: 100%; display: flex; justify-content: space-between"
+      <div style="background-color: {policyConflictColor}; padding: 4px">
+        <h3>Policy Conflict Log</h3>
+        {#each $state.policyConflictLog as conflict, idx}
+          <ClickableCard
+            name={labelConflict(conflict)}
+            on:click={() => selectAndZoom({ kind: "conflict", idx })}
+            on:mouseenter={() => (hoveringSidebar = { kind: "conflict", idx })}
+            on:mouseleave={() => (hoveringSidebar = null)}
           >
-            <span>Stage: {conflict.stage}</span>
-            {#if conflict.stage != "Design"}
-              <span>Resolved: {conflict.resolved}</span>
-            {/if}
-          </div>
-        </ClickableCard>
-      {/each}
+            <div
+              style="width: 100%; display: flex; justify-content: space-between"
+            >
+              <span>Stage: {conflict.stage}</span>
+              {#if conflict.stage != "Design"}
+                {#if conflict.resolved == "No"}
+                  <span><b>Resolved: {conflict.resolved}</b></span>
+                {:else}
+                  <span>Resolved: {conflict.resolved}</span>
+                {/if}
+              {/if}
+            </div>
+          </ClickableCard>
+        {/each}
+      </div>
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
@@ -378,10 +390,7 @@
               xmlns="http://www.w3.org/2000/svg"
               style="vertical-align: middle;"
             >
-              <polygon
-                points="12,0 0,24 24,24"
-                fill={colors.critical.background}
-              />
+              <rect width="24" height="24" fill={colors.critical.background} />
             </svg>
             {#if mode.mode == "new-critical"}
               <u>New critical issue</u>
@@ -417,11 +426,14 @@
           on:dragend={() => select({ kind: "critical", idx })}
         >
           <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
-            <polygon
-              points="20,0 0,40 40,40"
-              fill={colors.critical.background}
-            />
-            <text x="13" y="30" style:fill="white">
+            <rect width="40" height="40" fill={colors.critical.background} />
+            <text
+              x="50%"
+              y="50%"
+              style:fill="white"
+              dominant-baseline="middle"
+              text-anchor="middle"
+            >
               {critical.criticalIssue}
             </text>
           </svg>
@@ -474,11 +486,11 @@
     cursor: pointer;
   }
 
-  polygon {
+  rect {
     stroke: white;
     stroke-width: 3px;
   }
-  polygon:hover {
+  rect:hover {
     stroke-width: 6px;
     cursor: pointer;
   }
