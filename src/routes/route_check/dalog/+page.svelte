@@ -5,7 +5,9 @@
   import ConvertToXlsx from "../results_export/ConvertToXlsx.svelte";
 
   // TODO Need to escape " in the values, then
-  $: values = encodeDalog($state).map((pair) => `"${pair[1]}"`).join("\t");
+  $: values = encodeDalog($state)
+    .map((pair) => `"${pair[1]}"`)
+    .join("\t");
 </script>
 
 <div class="govuk-width-container">
