@@ -190,7 +190,9 @@
 
     <div class="govuk-grid-column-one-third">
       <h2 class="green-bar">Create or import a file</h2>
-      <SecondaryButton on:click={newFile}>New blank scheme file</SecondaryButton>
+      <SecondaryButton on:click={newFile}>
+        New blank scheme file
+      </SecondaryButton>
       <hr />
       <FileInput label="Import from a .json file" onLoad={importJsonFile} />
 

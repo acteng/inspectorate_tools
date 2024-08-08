@@ -4,7 +4,7 @@
 </script>
 
 <div class="service-header">
-  <div class="govuk-width-container govuk-caption-xl">{service}</div>
+  <div class="govuk-width-container govuk-caption-xl"><b>{service}</b></div>
 </div>
 
 <style>

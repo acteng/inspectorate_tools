@@ -12,7 +12,11 @@
   <ol>
     {#each navList as [path, title, currentlyHere]}
       <li>
-        <a href="{base}{path}" class:govuk-link--no-underline={!currentlyHere}>
+        <a
+          href="{base}{path}"
+          class="govuk-link--no-underline"
+          class:underline={currentlyHere}
+        >
           {title}
         </a>
       </li>
@@ -33,5 +37,9 @@
   }
   li:first-child {
     margin-left: 0;
+  }
+
+  .underline {
+    border-bottom: 5px solid #007161;
   }
 </style>
