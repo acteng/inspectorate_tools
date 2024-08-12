@@ -170,68 +170,77 @@
     {#if mode.mode != "editing"}
       <slot />
 
-      <CollapsibleCard label="Tools">
-        <SecondaryButton on:click={() => mapControls?.zoom(true)}>
-          Zoom to fit
-        </SecondaryButton>
-        <Basemap />
-        <GeoreferenceControls />
-        <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />
-        <Checkbox bind:checked={showRoute}>Show route</Checkbox>
-      </CollapsibleCard>
+      <div class="govuk-tabs__panel">
+        <p>
+          <b>
+            Currently editing {stage} junction
+            {$state.jat[junctionIdx].name}
+          </b>
+        </p>
 
-      <h3>Arms</h3>
-      {#each $state.jat[junctionIdx][stage].arms as arm, idx}
-        <ClickableCard
-          name={`${armLabel(idx)} - ${arm.name || "Unnamed arm"}`}
-          on:click={() => select({ kind: "arm", idx })}
-          on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
-          on:mouseleave={() => (hoveringSidebar = null)}
-        />
-      {/each}
-      {#if $state.jat[junctionIdx][otherStage].arms.length > 0}
-        <SecondaryButton on:click={copyArms}>
-          Copy arms from {otherStage}
-        </SecondaryButton>
-      {/if}
+        <CollapsibleCard label="Map tools">
+          <SecondaryButton on:click={() => mapControls?.zoom(true)}>
+            Zoom to fit
+          </SecondaryButton>
+          <Basemap />
+          <GeoreferenceControls />
+          <StreetView map={mapControls?.getMap()} bind:enabled={streetviewOn} />
+          <Checkbox bind:checked={showRoute}>Show route</Checkbox>
+        </CollapsibleCard>
 
-      <h3>Movements</h3>
-      <p>
-        Total JAT score for {stage}
-        <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
-        : {describeScore($state.jat[junctionIdx][stage])}
-      </p>
-      <SecondaryButton
-        on:click={autogenerateMovements}
-        disabled={$state.jat[junctionIdx][stage].arms.length < 2}
-      >
-        Generate cycling movements between all arms
-      </SecondaryButton>
-      {#each $state.jat[junctionIdx][stage].movements as movement, idx}
-        {@const color = scoreColors[movement.score]}
-        <ClickableCard
-          name={movement.name || "Unnamed movement"}
-          on:click={() => select({ kind: "movement", idx })}
-          on:mouseenter={() => (hoveringSidebar = { kind: "movement", idx })}
-          on:mouseleave={() => (hoveringSidebar = null)}
+        <h3>Arms</h3>
+        {#each $state.jat[junctionIdx][stage].arms as arm, idx}
+          <ClickableCard
+            name={`${armLabel(idx)} - ${arm.name || "Unnamed arm"}`}
+            on:click={() => select({ kind: "arm", idx })}
+            on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
+            on:mouseleave={() => (hoveringSidebar = null)}
+          />
+        {/each}
+        {#if $state.jat[junctionIdx][otherStage].arms.length > 0}
+          <SecondaryButton on:click={copyArms}>
+            Copy arms from {otherStage}
+          </SecondaryButton>
+        {/if}
+
+        <h3>Movements</h3>
+        <p>
+          Total JAT score for {stage}
+          <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
+          : {describeScore($state.jat[junctionIdx][stage])}
+        </p>
+        <SecondaryButton
+          on:click={autogenerateMovements}
+          disabled={$state.jat[junctionIdx][stage].arms.length < 2}
         >
-          <div
-            style="width: 100%; display: flex; justify-content: space-between"
-          >
-            <span
-              style="padding: 4px; color: {color.font}; background-color: {color.background}"
-            >
-              Score: {movement.score}
-            </span>
-            <span>{capitaliseWords(movement.kind)}</span>
-          </div>
-        </ClickableCard>
-      {/each}
-      {#if $state.jat[junctionIdx][otherStage].movements.length > 0}
-        <SecondaryButton on:click={copyMovements}>
-          Copy movements from {otherStage}
+          Generate cycling movements between all arms
         </SecondaryButton>
-      {/if}
+        {#each $state.jat[junctionIdx][stage].movements as movement, idx}
+          {@const color = scoreColors[movement.score]}
+          <ClickableCard
+            name={movement.name || "Unnamed movement"}
+            on:click={() => select({ kind: "movement", idx })}
+            on:mouseenter={() => (hoveringSidebar = { kind: "movement", idx })}
+            on:mouseleave={() => (hoveringSidebar = null)}
+          >
+            <div
+              style="width: 100%; display: flex; justify-content: space-between"
+            >
+              <span
+                style="padding: 4px; color: {color.font}; background-color: {color.background}"
+              >
+                Score: {movement.score}
+              </span>
+              <span>{capitaliseWords(movement.kind)}</span>
+            </div>
+          </ClickableCard>
+        {/each}
+        {#if $state.jat[junctionIdx][otherStage].movements.length > 0}
+          <SecondaryButton on:click={copyMovements}>
+            Copy movements from {otherStage}
+          </SecondaryButton>
+        {/if}
+      </div>
     {:else}
       <DefaultButton on:click={stopEditing}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>

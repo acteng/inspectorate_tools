@@ -10,6 +10,7 @@
   import EditJunction from "./EditJunction.svelte";
   import { ClickableCard } from "$lib";
   import { describeScore } from "./score";
+  import Tab from "./Tab.svelte";
 
   type Mode =
     | { kind: "list" }
@@ -90,25 +91,20 @@
 
   {#key mode.stage}
     <EditJunction junctionIdx={mode.idx} stage={mode.stage}>
-      <p>
-        Currently editing {mode.stage} junction
-        <u>{$state.jat[mode.idx].name}</u>
-      </p>
-      {#if mode.stage == "proposed"}
-        <SecondaryButton
+      <ul class="govuk-tabs__list" style="list-style-type: none">
+        <Tab
+          label="Existing"
+          isCurrent={mode.stage == "existing"}
           on:click={() =>
             (mode = { kind: "edit", idx: getIdx(mode), stage: "existing" })}
-        >
-          Edit Existing
-        </SecondaryButton>
-      {:else}
-        <SecondaryButton
+        />
+        <Tab
+          label="Proposed"
+          isCurrent={mode.stage == "proposed"}
           on:click={() =>
             (mode = { kind: "edit", idx: getIdx(mode), stage: "proposed" })}
-        >
-          Edit Proposed
-        </SecondaryButton>
-      {/if}
+        />
+      </ul>
     </EditJunction>
   {/key}
 {/if}
