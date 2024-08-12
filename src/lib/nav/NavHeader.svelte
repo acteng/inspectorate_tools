@@ -12,13 +12,17 @@
   <ol>
     {#each navList as [path, title, currentlyHere]}
       <li>
-        <a
-          href="{base}{path}"
-          class="govuk-link--no-underline hack-no-visited-state"
-          class:underline={currentlyHere}
-        >
+        {#if path}
+          <a
+            href="{base}{path}"
+            class="govuk-link--no-underline hack-no-visited-state"
+            class:underline={currentlyHere}
+          >
+            {title}
+          </a>
+        {:else}
           {title}
-        </a>
+        {/if}
       </li>
     {/each}
   </ol>

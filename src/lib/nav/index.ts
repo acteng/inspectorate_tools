@@ -349,7 +349,7 @@ export function getNextPage(
   return result;
 }
 
-// Returns [path, title, currently here]
+// Returns [path, title, currently here]. path may be blank for the special case of an unset route check type.
 export function getNavList(
   rawPath: string,
   routeCheckType: "street" | "path" | "",
@@ -360,12 +360,24 @@ export function getNavList(
   }
 
   let sections = filterMainPageSections(routeCheckType);
-  const toolName = path != "/" ? path.split("/")[1] : "";
-  return sections
+  let toolName = path != "/" ? path.split("/")[1] : "";
+  let result: [string, string, boolean][] = sections
     .filter((section) => {
       return section[0] != "/" && section[0].split("/")[1] == toolName;
     })
     .map(([p, title]) => [p, title, p == path]);
+
+  // Hack for the route check case.
+  // TODO We should reconsider the logic in this file generally, now that requirements have changed so much.
+  if (toolName == "route_check" && result.length == 11) {
+    result.splice(
+      6,
+      0,
+      ["", "Street/Path Check", false],
+      ["", "Street/Path Placemaking Check", false],
+    );
+  }
+  return result;
 }
 
 export function canonicalizePath(path: string): string {
