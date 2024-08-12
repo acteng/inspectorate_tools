@@ -173,6 +173,9 @@ function validate(state: State) {
   if (state.version != "alpha-1") {
     throw new Error("File format appears outdated");
   }
+
+  // Not entirely sure how, but at least one old file is missing this property and causing problems, so fill it in
+  state.summary.networkMap ||= { type: "FeatureCollection", features: [] };
 }
 
 function describe(state: State): string {
