@@ -6,7 +6,6 @@
   export let displayEscapeButton = true;
   export let canCloseByClickingBackground = true;
   export let viewWidth: number | undefined = undefined;
-  console.log("viewWidth" + viewWidth);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
