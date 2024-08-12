@@ -134,6 +134,8 @@ export const guidance = {
 export type JunctionType = keyof typeof guidance;
 
 export interface GuidanceObject {
+  junctionType: string;
+  movementType: string;
   scoreZero: string[];
   scoreOne: string[];
   scoreTwo: string[];
