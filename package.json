@@ -37,7 +37,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@maptiler/geocoding-control": "^1.3.0",
+    "@maptiler/geocoding-control": "1.2.3",
     "@turf/area": "^7.0.0",
     "@turf/bbox": "^7.0.0",
     "@turf/bearing": "^7.0.0",
