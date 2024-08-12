@@ -1,7 +1,9 @@
 <script lang="ts">
   import { Radio, SecondaryButton } from "govuk-svelte";
-  import { pairs, Modal } from "$lib";
+  import { pairs, ExternalLink, Modal } from "$lib";
   import { guidance, type GuidanceObject, type JunctionType } from "./data";
+
+  let open = false;
 
   let junctionTypes = Object.keys(guidance) as JunctionType[];
   let selectedJunctionType: JunctionType = junctionTypes[0];
@@ -57,7 +59,7 @@
       specificGuidance = guidance[otherJunctionTypeWhichApplies][movementType];
     }
 
-        let result = JSON.parse(
+    let result = JSON.parse(
       JSON.stringify(guidance["Any type of junction"]["All movements"]),
     );
     if (
@@ -84,18 +86,22 @@
     }
     return result;
   }
-
-  let showModal = false;
-
-  function openModal() {
-    showModal = true;
-  }
 </script>
 
 <div>
-  <SecondaryButton on:click={openModal}>Display guidance</SecondaryButton>
+  <SecondaryButton on:click={() => (open = true)}>
+    LTN 1/20 scoring guidance
+  </SecondaryButton>
 </div>
-<Modal title={`Guidance`} bind:open={showModal} viewWidth={80}>
+<Modal title="LTN 1/20 scoring guidance" bind:open viewWidth={80}>
+  <p>
+    Guidance from <ExternalLink
+      href="https://assets.publishing.service.gov.uk/media/5ffa1f96d3bf7f65d9e35825/cycle-infrastructure-design-ltn-1-20.pdf"
+    >
+      LTN 1/20 appendix B
+    </ExternalLink>.
+  </p>
+
   <Radio
     label="What type of junction do you need guidance for"
     choices={pairs(junctionTypes)}
@@ -113,21 +119,21 @@
     <table>
       <tr>
         <th class="score-zero-header">
-          Score = 0
+          <u>Score = 0</u>
           <br />
           Suitable only for confident existing cyclists, and may be avoided by some
           experienced cyclists Conditions are most likely to give rise to the most
           common collision types
         </th>
         <th class="score-one-header">
-          Score = 1
+          <u>Score = 1</u>
           <br />
           Likely to be more acceptable to most cyclists, but may still pose problems
           for less confident or new cyclists The risk of collisions has been reduced
           by design layout or traffic management interventions
         </th>
-        <th class="has-hover score-two-header">
-          Score = 2
+        <th class="score-two-header">
+          <u>Score = 2</u>
           <br />
           Suitable for all potential and existing cyclists The potential for collisions
           has been removed, or managed to a high standard of safety for cyclists
@@ -158,6 +164,8 @@
       </tr>
     </table>
   {/if}
+
+  <SecondaryButton on:click={() => (open = false)}>OK</SecondaryButton>
 </Modal>
 
 <style>

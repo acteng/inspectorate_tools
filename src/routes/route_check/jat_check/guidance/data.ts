@@ -1,7 +1,3 @@
-// Copied manually from
-// https://assets.publishing.service.gov.uk/media/5ffa1f96d3bf7f65d9e35825/cycle-infrastructure-design-ltn-1-20.pdf
-// (LTN 1/20) appendix B
-
 export const guidance = {
   "Any type of junction": {
     otherJunctionTypeWhichApplies: "",
