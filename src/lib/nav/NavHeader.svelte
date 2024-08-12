@@ -14,7 +14,7 @@
       <li>
         <a
           href="{base}{path}"
-          class="govuk-link--no-underline"
+          class="govuk-link--no-underline hack-no-visited-state"
           class:underline={currentlyHere}
         >
           {title}
@@ -40,6 +40,14 @@
   }
 
   .underline {
-    border-bottom: 5px solid #007161;
+    /* Need important to override the hack-no-visited-state */
+    color: #007161 !important;
+    font-weight: bold;
+    border-bottom: 3px solid #007161;
+  }
+
+  /* govuk-link--no-visited-state doesn't have enough specificity to actually work */
+  .hack-no-visited-state:visited {
+    color: #1d70b8;
   }
 </style>

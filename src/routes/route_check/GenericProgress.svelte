@@ -134,14 +134,20 @@
           {item.label}
         </h3>
       {:else}
-        <li>
-          <div class="progress-list-item">
+        <li
+          style="list-style-type: none"
+          class:current-li={currentIdx - 1 == item.idx}
+        >
+          <span class="progress-list-item">
             {#if currentIdx - 1 != item.idx}
-              <a href="{base}{urlBase}{formatIndex(item.idx)}">
-                {item.label}
+              <a
+                href="{base}{urlBase}{formatIndex(item.idx)}"
+                class="govuk-link--no-underline hack-no-visited-state"
+              >
+                {startIdx + item.idx}. {item.label}
               </a>
             {:else}
-              {item.label}
+              {startIdx + item.idx}. {item.label}
             {/if}
 
             {#if completed[item.idx]}
@@ -151,7 +157,7 @@
             {:else}
               <strong class="govuk-tag govuk-tag--red tag-row">&#9746;</strong>
             {/if}
-          </div>
+          </span>
         </li>
       {/if}
     {/each}
@@ -177,5 +183,16 @@
   h3 {
     margin-top: 0.75em;
     margin-bottom: 0.75em;
+  }
+  .current-li {
+    color: #007161;
+    font-weight: bold;
+    margin-left: -15px;
+    padding-left: 10px;
+    border-left: 5px solid #007161;
+  }
+  /* govuk-link--no-visited-state doesn't have enough specificity to actually work */
+  .hack-no-visited-state:visited {
+    color: #1d70b8;
   }
 </style>
