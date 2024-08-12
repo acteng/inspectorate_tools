@@ -416,7 +416,8 @@
         </div>
       {/if}
 
-      <RouteMapLayer show={showRoute} />
+      <RouteMapLayer show={showRoute} id="route-map" />
+      <GeoreferenceLayer {map} beforeId="route-map" />
 
       {#each $state.criticalIssues as critical, idx}
         <Marker
@@ -464,8 +465,6 @@
           }}
         />
       </GeoJSON>
-
-      <GeoreferenceLayer {map} />
     </MapLibreMap>
   </div>
 </div>

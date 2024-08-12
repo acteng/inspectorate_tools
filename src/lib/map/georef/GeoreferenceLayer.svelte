@@ -10,6 +10,7 @@
   import type { Map } from "maplibre-gl";
 
   export let map: Map;
+  export let beforeId: string | undefined;
 
   $: if ($imgSrc && $settingImage && $topLeft.lng == 0 && $topLeft.lat == 0) {
     // Reset the markers to cover some of the current viewport
@@ -22,6 +23,16 @@
       bounds.getNorth() + 0.4 * (bounds.getSouth() - bounds.getNorth());
     $bottomRight.lat =
       bounds.getNorth() + 0.6 * (bounds.getSouth() - bounds.getNorth());
+  }
+
+  // Workaround different module reloading orderings that may occur
+  function getBeforeId(): string | undefined {
+    if (map && beforeId) {
+      if (map.getLayer(beforeId)) {
+        return beforeId;
+      }
+    }
+    return undefined;
   }
 </script>
 
@@ -36,6 +47,7 @@
     ]}
   >
     <RasterLayer
+      beforeId={getBeforeId()}
       paint={{
         "raster-fade-duration": 0,
         "raster-opacity": $opacity / 100.0,

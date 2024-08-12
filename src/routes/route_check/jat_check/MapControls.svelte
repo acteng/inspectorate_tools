@@ -276,7 +276,8 @@
     </div>
   {/if}
 
-  <RouteMapLayer show={showRoute} />
+  <RouteMapLayer show={showRoute} id="route-map" />
+  <GeoreferenceLayer {map} beforeId="route-map" />
 
   {#each $state.jat[junctionIdx][stage].arms as arm, idx}
     <Marker
@@ -388,8 +389,6 @@
       }}
     />
   </GeoJSON>
-
-  <GeoreferenceLayer {map} />
 </MapLibreMap>
 
 <style>

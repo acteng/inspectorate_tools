@@ -198,7 +198,7 @@
         <BoundaryLayer {cfg} boundaryGeojson={routeAuthority} />
       {/if}
 
-      <RouteMapLayer />
+      <RouteMapLayer id="route-map" />
 
       <RouteSnapperLayer {cfg} />
     </MapLibreMap>
