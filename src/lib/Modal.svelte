@@ -1,11 +1,22 @@
 <script lang="ts">
   import { SecondaryButton } from "govuk-svelte";
+  import { tick } from "svelte";
 
   export let title: string;
   export let open = false;
   export let displayEscapeButton = true;
   export let canCloseByClickingBackground = true;
   export let viewWidth: number | undefined = undefined;
+
+  // Svelte sometimes reuses the same modal. Always reset scroll when opening.
+  let innerContent: HTMLDivElement;
+  $: resetScroll(open);
+  async function resetScroll(open: boolean) {
+    if (open && innerContent) {
+      await tick();
+      innerContent.scrollTop = 0;
+    }
+  }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -22,6 +33,7 @@
     class="content centered-fullscreen"
     style={viewWidth ? `width: ${viewWidth}vw;` : ""}
     on:click|stopPropagation={() => null}
+    bind:this={innerContent}
   >
     <div style="display: flex; justify-content: space-between;">
       <h1 class="govuk-heading-l">{title}</h1>
