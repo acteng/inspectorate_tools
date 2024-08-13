@@ -1,6 +1,5 @@
-export const guidance = {
+const guidance = {
   "Any type of junction": {
-    otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
         "Cycle movement in potential conflict with heavy motor traffic flow.",
@@ -25,7 +24,6 @@ export const guidance = {
   },
 
   "Simple priority T-junction": {
-    otherJunctionTypeWhichApplies: "",
     "Right turn from minor arm": {
       scoreZero: [
         "Heavy traffic movements and/or high bus and HGV flows in potential conflict with cycle movement, with no physical refuge in the centre of the major road (including ghost island junction).",
@@ -70,7 +68,6 @@ export const guidance = {
   },
 
   Crossroads: {
-    otherJunctionTypeWhichApplies: "Simple priority T-junction",
     "Ahead from minor arm": {
       scoreZero: [
         "Heavy opposing traffic movements with no physical refuge (including ghost island junction).",
@@ -85,7 +82,6 @@ export const guidance = {
   },
 
   "Traffic Signals": {
-    otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
         "Single or multiple queuing lanes with no cycle lanes or tracks on approaches.",
@@ -113,7 +109,6 @@ export const guidance = {
   },
 
   Roundabout: {
-    otherJunctionTypeWhichApplies: "",
     "All movements": {
       scoreZero: [
         "Any type of roundabout with high traffic throughput.",
@@ -132,11 +127,74 @@ export const guidance = {
 };
 
 export type JunctionType = keyof typeof guidance;
+export const junctionTypes = Object.keys(guidance) as JunctionType[];
 
-export interface GuidanceObject {
-  junctionType: string;
+export interface Guidance {
+  junctionType: JunctionType;
   movementType: string;
   scoreZero: string[];
   scoreOne: string[];
   scoreTwo: string[];
+}
+
+export function getMovementTypes(junctionType: JunctionType): string[] {
+  return Object.keys(guidance[junctionType]);
+}
+
+const allMovements = "All movements";
+
+export function getGuidance(
+  junctionType: JunctionType,
+  movementType: string,
+): Guidance[] {
+  let result = [];
+
+  // Use both filters
+  // @ts-expect-error Missing keys handled below
+  let case1 = guidance[junctionType][movementType];
+  if (case1) {
+    result.push({
+      junctionType,
+      movementType,
+      ...case1,
+    });
+  }
+
+  // Same junction type, but ignore the movement type
+  // @ts-expect-error Missing keys handled below
+  let case2 = guidance[junctionType][allMovements];
+  if (case2 && movementType != allMovements) {
+    result.push({
+      junctionType,
+      movementType: allMovements,
+      ...case2,
+    });
+  }
+
+  // There's one case where a junction type also includes guidance from another type.
+  if (junctionType == "Crossroads") {
+    // @ts-expect-error Missing keys handled below
+    let case3 = guidance["Simple priority T-junction"][allMovements];
+    if (case3) {
+      result.push({
+        junctionType: "Simple priority T-junction",
+        movementType: allMovements,
+        ...case3,
+      });
+    }
+  }
+
+  // Fallback to the most general case
+  if (junctionType != "Any type of junction") {
+    let case4 = guidance["Any type of junction"][allMovements];
+    if (case4) {
+      result.push({
+        junctionType: "Any type of junction",
+        movementType: allMovements,
+        ...case4,
+      });
+    }
+  }
+
+  return result;
 }

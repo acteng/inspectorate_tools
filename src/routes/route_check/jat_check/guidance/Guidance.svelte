@@ -1,96 +1,20 @@
 <script lang="ts">
   import { Radio, SecondaryButton } from "govuk-svelte";
   import { pairs, ExternalLink, Modal } from "$lib";
-  import { guidance, type GuidanceObject, type JunctionType } from "./data";
+  import {
+    getGuidance,
+    getMovementTypes,
+    junctionTypes,
+    type JunctionType,
+  } from "./data";
 
   let open = false;
 
-  let junctionTypes = Object.keys(guidance) as JunctionType[];
-  let selectedJunctionType: JunctionType = junctionTypes[0];
-  let selectedMovementType: string = "";
+  let junctionType = junctionTypes[0];
+  let movementType = getMovementTypes(junctionType)[0];
 
-  /*$: {
-    movementTypes = getMovementTypes(selectedJunctionType);
-    if (movementTypes.length === 1) {
-      selectedMovementType = movementTypes[0];
-    }
-  }*/
-
-  $: guidanceRows = getGuidance(selectedJunctionType, selectedMovementType);
-
-  // TODO Reconsider/rethink
-  function getMovementTypes(junctionType: JunctionType): string[] {
-    return Object.keys(guidance[junctionType]).filter(
-      (key) => key != "otherJunctionTypeWhichApplies",
-    );
-  }
-
-  // TODO Move to data
-  function getGuidance(
-    junctionType: JunctionType,
-    movementType: string,
-  ): GuidanceObject[] {
-    // If the user changes the junction type, pre-select the first movement type
-    /*
-    if (!movementTypes.includes(movementType)) {
-      selectedMovementType = movementTypes[0];
-      movementType = movementTypes[0];
-    }*/
-
-    let result = [];
-
-    // Use both filters, if possible
-    // @ts-expect-error Missing keys handled below
-    let case1 = guidance[junctionType][movementType];
-    if (case1) {
-      result.push({
-        junctionType,
-        movementType,
-        ...case1,
-      });
-    }
-
-    // Same junction type, but ignore the movement type
-    // @ts-expect-error Missing keys handled below
-    let case2 = guidance[junctionType]["All movements"];
-    if (case2 && movementType != "All movements") {
-      result.push({
-        junctionType,
-        movementType: "All movements",
-        ...case2,
-      });
-    }
-
-    // Another specified junction type?
-    let otherJunctionType =
-      guidance[junctionType].otherJunctionTypeWhichApplies;
-    if (otherJunctionType) {
-      // There's exactly one time this happens, and the movement types don't match up
-      // TODO Wait, then why is this helpful at all?
-      // @ts-expect-error Missing keys handled below
-      let case3 = guidance[otherJunctionType]["All movements"];
-      if (case3) {
-        result.push({
-          junctionType: otherJunctionType,
-          movementType: "All movements",
-          ...case3,
-        });
-      }
-    }
-
-    // Fallback to the most general case
-    if (junctionType != "Any type of junction") {
-      let case4 = guidance["Any type of junction"]["All movements"];
-      if (case4) {
-        result.push({
-          junctionType: "Any type of junction",
-          movementType: "All movements",
-          ...case4,
-        });
-      }
-    }
-
-    return result;
+  function resetMovementType() {
+    movementType = getMovementTypes(junctionType)[0];
   }
 </script>
 
@@ -111,13 +35,14 @@
   <Radio
     label="Type of junction"
     choices={pairs(junctionTypes)}
-    bind:value={selectedJunctionType}
+    bind:value={junctionType}
+    on:change={resetMovementType}
   />
-  {#if getMovementTypes(selectedJunctionType).length > 1}
+  {#if getMovementTypes(junctionType).length > 1}
     <Radio
       label="Type of movement"
-      choices={pairs(getMovementTypes(selectedJunctionType))}
-      bind:value={selectedMovementType}
+      choices={pairs(getMovementTypes(junctionType))}
+      bind:value={movementType}
     />
   {/if}
 
@@ -146,7 +71,7 @@
       </th>
     </tr>
 
-    {#each guidanceRows as row}
+    {#each getGuidance(junctionType, movementType) as row}
       <tr>
         <td class="type-row">
           {row.junctionType}
