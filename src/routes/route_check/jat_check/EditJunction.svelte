@@ -195,6 +195,7 @@
             on:click={() => select({ kind: "arm", idx })}
             on:mouseenter={() => (hoveringSidebar = { kind: "arm", idx })}
             on:mouseleave={() => (hoveringSidebar = null)}
+            hasSlot={false}
           />
         {/each}
         {#if $state.jat[junctionIdx][otherStage].arms.length > 0}

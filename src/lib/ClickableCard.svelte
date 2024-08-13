@@ -3,6 +3,7 @@
 
   export let name: string;
   export let disabled: boolean = false;
+  export let hasSlot = true;
 </script>
 
 <button
@@ -12,13 +13,15 @@
   on:mouseenter
   on:mouseleave
 >
-  <div class="top-section section">
+  <div class="top-section section" class:bordered={hasSlot}>
     <span>{name}</span>
     <img class="arrow" src={rightArrow} alt="Select {name}" />
   </div>
-  <div class="section">
-    <slot />
-  </div>
+  {#if hasSlot}
+    <div class="section">
+      <slot />
+    </div>
+  {/if}
 </button>
 
 <style>
@@ -28,8 +31,10 @@
     width: 100%;
   }
   .top-section {
-    border-bottom: 1px solid black;
     justify-content: space-between;
+  }
+  .bordered {
+    border-bottom: 1px solid black;
   }
   .section {
     display: flex;
