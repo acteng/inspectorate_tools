@@ -4,10 +4,18 @@
   import { initAll } from "govuk-frontend";
   import { Footer } from "govuk-svelte";
   import { page } from "$app/stores";
-  import { getTitle } from "$lib/nav";
+  import { canonicalizePath, getTitle } from "$lib/nav";
   import logoUrl from "$lib/assets/images/ate_logo.png?url";
 
   initAll();
+
+  // The license footer takes valuable vertical screen space on map pages,
+  // where the user is likely to scroll down to see the full map.
+  let useFooter = ![
+    "/route_check/route_map",
+    "/route_check/problems_map",
+    "/route_check/jat_check",
+  ].includes(canonicalizePath($page.url.pathname));
 </script>
 
 <svelte:head>
@@ -26,7 +34,9 @@
   <!-- It's up to each page to use govuk-width-container or not -->
   <slot />
 
-  <Footer />
+  {#if useFooter}
+    <Footer />
+  {/if}
 </div>
 
 <style>
