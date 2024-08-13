@@ -32,19 +32,19 @@
     </ExternalLink>.
   </p>
 
-  <Radio
-    label="Type of junction"
-    choices={pairs(junctionTypes)}
-    bind:value={junctionType}
-    on:change={resetMovementType}
-  />
-  {#if getMovementTypes(junctionType).length > 1}
+  <div style="display: flex; justify-content: space-between">
+    <Radio
+      label="Type of junction"
+      choices={pairs(junctionTypes)}
+      bind:value={junctionType}
+      on:change={resetMovementType}
+    />
     <Radio
       label="Type of movement"
       choices={pairs(getMovementTypes(junctionType))}
       bind:value={movementType}
     />
-  {/if}
+  </div>
 
   <table>
     <tr>
