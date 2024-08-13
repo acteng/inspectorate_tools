@@ -13,7 +13,7 @@
   let open = false;
 
   let fileInput: HTMLInputElement;
-  async function fileLoaded(e: Event) {
+  async function fileLoaded(_: Event) {
     let filename = fileInput.files![0].name;
     try {
       loading = `Loading ${filename}`;

@@ -99,7 +99,7 @@
   <table>
     <tr>
       <th></th>
-      {#each streetFeaturesLeftToRight as value, i (i)}
+      {#each streetFeaturesLeftToRight as _value, i (i)}
         <td>
           <div style="display: flex; justify-content: space-between">
             <SecondaryButton disabled={i == 0} on:click={() => moveLeft(i)}>

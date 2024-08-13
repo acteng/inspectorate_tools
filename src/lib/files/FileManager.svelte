@@ -1,6 +1,4 @@
 <script lang="ts" generics="StateType">
-  import editUrl from "$lib/assets/images/edit.svg?url";
-  import deleteUrl from "$lib/assets/images/delete.svg?url";
   import { base } from "$app/paths";
   import { LocalStorageFiles, downloadGeneratedFile } from "./index";
   import {
@@ -9,7 +7,7 @@
     SecondaryButton,
     AlphaBanner,
   } from "govuk-svelte";
-  import { pairs, stripSuffix, ServiceHeader } from "$lib";
+  import { stripSuffix, ServiceHeader } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
   import { goto } from "$app/navigation";

@@ -2,7 +2,7 @@
   import { state, type State, type Scorecard } from "./data";
   import { base } from "$app/paths";
   import { sum } from "$lib";
-  import { colors, scoreToColor } from "$lib/colors";
+  import { scoreToColor } from "$lib/colors";
 
   export let sections: Section[];
 

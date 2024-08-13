@@ -13,7 +13,7 @@ export async function downloadExcelFile(state: State, currentFile: string) {
   await workbook.xlsx.load(bytes);
 
   // TODO There's some bug writing conditional formatting, so just clear it all out
-  workbook.eachSheet((worksheet, sheetId) => {
+  workbook.eachSheet((worksheet, _sheetId) => {
     // @ts-expect-error This really is there
     worksheet.conditionalFormattings = [];
   });

@@ -1,12 +1,7 @@
 <script lang="ts">
   import { Radio, SecondaryButton } from "govuk-svelte";
   import { pairs, ExternalLink, Modal } from "$lib";
-  import {
-    getGuidance,
-    getMovementTypes,
-    junctionTypes,
-    type JunctionType,
-  } from "./data";
+  import { getGuidance, getMovementTypes, junctionTypes } from "./data";
 
   let open = false;
 

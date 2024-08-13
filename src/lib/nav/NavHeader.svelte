@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { base } from "$app/paths";
-  import { getNavList, getTitle } from "./";
+  import { getNavList } from "./";
 
   export let routeCheckType: "street" | "path" | "";
 

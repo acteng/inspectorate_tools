@@ -97,7 +97,7 @@ export class LocalStorageFiles<StateType> {
         return "Empty";
       }
       return this.describe(state);
-    } catch (error) {
+    } catch (_) {
       return "Error: invalid or broken file";
     }
   }

@@ -16,7 +16,7 @@
 
   let fileInput: HTMLInputElement;
 
-  async function fileLoaded(e: Event) {
+  async function fileLoaded(_: Event) {
     deleteImage();
     let buffer = await fileInput.files![0].arrayBuffer();
     let blob = new Blob([new Uint8Array(buffer)]);
