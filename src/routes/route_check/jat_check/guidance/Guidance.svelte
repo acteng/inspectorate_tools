@@ -50,24 +50,34 @@
     <tr>
       <th class="type-header">Type of junction and movement</th>
       <th class="score-zero-header">
-        <u>Score = 0</u>
-        <br />
-        Suitable only for confident existing cyclists, and may be avoided by some
-        experienced cyclists Conditions are most likely to give rise to the most
-        common collision types
+        <p><b>Score = 0</b></p>
+        <p>
+          Suitable only for confident existing cyclists, and may be avoided by
+          some experienced cyclists
+        </p>
+        <p>
+          Conditions are most likely to give rise to the most common collision
+          types
+        </p>
       </th>
       <th class="score-one-header">
-        <u>Score = 1</u>
-        <br />
-        Likely to be more acceptable to most cyclists, but may still pose problems
-        for less confident or new cyclists The risk of collisions has been reduced
-        by design layout or traffic management interventions
+        <p><b>Score = 1</b></p>
+        <p>
+          Likely to be more acceptable to most cyclists, but may still pose
+          problems for less confident or new cyclists
+        </p>
+        <p>
+          The risk of collisions has been reduced by design layout or traffic
+          management interventions
+        </p>
       </th>
       <th class="score-two-header">
-        <u>Score = 2</u>
-        <br />
-        Suitable for all potential and existing cyclists The potential for collisions
-        has been removed, or managed to a high standard of safety for cyclists
+        <p><b>Score = 2</b></p>
+        <p>Suitable for all potential and existing cyclists</p>
+        <p>
+          The potential for collisions has been removed, or managed to a high
+          standard of safety for cyclists
+        </p>
       </th>
     </tr>
 
@@ -108,20 +118,20 @@
 </Modal>
 
 <style>
-  .type-header {
+  th,
+  th > p {
     color: white;
+  }
+  .type-header {
     background-color: #287f6f;
   }
   .score-zero-header {
-    color: white;
     background-color: #e40521;
   }
   .score-one-header {
-    color: white;
     background-color: #c89213;
   }
   .score-two-header {
-    color: white;
     background-color: #61a730;
   }
 
