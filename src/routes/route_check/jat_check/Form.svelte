@@ -29,13 +29,15 @@
   bind:value={$state.jat[junctionIdx][stage].movements[idx].kind}
 />
 
+{#if $state.jat[junctionIdx][stage].movements[idx].kind == "cycling"}
+  <Guidance />
+{/if}
+
 <Radio
   label="Score"
   choices={scoreChoices}
   bind:value={$state.jat[junctionIdx][stage].movements[idx].score}
 />
-
-<Guidance />
 
 <TextArea
   label="Comments"
