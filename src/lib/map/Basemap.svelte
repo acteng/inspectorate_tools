@@ -4,6 +4,7 @@
 
   let bluesky = "bluesky-api-key";
   let os = "os-api-key";
+  let google = "google-api-key";
 
   let updates = 0;
 
@@ -23,13 +24,22 @@
 
     // Immediately switch to the new basemap after entering a key
     if (value && value.length > 0) {
-      $styleChoice = key == bluesky ? "bluesky" : "os-road";
+      if (key == bluesky) {
+        $styleChoice = "bluesky";
+      } else if (key == os) {
+        $styleChoice = "os-road";
+      } else if (key == google) {
+        $styleChoice = "google";
+      }
     }
   }
 
   let choices = makeChoices();
   function makeChoices(): [string, string][] {
     let list: [string, string][] = [];
+    if (checkKey(google)) {
+      list.push(["google", "Google satellite"]);
+    }
     if (checkKey(bluesky)) {
       list.push(["bluesky", "Bluesky Satellite (12.5cm)"]);
     }
@@ -53,7 +63,7 @@
   </p>
 
   {#key updates}
-    {#each [[bluesky, "Bluesky satellite imagery"], [os, "Ordnance Survey"]] as [key, label]}
+    {#each [[google, "Google satellite imagery"], [bluesky, "Bluesky satellite imagery"], [os, "Ordnance Survey"]] as [key, label]}
       <p>
         {label}
         : {#if checkKey(key)}enabled{:else}disabled{/if}
