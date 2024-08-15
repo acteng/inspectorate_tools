@@ -19,6 +19,6 @@
     ],
   ]}
 >
-  <p>Effectiveness of signage on wayfinding.</p>
+  <p>Description: Effectiveness of signage on wayfinding.</p>
   <p>Mode: All Active Modes</p>
 </Question>

@@ -20,7 +20,8 @@
   ]}
 >
   <p>
-    Measures taken to manage motor traffic in a way that benefits active modes.
+    Description: Measures taken to manage motor traffic in a way that benefits
+    active modes.
   </p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

@@ -10,6 +10,8 @@
     ["0", "<p>Deviation factor against straight line greater than 1.4.</p>"],
   ]}
 >
-  <p>Extent to which the path deviates against the straight line.</p>
+  <p>
+    Description: Extent to which the path deviates against the straight line.
+  </p>
   <p>Mode: All Active Modes</p>
 </Question>

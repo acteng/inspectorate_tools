@@ -20,6 +20,9 @@
     ["N/A", ""],
   ]}
 >
-  <p>Type of dedicated equestrian surface material (e.g. trotting strips).</p>
+  <p>
+    Description: Type of dedicated equestrian surface material (e.g. trotting
+    strips).
+  </p>
   <p>Mode: Horse Riding</p>
 </Question>

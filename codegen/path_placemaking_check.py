@@ -40,6 +40,10 @@ with open("inputs/path-placemaking-check.csv") as inputFile:
             f.write("""  ]}\n""")
             f.write(""">\n""")
 
-            f.write("""  {}\n""".format(html(row["Description"])))
+            f.write(
+                """  {}\n""".format(
+                    html(row["Description"], first_paragraph_prefix="Description: ")
+                )
+            )
             f.write("""</Question>\n""")
             idx += 1

@@ -11,7 +11,7 @@
     ["C", "<p>Major defects.</p>"],
   ]}
 >
-  <p>Cycling surface and maintenance defects:</p>
+  <p>Description: Cycling surface and maintenance defects:</p>
   <ul>
     <li>sharp gradients (&ge;12.5%)</li>
     <li>non cycle friendly ironworks</li>

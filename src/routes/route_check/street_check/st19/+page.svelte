@@ -19,6 +19,6 @@
     ],
   ]}
 >
-  <p>Presence and accessibility of barriers.</p>
+  <p>Description: Presence and accessibility of barriers.</p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

@@ -19,6 +19,6 @@
     ],
   ]}
 >
-  <p>Potential for interaction between modes.</p>
+  <p>Description: Potential for interaction between modes.</p>
   <p>Mode: All Active Modes</p>
 </Question>

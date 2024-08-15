@@ -20,8 +20,8 @@
   ]}
 >
   <p>
-    Extent to which the path deviates against the nearest alternative route open
-    to motor traffic.
+    Description: Extent to which the path deviates against the nearest
+    alternative route open to motor traffic.
   </p>
   <p>Mode: All Active Modes</p>
 </Question>

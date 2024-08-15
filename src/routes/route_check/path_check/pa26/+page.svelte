@@ -14,6 +14,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Surface of shared use facilities.</p>
+  <p>Description: Surface of shared use facilities.</p>
   <p>Mode: All Active Modes</p>
 </Question>

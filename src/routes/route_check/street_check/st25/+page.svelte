@@ -19,6 +19,6 @@
     ],
   ]}
 >
-  <p>Type of walking/wheeling surface material.</p>
+  <p>Description: Type of walking/wheeling surface material.</p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

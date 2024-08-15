@@ -21,8 +21,8 @@
   ]}
 >
   <p>
-    Distance to accessible pick-up, drop-off or hailing points, or blue badge
-    parking facilities.
+    Description: Distance to accessible pick-up, drop-off or hailing points, or
+    blue badge parking facilities.
   </p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

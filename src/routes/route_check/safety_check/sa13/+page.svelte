@@ -18,6 +18,9 @@
     ["N/A", ""],
   ]}
 >
-  <p>Crossing angle (between cyclist desire line and tram or train rails).</p>
+  <p>
+    Description: Crossing angle (between cyclist desire line and tram or train
+    rails).
+  </p>
   <p>Mode: Cycling</p>
 </Question>

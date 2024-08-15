@@ -13,6 +13,6 @@
     ["0", "<p>Long stretches of darkness or no lighting.</p>"],
   ]}
 >
-  <p>Extent of lighting.</p>
+  <p>Description: Extent of lighting.</p>
   <p>Mode: All Active Modes</p>
 </Question>

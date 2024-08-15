@@ -1,7 +1,7 @@
 # Turn an exported Excel string into HTML, handling paragraphs and lists.
 # Bold/underlining doesn't show up in the CSV export, so has to be done
 # manually later.
-def html(x):
+def html(x, first_paragraph_prefix=""):
     x = x.replace('"', '\\"')
     x = x.replace("<", "&lt;")
     x = x.replace(">", "&gt;")
@@ -10,6 +10,7 @@ def html(x):
 
     y = ""
     is_list = False
+    first_paragraph = True
     for line in x.split("\n"):
         # Skip empty lines
         if not line:
@@ -28,6 +29,9 @@ def html(x):
                 y += "</ul>"
 
             y += "<p>"
+            if first_paragraph:
+                y += first_paragraph_prefix
+                first_paragraph = False
             y += line.strip()
             y += "</p>"
 

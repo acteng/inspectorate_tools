@@ -20,6 +20,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Interactions at bus stops.</p>
+  <p>Description: Interactions at bus stops.</p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

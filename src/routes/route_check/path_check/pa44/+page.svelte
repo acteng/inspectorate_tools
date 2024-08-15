@@ -19,7 +19,10 @@
     ],
   ]}
 >
-  <p>Route links to public transport interchanges and other destinations.</p>
+  <p>
+    Description: Route links to public transport interchanges and other
+    destinations.
+  </p>
   <p>Other destinations could include:</p>
   <ul>
     <li>Local high streets</li>

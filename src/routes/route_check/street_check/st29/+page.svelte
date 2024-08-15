@@ -20,6 +20,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Delay to cyclists at junctions.</p>
+  <p>Description: Delay to cyclists at junctions.</p>
   <p>Mode: Cycling</p>
 </Question>

@@ -10,5 +10,5 @@
     ["0", "<p>Uniform, monotonous, boring.</p>"],
   ]}
 >
-  <p>Visual distinctiveness of the streetscape.</p>
+  <p>Description: Visual distinctiveness of the streetscape.</p>
 </Question>

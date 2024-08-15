@@ -20,7 +20,8 @@
   ]}
 >
   <p>
-    Street features to encourage and enhance active travel journeys, such as:
+    Description: Street features to encourage and enhance active travel
+    journeys, such as:
   </p>
   <ul>
     <li>Benches or other seating</li>

@@ -23,6 +23,9 @@
     ],
   ]}
 >
-  <p>Effect of lane widths on conflict between cyclists and motor traffic</p>
+  <p>
+    Description: Effect of lane widths on conflict between cyclists and motor
+    traffic
+  </p>
   <p>Mode: Cycling</p>
 </Question>

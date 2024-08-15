@@ -19,6 +19,8 @@
     ],
   ]}
 >
-  <p>Ability to transition on and off the route safely and easily.</p>
+  <p>
+    Description: Ability to transition on and off the route safely and easily.
+  </p>
   <p>Mode: Cycling</p>
 </Question>

@@ -15,6 +15,8 @@
     ["N/A", ""],
   ]}
 >
-  <p>Effective width next to tram line on a straight run or a curve</p>
+  <p>
+    Description: Effective width next to tram line on a straight run or a curve
+  </p>
   <p>Mode: Cycling</p>
 </Question>

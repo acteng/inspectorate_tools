@@ -20,6 +20,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Effective width of dedicated equestrian spaces.</p>
+  <p>Description: Effective width of dedicated equestrian spaces.</p>
   <p>Mode: Horse Riding</p>
 </Question>

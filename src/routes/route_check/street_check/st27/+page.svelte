@@ -19,6 +19,9 @@
     ],
   ]}
 >
-  <p>Deviation of cycle route against straight line or shortest alternative.</p>
+  <p>
+    Description: Deviation of cycle route against straight line or shortest
+    alternative.
+  </p>
   <p>Mode: Cycling</p>
 </Question>

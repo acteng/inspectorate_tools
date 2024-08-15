@@ -19,5 +19,8 @@
     ],
   ]}
 >
-  <p>Effect of excessive lighting on the environment and user experience.</p>
+  <p>
+    Description: Effect of excessive lighting on the environment and user
+    experience.
+  </p>
 </Question>

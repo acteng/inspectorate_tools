@@ -20,6 +20,9 @@
     ["N/A", ""],
   ]}
 >
-  <p>Effective width for cyclists (when not mixed with motor traffic).</p>
+  <p>
+    Description: Effective width for cyclists (when not mixed with motor
+    traffic).
+  </p>
   <p>Mode: Cycling</p>
 </Question>

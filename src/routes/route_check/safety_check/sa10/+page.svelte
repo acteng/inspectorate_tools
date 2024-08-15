@@ -25,8 +25,8 @@
   ]}
 >
   <p>
-    Required crossing speed at signal crossings (risk of pedestrians coming into
-    conflict with traffic).
+    Description: Required crossing speed at signal crossings (risk of
+    pedestrians coming into conflict with traffic).
   </p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

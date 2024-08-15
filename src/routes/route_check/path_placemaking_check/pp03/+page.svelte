@@ -19,7 +19,9 @@
     ],
   ]}
 >
-  <p>Presence of features which people can engage with, such as:</p>
+  <p>
+    Description: Presence of features which people can engage with, such as:
+  </p>
   <ul>
     <li>Information on local features, flora and fauna</li>
     <li>Public art</li>

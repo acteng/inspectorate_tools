@@ -10,7 +10,7 @@
     ["0", "<p>&gt;5%.</p>"],
   ]}
 >
-  <p>Steepest gradient due to underlying terrain.</p>
+  <p>Description: Steepest gradient due to underlying terrain.</p>
   <p>
     (For gradients at ramps, dropped kerbs and cambers, see metrics SA14 and
     SA15).

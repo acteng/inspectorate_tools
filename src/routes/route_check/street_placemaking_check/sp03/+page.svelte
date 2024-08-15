@@ -14,7 +14,7 @@
   ]}
 >
   <p>
-    Suitability of the street for different activities, creating conditions for
-    positive interactions.
+    Description: Suitability of the street for different activities, creating
+    conditions for positive interactions.
   </p>
 </Question>

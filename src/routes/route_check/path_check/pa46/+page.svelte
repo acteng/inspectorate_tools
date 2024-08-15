@@ -20,6 +20,8 @@
     ["N/A", ""],
   ]}
 >
-  <p>Connectivity with other routes appropriate for horse riding.</p>
+  <p>
+    Description: Connectivity with other routes appropriate for horse riding.
+  </p>
   <p>Mode: Horse Riding</p>
 </Question>

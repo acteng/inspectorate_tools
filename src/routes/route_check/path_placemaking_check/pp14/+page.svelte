@@ -14,7 +14,7 @@
   ]}
 >
   <p>
-    Incorporation of low carbon, sustainable or recycled materials into the
-    design.
+    Description: Incorporation of low carbon, sustainable or recycled materials
+    into the design.
   </p>
 </Question>

@@ -14,6 +14,6 @@
     ],
   ]}
 >
-  <p>Risk of pedestrians tripping due to hazards</p>
+  <p>Description: Risk of pedestrians tripping due to hazards</p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

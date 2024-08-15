@@ -11,6 +11,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Effective width of dedicated walking/wheeling spaces.</p>
+  <p>Description: Effective width of dedicated walking/wheeling spaces.</p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

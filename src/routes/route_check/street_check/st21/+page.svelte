@@ -19,6 +19,6 @@
     ],
   ]}
 >
-  <p>Accessibility of pedestrian facilities by wheelchair.</p>
+  <p>Description: Accessibility of pedestrian facilities by wheelchair.</p>
   <p>Mode: Wheeling</p>
 </Question>

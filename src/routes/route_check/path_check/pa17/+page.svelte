@@ -19,6 +19,6 @@
     ],
   ]}
 >
-  <p>Presence and accessibility of barriers.</p>
+  <p>Description: Presence and accessibility of barriers.</p>
   <p>Mode: All Active Modes</p>
 </Question>

@@ -21,8 +21,8 @@
   ]}
 >
   <p>
-    Quality of connections to public transport interchanges or other
-    destinations.
+    Description: Quality of connections to public transport interchanges or
+    other destinations.
   </p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

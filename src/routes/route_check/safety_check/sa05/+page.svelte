@@ -24,6 +24,9 @@
     ["N/A", ""],
   ]}
 >
-  <p>Cyclist conflict with kerbside activity, including risk of 'dooring'</p>
+  <p>
+    Description: Cyclist conflict with kerbside activity, including risk of
+    'dooring'
+  </p>
   <p>Mode: Cycling</p>
 </Question>

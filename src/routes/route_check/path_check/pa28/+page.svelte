@@ -11,6 +11,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Type of cycling surface material.</p>
+  <p>Description: Type of cycling surface material.</p>
   <p>Mode: Cycling</p>
 </Question>

@@ -10,6 +10,6 @@
     ["0", "<p>Multiple changes of provision on the route.</p>"],
   ]}
 >
-  <p>Consistency of provision for pedestrians and cyclists.</p>
+  <p>Description: Consistency of provision for pedestrians and cyclists.</p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

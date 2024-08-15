@@ -10,6 +10,6 @@
     ["0", "<p>&gt;150m.</p>"],
   ]}
 >
-  <p>Distance between shelter points.</p>
+  <p>Description: Distance between shelter points.</p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

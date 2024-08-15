@@ -16,6 +16,6 @@
     ["0", "<p>Insufficient or inappropriate cycle parking.</p>"],
   ]}
 >
-  <p>Ease of access to cycle parking at key points along path.</p>
+  <p>Description: Ease of access to cycle parking at key points along path.</p>
   <p>Mode: Cycling</p>
 </Question>

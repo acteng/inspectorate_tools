@@ -20,7 +20,7 @@
   ]}
 >
   <p>
-    Natural surveillance from the surrounding environment throughout the day and
-    night.
+    Description: Natural surveillance from the surrounding environment
+    throughout the day and night.
   </p>
 </Question>

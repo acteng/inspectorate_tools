@@ -20,6 +20,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Delay to pedestrians at standalone signal crossings.</p>
+  <p>Description: Delay to pedestrians at standalone signal crossings.</p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

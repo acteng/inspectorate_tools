@@ -20,7 +20,7 @@
   ]}
 >
   <p>
-    Consistency and suitability of materials and path furniture for the wider
-    path environment.
+    Description: Consistency and suitability of materials and path furniture for
+    the wider path environment.
   </p>
 </Question>

@@ -10,5 +10,8 @@
     ["0", "<p>&gt;800m.</p>"],
   ]}
 >
-  <p>Proximity to places where people might stop and have a conversation.</p>
+  <p>
+    Description: Proximity to places where people might stop and have a
+    conversation.
+  </p>
 </Question>

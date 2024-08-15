@@ -49,7 +49,11 @@ with open("inputs/street-check.csv") as inputFile:
             f.write("""  ]}\n""")
             f.write(""">\n""")
 
-            f.write("""  {}\n""".format(html(row["Description"])))
+            f.write(
+                """  {}\n""".format(
+                    html(row["Description"], first_paragraph_prefix="Description: ")
+                )
+            )
             f.write("""  <p>Mode: {}</p>\n""".format(row["Mode"]))
             f.write("""</Question>\n""")
 

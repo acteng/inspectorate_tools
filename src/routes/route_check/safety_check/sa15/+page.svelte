@@ -11,7 +11,7 @@
     ["C", "<p>Major defects.</p>"],
   ]}
 >
-  <p>Walking/wheeling surface and maintenance defects:</p>
+  <p>Description: Walking/wheeling surface and maintenance defects:</p>
   <ul>
     <li>steep camber (horizontal gradient &gt;2.5% )</li>
     <li>

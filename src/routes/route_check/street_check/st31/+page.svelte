@@ -11,6 +11,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Delay to pedestrians at signal controlled junctions.</p>
+  <p>Description: Delay to pedestrians at signal controlled junctions.</p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

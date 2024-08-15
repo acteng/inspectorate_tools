@@ -17,8 +17,8 @@
   ]}
 >
   <p>
-    Presence and frequency of turning points (open and flat areas of at 4m x
-    4m).
+    Description: Presence and frequency of turning points (open and flat areas
+    of at 4m x 4m).
   </p>
   <p>Mode: All Active Modes</p>
 </Question>

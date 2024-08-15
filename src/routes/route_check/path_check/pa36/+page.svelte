@@ -11,6 +11,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Delay to path users at signal crossings.</p>
+  <p>Description: Delay to path users at signal crossings.</p>
   <p>Mode: All Active Modes</p>
 </Question>

@@ -20,6 +20,9 @@
     ["N/A", ""],
   ]}
 >
-  <p>Potential for access points to be blocked by parking or loading.</p>
+  <p>
+    Description: Potential for access points to be blocked by parking or
+    loading.
+  </p>
   <p>Mode: All Active Modes</p>
 </Question>

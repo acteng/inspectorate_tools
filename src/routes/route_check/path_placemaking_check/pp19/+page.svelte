@@ -10,5 +10,5 @@
     ["0", "<p>No sunlight penetration.</p>"],
   ]}
 >
-  <p>How much sunlight the street receives.</p>
+  <p>Description: How much sunlight the street receives.</p>
 </Question>

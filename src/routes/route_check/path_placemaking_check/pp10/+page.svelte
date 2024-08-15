@@ -19,7 +19,10 @@
     ],
   ]}
 >
-  <p>Features to encourage and enhance active travel journeys, such as:</p>
+  <p>
+    Description: Features to encourage and enhance active travel journeys, such
+    as:
+  </p>
   <ul>
     <li>Benches or other seating</li>
     <li>Water fountain</li>

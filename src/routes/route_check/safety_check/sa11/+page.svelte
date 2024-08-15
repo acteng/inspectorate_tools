@@ -24,8 +24,9 @@
   ]}
 >
   <p>
-    Clear walking and wheeling spaces free of permanent obstructions and
-    furniture, reducing risk of pedestrians walking in the carriageway.
+    Description: Clear walking and wheeling spaces free of permanent
+    obstructions and furniture, reducing risk of pedestrians walking in the
+    carriageway.
   </p>
   <p>Mode: Walking / Wheeling</p>
 </Question>

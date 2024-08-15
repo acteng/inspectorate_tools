@@ -21,9 +21,9 @@
   ]}
 >
   <p>
-    Adherence of tactile paving to recommended layouts and colours in 'Guidance
-    on the Use of Tactile Paving Surfaces' and accessibility of signal
-    equipment.
+    Description: Adherence of tactile paving to recommended layouts and colours
+    in 'Guidance on the Use of Tactile Paving Surfaces' and accessibility of
+    signal equipment.
   </p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

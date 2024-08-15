@@ -20,6 +20,6 @@
     ["N/A", ""],
   ]}
 >
-  <p>Effective width of shared use spaces.</p>
+  <p>Description: Effective width of shared use spaces.</p>
   <p>Mode: All Active Modes</p>
 </Question>
