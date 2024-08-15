@@ -4,7 +4,6 @@
 
 <Question
   idx={12}
-  label="Other Internal Treatment Design"
   cases={[
     [
       16,

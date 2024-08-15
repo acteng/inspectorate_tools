@@ -4,7 +4,6 @@
 
 <Question
   idx={5}
-  label="Wheelchair Access"
   cases={[
     [
       "2",

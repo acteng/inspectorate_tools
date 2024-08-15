@@ -4,11 +4,10 @@
 
 <Question
   idx={8}
-  label="Width of Cycling Spaces"
   cases={[
-    ["2", "<p>>3m.</p>"],
+    ["2", "<p>&gt;3m.</p>"],
     ["1", "<p>2.5-3m</p>"],
-    ["0", "<p><2.5m.</p>"],
+    ["0", "<p>&lt;2.5m.</p>"],
     ["N/A", ""],
   ]}
 >

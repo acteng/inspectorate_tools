@@ -4,7 +4,6 @@
 
 <Question
   idx={12}
-  label="Cycling Surface"
   cases={[
     ["2", "<p>Machine-laid asphalt or smooth and firm blocks.</p>"],
     ["1", "<p>Hand-laid asphalt or smooth blocks.</p>"],

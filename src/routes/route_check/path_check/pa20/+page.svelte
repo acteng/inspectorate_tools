@@ -4,7 +4,6 @@
 
 <Question
   idx={4}
-  label="Tactile Information and Signal Equipment"
   cases={[
     [
       "2",

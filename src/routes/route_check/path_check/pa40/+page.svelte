@@ -4,7 +4,6 @@
 
 <Question
   idx={24}
-  label="Cycle Parking"
   cases={[
     [
       "2",

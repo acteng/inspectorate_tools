@@ -4,7 +4,6 @@
 
 <Question
   idx={17}
-  label="Drainage and Water"
   cases={[
     [
       "2",

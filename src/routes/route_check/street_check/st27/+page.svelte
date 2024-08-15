@@ -4,7 +4,6 @@
 
 <Question
   idx={11}
-  label="Deviation of Cycle Route"
   cases={[
     [
       "2",

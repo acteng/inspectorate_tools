@@ -4,7 +4,6 @@
 
 <Question
   idx={29}
-  label="Quality of Connections"
   cases={[
     [
       "2",

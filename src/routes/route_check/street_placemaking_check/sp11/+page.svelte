@@ -4,7 +4,6 @@
 
 <Question
   idx={11}
-  label="Enforcement of Loading and Parking"
   cases={[
     [
       "2",

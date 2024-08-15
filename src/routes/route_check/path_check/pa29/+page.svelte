@@ -4,7 +4,6 @@
 
 <Question
   idx={13}
-  label="Horse Riding Surface"
   cases={[
     [
       "2",

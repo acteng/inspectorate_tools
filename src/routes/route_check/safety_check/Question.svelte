@@ -7,7 +7,6 @@
   import { defaultCriticalType } from "../lists";
 
   export let idx: number;
-  export let label: string;
   export let cases: ["C" | "0" | "1" | "2" | "N/A", string][];
 
   let choices: [string, string, string, string][] = cases.map(
@@ -20,15 +19,13 @@
   );
 </script>
 
-<PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />
-
 <div class="govuk-grid-row" style="margin: 1em">
   <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
   <div class="govuk-grid-column-three-quarters">
-    <h2>SA{idx.toString().padStart(2, "0")}: {label}</h2>
+    <PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />
 
     <slot />
 
@@ -51,7 +48,7 @@
         </a>
       </p>
     {/if}
+
+    <PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />
   </div>
 </div>
-
-<PrevNext {idx} total={16} urlPath="route_check/safety_check/sa" />

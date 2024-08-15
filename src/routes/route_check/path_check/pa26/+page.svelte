@@ -4,7 +4,6 @@
 
 <Question
   idx={10}
-  label="Shared Use Surface"
   cases={[
     ["2", "<p>Bound and porous surface (e.g. Flexipave).</p>"],
     [

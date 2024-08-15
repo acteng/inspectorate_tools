@@ -4,7 +4,6 @@
 
 <Question
   idx={15}
-  label="Accessibility of Access Points"
   cases={[
     [
       "2",

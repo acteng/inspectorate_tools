@@ -4,7 +4,6 @@
 
 <Question
   idx={14}
-  label="Cyclist Delay on Links"
   cases={[
     [
       "2",

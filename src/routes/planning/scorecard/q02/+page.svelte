@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={2} label="Active travel route audit">
+<Question idx={2}>
   <div slot="description">
     <p>
       Has an appropriate assessment on the design and accessibility of existing

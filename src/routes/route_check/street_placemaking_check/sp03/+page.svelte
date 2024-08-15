@@ -4,7 +4,6 @@
 
 <Question
   idx={3}
-  label="Diversity of Activities"
   cases={[
     [
       "2",

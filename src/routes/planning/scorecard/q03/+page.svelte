@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={3} label="Pedestrian access to local amenities">
+<Question idx={3}>
   <div slot="description">
     <p>
       Are most buildings within 800m from a range of amenities (such as primary

@@ -4,11 +4,10 @@
 
 <Question
   idx={9}
-  label="Motor Traffic Volume"
   cases={[
     [
       "2",
-      "<p><200 vehicles in the busiest hour.</p><p>Or, cyclists are protected from motor traffic or off-road entirely and controlled crossings are provided for pedestrians wherever needed.</p>",
+      "<p>&lt;200 vehicles in the busiest hour.</p><p>Or, cyclists are protected from motor traffic or off-road entirely and controlled crossings are provided for pedestrians wherever needed.</p>",
     ],
     [
       "1",
@@ -20,7 +19,7 @@
     ],
     [
       "C",
-      "<p>>1,000 vehicles in the busiest hour.</p><p>Or, over 5% of traffic is HGVs where there are over 500 vehicles in the busiest hour.</p>",
+      "<p>&gt;1,000 vehicles in the busiest hour.</p><p>Or, over 5% of traffic is HGVs where there are over 500 vehicles in the busiest hour.</p>",
     ],
   ]}
 >

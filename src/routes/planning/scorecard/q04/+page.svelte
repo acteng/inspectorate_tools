@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={4} label="Cycling accessibility">
+<Question idx={4}>
   <div slot="description">
     <p>
       Are a range of local amenities, and town centres, railway stations,

@@ -4,7 +4,6 @@
 
 <Question
   idx={16}
-  label="Guard Railing"
   cases={[
     ["2", "<p>No guard railing anywhere on the route.</p>"],
     [

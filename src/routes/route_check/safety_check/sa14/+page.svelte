@@ -4,7 +4,6 @@
 
 <Question
   idx={14}
-  label="Cycling Surface and Maintenance Defects"
   cases={[
     ["2", "<p>No defects.</p>"],
     ["1", "<p>Few minor defects.</p>"],
@@ -14,7 +13,7 @@
 >
   <p>Cycling surface and maintenance defects:</p>
   <ul>
-    <li>sharp gradients (≥12.5%)</li>
+    <li>sharp gradients (&ge;12.5%)</li>
     <li>non cycle friendly ironworks</li>
     <li>raised/sunken covers or gullies</li>
     <li>potholes</li>

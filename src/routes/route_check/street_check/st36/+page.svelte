@@ -4,7 +4,6 @@
 
 <Question
   idx={20}
-  label="Lighting"
   cases={[
     [
       "2",

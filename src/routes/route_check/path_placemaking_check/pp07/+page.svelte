@@ -4,7 +4,6 @@
 
 <Question
   idx={7}
-  label="Maintenance and Upkeep"
   cases={[
     [
       "2",

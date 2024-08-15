@@ -4,7 +4,6 @@
 
 <Question
   idx={4}
-  label="Surveillance and Activity"
   cases={[
     [
       "2",

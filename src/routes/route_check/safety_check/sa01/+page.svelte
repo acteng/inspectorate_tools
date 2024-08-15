@@ -4,7 +4,6 @@
 
 <Question
   idx={1}
-  label="Conflict at Side Roads and Priority Junctions"
   cases={[
     [
       "2",
@@ -12,15 +11,15 @@
     ],
     [
       "1",
-      "<p><2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments.</p>",
+      "<p>&lt;2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments.</p>",
     ],
     [
       "0",
-      "<p><2,500vpd cut across main walking, wheeling or cycling streams, but side roads and priority junctions are untreated.</p>",
+      "<p>&lt;2,500vpd cut across main walking, wheeling or cycling streams, but side roads and priority junctions are untreated.</p>",
     ],
     [
       "C",
-      "<p>>2,500vpd cut across main walking, wheeling or cycling streams.</p>",
+      "<p>&gt;2,500vpd cut across main walking, wheeling or cycling streams.</p>",
     ],
     ["N/A", ""],
   ]}

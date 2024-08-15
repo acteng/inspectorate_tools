@@ -4,7 +4,6 @@
 
 <Question
   idx={5}
-  label="Permeability - Walking and Wheeling"
   cases={[
     [
       4,
@@ -43,7 +42,7 @@
       Suitable footway widths as defined in DfT’s Inclusive Mobility guidance.
     </li>
     <li>Suitable tactile paving surfaces.</li>
-    <li>Acceptable footway camber (≤2.5%).</li>
+    <li>Acceptable footway camber (&le;2.5%).</li>
     <li>Minimal street clutter.</li>
     <li>Appropriate street lighting.</li>
   </ul>

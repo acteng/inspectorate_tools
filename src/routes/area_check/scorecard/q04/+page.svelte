@@ -5,7 +5,6 @@
 
 <Question
   idx={4}
-  label="Crossings - Cycling"
   cases={[
     [
       4,

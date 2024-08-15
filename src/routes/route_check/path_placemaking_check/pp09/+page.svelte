@@ -4,7 +4,6 @@
 
 <Question
   idx={9}
-  label="Visual Interest"
   cases={[
     [
       "2",

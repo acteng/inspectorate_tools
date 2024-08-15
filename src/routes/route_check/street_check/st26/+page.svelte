@@ -4,7 +4,6 @@
 
 <Question
   idx={10}
-  label="Effective Width for Cyclists"
   cases={[
     [
       "2",

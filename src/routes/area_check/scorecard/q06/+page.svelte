@@ -4,7 +4,6 @@
 
 <Question
   idx={6}
-  label="Permeability - Cycling"
   cases={[
     [
       4,

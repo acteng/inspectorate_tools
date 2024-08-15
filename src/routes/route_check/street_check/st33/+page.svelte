@@ -4,7 +4,6 @@
 
 <Question
   idx={17}
-  label="Wayfinding"
   cases={[
     [
       "2",

@@ -4,7 +4,6 @@
 
 <Question
   idx={8}
-  label="Motor Traffic Speed"
   cases={[
     [
       "2",

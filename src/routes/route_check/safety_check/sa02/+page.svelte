@@ -4,7 +4,6 @@
 
 <Question
   idx={2}
-  label="Conflict at Roundabouts and Signal Junctions"
   cases={[
     [
       "2",
@@ -20,7 +19,7 @@
     ],
     [
       "C",
-      "<p>>2,500vpd cut across main walking, wheeling or cycling streams.</p>",
+      "<p>&gt;2,500vpd cut across main walking, wheeling or cycling streams.</p>",
     ],
     ["N/A", ""],
   ]}

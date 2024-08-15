@@ -4,11 +4,10 @@
 
 <Question
   idx={9}
-  label="Width of Horse Riding Spaces"
   cases={[
     [
       "2",
-      "<p>>3.5m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).</p>",
+      "<p>&gt;3.5m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).</p>",
     ],
     [
       "1",
@@ -16,7 +15,7 @@
     ],
     [
       "0",
-      "<p><3m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).</p>",
+      "<p>&lt;3m (excluding pinch points where an absolute minimum width of 2m is maintained over a short distance).</p>",
     ],
     ["N/A", ""],
   ]}

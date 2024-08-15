@@ -4,7 +4,6 @@
 
 <Question
   idx={26}
-  label="Ease of Navigation"
   cases={[
     [
       "2",

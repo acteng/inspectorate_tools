@@ -4,7 +4,6 @@
 
 <Question
   idx={8}
-  label="Consistency of Materials and Path Furniture"
   cases={[
     [
       "2",

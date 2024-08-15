@@ -4,7 +4,6 @@
 
 <Question
   idx={6}
-  label="Visibility of Others"
   cases={[
     [
       "2",

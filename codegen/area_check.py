@@ -27,7 +27,6 @@ with open("inputs/area-check.csv") as inputFile:
 
             questions.append(
                 {
-                    "Label": label,
                     "Description": description,
                     "Cases": [],
                 }
@@ -47,7 +46,6 @@ for idx, question in enumerate(questions):
 
         f.write("""<Question\n""")
         f.write("  idx={" + str(idx + 1) + "}\n")
-        f.write("""  label="{}"\n""".format(question["Label"]))
 
         f.write("""  cases={[\n""")
         for score, answer in question["Cases"]:

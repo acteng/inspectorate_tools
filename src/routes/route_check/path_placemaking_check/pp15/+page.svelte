@@ -4,7 +4,6 @@
 
 <Question
   idx={15}
-  label="Air Pollution - Exposure"
   cases={[
     [
       "2",

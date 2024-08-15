@@ -4,7 +4,6 @@
 
 <Question
   idx={16}
-  label="Pedestrian Delay at Standalone Signal Crossings"
   cases={[
     [
       "2",

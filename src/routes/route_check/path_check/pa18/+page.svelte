@@ -4,7 +4,6 @@
 
 <Question
   idx={2}
-  label="Steps"
   cases={[
     [
       "2",

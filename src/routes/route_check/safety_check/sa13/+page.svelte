@@ -4,7 +4,6 @@
 
 <Question
   idx={13}
-  label="Crossing Angle of Tram/Train Rails"
   cases={[
     [
       "2",

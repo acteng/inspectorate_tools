@@ -4,7 +4,6 @@
 
 <Question
   idx={25}
-  label="Impact of Users on Each Other"
   cases={[
     [
       "2",

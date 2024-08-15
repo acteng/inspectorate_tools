@@ -4,7 +4,6 @@
 
 <Question
   idx={26}
-  label="Consistency of Route"
   cases={[
     ["2", "<p>Provision is consistent throughout the route.</p>"],
     ["1", "<p>Some changes of provision on the route.</p>"],

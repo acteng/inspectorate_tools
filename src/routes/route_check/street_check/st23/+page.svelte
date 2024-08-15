@@ -4,7 +4,6 @@
 
 <Question
   idx={7}
-  label="Access to Toilets"
   cases={[
     [
       "2",

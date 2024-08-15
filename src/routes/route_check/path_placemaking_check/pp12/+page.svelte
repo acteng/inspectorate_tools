@@ -4,7 +4,6 @@
 
 <Question
   idx={12}
-  label="Planting"
   cases={[
     [
       "2",

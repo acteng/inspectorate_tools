@@ -4,7 +4,6 @@
 
 <Question
   idx={23}
-  label="Air Pollution - Proximity"
   cases={[
     [
       "2",

@@ -4,7 +4,6 @@
 
 <Question
   idx={4}
-  label="Trip Hazards"
   cases={[
     ["2", "<p>No trip hazards, level clear surface.</p>"],
     ["1", "<p>Few trip hazards.</p>"],

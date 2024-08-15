@@ -4,7 +4,6 @@
 
 <Question
   idx={23}
-  label="Impact of Motor Traffic on Pedestrians and Cyclists"
   cases={[
     [
       "2",

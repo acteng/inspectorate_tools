@@ -4,7 +4,6 @@
 
 <Question
   idx={8}
-  label="Mesh Density - Cycling"
   cases={[
     [4, "<p>The area has an average mesh density of 250m.</p>"],
     [3, "<p>The area has an average mesh density of 251-400m.</p>"],

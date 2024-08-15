@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={10} label="Travel planning">
+<Question idx={10}>
   <div slot="description">
     <p>
       Does the travel plan outline ambitious mode share targets and measures to

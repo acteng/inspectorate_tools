@@ -4,7 +4,6 @@
 
 <Question
   idx={4}
-  label="Bus Stops"
   cases={[
     [
       "2",

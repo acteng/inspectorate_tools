@@ -4,7 +4,6 @@
 
 <Question
   idx={22}
-  label="Impact of Cycling on Walking"
   cases={[
     ["2", "<p>There are no shared use cycle tracks.</p>"],
     [

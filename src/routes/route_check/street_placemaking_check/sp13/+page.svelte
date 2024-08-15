@@ -4,7 +4,6 @@
 
 <Question
   idx={13}
-  label="Consistency of Materials and Street Furniture"
   cases={[
     [
       "2",

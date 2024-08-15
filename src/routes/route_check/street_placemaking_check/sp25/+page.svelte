@@ -4,7 +4,6 @@
 
 <Question
   idx={25}
-  label="Light Pollution"
   cases={[
     [
       "2",

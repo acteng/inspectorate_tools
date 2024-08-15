@@ -4,7 +4,6 @@
 
 <Question
   idx={10}
-  label="Perimeter Treatment Design"
   cases={[
     [
       16,

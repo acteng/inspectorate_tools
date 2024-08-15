@@ -4,7 +4,6 @@
 
 <Question
   idx={15}
-  label="Cultural Significance"
   cases={[
     [
       "2",

@@ -4,7 +4,6 @@
 
 <Question
   idx={25}
-  label="Route Continuity "
   cases={[
     [
       "2",

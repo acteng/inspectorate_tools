@@ -4,7 +4,6 @@
 
 <Question
   idx={6}
-  label="Access to Taxis and Blue Badge Parking"
   cases={[
     [
       "2",

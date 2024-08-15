@@ -4,7 +4,6 @@
 
 <Question
   idx={18}
-  label="Trees"
   cases={[
     [
       "2",

@@ -32,7 +32,6 @@ with open("inputs/street-placemaking-check.csv") as inputFile:
 
             f.write("""<Question\n""")
             f.write("  idx={" + str(idx) + "}\n")
-            f.write("""  label="{}"\n""".format(row["Metric"]))
 
             f.write("""  cases={[\n""")
             f.write("""    ["2", "{}"],\n""".format(html(row["Green"])))

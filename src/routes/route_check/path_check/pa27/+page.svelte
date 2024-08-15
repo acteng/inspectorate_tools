@@ -4,7 +4,6 @@
 
 <Question
   idx={11}
-  label="Walking and Wheeling Surface"
   cases={[
     [
       "2",

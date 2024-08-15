@@ -4,7 +4,6 @@
 
 <Question
   idx={7}
-  label="Mesh Density - Walking and Wheeling"
   cases={[
     [4, "<p>The area has an average mesh density of 100m</p>"],
     [3, "<p>The area has an average mesh density of 101-250m</p>"],

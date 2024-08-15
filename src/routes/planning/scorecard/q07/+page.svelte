@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={7} label="Site permeability">
+<Question idx={7}>
   <div slot="description">
     <p>
       Does the development prioritise pedestrian and cycle movements within the

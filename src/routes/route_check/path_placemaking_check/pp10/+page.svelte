@@ -4,7 +4,6 @@
 
 <Question
   idx={10}
-  label="Features to Support Walking, Wheeling and Cycling"
   cases={[
     [
       "2",

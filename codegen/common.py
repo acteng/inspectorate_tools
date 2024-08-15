@@ -4,6 +4,9 @@
 def html(x):
     x = x.replace('"', '\\"')
     x = x.replace("<", "&lt;")
+    x = x.replace(">", "&gt;")
+    x = x.replace("≤", "&le;")
+    x = x.replace("≥", "&ge;")
 
     y = ""
     is_list = False

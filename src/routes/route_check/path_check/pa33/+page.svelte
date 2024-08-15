@@ -4,7 +4,6 @@
 
 <Question
   idx={17}
-  label="Deviation of Path Against Straight Line"
   cases={[
     ["2", "<p>Deviation factor against straight line less than 1.2.</p>"],
     ["1", "<p>Deviation factor against straight line 1.2-1.4.</p>"],

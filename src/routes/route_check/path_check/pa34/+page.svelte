@@ -4,7 +4,6 @@
 
 <Question
   idx={18}
-  label="Deviation of Path Against Nearest Alternative Route"
   cases={[
     [
       "2",

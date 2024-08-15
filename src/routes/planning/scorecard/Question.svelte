@@ -6,7 +6,6 @@
   import { state } from "../data";
 
   export let idx: number;
-  export let label: string;
 
   let choices: [string, string, string, string][] = [
     [
@@ -48,15 +47,13 @@
   ];
 </script>
 
-<PrevNext {idx} total={10} urlPath="planning/scorecard/q" />
-
 <div class="govuk-grid-row" style="margin: 1em">
   <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
   <div class="govuk-grid-column-three-quarters">
-    <h2>{idx}. {label}</h2>
+    <PrevNext {idx} total={10} urlPath="planning/scorecard/q" />
 
     <slot name="description" />
 
@@ -77,7 +74,7 @@
 
     <h3>Policy & Guidance</h3>
     <slot name="guidance" />
+
+    <PrevNext {idx} total={10} urlPath="planning/scorecard/q" />
   </div>
 </div>
-
-<PrevNext {idx} total={10} urlPath="planning/scorecard/q" />

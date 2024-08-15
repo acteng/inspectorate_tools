@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={1} label="Trip generation and assignment">
+<Question idx={1}>
   <div slot="description">
     <p>
       Does the application appropriately forecast all day trips to, from and

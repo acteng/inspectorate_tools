@@ -4,7 +4,6 @@
 
 <Question
   idx={8}
-  label="Cycling Surface Material"
   cases={[
     [
       "2",

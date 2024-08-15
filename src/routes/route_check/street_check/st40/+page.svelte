@@ -4,7 +4,6 @@
 
 <Question
   idx={24}
-  label="Transitions for Cyclists"
   cases={[
     [
       "2",

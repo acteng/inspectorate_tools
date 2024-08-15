@@ -4,7 +4,6 @@
   import { state } from "../data";
 
   export let idx: number;
-  export let label: string;
   export let cases: [number, string][];
 
   // Note these are different than the ones used in route check
@@ -27,15 +26,13 @@
   );
 </script>
 
-<PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />
-
 <div class="govuk-grid-row" style="margin: 1em">
   <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
   <div class="govuk-grid-column-three-quarters">
-    <h2>{label}</h2>
+    <PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />
 
     <slot />
 
@@ -46,7 +43,7 @@
       bind:existingNotes={$state.existingScoreNotes[idx - 1]}
       bind:proposedNotes={$state.proposedScoreNotes[idx - 1]}
     />
+
+    <PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />
   </div>
 </div>
-
-<PrevNext {idx} total={13} urlPath="area_check/scorecard/q" />

@@ -4,7 +4,6 @@
 
 <Question
   idx={28}
-  label="Proximity to Destinations"
   cases={[
     [
       "2",

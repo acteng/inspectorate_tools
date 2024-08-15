@@ -4,7 +4,6 @@
 
 <Question
   idx={20}
-  label="Delay at Crossings"
   cases={[
     ["2", "<p>Maximum waiting time up to 40 seconds.</p>"],
     ["1", "<p>Maximum waiting time 40-60 seconds.</p>"],

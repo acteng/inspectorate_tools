@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={8} label="Placemaking">
+<Question idx={8}>
   <div slot="description">
     <p>
       Does the development establish a strong sense of place, with well-designed

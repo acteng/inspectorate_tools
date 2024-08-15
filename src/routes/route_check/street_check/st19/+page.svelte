@@ -4,7 +4,6 @@
 
 <Question
   idx={3}
-  label="Barriers"
   cases={[
     [
       "2",

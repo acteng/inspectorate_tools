@@ -4,7 +4,6 @@
 
 <Question
   idx={8}
-  label="Street Network Layout"
   cases={[
     [
       "2",

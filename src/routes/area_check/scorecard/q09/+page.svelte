@@ -4,7 +4,6 @@
 
 <Question
   idx={9}
-  label="Motorised Through-Traffic"
   cases={[
     [
       8,

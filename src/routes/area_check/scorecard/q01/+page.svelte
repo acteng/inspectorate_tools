@@ -4,7 +4,6 @@
 
 <Question
   idx={1}
-  label="Porosity - Walking and Wheeling"
   cases={[
     [
       4,

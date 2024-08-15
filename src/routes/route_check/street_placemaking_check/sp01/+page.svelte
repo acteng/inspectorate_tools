@@ -4,7 +4,6 @@
 
 <Question
   idx={1}
-  label="Street Engagement for Children"
   cases={[
     [
       "2",

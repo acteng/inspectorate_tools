@@ -4,7 +4,6 @@
 
 <Question
   idx={14}
-  label="Suitability of Crossings"
   cases={[
     [
       "2",

@@ -35,7 +35,6 @@ with open("inputs/planning.csv") as inputFile:
 
             f.write("""<Question\n""")
             f.write("  idx={" + str(idx) + "}\n")
-            f.write("""  label="{}"\n""".format(row["Criterion"].strip()))
             f.write(""">\n""")
 
             f.write(

@@ -4,7 +4,6 @@
 
 <Question
   idx={19}
-  label="Crossing Locations"
   cases={[
     [
       "2",

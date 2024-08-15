@@ -4,7 +4,6 @@
 
 <Question
   idx={16}
-  label="Street Features that Support Walking, Wheeling and Cycling"
   cases={[
     [
       "2",

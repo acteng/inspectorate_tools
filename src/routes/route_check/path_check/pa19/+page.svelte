@@ -4,11 +4,10 @@
 
 <Question
   idx={3}
-  label="Gradient"
   cases={[
-    ["2", "<p><3%.</p>"],
+    ["2", "<p>&lt;3%.</p>"],
     ["1", "<p>3-5%.</p>"],
-    ["0", "<p>>5%.</p>"],
+    ["0", "<p>&gt;5%.</p>"],
   ]}
 >
   <p>Steepest gradient due to underlying terrain.</p>

@@ -4,7 +4,6 @@
 
 <Question
   idx={12}
-  label="Pedestrian Crossing Locations"
   cases={[
     [
       "2",

@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={5} label="Access to public transport">
+<Question idx={5}>
   <div slot="description">
     <p>
       Are all buildings within 400m of a high-frequency bus stop or 800m of a

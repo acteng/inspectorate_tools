@@ -4,7 +4,6 @@
 
 <Question
   idx={20}
-  label="Ancillary Features to Support Fauna"
   cases={[
     ["2", "<p>Multiple features.</p>"],
     ["1", "<p>One feature.</p>"],

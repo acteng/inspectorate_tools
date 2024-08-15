@@ -4,7 +4,6 @@
 
 <Question
   idx={5}
-  label="Ability to Turn Around"
   cases={[
     [
       "2",

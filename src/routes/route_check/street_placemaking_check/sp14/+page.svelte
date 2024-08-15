@@ -4,7 +4,6 @@
 
 <Question
   idx={14}
-  label="Visual Interest"
   cases={[
     ["2", "<p>Lots of variety in the streetscape, unique features.</p>"],
     ["1", "<p>Some variety in the streetscape.</p>"],

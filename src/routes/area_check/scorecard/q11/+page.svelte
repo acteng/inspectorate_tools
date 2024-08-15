@@ -4,7 +4,6 @@
 
 <Question
   idx={11}
-  label="Green Infrastructure Design"
   cases={[
     [
       12,

@@ -4,7 +4,6 @@
 
 <Question
   idx={15}
-  label="Walking/Wheeling Surface and Maintenance Defects"
   cases={[
     ["2", "<p>No defects.</p>"],
     ["1", "<p>Few minor defects.</p>"],
@@ -14,8 +13,10 @@
 >
   <p>Walking/wheeling surface and maintenance defects:</p>
   <ul>
-    <li>steep camber (horizontal gradient >2.5% )</li>
-    <li>steep longitudinal gradients (≥8% if under 1m, ≥5% if 1m or over)</li>
+    <li>steep camber (horizontal gradient &gt;2.5% )</li>
+    <li>
+      steep longitudinal gradients (&ge;8% if under 1m, &ge;5% if 1m or over)
+    </li>
     <li>missing dropped kerbs</li>
     <li>non flush tables</li>
     <li>misleading tactile information</li>

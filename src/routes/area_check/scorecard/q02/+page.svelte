@@ -4,7 +4,6 @@
 
 <Question
   idx={2}
-  label="Porosity - Cycling"
   cases={[
     [
       4,

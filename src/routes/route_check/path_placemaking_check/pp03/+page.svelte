@@ -4,7 +4,6 @@
 
 <Question
   idx={3}
-  label="Points of Interest"
   cases={[
     [
       "2",

@@ -5,7 +5,6 @@
   import { scoreToColor } from "$lib/colors";
 
   export let idx: number;
-  export let label: string;
   export let cases: ["0" | "1" | "2", string][];
 
   let choices: [string, string, string, string][] = cases.map(
@@ -18,15 +17,17 @@
   );
 </script>
 
-<PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />
-
 <div class="govuk-grid-row" style="margin: 1em">
   <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
   <div class="govuk-grid-column-three-quarters">
-    <h2>PP{idx.toString().padStart(2, "0")}: {label}</h2>
+    <PrevNext
+      {idx}
+      total={19}
+      urlPath="route_check/path_placemaking_check/pp"
+    />
 
     <slot />
 
@@ -41,7 +42,11 @@
         idx - 1
       ]}
     />
+
+    <PrevNext
+      {idx}
+      total={19}
+      urlPath="route_check/path_placemaking_check/pp"
+    />
   </div>
 </div>
-
-<PrevNext {idx} total={19} urlPath="route_check/path_placemaking_check/pp" />

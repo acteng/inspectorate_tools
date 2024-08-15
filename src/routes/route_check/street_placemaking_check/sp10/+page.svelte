@@ -4,7 +4,6 @@
 
 <Question
   idx={10}
-  label="Impact of Street Design on Behaviour"
   cases={[
     [
       "2",

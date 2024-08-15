@@ -4,7 +4,6 @@
 
 <Question
   idx={9}
-  label="Place and Movement"
   cases={[
     [
       "2",

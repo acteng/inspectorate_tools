@@ -4,7 +4,6 @@
 
 <Question
   idx={30}
-  label="Connectivity with Other Horse Riding Routes"
   cases={[
     [
       "2",

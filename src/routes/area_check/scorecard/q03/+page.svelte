@@ -4,7 +4,6 @@
 
 <Question
   idx={3}
-  label="Crossings - Walking and Wheeling"
   cases={[
     [
       4,

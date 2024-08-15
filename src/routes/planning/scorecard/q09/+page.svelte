@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={9} label="Cycle parking and trip-end facilities">
+<Question idx={9}>
   <div slot="description">
     <p>
       Does the application provide the requisite amount and quality of cycle

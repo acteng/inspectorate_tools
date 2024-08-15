@@ -4,10 +4,9 @@
 
 <Question
   idx={26}
-  label="Sunlight"
   cases={[
-    ["2", "<p>>2 hours direct sunlight on shortest day of year.</p>"],
-    ["1", "<p><2 hours direct sunlight on shortest day of year.</p>"],
+    ["2", "<p>&gt;2 hours direct sunlight on shortest day of year.</p>"],
+    ["1", "<p>&lt;2 hours direct sunlight on shortest day of year.</p>"],
     ["0", "<p>No sunlight penetration.</p>"],
   ]}
 >

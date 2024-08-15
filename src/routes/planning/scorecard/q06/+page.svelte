@@ -2,7 +2,7 @@
   import Question from "../Question.svelte";
 </script>
 
-<Question idx={6} label="Off-site transport infrastructure">
+<Question idx={6}>
   <div slot="description">
     <p>
       Does the application include proposals to enhance local active travel and

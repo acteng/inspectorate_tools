@@ -4,7 +4,6 @@
 
 <Question
   idx={5}
-  label="Kerbside Activity"
   cases={[
     [
       "2",

@@ -5,7 +5,6 @@
   import { scoreToColor } from "$lib/colors";
 
   export let idx: number;
-  export let label: string;
   export let cases: ["0" | "1" | "2" | "N/A", string][];
 
   let choices: [string, string, string, string][] = cases.map(
@@ -18,15 +17,18 @@
   );
 </script>
 
-<PrevNext {idx} total={30} startIdx={17} urlPath="route_check/path_check/pa" />
-
 <div class="govuk-grid-row" style="margin: 1em">
   <div class="govuk-grid-column-one-quarter">
     <Progress currentIdx={idx} />
   </div>
 
   <div class="govuk-grid-column-three-quarters">
-    <h2>PA{16 + idx}: {label}</h2>
+    <PrevNext
+      {idx}
+      total={30}
+      startIdx={17}
+      urlPath="route_check/path_check/pa"
+    />
 
     <slot />
 
@@ -37,7 +39,12 @@
       bind:existingNotes={$state.pathCheck.existingScoreNotes[idx - 1]}
       bind:proposedNotes={$state.pathCheck.proposedScoreNotes[idx - 1]}
     />
+
+    <PrevNext
+      {idx}
+      total={30}
+      startIdx={17}
+      urlPath="route_check/path_check/pa"
+    />
   </div>
 </div>
-
-<PrevNext {idx} total={30} startIdx={17} urlPath="route_check/path_check/pa" />

@@ -4,7 +4,6 @@
 
 <Question
   idx={5}
-  label="Forward Visibility and Escape Routes"
   cases={[
     [
       "2",

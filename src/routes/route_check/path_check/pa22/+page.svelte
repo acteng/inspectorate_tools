@@ -4,7 +4,6 @@
 
 <Question
   idx={6}
-  label="Width of Shared Use Spaces"
   cases={[
     [
       "2",

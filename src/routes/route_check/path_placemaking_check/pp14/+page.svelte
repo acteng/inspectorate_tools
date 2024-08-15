@@ -4,7 +4,6 @@
 
 <Question
   idx={14}
-  label="Sustainable Materials"
   cases={[
     [
       "2",
