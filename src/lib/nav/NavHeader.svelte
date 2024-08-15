@@ -5,42 +5,40 @@
 
   export let routeCheckType: "street" | "path" | "";
 
+  // TODO Hack for route check only
+  let slices = [
+    [0, 5],
+    [5, 9],
+    [9, 13],
+  ];
+
   $: navList = getNavList($page.url.pathname, routeCheckType);
 </script>
 
 {#if navList}
-  <ol>
-    {#each navList as [path, title, currentlyHere]}
-      <li>
+  {#each slices as [start, end]}
+    <ol>
+      {#each navList.slice(start, end) as [path, title, currentlyHere], idx}
         {#if path}
           <a
             href="{base}{path}"
             class="govuk-link--no-underline hack-no-visited-state"
             class:underline={currentlyHere}
           >
-            {title}
+            {start + idx + 1}. {title}
           </a>
         {:else}
-          {title}
+          <span>{start + idx + 1}. {title}</span>
         {/if}
-      </li>
-    {/each}
-  </ol>
+      {/each}
+    </ol>
+  {/each}
 {/if}
 
 <style>
   ol {
     display: flex;
     justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-bottom: 1px solid #b1b4b6;
-  }
-  li {
-    margin-left: 2em;
-  }
-  li:first-child {
-    margin-left: 0;
   }
 
   .underline {
