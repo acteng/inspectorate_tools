@@ -16,7 +16,7 @@
     Feature,
     Polygon,
   } from "geojson";
-  import { map } from "scheme-sketcher-lib/config";
+  import { map as mapStore } from "scheme-sketcher-lib/config";
   import { BoundaryLayer } from "scheme-sketcher-lib/draw";
   import {
     RouteControls,
@@ -57,8 +57,14 @@
   let url = "";
   let extendRoute = true;
 
+  let map: Map | undefined = undefined;
+  // TODO Can't bind directly to $map, because null vs undefined. Change ss-lib.
+  $: if (map) {
+    $mapStore = map;
+  }
+
   function getRouteSnapper() {
-    routeAuthority = getBestMatch($map!);
+    routeAuthority = getBestMatch($mapStore!);
     let authority = `${routeAuthority.properties.level}_${routeAuthority.properties.name}`;
     url = `https://atip.uk/route-snappers/v3/${authority}.bin.gz`;
   }
@@ -72,7 +78,7 @@
       animate: false,
     });
   }
-  $: initiallyZoom($map);
+  $: initiallyZoom($mapStore);
 
   function getLengthHint(gj: FeatureCollection): number | null {
     let sum = 0;
@@ -113,10 +119,10 @@
   <div
     style="width: 30%; overflow-y: scroll; padding: 10px; border: 1px solid black;"
   >
-    {#if $map}
+    {#if $mapStore}
       {#key url}
         {#if url}
-          <RouteSnapperLoader map={$map} {url} />
+          <RouteSnapperLoader map={$mapStore} {url} />
         {/if}
       {/key}
 
@@ -193,7 +199,7 @@
     {/if}
   </div>
   <div style="position: relative; width: 70%;">
-    <MapLibreMap bind:map={$map}>
+    <MapLibreMap bind:map>
       {#if routeAuthority}
         <BoundaryLayer {cfg} boundaryGeojson={routeAuthority} />
       {/if}

@@ -3,6 +3,11 @@ import { writable } from "svelte/store";
 export let styleChoice = writable(getDefaultStyle());
 
 function getDefaultStyle(): string {
+  let googleKey = window.localStorage.getItem("google-api-key") || "";
+  if (googleKey.length > 0) {
+    return "google";
+  }
+
   let blueskyKey = window.localStorage.getItem("bluesky-api-key") || "";
   if (blueskyKey.length > 0) {
     return "bluesky";

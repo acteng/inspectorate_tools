@@ -3,7 +3,6 @@
   import bearing from "@turf/bearing";
   import { colors } from "$lib/colors";
   import type { FeatureCollection, Feature } from "geojson";
-  import { onMount } from "svelte";
   import { bbox, MapLibreMap, Popup, type Position } from "$lib/map";
   import { GeoreferenceLayer } from "$lib/map/georef";
   import {
@@ -40,7 +39,10 @@
   export let select: (id: ID) => Promise<void>;
   export let stopEditing: () => Promise<void>;
 
-  let map: Map;
+  let map: Map | undefined = undefined;
+  $: if (map) {
+    zoom(false);
+  }
 
   $: hoverGj = getHoverData($state, mode, hoveringSidebar);
 
@@ -76,7 +78,7 @@
   }
 
   async function onMapClick(e: CustomEvent<MapMouseEvent>) {
-    if (streetviewOn) {
+    if (streetviewOn || !map) {
       return;
     }
 
@@ -134,11 +136,6 @@
   async function onFeatureClick(e: CustomEvent<LayerClickInfo>) {
     await select({ kind: "movement", idx: e.detail.features[0].id as number });
   }
-
-  // TODO Wait for loaded
-  onMount(() => {
-    zoom(false);
-  });
 
   // For rendering movements only
   function toGj(state: State): FeatureCollection {
@@ -210,6 +207,9 @@
   }
 
   export function zoom(animate: boolean) {
+    if (!map) {
+      return;
+    }
     let gj = toGj($state);
     for (let arm of $state.jat[junctionIdx][stage].arms) {
       gj.features.push(armFeature(arm, gj.features.length));
@@ -227,7 +227,7 @@
   }
 
   // For plumbing to sidebar controls that need this
-  export function getMap(): Map {
+  export function getMap(): Map | undefined {
     return map;
   }
 </script>
@@ -277,7 +277,9 @@
   {/if}
 
   <RouteMapLayer show={showRoute} id="route-map" />
-  <GeoreferenceLayer {map} beforeId="route-map" />
+  {#if map}
+    <GeoreferenceLayer {map} beforeId="route-map" />
+  {/if}
 
   {#each $state.jat[junctionIdx][stage].arms as arm, idx}
     <Marker
