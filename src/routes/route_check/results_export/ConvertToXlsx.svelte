@@ -21,7 +21,7 @@
 </script>
 
 <SecondaryButton on:click={download}>
-  <img src={downloadUrl} alt="Export .xlsx" style="vertical-align: middle" />
+  <img src={downloadUrl} alt="" style="vertical-align: middle" />
   Export .xlsx
 </SecondaryButton>
 

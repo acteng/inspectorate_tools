@@ -55,7 +55,7 @@
   {#key updates}
     {#each [[bluesky, "Bluesky satellite imagery"], [os, "Ordnance Survey"]] as [key, label]}
       <p>
-        <u>{label}</u>
+        {label}
         : {#if checkKey(key)}enabled{:else}disabled{/if}
       </p>
       <SecondaryButton on:click={() => setKey(key)}>

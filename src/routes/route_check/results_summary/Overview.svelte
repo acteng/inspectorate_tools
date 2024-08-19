@@ -44,7 +44,7 @@
     Overview
   </caption>
   <tr>
-    <th></th>
+    <td></td>
     <th>Complete</th>
     <th>Remaining issues for review</th>
     <th>Next steps</th>
@@ -85,7 +85,7 @@
   </tr>
 
   <tr>
-    <th></th>
+    <td></td>
     <th>Complete</th>
     <th>Net difference</th>
     <th>Next steps</th>

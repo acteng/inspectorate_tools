@@ -70,10 +70,10 @@
     {/each}
 
     <tr>
-      <th>&nbsp;</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <td>&nbsp;</td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
 
     <tr>

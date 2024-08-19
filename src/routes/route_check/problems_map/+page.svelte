@@ -378,7 +378,7 @@
           <IconButton on:click={stopEditing}>
             <img src={panUrl} alt="Move map" style="vertical-align: middle;" />
             {#if mode.mode == "select"}
-              <u>Move map</u>
+              <b>Move map</b>
             {:else}
               Move map
             {/if}
@@ -393,7 +393,7 @@
               <rect width="24" height="24" fill={colors.critical.background} />
             </svg>
             {#if mode.mode == "new-critical"}
-              <u>New critical issue</u>
+              <b>New critical issue</b>
             {:else}
               New critical issue
             {/if}
@@ -408,7 +408,7 @@
               <circle cx="12" cy="12" r="12" fill={policyConflictColor} />
             </svg>
             {#if mode.mode == "new-conflict"}
-              <u>New policy conflict</u>
+              <b>New policy conflict</b>
             {:else}
               New policy conflict
             {/if}
@@ -505,6 +505,6 @@
     left: 50%;
     transform: translate(-50%, 0);
     /* TODO Specified manually */
-    width: 550px;
+    width: 560px;
   }
 </style>

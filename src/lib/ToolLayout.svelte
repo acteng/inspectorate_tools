@@ -54,11 +54,7 @@
   <AlphaBanner />
 
   <div style="margin-bottom: 30px">
-    <img
-      src={folderUrl}
-      alt="Manage my schemes"
-      style="vertical-align: middle;"
-    />
+    <img src={folderUrl} alt="" style="vertical-align: middle;" />
     <a href="{base}/{tool}">Manage my schemes</a>
     <span class="govuk-body" style="margin-left: 8px;">
       You are editing: {$currentFile}
@@ -69,7 +65,7 @@
 </div>
 
 <div class="govuk-width-container">
-  <div class="govuk-heading-l">{getTitle($page.url.pathname)}</div>
+  <h1>{getTitle($page.url.pathname)}</h1>
 </div>
 
 <slot />

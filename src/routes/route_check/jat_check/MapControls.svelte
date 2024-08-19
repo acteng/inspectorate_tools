@@ -240,7 +240,7 @@
       <IconButton on:click={stopEditing}>
         <img src={panUrl} alt="Move map" style="vertical-align: middle;" />
         {#if mode.mode == "select"}
-          <u>Move map</u>
+          <b>Move map</b>
         {:else}
           Move map
         {/if}
@@ -256,7 +256,7 @@
           <text x="6" y="16" fill="#4472c4">A</text>
         </svg>
         {#if mode.mode == "new-arm"}
-          <u>New arm</u>
+          <b>New arm</b>
         {:else}
           New arm
         {/if}
@@ -268,7 +268,7 @@
           style="vertical-align: middle;"
         />
         {#if mode.mode == "new-movement"}
-          <u>New movement</u>
+          <b>New movement</b>
         {:else}
           New movement
         {/if}
@@ -417,6 +417,6 @@
     left: 50%;
     transform: translate(-50%, 0);
     /* TODO Specified manually */
-    width: 450px;
+    width: 460px;
   }
 </style>

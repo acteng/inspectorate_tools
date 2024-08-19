@@ -98,7 +98,7 @@
 >
   <table>
     <tr>
-      <th></th>
+      <td></td>
       {#each streetFeaturesLeftToRight as _value, i (i)}
         <td>
           <div style="display: flex; justify-content: space-between">

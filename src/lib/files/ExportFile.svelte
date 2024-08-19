@@ -17,7 +17,7 @@
 
 <ButtonGroup>
   <SecondaryButton on:click={exportFile}>
-    <img src={downloadUrl} alt="Export .json" />
+    <img src={downloadUrl} alt="" />
     Export .json
   </SecondaryButton>
   <slot />

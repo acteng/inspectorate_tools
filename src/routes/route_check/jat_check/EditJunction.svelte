@@ -206,8 +206,8 @@
 
         <h3>Movements</h3>
         <p>
-          Total JAT score for {stage}
-          <u>{$state.jat[junctionIdx].name || "Untitled junction"}</u>
+          Total JAT score for {stage} junction
+          <i>{$state.jat[junctionIdx].name || "Untitled junction"}</i>
           : {describeScore($state.jat[junctionIdx][stage])}
         </p>
         <SecondaryButton

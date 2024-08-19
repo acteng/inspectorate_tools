@@ -125,7 +125,7 @@
 <div class="govuk-width-container">
   <AlphaBanner />
 
-  <div class="govuk-heading-l" style="margin-top: 30px">Manage my schemes</div>
+  <h1 style="margin-top: 30px">Manage my schemes</h1>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
