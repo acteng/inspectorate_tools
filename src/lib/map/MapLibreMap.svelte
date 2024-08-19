@@ -5,36 +5,40 @@
     type Map,
     NavigationControl,
     ScaleControl,
+    MapEvents,
   } from "svelte-maplibre";
   import Geocoder from "./Geocoder.svelte";
   import { styleChoice } from "./stores";
-  import { onMount } from "svelte";
+  import Attributions from "./Attributions.svelte";
   import googleLogo from "../assets/images/google_on_non_white_hdpi.png?url";
 
   // TODO Is it worth trying to preserve the map while navigating to other pages?
   export let map: Map | undefined = undefined;
 
   let styleSpec: string | StyleSpecification | null = null;
+  let attribution = "";
 
-  onMount(async () => {
-    styleSpec = await getStyle($styleChoice);
-  });
   async function changeStyle(choice: string) {
     styleSpec = await getStyle($styleChoice);
   }
   $: changeStyle($styleChoice);
 
+  let googleKeys: [string, string] | null = null;
+
   async function getStyle(
     choice: string,
   ): Promise<string | StyleSpecification> {
+    googleKeys = null;
     if (choice == "google" || choice == "bluesky" || choice == "os-road") {
-      let tiles, attribution;
+      let tiles;
       if (choice == "google") {
         let apiKey = window.localStorage.getItem("google-api-key") || "";
         let sessionKey = await getGoogleSessionKey(apiKey);
-        attribution = await getGoogleAttribution(apiKey, sessionKey);
 
         tiles = `https://tile.googleapis.com/v1/2dtiles/{z}/{x}/{y}?session=${sessionKey}&key=${apiKey}`;
+        attribution = await getGoogleAttribution(apiKey, sessionKey);
+
+        googleKeys = [apiKey, sessionKey];
       } else if (choice == "bluesky") {
         let apiKey = window.localStorage.getItem("bluesky-api-key") || "";
         tiles = `https://ogc.apps.midgard.airbusds-cint.com/apgb/wmts/rest/apgb:AP-12CM5-GB-LATEST/default/EPSG-3857/EPSG:3857:{z}/{y}/{x}?GUID=${apiKey}&format=image/png&TRANSPARENT=FALSE`;
@@ -45,6 +49,7 @@
         attribution =
           "Contains OS data &copy; Crown copyright and database rights 2024";
       }
+
       return {
         version: 8,
         sources: {
@@ -77,6 +82,7 @@
 
   async function getGoogleSessionKey(apiKey: string): Promise<string> {
     // See https://developers.google.com/maps/documentation/tile/session_tokens
+    // These expire two weeks after being requested, so unless somebody has a tab open longer than that without navigating away or refreshing, we don't need to bother with re-fetching
     try {
       let resp = await fetch(
         `https://tile.googleapis.com/v1/createSession?key=${apiKey}`,
@@ -103,21 +109,27 @@
     }
   }
 
-  // TODO Need to constantly update this based on viewport
   async function getGoogleAttribution(
     apiKey: string,
     sessionKey: string,
   ): Promise<string> {
-    let zoom = 6;
-    let north = 55.94;
-    let south = 49.89;
-    let east = -5.96;
-    let west = 2.31;
+    if (!map) {
+      return "Google (attributions loading)";
+    }
 
-    let url = `https://tile.googleapis.com/tile/v1/viewport?session=${sessionKey}&key=${apiKey}&zoom=${zoom}&north=${north}&south=${south}&east=${east}&west=${west}`;
+    let bounds = map.getBounds();
+    let url = `https://tile.googleapis.com/tile/v1/viewport?session=${sessionKey}&key=${apiKey}&zoom=${Math.floor(map.getZoom())}&north=${bounds.getNorth()}&south=${bounds.getSouth()}&east=${bounds.getEast()}&west=${bounds.getWest()}`;
     let resp = await fetch(url);
     let json = await resp.json();
     return json.copyright;
+  }
+
+  async function updateViewport() {
+    if (!map || $styleChoice != "google" || !googleKeys) {
+      return;
+    }
+    let [apiKey, sessionKey] = googleKeys;
+    attribution = await getGoogleAttribution(apiKey, sessionKey);
   }
 </script>
 
@@ -131,7 +143,10 @@
     let:map
     bind:map
     bounds={[-5.96, 49.89, 2.31, 55.94]}
+    attributionControl={false}
   >
+    <MapEvents on:zoomend={updateViewport} on:moveend={updateViewport} />
+    <Attributions {attribution} />
     <NavigationControl />
     <ScaleControl />
     <Geocoder {map} />
