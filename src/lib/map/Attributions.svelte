@@ -7,7 +7,7 @@
 </script>
 
 <div>
-  {attribution} |
+  {@html attribution} |
   <a href="https://maplibre.org/" target="_blank">MapLibre</a>
 </div>
 
