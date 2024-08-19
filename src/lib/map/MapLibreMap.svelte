@@ -9,6 +9,7 @@
   import Geocoder from "./Geocoder.svelte";
   import { styleChoice } from "./stores";
   import { onMount } from "svelte";
+  import googleLogo from "../assets/images/google_on_non_white_hdpi.png?url";
 
   // TODO Is it worth trying to preserve the map while navigating to other pages?
   export let map: Map | undefined = undefined;
@@ -31,8 +32,9 @@
       if (choice == "google") {
         let apiKey = window.localStorage.getItem("google-api-key") || "";
         let sessionKey = await getGoogleSessionKey(apiKey);
+        attribution = await getGoogleAttribution(apiKey, sessionKey);
+
         tiles = `https://tile.googleapis.com/v1/2dtiles/{z}/{x}/{y}?session=${sessionKey}&key=${apiKey}`;
-        attribution = "TODO Google";
       } else if (choice == "bluesky") {
         let apiKey = window.localStorage.getItem("bluesky-api-key") || "";
         tiles = `https://ogc.apps.midgard.airbusds-cint.com/apgb/wmts/rest/apgb:AP-12CM5-GB-LATEST/default/EPSG-3857/EPSG:3857:{z}/{y}/{x}?GUID=${apiKey}&format=image/png&TRANSPARENT=FALSE`;
@@ -100,6 +102,23 @@
       return "";
     }
   }
+
+  // TODO Need to constantly update this based on viewport
+  async function getGoogleAttribution(
+    apiKey: string,
+    sessionKey: string,
+  ): Promise<string> {
+    let zoom = 6;
+    let north = 55.94;
+    let south = 49.89;
+    let east = -5.96;
+    let west = 2.31;
+
+    let url = `https://tile.googleapis.com/tile/v1/viewport?session=${sessionKey}&key=${apiKey}&zoom=${zoom}&north=${north}&south=${south}&east=${east}&west=${west}`;
+    let resp = await fetch(url);
+    let json = await resp.json();
+    return json.copyright;
+  }
 </script>
 
 {#if styleSpec}
@@ -116,6 +135,17 @@
     <NavigationControl />
     <ScaleControl />
     <Geocoder {map} />
+    {#if $styleChoice == "google"}
+      <img src={googleLogo} alt="Google logo" />
+    {/if}
     <slot />
   </MapLibre>
 {/if}
+
+<style>
+  img {
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+  }
+</style>
