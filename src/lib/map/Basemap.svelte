@@ -5,6 +5,11 @@
   let bluesky = "bluesky-api-key";
   let os = "os-api-key";
   let google = "google-api-key";
+  let privateChoices = [
+    [google, "Google satellite imagery"],
+    [bluesky, "Bluesky satellite imagery"],
+    [os, "Ordnance Survey"],
+  ];
 
   let updates = 0;
 
@@ -63,11 +68,25 @@
   </p>
 
   {#key updates}
-    {#each [[google, "Google satellite imagery"], [bluesky, "Bluesky satellite imagery"], [os, "Ordnance Survey"]] as [key, label]}
+    {#each privateChoices as [key, label]}
       <p>
         {label}
         : {#if checkKey(key)}enabled{:else}disabled{/if}
       </p>
+      {#if key == google}
+        <p>
+          Google <a
+            href="https://cloud.google.com/maps-platform/terms/"
+            target="_blank"
+          >
+            Terms of Use
+          </a>
+          and
+          <a href="https://www.google.com/policies/privacy/" target="_blank">
+            Privacy Policy
+          </a>
+        </p>
+      {/if}
       <SecondaryButton on:click={() => setKey(key)}>
         Set {label} API key
       </SecondaryButton>
