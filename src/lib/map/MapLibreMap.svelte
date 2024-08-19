@@ -11,7 +11,7 @@
   import { onMount } from "svelte";
 
   // TODO Is it worth trying to preserve the map while navigating to other pages?
-  export let map: Map | null = null;
+  export let map: Map | undefined = undefined;
 
   let styleSpec: string | StyleSpecification | null = null;
 

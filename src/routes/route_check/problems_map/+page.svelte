@@ -10,7 +10,7 @@
     CollapsibleCard,
     Checkbox,
   } from "govuk-svelte";
-  import { onMount, tick } from "svelte";
+  import { tick } from "svelte";
   import { bbox } from "$lib/map";
   import { Basemap, MapLibreMap, StreetView } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
@@ -35,8 +35,12 @@
   import panUrl from "$lib/assets/images/pan.svg?url";
   import RouteMapLayer from "../RouteMapLayer.svelte";
 
-  let map: Map;
+  let map: Map | undefined;
   let sidebar: HTMLDivElement;
+
+  $: if (map) {
+    zoom(false);
+  }
 
   type Kind = "critical" | "conflict";
   type ID = { kind: Kind; idx: number };
@@ -106,14 +110,14 @@
 
     let list =
       id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
-    map.flyTo({
+    map?.flyTo({
       center: list[id.idx].point,
       duration: 500,
     });
   }
 
   async function createCopy() {
-    if (mode.mode != "editing") {
+    if (mode.mode != "editing" || !map) {
       return;
     }
     let id = mode.id;
@@ -204,11 +208,6 @@
     }
   }
 
-  // TODO Wait for loaded
-  onMount(() => {
-    zoom(false);
-  });
-
   function deleteItem() {
     if (mode.mode != "editing") {
       return;
@@ -239,6 +238,9 @@
   }
 
   function zoom(animate: boolean) {
+    if (!map) {
+      return;
+    }
     let gj = {
       type: "FeatureCollection" as const,
       features: [
@@ -417,7 +419,9 @@
       {/if}
 
       <RouteMapLayer show={showRoute} id="route-map" />
-      <GeoreferenceLayer {map} beforeId="route-map" />
+      {#if map}
+        <GeoreferenceLayer {map} beforeId="route-map" />
+      {/if}
 
       {#each $state.criticalIssues as critical, idx}
         <Marker
