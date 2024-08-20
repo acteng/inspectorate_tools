@@ -9,6 +9,7 @@
     WarningButton,
     CollapsibleCard,
     Checkbox,
+    IconButton,
   } from "govuk-svelte";
   import { tick } from "svelte";
   import { bbox } from "$lib/map";
@@ -16,7 +17,7 @@
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { ClickableCard, IconButton } from "$lib";
+  import { ClickableCard } from "$lib";
   import {
     state,
     type State,

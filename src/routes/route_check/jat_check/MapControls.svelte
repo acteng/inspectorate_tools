@@ -17,7 +17,7 @@
   } from "svelte-maplibre";
   import type { MapMouseEvent, Map } from "maplibre-gl";
   import { state, type Arm, type Movement, type State } from "../data";
-  import { IconButton } from "$lib";
+  import { IconButton } from "govuk-svelte";
   import panUrl from "$lib/assets/images/pan.svg?url";
   import movementUrl from "$lib/assets/images/movement.svg?url";
   import RouteMapLayer from "../RouteMapLayer.svelte";

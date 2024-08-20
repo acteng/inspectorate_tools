@@ -2,7 +2,6 @@ export { default as ClickableCard } from "./ClickableCard.svelte";
 export { default as DateInput } from "./DateInput.svelte";
 export { default as FancyRadio } from "./FancyRadio.svelte";
 export { default as ExternalLink } from "./ExternalLink.svelte";
-export { default as IconButton } from "./IconButton.svelte";
 export { default as Loading } from "./Loading.svelte";
 export { default as Modal } from "./Modal.svelte";
 export { default as PrevNext } from "./PrevNext.svelte";
