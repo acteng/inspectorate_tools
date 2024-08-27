@@ -33,7 +33,7 @@
 
   let cfg = {
     layerZorder: [
-      // Bluesky
+      // Google
       "raster-basemap",
 
       // The route tool

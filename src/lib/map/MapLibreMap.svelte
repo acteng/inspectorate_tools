@@ -29,7 +29,7 @@
     choice: string,
   ): Promise<string | StyleSpecification> {
     googleKeys = null;
-    if (choice == "google" || choice == "bluesky" || choice == "os-road") {
+    if (choice == "google" || choice == "os-road") {
       let tiles;
       if (choice == "google") {
         let apiKey = window.localStorage.getItem("google-api-key") || "";
@@ -39,10 +39,6 @@
         attribution = await getGoogleAttribution(apiKey, sessionKey);
 
         googleKeys = [apiKey, sessionKey];
-      } else if (choice == "bluesky") {
-        let apiKey = window.localStorage.getItem("bluesky-api-key") || "";
-        tiles = `https://ogc.apps.midgard.airbusds-cint.com/apgb/wmts/rest/apgb:AP-12CM5-GB-LATEST/default/EPSG-3857/EPSG:3857:{z}/{y}/{x}?GUID=${apiKey}&format=image/png&TRANSPARENT=FALSE`;
-        attribution = "Bluesky";
       } else {
         let apiKey = window.localStorage.getItem("os-api-key") || "";
         tiles = `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`;
