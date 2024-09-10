@@ -267,7 +267,7 @@
 
   function labelConflict(conflict: PolicyConflict): string {
     let base = conflict.conflict
-      ? "P00" + getFullPolicyConflict(conflict.conflict)
+      ? "PO0" + getFullPolicyConflict(conflict.conflict)
       : "Unknown conflict";
     return conflict.locationName ? `${base} (${conflict.locationName})` : base;
   }

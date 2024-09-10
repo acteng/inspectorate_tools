@@ -16,7 +16,7 @@
 
 <div class="govuk-width-container">
   {#each questions as question, idx}
-    <h2>P00{idx + 1}: {question}</h2>
+    <h2>PO0{idx + 1}: {question}</h2>
     <div style="display: flex; justify-content: space-evenly">
       <YesNo
         inlineSmall
