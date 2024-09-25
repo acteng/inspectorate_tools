@@ -72,7 +72,7 @@
       bind:value={$state.localGuidance[idx - 1]}
     />
 
-    <h3>Policy & Guidance</h3>
+    <h3>NationPolicy & Guidance</h3>
     <slot name="guidance" />
 
     <PrevNext {idx} total={10} urlPath="planning/scorecard/q" />

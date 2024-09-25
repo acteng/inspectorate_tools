@@ -10,14 +10,19 @@
 </script>
 
 <div class="govuk-width-container">
-  <TextInput label="Site address" bind:value={$state.summary.siteAddress} />
-
   <TextInput
-    label="Local authority reference"
-    bind:value={$state.summary.localAuthorityReference}
+    label="Summary of proposal"
+    bind:value={$state.summary.proposalSummary}
   />
 
-  <TextInput label="ATE reference" bind:value={$state.summary.ateReference} />
+  <Select
+    label="Application type"
+    emptyOption
+    choices={pairs(applicationTypes)}
+    bind:value={$state.summary.applicationType}
+  />
+
+  <TextInput label="Site address" bind:value={$state.summary.siteAddress} />
 
   <Select
     label="Local planning authority"
@@ -33,19 +38,14 @@
     bind:value={$state.summary.localHighwayAuthority}
   />
 
-  <TextInput label="Completed by" bind:value={$state.summary.completedBy} />
+  <TextInput
+    label="Local authority reference (if available)"
+    bind:value={$state.summary.localAuthorityReference}
+  />
+
+  <TextInput label="ATE reference (if available)" bind:value={$state.summary.ateReference} />
+
+  <TextInput label="Completed by (user and organisation name)" bind:value={$state.summary.completedBy} />
 
   <DateInput label="Date" bind:value={$state.summary.date} />
-
-  <Select
-    label="Application type"
-    emptyOption
-    choices={pairs(applicationTypes)}
-    bind:value={$state.summary.applicationType}
-  />
-
-  <TextInput
-    label="Summary of proposal"
-    bind:value={$state.summary.proposalSummary}
-  />
 </div>
