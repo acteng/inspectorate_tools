@@ -149,6 +149,13 @@ function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
 
   for (let [i, pc] of state.policyConflictLog.entries()) {
     sheet.getCell("F" + (8 + i)).value = getFullPolicyConflict(pc.conflict);
+
+    sheet.getCell("F" + (8 + i)).dataValidation = {
+      type: 'list',
+      allowBlank: true,
+      formulae: ["'8.2 Lookups&Forumlae2'!$B$7:$B$12"]
+    };
+
     sheet.getCell("H" + (8 + i)).value = pc.stage;
     sheet.getCell("I" + (8 + i)).value = point(pc.point);
     sheet.getCell("J" + (8 + i)).value = pc.locationName;
@@ -164,6 +171,12 @@ function criticalIssueLog(state: State, workbook: ExcelJS.Workbook) {
 
   for (let [i, ci] of state.criticalIssues.entries()) {
     sheet.getCell("F" + (8 + i)).value = getFullCriticalIssue(ci.criticalIssue);
+    sheet.getCell("F" + (8 + i)).dataValidation = {
+      type: 'list',
+      allowBlank: true,
+      formulae: ["'8.2 Lookups&Forumlae2'!$B$16:$B$39"]
+    };
+
     sheet.getCell("H" + (8 + i)).value = ci.stage;
     sheet.getCell("I" + (8 + i)).value = point(ci.point);
     sheet.getCell("J" + (8 + i)).value = ci.locationName;
