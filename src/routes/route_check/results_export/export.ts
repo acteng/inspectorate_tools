@@ -149,7 +149,6 @@ function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
 
   for (let [i, pc] of state.policyConflictLog.entries()) {
     sheet.getCell("F" + (8 + i)).value = getFullPolicyConflict(pc.conflict);
-
     sheet.getCell("F" + (8 + i)).dataValidation = {
       type: 'list',
       allowBlank: true,
