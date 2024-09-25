@@ -158,11 +158,12 @@ function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("L" + (8 + i)).value = pc.notes;
   }
 
-  for(let i = 0; i <42; i++) {
+  // ExcelJS somehow breaks the dropdown menu on some pages. Manually restore it.
+  for (let i = 0; i < 42; i++) {
     sheet.getCell("F" + (8 + i)).dataValidation = {
-      type: 'list',
+      type: "list",
       allowBlank: true,
-      formulae: ["'8.2 Lookups&Forumlae2'!$B$7:$B$12"]
+      formulae: ["'8.2 Lookups&Forumlae2'!$B$7:$B$12"],
     };
   }
 }
@@ -181,11 +182,12 @@ function criticalIssueLog(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("L" + (8 + i)).value = ci.notes;
   }
 
-  for(let i = 0; i <42; i++) {
+  // Fix the dropdown menu thatExcelJS breaks
+  for (let i = 0; i < 42; i++) {
     sheet.getCell("F" + (8 + i)).dataValidation = {
-      type: 'list',
+      type: "list",
       allowBlank: true,
-      formulae: ["'8.2 Lookups&Forumlae2'!$B$16:$B$39"]
+      formulae: ["'8.2 Lookups&Forumlae2'!$B$16:$B$39"],
     };
   }
 }
