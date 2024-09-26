@@ -1,43 +1,19 @@
 <script lang="ts">
-  import { state } from "../data";
-  import { criteria, getColoursForRating } from "../lists";
+  import Report from "./Report.svelte";
+  import { DefaultButton } from "govuk-svelte";
+  import { base } from "$app/paths";
+
+  function openReportInNewTab() {
+    window.open(`${base}/planning/report/printable`, "_blank");
+  }
 </script>
 
-<div class="govuk-width-container">
-  <table>
-    <caption class="govuk-table__caption govuk-table__caption--m">
-      Application details
-    </caption>
-    {#each [["Summary of proposal", $state.summary.proposalSummary], ["Application type", $state.summary.applicationType], ["Site address", $state.summary.siteAddress], ["Local planning authority", $state.summary.localPlanningAuthority], ["Local highway authority", $state.summary.localHighwayAuthority], ["Local authority reference (if available)", $state.summary.localAuthorityReference], ["ATE reference (if available)", $state.summary.ateReference], ["Completed by (User and Organisation)", $state.summary.completedBy], ["Date", $state.summary.date]] as [key, value]}
-      <tr>
-        <th>{key}</th>
-        <td>{value}</td>
-      </tr>
-    {/each}
-  </table>
-
-  <table>
-    <caption class="govuk-table__caption govuk-table__caption--m">
-      Assessment report
-    </caption>
-    <tr>
-      <th>Criterion</th>
-      <th>Rating</th>
-      <th>Appraiser Comments</th>
-      <th>Relevant Policy & Guidance</th>
-    </tr>
-    {#each criteria as criterion, idx}
-      {@const [backgroundColor, color] = getColoursForRating(
-        $state.ratings[idx],
-      )}
-      <tr>
-        <td style:min-width="125px">{idx + 1}. {criterion}</td>
-        <td style:background={backgroundColor} style:color>
-          {$state.ratings[idx]}
-        </td>
-        <td>{$state.appraiserComments[idx]}</td>
-        <td>{$state.localGuidance[idx]}</td>
-      </tr>
-    {/each}
-  </table>
-</div>
+<Report>
+  <div>
+    <p>
+      The export to PDF button will open a new tab. Right-click the page and
+      select 'Print'. Then you can export to PDF.
+    </p>
+    <DefaultButton on:click={openReportInNewTab}>Export to PDF</DefaultButton>
+  </div>
+</Report>
