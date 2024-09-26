@@ -30,9 +30,7 @@
     </tr>
     {#each criteria as criterion, idx}
       <tr>
-        <td
-        style:min-width={"120px"}
-        >{idx + 1}. {criterion}</td>
+        <td style:min-width={"120px"}>{idx + 1}. {criterion}</td>
         <td
           style:background={getColoursForRating($state.ratings[idx])[2]}
           style:color={getColoursForRating($state.ratings[idx])[3]}
