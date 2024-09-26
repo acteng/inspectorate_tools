@@ -1,6 +1,8 @@
 <script lang="ts">
   import { state } from "../data";
-  import { criteria } from "../lists";
+  import { criteria, getColoursForRating } from "../lists";
+
+  const backgroundAndFontColours = $state.ratings.map(getColoursForRating);
 </script>
 
 <div class="govuk-width-container">
@@ -8,7 +10,7 @@
     <caption class="govuk-table__caption govuk-table__caption--m">
       Application details
     </caption>
-    {#each [["Site address", $state.summary.siteAddress], ["Local authority reference", $state.summary.localAuthorityReference], ["ATE reference", $state.summary.ateReference], ["Local planning authority", $state.summary.localPlanningAuthority], ["Local highway authority", $state.summary.localHighwayAuthority], ["Completed by", $state.summary.completedBy], ["Date", $state.summary.date], ["Application type", $state.summary.applicationType], ["Summary of proposal", $state.summary.proposalSummary]] as [key, value]}
+    {#each [["Summary of proposal", $state.summary.proposalSummary], ["Application type", $state.summary.applicationType], ["Site address", $state.summary.siteAddress], ["Local planning authority", $state.summary.localPlanningAuthority], ["Local highway authority", $state.summary.localHighwayAuthority], ["Local authority reference (if available)", $state.summary.localAuthorityReference], ["ATE reference (if available)", $state.summary.ateReference], ["Completed by (User and Organisation)", $state.summary.completedBy], ["Date", $state.summary.date]] as [key, value]}
       <tr>
         <th>{key}</th>
         <td>{value}</td>
@@ -28,8 +30,15 @@
     </tr>
     {#each criteria as criterion, idx}
       <tr>
-        <td>{idx + 1}. {criterion}</td>
-        <td>{$state.ratings[idx]}</td>
+        <td
+        style:min-width={"120px"}
+        >{idx + 1}. {criterion}</td>
+        <td
+          style:background={getColoursForRating($state.ratings[idx])[2]}
+          style:color={getColoursForRating($state.ratings[idx])[3]}
+        >
+          {$state.ratings[idx]}
+        </td>
         <td>{$state.appraiserComments[idx]}</td>
         <td>{$state.localGuidance[idx]}</td>
       </tr>

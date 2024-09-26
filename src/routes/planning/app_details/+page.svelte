@@ -43,9 +43,15 @@
     bind:value={$state.summary.localAuthorityReference}
   />
 
-  <TextInput label="ATE reference (if available)" bind:value={$state.summary.ateReference} />
+  <TextInput
+    label="ATE reference (if available)"
+    bind:value={$state.summary.ateReference}
+  />
 
-  <TextInput label="Completed by (user and organisation name)" bind:value={$state.summary.completedBy} />
+  <TextInput
+    label="Completed by (user and organisation name)"
+    bind:value={$state.summary.completedBy}
+  />
 
   <DateInput label="Date" bind:value={$state.summary.date} />
 </div>
