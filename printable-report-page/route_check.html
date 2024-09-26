@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		<link rel="modulepreload" href="./_app/immutable/entry/start.Cc5HGgXA.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.DWCsCLoL.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.DGwhun8C.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.X9nDVH86.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.DmjhpTY2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.B2vZYn3d.js">
+  </head>
+  <body data-sveltekit-preload-data="off">
+    <script>
+      document.body.className +=
+        " js-enabled" +
+        ("noModule" in HTMLScriptElement.prototype
+          ? " govuk-frontend-supported"
+          : "");
+    </script>
+    <div style="display: contents">
+			<script>
+				{
+					__sveltekit_1osi389 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/inspectorate_tools/printable-report-page"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.Cc5HGgXA.js"),
+						import("./_app/immutable/entry/app.DmjhpTY2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
