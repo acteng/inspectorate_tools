@@ -18,6 +18,7 @@
   // eslint-disable-next-line no-undef
   export let state: Writable<StateType>;
   export let service: string;
+  // A singular noun like "scheme". The plural noun is assumed to just need an "s" appended
   export let fileObjectType: string;
 
   // If provided, adds an option to import from an XLSX file. Runs the callback
@@ -133,9 +134,9 @@
       <slot name="description" />
 
       <p>
-        On this page you can manage your assessment files. All files are
-        auto-saved in your browser's local storage. You can close your browser
-        and conitnue later.
+        On this page you can manage your {fileObjectType} files. All files are auto-saved
+        in your browser's local storage. You can close your browser and continue
+        later.
       </p>
 
       {#if $currentFile}

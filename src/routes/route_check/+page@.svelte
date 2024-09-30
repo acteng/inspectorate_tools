@@ -18,7 +18,7 @@
   {state}
   {xlsxImporter}
   service="Route Check Tool"
-fileObjectType="scheme"
+  fileObjectType="scheme"
 >
   <p slot="description">
     The Route Check Tool is used by ATE for assessing the design quality of
