@@ -1,0 +1,1 @@
+var s;const e=((s=globalThis.__sveltekit_a17i8o)==null?void 0:s.base)??"/inspectorate_tools/file-management-wording";var a;const t=((a=globalThis.__sveltekit_a17i8o)==null?void 0:a.assets)??e;export{t as a,e as b};
