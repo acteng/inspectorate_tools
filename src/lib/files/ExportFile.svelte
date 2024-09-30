@@ -14,6 +14,7 @@
 </script>
 
 <p><b>You are editing: {$currentFile}</b></p>
+<p>Export the file to send to someone else or use on another computer.</p>
 
 <ButtonGroup>
   <SecondaryButton on:click={exportFile}>

@@ -19,7 +19,7 @@
 </div>
 
 {#each choices as [thisValue, thisLabel, thisBackgroundColor, thisFontColour]}
-  <div class="govuk-grid-row">
+  <div class="govuk-grid-row" style="margin-bottom: 1em;">
     <div class="govuk-grid-column-one-quarter">
       <div class="govuk-radios__item">
         <input
