@@ -559,6 +559,8 @@ export let ratings: [string, string, string, string][] = [
 export function getColoursForRating(
   rating: string | undefined,
 ): [string, string] {
-  let ratingColours = ratings.find((ratingColour) => ratingColour[0] == rating) || ["", "", "white", "black"];
+  let ratingColours = ratings.find(
+    (ratingColour) => ratingColour[0] == rating,
+  ) || ["", "", "white", "black"];
   return [ratingColours[2], ratingColours[3]];
 }

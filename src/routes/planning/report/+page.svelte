@@ -27,13 +27,12 @@
       <th>Relevant Policy & Guidance</th>
     </tr>
     {#each criteria as criterion, idx}
-      {@const [backgroundColor, color] = getColoursForRating($state.ratings[idx])}
+      {@const [backgroundColor, color] = getColoursForRating(
+        $state.ratings[idx],
+      )}
       <tr>
         <td style:min-width="125px">{idx + 1}. {criterion}</td>
-        <td
-          style:background={backgroundColor}
-          style:color={color}
-        >
+        <td style:background={backgroundColor} style:color>
           {$state.ratings[idx]}
         </td>
         <td>{$state.appraiserComments[idx]}</td>
