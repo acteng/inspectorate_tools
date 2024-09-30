@@ -158,6 +158,7 @@ function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("L" + (8 + i)).value = pc.notes;
   }
 
+  // ExcelJS somehow breaks the dropdown menu on some pages. Manually restore it.
   for (let i = 0; i < 42; i++) {
     sheet.getCell("F" + (8 + i)).dataValidation = {
       type: "list",
@@ -181,6 +182,7 @@ function criticalIssueLog(state: State, workbook: ExcelJS.Workbook) {
     sheet.getCell("L" + (8 + i)).value = ci.notes;
   }
 
+  // Fix the dropdown menu thatExcelJS breaks
   for (let i = 0; i < 42; i++) {
     sheet.getCell("F" + (8 + i)).dataValidation = {
       type: "list",
