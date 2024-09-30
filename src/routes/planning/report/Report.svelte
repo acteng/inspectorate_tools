@@ -5,7 +5,7 @@
   import { base } from "$app/paths";
 
   function openReportInNewTab() {
-    window.open(`${base}/planning/report/printable`, "_blank").focus();
+    window.open(`${base}/planning/report/printable`, "_blank");
   }
 </script>
 
