@@ -48,4 +48,3 @@
     {/each}
   </table>
 </div>
-</div>
