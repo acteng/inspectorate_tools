@@ -516,7 +516,7 @@ export let applicationTypes = [
   "Other",
 ];
 
-export let choices: [string, string, string, string][] = [
+export let ratings: [string, string, string, string][] = [
   [
     "Exemplar",
     "The proposal exceeds the standards in policy and guidance and represents an example of best practice.",
@@ -555,10 +555,10 @@ export let choices: [string, string, string, string][] = [
   ],
 ];
 
+// this takes a string which is the rating, and returns a tuple which is [{backgroundColour}, {textColour}]
 export function getColoursForRating(
   rating: string | undefined,
-): [string, string, string, string] {
-  return (
-    choices.find((choice) => choice[0] == rating) || ["", "", "white", "black"]
-  );
+): [string, string] {
+  let ratingColours = ratings.find((ratingColour) => ratingColour[0] == rating) || ["", "", "white", "black"];
+  return [ratingColours[2], ratingColours[3]];
 }

@@ -10,7 +10,7 @@
 </script>
 
 <div class="govuk-width-container">
-  <TextInput
+  <TextArea
     label="Summary of proposal"
     bind:value={$state.summary.proposalSummary}
   />

@@ -1,8 +1,6 @@
 <script lang="ts">
   import { state } from "../data";
   import { criteria, getColoursForRating } from "../lists";
-
-  const backgroundAndFontColours = $state.ratings.map(getColoursForRating);
 </script>
 
 <div class="govuk-width-container">
@@ -29,11 +27,12 @@
       <th>Relevant Policy & Guidance</th>
     </tr>
     {#each criteria as criterion, idx}
+      {@const [backgroundColor, color] = getColoursForRating($state.ratings[idx])}
       <tr>
-        <td style:min-width={"125px"}>{idx + 1}. {criterion}</td>
+        <td style:min-width="125px">{idx + 1}. {criterion}</td>
         <td
-          style:background={getColoursForRating($state.ratings[idx])[2]}
-          style:color={getColoursForRating($state.ratings[idx])[3]}
+          style:background={backgroundColor}
+          style:color={color}
         >
           {$state.ratings[idx]}
         </td>
