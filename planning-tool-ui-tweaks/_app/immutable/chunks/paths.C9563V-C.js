@@ -1,0 +1,1 @@
+var s;const o=((s=globalThis.__sveltekit_1odoezi)==null?void 0:s.base)??"/inspectorate_tools/planning-tool-ui-tweaks";var e;const t=((e=globalThis.__sveltekit_1odoezi)==null?void 0:e.assets)??o;export{t as a,o as b};
