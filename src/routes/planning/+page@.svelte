@@ -8,4 +8,5 @@
   {currentFile}
   {state}
   service="Planning Application Assessment Toolkit"
+  fileObjectType="assessment"
 />

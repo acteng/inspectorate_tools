@@ -18,6 +18,8 @@
   // eslint-disable-next-line no-undef
   export let state: Writable<StateType>;
   export let service: string;
+  // A singular noun like "scheme". The plural noun is assumed to just need an "s" appended
+  export let fileObjectType: string;
 
   // If provided, adds an option to import from an XLSX file. Runs the callback
   // with the ArrayBuffer to produce State. This should throw exceptions if
@@ -125,16 +127,16 @@
 <div class="govuk-width-container">
   <AlphaBanner />
 
-  <h1 style="margin-top: 30px">Manage my schemes</h1>
+  <h1 style="margin-top: 30px">Manage my {fileObjectType}s</h1>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <slot name="description" />
 
       <p>
-        All files are auto-saved in your browser's local storage. You can close
-        your browser and resume later. You can export the file to your computer
-        to share with someone else, and import from a file below.
+        On this page you can manage your {fileObjectType} files. All files are auto-saved
+        in your browser's local storage. You can close your browser and continue
+        later.
       </p>
 
       {#if $currentFile}
@@ -187,12 +189,10 @@
     </div>
 
     <div class="govuk-grid-column-one-third">
-      <h2 class="green-bar">Create or import a file</h2>
-      <SecondaryButton on:click={newFile}>
-        New blank scheme file
-      </SecondaryButton>
-      <hr />
-      <FileInput label="Import from a .json file" onLoad={importJsonFile} />
+      <h2 class="green-bar">Create a new {fileObjectType}</h2>
+      <SecondaryButton on:click={newFile}>Create new file</SecondaryButton>
+      <h2>Import a saved {fileObjectType}</h2>
+      <FileInput label={`Select a .json file`} onLoad={importJsonFile} />
 
       {#if xlsxImporter != null}
         <hr />
