@@ -136,13 +136,17 @@
   function autogenerateMovements() {
     if (
       $state.jat[junctionIdx][stage].movements.length > 0 &&
-      !window.confirm(`Overwrite all movements?`)
+      !window.confirm(`Overwrite all cycling movements?`)
     ) {
       return;
     }
-    $state.jat[junctionIdx][stage].movements = generateMovements(
-      $state.jat[junctionIdx][stage].arms,
+    let ww = $state.jat[junctionIdx][stage].movements.filter(
+      (m) => m.kind == "walking & wheeling",
     );
+    $state.jat[junctionIdx][stage].movements = [
+      ...ww,
+      ...generateMovements($state.jat[junctionIdx][stage].arms),
+    ];
   }
 </script>
 
