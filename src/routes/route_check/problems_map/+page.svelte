@@ -67,8 +67,7 @@
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
   let showRoute = true;
-  let showExisting = true;
-  let showDesign = true;
+  let showResolved = true;
 
   $: if (map) {
     map.getCanvas().style.cursor =
@@ -295,18 +294,8 @@
     }
   }
 
-  function show(
-    showExisting: boolean,
-    showDesign: boolean,
-    stage: "Existing" | "Design" | "",
-  ) {
-    if (!showExisting && stage == "Existing") {
-      return false;
-    }
-    if (!showDesign && stage == "Design") {
-      return false;
-    }
-    return true;
+  function show(showResolved: boolean, resolved: "Yes" | "No" | "") {
+    return showResolved || resolved != "Yes";
   }
 </script>
 
@@ -329,8 +318,7 @@
       </CollapsibleCard>
 
       <CheckboxGroup small>
-        <Checkbox bind:checked={showExisting}>Show existing problems</Checkbox>
-        <Checkbox bind:checked={showDesign}>Show design problems</Checkbox>
+        <Checkbox bind:checked={showResolved}>Show resolved problems</Checkbox>
       </CheckboxGroup>
 
       <div style="background-color: grey; padding: 4px">
@@ -447,7 +435,7 @@
       {/if}
 
       {#each $state.criticalIssues as critical, idx}
-        {#if show(showExisting, showDesign, critical.stage)}
+        {#if show(showResolved, critical.resolved)}
           <Marker
             draggable
             bind:lngLat={critical.point}
@@ -472,7 +460,7 @@
       {/each}
 
       {#each $state.policyConflictLog as conflict, idx}
-        {#if show(showExisting, showDesign, conflict.stage)}
+        {#if show(showResolved, conflict.resolved)}
           <Marker
             draggable
             bind:lngLat={conflict.point}
