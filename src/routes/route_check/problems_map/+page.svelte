@@ -9,6 +9,7 @@
     WarningButton,
     CollapsibleCard,
     Checkbox,
+    CheckboxGroup,
     IconButton,
   } from "govuk-svelte";
   import { tick } from "svelte";
@@ -66,6 +67,7 @@
   let hoveringSidebar: ID | null = null;
   let streetviewOn = false;
   let showRoute = true;
+  let showResolved = true;
 
   $: if (map) {
     map.getCanvas().style.cursor =
@@ -291,6 +293,10 @@
       }
     }
   }
+
+  function show(showResolved: boolean, resolved: "Yes" | "No" | "") {
+    return showResolved || resolved != "Yes";
+  }
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -310,6 +316,10 @@
         <StreetView {map} bind:enabled={streetviewOn} />
         <Checkbox bind:checked={showRoute}>Show route</Checkbox>
       </CollapsibleCard>
+
+      <CheckboxGroup small>
+        <Checkbox bind:checked={showResolved}>Show resolved problems</Checkbox>
+      </CheckboxGroup>
 
       <div style="background-color: grey; padding: 4px">
         <h3>Critical Issue Log</h3>
@@ -425,39 +435,43 @@
       {/if}
 
       {#each $state.criticalIssues as critical, idx}
-        <Marker
-          draggable
-          bind:lngLat={critical.point}
-          on:click={() => select({ kind: "critical", idx })}
-          on:dragend={() => select({ kind: "critical", idx })}
-        >
-          <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" fill={colors.critical.background} />
-            <text
-              x="50%"
-              y="50%"
-              style:fill="white"
-              style:font="bold 15px sans-serif"
-              dominant-baseline="middle"
-              text-anchor="middle"
-            >
-              {critical.criticalIssue}
-            </text>
-          </svg>
-        </Marker>
+        {#if show(showResolved, critical.resolved)}
+          <Marker
+            draggable
+            bind:lngLat={critical.point}
+            on:click={() => select({ kind: "critical", idx })}
+            on:dragend={() => select({ kind: "critical", idx })}
+          >
+            <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" fill={colors.critical.background} />
+              <text
+                x="50%"
+                y="50%"
+                style:fill="white"
+                style:font="bold 15px sans-serif"
+                dominant-baseline="middle"
+                text-anchor="middle"
+              >
+                {critical.criticalIssue}
+              </text>
+            </svg>
+          </Marker>
+        {/if}
       {/each}
 
       {#each $state.policyConflictLog as conflict, idx}
-        <Marker
-          draggable
-          bind:lngLat={conflict.point}
-          on:click={() => select({ kind: "conflict", idx })}
-          on:dragend={() => select({ kind: "conflict", idx })}
-        >
-          <span class="dot" style:background={policyConflictColor}>
-            {conflict.conflict}
-          </span>
-        </Marker>
+        {#if show(showResolved, conflict.resolved)}
+          <Marker
+            draggable
+            bind:lngLat={conflict.point}
+            on:click={() => select({ kind: "conflict", idx })}
+            on:dragend={() => select({ kind: "conflict", idx })}
+          >
+            <span class="dot" style:background={policyConflictColor}>
+              {conflict.conflict}
+            </span>
+          </Marker>
+        {/if}
       {/each}
 
       <GeoJSON data={hoverGj}>
