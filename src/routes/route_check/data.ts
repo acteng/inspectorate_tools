@@ -176,6 +176,18 @@ function validate(state: State) {
 
   // Not entirely sure how, but at least one old file is missing this property and causing problems, so fill it in
   state.summary.networkMap ||= { type: "FeatureCollection", features: [] };
+
+  // Ensure any design-stage problems are unresolved
+  for (let x of state.policyConflictLog) {
+    if (x.stage == "Design") {
+      x.resolved = "";
+    }
+  }
+  for (let x of state.criticalIssues) {
+    if (x.stage == "Design") {
+      x.resolved = "";
+    }
+  }
 }
 
 function describe(state: State): string {
