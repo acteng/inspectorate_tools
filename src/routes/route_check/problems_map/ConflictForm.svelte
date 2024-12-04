@@ -6,6 +6,11 @@
   import { policyConflictChoices } from "../lists";
 
   export let idx: number;
+
+  // By definition, design-stage problems are unresolved
+  $: if ($state.policyConflictLog[idx].stage == "Design") {
+    $state.policyConflictLog[idx].resolved = "";
+  }
 </script>
 
 <div style="display: flex; justify-content: space-evenly">

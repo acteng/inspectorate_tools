@@ -6,6 +6,11 @@
   import { criticalIssueChoices } from "../lists";
 
   export let idx: number;
+
+  // By definition, design-stage problems are unresolved
+  $: if ($state.criticalIssues[idx].stage == "Design") {
+    $state.criticalIssues[idx].resolved = "";
+  }
 </script>
 
 <div style="display: flex; justify-content: space-evenly">
