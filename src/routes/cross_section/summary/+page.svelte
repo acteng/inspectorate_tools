@@ -1,23 +1,23 @@
 <script lang="ts">
-  import { pairs, ExternalLink } from "$lib";
-  import {
-    Select,
-    TextInput,
-    TextArea,
-    DecimalInput,
-    SelectWithCustom,
-  } from "govuk-svelte";
-  import { state } from "../data";
+  import turfLength from "@turf/length";
+  import { ExternalLink, pairs } from "$lib";
   import {
     authorities,
-    transportOrCombinedAuthorities,
-    regions,
-    fundingProgrammes,
     designStages,
+    fundingProgrammes,
+    regions,
+    transportOrCombinedAuthorities,
   } from "$lib/lists";
   import { ContextualMapEntry } from "$lib/map";
   import type { FeatureCollection } from "geojson";
-  import turfLength from "@turf/length";
+  import {
+    DecimalInput,
+    Select,
+    SelectWithCustom,
+    TextArea,
+    TextInput,
+  } from "govuk-svelte";
+  import { state } from "../data";
 
   $: lengthHint = getLengthHint($state.summary.networkMap);
   function getLengthHint(gj: FeatureCollection): number | null {

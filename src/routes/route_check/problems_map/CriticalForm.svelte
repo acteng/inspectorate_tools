@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { YesNo, pairs } from "$lib";
-  import { Select, TextInput, TextArea, Radio } from "govuk-svelte";
+  import { pairs, YesNo } from "$lib";
+  import { bingUrl, streetviewUrl } from "$lib/map";
+  import { Radio, Select, TextArea, TextInput } from "govuk-svelte";
   import { state } from "../data";
-  import { streetviewUrl, bingUrl } from "$lib/map";
   import { criticalIssueChoices } from "../lists";
 
   export let idx: number;

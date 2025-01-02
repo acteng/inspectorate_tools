@@ -1,10 +1,10 @@
 import type {
+  BuiltinStreetFeatureType,
+  CustomFeatures,
+  SpeedLimit,
   State,
   StreetFeatureType,
-  SpeedLimit,
   TrafficData,
-  CustomFeatures,
-  BuiltinStreetFeatureType,
 } from "../data";
 
 // Get the [desirable, absolute] minimum width for a street feature

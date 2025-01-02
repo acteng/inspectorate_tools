@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Radio } from "govuk-svelte";
   import { pairs } from "$lib";
+  import { Radio } from "govuk-svelte";
 
   export let label: string;
   export let value: string;

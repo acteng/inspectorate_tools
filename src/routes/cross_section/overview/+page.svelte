@@ -1,7 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
-  import { currentFile, state } from "../data";
   import { ExportFile } from "$lib/files";
+  import { currentFile, state } from "../data";
 </script>
 
 <div class="govuk-width-container">

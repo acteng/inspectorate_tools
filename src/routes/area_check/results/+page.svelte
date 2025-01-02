@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { state, currentFile } from "../data";
   import { sum } from "$lib";
   import { SecondaryButton, TextArea } from "govuk-svelte";
+  import { currentFile, state } from "../data";
   import { downloadExcelFile } from "./export";
 
   $: totalExisting = sum($state.existingScores.map((x) => parseInt(x || "0")));

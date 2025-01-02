@@ -1,8 +1,8 @@
 <script lang="ts">
   import { FancyRadio, PrevNext } from "$lib";
-  import Progress from "./Progress.svelte";
-  import { state } from "../data";
   import { scoreToColor } from "$lib/colors";
+  import { state } from "../data";
+  import Progress from "./Progress.svelte";
 
   export let idx: number;
   export let cases: ["0" | "1" | "2", string][];

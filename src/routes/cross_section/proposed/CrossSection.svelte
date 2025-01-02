@@ -1,22 +1,21 @@
 <script lang="ts">
+  import { ExternalLink } from "$lib";
   import {
     DefaultButton,
+    GenericSelect,
     SecondaryButton,
     WarningButton,
     WarningText,
-    GenericSelect,
   } from "govuk-svelte";
+  import { afterUpdate } from "svelte";
   import {
     state,
     streetFeatureTypes,
-    type StreetFeatureType,
     type CustomFeatures,
+    type StreetFeatureType,
   } from "../data";
-  import { calculateTotalWidths } from "./logic";
-  import { afterUpdate } from "svelte";
-  import { ExternalLink } from "$lib";
-  import { references, guidance } from "./guidance";
-  import { getWidths, needBuffers } from "./logic";
+  import { guidance, references } from "./guidance";
+  import { calculateTotalWidths, getWidths, needBuffers } from "./logic";
 
   export let streetFeaturesLeftToRight: Array<StreetFeatureType | "">;
   export let sectionType: "Preferred" | "Compromised";

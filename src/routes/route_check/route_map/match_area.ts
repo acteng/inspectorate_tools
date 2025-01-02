@@ -1,9 +1,9 @@
-import type { Map } from "svelte-maplibre";
-import type { Polygon, Feature, FeatureCollection } from "geojson";
-import authoritiesUrl from "$lib/assets/authorities.geojson?url";
 import area from "@turf/area";
+import { featureCollection, polygon } from "@turf/helpers";
 import intersect from "@turf/intersect";
-import { polygon, featureCollection } from "@turf/helpers";
+import authoritiesUrl from "$lib/assets/authorities.geojson?url";
+import type { Feature, FeatureCollection, Polygon } from "geojson";
+import type { Map } from "svelte-maplibre";
 
 let authorities: FeatureCollection<Polygon, { name: string; level: string }> = {
   type: "FeatureCollection",

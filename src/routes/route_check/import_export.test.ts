@@ -1,7 +1,7 @@
-import { describe, it, expect } from "vitest";
 import { dateToString } from "$lib";
-import { getDalog, dalogToState } from "$lib/import";
+import { dalogToState, getDalog } from "$lib/import";
 import ExcelJS from "exceljs";
+import { describe, expect, it } from "vitest";
 import { encodeDalog } from "./dalog/da_log";
 
 describe("import then export", async () => {

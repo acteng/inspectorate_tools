@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Confirmation from "./Confirmation.svelte";
-  import { Radio, WarningText } from "govuk-svelte";
   import { pairs, YesNo } from "$lib";
+  import { Radio, WarningText } from "govuk-svelte";
   import { state } from "../data";
+  import Confirmation from "./Confirmation.svelte";
 </script>
 
 <YesNo

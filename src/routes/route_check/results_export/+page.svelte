@@ -1,13 +1,13 @@
 <script lang="ts">
+  import { criticalIssueId, policyConflictId } from "../dalog/da_log";
   import { state } from "../data";
+  import { getFullCriticalIssue, getFullPolicyConflict } from "../lists";
   import { getResults } from "../results";
   import CheckDetails from "../results_analysis/CheckDetails.svelte";
-  import SummaryOfScheme from "../results_analysis/SummaryOfScheme.svelte";
-  import Overview from "../results_summary/Overview.svelte";
   import PolicyCheckResults from "../results_analysis/PolicyCheckResults.svelte";
   import SafetyCheckResults from "../results_analysis/SafetyCheckResults.svelte";
-  import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
-  import { policyConflictId, criticalIssueId } from "../dalog/da_log";
+  import SummaryOfScheme from "../results_analysis/SummaryOfScheme.svelte";
+  import Overview from "../results_summary/Overview.svelte";
   import ConvertToXlsx from "./ConvertToXlsx.svelte";
 
   let results = getResults($state);

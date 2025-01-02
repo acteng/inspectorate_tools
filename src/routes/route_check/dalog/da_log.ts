@@ -1,6 +1,6 @@
-import { type State, type Scorecard } from "../data";
-import { type Results, type ResultCategory, getResults } from "../results";
-import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
+import { type Scorecard, type State } from "../data";
+import { getFullCriticalIssue, getFullPolicyConflict } from "../lists";
+import { getResults, type ResultCategory, type Results } from "../results";
 
 type Value = string | number | null;
 

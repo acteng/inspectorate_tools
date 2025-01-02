@@ -1,13 +1,13 @@
 <script lang="ts">
+  import type { Map } from "maplibre-gl";
   import { ImageSource, Marker, RasterLayer } from "svelte-maplibre";
   import {
-    settingImage,
+    bottomRight,
     imgSrc,
     opacity,
+    settingImage,
     topLeft,
-    bottomRight,
   } from "./stores";
-  import type { Map } from "maplibre-gl";
 
   export let map: Map;
   export let beforeId: string | undefined;

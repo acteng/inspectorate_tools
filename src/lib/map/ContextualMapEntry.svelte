@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { bbox, MapLibreMap, ContextualMap } from "$lib/map";
+  import { bbox, ContextualMap, MapLibreMap } from "$lib/map";
+  import type { FeatureCollection } from "geojson";
   import {
     ErrorMessage,
     FileInput,
@@ -8,7 +9,6 @@
   } from "govuk-svelte";
   import type { Map } from "maplibre-gl";
   import { onMount } from "svelte";
-  import type { FeatureCollection } from "geojson";
 
   export let gj: FeatureCollection;
 

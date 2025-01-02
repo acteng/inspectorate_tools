@@ -1,6 +1,6 @@
-import { writable } from "svelte/store";
 import { LocalStorageFiles } from "$lib/files";
 import type { FeatureCollection } from "geojson";
+import { writable } from "svelte/store";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");

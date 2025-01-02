@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { state, currentFile } from "../data";
-  import { SecondaryButton, WarningText } from "govuk-svelte";
-  import { downloadExcelFile } from "./export";
   import { Loading, Modal } from "$lib";
   import downloadUrl from "$lib/assets/images/download.svg?url";
+  import { SecondaryButton, WarningText } from "govuk-svelte";
+  import { currentFile, state } from "../data";
+  import { downloadExcelFile } from "./export";
 
   let loading = "";
   let open = false;

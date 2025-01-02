@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { state } from "../data";
-  import Confirmation from "./Confirmation.svelte";
   import { YesNo } from "$lib";
   import { WarningText } from "govuk-svelte";
+  import { state } from "../data";
+  import Confirmation from "./Confirmation.svelte";
 </script>
 
 <YesNo

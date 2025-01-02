@@ -1,7 +1,7 @@
 <script lang="ts">
-  import SectionsPossible from "./SectionsPossible.svelte";
   import { DecimalInput, TextArea } from "govuk-svelte";
   import { state } from "../data";
+  import SectionsPossible from "./SectionsPossible.svelte";
 
   export let i: number;
   export let preferredTotals: [number, number];

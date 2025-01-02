@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { state, type State, type Scorecard } from "./data";
   import { base } from "$app/paths";
   import { sum } from "$lib";
   import { scoreToColor } from "$lib/colors";
+  import { state, type Scorecard, type State } from "./data";
 
   export let sections: Section[];
 

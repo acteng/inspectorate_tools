@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Question from "../Question.svelte";
   import { ExternalLink } from "$lib";
+  import Question from "../Question.svelte";
 </script>
 
 <Question

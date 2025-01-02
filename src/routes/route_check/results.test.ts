@@ -1,6 +1,6 @@
-import { describe, it, expect } from "vitest";
-import { getDalog, dalogToState } from "$lib/import";
+import { dalogToState, getDalog } from "$lib/import";
 import ExcelJS from "exceljs";
+import { describe, expect, it } from "vitest";
 import { getResults, netDifference, type ResultCategory } from "./results";
 
 describe("check path results", async () => {

@@ -1,6 +1,6 @@
-import ExcelJS, { type CellValue } from "exceljs";
-import { emptyState, type State, type Score } from "../routes/route_check/data";
 import type { Position } from "$lib/map";
+import ExcelJS, { type CellValue } from "exceljs";
+import { emptyState, type Score, type State } from "../routes/route_check/data";
 import { dateToString } from "./";
 
 // TODO More cautious error checking

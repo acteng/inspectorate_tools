@@ -1,7 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import { state, type Scorecard } from "../data";
-  import { type Results, netDifference, type ResultCategory } from "../results";
+  import { netDifference, type ResultCategory, type Results } from "../results";
 
   export let results: Results;
 

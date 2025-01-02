@@ -1,6 +1,7 @@
+import { get, type Writable } from "svelte/store";
+
 export { default as FileManager } from "./FileManager.svelte";
 export { default as ExportFile } from "./ExportFile.svelte";
-import { get, type Writable } from "svelte/store";
 
 export class LocalStorageFiles<StateType> {
   // This is used both to organize local storage keys and to determine the

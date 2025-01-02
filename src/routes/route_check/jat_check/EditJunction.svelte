@@ -1,24 +1,23 @@
 <script lang="ts">
-  import { capitaliseWords } from "$lib";
-  import MapControls from "./MapControls.svelte";
+  import { capitaliseWords, ClickableCard } from "$lib";
+  import { colors } from "$lib/colors";
+  import { Basemap, StreetView } from "$lib/map";
+  import { GeoreferenceControls } from "$lib/map/georef";
   import {
-    SecondaryButton,
-    WarningButton,
+    Checkbox,
+    CollapsibleCard,
     DefaultButton,
+    SecondaryButton,
     TextArea,
     TextInput,
-    CollapsibleCard,
-    Checkbox,
+    WarningButton,
   } from "govuk-svelte";
-  import { StreetView, Basemap } from "$lib/map";
-  import { GeoreferenceControls } from "$lib/map/georef";
-  import { colors } from "$lib/colors";
-  import { ClickableCard } from "$lib";
+  import { tick } from "svelte";
   import { state } from "../data";
   import Form from "./Form.svelte";
-  import { tick } from "svelte";
-  import { describeScore } from "./score";
   import { generateMovements } from "./generate";
+  import MapControls from "./MapControls.svelte";
+  import { describeScore } from "./score";
 
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";

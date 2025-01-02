@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { ErrorMessage } from "govuk-svelte";
-  import { createEventDispatcher } from "svelte";
   import { Modal } from "$lib";
   import {
     DecimalInput,
     DefaultButton,
-    TextInput,
+    ErrorMessage,
     SecondaryButton,
+    TextInput,
   } from "govuk-svelte";
-  import { streetFeatureTypes, state } from "../data";
+  import { createEventDispatcher } from "svelte";
+  import { state, streetFeatureTypes } from "../data";
 
   export let initialName: string;
   export let initialWidth: number;

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { state, type State } from "../data";
   import { base } from "$app/paths";
+  import { state, type State } from "../data";
   import { criteria } from "../lists";
 
   export let currentIdx: number;

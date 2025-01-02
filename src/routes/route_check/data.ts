@@ -1,8 +1,8 @@
-import { writable } from "svelte/store";
 import { repeatCloned } from "$lib";
 import { LocalStorageFiles } from "$lib/files";
-import type { FeatureCollection, LineString } from "geojson";
 import type { Position } from "$lib/map";
+import type { FeatureCollection, LineString } from "geojson";
+import { writable } from "svelte/store";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");

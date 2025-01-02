@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { StyleSpecification } from "maplibre-gl";
   import {
+    MapEvents,
     MapLibre,
-    type Map,
     NavigationControl,
     ScaleControl,
-    MapEvents,
+    type Map,
   } from "svelte-maplibre";
+  import googleLogo from "../assets/images/google_on_non_white_hdpi.png?url";
+  import Attributions from "./Attributions.svelte";
   import Geocoder from "./Geocoder.svelte";
   import { styleChoice } from "./stores";
-  import Attributions from "./Attributions.svelte";
-  import googleLogo from "../assets/images/google_on_non_white_hdpi.png?url";
 
   // TODO Is it worth trying to preserve the map while navigating to other pages?
   export let map: Map | undefined = undefined;

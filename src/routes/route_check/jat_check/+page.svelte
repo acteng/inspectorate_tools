@@ -1,14 +1,14 @@
 <script lang="ts">
+  import { ClickableCard } from "$lib";
   import {
     ButtonGroup,
-    TextInput,
     DefaultButton,
     SecondaryButton,
+    TextInput,
     WarningButton,
   } from "govuk-svelte";
   import { state } from "../data";
   import EditJunction from "./EditJunction.svelte";
-  import { ClickableCard } from "$lib";
   import { describeScore } from "./score";
   import Tab from "./Tab.svelte";
 

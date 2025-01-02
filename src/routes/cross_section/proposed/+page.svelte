@@ -1,9 +1,9 @@
 <script lang="ts">
+  import { CollapsibleCard, SecondaryButton } from "govuk-svelte";
+  import { state } from "../data";
   import CrossSection from "./CrossSection.svelte";
   import CustomFeatures from "./CustomFeatures.svelte";
-  import { CollapsibleCard, SecondaryButton } from "govuk-svelte";
   import TrafficData from "./TrafficData.svelte";
-  import { state } from "../data";
 
   let trafficDataOk = false;
 

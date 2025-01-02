@@ -1,5 +1,5 @@
 <script lang="ts" generics="StateType">
-  import { stripSuffix, Loading, Modal } from "$lib";
+  import { Loading, Modal, stripSuffix } from "$lib";
   import { FormElement, SecondaryButton, WarningText } from "govuk-svelte";
   import { createEventDispatcher } from "svelte";
 

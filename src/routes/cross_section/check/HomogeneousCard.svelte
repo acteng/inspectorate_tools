@@ -1,8 +1,8 @@
 <script lang="ts">
+  import { DecimalInput, TextArea, WarningButton } from "govuk-svelte";
   import { createEventDispatcher } from "svelte";
-  import { DecimalInput, WarningButton, TextArea } from "govuk-svelte";
-  import SectionsPossible from "./SectionsPossible.svelte";
   import { state } from "../data";
+  import SectionsPossible from "./SectionsPossible.svelte";
 
   export let i: number;
   export let preferredTotals: [number, number];

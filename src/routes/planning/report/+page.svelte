@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Report from "./Report.svelte";
-  import { DefaultButton } from "govuk-svelte";
   import { base } from "$app/paths";
+  import { DefaultButton } from "govuk-svelte";
+  import Report from "./Report.svelte";
 
   function openReportInNewTab() {
     window.open(`${base}/planning/report/printable`, "_blank");

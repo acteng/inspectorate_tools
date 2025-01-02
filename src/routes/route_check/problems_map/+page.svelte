@@ -1,41 +1,40 @@
 <script lang="ts">
+  import { page } from "$app/stores";
+  import { ClickableCard } from "$lib";
+  import panUrl from "$lib/assets/images/pan.svg?url";
   import { colors, policyConflictColor } from "$lib/colors";
-  import type { Feature, Position, FeatureCollection } from "geojson";
-  import CriticalForm from "./CriticalForm.svelte";
-  import ConflictForm from "./ConflictForm.svelte";
+  import { Basemap, bbox, MapLibreMap, StreetView } from "$lib/map";
+  import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
+  import type { Feature, FeatureCollection, Position } from "geojson";
   import {
-    DefaultButton,
-    SecondaryButton,
-    WarningButton,
-    CollapsibleCard,
     Checkbox,
     CheckboxGroup,
+    CollapsibleCard,
+    DefaultButton,
     IconButton,
+    SecondaryButton,
+    WarningButton,
   } from "govuk-svelte";
+  import type { Map, MapMouseEvent } from "maplibre-gl";
   import { tick } from "svelte";
-  import { bbox } from "$lib/map";
-  import { Basemap, MapLibreMap, StreetView } from "$lib/map";
-  import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
-  import { MapEvents, Marker, GeoJSON, CircleLayer } from "svelte-maplibre";
-  import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { ClickableCard } from "$lib";
+  import { CircleLayer, GeoJSON, MapEvents, Marker } from "svelte-maplibre";
   import {
     state,
-    type State,
     type CriticalIssue,
-    type PolicyConflict,
     type CriticalIssueCode,
+    type PolicyConflict,
     type PolicyConflictCode,
+    type State,
   } from "../data";
   import {
-    getFullPolicyConflict,
-    getTerseCriticalIssue,
     getCriticalIssueIndex,
+    getFullPolicyConflict,
     getPolicyConflictIndex,
+    getTerseCriticalIssue,
   } from "../lists";
-  import { page } from "$app/stores";
-  import panUrl from "$lib/assets/images/pan.svg?url";
   import RouteMapLayer from "../RouteMapLayer.svelte";
+  import ConflictForm from "./ConflictForm.svelte";
+  import CriticalForm from "./CriticalForm.svelte";
 
   let map: Map | undefined;
   let sidebar: HTMLDivElement;

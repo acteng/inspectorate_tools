@@ -1,13 +1,13 @@
 <script lang="ts" generics="StateType">
-  import { type Writable } from "svelte/store";
+  import { goto } from "$app/navigation";
   import { base } from "$app/paths";
-  import { NavHeader, NavFooter, getTitle, canonicalizePath } from "$lib/nav";
   import { page } from "$app/stores";
   import folderUrl from "$lib/assets/images/folder.svg?url";
-  import { goto } from "$app/navigation";
-  import { LocalStorageFiles } from "./files";
+  import { canonicalizePath, getTitle, NavFooter, NavHeader } from "$lib/nav";
   import { AlphaBanner } from "govuk-svelte";
+  import { type Writable } from "svelte/store";
   import { ServiceHeader } from "./";
+  import { LocalStorageFiles } from "./files";
 
   export let state: Writable<StateType>;
   export let currentFile: Writable<string>;

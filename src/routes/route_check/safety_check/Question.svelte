@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { FancyRadio, PrevNext } from "$lib";
-  import Progress from "./Progress.svelte";
-  import { state } from "../data";
-  import { scoreToColor } from "$lib/colors";
   import { base } from "$app/paths";
+  import { FancyRadio, PrevNext } from "$lib";
+  import { scoreToColor } from "$lib/colors";
+  import { state } from "../data";
   import { defaultCriticalType } from "../lists";
+  import Progress from "./Progress.svelte";
 
   export let idx: number;
   export let cases: ["C" | "0" | "1" | "2" | "N/A", string][];

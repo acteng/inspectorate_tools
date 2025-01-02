@@ -1,6 +1,6 @@
 <script lang="ts">
   import { FileManager } from "$lib/files";
-  import { files, currentFile, state } from "../data";
+  import { currentFile, files, state } from "../data";
 </script>
 
 <FileManager

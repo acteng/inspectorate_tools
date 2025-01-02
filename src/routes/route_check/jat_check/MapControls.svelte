@@ -1,25 +1,25 @@
 <script lang="ts">
-  import destination from "@turf/destination";
   import bearing from "@turf/bearing";
+  import destination from "@turf/destination";
+  import movementUrl from "$lib/assets/images/movement.svg?url";
+  import panUrl from "$lib/assets/images/pan.svg?url";
   import { colors } from "$lib/colors";
-  import type { FeatureCollection, Feature } from "geojson";
   import { bbox, MapLibreMap, Popup, type Position } from "$lib/map";
   import { GeoreferenceLayer } from "$lib/map/georef";
-  import {
-    Marker,
-    GeoJSON,
-    LineLayer,
-    hoverStateFilter,
-    type LayerClickInfo,
-    SymbolLayer,
-    CircleLayer,
-    MapEvents,
-  } from "svelte-maplibre";
-  import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { state, type Arm, type Movement, type State } from "../data";
+  import type { Feature, FeatureCollection } from "geojson";
   import { IconButton } from "govuk-svelte";
-  import panUrl from "$lib/assets/images/pan.svg?url";
-  import movementUrl from "$lib/assets/images/movement.svg?url";
+  import type { Map, MapMouseEvent } from "maplibre-gl";
+  import {
+    CircleLayer,
+    GeoJSON,
+    hoverStateFilter,
+    LineLayer,
+    MapEvents,
+    Marker,
+    SymbolLayer,
+    type LayerClickInfo,
+  } from "svelte-maplibre";
+  import { state, type Arm, type Movement, type State } from "../data";
   import RouteMapLayer from "../RouteMapLayer.svelte";
 
   type Mode =

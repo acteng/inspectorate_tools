@@ -1,7 +1,7 @@
 <script lang="ts" generics="StateType">
-  import { type Writable } from "svelte/store";
-  import { ButtonGroup, SecondaryButton } from "govuk-svelte";
   import downloadUrl from "$lib/assets/images/download.svg?url";
+  import { ButtonGroup, SecondaryButton } from "govuk-svelte";
+  import { type Writable } from "svelte/store";
   import { downloadGeneratedFile } from "./index";
 
   export let currentFile: Writable<string>;

@@ -2,7 +2,7 @@
   import { Checkbox, Radio } from "govuk-svelte";
   import type { Map, MapMouseEvent } from "maplibre-gl";
   import { onDestroy } from "svelte";
-  import { streetviewUrl, bingUrl } from "./";
+  import { bingUrl, streetviewUrl } from "./";
 
   export let map: Map | undefined;
 

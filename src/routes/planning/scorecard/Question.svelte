@@ -1,10 +1,10 @@
 <script lang="ts">
   import { PrevNext } from "$lib";
   import { TextArea } from "govuk-svelte";
+  import { state } from "../data";
   import { ratings as choices } from "../lists";
   import ColoredRadio from "./ColoredRadio.svelte";
   import Progress from "./Progress.svelte";
-  import { state } from "../data";
 
   export let idx: number;
 </script>

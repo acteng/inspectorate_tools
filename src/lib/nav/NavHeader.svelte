@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { page } from "$app/stores";
   import { base } from "$app/paths";
+  import { page } from "$app/stores";
   import { getNavList } from "./";
 
   export let routeCheckType: "street" | "path" | "";

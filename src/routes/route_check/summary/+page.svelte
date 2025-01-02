@@ -1,21 +1,21 @@
 <script lang="ts">
-  import { pairs, DateInput } from "$lib";
-  import {
-    AutocompleteTextInput,
-    RadioWithCustom,
-    TextInput,
-    TextArea,
-    SelectWithCustom,
-    Radio,
-  } from "govuk-svelte";
-  import { state } from "../data";
+  import { DateInput, pairs } from "$lib";
   import {
     authorities,
-    transportOrCombinedAuthorities,
-    regions,
-    fundingProgrammes,
     designStages,
+    fundingProgrammes,
+    regions,
+    transportOrCombinedAuthorities,
   } from "$lib/lists";
+  import {
+    AutocompleteTextInput,
+    Radio,
+    RadioWithCustom,
+    SelectWithCustom,
+    TextArea,
+    TextInput,
+  } from "govuk-svelte";
+  import { state } from "../data";
 </script>
 
 <div class="govuk-width-container">

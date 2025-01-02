@@ -1,16 +1,16 @@
 <script lang="ts" generics="StateType">
+  import { goto } from "$app/navigation";
   import { base } from "$app/paths";
-  import { LocalStorageFiles, downloadGeneratedFile } from "./index";
+  import { ServiceHeader, stripSuffix } from "$lib";
   import {
-    FileInput,
-    WarningButton,
-    SecondaryButton,
     AlphaBanner,
+    FileInput,
+    SecondaryButton,
+    WarningButton,
   } from "govuk-svelte";
-  import { stripSuffix, ServiceHeader } from "$lib";
   import { type Writable } from "svelte/store";
   import ImportXlsx from "./ImportXlsx.svelte";
-  import { goto } from "$app/navigation";
+  import { downloadGeneratedFile, LocalStorageFiles } from "./index";
 
   // eslint-disable-next-line no-undef
   export let files: LocalStorageFiles<StateType>;

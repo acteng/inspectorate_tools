@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { sum } from "$lib";
   import { state, type State } from "../data";
-  import { base } from "$app/paths";
 
   export let currentIdx: number;
 

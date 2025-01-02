@@ -1,17 +1,17 @@
 <script lang="ts">
   import {
-    SecondaryButton,
     ButtonGroup,
     DefaultButton,
     FormElement,
+    SecondaryButton,
     WarningButton,
   } from "govuk-svelte";
   import {
-    topLeft,
     bottomRight,
-    settingImage,
     imgSrc,
     opacity,
+    settingImage,
+    topLeft,
   } from "./stores";
 
   let fileInput: HTMLInputElement;

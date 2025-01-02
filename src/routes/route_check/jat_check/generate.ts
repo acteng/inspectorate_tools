@@ -1,9 +1,9 @@
-import type { Arm, Movement } from "../data";
-import type { Position } from "$lib/map";
-import destination from "@turf/destination";
 import bearing from "@turf/bearing";
-import distance from "@turf/distance";
 import turfCenter from "@turf/center";
+import destination from "@turf/destination";
+import distance from "@turf/distance";
+import type { Position } from "$lib/map";
+import type { Arm, Movement } from "../data";
 
 export function generateMovements(arms: Arm[]): Movement[] {
   // Sort arms around center in CCW order

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { pairs, DateInput } from "$lib";
-  import { Select, TextInput, TextArea } from "govuk-svelte";
+  import { DateInput, pairs } from "$lib";
+  import { Select, TextArea, TextInput } from "govuk-svelte";
   import { state } from "../data";
   import {
-    localPlanningAuthorities,
-    localHighwayAuthorities,
     applicationTypes,
+    localHighwayAuthorities,
+    localPlanningAuthorities,
   } from "../lists";
 </script>
 

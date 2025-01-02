@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { FeatureCollection } from "geojson";
   import {
-    GeoJSON,
-    hoverStateFilter,
     CircleLayer,
     FillLayer,
+    GeoJSON,
+    hoverStateFilter,
     LineLayer,
   } from "svelte-maplibre";
   import { Popup } from "./";

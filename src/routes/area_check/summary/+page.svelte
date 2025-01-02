@@ -1,23 +1,23 @@
 <script lang="ts">
-  import { pairs, DateInput, ExternalLink } from "$lib";
-  import {
-    Select,
-    TextInput,
-    TextArea,
-    DecimalInput,
-    SelectWithCustom,
-  } from "govuk-svelte";
-  import { state } from "../data";
+  import turfArea from "@turf/area";
+  import { DateInput, ExternalLink, pairs } from "$lib";
   import {
     authorities,
-    transportOrCombinedAuthorities,
-    regions,
-    fundingProgrammes,
     designStages,
+    fundingProgrammes,
+    regions,
+    transportOrCombinedAuthorities,
   } from "$lib/lists";
   import { ContextualMapEntry } from "$lib/map";
   import type { FeatureCollection } from "geojson";
-  import turfArea from "@turf/area";
+  import {
+    DecimalInput,
+    Select,
+    SelectWithCustom,
+    TextArea,
+    TextInput,
+  } from "govuk-svelte";
+  import { state } from "../data";
 
   $: areaHint = getAreaHint($state.summary.networkMap);
   function getAreaHint(gj: FeatureCollection): number | null {

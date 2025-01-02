@@ -1,6 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { capitaliseWords } from "../";
-import { getTitle, getPrevPage, getNextPage } from "./";
+import { getNextPage, getPrevPage, getTitle } from "./";
 
 describe("getTitle", () => {
   it("normal cases", () => {

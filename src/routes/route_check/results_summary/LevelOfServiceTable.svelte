@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { Bar, Radar } from "svelte-chartjs";
   import {
-    Chart,
-    Title,
-    Tooltip,
-    Legend,
     BarElement,
     CategoryScale,
+    Chart,
+    Legend,
     LinearScale,
+    LineElement,
     PointElement,
     RadialLinearScale,
-    LineElement,
+    Title,
+    Tooltip,
   } from "chart.js";
+  import { Bar, Radar } from "svelte-chartjs";
   import { netDifference, type ResultCategory } from "../results";
 
   export let caption: string;

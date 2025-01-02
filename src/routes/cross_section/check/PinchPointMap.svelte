@@ -1,28 +1,28 @@
 <script lang="ts">
-  import PinchPointCard from "./PinchPointCard.svelte";
   import { ClickableCard } from "$lib";
-  import SectionsPossible from "./SectionsPossible.svelte";
   import {
-    Checkbox,
-    SecondaryButton,
-    DefaultButton,
-    WarningButton,
-    CollapsibleCard,
-  } from "govuk-svelte";
-  import {
-    bbox,
-    MapLibreMap,
-    ContextualMap,
-    StreetView,
     Basemap,
+    bbox,
+    ContextualMap,
+    MapLibreMap,
+    StreetView,
     type Position,
   } from "$lib/map";
   import { GeoreferenceControls } from "$lib/map/georef";
-  import { Marker, MapEvents } from "svelte-maplibre";
-  import type { MapMouseEvent, Map } from "maplibre-gl";
-  import { state } from "../data";
-  import { onMount } from "svelte";
   import type { FeatureCollection } from "geojson";
+  import {
+    Checkbox,
+    CollapsibleCard,
+    DefaultButton,
+    SecondaryButton,
+    WarningButton,
+  } from "govuk-svelte";
+  import type { Map, MapMouseEvent } from "maplibre-gl";
+  import { onMount } from "svelte";
+  import { MapEvents, Marker } from "svelte-maplibre";
+  import { state } from "../data";
+  import PinchPointCard from "./PinchPointCard.svelte";
+  import SectionsPossible from "./SectionsPossible.svelte";
 
   export let preferredTotals: [number, number];
   export let compromisedTotals: [number, number];

@@ -1,9 +1,9 @@
-import ExcelJS from "exceljs";
-import blankUrl from "$lib/assets/blank_route_check.xlsx?url";
-import type { State, Scorecard, Score } from "../data";
-import type { Position } from "$lib/map";
-import { getFullPolicyConflict, getFullCriticalIssue } from "../lists";
 import { downloadBinaryFile } from "$lib";
+import blankUrl from "$lib/assets/blank_route_check.xlsx?url";
+import type { Position } from "$lib/map";
+import ExcelJS from "exceljs";
+import type { Score, Scorecard, State } from "../data";
+import { getFullCriticalIssue, getFullPolicyConflict } from "../lists";
 
 export async function downloadExcelFile(state: State, currentFile: string) {
   console.log("Loading blank route check xlsx");

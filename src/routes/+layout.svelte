@@ -1,11 +1,11 @@
 <script lang="ts">
   import "../style/main.css";
+  import { page } from "$app/stores";
+  import logoUrl from "$lib/assets/images/ate_logo.png?url";
+  import { canonicalizePath, getTitle } from "$lib/nav";
   // @ts-expect-error no declarations
   import { initAll } from "govuk-frontend";
   import { Footer } from "govuk-svelte";
-  import { page } from "$app/stores";
-  import { canonicalizePath, getTitle } from "$lib/nav";
-  import logoUrl from "$lib/assets/images/ate_logo.png?url";
 
   initAll();
 

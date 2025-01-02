@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { encodeDalog } from "./da_log";
-  import { state } from "../data";
   import { TextArea } from "govuk-svelte";
+  import { state } from "../data";
   import ConvertToXlsx from "../results_export/ConvertToXlsx.svelte";
+  import { encodeDalog } from "./da_log";
 
   // TODO Need to escape " in the values, then
   $: values = encodeDalog($state)

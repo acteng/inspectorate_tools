@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { state } from "../data";
-  import { TextArea } from "govuk-svelte";
-  import { YesNo } from "$lib";
   import { base } from "$app/paths";
+  import { YesNo } from "$lib";
+  import { TextArea } from "govuk-svelte";
+  import { state } from "../data";
 
   let questions = [
     "Are cyclists separated from pedestrians?",

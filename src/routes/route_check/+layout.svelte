@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { state, currentFile, files } from "./data";
   import { ToolLayout } from "$lib";
+  import { currentFile, files, state } from "./data";
 </script>
 
 <ToolLayout

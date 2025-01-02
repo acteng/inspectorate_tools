@@ -1,9 +1,9 @@
 <script lang="ts">
   import { SecondaryButton } from "govuk-svelte";
   import { state } from "../data";
+  import { calculateTotalWidths } from "../proposed/logic";
   import HomogeneousCard from "./HomogeneousCard.svelte";
   import PinchPointMap from "./PinchPointMap.svelte";
-  import { calculateTotalWidths } from "../proposed/logic";
 
   // Calculate here and pass down to every card
   $: preferredTotals = calculateTotalWidths($state, "Preferred");

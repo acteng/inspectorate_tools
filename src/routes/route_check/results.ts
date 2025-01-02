@@ -1,8 +1,8 @@
 import { sum } from "$lib";
-import { type Score, type State, type Scorecard, numericScore } from "./data";
 import { pathModeIndices } from "$lib/route_check_results/path";
-import { streetModeIndices } from "$lib/route_check_results/street";
 import { safetyModeIndices } from "$lib/route_check_results/safety";
+import { streetModeIndices } from "$lib/route_check_results/street";
+import { numericScore, type Score, type Scorecard, type State } from "./data";
 
 export interface Results {
   // For the summary's Overview table

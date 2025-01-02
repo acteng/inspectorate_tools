@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Radio, TextInput, TextArea } from "govuk-svelte";
-  import Guidance from "./guidance/Guidance.svelte";
+  import { Radio, TextArea, TextInput } from "govuk-svelte";
   import { state } from "../data";
+  import Guidance from "./guidance/Guidance.svelte";
 
   export let junctionIdx: number;
   export let stage: "existing" | "proposed";

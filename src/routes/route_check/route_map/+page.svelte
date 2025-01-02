@@ -1,21 +1,19 @@
 <script lang="ts">
-  import {
-    DefaultButton,
-    ButtonGroup,
-    SecondaryButton,
-    DecimalInput,
-  } from "govuk-svelte";
-  import { state } from "../data";
   import turfLength from "@turf/length";
-  import type { Map } from "maplibre-gl";
-  import { bbox, Basemap, MapLibreMap } from "$lib/map";
-  import { loadAuthorities, getBestMatch } from "./match_area";
+  import { Basemap, bbox, MapLibreMap } from "$lib/map";
   import type {
+    Feature,
     FeatureCollection,
     LineString,
-    Feature,
     Polygon,
   } from "geojson";
+  import {
+    ButtonGroup,
+    DecimalInput,
+    DefaultButton,
+    SecondaryButton,
+  } from "govuk-svelte";
+  import type { Map } from "maplibre-gl";
   import { map as mapStore } from "scheme-sketcher-lib/config";
   import { BoundaryLayer } from "scheme-sketcher-lib/draw";
   import {
@@ -25,7 +23,9 @@
   } from "scheme-sketcher-lib/draw/route";
   import { routeTool } from "scheme-sketcher-lib/draw/stores";
   import { onMount } from "svelte";
+  import { state } from "../data";
   import RouteMapLayer from "../RouteMapLayer.svelte";
+  import { getBestMatch, loadAuthorities } from "./match_area";
 
   onMount(async () => {
     await loadAuthorities();

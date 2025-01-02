@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Radio, WarningText } from "govuk-svelte";
-  import Progress from "./Progress.svelte";
   import { state } from "../data";
+  import Progress from "./Progress.svelte";
 </script>
 
 <div class="govuk-width-container">

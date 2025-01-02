@@ -1,10 +1,10 @@
 <script lang="ts">
+  import { pairs, YesNo } from "$lib";
+  import { Radio, TextArea, WarningText } from "govuk-svelte";
+  import { state } from "../data";
+  import Confirmation from "./Confirmation.svelte";
   import MajorRoutes from "./MajorRoutes.svelte";
   import MinorRoutes from "./MinorRoutes.svelte";
-  import Confirmation from "./Confirmation.svelte";
-  import { TextArea, WarningText, Radio } from "govuk-svelte";
-  import { state } from "../data";
-  import { YesNo, pairs } from "$lib";
 </script>
 
 <div class="govuk-width-container">

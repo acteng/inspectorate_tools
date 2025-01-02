@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { ExternalLink, Modal, pairs } from "$lib";
   import { Radio, SecondaryButton } from "govuk-svelte";
-  import { pairs, ExternalLink, Modal } from "$lib";
   import { getGuidance, getMovementTypes, junctionTypes } from "./data";
 
   let open = false;

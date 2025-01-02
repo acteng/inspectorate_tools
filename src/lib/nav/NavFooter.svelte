@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { page } from "$app/stores";
   import { base } from "$app/paths";
-  import { NextButton, PreviousButton, getPrevPage, getNextPage } from "./";
+  import { page } from "$app/stores";
+  import { getNextPage, getPrevPage, NextButton, PreviousButton } from "./";
 
   export let routeCheckType: "street" | "path" | "";
 

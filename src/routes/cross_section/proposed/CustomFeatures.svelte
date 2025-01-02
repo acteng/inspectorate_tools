@@ -1,8 +1,8 @@
 <script lang="ts">
-  import EditCustomFeature from "./EditCustomFeature.svelte";
-  import { v4 as uuidv4 } from "uuid";
   import { DefaultButton, SecondaryButton, WarningButton } from "govuk-svelte";
+  import { v4 as uuidv4 } from "uuid";
   import { state } from "../data";
+  import EditCustomFeature from "./EditCustomFeature.svelte";
 
   let editing: {
     id: string;

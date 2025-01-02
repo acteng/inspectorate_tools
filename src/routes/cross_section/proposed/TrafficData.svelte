@@ -1,7 +1,7 @@
 <script lang="ts">
   import { pairs } from "$lib";
-  import { CollapsibleCard, Radio, NumberInput } from "govuk-svelte";
-  import { state, speedLimits } from "../data";
+  import { CollapsibleCard, NumberInput, Radio } from "govuk-svelte";
+  import { speedLimits, state } from "../data";
   import { calculateEffectiveSpeedLimit } from "./logic";
 
   export let valid: boolean;
