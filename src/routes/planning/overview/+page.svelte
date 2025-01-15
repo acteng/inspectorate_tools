@@ -14,7 +14,7 @@
   <ol>
     <li><a href="{base}/planning/overview">Overview</a></li>
     <li><a href="{base}/planning/app_details">Application details</a></li>
-    <li><a href="{base}/planning/scorecard">Scorecard</a></li>
+    <li><a href="{base}/planning/assessment">Assessment</a></li>
     <li><a href="{base}/planning/report">Report</a></li>
   </ol>
 </div>

@@ -28,7 +28,7 @@ export interface State {
     proposalSummary: string;
   };
 
-  // Exactly 10 entries, matching up with the scorecard questions
+  // Exactly 10 entries, matching up with the assessment questions
   ratings: string[];
   // Optional notes for each entry
   appraiserComments: string[];

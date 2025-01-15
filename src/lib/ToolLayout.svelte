@@ -55,7 +55,7 @@
 
   <div style="margin-bottom: 30px">
     <img src={folderUrl} alt="" style="vertical-align: middle;" />
-    <a href="{base}/{tool}">Manage my schemes</a>
+    <a href="{base}/{tool}">Manage my files</a>
     <span class="govuk-body" style="margin-left: 8px;">
       You are editing: {$currentFile}
     </span>
