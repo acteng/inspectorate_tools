@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { ExternalLink } from "$lib";
   import Question from "../Question.svelte";
 </script>
 
@@ -74,73 +75,75 @@
   <div slot="guidance">
     <ul>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
         >
           National Planning Policy Framework: 96, 108, 114, 116
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/national-design-guide"
         >
           National Design Guide: 82, 83, 119
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/national-model-design-code"
         >
           National Model Design Code: Figure 11, 59i-ii (Part 1); M.1.i,
           M.1.iii, M.2 (Part 2)
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.sportengland.org/guidance-and-support/facilities-and-planning/design-and-cost-guidance/active-design"
         >
           Active Design (Sport England): Principles 2, 3
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.ciht.org.uk/media/4460/ciht_-_designing_for_walking_document_v2_singles.pdf"
         >
           Designing for Walking (CIHT)
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/inclusive-mobility-making-transport-accessible-for-passengers-and-pedestrians"
         >
           Inclusive Mobility
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/cycle-infrastructure-design-ltn-120"
         >
           LTN 1/20
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a href="https://www.gov.uk/government/publications/manual-for-streets">
+        <ExternalLink
+          href="https://www.gov.uk/government/publications/manual-for-streets"
+        >
           Manual for Streets: 4.2, 6.3, 6.4
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/manual-for-streets-2"
         >
           Manual for Streets 2: 9.3, 9.4
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.bsigroup.com/en-GB/insights-and-media/insights/brochures/pas-6463-design-for-the-mind-neurodiversity-and-the-built-environment/"
         >
           PAS 6463
-        </a>
+        </ExternalLink>
       </li>
     </ul>
   </div>

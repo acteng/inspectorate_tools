@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { ExternalLink } from "$lib";
   import Question from "../Question.svelte";
 </script>
 
@@ -46,26 +47,26 @@
   <div slot="guidance">
     <ul>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
         >
           National Planning Policy Framework: 114, 117
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/guidance/travel-plans-transport-assessments-and-statements"
         >
           Planning Practice Guidance: Travel Plans, Transport Assessments and
           Statements
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.sportengland.org/guidance-and-support/facilities-and-planning/design-and-cost-guidance/active-design"
         >
           Active Design (Sport England): 2.4
-        </a>
+        </ExternalLink>
       </li>
     </ul>
   </div>

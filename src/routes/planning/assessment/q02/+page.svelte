@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { ExternalLink } from "$lib";
   import Question from "../Question.svelte";
 </script>
 
@@ -50,70 +51,70 @@
   <div slot="guidance">
     <ul>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
         >
           National Planning Policy Framework: 8, 74, 87, 96, 97, 108, 112, 114,
           116
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/national-design-guide"
         >
           National Design Guide: 81, 82, 83, 119
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/national-model-design-code"
         >
           National Model Design Code: 59i-ii, 64iv-vi (Part 1); M.1.ii, M.2, U.3
           (Part 2)
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/guidance/travel-plans-transport-assessments-and-statements"
         >
           Planning Practice Guidance: Travel Plans, Transport Assessments and
           Statements
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.sportengland.org/guidance-and-support/facilities-and-planning/design-and-cost-guidance/active-design"
         >
           Active Design (Sport England): Principles 2, 3
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.ciht.org.uk/media/4460/ciht_-_designing_for_walking_document_v2_singles.pdf"
         >
           Designing for Walking (CIHT)
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/inclusive-mobility-making-transport-accessible-for-passengers-and-pedestrians"
         >
           Inclusive Mobility
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.gov.uk/government/publications/cycle-infrastructure-design-ltn-120"
         >
           LTN 1/20
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
+        <ExternalLink
           href="https://www.bsigroup.com/en-GB/insights-and-media/insights/brochures/pas-6463-design-for-the-mind-neurodiversity-and-the-built-environment/"
         >
           PAS 6463
-        </a>
+        </ExternalLink>
       </li>
     </ul>
   </div>
