@@ -50,15 +50,67 @@
   </div>
   <div slot="guidance">
     <ul>
-      <li>National Planning Policy Framework: 114, 116</li>
-      <li>National Design Guide: 85</li>
-      <li>National Model Design Code: 59iv (Part 1); M.3.ii (Part 2)</li>
-      <li>Active Design (Sport England): 7.1, 8.2</li>
-      <li>Inclusive Mobility: 7.4</li>
-      <li>LTN 1/20: Chapter 11</li>
-      <li>Manual for Streets: 8.2</li>
-      <li>Manual for Streets 2: 2.5.4</li>
-      <li>PAS 6463: 5.2.3</li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
+        >
+          National Planning Policy Framework: 114, 116
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/national-design-guide"
+        >
+          National Design Guide: 85
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/national-model-design-code"
+        >
+          National Model Design Code: 59iv (Part 1); M.3.ii (Part 2)
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.sportengland.org/guidance-and-support/facilities-and-planning/design-and-cost-guidance/active-design"
+        >
+          Active Design (Sport England): 7.1, 8.2
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/inclusive-mobility-making-transport-accessible-for-passengers-and-pedestrians"
+        >
+          Inclusive Mobility: 7.4
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/cycle-infrastructure-design-ltn-120"
+        >
+          LTN 1/20: Chapter 11
+        </a>
+      </li>
+      <li>
+        <a href="https://www.gov.uk/government/publications/manual-for-streets">
+          Manual for Streets: 8.2
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/manual-for-streets-2"
+        >
+          Manual for Streets 2: 2.5.4
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.bsigroup.com/en-GB/insights-and-media/insights/brochures/pas-6463-design-for-the-mind-neurodiversity-and-the-built-environment/"
+        >
+          PAS 6463: 5.2.3
+        </a>
+      </li>
     </ul>
   </div>
 </Question>

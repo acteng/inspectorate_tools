@@ -15,12 +15,15 @@
   </div>
 
   <div class="govuk-grid-column-three-quarters">
-    <PrevNext {idx} total={10} urlPath="planning/scorecard/q" />
+    <PrevNext {idx} total={10} urlPath="planning/assessment/q" />
 
     <slot name="description" />
 
     <h3>Common Shortfalls</h3>
     <slot name="shortfalls" />
+
+    <h3>National Policy & Guidance</h3>
+    <slot name="guidance" />
 
     <ColoredRadio {choices} bind:value={$state.ratings[idx - 1]} />
 
@@ -34,9 +37,6 @@
       bind:value={$state.localGuidance[idx - 1]}
     />
 
-    <h3>National Policy & Guidance</h3>
-    <slot name="guidance" />
-
-    <PrevNext {idx} total={10} urlPath="planning/scorecard/q" />
+    <PrevNext {idx} total={10} urlPath="planning/assessment/q" />
   </div>
 </div>

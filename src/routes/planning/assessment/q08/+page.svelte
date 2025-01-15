@@ -60,21 +60,75 @@
   <div slot="guidance">
     <ul>
       <li>
-        National Planning Policy Framework: 8, 74, 87, 96, 97, 99, 108, 114,
-        116, 135, 136
+        <a
+          href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
+        >
+          National Planning Policy Framework: 8, 74, 87, 96, 97, 99, 108, 114,
+          116, 135, 136
+        </a>
       </li>
-      <li>National Design Guide</li>
       <li>
-        National Model Design Code: 51i, 59iii, 62i, 63, 64i-ii (Part 1);
-        N.1.iii, M.3.i, I.1, P.1-3, U.1 (Part 2)
+        <a
+          href="https://www.gov.uk/government/publications/national-design-guide"
+        >
+          National Design Guide
+        </a>
       </li>
-      <li>Active Design (Sport England): Principles 4, 5, 6</li>
-      <li>Designing for Walking (CIHT)</li>
-      <li>Inclusive Mobility</li>
-      <li>LTN 1/20</li>
-      <li>LTN 1/24: 4.6</li>
-      <li>Manual for Streets: 2.2.5, 5.7, 6.3, 6.4, 7.2.8-7.2.22, 8.3</li>
-      <li>PAS 6463</li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/national-model-design-code"
+        >
+          National Model Design Code: 51i, 59iii, 62i, 63, 64i-ii (Part 1);
+          N.1.iii, M.3.i, I.1, P.1-3, U.1 (Part 2)
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.sportengland.org/guidance-and-support/facilities-and-planning/design-and-cost-guidance/active-design"
+        >
+          Active Design (Sport England): Principles 4, 5, 6
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.ciht.org.uk/media/4460/ciht_-_designing_for_walking_document_v2_singles.pdf"
+        >
+          Designing for Walking (CIHT)
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/inclusive-mobility-making-transport-accessible-for-passengers-and-pedestrians"
+        >
+          Inclusive Mobility
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/cycle-infrastructure-design-ltn-120"
+        >
+          LTN 1/20
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/bus-user-priority-ltn-124"
+        >
+          LTN 1/24: 4.6
+        </a>
+      </li>
+      <li>
+        <a href="https://www.gov.uk/government/publications/manual-for-streets">
+          Manual for Streets: 2.2.5, 5.7, 6.3, 6.4, 7.2.8-7.2.22, 8.3
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.bsigroup.com/en-GB/insights-and-media/insights/brochures/pas-6463-design-for-the-mind-neurodiversity-and-the-built-environment/"
+        >
+          PAS 6463
+        </a>
+      </li>
     </ul>
   </div>
 </Question>

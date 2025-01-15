@@ -45,12 +45,28 @@
   </div>
   <div slot="guidance">
     <ul>
-      <li>National Planning Policy Framework: 114, 117</li>
       <li>
-        Planning Practice Guidance: Travel Plans, Transport Assessments and
-        Statements
+        <a
+          href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
+        >
+          National Planning Policy Framework: 114, 117
+        </a>
       </li>
-      <li>Active Design (Sport England): 2.4</li>
+      <li>
+        <a
+          href="https://www.gov.uk/guidance/travel-plans-transport-assessments-and-statements"
+        >
+          Planning Practice Guidance: Travel Plans, Transport Assessments and
+          Statements
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.sportengland.org/guidance-and-support/facilities-and-planning/design-and-cost-guidance/active-design"
+        >
+          Active Design (Sport England): 2.4
+        </a>
+      </li>
     </ul>
   </div>
 </Question>

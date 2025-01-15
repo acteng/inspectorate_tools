@@ -28,12 +28,28 @@
   </div>
   <div slot="guidance">
     <ul>
-      <li>National Planning Policy Framework: 108, 114, 117</li>
       <li>
-        Planning Policy Guidance: Travel Plans, Transport Assessments and
-        Statements
+        <a
+          href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
+        >
+          National Planning Policy Framework: 108, 114, 117
+        </a>
       </li>
-      <li>LTN 1/20: 14.3.6</li>
+      <li>
+        <a
+          href="https://www.gov.uk/guidance/travel-plans-transport-assessments-and-statements"
+        >
+          Planning Practice Guidance: Travel Plans, Transport Assessments and
+          Statements
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.gov.uk/government/publications/cycle-infrastructure-design-ltn-120"
+        >
+          LTN 1/20: 14.3.6
+        </a>
+      </li>
     </ul>
   </div>
 </Question>
