@@ -5,10 +5,10 @@
 
 <Question idx={8}>
   <div slot="description">
-    <p>
+    <h2>
       Does the development establish a strong sense of place, with well-designed
       streets, public spaces that feel safe and key amenities provided?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>

@@ -5,11 +5,11 @@
 
 <Question idx={10}>
   <div slot="description">
-    <p>
+    <h2>
       Does the travel plan outline ambitious mode share targets and measures to
       embed active travel, alongside appropriate monitoring and remedial
       strategies?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>

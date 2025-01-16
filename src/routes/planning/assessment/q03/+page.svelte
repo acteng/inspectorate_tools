@@ -5,11 +5,11 @@
 
 <Question idx={3}>
   <div slot="description">
-    <p>
+    <h2>
       Are most buildings within 800m from a range of amenities (such as primary
       schools, parks, play areas, food shops, cafes and community buildings)
       using well-designed routes?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>
