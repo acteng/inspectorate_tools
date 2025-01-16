@@ -15,7 +15,12 @@
   </div>
 
   <div class="govuk-grid-column-three-quarters">
-    <PrevNext {idx} total={10} urlPath="planning/assessment/q" />
+    <PrevNext
+      {idx}
+      total={10}
+      urlPath="planning/assessment/q"
+      questionType="criterion"
+    />
 
     <slot name="description" />
 

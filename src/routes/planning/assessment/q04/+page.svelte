@@ -5,11 +5,11 @@
 
 <Question idx={4}>
   <div slot="description">
-    <p>
+    <h2>
       Are a range of local amenities, and town centres, railway stations,
       employment areas and the National Cycle Network as appropriate, accessible
       for cyclists using well-designed routes?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>

@@ -5,10 +5,10 @@
 
 <Question idx={2}>
   <div slot="description">
-    <p>
+    <h2>
       Has an appropriate assessment on the design and accessibility of existing
       active travel routes in the locality of the site been presented?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>

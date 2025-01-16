@@ -5,11 +5,11 @@
 
 <Question idx={5}>
   <div slot="description">
-    <p>
+    <h2>
       Are all buildings within 400m of a high-frequency bus stop or 800m of a
       rail/light rail station or tram stop, with appropriate facilities, using
       well-designed routes?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>

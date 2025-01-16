@@ -5,10 +5,10 @@
 
 <Question idx={6}>
   <div slot="description">
-    <p>
+    <h2>
       Does the application include proposals to enhance local active travel and
       public transport infrastructure?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>
@@ -59,9 +59,7 @@
         </ExternalLink>
       </li>
       <li>
-        <ExternalLink
-          href="https://www.gov.uk/guidance/planning-obligations"
-        >
+        <ExternalLink href="https://www.gov.uk/guidance/planning-obligations">
           Planning Practice Guidance: Planning Obligations
         </ExternalLink>
       </li>
