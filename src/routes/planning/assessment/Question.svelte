@@ -19,7 +19,7 @@
       {idx}
       total={10}
       urlPath="planning/assessment/q"
-      questionType="Criterion"
+      questionType="criterion"
     />
 
     <slot name="description" />
