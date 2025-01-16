@@ -59,9 +59,7 @@
         </ExternalLink>
       </li>
       <li>
-        <ExternalLink
-          href="https://www.gov.uk/guidance/planning-obligations"
-        >
+        <ExternalLink href="https://www.gov.uk/guidance/planning-obligations">
           Planning Practice Guidance: Planning Obligations
         </ExternalLink>
       </li>
