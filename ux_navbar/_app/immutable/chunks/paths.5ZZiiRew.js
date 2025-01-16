@@ -1,1 +1,0 @@
-var s;const o=((s=globalThis.__sveltekit_18xo1ox)==null?void 0:s.base)??"/inspectorate_tools/ux_navbar";var a;const t=((a=globalThis.__sveltekit_18xo1ox)==null?void 0:a.assets)??o;export{t as a,o as b};
