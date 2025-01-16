@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { ExternalLink } from "$lib";
   import Question from "../Question.svelte";
 </script>
 
@@ -46,13 +47,55 @@
   </div>
   <div slot="guidance">
     <ul>
-      <li>National Planning Policy Framework: 8, 74, 85, 87, 108, 116</li>
-      <li>National Design Guide: 81</li>
-      <li>National Model Design Code: 59i-ii (Part 1); M.1.ii, M.2 (Part 2)</li>
-      <li>Active Design (Sport England): Principles 2, 3</li>
-      <li>Buses in Urban Developments (CIHT): A.4.1-A.4.5, B.2.3, B.7.2</li>
-      <li>Inclusive Mobility: Chapter 9</li>
-      <li>LTN 1/24;</li>
+      <li>
+        <ExternalLink
+          href="https://www.gov.uk/government/publications/national-planning-policy-framework--2"
+        >
+          National Planning Policy Framework: 8, 74, 85, 87, 108, 116
+        </ExternalLink>
+      </li>
+      <li>
+        <ExternalLink
+          href="https://www.gov.uk/government/publications/national-design-guide"
+        >
+          National Design Guide: 81
+        </ExternalLink>
+      </li>
+      <li>
+        <ExternalLink
+          href="https://www.gov.uk/government/publications/national-model-design-code"
+        >
+          National Model Design Code: 59i-ii (Part 1); M.1.ii, M.2 (Part 2)
+        </ExternalLink>
+      </li>
+      <li>
+        <ExternalLink
+          href="https://www.sportengland.org/guidance-and-support/facilities-and-planning/design-and-cost-guidance/active-design"
+        >
+          Active Design (Sport England): Principles 2, 3
+        </ExternalLink>
+      </li>
+      <li>
+        <ExternalLink
+          href="https://www.ciht.org.uk/knowledge-resource-centre/resources/streets-and-transport-in-the-urban-environment/"
+        >
+          Buses in Urban Developments (CIHT): A.4.1-A.4.5, B.2.3, B.7.2
+        </ExternalLink>
+      </li>
+      <li>
+        <ExternalLink
+          href="https://www.gov.uk/government/publications/inclusive-mobility-making-transport-accessible-for-passengers-and-pedestrians"
+        >
+          Inclusive Mobility: Chapter 9
+        </ExternalLink>
+      </li>
+      <li>
+        <ExternalLink
+          href="https://www.gov.uk/government/publications/bus-user-priority-ltn-124"
+        >
+          LTN 1/24;
+        </ExternalLink>
+      </li>
     </ul>
   </div>
 </Question>

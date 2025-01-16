@@ -22,7 +22,7 @@
     <li>
       <div class="progress-list-item">
         {#if currentIdx - 1 != idx}
-          <a href="{base}/planning/scorecard/q{formatIndex(idx)}">{label}</a>
+          <a href="{base}/planning/assessment/q{formatIndex(idx)}">{label}</a>
         {:else}
           {label}
         {/if}
