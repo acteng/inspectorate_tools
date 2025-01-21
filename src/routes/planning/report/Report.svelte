@@ -47,7 +47,7 @@
 
 <style>
   @media print {
-    .report { 
+    .report {
       display: block;
     }
   }
