@@ -46,9 +46,8 @@
 </div>
 
 <style>
-  @media print {
-    .report {
-      display: block;
-    }
+  .report {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 </style>
