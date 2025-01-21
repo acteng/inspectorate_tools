@@ -3,10 +3,12 @@
   import { currentFile, files, state } from "./data";
 </script>
 
-<FileManager
-  {files}
-  {currentFile}
-  {state}
-  service="Planning Application Assessment Toolkit"
-  fileObjectType="assessment"
-/>
+<div class="do-not-print">
+  <FileManager
+    {files}
+    {currentFile}
+    {state}
+    service="Planning Application Assessment Toolkit"
+    fileObjectType="assessment"
+  />
+</div>
