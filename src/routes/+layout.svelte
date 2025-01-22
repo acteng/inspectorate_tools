@@ -60,10 +60,4 @@
     margin-top: 15px;
     margin-bottom: 15px;
   }
-
-  @media print {
-    .do-not-print {
-      display: none;
-    }
-  }
 </style>
