@@ -1,7 +1,7 @@
 <script lang="ts" generics="StateType">
   import { goto } from "$app/navigation";
   import { base } from "$app/paths";
-  import { ServiceHeader, stripSuffix } from "$lib";
+  import { capitaliseWords, ServiceHeader, stripSuffix } from "$lib";
   import {
     AlphaBanner,
     FileInput,
@@ -43,6 +43,14 @@
         $currentFile = newName;
       }
     }
+  }
+
+  function exportJSON(filename: string) {
+    let key = files.key(filename);
+    downloadGeneratedFile(
+      `${filename}.json`,
+      window.localStorage.getItem(key)!,
+    );
   }
 
   function deleteFile(filename: string) {
@@ -152,7 +160,7 @@
           <thead>
             <tr>
               <th>File name</th>
-              <th>Scheme name</th>
+              <th>{capitaliseWords(fileObjectType)} name</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -171,6 +179,9 @@
                 <td>{files.describeFile(filename)}</td>
                 <td>
                   <div class="govuk-button-group" style="flex-wrap: nowrap">
+                    <SecondaryButton on:click={() => exportJSON(filename)}>
+                      Export JSON 
+                    </SecondaryButton>
                     <SecondaryButton on:click={() => renameFile(filename)}>
                       Rename
                     </SecondaryButton>
