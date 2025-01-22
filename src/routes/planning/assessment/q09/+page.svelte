@@ -5,10 +5,10 @@
 
 <Question idx={9}>
   <div slot="description">
-    <p>
+    <h2>
       Does the application provide the requisite amount and quality of cycle
       parking and trip-end facilities?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>

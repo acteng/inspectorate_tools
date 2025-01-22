@@ -5,10 +5,10 @@
 
 <Question idx={1}>
   <div slot="description">
-    <p>
+    <h2>
       Does the application appropriately forecast all day trips to, from and
       within the site by walking, wheeling and cycling?
-    </p>
+    </h2>
   </div>
   <div slot="shortfalls">
     <p>
