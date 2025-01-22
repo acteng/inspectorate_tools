@@ -48,26 +48,32 @@
 
 <svelte:window on:storage={storageChange} />
 
-<ServiceHeader {service} />
+<div class="tool-layout">
+  <div class="govuk-width-container">
+    <div class="do-not-print">
+      <ServiceHeader {service} />
 
-<div class="govuk-width-container">
-  <AlphaBanner />
+      <AlphaBanner />
 
-  <div style="margin-bottom: 30px">
-    <img src={folderUrl} alt="" style="vertical-align: middle;" />
-    <a href="{base}/{tool}">Manage my files</a>
-    <span class="govuk-body" style="margin-left: 8px;">
-      You are editing: {$currentFile}
-    </span>
+      <div style="margin-bottom: 30px">
+        <img src={folderUrl} alt="" style="vertical-align: middle;" />
+        <a href="{base}/{tool}">Manage my files</a>
+        <span class="govuk-body" style="margin-left: 8px;">
+          You are editing: {$currentFile}
+        </span>
+      </div>
+
+      <NavHeader {routeCheckType} />
+    </div>
   </div>
 
-  <NavHeader {routeCheckType} />
+  <div class="govuk-width-container do-not-print">
+    <h1>{getTitle($page.url.pathname)}</h1>
+  </div>
+
+  <slot />
+
+  <div class="do-not-print">
+    <NavFooter {routeCheckType} />
+  </div>
 </div>
-
-<div class="govuk-width-container">
-  <h1>{getTitle($page.url.pathname)}</h1>
-</div>
-
-<slot />
-
-<NavFooter {routeCheckType} />

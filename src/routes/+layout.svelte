@@ -29,13 +29,15 @@
     </div>
   </div>
 
-  <div class="green-bar" />
+  <div class="green-bar do-not-print" />
 
   <!-- It's up to each page to use govuk-width-container or not -->
   <slot />
 
   {#if useFooter}
-    <Footer />
+    <div class="do-not-print">
+      <Footer />
+    </div>
   {/if}
 </div>
 
