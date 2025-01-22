@@ -180,7 +180,7 @@
                 <td>
                   <div class="govuk-button-group" style="flex-wrap: nowrap">
                     <SecondaryButton on:click={() => exportJSON(filename)}>
-                      Export JSON 
+                      Export JSON
                     </SecondaryButton>
                     <SecondaryButton on:click={() => renameFile(filename)}>
                       Rename
