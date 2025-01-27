@@ -124,7 +124,7 @@ export class LocalStorageFiles<StateType> {
 
   // Create and download a .zip with all JSON files
   async exportAll() {
-    let name = `route_check_backup_${getDateString()}`;
+    let name = `${this.prefix.slice(0, -1)}_backup_${getDateString()}`;
     let zip = new JSZip();
     let folder = zip.folder(name)!;
 
