@@ -51,6 +51,7 @@
     "exceljs": "^4.4.0",
     "govuk-frontend": "^5.4.1",
     "govuk-svelte": "github:acteng/govuk-svelte",
+    "jszip": "^3.10.1",
     "maplibre-gl": "^4.7.1",
     "scheme-sketcher-lib": "github:acteng/scheme-sketcher-lib",
     "svelte-chartjs": "^3.1.5",

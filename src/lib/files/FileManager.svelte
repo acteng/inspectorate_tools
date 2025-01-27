@@ -148,6 +148,11 @@
 
       {#if fileList.length > 0}
         <h2>Manage existing files</h2>
+
+        <SecondaryButton on:click={() => files.exportAll()}>
+          Export all files for backup
+        </SecondaryButton>
+
         <table>
           <thead>
             <tr>
