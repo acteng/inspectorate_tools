@@ -19,7 +19,10 @@ export class LocalStorageFiles<StateType> {
   // A key into local storage, excluding prefix
   currentFile: Writable<string>;
 
-  // The caller should treat this like a singleton and only create once per app lifetime. This constructor has the side-effect of initially loading the last opened file (or starting a new blank file), and setting up store subscriptions to automatically save to local storage.
+  // The caller should treat this like a singleton and only create once per app lifetime. This constructor has some side-effects:
+  // - initially loading the last opened file (or starting a new blank file)
+  // - setting up store subscriptions to automatically save to local storage
+  // - downloading a backup .zip daily
   constructor(
     prefix: string,
     emptyState: () => StateType,
@@ -49,6 +52,16 @@ export class LocalStorageFiles<StateType> {
         window.localStorage.setItem(this.key("last-opened-file"), value);
       }
     });
+
+    // This class is constructed on every page of an app. So every unique day a
+    // user interacts with the app, download a backup .zip. This
+    // mitigates the problem of a user accidentally clearing browser data
+    // and losing work.
+    let today = getDateString();
+    let lastBackup = window.localStorage.getItem(this.key("last-backup")) ?? "";
+    if (today != lastBackup) {
+      this.exportAll();
+    }
   }
 
   // Returns the full local storage key for a file.
@@ -73,7 +86,11 @@ export class LocalStorageFiles<StateType> {
     let list = [];
     for (let i = 0; i < window.localStorage.length; i++) {
       let key = window.localStorage.key(i)!;
-      if (key.startsWith(this.prefix) && key != this.key("last-opened-file")) {
+      if (
+        key.startsWith(this.prefix) &&
+        key != this.key("last-opened-file") &&
+        key != this.key("last-backup")
+      ) {
         list.push(key.slice(this.prefix.length));
       }
     }
@@ -107,11 +124,7 @@ export class LocalStorageFiles<StateType> {
 
   // Create and download a .zip with all JSON files
   async exportAll() {
-    let today = new Date();
-    let day = today.getDate().toString().padStart(2, "0");
-    let month = (today.getMonth() + 1).toString().padStart(2, "0");
-    let name = `route_check_backup_${day}_${month}_${today.getFullYear()}`;
-
+    let name = `route_check_backup_${getDateString()}`;
     let zip = new JSZip();
     let folder = zip.folder(name)!;
 
@@ -121,6 +134,8 @@ export class LocalStorageFiles<StateType> {
 
     let bytes = await zip.generateAsync({ type: "arraybuffer" });
     downloadBinaryFile(bytes, `${name}.zip`);
+
+    window.localStorage.setItem(this.key("last-backup"), getDateString());
   }
 
   // Initially set the currentFile and state store, based on the last opened file. If there is no last file, leaves both stores alone.
@@ -161,4 +176,12 @@ export function downloadGeneratedFile(filename: string, textInput: string) {
   document.body.appendChild(element);
   element.click();
   document.body.removeChild(element);
+}
+
+// DD_MM_YYYY
+function getDateString(): string {
+  let today = new Date();
+  let day = today.getDate().toString().padStart(2, "0");
+  let month = (today.getMonth() + 1).toString().padStart(2, "0");
+  return `${day}_${month}_${today.getFullYear()}`;
 }
