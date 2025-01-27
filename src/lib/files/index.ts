@@ -1,3 +1,5 @@
+import { downloadBinaryFile } from "$lib";
+import JSZip from "jszip";
 import { get, type Writable } from "svelte/store";
 
 export { default as FileManager } from "./FileManager.svelte";
@@ -101,6 +103,24 @@ export class LocalStorageFiles<StateType> {
     } catch (_) {
       return "Error: invalid or broken file";
     }
+  }
+
+  // Create and download a .zip with all JSON files
+  async exportAll() {
+    let today = new Date();
+    let day = today.getDate().toString().padStart(2, "0");
+    let month = (today.getMonth() + 1).toString().padStart(2, "0");
+    let name = `route_check_backup_${day}_${month}_${today.getFullYear()}`;
+
+    let zip = new JSZip();
+    let folder = zip.folder(name)!;
+
+    for (let file of this.getFileList()) {
+      folder.file(`${file}.json`, window.localStorage.getItem(this.key(file))!);
+    }
+
+    let bytes = await zip.generateAsync({ type: "arraybuffer" });
+    downloadBinaryFile(bytes, `${name}.zip`);
   }
 
   // Initially set the currentFile and state store, based on the last opened file. If there is no last file, leaves both stores alone.
