@@ -113,9 +113,7 @@ function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
   sheet.getCell("C19").value = state.summary.totalRouteLengthKm;
   sheet.getCell("C20").value = state.summary.notes;
 
-  if (state.summary.checkType == "path") {
-    sheet.getCell("D22").value = "Path Check";
-  }
+  sheet.getCell("D22").value = state.summary.checkType == "path" ? "Path Check" : "Street Check";
 
   // The route could be split into many pieces. Arbitrarily use coordinates from the first LineString.
   for (let f of state.summary.networkMap.features) {
