@@ -20,7 +20,7 @@ describe("getTitle", () => {
   });
 
   it("GH deployment", () => {
-    import.meta.env.BASE_URL = "/inspectorate_tools";
+    import.meta.env.VITE_BASE_PATH = "/inspectorate_tools";
     expect(getTitle("/inspectorate_tools")).toBe("Tools");
     expect(getTitle("/inspectorate_tools/")).toBe("Tools");
     expect(getTitle("/inspectorate_tools/cross_section/proposed/")).toBe(
@@ -31,7 +31,7 @@ describe("getTitle", () => {
 
 describe("getPrevPage", () => {
   it("normal cases", () => {
-    expect(getPrevPage("/cross_section/summary", "")).toBe(null);
+    expect(getPrevPage("/cross_section/overview", "")).toBe(null);
     expect(getPrevPage("/cross_section/proposed", "")).toStrictEqual([
       "/cross_section/summary",
       "Summary of Scheme",

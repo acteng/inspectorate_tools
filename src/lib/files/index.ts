@@ -53,6 +53,13 @@ export class LocalStorageFiles<StateType> {
       }
     });
 
+    if (typeof window == "undefined") {
+      console.log(
+        "Running outside of a browser, in test mode -- not loading from local storage",
+      );
+      return;
+    }
+
     // This class is constructed on every page of an app. So every unique day a
     // user interacts with the app, download a backup .zip. This
     // mitigates the problem of a user accidentally clearing browser data
