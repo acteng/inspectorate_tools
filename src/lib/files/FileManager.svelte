@@ -45,6 +45,21 @@
     }
   }
 
+  function copyFile(filename: string) {
+    let newName = window.prompt(
+      `What do you want to call the new copy of ${filename}?`,
+      filename,
+    );
+    // TODO Handle overwriting
+    if (newName && newName != filename) {
+      let oldKey = files.key(filename);
+      let contents = window.localStorage.getItem(oldKey)!;
+      window.localStorage.setItem(files.key(newName), contents);
+      fileList = files.getFileList();
+      $currentFile = newName;
+    }
+  }
+
   function exportJSON(filename: string) {
     let key = files.key(filename);
     downloadGeneratedFile(
@@ -189,6 +204,9 @@
                     </SecondaryButton>
                     <SecondaryButton on:click={() => renameFile(filename)}>
                       Rename
+                    </SecondaryButton>
+                    <SecondaryButton on:click={() => copyFile(filename)}>
+                      Make a copy
                     </SecondaryButton>
                     <WarningButton on:click={() => deleteFile(filename)}>
                       Delete
