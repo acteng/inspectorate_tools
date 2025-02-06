@@ -7,7 +7,7 @@
   cases={[
     [
       "2",
-      "<p>Lighting that does not create high contrast areas with shadows. Path environment does not create hiding or loitering places.</p>",
+      "<p>Lighting that does not create high contrast areas with shadows and path environment does not create hiding or loitering places.</p>",
     ],
     [
       "1",
@@ -15,7 +15,7 @@
     ],
     [
       "0",
-      "<p>No lighting. Path environment that creates potential ambush points.</p>",
+      "<p>No lighting or path environment that creates potential ambush points</p>",
     ],
   ]}
 >

@@ -20,10 +20,7 @@
     ["N/A", ""],
   ]}
 >
-  <p>
-    Description: Provision of sanitary facilities.
-    <br />
-    E.g. toilets and/or baby change facilities.
-  </p>
+  <p>Description: Provision of sanitary facilities.</p>
+  <p>E.g. toilets and/or baby change facilities.</p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

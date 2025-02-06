@@ -7,7 +7,7 @@
   cases={[
     [
       "2",
-      "<p>The form of the street is in full harmony with its intended functions.</p><p>Users can find their way without a need for maps or signage and the street is a pleasant place to be.</p>",
+      "<p>The form of the street is in full harmony with its intended functions.</p><p>Users can find their way without a need for maps or signage, and the street is a pleasant place to be.</p>",
     ],
     [
       "1",

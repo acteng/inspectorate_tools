@@ -2,7 +2,7 @@
 ,,,,,,,,,,,,,,,,,
 "Gradient","Walking / Wheeling / Cycling","ST17","Steepest gradient due to underlying terrain.
 
-(For gradients at ramps, dropped kerbs and cambers, see metrics SA14 and SA15).",,">5%.","3-5%.","<3%.",,,,,,,,,,
+(For gradients at ramps, dropped kerbs and cambers, see metrics SA14 and SA15).",,"More than 5%.","3-5%.","Less than 3%.",,,,,,,,,,
 "Tactile Information and Signal Equipment","Walking / Wheeling / Cycling","ST18","Adherence of tactile paving to recommended layouts and colours in 'Guidance on the Use of Tactile Paving Surfaces' and accessibility of signal equipment.",,"Guidance on tactile paving has not been considered.
 
 Or, there is signal equipment which is incorrectly situated, inaccessible or faulty (for example in terms of rotating cones).","Guidance on tactile paving has been considered, but the area is not fully legible.","Guidance on tactile paving has been considered and the area is fully legible.",,,,,,,,,,
@@ -20,7 +20,7 @@ E.g. toilets and/or baby change facilities.",,"Where people meet, wait or spend 
 ,,,,,,,,,,,,,,,,,
 "COMFORT",,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,
-"Cycling Surface Material","Cycling","ST24","Type of cycling surface material.",,"Unsurfaced/unbound or unstable blocks/sets.","Hand-laid asphalt or smooth blocks.","Machine-laid asphalt or smooth and firm blocks undisturbed by turning vehicles.",,,,,,,,,,
+"Cycling Surface Material","Cycling","ST24","Type of cycling surface material.",,"Unsurfaced/unbound or unstable blocks/setts.","Hand-laid asphalt or smooth blocks.","Machine-laid asphalt or smooth and firm blocks undisturbed by turning vehicles.",,,,,,,,,,
 "Walking/Wheeling Surface Material","Walking / Wheeling","ST25","Type of walking/wheeling surface material.",,"The surface is low-grip (i.e. PTV of 25 or lower).
 
 If paved, the joints are wider than 5mm.","The surface is medium-grip (i.e. PTV of between 25 and 35).
@@ -36,10 +36,10 @@ If paved, the joints are mortared.",,,,,,,,,,
 ,,,,,,,,,,,,,,,,,
 "Deviation of Cycle Route","Cycling","ST27","Deviation of cycle route against straight line or shortest alternative.",,"Deviation factor against straight line or shortest alternative greater than 1.4.","Deviation factor against straight line or shortest alternative 1.2-1.4.","Deviation factor against straight line or shortest alternative less than 1.2.",,,,,,,,,,
 "Pedestrian Crossing Locations","Walking / Wheeling","ST28","Alignment of crossings with desire lines.",,"No crossings are located on desire lines.","Some crossings are located on desire lines.","All crossings are located on desire lines, and all desire lines are provided for.",,,,,,,,,,
-"Cyclist Delay at Junctions","Cycling","ST29","Delay to cyclists at junctions.",,"Delay for cyclists at junctions is greater than for motor vehicles.","Delay for cyclists at junctions is similar to delay for motor vehicles.","Delay is shorter than for motor vehicles or cyclists are not required to stop at junctions (e.g. bypass at signals).",,,,,,,,,,
+"Cyclist Delay at Junctions","Cycling","ST29","Delay to cyclists at junctions.",,"Delay for cyclists at junctions is greater than the delay to motor vehicles.","Delay for cyclists at junctions is similar to that of motor vehicles.","Delay for cyclists is shorter than that of motor vehicles or cyclists are not required to stop at junctions (e.g. bypass at signals).",,,,,,,,,,
 "Cyclist Delay on Links","Cycling","ST30","Delay to cyclists on links.",,"Cyclists have no opportunities to pass slower moving vehicles (including other cyclists).","Cyclists have some opportunities to pass slower moving vehicles (including other cyclists).","Cyclists can always progress without being delayed by other vehicles.",,,,,,,,,,
 "Pedestrian Delay at Junctions","Walking / Wheeling","ST31","Delay to pedestrians at signal controlled junctions.",,"Maximum waiting time over 60 seconds.","Maximum waiting time 40-60 seconds.","Maximum waiting time up to 40 seconds.",,,,,,,,,,
-"Pedestrian Delay at Standalone Signal Crossings","Walking / Wheeling","ST32","Delay to pedestrians at standalone signal crossings.",,"After pressing the button, pedestrians must wait over 10 seconds for an invitation to cross.","After pressing the button, pedestrians must wait up to 10 seconds for an invitation to cross.","Crossings rest on the green for pedestrians.
+"Pedestrian Delay at Standalone Signal Crossings","Walking / Wheeling","ST32","Delay to pedestrians at stand-alone signal crossings.",,"After pressing the button, pedestrians must wait over 10 seconds for an invitation to cross.","After pressing the button, pedestrians must wait up to 10 seconds for an invitation to cross.","Crossings rest on the green for pedestrians.
 
 Or, the time between pressing the button and the invitation to cross has been minimised as much as is safe to do so.",,,,,,,,,,
 ,,,,,,,,,,,,,,,,,
@@ -50,8 +50,8 @@ Or, the time between pressing the button and the invitation to cross has been mi
 Or, signs and road markings are faded or unclear.","Some cycle and pedestrian specific direction signing. There are gaps in signage and road markings which could be improved.","Route is well signed for pedestrians and cyclists with signs and road markings located at all decision points and junctions.
 
 Signs and road markings are clear, easily visible and legible.",,,,,,,,,,
-"Places to Rest","Walking / Wheeling","ST34","Distance between resting points.",,">150m.","50-150m.","<50m.",,,,,,,,,,
-"Places to Shelter","Walking / Wheeling","ST35","Distance between shelter points.",,">150m.","50-150m.","<50m.",,,,,,,,,,
+"Places to Rest","Walking / Wheeling","ST34","Distance between resting points.",,"More than 150m.","50-150m.","Less than 50m.",,,,,,,,,,
+"Places to Shelter","Walking / Wheeling","ST35","Distance between shelter points.",,"More than 150m.","50-150m.","Less than 50m.",,,,,,,,,,
 "Lighting","Walking / Wheeling / Cycling","ST36","Extent of lighting.",,"Long stretches of darkness.
 
 Or, no lighting.","Short stretches of darkness.

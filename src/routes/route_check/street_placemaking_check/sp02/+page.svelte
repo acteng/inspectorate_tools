@@ -5,9 +5,9 @@
 <Question
   idx={2}
   cases={[
-    ["2", "<p>&lt;400m.</p>"],
+    ["2", "<p>Less than 400m.</p>"],
     ["1", "<p>400-800m.</p>"],
-    ["0", "<p>&gt;800m.</p>"],
+    ["0", "<p>Greater than 800m.</p>"],
   ]}
 >
   <p>
