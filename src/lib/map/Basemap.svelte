@@ -45,7 +45,7 @@
       list.push(["os-road", "Ordnance Survey MasterMap"]);
     }
     list.push(["maptiler-hybrid", "MapTiler Satellite"]);
-    list.push(["maptiler-streets", "MapTiler Streets"]);
+    list.push(["maptiler-streets-v2", "MapTiler Streets"]);
     list.push(["maptiler-dataviz", "MapTiler Dataviz"]);
     list.push(["maptiler-uk-openzoomstack-light", "OS Open Zoomstack"]);
     return list;
