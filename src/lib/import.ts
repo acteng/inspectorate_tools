@@ -47,6 +47,7 @@ export function dalogToState(dalog: {
   [name: string]: string | number | Date | null;
 }): State {
   let state = emptyState();
+  state.isImportedFromSpreadsheet = true;
 
   let normalString = (key: string) => {
     let value = dalog[key];

@@ -173,7 +173,11 @@ export class LocalStorageFiles<StateType> {
   }
 }
 
-export function downloadGeneratedFile(filename: string, textInput: string) {
+export function downloadGeneratedFile(filename: string, state: any) {
+  if (state.downloadedTimestamp !== undefined) {
+    state.downloadedTimestamp = getDateString();
+  }
+  const textInput = JSON.stringify(state);
   let element = document.createElement("a");
   element.setAttribute(
     "href",
@@ -186,7 +190,7 @@ export function downloadGeneratedFile(filename: string, textInput: string) {
 }
 
 // DD_MM_YYYY
-function getDateString(): string {
+export function getDateString(): string {
   let today = new Date();
   let day = today.getDate().toString().padStart(2, "0");
   let month = (today.getMonth() + 1).toString().padStart(2, "0");

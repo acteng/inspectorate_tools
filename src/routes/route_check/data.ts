@@ -1,5 +1,5 @@
 import { repeatCloned } from "$lib";
-import { LocalStorageFiles } from "$lib/files";
+import { getDateString, LocalStorageFiles } from "$lib/files";
 import type { Position } from "$lib/map";
 import type { FeatureCollection, LineString } from "geojson";
 import { writable } from "svelte/store";
@@ -18,6 +18,9 @@ export let files = new LocalStorageFiles(
 
 export interface State {
   version: string;
+  createdTimestamp: string;
+  downloadedTimestamp: string;
+  isImportedFromSpreadsheet: boolean;
   summary: {
     dateDesignReview: string;
     schemeReference: string;
@@ -201,6 +204,9 @@ function describe(state: State): string {
 export function emptyState(): State {
   return {
     version: "alpha-1",
+    createdTimestamp: getDateString(),
+    downloadedTimestamp: "",
+    isImportedFromSpreadsheet: false,
     summary: {
       dateDesignReview: "",
       schemeReference: "",
