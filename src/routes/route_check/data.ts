@@ -204,7 +204,7 @@ function describe(state: State): string {
 export function emptyState(): State {
   return {
     version: "alpha-1",
-    createdTimestamp: getDateString(),
+    createdTimestamp: getDateString(true),
     downloadedTimestamp: "",
     isImportedFromSpreadsheet: false,
     summary: {
