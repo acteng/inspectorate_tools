@@ -120,7 +120,13 @@ export class LocalStorageFiles<StateType> {
       let state = JSON.parse(json);
       this.validate(state);
       // Compare structurally
-      if (JSON.stringify(state) == JSON.stringify(this.emptyState())) {
+      let timestampRemovedState = JSON.parse(JSON.stringify(state));
+      delete timestampRemovedState.createdTimestamp;
+      let timestampRemovedEmptyState = this.emptyState();
+      // @ts-expect-error if the emptystate doesn't have the timestamp it will noop which is fine
+      delete timestampRemovedEmptyState.createdTimestamp;
+      
+      if (JSON.stringify(timestampRemovedState) == JSON.stringify(timestampRemovedEmptyState)) {
         return "Empty";
       }
       return this.describe(state);
@@ -136,7 +142,11 @@ export class LocalStorageFiles<StateType> {
     let folder = zip.folder(name)!;
 
     for (let file of this.getFileList()) {
-      folder.file(`${file}.json`, window.localStorage.getItem(this.key(file))!);
+      const fileObject = JSON.parse(window.localStorage.getItem(this.key(file))!); 
+      if (fileObject.downloadedTimestamp !== undefined) {
+        fileObject.downloadedTimestamp = getDateString(true);
+      }
+      folder.file(`${file}.json`, JSON.stringify(fileObject));
     }
 
     let bytes = await zip.generateAsync({ type: "arraybuffer" });
@@ -173,7 +183,11 @@ export class LocalStorageFiles<StateType> {
   }
 }
 
-export function downloadGeneratedFile(filename: string, textInput: string) {
+export function downloadGeneratedFile(filename: string, state: any) {
+  if (state.downloadedTimestamp !== undefined) {
+    state.downloadedTimestamp = getDateString(true);
+  }
+  const textInput = JSON.stringify(state);
   let element = document.createElement("a");
   element.setAttribute(
     "href",
@@ -186,9 +200,14 @@ export function downloadGeneratedFile(filename: string, textInput: string) {
 }
 
 // DD_MM_YYYY
-function getDateString(): string {
+export function getDateString(includeTime=false): string {
   let today = new Date();
   let day = today.getDate().toString().padStart(2, "0");
   let month = (today.getMonth() + 1).toString().padStart(2, "0");
+  let time = "";
+  if (includeTime) {
+    time = `${today.getHours().toString().padStart(2, "0")}:${today.getMinutes().toString().padStart(2, "0")}`
+    return `${day}_${month}_${today.getFullYear()}_${time}`; 
+  }
   return `${day}_${month}_${today.getFullYear()}`;
 }

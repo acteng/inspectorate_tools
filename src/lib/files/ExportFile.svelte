@@ -9,7 +9,7 @@
   export let state: Writable<StateType>;
 
   function exportFile() {
-    downloadGeneratedFile($currentFile + ".json", JSON.stringify($state));
+    downloadGeneratedFile($currentFile + ".json", $state);
   }
 </script>
 
