@@ -120,7 +120,13 @@ export class LocalStorageFiles<StateType> {
       let state = JSON.parse(json);
       this.validate(state);
       // Compare structurally
-      if (JSON.stringify(state) == JSON.stringify(this.emptyState())) {
+      let timestampRemovedState = JSON.parse(JSON.stringify(state));
+      delete timestampRemovedState.createdTimestamp;
+      let timestampRemovedEmptyState = this.emptyState();
+      // @ts-expect-error if the emptystate doesn't have the timestamp it will noop which is fine
+      delete timestampRemovedEmptyState.createdTimestamp;
+      
+      if (JSON.stringify(timestampRemovedState) == JSON.stringify(timestampRemovedEmptyState)) {
         return "Empty";
       }
       return this.describe(state);
@@ -136,7 +142,11 @@ export class LocalStorageFiles<StateType> {
     let folder = zip.folder(name)!;
 
     for (let file of this.getFileList()) {
-      folder.file(`${file}.json`, window.localStorage.getItem(this.key(file))!);
+      const fileObject = JSON.parse(window.localStorage.getItem(this.key(file))!); 
+      if (fileObject.downloadedTimestamp !== undefined) {
+        fileObject.downloadedTimestamp = getDateString(true);
+      }
+      folder.file(`${file}.json`, JSON.stringify(fileObject));
     }
 
     let bytes = await zip.generateAsync({ type: "arraybuffer" });
