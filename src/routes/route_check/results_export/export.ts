@@ -1,7 +1,7 @@
 import { downloadBinaryFile } from "$lib";
 import blankUrl from "$lib/assets/blank_route_check.xlsx?url";
 import type { Position } from "$lib/map";
-import ExcelJS from "exceljs";
+import { read, writeXLSX, type WorkBook, type WorkSheet } from "xlsx";
 import type { Score, Scorecard, State } from "../data";
 import { getFullCriticalIssue, getFullPolicyConflict } from "../lists";
 
@@ -9,14 +9,8 @@ export async function downloadExcelFile(state: State, currentFile: string) {
   console.log("Loading blank route check xlsx");
   let resp = await fetch(blankUrl);
   let bytes = await resp.arrayBuffer();
-  let workbook = new ExcelJS.Workbook();
-  await workbook.xlsx.load(bytes);
 
-  // TODO There's some bug writing conditional formatting, so just clear it all out
-  workbook.eachSheet((worksheet, _sheetId) => {
-    // @ts-expect-error This really is there
-    worksheet.conditionalFormattings = [];
-  });
+  let workbook = read(bytes);
 
   summaryOfScheme(state, workbook);
   policyCheck(state, workbook);
@@ -83,143 +77,133 @@ export async function downloadExcelFile(state: State, currentFile: string) {
 
   jat(state, workbook);
 
-  workbook.getWorksheet("5.1 Path Check")!.getCell("D7").value =
-    state.horseRiders;
-  workbook.getWorksheet("7.1 Results Summary")!.getCell("G7").value =
-    state.resultsReviewStatement;
+  workbook.Sheets["5.1 Path Check"]["D7"].v = state.horseRiders;
+  workbook.Sheets["7.1 Results Summary"]["G7"].v = state.resultsReviewStatement;
 
   console.log("Writing route check xlsx");
-  let outBytes = await workbook.xlsx.writeBuffer();
+  let outBytes = writeXLSX(workbook, { type: "array" });
   downloadBinaryFile(outBytes, `route_check_${currentFile}.xlsx`);
 }
 
-function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
-  let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
+function summaryOfScheme(state: State, workbook: WorkBook) {
+  let sheet: WorkSheet = workbook.Sheets["1. Summary of Scheme"];
 
   // TODO Back in Excel, it looks like there's a leading ' in the value, but it renders fine in the DALOG
-  sheet.getCell("C6").value = state.summary.dateDesignReview;
-  sheet.getCell("C7").value = state.summary.schemeReference;
-  sheet.getCell("C8").value = state.summary.schemeName;
-  sheet.getCell("C9").value = state.summary.schemeSummary;
-  sheet.getCell("C10").value = state.summary.schemeInfoReviewed;
-  sheet.getCell("C11").value = state.summary.authority;
-  sheet.getCell("C12").value = state.summary.transportOrCombinedAuthority;
-  sheet.getCell("C13").value = state.summary.region;
-  sheet.getCell("C14").value = state.summary.fundingProgramme;
-  sheet.getCell("C15").value = state.summary.designStage;
-  sheet.getCell("C16").value = state.summary.fundingConditions;
-  sheet.getCell("C17").value = state.summary.inspectorEmail;
-  sheet.getCell("C18").value = state.summary.assessedRouteLengthKm;
-  sheet.getCell("C19").value = state.summary.totalRouteLengthKm;
-  sheet.getCell("C20").value = state.summary.notes;
+  sheet["C6"].v = state.summary.dateDesignReview;
+  sheet["C7"].v = state.summary.schemeReference;
+  sheet["C8"].v = state.summary.schemeName;
+  sheet["C9"].v = state.summary.schemeSummary;
+  sheet["C10"].v = state.summary.schemeInfoReviewed;
+  sheet["C11"].v = state.summary.authority;
+  sheet["C12"].v = state.summary.transportOrCombinedAuthority;
+  sheet["C13"].v = state.summary.region;
+  sheet["C14"].v = state.summary.fundingProgramme;
+  sheet["C15"].v = state.summary.designStage;
+  sheet["C16"].v = state.summary.fundingConditions;
+  sheet["C17"].v = state.summary.inspectorEmail;
+  sheet["C18"].v = state.summary.assessedRouteLengthKm;
+  sheet["C19"].v = state.summary.totalRouteLengthKm;
+  sheet["C20"].v = state.summary.notes;
 
-  sheet.getCell("D22").value =
+  sheet["D22"].v =
     state.summary.checkType == "path" ? "Path Check" : "Street Check";
 
   // The route could be split into many pieces. Arbitrarily use coordinates from the first LineString.
   for (let f of state.summary.networkMap.features) {
     if (f.geometry.type == "LineString") {
       // Start point
-      sheet.getCell("C26").value = f.geometry.coordinates[0][1];
-      sheet.getCell("D26").value = f.geometry.coordinates[0][0];
+      sheet["C26"].v = f.geometry.coordinates[0][1];
+      sheet["D26"].v = f.geometry.coordinates[0][0];
       // End point
-      sheet.getCell("C27").value = f.geometry.coordinates[0][1];
-      sheet.getCell("D27").value = f.geometry.coordinates[0][0];
+      sheet["C27"].v = f.geometry.coordinates[0][1];
+      sheet["D27"].v = f.geometry.coordinates[0][0];
       // For the webmap link, just center on the start point
-      sheet.getCell("C28").value =
+      sheet["C28"].v =
         `https://www.openstreetmap.org/#map=18/${f.geometry.coordinates[0][1]}/${f.geometry.coordinates[0][0]}`;
       break;
     }
   }
 }
 
-function policyCheck(state: State, workbook: ExcelJS.Workbook) {
-  let sheet = workbook.getWorksheet("2.1 Policy Check")!;
+function policyCheck(state: State, workbook: WorkBook) {
+  let sheet = workbook.Sheets["2.1 Policy Check"];
 
   for (let i = 0; i < 6; i++) {
-    sheet.getCell("D" + (8 + i)).value = state.policyCheck[i].existing;
-    sheet.getCell("E" + (8 + i)).value = state.policyCheck[i].proposed;
-    sheet.getCell("F" + (8 + i)).value = state.policyCheck[i].commentary;
+    sheet["D" + (8 + i)].v = state.policyCheck[i].existing;
+    sheet["E" + (8 + i)].v = state.policyCheck[i].proposed;
+    sheet["F" + (8 + i)].v = state.policyCheck[i].commentary;
   }
 }
 
-function policyConflictLog(state: State, workbook: ExcelJS.Workbook) {
-  let sheet = workbook.getWorksheet("2.2 Policy Conflict Log")!;
+function policyConflictLog(state: State, workbook: WorkBook) {
+  let sheet = workbook.Sheets["2.2 Policy Conflict Log"];
 
   for (let [i, pc] of state.policyConflictLog.entries()) {
-    sheet.getCell("F" + (8 + i)).value = getFullPolicyConflict(pc.conflict);
-    sheet.getCell("H" + (8 + i)).value = pc.stage;
-    sheet.getCell("I" + (8 + i)).value = point(pc.point);
-    sheet.getCell("J" + (8 + i)).value = pc.locationName;
+    sheet["F" + (8 + i)].v = getFullPolicyConflict(pc.conflict);
+    sheet["H" + (8 + i)].v = pc.stage;
+    sheet["I" + (8 + i)].v = point(pc.point);
+    sheet["J" + (8 + i)].v = pc.locationName;
     // if the issue is noted on Design stage then it is not resolved by design
-    sheet.getCell("K" + (8 + i)).value =
-      pc.stage === "Design" ? "No" : pc.resolved;
-    sheet.getCell("L" + (8 + i)).value = pc.notes;
+    sheet["K" + (8 + i)].v = pc.stage === "Design" ? "No" : pc.resolved;
+    sheet["L" + (8 + i)].v = pc.notes;
   }
 
-  // ExcelJS somehow breaks the dropdown menu on some pages. Manually restore it.
-  for (let i = 0; i < 42; i++) {
+  // TODO ExcelJS somehow breaks the dropdown menu on some pages. Manually restore it.
+  /*for (let i = 0; i < 42; i++) {
     sheet.getCell("F" + (8 + i)).dataValidation = {
       type: "list",
       allowBlank: true,
       formulae: ["'8.2 Lookups&Forumlae2'!$B$7:$B$12"],
     };
-  }
+  }*/
 }
 
-function criticalIssueLog(state: State, workbook: ExcelJS.Workbook) {
-  let sheet = workbook.getWorksheet("3.2 Critical Issues Log")!;
+function criticalIssueLog(state: State, workbook: WorkBook) {
+  let sheet = workbook.Sheets["3.2 Critical Issues Log"];
 
   for (let [i, ci] of state.criticalIssues.entries()) {
-    sheet.getCell("F" + (8 + i)).value = getFullCriticalIssue(ci.criticalIssue);
-    sheet.getCell("H" + (8 + i)).value = ci.stage;
-    sheet.getCell("I" + (8 + i)).value = point(ci.point);
-    sheet.getCell("J" + (8 + i)).value = ci.locationName;
+    sheet["F" + (8 + i)].v = getFullCriticalIssue(ci.criticalIssue);
+    sheet["H" + (8 + i)].v = ci.stage;
+    sheet["I" + (8 + i)].v = point(ci.point);
+    sheet["J" + (8 + i)].v = ci.locationName;
     // if the issue is noted on Design stage then it is not resolved by design
-    sheet.getCell("K" + (8 + i)).value =
-      ci.stage === "Design" ? "No" : ci.resolved;
-    sheet.getCell("L" + (8 + i)).value = ci.notes;
+    sheet["K" + (8 + i)].v = ci.stage === "Design" ? "No" : ci.resolved;
+    sheet["L" + (8 + i)].v = ci.notes;
   }
 
-  // Fix the dropdown menu thatExcelJS breaks
+  /*// Fix the dropdown menu thatExcelJS breaks
   for (let i = 0; i < 42; i++) {
     sheet.getCell("F" + (8 + i)).dataValidation = {
       type: "list",
       allowBlank: true,
       formulae: ["'8.2 Lookups&Forumlae2'!$B$16:$B$39"],
     };
-  }
+  }*/
 }
 
 function populateScorecard(
   scorecard: Scorecard,
-  workbook: ExcelJS.Workbook,
+  workbook: WorkBook,
   sheetName: string,
   excelColumns: string[],
   excelRows: number[],
 ) {
-  let sheet = workbook.getWorksheet(sheetName)!;
+  let sheet = workbook.Sheets[sheetName];
   if (excelRows.length != scorecard.existingScores.length) {
     throw new Error(`Wrong Excel ranges for ${sheetName}`);
   }
 
   for (let i = 0; i < scorecard.existingScores.length; i++) {
     let row = excelRows[i];
-    sheet.getCell(excelColumns[0] + row).value = fixScore(
-      scorecard.existingScores[i],
-    );
-    sheet.getCell(excelColumns[1] + row).value =
-      scorecard.existingScoreNotes[i];
-    sheet.getCell(excelColumns[2] + row).value = fixScore(
-      scorecard.proposedScores[i],
-    );
-    sheet.getCell(excelColumns[3] + row).value =
-      scorecard.proposedScoreNotes[i];
+    sheet[excelColumns[0] + row].v = fixScore(scorecard.existingScores[i]);
+    sheet[excelColumns[1] + row].v = scorecard.existingScoreNotes[i];
+    sheet[excelColumns[2] + row].v = fixScore(scorecard.proposedScores[i]);
+    sheet[excelColumns[3] + row].v = scorecard.proposedScoreNotes[i];
   }
 }
 
-function jat(state: State, workbook: ExcelJS.Workbook) {
-  let sheet = workbook.getWorksheet("6. JAT Check")!;
+function jat(state: State, workbook: WorkBook) {
+  let sheet = workbook.Sheets["6. JAT Check"];
 
   let junctionIdx = 0;
 
@@ -227,29 +211,27 @@ function jat(state: State, workbook: ExcelJS.Workbook) {
     for (let assessment of [junction.existing, junction.proposed]) {
       let baseCol = col("H", junctionIdx * 5);
 
-      sheet.getCell(col(baseCol, 1) + "9").value = junction.name;
-      sheet.getCell(col(baseCol, 1) + "10").value = assessment.notes;
+      sheet[col(baseCol, 1) + "9"].v = junction.name;
+      sheet[col(baseCol, 1) + "10"].v = assessment.notes;
 
       for (let [movementIdx, movement] of assessment.movements
         .filter((m) => m.kind == "walking & wheeling")
         .entries()) {
-        sheet.getCell(baseCol + (13 + movementIdx)).value = movement.name;
-        sheet.getCell(col(baseCol, 2) + (13 + movementIdx)).value = fixJatScore(
+        sheet[baseCol + (13 + movementIdx)].v = movement.name;
+        sheet[col(baseCol, 2) + (13 + movementIdx)].v = fixJatScore(
           movement.score,
         );
-        sheet.getCell(col(baseCol, 3) + (13 + movementIdx)).value =
-          movement.notes;
+        sheet[col(baseCol, 3) + (13 + movementIdx)].v = movement.notes;
       }
 
       for (let [movementIdx, movement] of assessment.movements
         .filter((m) => m.kind == "cycling")
         .entries()) {
-        sheet.getCell(baseCol + (26 + movementIdx)).value = movement.name;
-        sheet.getCell(col(baseCol, 2) + (26 + movementIdx)).value = fixJatScore(
+        sheet[baseCol + (26 + movementIdx)].v = movement.name;
+        sheet[col(baseCol, 2) + (26 + movementIdx)].v = fixJatScore(
           movement.score,
         );
-        sheet.getCell(col(baseCol, 3) + (26 + movementIdx)).value =
-          movement.notes;
+        sheet[col(baseCol, 3) + (26 + movementIdx)].v = movement.notes;
       }
 
       // Increment twice per junction (once per assessment)

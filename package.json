@@ -56,6 +56,7 @@
     "scheme-sketcher-lib": "github:acteng/scheme-sketcher-lib",
     "svelte-chartjs": "^3.1.5",
     "svelte-maplibre": "^0.9.8",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   }
 }
