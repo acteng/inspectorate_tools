@@ -1,6 +1,11 @@
 import type { Position } from "$lib/map";
 import ExcelJS, { type Cell, type CellValue } from "exceljs";
-import { emptyState, type Score, type State } from "../routes/route_check/data";
+import {
+  emptyState,
+  type Score,
+  type Scorecard,
+  type State,
+} from "../routes/route_check/data";
 import { dateToString } from "./";
 
 // TODO More cautious error checking
@@ -210,6 +215,65 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
     state.policyCheck[i].commentary = strValue(sheet.getCell("F" + (8 + i)));
   }
 
+  // Note some code is adapted from export.ts and could be refactored
+  importScorecardComments(
+    state.safetyCheck,
+    workbook,
+    "3.1 Safety Check",
+    ["J", "K", "L", "M"],
+    makeRanges([[13, 28]]),
+  );
+  importScorecardComments(
+    state.streetCheck,
+    workbook,
+    "4.1 Street Check",
+    ["J", "K", "L", "M"],
+    makeRanges([
+      [13, 19],
+      [23, 25],
+      [29, 34],
+      [38, 43],
+      [47, 50],
+    ]),
+  );
+  importScorecardComments(
+    state.streetPlacemakingCheck,
+    workbook,
+    "4.2 Street Placemaking Check",
+    ["I", "J", "K", "L"],
+    makeRanges([
+      [13, 15],
+      [19, 21],
+      [25, 34],
+      [38, 47],
+    ]),
+  );
+  importScorecardComments(
+    state.pathCheck,
+    workbook,
+    "5.1 Path Check",
+    ["J", "K", "L", "M"],
+    makeRanges([
+      [15, 19],
+      [23, 33],
+      [37, 40],
+      [44, 48],
+      [52, 56],
+    ]),
+  );
+  importScorecardComments(
+    state.pathPlacemakingCheck,
+    workbook,
+    "5.2 Path Placemaking Check",
+    ["I", "J", "K", "L"],
+    makeRanges([
+      [12, 14],
+      [20, 22],
+      [26, 29],
+      [33, 41],
+    ]),
+  );
+
   // TODO PMP from policy conflict log
   // TODO PMP from critical issues log
 
@@ -217,11 +281,44 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
 }
 
 function strValue(cell: Cell): string {
-    if (typeof cell.value == "string") {
-      return cell.value;
+  if (typeof cell.value == "string") {
+    return cell.value;
+  }
+  if (cell.value == null) {
+    return "";
+  }
+  throw new Error(`Input cell isn't a string, it's ${cell.value}`);
+}
+
+function makeRanges(ranges: [number, number][]): number[] {
+  let results = [];
+  for (let [a, b] of ranges) {
+    for (let i = a; i <= b; i++) {
+      results.push(i);
     }
-    if (cell.value == null) {
-      return "";
-    }
-    throw new Error(`Input cell isn't a string, it's ${cell.value}`);
+  }
+  return results;
+}
+
+function importScorecardComments(
+  scorecard: Scorecard,
+  workbook: ExcelJS.Workbook,
+  sheetName: string,
+  excelColumns: string[],
+  excelRows: number[],
+) {
+  let sheet = workbook.getWorksheet(sheetName)!;
+  if (excelRows.length != scorecard.existingScores.length) {
+    throw new Error(`Wrong Excel ranges for ${sheetName}`);
+  }
+
+  for (let i = 0; i < scorecard.existingScores.length; i++) {
+    let row = excelRows[i];
+    scorecard.existingScoreNotes[i] = strValue(
+      sheet.getCell(excelColumns[1] + row),
+    );
+    scorecard.proposedScoreNotes[i] = strValue(
+      sheet.getCell(excelColumns[3] + row),
+    );
+  }
 }
