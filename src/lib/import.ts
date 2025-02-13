@@ -274,8 +274,15 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
     ]),
   );
 
-  // TODO PMP from policy conflict log
-  // TODO PMP from critical issues log
+  // Results
+  sheet = workbook.getWorksheet("7.1 Results Summary")!;
+  state.resultsReviewStatement = strValue(sheet.getCell("G7"));
+  if (
+    state.resultsReviewStatement ==
+    "Use the space to provide overall feedback for the proposed scheme."
+  ) {
+    state.resultsReviewStatement = "";
+  }
 
   return state;
 }
