@@ -1,5 +1,5 @@
 import type { Position } from "$lib/map";
-import ExcelJS, { type CellValue } from "exceljs";
+import ExcelJS, { type Cell, type CellValue } from "exceljs";
 import { emptyState, type Score, type State } from "../routes/route_check/data";
 import { dateToString } from "./";
 
@@ -43,6 +43,7 @@ function num(idx: number): string {
   return (idx + 1).toString().padStart(2, "0");
 }
 
+// TODO Don't export?
 export function dalogToState(dalog: {
   [name: string]: string | number | Date | null;
 }): State {
@@ -192,4 +193,35 @@ export function dalogToState(dalog: {
   // JAT level-of-service stats are included, but not enough for us to import anything
 
   return state;
+}
+
+export function importFromExcel(workbook: ExcelJS.Workbook): State {
+  let dalog = getDalog(workbook);
+  let state = dalogToState(dalog);
+
+  // More fields for scheme summary
+  let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
+  state.summary.schemeSummary = strValue(sheet.getCell("C9"));
+  state.summary.schemeInfoReviewed = strValue(sheet.getCell("C10"));
+
+  // Policy check commentary
+  sheet = workbook.getWorksheet("2.1 Policy Check")!;
+  for (let i = 0; i < 6; i++) {
+    state.policyCheck[i].commentary = strValue(sheet.getCell("F" + (8 + i)));
+  }
+
+  // TODO PMP from policy conflict log
+  // TODO PMP from critical issues log
+
+  return state;
+}
+
+function strValue(cell: Cell): string {
+    if (typeof cell.value == "string") {
+      return cell.value;
+    }
+    if (cell.value == null) {
+      return "";
+    }
+    throw new Error(`Input cell isn't a string, it's ${cell.value}`);
 }
