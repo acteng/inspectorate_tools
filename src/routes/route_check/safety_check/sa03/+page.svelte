@@ -15,17 +15,17 @@
     ],
     [
       "0",
-      "<p>Cyclists are mixed with traffic in lanes less than 3.25m wide or over 3.9m wide.</p><p>Or, cyclists are in unprotected cycle lanes and the combined width of the cycle lane and adjacent traffic lane is under 3.25m or over 3.9m.</p><p>Or cyclists are mixed with traffic on busy urban streets with no centre line.</p><p>Or, there are speed cushions present.</p>",
+      "<p>Cyclists are mixed with traffic in lanes less than 3.25m wide or over 3.90m wide.</p><p>Or, cyclists are in unprotected cycle lanes and the combined width of the cycle lane and adjacent traffic lane is under 3.25m or over 3.90m.</p><p>Or cyclists are mixed with traffic on busy urban streets with no centre line.</p><p>Or, there are speed cushions present.</p>",
     ],
     [
       "C",
-      "<p>Cyclists are mixed with traffic in lanes between 3.25m and 3.9m wide.</p><p>Or, cyclists are in unprotected cycle lanes and the combined width of the cycle lane and adjacent traffic lane is between 3.25m and 3.9m.</p>",
+      "<p>Cyclists are mixed with traffic in lanes between 3.25m and 3.90m wide.</p><p>Or, cyclists are in unprotected cycle lanes and the combined width of the cycle lane and adjacent traffic lane is between 3.25m and 3.90m.</p>",
     ],
   ]}
 >
   <p>
     Description: Effect of lane widths on conflict between cyclists and motor
-    traffic
+    traffic.
   </p>
   <p>Mode: Cycling</p>
 </Question>

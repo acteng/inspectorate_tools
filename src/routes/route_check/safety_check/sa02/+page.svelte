@@ -19,14 +19,14 @@
     ],
     [
       "C",
-      "<p>&gt;2,500vpd cut across main walking, wheeling or cycling streams.</p>",
+      "<p>More than 2,500vpd cut across main walking, wheeling or cycling streams.</p>",
     ],
     ["N/A", ""],
   ]}
 >
   <p>
     Description: Pedestrian and cyclist conflict with motor traffic at
-    roundabouts and signal-controlled junctions
+    roundabouts and signal-controlled junctions.
   </p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

@@ -7,7 +7,7 @@
   cases={[
     [
       "2",
-      "<p>&lt;200 vehicles in the busiest hour.</p><p>Or, cyclists are protected from motor traffic or off-road entirely and controlled crossings are provided for pedestrians wherever needed.</p>",
+      "<p>Less than 200 vehicles in the busiest hour.</p><p>Or, cyclists are protected from motor traffic or off-road entirely and controlled crossings are provided for pedestrians wherever needed.</p>",
     ],
     [
       "1",
@@ -19,13 +19,13 @@
     ],
     [
       "C",
-      "<p>&gt;1,000 vehicles in the busiest hour.</p><p>Or, over 5% of traffic is HGVs where there are over 500 vehicles in the busiest hour.</p>",
+      "<p>More than 1,000 vehicles in the busiest hour.</p><p>Or, over 5% of traffic is HGVs where there are over 500 vehicles in the busiest hour.</p>",
     ],
   ]}
 >
   <p>
     Description: Volume of motor traffic at the busiest hour (where cyclists are
-    not protected or pedestrians cross uncontrolled)
+    not protected or pedestrians cross uncontrolled).
   </p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

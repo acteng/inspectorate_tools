@@ -10,7 +10,7 @@
       "<p>Machine-laid asphalt or smooth and firm blocks undisturbed by turning vehicles.</p>",
     ],
     ["1", "<p>Hand-laid asphalt or smooth blocks.</p>"],
-    ["0", "<p>Unsurfaced/unbound or unstable blocks/sets.</p>"],
+    ["0", "<p>Unsurfaced/unbound or unstable blocks/setts.</p>"],
   ]}
 >
   <p>Description: Type of cycling surface material.</p>

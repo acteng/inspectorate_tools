@@ -7,7 +7,7 @@
   cases={[
     [
       "2",
-      "<p>Well maintained streetscape: vegetation is well-managed and there are no issues with littering. Route is well-maintained throughout winter.</p><p>The streetscape has been designed in a way that is easy to maintain.</p>",
+      "<p>Well maintained streetscape: vegetation is well managed and there are no issues with littering. Route is well maintained throughout winter.</p><p>The streetscape has been designed in a way that is easy to maintain.</p>",
     ],
     ["1", "<p>Elements of the streetscape are well maintained.</p>"],
     [

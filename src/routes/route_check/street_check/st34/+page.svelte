@@ -5,9 +5,9 @@
 <Question
   idx={18}
   cases={[
-    ["2", "<p>&lt;50m.</p>"],
+    ["2", "<p>Less than 50m.</p>"],
     ["1", "<p>50-150m.</p>"],
-    ["0", "<p>&gt;150m.</p>"],
+    ["0", "<p>More than 150m.</p>"],
   ]}
 >
   <p>Description: Distance between resting points.</p>

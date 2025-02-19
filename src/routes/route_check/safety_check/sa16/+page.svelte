@@ -12,7 +12,7 @@
     ],
     [
       "0",
-      "<p>Guard railing used to control behaviour in complex environments.</p>",
+      "<p>Guard railing used to control behaviour in complex and sensitive environments.</p>",
     ],
     [
       "C",
@@ -20,6 +20,6 @@
     ],
   ]}
 >
-  <p>Description: Presence of guard railing</p>
+  <p>Description: Presence of guard railing.</p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>
