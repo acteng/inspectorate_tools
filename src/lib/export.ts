@@ -122,15 +122,13 @@ function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
   // The route could be split into many pieces. Arbitrarily use coordinates from the first LineString.
   for (let f of state.summary.networkMap.features) {
     if (f.geometry.type == "LineString") {
-      // Start point
-      sheet.getCell("C26").value = f.geometry.coordinates[0][1];
-      sheet.getCell("D26").value = f.geometry.coordinates[0][0];
-      // End point
-      sheet.getCell("C27").value = f.geometry.coordinates[0][1];
-      sheet.getCell("D27").value = f.geometry.coordinates[0][0];
+      let startPoint = f.geometry.coordinates[0];
+      sheet.getCell("C26").value = `${startPoint[1]}, ${startPoint[0]}`;
+      let endPoint = f.geometry.coordinates[f.geometry.coordinates.length - 1];
+      sheet.getCell("C27").value = `${endPoint[1]}, ${endPoint[0]}`;
       // For the webmap link, just center on the start point
       sheet.getCell("C28").value =
-        `https://www.openstreetmap.org/#map=18/${f.geometry.coordinates[0][1]}/${f.geometry.coordinates[0][0]}`;
+        `https://www.google.com/maps/@${startPoint[1]},${startPoint[0]},17z`;
       break;
     }
   }
