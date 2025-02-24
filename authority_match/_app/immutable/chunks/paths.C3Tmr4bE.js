@@ -1,1 +1,0 @@
-var t;const a=((t=globalThis.__sveltekit_vtlmnt)==null?void 0:t.base)??"/inspectorate_tools/authority_match";var s;const e=((s=globalThis.__sveltekit_vtlmnt)==null?void 0:s.assets)??a;export{e as a,a as b};
