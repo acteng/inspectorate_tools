@@ -15,7 +15,7 @@
     2. Policy Check Results
   </caption>
   <tr>
-    <th rowspan="2">Potential Policy Conflicts</th>
+    <th rowspan="2">Policy Conflicts</th>
     <th>Existing Route</th>
     <th>Designed Route</th>
     <th>Removed</th>

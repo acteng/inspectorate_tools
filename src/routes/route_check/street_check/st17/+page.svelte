@@ -5,9 +5,9 @@
 <Question
   idx={1}
   cases={[
-    ["2", "<p>&lt;3%.</p>"],
+    ["2", "<p>Less than 3%.</p>"],
     ["1", "<p>3-5%.</p>"],
-    ["0", "<p>&gt;5%.</p>"],
+    ["0", "<p>More than 5%.</p>"],
   ]}
 >
   <p>Description: Steepest gradient due to underlying terrain.</p>

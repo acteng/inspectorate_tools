@@ -11,22 +11,22 @@
     ],
     [
       "1",
-      "<p>&lt;2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments.</p>",
+      "<p>Less than 2,500vpd cut across main walking, wheeling or cycling streams and side roads and priority junctions have entry treatments.</p>",
     ],
     [
       "0",
-      "<p>&lt;2,500vpd cut across main walking, wheeling or cycling streams, but side roads and priority junctions are untreated.</p>",
+      "<p>Less than 2,500vpd cut across main walking, wheeling or cycling streams, but side roads and priority junctions are untreated.</p>",
     ],
     [
       "C",
-      "<p>&gt;2,500vpd cut across main walking, wheeling or cycling streams.</p>",
+      "<p>More than 2,500vpd cut across main walking, wheeling or cycling streams.</p>",
     ],
     ["N/A", ""],
   ]}
 >
   <p>
     Description: Pedestrian and cyclist conflict with motor traffic at side
-    roads/priority junctions
+    roads/priority junctions.
   </p>
   <p>Mode: Walking / Wheeling / Cycling</p>
 </Question>

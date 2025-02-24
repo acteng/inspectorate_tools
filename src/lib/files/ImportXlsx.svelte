@@ -58,7 +58,11 @@
         You must fill out the Junction Assessment Tool (JAT); it won't be
         imported
       </li>
-      <li>Some text fields on the Summary of Scheme page will be missing</li>
+      <li>Optionally, you can draw your Route Map for helpful reference.</li>
+      <li>
+        Some fields like Funding Programme on the Summary of Scheme page may be
+        marked as "Other"; you can change to a pre-existing option.
+      </li>
     </ul>
   </WarningText>
   <SecondaryButton on:click={() => (open = false)}>Close</SecondaryButton>

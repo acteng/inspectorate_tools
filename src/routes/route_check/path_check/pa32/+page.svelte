@@ -7,7 +7,7 @@
   cases={[
     [
       "2",
-      "<p>The path is passable even during extreme weather events, with a minimum clear width of 3m maintained at all times.</p>",
+      "<p>The path is passable even during extreme weather events, with a minimum clear width of 3.0m maintained at all times.</p>",
     ],
     [
       "1",
@@ -15,7 +15,7 @@
     ],
     [
       "0",
-      "<p>The path is occasionally inaccessible or unpassable due to the presence of water.</p>",
+      "<p>The path is occasionally inaccessible or impassable due to the presence of water.</p>",
     ],
   ]}
 >

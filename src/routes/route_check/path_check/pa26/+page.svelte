@@ -8,7 +8,7 @@
     ["2", "<p>Bound and porous surface (e.g. Flexipave).</p>"],
     [
       "1",
-      "<p>Bound, sealed surface such as tarmac (including tar, spray and chip).</p>",
+      "<p>Bound, sealed bituminous surface (including spray and chip or resin bound)</p>",
     ],
     ["0", "<p>Unbound or unsealed surface.</p>"],
     ["N/A", ""],

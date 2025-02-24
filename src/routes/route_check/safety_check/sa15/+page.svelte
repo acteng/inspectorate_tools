@@ -13,9 +13,10 @@
 >
   <p>Description: Walking/wheeling surface and maintenance defects:</p>
   <ul>
-    <li>steep camber (horizontal gradient &gt;2.5% )</li>
+    <li>steep camber (horizontal gradient more than 2.5% )</li>
     <li>
-      steep longitudinal gradients (&ge;8% if under 1m, &ge;5% if 1m or over)
+      steep longitudinal gradients (8% or more if under 1m, 5% or more if 1m or
+      over)
     </li>
     <li>missing dropped kerbs</li>
     <li>non flush tables</li>

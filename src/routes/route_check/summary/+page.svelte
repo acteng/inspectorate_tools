@@ -69,7 +69,7 @@
   />
 
   <TextInput
-    label="Inspector email address"
+    label="Reviewer email address"
     bind:value={$state.summary.inspectorEmail}
   />
 
