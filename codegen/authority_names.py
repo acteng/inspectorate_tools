@@ -24,10 +24,25 @@ with open("inputs/authority_aliases.csv") as inputFile:
             "fullName": row["authority full name"]
         }
         
-        if not authorityID in authorityIDsProcessed.keys():
+        if not authorityID in list(authorityIDsProcessed.keys()):
             authorityIDsProcessed[authorityID] = True
             authorityNames.append(row["authority full name"])
 
+        if authorityAlias == "Wychavon District Council":
+            print(authorityAlias)
+            print(authorityAliasMap[authorityAlias])
+
+print(list(authorityAliasMap.keys()))
+with open("inputs/original_list.csv") as inputFile2:
+    for row in csv.DictReader(
+        inputFile2,
+        fieldnames=[
+            "name"
+        ],
+    ):
+        name = row["name"]
+        if not name in list(authorityAliasMap.keys()):
+            print("name not found in keys:" + name)
 
 with open("outputs/authorityAliasMap.json", 'w') as filePath:
     json.dump(authorityAliasMap, filePath)

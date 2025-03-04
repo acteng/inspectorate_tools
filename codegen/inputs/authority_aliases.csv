@@ -17,6 +17,7 @@
 4,"Bournemouth, Christchurch and Poole Council","Bournemouth, Christchurch & Poole Unitary Authority","Bournemouth, Christchurch and Poole Council",South West
 4,"Bournemouth, Christchurch and Poole Council","Bournemouth, Christchurch and Poole","Bournemouth, Christchurch and Poole Council",South West
 4,"Bournemouth, Christchurch and Poole Council","Bournemouth, Christchurch and Poole Council","Bournemouth, Christchurch and Poole Council",South West
+4,"Bournemouth, Christchurch and Poole Council",Bournemouth Christchurch and Poole Council,"Bournemouth, Christchurch and Poole Council",South West
 4,"Bournemouth, Christchurch and Poole Council","Bournemouth, Christchurch and Poole UA","Bournemouth, Christchurch and Poole Council",South West
 5,Bracknell Forest Council,Bracknell Forest,Bracknell Forest Council,South East
 5,Bracknell Forest Council,Bracknell Forest Borough Council,Bracknell Forest Council,South East
@@ -24,6 +25,7 @@
 5,Bracknell Forest Council,Bracknell Forest Unitary Authority,Bracknell Forest Council,South East
 5,Bracknell Forest Council,Bracknell Forest UA,Bracknell Forest Council,South East
 6,Brighton & Hove City Council,Brighton & Hove City Council,Brighton & Hove City Council,South East
+6,Brighton & Hove City Council,Brighton and Hove City Council,Brighton & Hove City Council,South East
 6,Brighton & Hove City Council,Brighton & Hove Unitary Authority,Brighton & Hove City Council,South East
 6,Brighton & Hove City Council,Brighton and Hove,Brighton & Hove City Council,South East
 6,Brighton & Hove City Council,Brighton and Hove Council,Brighton & Hove City Council,South East
@@ -232,6 +234,7 @@
 62,Telford & Wrekin Council,Telford & Wrekin Council,Telford & Wrekin Council,West Midlands
 62,Telford & Wrekin Council,Telford and Wrekin,Telford & Wrekin Council,West Midlands
 62,Telford & Wrekin Council,Telford and Wrekin Council,Telford & Wrekin Council,West Midlands
+62,Telford & Wrekin Council,Telford and Wrekin Borough Council,Telford & Wrekin Council,West Midlands
 62,Telford & Wrekin Council,Telford and Wrekin Unitary Authority,Telford & Wrekin Council,West Midlands
 62,Telford & Wrekin Council,Telford and Wrekin UA,Telford & Wrekin Council,West Midlands
 63,Thurrock Council,Thurrock,Thurrock Council,East of England
@@ -269,7 +272,7 @@
 71,West Yorkshire Combined Authority,West Yorkshire Combined Authority - City of Wakefield Metropolitan District Council,West Yorkshire Combined Authority,Yorkshire and the Humber
 72,West of England Combined Authority,West of England CA,West of England Combined Authority,South West
 72,West of England Combined Authority,West Of England Combined Authority,West of England Combined Authority,South West
-72,West of England Combined Authority,West of England Combined Authority - Calderdale MBC,West of England Combined Authority,South West
+72,West of England Combined Authority,West of England Combined Authority,West of England Combined Authority,South West
 73,Wiltshire Council,Wiltshire,Wiltshire Council,South West
 73,Wiltshire Council,Wiltshire Council,Wiltshire Council,South West
 73,Wiltshire Council,Wiltshire County UA,Wiltshire Council,South West
@@ -277,6 +280,7 @@
 73,Wiltshire Council,Wiltshire UA,Wiltshire Council,South West
 74,Royal Borough of Windsor and Maidenhead,Royal Borough of Windsor and Maidenhead,Royal Borough of Windsor and Maidenhead,South East
 74,Royal Borough of Windsor and Maidenhead,Windsor and Maidenhead,Royal Borough of Windsor and Maidenhead,South East
+74,Royal Borough of Windsor and Maidenhead,Windsor and Maidenhead Borough Council,Royal Borough of Windsor and Maidenhead,South East
 74,Royal Borough of Windsor and Maidenhead,Windsor and Maidenhead Royal Borough Council,Royal Borough of Windsor and Maidenhead,South East
 74,Royal Borough of Windsor and Maidenhead,Windsor and Maidenhead Unitary Authority,Royal Borough of Windsor and Maidenhead,South East
 74,Royal Borough of Windsor and Maidenhead,Windsor and Maidenhead UA,Royal Borough of Windsor and Maidenhead,South East
@@ -315,49 +319,63 @@
 85,East Cambridgeshire District Council,East Cambridgeshire District Council,Cambridgeshire and Peterborough Combined Authority,East of England
 86,Bolton Metropolitan Borough Council,Bolton,Greater Manchester Combined Authority,North West
 86,Bolton Metropolitan Borough Council,Bolton Metropolitan Borough Council,Greater Manchester Combined Authority,North West
+86,Bolton Metropolitan Borough Council,Bolton Borough Council,Greater Manchester Combined Authority,North West
 87,Bury Metropolitan Borough Council,Bury,Greater Manchester Combined Authority,North West
 87,Bury Metropolitan Borough Council,Bury Metropolitan Borough Council,Greater Manchester Combined Authority,North West
+87,Bury Metropolitan Borough Council,Bury Borough Council,Greater Manchester Combined Authority,North West
 88,Manchester City Council,Manchester,Greater Manchester Combined Authority,North West
 88,Manchester City Council,Manchester City Council,Greater Manchester Combined Authority,North West
 89,Oldham Metropolitan Borough Council,Oldham,Greater Manchester Combined Authority,North West
 89,Oldham Metropolitan Borough Council,Oldham Metropolitan Borough Council,Greater Manchester Combined Authority,North West
+89,Oldham Metropolitan Borough Council,Oldham Borough Council,Greater Manchester Combined Authority,North West
 90,Rochdale Borough Council,Rochdale,Greater Manchester Combined Authority,North West
 90,Rochdale Borough Council,Rochdale Borough Council,Greater Manchester Combined Authority,North West
 91,Salford City Council,Salford,Greater Manchester Combined Authority,North West
 91,Salford City Council,Salford City Council,Greater Manchester Combined Authority,North West
 92,Stockport Metropolitan Borough Council,Stockport,Greater Manchester Combined Authority,North West
 92,Stockport Metropolitan Borough Council,Stockport Metropolitan Borough Council,Greater Manchester Combined Authority,North West
+92,Stockport Metropolitan Borough Council,Stockport Borough Council,Greater Manchester Combined Authority,North West
 93,Tameside Metropolitan Borough Council,Tameside,Greater Manchester Combined Authority,North West
 93,Tameside Metropolitan Borough Council,Tameside Metropolitan Borough Council,Greater Manchester Combined Authority,North West
+93,Tameside Metropolitan Borough Council,Tameside Borough Council,Greater Manchester Combined Authority,North West
 94,The Trafford Borough Council,The Trafford Borough Council,Greater Manchester Combined Authority,North West
+94,The Trafford Borough Council,Trafford Borough Council,Greater Manchester Combined Authority,North West
 94,The Trafford Borough Council,Trafford,Greater Manchester Combined Authority,North West
 94,The Trafford Borough Council,Trafford Council,Greater Manchester Combined Authority,North West
 95,Wigan Metropolitan Borough Council,Wigan,Greater Manchester Combined Authority,North West
 95,Wigan Metropolitan Borough Council,Wigan Metropolitan Borough Council,Greater Manchester Combined Authority,North West
+95,Wigan Metropolitan Borough Council,Wigan Borough Council,Greater Manchester Combined Authority,North West
 96,Halton Borough Council,Halton,Liverpool City Region Combined Authority,North West
 96,Halton Borough Council,Halton Borough Council,Liverpool City Region Combined Authority,North West
 97,Knowsley Metropolitan Borough Council,Knowsley,Liverpool City Region Combined Authority,North West
 97,Knowsley Metropolitan Borough Council,Knowsley Metropolitan Borough Council,Liverpool City Region Combined Authority,North West
+97,Knowsley Metropolitan Borough Council,Knowsley Borough Council,Liverpool City Region Combined Authority,North West
 98,Liverpool City Council,Liverpool,Liverpool City Region Combined Authority,North West
 98,Liverpool City Council,Liverpool City Council,Liverpool City Region Combined Authority,North West
 99,Sefton Council,Sefton,Liverpool City Region Combined Authority,North West
 99,Sefton Council,Sefton Council,Liverpool City Region Combined Authority,North West
+99,Sefton Council,Sefton Borough Council,Liverpool City Region Combined Authority,North West
 100,St Helens Borough Council,St Helens,Liverpool City Region Combined Authority,North West
 100,St Helens Borough Council,St Helens Borough Council,Liverpool City Region Combined Authority,North West
 100,St Helens Borough Council,St. Helens,Liverpool City Region Combined Authority,North West
 101,Wirral Council,Wirral,Liverpool City Region Combined Authority,North West
 101,Wirral Council,Wirral Council,Liverpool City Region Combined Authority,North West
+101,Wirral Council,Wirral Borough Council,Liverpool City Region Combined Authority,North West
 102,Newcastle City Council,Newcastle City Council,North East Combined Authority,North East
 102,Newcastle City Council,Newcastle upon Tyne,North East Combined Authority,North East
+102,Newcastle City Council,Newcastle Upon Tyne City Council,North East Combined Authority,North East
 102,Newcastle City Council,Newcastle-upon-Tyne,North East Combined Authority,North East
 103,Sunderland City Council,Sunderland,North East Combined Authority,North East
 103,Sunderland City Council,Sunderland City Council,North East Combined Authority,North East
 104,South Tyneside Council,South Tyneside,North East Combined Authority,North East
 104,South Tyneside Council,South Tyneside Council,North East Combined Authority,North East
+104,South Tyneside Council,South Tyneside Borough Council,North East Combined Authority,North East
 105,North Tyneside Council,North Tyneside,North East Combined Authority,North East
 105,North Tyneside Council,North Tyneside Council,North East Combined Authority,North East
+105,North Tyneside Council,North Tyneside Borough Council,North East Combined Authority,North East
 106,Gateshead Council,Gateshead,North East Combined Authority,North East
 106,Gateshead Council,Gateshead Council,North East Combined Authority,North East
+106,Gateshead Council,Gateshead Borough Council,North East Combined Authority,North East
 107,Northumberland County Council,Northumberland,North East Combined Authority,North East
 107,Northumberland County Council,Northumberland County Council,North East Combined Authority,North East
 108,Durham County Council,County Durham,North East Combined Authority,North East
@@ -367,10 +385,13 @@
 109,Sheffield City Council,Sheffield City Council,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
 110,Rotherham Metropolitan Borough Council,Rotherham,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
 110,Rotherham Metropolitan Borough Council,Rotherham Metropolitan Borough Council,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
+110,Rotherham Metropolitan Borough Council,Rotherham Borough Council,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
 111,City of Doncaster Council,City of Doncaster Council,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
 111,City of Doncaster Council,Doncaster,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
+111,City of Doncaster Council,Doncaster Borough Council,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
 112,Barnsley Metropolitan Borough Council,Barnsley,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
 112,Barnsley Metropolitan Borough Council,Barnsley Metropolitan Borough Council,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
+112,Barnsley Metropolitan Borough Council,Barnsley Borough Council,South Yorkshire Mayoral Combined Authority,Yorkshire and the Humber
 113,Darlington Borough Council,Darlington,Tees Valley Combined Authority,North East
 113,Darlington Borough Council,Darlington Borough Council,Tees Valley Combined Authority,North East
 113,Darlington Borough Council,Tees Valley Combined Authority (Darlington Borough Council as Highways Authority),Tees Valley Combined Authority,North East
@@ -378,7 +399,9 @@
 114,Hartlepool Borough Council,Hartlepool Borough Council,Tees Valley Combined Authority,North East
 115,Middlesbrough Council,Middlesbrough,Tees Valley Combined Authority,North East
 115,Middlesbrough Council,Middlesbrough Council,Tees Valley Combined Authority,North East
+115,Middlesbrough Council,Middlesbrough Borough Council,Tees Valley Combined Authority,North East
 116,Redcar & Cleveland Borough Council,Redcar & Cleveland Borough Council,Tees Valley Combined Authority,North East
+116,Redcar & Cleveland Borough Council,Redcar and Cleveland Borough Council,Tees Valley Combined Authority,North East
 116,Redcar & Cleveland Borough Council,Redcar and Cleveland,Tees Valley Combined Authority,North East
 117,Stockton-on-Tees Borough Council,Stockton-on-Tees,Tees Valley Combined Authority,North East
 117,Stockton-on-Tees Borough Council,Stockton-on-Tees Borough Council,Tees Valley Combined Authority,North East
@@ -391,13 +414,17 @@
 120,Coventry City Council,Coventry City Council,West Midlands Combined Authority,West Midlands
 121,Dudley Metropolitan Borough Council,Dudley,West Midlands Combined Authority,West Midlands
 121,Dudley Metropolitan Borough Council,Dudley Metropolitan Borough Council,West Midlands Combined Authority,West Midlands
+121,Dudley Metropolitan Borough Council,Dudley Borough Council,West Midlands Combined Authority,West Midlands
 122,Sandwell Council,Sandwell,West Midlands Combined Authority,West Midlands
 122,Sandwell Council,Sandwell Council,West Midlands Combined Authority,West Midlands
 122,Sandwell Council,Sandwell Metropolitan Borough Council,West Midlands Combined Authority,West Midlands
+122,Sandwell Council,Sandwell Borough Council,West Midlands Combined Authority,West Midlands
 123,Solihull Metropolitan Borough Council,Solihull,West Midlands Combined Authority,West Midlands
 123,Solihull Metropolitan Borough Council,Solihull Metropolitan Borough Council,West Midlands Combined Authority,West Midlands
+123,Solihull Metropolitan Borough Council,Solihull Borough Council,West Midlands Combined Authority,West Midlands
 124,Walsall Council,Walsall,West Midlands Combined Authority,West Midlands
 124,Walsall Council,Walsall Council,West Midlands Combined Authority,West Midlands
+124,Walsall Council,Walsall Borough Council,West Midlands Combined Authority,West Midlands
 125,Bath and North East Somerset Council,Bath and North East Somerset,West of England Combined Authority,South West
 125,Bath and North East Somerset Council,Bath and North East Somerset Council,West of England Combined Authority,South West
 126,South Gloucestershire Council,South Gloucestershire,West of England Combined Authority,South West
@@ -407,15 +434,19 @@
 127,Bristol City Council,"Bristol, City of",West of England Combined Authority,South West
 128,City Of Bradford Metropolitan District Council,Bradford,West Yorkshire Combined Authority,Yorkshire and the Humber
 128,City Of Bradford Metropolitan District Council,City of Bradford Metropolitan District Council,West Yorkshire Combined Authority,Yorkshire and the Humber
+128,City Of Bradford Metropolitan District Council,Bradford City Council,West Yorkshire Combined Authority,Yorkshire and the Humber
 129,Calderdale Metropolitan Borough Council,Calderdale,West Yorkshire Combined Authority,Yorkshire and the Humber
 129,Calderdale Metropolitan Borough Council,Calderdale Council,West Yorkshire Combined Authority,Yorkshire and the Humber
 129,Calderdale Metropolitan Borough Council,Calderdale Metropolitan Borough Council,West Yorkshire Combined Authority,Yorkshire and the Humber
+129,Calderdale Metropolitan Borough Council,Calderdale Borough Council,West Yorkshire Combined Authority,Yorkshire and the Humber
 130,Kirklees Council,Kirklees,West Yorkshire Combined Authority,Yorkshire and the Humber
 130,Kirklees Council,Kirklees Council,West Yorkshire Combined Authority,Yorkshire and the Humber
+130,Kirklees Council,Kirklees Borough Council,West Yorkshire Combined Authority,Yorkshire and the Humber
 131,Leeds City Council,Leeds,West Yorkshire Combined Authority,Yorkshire and the Humber
 131,Leeds City Council,Leeds City Council,West Yorkshire Combined Authority,Yorkshire and the Humber
 132,Wakefield Metropolitan District Council,Wakefield,West Yorkshire Combined Authority,Yorkshire and the Humber
 132,Wakefield Metropolitan District Council,Wakefield Metropolitan District Council,West Yorkshire Combined Authority,Yorkshire and the Humber
+132,Wakefield Metropolitan District Council,Wakefield City Council,West Yorkshire Combined Authority,Yorkshire and the Humber
 133,The Council of the Isles of Scilly,Isles of Scilly,The Council of the Isles of Scilly,South West
 133,The Council of the Isles of Scilly,Isles of Scilly Council,The Council of the Isles of Scilly,South West
 133,The Council of the Isles of Scilly,The Council of the Isles of Scilly,The Council of the Isles of Scilly,South West
@@ -453,6 +484,7 @@
 151,Braintree District Council,Braintree District Council,Essex County Council,East of England
 152,Breckland Council,Breckland,Norfolk County Council,East of England
 152,Breckland Council,Breckland Council,Norfolk County Council,East of England
+152,Breckland Council,Breckland District Council,Norfolk County Council,East of England
 153,Brent London Borough Council,Brent,Transport for London,London
 153,Brent London Borough Council,Brent London Borough Council,Transport for London,London
 154,Brentwood Borough Council,Brentwood,Essex County Council,East of England
@@ -464,6 +496,7 @@
 157,Bromsgrove District Council,Bromsgrove,Worcestershire County Council,West Midlands
 157,Bromsgrove District Council,Bromsgrove District Council,Worcestershire County Council,West Midlands
 158,Borough of Broxbourne Council,Borough of Broxbourne Council,Hertfordshire County Council,East of England
+158,Borough of Broxbourne Council,Broxbourne Borough Council,Hertfordshire County Council,East of England
 158,Borough of Broxbourne Council,Broxbourne,Hertfordshire County Council,East of England
 159,Broxtowe Borough Council,Broxtowe,East Midlands Combined County Authority,East Midlands
 159,Broxtowe Borough Council,Broxtowe Borough Council,East Midlands Combined County Authority,East Midlands
@@ -479,6 +512,7 @@
 164,Canterbury City Council,Canterbury City Council,Kent County Council,South East
 166,Castle Point Borough Council,Castle Point,Essex County Council,East of England
 166,Castle Point Borough Council,Castle Point Borough Council,Essex County Council,East of England
+166,Castle Point Borough Council,Castle Point District Council,Essex County Council,East of England
 167,Charnwood Borough Council,Charnwood,Leicestershire County Council,East Midlands
 167,Charnwood Borough Council,Charnwood Borough Council,Leicestershire County Council,East Midlands
 168,Chelmsford City Council,Chelmsford,Essex County Council,East of England
@@ -493,6 +527,7 @@
 172,Chichester District Council,Chichester District Council,West Sussex County Council,South East
 173,Chorley Council,Chorley,Lancashire County Council,North West
 173,Chorley Council,Chorley Council,Lancashire County Council,North West
+173,Chorley Council,Chorley Borough Council,Lancashire County Council,North West
 174,City of London Corporation,City of London,Transport for London,London
 174,City of London Corporation,City of London Corporation,Transport for London,London
 175,Colchester Borough Council,Colchester,Essex County Council,East of England
@@ -539,6 +574,7 @@
 199,Epping Forest District Council,Epping Forest District Council,Essex County Council,East of England
 200,Epsom and Ewell Borough Council,Epsom and Ewell,Surrey County Council,South East
 200,Epsom and Ewell Borough Council,Epsom and Ewell Borough Council,Surrey County Council,South East
+200,Epsom and Ewell Borough Council,Epsom & Ewell Borough Council,Surrey County Council,South East
 201,Erewash Borough Council,Erewash,East Midlands Combined County Authority,East Midlands
 201,Erewash Borough Council,Erewash Borough Council,East Midlands Combined County Authority,East Midlands
 202,Exeter City Council,Exeter,Devon County Council,South West
@@ -548,6 +584,7 @@
 204,Fareham Borough Council,Fareham,Hampshire County Council,South East
 204,Fareham Borough Council,Fareham Borough Council,Hampshire County Council,South East
 205,Folkestone & Hythe District Council,Folkestone & Hythe District Council,Kent County Council,South East
+205,Folkestone & Hythe District Council,Folkestone and Hythe District Council,Kent County Council,South East
 205,Folkestone & Hythe District Council,Folkestone and Hythe,Kent County Council,South East
 206,Forest of Dean District Council,Forest of Dean,Gloucestershire County Council,South West
 206,Forest of Dean District Council,Forest of Dean District Council,Gloucestershire County Council,South West
@@ -594,6 +631,7 @@
 229,Hillingdon London Borough Council,Hillingdon,Transport for London,London
 229,Hillingdon London Borough Council,Hillingdon London Borough Council,Transport for London,London
 230,Hinckley & Bosworth Borough Council,Hinckley & Bosworth Borough Council,Leicestershire County Council,East Midlands
+230,Hinckley & Bosworth Borough Council,Hinckley and Bosworth Borough Council,Leicestershire County Council,East Midlands
 230,Hinckley & Bosworth Borough Council,Hinckley and Bosworth,Leicestershire County Council,East Midlands
 231,Horsham District Council,Horsham,West Sussex County Council,South East
 231,Horsham District Council,Horsham District Council,West Sussex County Council,South East
@@ -610,6 +648,7 @@
 237,Borough Council of King's Lynn & West Norfolk,Borough Council of King's Lynn & West Norfolk,Norfolk County Council,East of England
 237,Borough Council of King's Lynn & West Norfolk,King’s Lynn and West Norfolk,Norfolk County Council,East of England
 237,Borough Council of King's Lynn & West Norfolk,King's Lynn and West Norfolk,Norfolk County Council,East of England
+237,Borough Council of King's Lynn & West Norfolk,Kings Lynn and West Norfolk Borouh Council,Norfolk County Council,East of England
 238,Kingston upon Thames London Borough Council,Kingston upon Thames,Transport for London,London
 238,Kingston upon Thames London Borough Council,Kingston upon Thames London Borough Council,Transport for London,London
 239,Lake District National Park,Lake District National Park,Cumberland Council,North West
@@ -623,8 +662,10 @@
 243,London Borough of Lewisham,Lewisham,Transport for London,London
 243,London Borough of Lewisham,London Borough of Lewisham,Transport for London,London
 244,Lichfield District Council,Lichfield,Staffordshire County Council,West Midlands
+244,Lichfield District Council,Lichfield City Council,Staffordshire County Council,West Midlands
 244,Lichfield District Council,Lichfield District Council,Staffordshire County Council,West Midlands
 245,City of Lincoln Council,City of Lincoln Council,Lincolnshire County Council,East Midlands
+245,City of Lincoln Council,Lincoln City Council,Lincolnshire County Council,East Midlands
 245,City of Lincoln Council,Lincoln,Lincolnshire County Council,East Midlands
 246,London Legacy Development Corporation,London Legacy Development Corporation,Transport for London,London
 247,Maidstone Borough Council,Maidstone,Kent County Council,South East
@@ -655,13 +696,16 @@
 260,Newark & Sherwood District Council,Newark and Sherwood,East Midlands Combined County Authority,East Midlands
 261,Newcastle-under-Lyme Borough Council,Newcastle-under-Lyme,Staffordshire County Council,West Midlands
 261,Newcastle-under-Lyme Borough Council,Newcastle-under-Lyme Borough Council,Staffordshire County Council,West Midlands
+261,Newcastle-under-Lyme Borough Council,Newcastle-Under-Lyme Borough Council,Staffordshire County Council,West Midlands
 262,Newham London Borough Council,Newham,Transport for London,London
 262,Newham London Borough Council,Newham London Borough Council,Transport for London,London
 263,North Devon Council,North Devon,Devon County Council,South West
 263,North Devon Council,North Devon Council,Devon County Council,South West
+263,North Devon Council,North Devon District Council,Devon County Council,South West
 264,North East Derbyshire District Council,North East Derbyshire,East Midlands Combined County Authority,East Midlands
 264,North East Derbyshire District Council,North East Derbyshire District Council,East Midlands Combined County Authority,East Midlands
 265,North Herts Council,North Hertfordshire,Hertfordshire County Council,East of England
+265,North Herts Council,North Hertfordshire District Council,Hertfordshire County Council,East of England
 265,North Herts Council,North Herts Council,Hertfordshire County Council,East of England
 266,North Kesteven District Council,North Kesteven,Lincolnshire County Council,East Midlands
 266,North Kesteven District Council,North Kesteven District Council,Lincolnshire County Council,East Midlands
@@ -733,6 +777,7 @@
 303,South Kesteven District Council,South Kesteven District Council,Lincolnshire County Council,East Midlands
 305,South Norfolk Council,South Norfolk,Norfolk County Council,East of England
 305,South Norfolk Council,South Norfolk Council,Norfolk County Council,East of England
+305,South Norfolk Council,South Norfolk District Council,Norfolk County Council,East of England
 306,South Oxfordshire District Council,South Oxfordshire,Oxfordshire County Council,South East
 306,South Oxfordshire District Council,South Oxfordshire District Council,Oxfordshire County Council,South East
 307,South Ribble Borough Council,South Ribble,Lancashire County Council,North West
@@ -751,6 +796,7 @@
 312,Spelthorne Borough Council,Spelthorne Borough Council,Surrey County Council,South East
 313,St Albans City and District Council,St Albans,Hertfordshire County Council,East of England
 313,St Albans City and District Council,St Albans City and District Council,Hertfordshire County Council,East of England
+313,St Albans City and District Council,St Albans City Council,Hertfordshire County Council,East of England
 314,Stafford Borough Council,Stafford,Staffordshire County Council,West Midlands
 314,Stafford Borough Council,Stafford Borough Council,Staffordshire County Council,West Midlands
 315,Staffordshire Moorlands District Council,Staffordshire Moorlands,Staffordshire County Council,West Midlands
@@ -759,6 +805,7 @@
 316,Stevenage Borough Council,Stevenage Borough Council,Hertfordshire County Council,East of England
 317,Stratford-on-Avon District Council,Stratford-on-Avon,Warwickshire County Council,West Midlands
 317,Stratford-on-Avon District Council,Stratford-on-Avon District Council,Warwickshire County Council,West Midlands
+317,Stratford-on-Avon District Council,Stratford on Avon District Council,Warwickshire County Council,West Midlands
 318,Stroud District Council,Stroud,Gloucestershire County Council,South West
 318,Stroud District Council,Stroud District Council,Gloucestershire County Council,South West
 319,Surrey Heath Borough Council,Surrey Heath,Surrey County Council,South East
@@ -787,6 +834,7 @@
 330,Three Rivers District Council,Three Rivers District Council,Hertfordshire County Council,East of England
 331,Tonbridge and Malling Borough Council,Tonbridge and Malling,Kent County Council,South East
 331,Tonbridge and Malling Borough Council,Tonbridge and Malling Borough Council,Kent County Council,South East
+331,Tonbridge and Malling Borough Council,Tonbridge & Malling Borough Council,Kent County Council,South East
 332,Torridge District Council,Torridge,Devon County Council,South West
 332,Torridge District Council,Torridge District Council,Devon County Council,South West
 333,Tower Hamlets London Borough Council,Tower Hamlets,Transport for London,London
@@ -813,8 +861,10 @@
 343,Welwyn Hatfield Borough Council,Welwyn Hatfield Borough Council,Hertfordshire County Council,East of England
 344,West Devon Borough Council,West Devon,Devon County Council,South West
 344,West Devon Borough Council,West Devon Borough Council,Devon County Council,South West
+344,West Devon Borough Council,West Devon District Council,Devon County Council,South West
 345,West Lancashire Borough Council,West Lancashire,Lancashire County Council,North West
 345,West Lancashire Borough Council,West Lancashire Borough Council,Lancashire County Council,North West
+345,West Lancashire Borough Council,West Lancashire District Council,Lancashire County Council,North West
 346,West Lindsey District Council,West Lindsey,Lincolnshire County Council,East Midlands
 346,West Lindsey District Council,West Lindsey District Council,Lincolnshire County Council,East Midlands
 347,West Oxfordshire District Council,West Oxfordshire,Oxfordshire County Council,South East
@@ -833,8 +883,10 @@
 353,Worthing Borough Council,Worthing Borough Council,West Sussex County Council,South East
 354,Wychavon District Council,Wychavon,Worcestershire County Council,West Midlands
 354,Wychavon District Council,Wychavon District Council,Worcestershire County Council,West Midlands
+354,Wychavon District Council,Wychavon District Council,Worcestershire County Council,West Midlands
 355,Wyre Council,Wyre,Lancashire County Council,North West
 355,Wyre Council,Wyre Council,Lancashire County Council,North West
+355,Wyre Council,Wyre Borough Council,Lancashire County Council,North West
 356,Wyre Forest District Council,Wyre Forest,Worcestershire County Council,West Midlands
 356,Wyre Forest District Council,Wyre Forest District Council,Worcestershire County Council,West Midlands
 357,Yorkshire Dales National Park,Yorkshire Dales National Park,North Yorkshire Council,Yorkshire and the Humber
