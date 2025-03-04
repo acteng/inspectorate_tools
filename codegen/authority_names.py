@@ -32,7 +32,8 @@ with open("inputs/authority_aliases.csv") as inputFile:
             print(authorityAlias)
             print(authorityAliasMap[authorityAlias])
 
-print(list(authorityAliasMap.keys()))
+# This section exists to ensure that any pre-existing names used are covered by the aliases used.
+# If not then you'll have to add them manually by working out which council the alias corresponds to
 with open("inputs/original_list.csv") as inputFile2:
     for row in csv.DictReader(
         inputFile2,
