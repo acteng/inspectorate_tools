@@ -1,7 +1,11 @@
+import {
+  authorityAliasToNameMap,
+  authorityNames,
+  validateAuthorityName,
+} from "$lib/authority_names/authority_names";
 import { LocalStorageFiles } from "$lib/files";
 import type { FeatureCollection } from "geojson";
 import { writable } from "svelte/store";
-import { authorityAliasToNameMap, authorityNames } from "$lib/authority_names/authority_names";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");
@@ -60,17 +64,7 @@ function validate(state: State) {
   if (state.version != "alpha-0") {
     throw new Error("File format appears outdated");
   }
-  if (!authorityNames.includes(state.summary.authority)) {
-    // @ts-expect-error because we're using a json file ts isn't happy for us to assume this can accessed this way
-    let authorityNameObject = authorityAliasToNameMap[state.summary.authority];
-    console.log(state.summary.authority);
-    console.log(authorityNameObject);
-    if (!authorityNameObject) {
-      state.summary.authority = "";
-    } else {
-      state.summary.authority = authorityNameObject.fullName;
-    }
-  }
+  state.summary.authority = validateAuthorityName(state.summary.authority);
 }
 
 function describe(state: State): string {

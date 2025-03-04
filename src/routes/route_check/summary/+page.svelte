@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DateInput, pairs, } from "$lib";
+  import { DateInput, pairs } from "$lib";
   import {
     authorities,
     designStages,
@@ -16,7 +16,6 @@
     TextInput,
   } from "govuk-svelte";
   import { state } from "../data";
-
 </script>
 
 <div class="govuk-width-container">
