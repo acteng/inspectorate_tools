@@ -35,13 +35,9 @@ const additionalAuthorities = [
   "London Borough of Waltham Forest",
   "London Borough of Wandsworth",
   "Westminster City Council",
-]
-
-export let authorities = [
-  "N/A",
-  ...authorityNames,
-  ...additionalAuthorities,
 ];
+
+export let authorities = ["N/A", ...authorityNames, ...additionalAuthorities];
 
 export let transportOrCombinedAuthorities = [
   "Not applicable",
