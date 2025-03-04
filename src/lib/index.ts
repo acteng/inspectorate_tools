@@ -8,6 +8,7 @@ export { default as PrevNext } from "./PrevNext.svelte";
 export { default as ServiceHeader } from "./ServiceHeader.svelte";
 export { default as ToolLayout } from "./ToolLayout.svelte";
 export { default as YesNo } from "./YesNo.svelte";
+export { printAliasRecords } from "./authority_names/authority_names"
 
 export function pairs(list: string[]): [string, string][] {
   return list.map((x) => [x, x]);
