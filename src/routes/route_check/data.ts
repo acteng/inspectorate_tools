@@ -1,4 +1,5 @@
 import { repeatCloned } from "$lib";
+import { validateAuthorityName } from "$lib/authority_names/authority_names";
 import { LocalStorageFiles } from "$lib/files";
 import type { Position } from "$lib/map";
 import type { FeatureCollection, LineString } from "geojson";
@@ -190,6 +191,8 @@ function validate(state: State) {
       x.resolved = "";
     }
   }
+
+  state.summary.authority = validateAuthorityName(state.summary.authority);
 }
 
 function describe(state: State): string {

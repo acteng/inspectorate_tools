@@ -1,3 +1,8 @@
+import {
+  authorityAliasToNameMap,
+  authorityNames,
+  validateAuthorityName,
+} from "$lib/authority_names/authority_names";
 import { LocalStorageFiles } from "$lib/files";
 import type { FeatureCollection } from "geojson";
 import { writable } from "svelte/store";
@@ -59,6 +64,7 @@ function validate(state: State) {
   if (state.version != "alpha-0") {
     throw new Error("File format appears outdated");
   }
+  state.summary.authority = validateAuthorityName(state.summary.authority);
 }
 
 function describe(state: State): string {
