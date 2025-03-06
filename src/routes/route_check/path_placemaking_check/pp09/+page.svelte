@@ -16,5 +16,5 @@
     ],
   ]}
 >
-  <p>Description: Visual distinctiveness of the path environmenty.</p>
+  <p>Description: Visual distinctiveness of the path environment.</p>
 </Question>

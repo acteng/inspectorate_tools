@@ -26,7 +26,7 @@
 >
   <p>
     Description: Cyclist conflict with kerbside activity, including risk of
-    'dooring'
+    'dooring'.
   </p>
   <p>Mode: Cycling</p>
 </Question>

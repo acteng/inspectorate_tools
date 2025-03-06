@@ -1,6 +1,11 @@
 import type { Position } from "$lib/map";
-import ExcelJS, { type CellValue } from "exceljs";
-import { emptyState, type Score, type State } from "../routes/route_check/data";
+import ExcelJS, { type Cell, type CellValue } from "exceljs";
+import {
+  emptyState,
+  type Score,
+  type Scorecard,
+  type State,
+} from "../routes/route_check/data";
 import { dateToString } from "./";
 
 // TODO More cautious error checking
@@ -43,6 +48,7 @@ function num(idx: number): string {
   return (idx + 1).toString().padStart(2, "0");
 }
 
+// TODO Don't export?
 export function dalogToState(dalog: {
   [name: string]: string | number | Date | null;
 }): State {
@@ -192,4 +198,134 @@ export function dalogToState(dalog: {
   // JAT level-of-service stats are included, but not enough for us to import anything
 
   return state;
+}
+
+export function importFromExcel(workbook: ExcelJS.Workbook): State {
+  let dalog = getDalog(workbook);
+  let state = dalogToState(dalog);
+
+  // More fields for scheme summary
+  let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
+  state.summary.schemeSummary = strValue(sheet.getCell("C9"));
+  state.summary.schemeInfoReviewed = strValue(sheet.getCell("C10"));
+
+  // Policy check commentary
+  sheet = workbook.getWorksheet("2.1 Policy Check")!;
+  for (let i = 0; i < 6; i++) {
+    state.policyCheck[i].commentary = strValue(sheet.getCell("F" + (8 + i)));
+  }
+
+  // Note some code is adapted from export.ts and could be refactored
+  importScorecardComments(
+    state.safetyCheck,
+    workbook,
+    "3.1 Safety Check",
+    ["J", "K", "L", "M"],
+    makeRanges([[13, 28]]),
+  );
+  importScorecardComments(
+    state.streetCheck,
+    workbook,
+    "4.1 Street Check",
+    ["J", "K", "L", "M"],
+    makeRanges([
+      [13, 19],
+      [23, 25],
+      [29, 34],
+      [38, 43],
+      [47, 50],
+    ]),
+  );
+  importScorecardComments(
+    state.streetPlacemakingCheck,
+    workbook,
+    "4.2 Street Placemaking Check",
+    ["I", "J", "K", "L"],
+    makeRanges([
+      [13, 15],
+      [19, 21],
+      [25, 34],
+      [38, 47],
+    ]),
+  );
+  importScorecardComments(
+    state.pathCheck,
+    workbook,
+    "5.1 Path Check",
+    ["J", "K", "L", "M"],
+    makeRanges([
+      [15, 19],
+      [23, 33],
+      [37, 40],
+      [44, 48],
+      [52, 56],
+    ]),
+  );
+  importScorecardComments(
+    state.pathPlacemakingCheck,
+    workbook,
+    "5.2 Path Placemaking Check",
+    ["I", "J", "K", "L"],
+    makeRanges([
+      [12, 14],
+      [20, 22],
+      [26, 29],
+      [33, 41],
+    ]),
+  );
+
+  // Results
+  sheet = workbook.getWorksheet("7.1 Results Summary")!;
+  state.resultsReviewStatement = strValue(sheet.getCell("G7"));
+  if (
+    state.resultsReviewStatement ==
+    "Use the space to provide overall feedback for the proposed scheme."
+  ) {
+    state.resultsReviewStatement = "";
+  }
+
+  return state;
+}
+
+function strValue(cell: Cell): string {
+  if (typeof cell.value == "string") {
+    return cell.value;
+  }
+  if (cell.value == null) {
+    return "";
+  }
+  throw new Error(`Input cell isn't a string, it's ${cell.value}`);
+}
+
+function makeRanges(ranges: [number, number][]): number[] {
+  let results = [];
+  for (let [a, b] of ranges) {
+    for (let i = a; i <= b; i++) {
+      results.push(i);
+    }
+  }
+  return results;
+}
+
+function importScorecardComments(
+  scorecard: Scorecard,
+  workbook: ExcelJS.Workbook,
+  sheetName: string,
+  excelColumns: string[],
+  excelRows: number[],
+) {
+  let sheet = workbook.getWorksheet(sheetName)!;
+  if (excelRows.length != scorecard.existingScores.length) {
+    throw new Error(`Wrong Excel ranges for ${sheetName}`);
+  }
+
+  for (let i = 0; i < scorecard.existingScores.length; i++) {
+    let row = excelRows[i];
+    scorecard.existingScoreNotes[i] = strValue(
+      sheet.getCell(excelColumns[1] + row),
+    );
+    scorecard.proposedScoreNotes[i] = strValue(
+      sheet.getCell(excelColumns[3] + row),
+    );
+  }
 }

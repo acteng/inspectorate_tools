@@ -1,7 +1,7 @@
 "SOCIAL ACTIVITY",,,,,,,,,,,
 ,,,,,,,,,,,
 "Street Engagement for Children","SP01","Presence of features which children can engage with.",,"None.","Some access to formal/natural play spaces for children.","Access to formal/natural play spaces for children and street features that can engage children.",,,,,
-"Social Space","SP02","Proximity to places where people might stop and have a conversation.",,">800m.","400-800m.","<400m.",,,,,
+"Social Space","SP02","Proximity to places where people might stop and have a conversation.",,"Greater than 800m.","400-800m.","Less than 400m.",,,,,
 "Diversity of Activities","SP03","Suitability of the street for different activities, creating conditions for positive interactions.",,"Single activity street.","Multiple activity street.","Different activities encouraged on the street at different times of day. ",,,,,
 ,,,,,,,,,,,
 "PERSONAL SECURITY ",,,,,,,,,,,
@@ -26,7 +26,7 @@ Frequent escape routes.",,,,,
 ,,,,,,,,,,,
 "Maintenance and Upkeep","SP07","Condition of the streetscape.",,"Poorly maintained streetscape: overgrown vegetation or significant littering. No winter maintenance.
 
-The streetscape has been designed in a way that is hard to maintain.","Elements of the streetscape are well maintained.","Well maintained streetscape: vegetation is well-managed and there are no issues with littering. Route is well-maintained throughout winter.
+The streetscape has been designed in a way that is hard to maintain.","Elements of the streetscape are well maintained.","Well maintained streetscape: vegetation is well managed and there are no issues with littering. Route is well maintained throughout winter.
 
 The streetscape has been designed in a way that is easy to maintain.",,,,,
 "Street Network Layout","SP08","Street network impact on wayfinding.",,"The street network is complex or there are connectivity issues.
@@ -40,7 +40,7 @@ Users can see where they are going and know how to get there.",,,,,
 
 There are issues with navigation and movement or the street is an unpleasant place to be.","The layout of the street is functional and serves its intended purpose in terms of movement and place.","The form of the street is in full harmony with its intended functions.
 
-Users can find their way without a need for maps or signage and the street is a pleasant place to be.",,,,,
+Users can find their way without a need for maps or signage, and the street is a pleasant place to be.",,,,,
 "Impact of Street Design on Behaviour","SP10","Extent to which the street layout influences different types of user behaviour.",,"The street layout encourages aggressive behaviour, which makes the street an unpleasant place to be.
 
 E.g. central hatching, guard railing, wide flared side roads and right-turn pockets.","The street layout controls user behaviour throughout.","The highways layout encourages civilised behaviour, negotiation and forgiveness, which makes the street a pleasant place to be.
@@ -93,10 +93,10 @@ Or, a buffer of less than 0.5m between sources of pollution and pedestrians and 
 Or, there is a cycle facility at least 2m wide between the footway and carriageway.","Inclusion of roadside tredges or selective planting.
 
 Or, a buffer of at least 2m between sources of pollution and pedestrians and cyclists.",,,,,
-"Noise Pollution","SP24","Effect of noise pollution from traffic on user experience.",,"Excessively noisy (>78dB).","Slightly noisy (65-78dB).","Comfortable noise levels (<65dB).",,,,,
+"Noise Pollution","SP24","Effect of noise pollution from traffic on user experience.",,"Excessively noisy (more than 78dB).","Slightly noisy (65-78dB).","Comfortable noise levels (less than 65dB).",,,,,
 "Light Pollution","SP25","Effect of excessive lighting on the environment and user experience.",,"Beams from street lighting are excessively bright, excessively blue-violet and/or not shielded. 
 
 Or, the street layout means that vehicle headlights dazzle pedestrians and cyclists.","Beams from street lighting are no stronger than necessary but are not sufficiently shielded.","Beams from street lighting are shielded, are no stronger than necessary and are warm-coloured.
 
 Street layout mitigates the effect of vehicle headlights dazzling pedestrians and cyclists.",,,,,
-"Sunlight","SP26","How much sunlight the street receives.",,"No sunlight penetration.","<2 hours direct sunlight on shortest day of year.",">2 hours direct sunlight on shortest day of year.",,,,,
+"Sunlight","SP26","How much sunlight the street receives.",,"No sunlight penetration.","Less than 2 hours direct sunlight on shortest day of year.","More than 2 hours direct sunlight on shortest day of year.",,,,,

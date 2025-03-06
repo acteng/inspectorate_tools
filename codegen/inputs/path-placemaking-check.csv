@@ -1,7 +1,7 @@
 "SOCIAL ACTIVITY",,,,,,,,,,,
 ,,,,,,,,,,,
 "Engagement for Children","PP01","Presence of features which children can engage with.",,"None.","Some access to formal/natural play spaces for children.","Access to formal/natural play spaces for children and features that can engage children.",,,,,
-"Social Space","PP02","Proximity to places where people might stop and have a conversation.",,">800m.","400-800m.","<400m.",,,,,
+"Social Space","PP02","Proximity to places where people might stop and have a conversation.",,"More than 800m.","400-800m.","Less than 400m.",,,,,
 "Points of Interest","PP03","Presence of features which people can engage with, such as:
 • Information on local features, flora and fauna
 • Public art
@@ -32,7 +32,7 @@ Enclosed spaces; no or few escape routes.","Path is mostly open with few visibil
 Some escape routes.","Path is open with good visibility and clear sight lines. 
 
 Frequent escape routes.",,,,,
-"Visibility of Others","PP06","Effect of lighting and path environment on perceived and actual risk of crime.",,"No lighting. Path environment that creates potential ambush points.","Inadequate lighting, or bright lighting that creates high contrast areas with shadows. ","Lighting that does not create high contrast areas with shadows. Path environment does not create hiding or loitering places.",,,,,
+"Visibility of Others","PP06","Effect of lighting and path environment on perceived and actual risk of crime.",,"No lighting or path environment that creates potential ambush points","Inadequate lighting, or bright lighting that creates high contrast areas with shadows. ","Lighting that does not create high contrast areas with shadows and path environment does not create hiding or loitering places.",,,,,
 ,,,,,,,,,,,
 "CHARACTER AND LEGIBILITY",,,,,,,,,,,
 ,,,,,,,,,,,
@@ -42,7 +42,7 @@ The path has been designed in a way that is hard to maintain.","Elements of the 
 
 The path has been designed in a way that is easy to maintain.",,,,,
 "Consistency of Materials and Path Furniture","PP08","Consistency and suitability of materials and path furniture for the wider path environment.",,"Clashes between surface materials, path and the wider street environment, negatively affecting the path's appearance and character.","Consistent surface materials and path furniture which also match the wider  environment.","Surface materials and path furniture complement the wider environment and enhance the path's appearance and character.",,,,,
-"Visual Interest","PP09","Visual distinctiveness of the path environmenty.",,"Uniform, monotonous, boring (e.g. consistently in a cutting or between high fences).","Some variety in the path's environment.","Lots of variety in the path environment (e.g. visually interesting or unique features).",,,,,
+"Visual Interest","PP09","Visual distinctiveness of the path environment.",,"Uniform, monotonous, boring (e.g. consistently in a cutting or between high fences).","Some variety in the path's environment.","Lots of variety in the path environment (e.g. visually interesting or unique features).",,,,,
 "Features to Support Walking, Wheeling and Cycling","PP10","Features to encourage and enhance active travel journeys, such as:
 • Benches or other seating
 • Water fountain
@@ -80,11 +80,11 @@ Or, a buffer of less than 0.5m between sources of pollution and pedestrians and 
 Or, there is a cycle facility at least 2m wide between the footway and carriageway.","Inclusion of roadside tredges or selective planting.
 
 And/or, a buffer of at least 2m between sources of pollution and pedestrians and cyclists.",,,,,
-"Noise Pollution","PP17","Effect of noise pollution from traffic on user experience.",,"Excessively noisy (>78dB).","Slightly noisy (65-78dB).","Comfortable noise levels (<65dB).",,,,,
+"Noise Pollution","PP17","Effect of noise pollution from traffic on user experience.",,"Excessively noisy (more than 78dB).","Slightly noisy (65-78dB).","Comfortable noise levels (less than 65dB).",,,,,
 "Light Pollution","PP18","Effect of excessive lighting on the environment and user experience.",,"Beams from path lighting are excessively bright, excessively blue-violet and/or not shielded. 
 
 Or, parts of the path are positioned so that vehicle headlights dazzle pedestrians and cyclists.","Beams from path lighting are no stronger than necessary but are not sufficiently shielded.","Beams from path lighting are shielded, are no stronger than necessary and are warm-coloured.
 
 Path environment and/or layout mitigates the effect of vehicle headlights dazzling pedestrians and cyclists.",,,,,
-"Sunlight","PP19","How much sunlight the street receives.",,"No sunlight penetration.","<2 hours direct sunlight on shortest day of year.",">2 hours direct sunlight on shortest day of year.",,,,,
+"Sunlight","PP19","How much sunlight the street receives.",,"No sunlight penetration.","Less than 2 hours direct sunlight on shortest day of year.","More than 2 hours direct sunlight on shortest day of year.",,,,,
 ,,,,,,,,,,,

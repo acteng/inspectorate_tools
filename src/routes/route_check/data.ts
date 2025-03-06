@@ -30,6 +30,8 @@ export interface State {
     fundingProgramme: string;
     designStage: string;
     fundingConditions: string;
+    // Note this is now called "reviewer email", but this field is different
+    // for backwards compatibility.
     inspectorEmail: string;
     assessedRouteLengthKm: number;
     totalRouteLengthKm: number;
