@@ -4,13 +4,12 @@ import json
 
 authorityAliasMap = {}
 authorityNames = []
-authorityIDsProcessed = {}
+authorityNamesProcessed = {}
 
 with open("inputs/authority_aliases.csv") as inputFile:
     for row in csv.DictReader(
         inputFile,
         fieldnames=[
-            "authority ID",
             "authority full name",
             "authority alias",
             "associated transport authority",
@@ -18,19 +17,14 @@ with open("inputs/authority_aliases.csv") as inputFile:
         ],
     ):
         authorityAlias = row["authority alias"]
-        authorityID = row["authority ID"].replace('\ufeff', '')
+        authorityName = row["authority full name"].replace('\ufeff', '')
         authorityAliasMap[authorityAlias] = {
-            "id": authorityID,
-            "fullName": row["authority full name"]
+            "fullName": authorityName
         }
         
-        if not authorityID in list(authorityIDsProcessed.keys()):
-            authorityIDsProcessed[authorityID] = True
-            authorityNames.append(row["authority full name"])
-
-        if authorityAlias == "Wychavon District Council":
-            print(authorityAlias)
-            print(authorityAliasMap[authorityAlias])
+        if not authorityName in list(authorityNamesProcessed.keys()):
+            authorityNamesProcessed[authorityName] = True
+            authorityNames.append(authorityName)
 
 # This section exists to ensure that any pre-existing names used are covered by the aliases used.
 # If not then you'll have to add them manually by working out which council the alias corresponds to
@@ -45,9 +39,9 @@ with open("inputs/original_list.csv") as inputFile2:
         if not name in list(authorityAliasMap.keys()):
             print("name not found in keys:" + name)
 
-with open("outputs/authorityAliasMap.json", 'w') as filePath:
+with open("../src/lib/authority_names/authorityAliasMap.json", 'w') as filePath:
     json.dump(authorityAliasMap, filePath)
  
-with open("outputs/authorityNameList.json", 'w') as filePath:
-    json.dump(authorityNames, filePath)       
+with open("../src/lib/authority_names/authorityNameList.json", 'w') as filePath:
+    json.dump(authorityNames, filePath)
     
