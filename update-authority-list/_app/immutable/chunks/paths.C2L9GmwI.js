@@ -1,1 +1,0 @@
-var s;const o=((s=globalThis.__sveltekit_7nocgo)==null?void 0:s.base)??"/inspectorate_tools/update-authority-list";var t;const a=((t=globalThis.__sveltekit_7nocgo)==null?void 0:t.assets)??o;export{a,o as b};
