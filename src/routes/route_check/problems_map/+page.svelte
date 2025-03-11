@@ -67,12 +67,15 @@
   let streetviewOn = false;
   let showRoute = true;
   let showResolved = true;
+  let pointsWithStackedCriticalsOrConflicts: Position[] = [];
 
   $: if (map) {
     map.getCanvas().style.cursor =
       mode.mode == "new-critical" || mode.mode == "new-conflict"
         ? "crosshair"
         : "auto";
+
+    sortConflictsAndGetStacks();
   }
 
   $: hoverGj = getHoverData($state, mode, hoveringSidebar);
@@ -128,10 +131,7 @@
 
     let newItem = JSON.parse(JSON.stringify(list[id.idx]));
 
-    // Arbitrarily put the point slightly to the right of the previous one so that it's visible
-    let westLimit = map.getBounds().getWest();
-    let eastLimit = map.getBounds().getEast();
-    newItem.point[0] += (eastLimit - westLimit) * 0.05;
+    newItem.point = getPointSlightlyToTheRight(newItem.point);
     let newList = list.toSpliced(id.idx + 1, 0, newItem);
 
     if (id.kind == "critical") {
@@ -145,9 +145,30 @@
     await select({ kind: id.kind, idx: id.idx + 1 });
   }
 
+  function getPointSlightlyToTheRight(point: Position): Position {
+    if (!map) {
+      return point;
+    }
+    // Arbitrarily put the point slightly to the right of the previous one so that it's visible
+    let westLimit = map.getBounds().getWest();
+    let eastLimit = map.getBounds().getEast();
+
+    return [point[0] + (eastLimit - westLimit) * 0.1, point[1]];
+  }
+
   async function stopEditing() {
     mode = { mode: "select" };
 
+    sortConflictsAndGetStacks();
+
+    if (preserveListScroll != null) {
+      await tick();
+      sidebar.scrollTop = preserveListScroll;
+      preserveListScroll = null;
+    }
+  }
+
+  function sortConflictsAndGetStacks() {
     // Sort by the conflict or critical type. The scroll position may be slightly irrelevant if the user changes these types.
     $state.policyConflictLog = $state.policyConflictLog.toSorted(
       (a, b) =>
@@ -159,11 +180,10 @@
         getCriticalIssueIndex(b.criticalIssue),
     );
 
-    if (preserveListScroll != null) {
-      await tick();
-      sidebar.scrollTop = preserveListScroll;
-      preserveListScroll = null;
-    }
+    pointsWithStackedCriticalsOrConflicts = getPointsWithStacks(
+      $state.criticalIssues,
+      $state.policyConflictLog,
+    );
   }
 
   function onMapClick(e: CustomEvent<MapMouseEvent>) {
@@ -295,6 +315,41 @@
 
   function show(showResolved: boolean, resolved: "Yes" | "No" | "") {
     return showResolved || resolved != "Yes";
+  }
+
+  function getPointsWithStacks(
+    criticalIssues: CriticalIssue[],
+    policyConflictLog: PolicyConflict[],
+  ): Position[] {
+    let results: Position[] = [];
+    for (let i = 0; i < criticalIssues.length - 1; i++) {
+      for (let j = i + 1; j < criticalIssues.length; j++) {
+        if (
+          criticalIssues[i].point[0] === criticalIssues[j].point[0] &&
+          criticalIssues[i].point[1] === criticalIssues[j].point[1]
+        ) {
+          results.push(criticalIssues[i].point);
+        }
+      }
+    }
+
+    for (let i = 0; i < policyConflictLog.length - 1; i++) {
+      for (let j = i + 1; j < policyConflictLog.length; j++) {
+        if (
+          policyConflictLog[i].point[0] === policyConflictLog[j].point[0] &&
+          policyConflictLog[i].point[1] === policyConflictLog[j].point[1]
+        ) {
+          results.push(policyConflictLog[i].point);
+        }
+      }
+    }
+
+    if (map) {
+      results.forEach((result, index) => {
+        results[index] = getPointSlightlyToTheRight(result);
+      });
+    }
+    return results;
   }
 </script>
 
@@ -471,6 +526,28 @@
             </span>
           </Marker>
         {/if}
+      {/each}
+
+      {#each pointsWithStackedCriticalsOrConflicts as point}
+        <Marker draggable bind:lngLat={point}>
+          <svg width="55" height="55" xmlns="http://www.w3.org/2000/svg">
+            <polygon
+              points="0,22.5 27,0 55,0 55,55 27,55"
+              fill={colors.stackIndicator.background}
+              stroke="white"
+            />
+            <text
+              x="50%"
+              y="50%"
+              style:fill="white"
+              style:font="bold 15px sans-serif"
+              dominant-baseline="middle"
+              text-anchor="middle"
+            >
+              {" Stack"}
+            </text>
+          </svg>
+        </Marker>
       {/each}
 
       <GeoJSON data={hoverGj}>

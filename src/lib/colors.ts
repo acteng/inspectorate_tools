@@ -3,6 +3,10 @@ export let colors = {
     background: "#232323",
     font: "white",
   },
+  stackIndicator: {
+    background: "#005221",
+    font: "white",
+  },
   red: {
     background: "#b73d25",
     font: "white",
