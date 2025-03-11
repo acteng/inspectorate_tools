@@ -37,7 +37,7 @@ const additionalAuthorities = [
   "Westminster City Council",
 ];
 
-export let authorities = ["N/A", ...authorityNames, ...additionalAuthorities];
+export let authorities = ["N/A", ...[...authorityNames, ...additionalAuthorities].sort()];
 
 export let transportOrCombinedAuthorities = [
   "Not applicable",
