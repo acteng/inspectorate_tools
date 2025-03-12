@@ -1,3 +1,4 @@
+import { validateAuthorityName } from "$lib/authority_names/authority_names";
 import { LocalStorageFiles } from "$lib/files";
 import { writable } from "svelte/store";
 
@@ -48,6 +49,12 @@ function validate(state: State) {
   if (state.version != "alpha-2") {
     throw new Error("File format appears outdated");
   }
+  state.summary.localHighwayAuthority = validateAuthorityName(
+    state.summary.localHighwayAuthority,
+  );
+  state.summary.localPlanningAuthority = validateAuthorityName(
+    state.summary.localPlanningAuthority,
+  );
 }
 
 function describe(state: State): string {
