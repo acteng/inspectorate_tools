@@ -103,7 +103,7 @@ export function dalogToState(dalog: {
     }
     // TODO Depends on the check type
     if (value == null) {
-      return "0";
+      return "";
     }
     throw new Error(`${key} isn't score, it's ${value}`);
   };
