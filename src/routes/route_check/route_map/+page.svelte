@@ -186,12 +186,14 @@
           bind:value={$state.summary.assessedRouteLengthKm}
           width={6}
           min={0}
+          hint={"Please provide 2 decimal places"}
         />
         <DecimalInput
           label="Total route length (km)"
           bind:value={$state.summary.totalRouteLengthKm}
           width={6}
           min={0}
+          hint={"Please provide 2 decimal places"}
         />
 
         <Basemap />
