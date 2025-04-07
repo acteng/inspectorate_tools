@@ -9,7 +9,7 @@ export let policyConflictChoices: [string, string][] = [
   ["5", "5 - Appropriate lighting is not provided"],
   [
     "6",
-    "6 - Routes miss opportunities to join together with other facilities as a network",
+    "6 - Route does not join together with other facilities as part of a holistic, connected network",
   ],
 ];
 
