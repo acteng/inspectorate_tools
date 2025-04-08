@@ -9,5 +9,6 @@
 </script>
 
 <FormElement {label} {id}>
+  <div class="govuk-hint">NB. This doesn't import from the excel version</div>
   <input type="date" bind:value />
 </FormElement>
