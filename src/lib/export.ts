@@ -100,7 +100,9 @@ function summaryOfScheme(state: State, workbook: ExcelJS.Workbook) {
   let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
 
   // TODO Back in Excel, it looks like there's a leading ' in the value, but it renders fine in the DALOG
-  sheet.getCell("C6").value = getDateForSpreadsheet(state.summary.dateDesignReview);
+  sheet.getCell("C6").value = getDateForSpreadsheet(
+    state.summary.dateDesignReview,
+  );
   sheet.getCell("C7").value = state.summary.schemeReference;
   sheet.getCell("C8").value = state.summary.schemeName;
   sheet.getCell("C9").value = state.summary.schemeSummary;
