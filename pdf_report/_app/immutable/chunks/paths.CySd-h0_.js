@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_i0t7ll)==null?void 0:s.base)??"/inspectorate_tools/pdf_report";var t;const l=((t=globalThis.__sveltekit_i0t7ll)==null?void 0:t.assets)??e;export{l as a,e as b};
