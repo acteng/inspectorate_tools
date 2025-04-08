@@ -21,6 +21,7 @@
 <div class="govuk-width-container">
   <DateInput
     label="Date of design review"
+    showImportHint
     bind:value={$state.summary.dateDesignReview}
   />
   <TextInput
