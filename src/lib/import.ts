@@ -76,13 +76,6 @@ export function dalogToState(dalog: {
     console.warn(`${key} isn't a number, it's ${value}. Defaulting to 0`);
     return 0;
   };
-  let date = (key: string) => {
-    let value = dalog[key];
-    if (typeof value == "object" && value instanceof Date) {
-      return dateToString(value);
-    }
-    return "";
-  };
   let yesNoBlank = (key: string) => {
     let value = dalog[key];
     if (value == "" || value == "Yes" || value == "No") {
@@ -116,7 +109,7 @@ export function dalogToState(dalog: {
     normalString("Sub-tool") == "Street Check" ? "street" : "path";
 
   state.summary = {
-    dateDesignReview: date("Date of Design Review"),
+    dateDesignReview: "",
     schemeReference: normalString("Scheme Ref"),
     schemeName: normalString("Scheme Name"),
     // Not in the DALOG
