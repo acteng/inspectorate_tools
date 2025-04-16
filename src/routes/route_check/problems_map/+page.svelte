@@ -3,6 +3,7 @@
   import { ClickableCard } from "$lib";
   import panUrl from "$lib/assets/images/pan.svg?url";
   import { colors, policyConflictColor } from "$lib/colors";
+  import { downloadGeneratedFile } from "$lib/files";
   import { Basemap, bbox, MapLibreMap, StreetView } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import type { Feature, FeatureCollection, Position } from "geojson";
@@ -35,7 +36,6 @@
   import RouteMapLayer from "../RouteMapLayer.svelte";
   import ConflictForm from "./ConflictForm.svelte";
   import CriticalForm from "./CriticalForm.svelte";
-    import { downloadGeneratedFile } from "$lib/files";
 
   let map: Map | undefined;
   let sidebar: HTMLDivElement;
@@ -276,7 +276,10 @@
       ],
     };
 
-    downloadGeneratedFile(`problems-map-${$state.summary.schemeName}.geojson`, JSON.stringify(gj));
+    downloadGeneratedFile(
+      `problems-map-${$state.summary.schemeName}.geojson`,
+      JSON.stringify(gj),
+    );
   }
 
   function labelCritical(critical: CriticalIssue): string {
