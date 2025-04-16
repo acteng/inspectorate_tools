@@ -1,1 +1,0 @@
-var s;const a=((s=globalThis.__sveltekit_6kt9cu)==null?void 0:s.base)??"/inspectorate_tools/add-initialised-and-downloaded-timestamps";var t;const e=((t=globalThis.__sveltekit_6kt9cu)==null?void 0:t.assets)??a;export{e as a,a as b};
