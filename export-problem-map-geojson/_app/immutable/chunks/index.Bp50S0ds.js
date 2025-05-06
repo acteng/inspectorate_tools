@@ -1,0 +1,1 @@
+import{d as s}from"./index.CUWxlH8D.js";import{s as c}from"./index.D9xP28V4.js";var d=Object.defineProperty,f=(e,r)=>d(e,"name",{value:r,configurable:!0});function n(e,r={}){return c(e,(o,a)=>{const t=a.geometry.coordinates;return o+s(t[0],t[1],r)},0)}f(n,"length");var i=n;export{i as t};

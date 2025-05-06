@@ -1,1 +1,0 @@
-var s;const t=((s=globalThis.__sveltekit_10e2wph)==null?void 0:s.base)??"/inspectorate_tools/update-dependencies";var e;const a=((e=globalThis.__sveltekit_10e2wph)==null?void 0:e.assets)??t;export{a,t as b};
