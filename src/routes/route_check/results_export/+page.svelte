@@ -30,6 +30,7 @@
       <th>Remaining Policy Conflicts</th>
       <th>Policy Conflict ID</th>
       <th>Policy Conflict</th>
+      <th>Latitude and Longitude</th>
       <th>Location Name</th>
       <th>Commentary & Feedback</th>
     </tr>
@@ -41,6 +42,7 @@
           <td>
             {getFullPolicyConflict(conflict.conflict)}
           </td>
+          <td>{conflict.point[0].toFixed(2)} , {conflict.point[1].toFixed(2)}</td>
           <td>{conflict.locationName}</td>
           <td>{conflict.notes}</td>
         </tr>
@@ -55,6 +57,7 @@
       <th>Remaining Critical Issues</th>
       <th>Critical ID</th>
       <th>Critical Issue</th>
+      <th>Latitude and Longitude</th>
       <th>Location Name</th>
       <th>Commentary & Feedback</th>
     </tr>
@@ -66,6 +69,7 @@
           <td>
             {getFullCriticalIssue(critical.criticalIssue)}
           </td>
+          <td>{critical.point[0].toFixed(2)} , {critical.point[1].toFixed(2)}</td>
           <td>{critical.locationName}</td>
           <td>{critical.notes}</td>
         </tr>
