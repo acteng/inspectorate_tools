@@ -1,1 +1,0 @@
-var s;const o=((s=globalThis.__sveltekit_10p9s1o)==null?void 0:s.base)??"/inspectorate_tools/add-lat-long-to-export";var t;const a=((t=globalThis.__sveltekit_10p9s1o)==null?void 0:t.assets)??o;export{a,o as b};
