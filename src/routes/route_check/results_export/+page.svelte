@@ -42,7 +42,7 @@
           <td>
             {getFullPolicyConflict(conflict.conflict)}
           </td>
-          <td>{conflict.point[0].toFixed(2)} , {conflict.point[1].toFixed(2)}</td>
+          <td>{conflict.point[0].toFixed(6)} , {conflict.point[1].toFixed(6)}</td>
           <td>{conflict.locationName}</td>
           <td>{conflict.notes}</td>
         </tr>
@@ -69,7 +69,7 @@
           <td>
             {getFullCriticalIssue(critical.criticalIssue)}
           </td>
-          <td>{critical.point[0].toFixed(2)} , {critical.point[1].toFixed(2)}</td>
+          <td>{critical.point[0].toFixed(6)} , {critical.point[1].toFixed(6)}</td>
           <td>{critical.locationName}</td>
           <td>{critical.notes}</td>
         </tr>
