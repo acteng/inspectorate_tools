@@ -150,9 +150,14 @@
   async function stopEditing() {
     if (mode.mode == "editing" && mode.id != null) {
       const list =
-        mode.id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
+        mode.id.kind == "critical"
+          ? $state.criticalIssues
+          : $state.policyConflictLog;
       const correctPrecisionPoint = setPrecision(list[mode.id.idx].point);
-      list[mode.id.idx].point = [correctPrecisionPoint[0], correctPrecisionPoint[1]];
+      list[mode.id.idx].point = [
+        correctPrecisionPoint[0],
+        correctPrecisionPoint[1],
+      ];
     }
     mode = { mode: "select" };
 
