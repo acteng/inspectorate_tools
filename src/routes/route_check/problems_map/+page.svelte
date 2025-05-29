@@ -16,6 +16,7 @@
     WarningButton,
   } from "govuk-svelte";
   import type { Map, MapMouseEvent } from "maplibre-gl";
+  import { setPrecision } from "scheme-sketcher-lib/draw/stores";
   import { tick } from "svelte";
   import { CircleLayer, GeoJSON, MapEvents, Marker } from "svelte-maplibre";
   import {
@@ -133,6 +134,7 @@
     let eastLimit = map.getBounds().getEast();
     newItem.point[0] += (eastLimit - westLimit) * 0.05;
     let newList = list.toSpliced(id.idx + 1, 0, newItem);
+    newItem.point = setPrecision(newItem.point);
 
     if (id.kind == "critical") {
       // @ts-expect-error we know that we've taken the correctly typed list from earlier
@@ -146,6 +148,12 @@
   }
 
   async function stopEditing() {
+    if (mode.mode == "editing" && mode.id != null) {
+      const list =
+        mode.id.kind == "critical" ? $state.criticalIssues : $state.policyConflictLog;
+      const correctPrecisionPoint = setPrecision(list[mode.id.idx].point);
+      list[mode.id.idx].point = [correctPrecisionPoint[0], correctPrecisionPoint[1]];
+    }
     mode = { mode: "select" };
 
     // Sort by the conflict or critical type. The scroll position may be slightly irrelevant if the user changes these types.
@@ -180,13 +188,14 @@
     }
 
     if (mode.mode == "new-critical") {
+      const point: Position = setPrecision(e.detail.lngLat.toArray());
       $state.criticalIssues = [
         ...$state.criticalIssues,
         {
           criticalIssue:
             ($page.url.searchParams.get("code") as CriticalIssueCode) || "",
           stage: "",
-          point: e.detail.lngLat.toArray(),
+          point: [point[0], point[1]],
           locationName: "",
           resolved: "",
           notes: "",
@@ -194,13 +203,14 @@
       ];
       select({ kind: "critical", idx: $state.criticalIssues.length - 1 });
     } else if (mode.mode == "new-conflict") {
+      const point: Position = setPrecision(e.detail.lngLat.toArray());
       $state.policyConflictLog = [
         ...$state.policyConflictLog,
         {
           conflict:
             ($page.url.searchParams.get("code") as PolicyConflictCode) || "",
           stage: "",
-          point: e.detail.lngLat.toArray(),
+          point: [point[0], point[1]],
           locationName: "",
           resolved: "",
           notes: "",
