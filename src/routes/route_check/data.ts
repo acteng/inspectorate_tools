@@ -3,6 +3,7 @@ import { validateAuthorityName } from "$lib/authority_names/authority_names";
 import { LocalStorageFiles } from "$lib/files";
 import type { Position } from "$lib/map";
 import type { FeatureCollection, LineString } from "geojson";
+import { setPrecision } from "scheme-sketcher-lib/draw/stores";
 import { writable } from "svelte/store";
 
 export let state = writable(emptyState());
@@ -191,6 +192,18 @@ function validate(state: State) {
       x.resolved = "";
     }
   }
+
+  state.criticalIssues.forEach((critical) => {
+    const result = setPrecision(critical.point);
+    critical.point[0] = result[0];
+    critical.point[1] = result[1];
+  });
+
+  state.policyConflictLog.forEach((conflict) => {
+    const result = setPrecision(conflict.point);
+    conflict.point[0] = result[0];
+    conflict.point[1] = result[1];
+  });
 
   state.summary.authority = validateAuthorityName(state.summary.authority);
 }
