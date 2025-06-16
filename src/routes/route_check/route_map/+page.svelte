@@ -11,11 +11,12 @@
     ButtonGroup,
     DecimalInput,
     DefaultButton,
+    FileInput,
     SecondaryButton,
   } from "govuk-svelte";
   import type { Map } from "maplibre-gl";
   import { map as mapStore } from "scheme-sketcher-lib/config";
-  import { BoundaryLayer } from "scheme-sketcher-lib/draw";
+  import { BoundaryLayer, InterventionLayer } from "scheme-sketcher-lib/draw";
   import {
     RouteControls,
     RouteSnapperLayer,
@@ -23,6 +24,7 @@
   } from "scheme-sketcher-lib/draw/route";
   import { routeTool } from "scheme-sketcher-lib/draw/stores";
   import { onMount } from "svelte";
+  import { writable } from "svelte/store";
   import { state } from "../data";
   import RouteMapLayer from "../RouteMapLayer.svelte";
   import { getBestMatch, loadAuthorities } from "./match_area";
@@ -58,6 +60,7 @@
   let extendRoute = true;
 
   let map: Map | undefined = undefined;
+  const gjSchemes = writable($state.summary.networkMap);
   // TODO Can't bind directly to $map, because null vs undefined. Change ss-lib.
   $: if (map) {
     $mapStore = map;
@@ -103,6 +106,7 @@
     });
     $routeTool!.addEventListenerFailure(() => {
       $state.summary.networkMap.features = copy.features;
+      $gjSchemes = $state.summary.networkMap;
       drawingRoute = false;
       $routeTool!.clearEventListeners();
     });
@@ -111,6 +115,16 @@
       $routeTool!.editExistingRoute(copy.features[0]);
     } else {
       $routeTool!.startRoute();
+    }
+  }
+
+  function importSketchFile(rawFilename: string, contents: string) {
+    try {
+      let value = JSON.parse(contents);
+      $state.summary.networkMap = value;
+      $gjSchemes = value;
+    } catch (err) {
+      window.alert(`Couldn't load ${rawFilename}: ${err}`);
     }
   }
 </script>
@@ -145,6 +159,10 @@
           <SecondaryButton on:click={getRouteSnapper}>
             Set up drawing for the area shown on the map
           </SecondaryButton>
+          <FileInput
+            label={`Import existing Plan Your Active Travel Schemes Sketch`}
+            onLoad={importSketchFile}
+          />
         </div>
 
         {#if routeAuthority}
