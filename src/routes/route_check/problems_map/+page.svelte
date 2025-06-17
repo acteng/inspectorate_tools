@@ -3,6 +3,7 @@
   import { ClickableCard } from "$lib";
   import panUrl from "$lib/assets/images/pan.svg?url";
   import { colors, policyConflictColor } from "$lib/colors";
+  import { downloadGeneratedFile } from "$lib/files";
   import { Basemap, bbox, MapLibreMap, StreetView } from "$lib/map";
   import { GeoreferenceControls, GeoreferenceLayer } from "$lib/map/georef";
   import type { Feature, FeatureCollection, Position } from "geojson";
@@ -91,7 +92,7 @@
     if (id != null) {
       let list =
         id.kind == "critical" ? state.criticalIssues : state.policyConflictLog;
-      gj.features.push(pointFeature(list[id.idx].point));
+      gj.features.push(pointFeature(list[id.idx]));
     }
     return gj;
   }
@@ -243,10 +244,13 @@
     stopEditing();
   }
 
-  function pointFeature(coordinates: Position): Feature {
+  function pointFeature(problem: PolicyConflict | CriticalIssue): Feature {
+    const coordinates = problem.point;
+    let properties = JSON.parse(JSON.stringify(problem));
+    delete properties.point;
     return {
       type: "Feature",
-      properties: {},
+      properties,
       geometry: {
         type: "Point",
         coordinates,
@@ -261,8 +265,8 @@
     let gj = {
       type: "FeatureCollection" as const,
       features: [
-        ...$state.criticalIssues.map((i) => pointFeature(i.point)),
-        ...$state.policyConflictLog.map((i) => pointFeature(i.point)),
+        ...$state.criticalIssues.map((i) => pointFeature(i)),
+        ...$state.policyConflictLog.map((i) => pointFeature(i)),
         ...$state.summary.networkMap.features,
       ],
     };
@@ -272,6 +276,25 @@
         animate,
       });
     }
+  }
+
+  function exportGeojson() {
+    if (!map) {
+      return;
+    }
+    let gj = {
+      type: "FeatureCollection" as const,
+      features: [
+        ...$state.criticalIssues.map((i) => pointFeature(i)),
+        ...$state.policyConflictLog.map((i) => pointFeature(i)),
+        ...$state.summary.networkMap.features,
+      ],
+    };
+
+    downloadGeneratedFile(
+      `problems-map-${$state.summary.schemeName}.geojson`,
+      JSON.stringify(gj),
+    );
   }
 
   function labelCritical(critical: CriticalIssue): string {
@@ -329,6 +352,9 @@
         <GeoreferenceControls />
         <StreetView {map} bind:enabled={streetviewOn} />
         <Checkbox bind:checked={showRoute}>Show route</Checkbox>
+        <SecondaryButton on:click={exportGeojson}>
+          Export Problems Map
+        </SecondaryButton>
       </CollapsibleCard>
 
       <CheckboxGroup small>
