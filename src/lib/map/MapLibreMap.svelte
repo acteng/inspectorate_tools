@@ -20,7 +20,10 @@
 
   async function changeStyle(choice: string) {
     styleSpec = await getStyle($styleChoice);
-    if($styleChoice === "google" && styleSpec.toString().startsWith('https://api.maptiler.com/maps/')) {
+    if (
+      $styleChoice === "google" &&
+      styleSpec.toString().startsWith("https://api.maptiler.com/maps/")
+    ) {
       $styleChoice = "maptiler-hybrid";
     }
   }
@@ -38,14 +41,14 @@
         let apiKey = window.localStorage.getItem("google-api-key") || "";
         let sessionKey = await getGoogleSessionKey(apiKey);
         if (sessionKey === "") {
-          return getDefaultStyle("hybrid");
+          return getMaptilerStyle("hybrid");
         }
 
         tiles = `https://tile.googleapis.com/v1/2dtiles/{z}/{x}/{y}?session=${sessionKey}&key=${apiKey}`;
         attribution = await getGoogleAttribution(apiKey, sessionKey);
 
         googleKeys = [apiKey, sessionKey];
-        } else {
+      } else {
         let apiKey = window.localStorage.getItem("os-api-key") || "";
         tiles = `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`;
         attribution =
@@ -77,12 +80,10 @@
     }
 
     let style = choice.slice("maptiler-".length);
-    return getDefaultStyle(style);
+    return getMaptilerStyle(style);
   }
 
-  function getDefaultStyle(
-    style: string,
-  ): string | StyleSpecification {
+  function getMaptilerStyle(style: string): string | StyleSpecification {
     return `https://api.maptiler.com/maps/${style}/style.json?key=${
       import.meta.env.VITE_MAPTILER_API_KEY
     }`;
