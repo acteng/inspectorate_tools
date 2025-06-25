@@ -20,6 +20,9 @@
 
   async function changeStyle(choice: string) {
     styleSpec = await getStyle($styleChoice);
+    if($styleChoice === "google" && styleSpec.toString().startsWith('https://api.maptiler.com/maps/')) {
+      $styleChoice = "maptiler-hybrid";
+    }
   }
   $: changeStyle($styleChoice);
 
