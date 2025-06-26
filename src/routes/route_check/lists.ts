@@ -56,7 +56,7 @@ export let criticalIssueChoices: [string, string][] = [
   ],
   [
     "8",
-    "8 - Motor Traffic Speed: Mean speed of more than 30mph when cyclists/pedestrians are unprotected",
+    "8 - Motor Traffic Speed: 85th percentile speed of more than 30mph when cyclists/pedestrians are unprotected",
   ],
   [
     "9A",
