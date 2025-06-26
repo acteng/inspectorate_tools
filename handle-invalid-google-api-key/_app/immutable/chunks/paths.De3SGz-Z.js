@@ -1,1 +1,0 @@
-var s;const o=((s=globalThis.__sveltekit_15o8od1)==null?void 0:s.base)??"/inspectorate_tools/handle-invalid-google-api-key";var e;const a=((e=globalThis.__sveltekit_15o8od1)==null?void 0:e.assets)??o;export{a,o as b};
