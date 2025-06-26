@@ -36,6 +36,20 @@
   ): Promise<string | StyleSpecification> {
     googleKeys = null;
     if (choice == "google" || choice == "os-road") {
+      return await getGoogleOrOSStyle(choice);
+    }
+
+    let style = choice.slice("maptiler-".length);
+    return getMaptilerStyle(style);
+  }
+
+  function getMaptilerStyle(style: string): string | StyleSpecification {
+    return `https://api.maptiler.com/maps/${style}/style.json?key=${
+      import.meta.env.VITE_MAPTILER_API_KEY
+    }`;
+  }
+
+  async function getGoogleOrOSStyle(choice: string): Promise<string | StyleSpecification> {
       let tiles;
       if (choice == "google") {
         let apiKey = window.localStorage.getItem("google-api-key") || "";
@@ -77,16 +91,7 @@
           import.meta.env.VITE_MAPTILER_API_KEY
         }`,
       };
-    }
 
-    let style = choice.slice("maptiler-".length);
-    return getMaptilerStyle(style);
-  }
-
-  function getMaptilerStyle(style: string): string | StyleSpecification {
-    return `https://api.maptiler.com/maps/${style}/style.json?key=${
-      import.meta.env.VITE_MAPTILER_API_KEY
-    }`;
   }
 
   async function getGoogleSessionKey(apiKey: string): Promise<string> {
