@@ -1,1 +1,0 @@
-var s;const a=((s=globalThis.__sveltekit_6ca1um)==null?void 0:s.base)??"/inspectorate_tools/import-fixes";var t;const e=((t=globalThis.__sveltekit_6ca1um)==null?void 0:t.assets)??a;export{e as a,a as b};

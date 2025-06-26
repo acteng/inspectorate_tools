@@ -1,1 +1,0 @@
-var s;const t=((s=globalThis.__sveltekit_o5o9wb)==null?void 0:s.base)??"/inspectorate_tools/JAT-DA-log";var o;const e=((o=globalThis.__sveltekit_o5o9wb)==null?void 0:o.assets)??t;export{e as a,t as b};
