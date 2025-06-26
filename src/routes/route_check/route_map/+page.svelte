@@ -1,5 +1,6 @@
 <script lang="ts">
   import turfLength from "@turf/length";
+  import ExternalLink from "$lib/ExternalLink.svelte";
   import { Basemap, bbox, MapLibreMap } from "$lib/map";
   import type {
     Feature,
@@ -28,7 +29,6 @@
   import { state } from "../data";
   import RouteMapLayer from "../RouteMapLayer.svelte";
   import { getBestMatch, loadAuthorities } from "./match_area";
-    import ExternalLink from "$lib/ExternalLink.svelte";
 
   onMount(async () => {
     await loadAuthorities();
@@ -124,7 +124,7 @@
       let value = JSON.parse(contents);
       $state.summary.networkMap = value;
       $gjSchemes = value;
-      initiallyZoom($mapStore)
+      initiallyZoom($mapStore);
     } catch (err) {
       window.alert(`Couldn't load ${rawFilename}: ${err}`);
     }
@@ -165,7 +165,11 @@
             label={`Import existing Plan Your Active Travel Schemes Sketch`}
             onLoad={importSketchFile}
           />
-          <ExternalLink href="https://plan.activetravelengland.gov.uk/choose_area.html">Sketch using PYATS</ExternalLink>
+          <ExternalLink
+            href="https://plan.activetravelengland.gov.uk/choose_area.html"
+          >
+            Sketch using PYATS
+          </ExternalLink>
         </div>
 
         {#if routeAuthority}
