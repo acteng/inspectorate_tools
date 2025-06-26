@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_1h07kvo)==null?void 0:s.base)??"/inspectorate_tools/import-fixes";var t;const o=((t=globalThis.__sveltekit_1h07kvo)==null?void 0:t.assets)??e;export{o as a,e as b};
