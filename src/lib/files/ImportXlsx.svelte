@@ -7,7 +7,7 @@
     imported: { filename: string; data: StateType };
   }>();
 
-  export let xlsxImporter: (buffer: ArrayBuffer) => Promise<StateType>;
+  export let xlsxImporter: (buffer: ArrayBuffer) => [Promise<StateType>, string[]];
 
   let loading = "";
   let open = false;
@@ -19,7 +19,7 @@
       loading = `Loading ${filename}`;
 
       let buffer = await fileInput.files![0].arrayBuffer();
-      let data = await xlsxImporter(buffer);
+      let [data, errors] = await xlsxImporter(buffer);
       loading = "";
       dispatch("imported", { filename: stripSuffix(filename, ".xlsx"), data });
     } catch (err) {
