@@ -1,5 +1,5 @@
 import type { Position } from "$lib/map";
-import ExcelJS, { type Cell, type CellValue } from "exceljs";
+import ExcelJS, { type Cell, type CellValue, type Worksheet } from "exceljs";
 import {
   emptyState,
   type Score,
@@ -320,20 +320,30 @@ function importScorecardComments(
   }
   let currentRow = 0;
 
-  try {
-    for (let i = 0; i < scorecard.existingScores.length; i++) {
-      currentRow = i;
-      let row = excelRows[i];
-      scorecard.existingScoreNotes[i] = strValue(
-        sheet.getCell(excelColumns[1] + row),
-      );
-      scorecard.proposedScoreNotes[i] = strValue(
-        sheet.getCell(excelColumns[3] + row),
+  for (let i = 0; i < scorecard.existingScores.length; i++) {
+    currentRow = i;
+    try {
+      getScoreNotes(sheet, scorecard, excelColumns, excelRows, currentRow);
+    } catch (error) {
+      errors.push(
+        `Error while importing the comments from sheet ${sheetName}, row ${currentRow}: ${error}`,
       );
     }
-  } catch (error) {
-    errors.push(
-      `Error while importing the comments from sheet ${sheetName}, row ${currentRow}: ${error}`,
-    );
   }
+}
+
+function getScoreNotes(
+  sheet: Worksheet,
+  scorecard: Scorecard,
+  excelColumns: string[],
+  excelRows: number[],
+  currentRow: number,
+) {
+  let row = excelRows[currentRow];
+  scorecard.existingScoreNotes[currentRow] = strValue(
+    sheet.getCell(excelColumns[1] + row),
+  );
+  scorecard.proposedScoreNotes[currentRow] = strValue(
+    sheet.getCell(excelColumns[3] + row),
+  );
 }
