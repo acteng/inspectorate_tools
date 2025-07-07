@@ -283,7 +283,7 @@ export function importFromExcel(workbook: ExcelJS.Workbook): [State, string[]] {
     state.resultsReviewStatement = "";
   }
 
-  return state;
+  return [state, errors];
 }
 
 function strValue(cell: Cell): string {
@@ -331,8 +331,9 @@ function importScorecardComments(
         sheet.getCell(excelColumns[3] + row),
       );
     }
-  }
-  catch (error) {
-    errors.push(`Error ${error} while importing the comments from sheet ${sheetName}, row ${currentRow}`)
+  } catch (error) {
+    errors.push(
+      `Error while importing the comments from sheet ${sheetName}, row ${currentRow}: ${error}`,
+    );
   }
 }
