@@ -42,16 +42,16 @@
         <th>Commentary & Feedback</th>
       </tr>
       {#each unresolvedConflicts as conflict, i}
-          <tr>
-            <th>{i + 1}</th>
-            <td>{policyConflictId($state, i)}</td>
-            <td>
-              {getFullPolicyConflict(conflict.conflict)}
-            </td>
-            <td>{conflict.point[0]} , {conflict.point[1]}</td>
-            <td>{conflict.locationName}</td>
-            <td>{conflict.notes}</td>
-          </tr>
+        <tr>
+          <th>{i + 1}</th>
+          <td>{policyConflictId($state, i)}</td>
+          <td>
+            {getFullPolicyConflict(conflict.conflict)}
+          </td>
+          <td>{conflict.point[0]} , {conflict.point[1]}</td>
+          <td>{conflict.locationName}</td>
+          <td>{conflict.notes}</td>
+        </tr>
       {/each}
     </table>
   {/if}
@@ -59,16 +59,16 @@
   <SafetyCheckResults />
 
   {#if unresolvedCriticals.length > 0}
-  <table>
-    <tr>
-      <th>Remaining Critical Issues</th>
-      <th>Critical ID</th>
-      <th>Critical Issue</th>
-      <th>Latitude and Longitude</th>
-      <th>Location Name</th>
-      <th>Commentary & Feedback</th>
-    </tr>
-    {#each unresolvedCriticals as critical, i}
+    <table>
+      <tr>
+        <th>Remaining Critical Issues</th>
+        <th>Critical ID</th>
+        <th>Critical Issue</th>
+        <th>Latitude and Longitude</th>
+        <th>Location Name</th>
+        <th>Commentary & Feedback</th>
+      </tr>
+      {#each unresolvedCriticals as critical, i}
         <tr>
           <th>{i + 1}</th>
           <td>{criticalIssueId($state, i)}</td>
@@ -79,8 +79,8 @@
           <td>{critical.locationName}</td>
           <td>{critical.notes}</td>
         </tr>
-    {/each}
-  </table>
+      {/each}
+    </table>
   {/if}
 
   <CheckDetails {results} />
