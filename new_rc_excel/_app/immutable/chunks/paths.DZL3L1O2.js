@@ -1,1 +1,0 @@
-var s;const l=((s=globalThis.__sveltekit_l8d62l)==null?void 0:s.base)??"/inspectorate_tools/new_rc_excel";var e;const t=((e=globalThis.__sveltekit_l8d62l)==null?void 0:e.assets)??l;export{t as a,l as b};
