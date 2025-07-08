@@ -14,9 +14,9 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
-    "@sveltejs/adapter-static": "^0.0.17",
-    "@sveltejs/kit": "^2.22.2",
-    "@sveltejs/vite-plugin-svelte": "^5.1.0",
+    "@sveltejs/adapter-static": "^3.0.2",
+    "@sveltejs/kit": "^2.5.17",
+    "@sveltejs/vite-plugin-svelte": "^3.1.1",
     "@types/eslint": "^8.56.10",
     "@types/geojson": "^7946.0.14",
     "@types/uuid": "^9.0.8",
@@ -32,9 +32,9 @@
     "svelte-check": "^3.8.1",
     "tslib": "^2.6.3",
     "typescript": "^5.4.5",
-    "vite": "^7.0.0",
+    "vite": "^5.3.1",
     "vite-plugin-wasm-pack": "0.1.11",
-    "vitest": "^3.2.4"
+    "vitest": "^1.6.1"
   },
   "type": "module",
   "dependencies": {
