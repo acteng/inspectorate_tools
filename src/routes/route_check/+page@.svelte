@@ -4,7 +4,7 @@
   import ExcelJS from "exceljs";
   import { currentFile, files, state, type State } from "./data";
 
-  async function xlsxImporter(buffer: ArrayBuffer): Promise<State> {
+  async function xlsxImporter(buffer: ArrayBuffer): Promise<[State, string[]]> {
     let workbook = new ExcelJS.Workbook();
     await workbook.xlsx.load(buffer);
     return importFromExcel(workbook);

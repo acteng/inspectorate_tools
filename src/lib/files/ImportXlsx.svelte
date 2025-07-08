@@ -7,7 +7,9 @@
     imported: { filename: string; data: StateType };
   }>();
 
-  export let xlsxImporter: (buffer: ArrayBuffer) => Promise<StateType>;
+  export let xlsxImporter: (
+    buffer: ArrayBuffer,
+  ) => Promise<[StateType, string[]]>;
 
   let loading = "";
   let open = false;
@@ -19,12 +21,24 @@
       loading = `Loading ${filename}`;
 
       let buffer = await fileInput.files![0].arrayBuffer();
-      let data = await xlsxImporter(buffer);
+      let [data, errors] = await xlsxImporter(buffer);
       loading = "";
       dispatch("imported", { filename: stripSuffix(filename, ".xlsx"), data });
+      alertErrorsIfNecessary(errors);
     } catch (err) {
       window.alert(`Couldn't import ${filename}: ${err}`);
       loading = "";
+    }
+  }
+
+  function alertErrorsIfNecessary(errors: string[]) {
+    if (errors.length > 0) {
+      let combinedErrorMessage: string =
+        "The file was imported, but with the following issues. These will have to be fixed manually in the web tool:\n";
+      errors.forEach((errorMessage: string) => {
+        combinedErrorMessage += `${errorMessage}\n`;
+      });
+      window.alert(combinedErrorMessage);
     }
   }
 </script>

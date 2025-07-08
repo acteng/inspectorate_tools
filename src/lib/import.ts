@@ -1,5 +1,5 @@
 import type { Position } from "$lib/map";
-import ExcelJS, { type Cell, type CellValue } from "exceljs";
+import ExcelJS, { type Cell, type CellValue, type Worksheet } from "exceljs";
 import {
   emptyState,
   type Score,
@@ -193,9 +193,10 @@ export function dalogToState(dalog: {
   return state;
 }
 
-export function importFromExcel(workbook: ExcelJS.Workbook): State {
+export function importFromExcel(workbook: ExcelJS.Workbook): [State, string[]] {
   let dalog = getDalog(workbook);
   let state = dalogToState(dalog);
+  let errors: string[] = [];
 
   // More fields for scheme summary
   let sheet = workbook.getWorksheet("1. Summary of Scheme")!;
@@ -215,6 +216,7 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
     "3.1 Safety Check",
     ["J", "K", "L", "M"],
     makeRanges([[13, 28]]),
+    errors,
   );
   importScorecardComments(
     state.streetCheck,
@@ -228,6 +230,7 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
       [38, 43],
       [47, 50],
     ]),
+    errors,
   );
   importScorecardComments(
     state.streetPlacemakingCheck,
@@ -240,6 +243,7 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
       [25, 34],
       [38, 47],
     ]),
+    errors,
   );
   importScorecardComments(
     state.pathCheck,
@@ -253,6 +257,7 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
       [44, 48],
       [52, 56],
     ]),
+    errors,
   );
   importScorecardComments(
     state.pathPlacemakingCheck,
@@ -265,6 +270,7 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
       [26, 29],
       [33, 41],
     ]),
+    errors,
   );
 
   // Results
@@ -277,7 +283,7 @@ export function importFromExcel(workbook: ExcelJS.Workbook): State {
     state.resultsReviewStatement = "";
   }
 
-  return state;
+  return [state, errors];
 }
 
 function strValue(cell: Cell): string {
@@ -306,19 +312,38 @@ function importScorecardComments(
   sheetName: string,
   excelColumns: string[],
   excelRows: number[],
+  errors: string[],
 ) {
   let sheet = workbook.getWorksheet(sheetName)!;
   if (excelRows.length != scorecard.existingScores.length) {
     throw new Error(`Wrong Excel ranges for ${sheetName}`);
   }
+  let currentRow = 0;
 
   for (let i = 0; i < scorecard.existingScores.length; i++) {
-    let row = excelRows[i];
-    scorecard.existingScoreNotes[i] = strValue(
-      sheet.getCell(excelColumns[1] + row),
-    );
-    scorecard.proposedScoreNotes[i] = strValue(
-      sheet.getCell(excelColumns[3] + row),
-    );
+    currentRow = i;
+    try {
+      getScoreNotes(sheet, scorecard, excelColumns, excelRows, currentRow);
+    } catch (error) {
+      errors.push(
+        `Error while importing the comments from sheet ${sheetName}, row ${currentRow}: ${error}`,
+      );
+    }
   }
+}
+
+function getScoreNotes(
+  sheet: Worksheet,
+  scorecard: Scorecard,
+  excelColumns: string[],
+  excelRows: number[],
+  currentRow: number,
+) {
+  let row = excelRows[currentRow];
+  scorecard.existingScoreNotes[currentRow] = strValue(
+    sheet.getCell(excelColumns[1] + row),
+  );
+  scorecard.proposedScoreNotes[currentRow] = strValue(
+    sheet.getCell(excelColumns[3] + row),
+  );
 }

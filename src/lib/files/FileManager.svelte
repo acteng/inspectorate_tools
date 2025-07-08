@@ -25,7 +25,7 @@
   // with the ArrayBuffer to produce State. This should throw exceptions if
   // there's a problem.
   export let xlsxImporter:
-    | ((buffer: ArrayBuffer) => Promise<StateType>)
+    | ((buffer: ArrayBuffer) => Promise<[StateType, string[]]>)
     | null = null;
 
   let fileList = files.getFileList();
