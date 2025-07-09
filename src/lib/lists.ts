@@ -70,7 +70,12 @@ export let regions = [
 ];
 
 export let fundingProgrammes = [
-  "Active Travel Fund",
+  "ATF 2",
+  "ATF 3",
+  "ATF 4",
+  "ATF 4e",
+  "ATF 5",
+  "CATF",
   "Capability Fund",
   "City Region Sustainable Transport Settlements",
   "Levelling Up Fund",
