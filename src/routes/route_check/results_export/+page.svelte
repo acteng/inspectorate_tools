@@ -11,6 +11,12 @@
   import ConvertToXlsx from "./ConvertToXlsx.svelte";
 
   let results = getResults($state);
+  let unresolvedConflicts = $state.policyConflictLog.filter((conflict) => {
+    return conflict.resolved != "Yes";
+  });
+  let unresolvedCriticals = $state.criticalIssues.filter((critical) => {
+    return critical.resolved != "Yes";
+  });
 </script>
 
 <div class="govuk-width-container">
@@ -25,17 +31,17 @@
 
   <PolicyCheckResults />
 
-  <table>
-    <tr>
-      <th>Remaining Policy Conflicts</th>
-      <th>Policy Conflict ID</th>
-      <th>Policy Conflict</th>
-      <th>Latitude and Longitude</th>
-      <th>Location Name</th>
-      <th>Commentary & Feedback</th>
-    </tr>
-    {#each $state.policyConflictLog as conflict, i}
-      {#if conflict.resolved != "Yes"}
+  {#if unresolvedConflicts.length > 0}
+    <table>
+      <tr>
+        <th>Remaining Policy Conflicts</th>
+        <th>Policy Conflict ID</th>
+        <th>Policy Conflict</th>
+        <th>Latitude and Longitude</th>
+        <th>Location Name</th>
+        <th>Commentary & Feedback</th>
+      </tr>
+      {#each unresolvedConflicts as conflict, i}
         <tr>
           <th>{i + 1}</th>
           <td>{policyConflictId($state, i)}</td>
@@ -46,23 +52,23 @@
           <td>{conflict.locationName}</td>
           <td>{conflict.notes}</td>
         </tr>
-      {/if}
-    {/each}
-  </table>
+      {/each}
+    </table>
+  {/if}
 
   <SafetyCheckResults />
 
-  <table>
-    <tr>
-      <th>Remaining Critical Issues</th>
-      <th>Critical ID</th>
-      <th>Critical Issue</th>
-      <th>Latitude and Longitude</th>
-      <th>Location Name</th>
-      <th>Commentary & Feedback</th>
-    </tr>
-    {#each $state.criticalIssues as critical, i}
-      {#if critical.resolved != "Yes"}
+  {#if unresolvedCriticals.length > 0}
+    <table>
+      <tr>
+        <th>Remaining Critical Issues</th>
+        <th>Critical ID</th>
+        <th>Critical Issue</th>
+        <th>Latitude and Longitude</th>
+        <th>Location Name</th>
+        <th>Commentary & Feedback</th>
+      </tr>
+      {#each unresolvedCriticals as critical, i}
         <tr>
           <th>{i + 1}</th>
           <td>{criticalIssueId($state, i)}</td>
@@ -73,9 +79,9 @@
           <td>{critical.locationName}</td>
           <td>{critical.notes}</td>
         </tr>
-      {/if}
-    {/each}
-  </table>
+      {/each}
+    </table>
+  {/if}
 
   <CheckDetails {results} />
 </div>
