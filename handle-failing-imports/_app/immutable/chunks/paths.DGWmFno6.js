@@ -1,0 +1,1 @@
+var s;const t=((s=globalThis.__sveltekit_1acuiv1)==null?void 0:s.base)??"/inspectorate_tools/handle-failing-imports";var a;const e=((a=globalThis.__sveltekit_1acuiv1)==null?void 0:a.assets)??t;export{e as a,t as b};
