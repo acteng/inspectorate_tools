@@ -1,0 +1,1 @@
+var s;const e=((s=globalThis.__sveltekit_oyf7y7)==null?void 0:s.base)??"/inspectorate_tools/next-section-link";var t;const o=((t=globalThis.__sveltekit_oyf7y7)==null?void 0:t.assets)??e;export{o as a,e as b};
