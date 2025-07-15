@@ -31,10 +31,11 @@
 <style>
   ol {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
     border-bottom: 1px solid #b1b4b6;
+    column-gap: 1px;
   }
   li {
     margin-left: 2em;
