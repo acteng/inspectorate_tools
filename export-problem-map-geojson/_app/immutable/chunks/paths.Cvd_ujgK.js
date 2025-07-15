@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_15koo1n)==null?void 0:s.base)??"/inspectorate_tools/export-problem-map-geojson";var o;const t=((o=globalThis.__sveltekit_15koo1n)==null?void 0:o.assets)??e;export{t as a,e as b};
