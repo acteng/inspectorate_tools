@@ -10,6 +10,8 @@
   } from "geojson";
   import {
     ButtonGroup,
+    Checkbox,
+    CollapsibleCard,
     DecimalInput,
     DefaultButton,
     FileInput,
@@ -29,6 +31,8 @@
   import { state } from "../data";
   import RouteMapLayer from "../RouteMapLayer.svelte";
   import { getBestMatch, loadAuthorities } from "./match_area";
+    import GeoreferenceControls from "$lib/map/georef/GeoreferenceControls.svelte";
+    import StreetView from "$lib/map/StreetView.svelte";
 
   onMount(async () => {
     await loadAuthorities();
@@ -158,6 +162,12 @@
         />
       {:else}
         <div>
+          <CollapsibleCard label="Map tools">
+            <Basemap />
+            <GeoreferenceControls />
+            <StreetView {map} />
+          </CollapsibleCard>
+
           <SecondaryButton on:click={getRouteSnapper}>
             Set up drawing for the area shown on the map
           </SecondaryButton>
@@ -220,8 +230,6 @@
           min={0}
           hint={"Please provide 2 decimal places"}
         />
-
-        <Basemap />
       {/if}
     {/if}
   </div>
