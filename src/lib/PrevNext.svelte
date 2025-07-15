@@ -21,20 +21,17 @@
   function capitaliseFirstCharacter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  $: nextLink =
-    !showNextSection
-      ? `${base}/${urlPath}${formatIndex(idx + 1)}`
-      : nextPage
-        ? nextPage[0]
-        : pagePath;
+  $: nextLink = !showNextSection
+    ? `${base}/${urlPath}${formatIndex(idx + 1)}`
+    : nextPage
+      ? nextPage[0]
+      : pagePath;
 
-  $: nextText = 
-    !showNextSection
+  $: nextText = !showNextSection
     ? `Next ${questionType}`
-    :  nextPage
-        ? `Go to next section: ${nextPage[1]}`
-        : "";
-  
+    : nextPage
+      ? `Go to next section: ${nextPage[1]}`
+      : "";
 </script>
 
 <nav
