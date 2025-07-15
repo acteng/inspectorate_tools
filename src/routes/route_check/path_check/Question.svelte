@@ -28,6 +28,7 @@
       total={30}
       startIdx={17}
       urlPath="route_check/path_check/pa"
+      routeCheckType="path"
     />
 
     <slot />

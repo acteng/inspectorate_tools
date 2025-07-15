@@ -27,6 +27,7 @@
       {idx}
       total={26}
       urlPath="route_check/street_placemaking_check/sp"
+      routeCheckType="street"
     />
 
     <slot />
