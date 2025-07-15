@@ -147,8 +147,8 @@
     await select({ kind: id.kind, idx: id.idx + 1 });
   }
 
-  async function stopEditing() {
-    if (mode.mode == "editing" && mode.id != null) {
+  async function stopEditing(deleting: boolean = false) {
+    if (mode.mode == "editing" && mode.id != null && deleting == false) {
       const list =
         mode.id.kind == "critical"
           ? $state.criticalIssues
@@ -240,7 +240,7 @@
       $state.policyConflictLog.splice(mode.id.idx, 1);
       $state.policyConflictLog = $state.policyConflictLog;
     }
-    stopEditing();
+    stopEditing(true);
   }
 
   function pointFeature(coordinates: Position): Feature {
