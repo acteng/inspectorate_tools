@@ -147,8 +147,8 @@
     await select({ kind: id.kind, idx: id.idx + 1 });
   }
 
-  async function stopEditing() {
-    if (mode.mode == "editing" && mode.id != null) {
+  async function stopEditing(deleting: boolean = false) {
+    if (mode.mode == "editing" && mode.id != null && deleting == false) {
       const list =
         mode.id.kind == "critical"
           ? $state.criticalIssues
@@ -240,7 +240,7 @@
       $state.policyConflictLog.splice(mode.id.idx, 1);
       $state.policyConflictLog = $state.policyConflictLog;
     }
-    stopEditing();
+    stopEditing(true);
   }
 
   function pointFeature(coordinates: Position): Feature {
@@ -385,7 +385,7 @@
         {/each}
       </div>
     {:else}
-      <DefaultButton on:click={stopEditing}>Save</DefaultButton>
+      <DefaultButton on:click={(e) => stopEditing()}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       <SecondaryButton on:click={createCopy}>Copy</SecondaryButton>
       {#if mode.id.kind == "critical"}
@@ -402,7 +402,7 @@
 
       {#if mode.mode != "editing"}
         <div class="control-panel">
-          <IconButton on:click={stopEditing}>
+          <IconButton on:click={(e) => stopEditing()}>
             <img src={panUrl} alt="Move map" style="vertical-align: middle;" />
             {#if mode.mode == "select"}
               <b>Move map</b>
