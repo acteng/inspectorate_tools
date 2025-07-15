@@ -2,6 +2,8 @@
   import turfLength from "@turf/length";
   import ExternalLink from "$lib/ExternalLink.svelte";
   import { Basemap, bbox, MapLibreMap } from "$lib/map";
+  import GeoreferenceControls from "$lib/map/georef/GeoreferenceControls.svelte";
+  import StreetView from "$lib/map/StreetView.svelte";
   import type {
     Feature,
     FeatureCollection,
@@ -31,8 +33,6 @@
   import { state } from "../data";
   import RouteMapLayer from "../RouteMapLayer.svelte";
   import { getBestMatch, loadAuthorities } from "./match_area";
-    import GeoreferenceControls from "$lib/map/georef/GeoreferenceControls.svelte";
-    import StreetView from "$lib/map/StreetView.svelte";
 
   onMount(async () => {
     await loadAuthorities();

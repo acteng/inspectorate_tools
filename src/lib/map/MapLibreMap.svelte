@@ -49,49 +49,50 @@
     }`;
   }
 
-  async function getGoogleOrOSStyle(choice: string): Promise<string | StyleSpecification> {
-      let tiles;
-      if (choice == "google") {
-        let apiKey = window.localStorage.getItem("google-api-key") || "";
-        let sessionKey = await getGoogleSessionKey(apiKey);
-        if (sessionKey === "") {
-          return getMaptilerStyle("hybrid");
-        }
-
-        tiles = `https://tile.googleapis.com/v1/2dtiles/{z}/{x}/{y}?session=${sessionKey}&key=${apiKey}`;
-        attribution = await getGoogleAttribution(apiKey, sessionKey);
-
-        googleKeys = [apiKey, sessionKey];
-      } else {
-        let apiKey = window.localStorage.getItem("os-api-key") || "";
-        tiles = `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`;
-        attribution =
-          "Contains OS data &copy; Crown copyright and database rights 2024";
+  async function getGoogleOrOSStyle(
+    choice: string,
+  ): Promise<string | StyleSpecification> {
+    let tiles;
+    if (choice == "google") {
+      let apiKey = window.localStorage.getItem("google-api-key") || "";
+      let sessionKey = await getGoogleSessionKey(apiKey);
+      if (sessionKey === "") {
+        return getMaptilerStyle("hybrid");
       }
 
-      return {
-        version: 8,
-        sources: {
-          "raster-tiles": {
-            type: "raster",
-            tiles: [tiles],
-            tileSize: 256,
-            attribution,
-          },
-        },
-        layers: [
-          {
-            id: "raster-basemap",
-            type: "raster",
-            source: "raster-tiles",
-          },
-        ],
-        // Raster basemaps don't include glyphs; use the MapTiler ones
-        glyphs: `https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=${
-          import.meta.env.VITE_MAPTILER_API_KEY
-        }`,
-      };
+      tiles = `https://tile.googleapis.com/v1/2dtiles/{z}/{x}/{y}?session=${sessionKey}&key=${apiKey}`;
+      attribution = await getGoogleAttribution(apiKey, sessionKey);
 
+      googleKeys = [apiKey, sessionKey];
+    } else {
+      let apiKey = window.localStorage.getItem("os-api-key") || "";
+      tiles = `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`;
+      attribution =
+        "Contains OS data &copy; Crown copyright and database rights 2024";
+    }
+
+    return {
+      version: 8,
+      sources: {
+        "raster-tiles": {
+          type: "raster",
+          tiles: [tiles],
+          tileSize: 256,
+          attribution,
+        },
+      },
+      layers: [
+        {
+          id: "raster-basemap",
+          type: "raster",
+          source: "raster-tiles",
+        },
+      ],
+      // Raster basemaps don't include glyphs; use the MapTiler ones
+      glyphs: `https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=${
+        import.meta.env.VITE_MAPTILER_API_KEY
+      }`,
+    };
   }
 
   async function getGoogleSessionKey(apiKey: string): Promise<string> {

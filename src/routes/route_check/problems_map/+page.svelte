@@ -385,7 +385,7 @@
         {/each}
       </div>
     {:else}
-      <DefaultButton on:click={stopEditing}>Save</DefaultButton>
+      <DefaultButton on:click={(e) => stopEditing()}>Save</DefaultButton>
       <WarningButton on:click={deleteItem}>Delete</WarningButton>
       <SecondaryButton on:click={createCopy}>Copy</SecondaryButton>
       {#if mode.id.kind == "critical"}
@@ -402,7 +402,7 @@
 
       {#if mode.mode != "editing"}
         <div class="control-panel">
-          <IconButton on:click={stopEditing}>
+          <IconButton on:click={(e) => stopEditing()}>
             <img src={panUrl} alt="Move map" style="vertical-align: middle;" />
             {#if mode.mode == "select"}
               <b>Move map</b>
