@@ -9,6 +9,7 @@
   export let startIdx = 1;
   export let questionType: string = "metric";
   export let routeCheckType: "street" | "path" | "" = "";
+  const showNextSection = idx == total;
 
   $: pagePath = $page.url.pathname;
   $: nextPage = getNextPage(pagePath, routeCheckType);
@@ -21,11 +22,19 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   $: nextLink =
-    idx != total
+    !showNextSection
       ? `${base}/${urlPath}${formatIndex(idx + 1)}`
       : nextPage
         ? nextPage[0]
         : pagePath;
+
+  $: nextText = 
+    !showNextSection
+    ? `Next ${questionType}`
+    :  nextPage
+        ? `Go to next section: ${nextPage[1]}`
+        : "";
+  
 </script>
 
 <nav
@@ -72,7 +81,7 @@
   <div class="govuk-pagination__next">
     <a class="govuk-link govuk-pagination__link" href={nextLink} rel="next">
       <span class="govuk-pagination__link-title">
-        Next {idx != total ? questionType : "Section"}
+        {nextText}
       </span>
       <svg
         class="govuk-pagination__icon govuk-pagination__icon--next"
