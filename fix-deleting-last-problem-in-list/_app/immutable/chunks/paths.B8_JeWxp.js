@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_4kqqii)==null?void 0:s.base)??"/inspectorate_tools/fix-deleting-last-problem-in-list";var t;const i=((t=globalThis.__sveltekit_4kqqii)==null?void 0:t.assets)??e;export{i as a,e as b};
