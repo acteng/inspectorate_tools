@@ -1,11 +1,16 @@
 <script lang="ts">
   import { TextArea } from "govuk-svelte";
-  import { state } from "../data";
+  import { criticalIssuesMappedButNotInCheckExist, policyConflictsMappedButNotInCheckExist, state, unmappedCriticalIssuesExist, unmappedPolicyConflictsExist } from "../data";
   import { getResults } from "../results";
   import LevelOfServiceTable from "./LevelOfServiceTable.svelte";
   import Overview from "./Overview.svelte";
 
   let results = getResults($state);
+  console.log(unmappedPolicyConflictsExist($state));
+  console.log(unmappedCriticalIssuesExist($state));
+  console.log(policyConflictsMappedButNotInCheckExist($state));
+  console.log(criticalIssuesMappedButNotInCheckExist($state));
+  
 </script>
 
 <div class="govuk-width-container">

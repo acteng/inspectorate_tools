@@ -5,6 +5,7 @@ import type { Position } from "$lib/map";
 import type { FeatureCollection, LineString } from "geojson";
 import { setPrecision } from "scheme-sketcher-lib/draw/stores";
 import { writable } from "svelte/store";
+import { criticalIssueChoices } from "./lists";
 
 export let state = writable(emptyState());
 export let currentFile = writable("");
@@ -263,4 +264,81 @@ function emptyScorecard(n: number): Scorecard {
     existingScoreNotes: Array(n).fill(""),
     proposedScoreNotes: Array(n).fill(""),
   };
+}
+
+export function unmappedPolicyConflictsExist(state: State): boolean[][] {
+  let unmappedExistingPolicyConflicts: boolean[] = state.policyCheck.map((response) => response.existing === "Yes");
+  let unmappedDesignPolicyConflicts: boolean[] = state.policyCheck.map((response) => response.proposed === "Yes");
+
+  state.policyConflictLog.forEach((conflict) => {
+    const index = Number.parseInt(conflict.conflict) - 1;
+    if (conflict.stage === "Existing") {
+      unmappedExistingPolicyConflicts[index] = false;
+    }
+    if (conflict.resolved === "No" || conflict.stage === "Design") {
+      unmappedDesignPolicyConflicts[index] = false;
+    }
+  });
+
+  return [unmappedExistingPolicyConflicts, unmappedDesignPolicyConflicts];
+}
+
+export function unmappedCriticalIssuesExist(state: State): [boolean[], boolean[]] {
+  let unmappedExistingCriticalIssues: boolean[] = state.safetyCheck.existingScores.map((score) => score === "C");
+  let unmappedDesignCriticalIssues: boolean[] = state.safetyCheck.proposedScores.map((score) => score === "C");
+
+  state.criticalIssues.forEach((issue) => {
+    const index = getCriticalIssueIndex(issue.criticalIssue);
+    if (issue.stage === "Existing") {
+      unmappedExistingCriticalIssues[index] = false;
+    }
+    if (issue.resolved === "No" || issue.stage === "Design") {
+      unmappedDesignCriticalIssues[index] = false;
+    }
+  });
+
+  return [unmappedExistingCriticalIssues, unmappedDesignCriticalIssues];
+}
+
+export function policyConflictsMappedButNotInCheckExist(state: State): [boolean[], boolean[]] {
+
+  let unloggedExistingPolicyConflicts: boolean[] = Array(state.policyCheck.length).fill(false);
+  let unloggedDesignPolicyConflicts: boolean[] = Array(state.policyCheck.length).fill(false);
+
+  state.policyConflictLog.forEach((conflict) => {
+    const index = Number.parseInt(conflict.conflict) - 1;
+    if (conflict.stage === "Existing" && state.policyCheck[index].existing !== "Yes") {
+      unloggedExistingPolicyConflicts[index] = true;
+    }
+    if ((conflict.resolved === "No" || conflict.stage === "Design") && state.policyCheck[index].proposed !== "Yes") {
+      unloggedDesignPolicyConflicts[index] = true;
+    }
+  });
+
+
+  return [unloggedExistingPolicyConflicts, unloggedDesignPolicyConflicts];
+}
+
+export function criticalIssuesMappedButNotInCheckExist(state: State): [boolean[], boolean[]] {
+  let unloggedExistingIssues: boolean[] = Array(state.safetyCheck.existingScores.length).fill(false);
+  let unloggedDesignIssues: boolean[] = Array(state.safetyCheck.proposedScores.length).fill(false);
+
+  state.criticalIssues.forEach((issue) => {
+    const index = getCriticalIssueIndex(issue.criticalIssue);
+    if (issue.stage === "Existing" && state.safetyCheck.existingScores[index] !== "C") {
+      unloggedExistingIssues[index] = true;
+    }
+    if ((issue.resolved === "No" || issue.stage === "Design") && state.safetyCheck.proposedScores[index] !== "C") {
+      unloggedDesignIssues[index] = true;
+    }
+  });
+
+
+  return [unloggedExistingIssues, unloggedDesignIssues];
+}
+
+function getCriticalIssueIndex(criticalIssueCode: CriticalIssueCode): number {
+  const criticalIssueCodes: string[] = criticalIssueChoices.map(([code, description]) => code);
+  const code: string = criticalIssueCode.toString();
+  return criticalIssueCodes.findIndex((thisCode) => thisCode === code);
 }
