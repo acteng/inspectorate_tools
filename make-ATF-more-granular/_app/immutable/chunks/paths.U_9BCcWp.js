@@ -1,1 +1,0 @@
-var s;const e=((s=globalThis.__sveltekit_ip43i3)==null?void 0:s.base)??"/inspectorate_tools/make-ATF-more-granular";var a;const t=((a=globalThis.__sveltekit_ip43i3)==null?void 0:a.assets)??e;export{t as a,e as b};
